@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="am_banco_ver2" id="1881AD56-F333-4159-F48A-8960C1EBAED6" version="3.5">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 11:19:34 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1881AD56-F333-4159-F48A-8960C1EBAED6</designId>
+</OSDM_Design>

@@ -1,0 +1,184 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="C55829CD-079D-6CDC-7364-2693681F77EA" directorySegmentName="seg_0" name="ALIMENTO">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:31:47 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<pkName>Entity_34 PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_ALIMENTO" id="2571DAA9-DA64-F149-85B5-E50009733C96">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:31:50 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="NOME" id="0B9F3EF4-D513-2C80-F6F7-B7DB0AC48873">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:32:01 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="DESCRICAO" id="F2BCA814-740D-D9AB-26C5-6D3439B6861A">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:32:14 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="VALOR_ENERGETICO" id="5DACC25C-DE09-5F1F-58C6-728FE627AB58">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:32:23 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="QTD_PROTEINA" id="13F825F8-4BAD-6A47-9385-4B8B882D586E">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:33:56 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="QTD_CARBOIDRATO" id="3443ECF6-A73F-A200-F9E4-8379B7907AE0">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:34:15 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="QTD_GORDURA" id="5A216F25-99BB-FB84-95EB-04D6E22CA33A">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:34:26 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="UNIDADE" id="133A4A0D-D95A-232E-AF91-D3AE60F1631B">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:34:40 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="UNIDADE_MEDIDA" id="926A47B7-77B2-8CE2-4B0C-3258C960F59A">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:34:58 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="B416F0CC-1E63-0393-1358-B02CA3AB6B28" name="Entity_34 PK">
+<createdBy>root</createdBy>
+<createdTime>2013-03-10 11:32:00 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2571DAA9-DA64-F149-85B5-E50009733C96</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

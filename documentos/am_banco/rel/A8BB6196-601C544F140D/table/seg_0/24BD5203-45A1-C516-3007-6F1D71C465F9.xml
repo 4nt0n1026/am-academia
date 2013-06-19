@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="24BD5203-45A1-C516-3007-6F1D71C465F9" directorySegmentName="seg_0" name="PROFESSOR_NUTRICIONISTA">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>B0E5EEA6-DC2F-A124-CCCC-0F4C706AF5B9</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pkName>PROFESSOR_NUTRICIONISTA PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="FORMACAO" id="6885D62A-9DB0-5CB0-5018-DAB162422FC8">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>C01710EF-B1E4-ED5A-2F94-21B7BDBE1378</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="FOTO_LOCAL" id="FBBB80C5-0408-75C8-B638-56434829D935">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>3EFCDCB2-914D-CD8C-64F2-4E76CF40A02B</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_PESSOA" id="AAEB3864-2093-0F7B-D154-674E8D59F573">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>18E79E2C-5500-A484-755A-2E3EB3167BF2</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>1B8ED946-0D69-211C-1FA1-A4045A8C9663</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0D982126-7A3D-2F73-BA36-26810C76A640" referredColumn="1B8ED946-0D69-211C-1FA1-A4045A8C9663"/>
+</associations>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="7049002A-0DF9-CA26-2ABC-5F63BAA5C30B" name="PROFESSOR_NUTRICIONISTA PK">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>D7B8CE18-6DC0-E8B7-7E19-446A77813187</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="AAEB3864-2093-0F7B-D154-674E8D59F573"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="8B59E1AE-ADCD-C175-5CE2-D24D3FB0BB63" name="Relation_12">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:35 UTC</createdTime>
+<generatorID>D4641C31-2989-A692-E98D-D9107A262AEC</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="AAEB3864-2093-0F7B-D154-674E8D59F573"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

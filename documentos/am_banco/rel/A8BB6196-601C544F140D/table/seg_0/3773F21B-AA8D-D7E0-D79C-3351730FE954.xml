@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="3773F21B-AA8D-D7E0-D79C-3351730FE954" directorySegmentName="seg_0" name="CATEGORIA_LIMITACAO_DIETA">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>CF845443-B858-4F7C-4C5C-29529148B168</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pkName>CATEGORIA_LIMITACAO_DIETA PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_CAT_LIMITACAO_DIETA" id="593790BE-C870-58DE-3F74-75DC5974D964">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>4C4998E7-424F-A3D2-8658-3FD90156F87E</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="LIMITACAO" id="DCCA8D59-BF1A-57E2-262F-DA97A9E261A8">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>275F1CA7-3D6B-4ED0-9E02-659815EC2AFD</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="13007CD0-B7F1-F549-3635-D90C316B8723" name="CATEGORIA_LIMITACAO_DIETA PK">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>6F0F871A-E57F-6BAA-1940-975023177428</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="593790BE-C870-58DE-3F74-75DC5974D964"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,140 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="690DC7B7-B8D2-2307-45A6-B52EA580D040" directorySegmentName="seg_0" name="DIETA_ALUNO">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>86CE6155-2153-BF05-364C-F3F6EACA3DCC</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pkName>DIETA_ALUNO PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_PESSOA" id="61F7B401-481D-8EB4-50D0-E6A11418EC59">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>30B6F834-D770-C065-11E2-5FDDCB6FBE19</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>9D09ABF4-B14C-EC10-375B-393721B9AECA</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E2FBF74A-A7B8-A468-5896-306915451C09" referredColumn="9D09ABF4-B14C-EC10-375B-393721B9AECA"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_DIETA1" id="10621CAA-FAEA-60DA-CABB-8484F497C017">
+<createdBy>christian</createdBy>
+<createdTime>2013-05-28 21:56:35 UTC</createdTime>
+<generatorID>ABB2EFF5-D58B-2BE5-B658-CFA4CE7CE290</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>38C65497-7BFD-EB8B-BD10-5FC19369D436</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BED4D135-4E73-527D-D935-782E534EE701" referredColumn="38C65497-7BFD-EB8B-BD10-5FC19369D436"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_DIETA" id="8D19F7D7-4B71-E431-D0E7-BEC1C019078D">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>CE86FBAF-6DD0-5B2E-491F-F674BC2B04C1</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>9C43ECA2-5AF0-FF9E-5D55-D19E8BD7B83A</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ED85149F-987C-A364-152B-6E35C161F8CF" referredColumn="9C43ECA2-5AF0-FF9E-5D55-D19E8BD7B83A"/>
+</associations>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="F22E2EED-5CEC-722F-D07C-51A0EA23D464" name="DIETA_ALUNO PK">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>80CBAEE0-55E2-5490-2ACA-9E3D61ACF6A8</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="61F7B401-481D-8EB4-50D0-E6A11418EC59"/>
+<colUsage columnID="10621CAA-FAEA-60DA-CABB-8484F497C017"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="B09BCB7A-778C-68B2-9129-0090BA85ABCE" name="Relation_20">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:35 UTC</createdTime>
+<generatorID>DDD746AD-C0CE-7B78-145E-A8FA815FDBB8</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="61F7B401-481D-8EB4-50D0-E6A11418EC59"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="6DAD1C0E-FC85-F96C-A578-B4260102C74B" name="Relation_37">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:35 UTC</createdTime>
+<generatorID>62242815-88B6-5D31-936C-6AD639C9E476</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="8D19F7D7-4B71-E431-D0E7-BEC1C019078D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="46CDABC4-806B-063C-6B1D-19F9A1758ADE" name="Relation_67">
+<createdBy>christian</createdBy>
+<createdTime>2013-05-28 21:56:35 UTC</createdTime>
+<generatorID>BA471A58-5A89-B3B1-B0E4-696EA853FAD3</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="10621CAA-FAEA-60DA-CABB-8484F497C017"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

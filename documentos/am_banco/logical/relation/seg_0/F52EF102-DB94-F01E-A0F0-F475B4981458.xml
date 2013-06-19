@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="TELEFONE_CLIENTE_PESSOA_FK" id="F52EF102-DB94-F01E-A0F0-F475B4981458" directorySegmentName="seg_0">
+<createdBy>rm67163</createdBy>
+<createdTime>2013-03-20 12:17:39 UTC</createdTime>
+<generatorID>9D1DF5BE-2BEF-B782-2DCC-BC3CD362EE5D</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>04E39DFC-817F-F9F5-0046-D9D0F68DE1CF</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A5BC547F-5E85-1499-A514-EBD5D4943BC0</targetEntity>
+<transferable>true</transferable>
+</Relation>

@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="AA433341-01DA-9845-F386-1EF807EB04F9" directorySegmentName="seg_0" name="TREINO_FIXO_CATEGORIA_LIMITACAO_FK">
+<createdBy>christian</createdBy>
+<createdTime>2013-05-28 22:13:59 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<containerWithKeyObject>B2EEF17C-162D-2CB7-1A96-8BD9F84B7035</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>1193CFD8-4FD4-C98B-4C7E-742398B3BD98</localFKIndex>
+<keyObject>85674649-00CF-65FA-F207-B0CA4F3B6D9F</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+</FKIndexAssociation>

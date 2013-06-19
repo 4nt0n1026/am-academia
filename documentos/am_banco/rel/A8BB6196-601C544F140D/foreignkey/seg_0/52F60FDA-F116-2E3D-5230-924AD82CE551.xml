@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="52F60FDA-F116-2E3D-5230-924AD82CE551" directorySegmentName="seg_0" name="Relation_39">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:35 UTC</createdTime>
+<generatorID>2A6C596D-3075-4DD0-FE9B-078EF919348A</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<containerWithKeyObject>6EFD9E2D-63C7-10E9-3137-3A0A8289D16F</containerWithKeyObject>
+<deleteRule>RESTRICT</deleteRule>
+<localFKIndex>03981626-9B7F-5FA7-DE54-3A2E1ECE7C37</localFKIndex>
+<keyObject>B4BF7CB7-D19A-2FC2-709A-D5A5B375C73B</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+</FKIndexAssociation>

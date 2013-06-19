@@ -1,0 +1,174 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="CA723CE6-95A1-BCF0-EA09-172606A3927B" directorySegmentName="seg_0" name="TREINO_FIXO">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 11:20:34 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<pkName>TREINO_FIXO PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_TREINO" id="162F5B6D-25FA-7A0E-2EC6-A40CACBD2C1B">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:05:22 UTC</createdTime>
+<generatorID>F7AE0339-BF0D-7165-CCF1-7365E13E9CD8</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<referedAttribute>321ED1E9-505B-3CDB-3E01-1057EFC1F644</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_CAT_LIMITACAO_TREINO" id="216C0636-3894-F6F4-4B63-4BAD53A18129">
+<createdBy>christian</createdBy>
+<createdTime>2013-04-06 00:07:59 UTC</createdTime>
+<generatorID>358D1DB3-CB58-1826-2481-65F236662DEE</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>EC40B6CC-7031-F425-6F16-3682127E6653</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_CAT_DURACAO_TREINO" id="6F784174-ECB2-52FE-DB31-24DFFD104FF9">
+<createdBy>christian</createdBy>
+<createdTime>2013-04-06 00:08:04 UTC</createdTime>
+<generatorID>C52BE2ED-9DD1-7F31-A9FB-09E05A90D400</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<referedAttribute>C93C3C0E-AC55-A725-47E2-2819611EE1DB</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_CAT_DIAS_SEMANA_TREINO" id="9FC3DCFD-C116-FFC5-95D2-9CF36C7AD268">
+<createdBy>christian</createdBy>
+<createdTime>2013-04-06 00:08:11 UTC</createdTime>
+<generatorID>891CAD36-A2AC-4349-5FF8-4200AB05DC96</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<referedAttribute>7131ACE3-F5CE-7D9C-9A30-5125A7D76347</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_CAT_FAIXA_ETARIA" id="FD9561F9-166B-4710-9EF5-3D22B8E90122">
+<createdBy>christian</createdBy>
+<createdTime>2013-04-06 00:09:02 UTC</createdTime>
+<generatorID>D8E9ADDA-CBF8-5D91-7A6C-BE3855399815</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<referedAttribute>07695E3F-2B0E-31B4-E3C5-38CCEF00E395</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_CAT_SEXO" id="17460E1A-2BBC-E1D7-C87E-117E8ED9E0A1">
+<createdBy>christian</createdBy>
+<createdTime>2013-04-06 00:09:08 UTC</createdTime>
+<generatorID>9EB830D0-49E2-8E01-8F07-8C5E3C9D8423</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<referedAttribute>4AE033C0-9BB3-0D45-C47A-FD15E1EDDF04</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ID_CAT_OBJETIVO" id="C2B63A72-B824-B152-276E-BA3D166A9E06">
+<createdBy>christian</createdBy>
+<createdTime>2013-04-06 00:09:17 UTC</createdTime>
+<generatorID>B40EAC41-DD1D-7D77-7887-090586BB1258</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<referedAttribute>1EA8CE46-E77B-A549-B524-EC455BC742FA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="A88571D0-81A3-516E-73BE-68A0858DDB4B" name="TREINO_FIXO PK">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 11:21:14 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<engineerTo>
+<item key="A8BB6196-FDA6-EB88-A41C-601C544F140D" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>162F5B6D-25FA-7A0E-2EC6-A40CACBD2C1B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

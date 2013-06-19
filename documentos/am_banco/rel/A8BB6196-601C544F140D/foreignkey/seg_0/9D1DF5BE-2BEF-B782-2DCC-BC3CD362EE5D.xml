@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="9D1DF5BE-2BEF-B782-2DCC-BC3CD362EE5D" directorySegmentName="seg_0" name="TELEFONE_CLIENTE_PESSOA_FK">
+<createdBy>rm67163</createdBy>
+<createdTime>2013-03-20 12:17:30 UTC</createdTime>
+<generatorID>90C6013A-BEFF-E160-F3B6-8D86AA3FF453</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<containerWithKeyObject>C4BE9092-B151-E623-DFF3-150AE2ABCACF</containerWithKeyObject>
+<deleteRule>RESTRICT</deleteRule>
+<localFKIndex>52A73CD1-1320-FDC6-DC60-CC611AD00F0F</localFKIndex>
+<keyObject>8235DDDA-7885-299C-9C3D-6EEE9278CF56</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+</FKIndexAssociation>

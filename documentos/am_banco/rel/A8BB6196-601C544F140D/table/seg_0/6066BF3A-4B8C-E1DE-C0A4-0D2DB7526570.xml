@@ -1,0 +1,149 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="6066BF3A-4B8C-E1DE-C0A4-0D2DB7526570" directorySegmentName="seg_0" name="TREINO_ESPECIFICO">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>0E6AE74D-D607-FA55-6B72-207BB17613C9</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pkName>TREINO_ESPECIFICO PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_TREINO" id="0DF92FD2-241D-F9C1-5D38-2F1229B150C4">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>FA1C9A6E-9EC3-AC67-ADBE-E46BEF86536B</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>E417C508-DBD0-B99C-80A1-B0258DE19598</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="09AAD299-8125-C3AE-2AAE-BF0883E69C1E" referredColumn="E417C508-DBD0-B99C-80A1-B0258DE19598"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_SOLICITACAO" id="7ED7A09F-1ED6-C749-335C-923C9A7179F6">
+<createdBy>rm67163</createdBy>
+<createdTime>2013-03-20 11:27:17 UTC</createdTime>
+<generatorID>9473A010-32CE-287F-5B0F-8F188D39BE69</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>6C3D294C-0F1E-D580-32FA-068070124458</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BDC859BC-0433-C65C-A7E5-C18FF91B92D1" referredColumn="6C3D294C-0F1E-D580-32FA-068070124458"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="ID_PESSOA" id="C8268F88-6AEE-52A0-DA5F-66368E09A85E">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>A314B18A-D100-5955-1A61-0E23D2917B3A</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>9D09ABF4-B14C-EC10-375B-393721B9AECA</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="31C9DF63-FB98-C8A7-0628-6475A07B4E1B" referredColumn="9D09ABF4-B14C-EC10-375B-393721B9AECA"/>
+</associations>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="98FE6EBA-B209-DCAD-558C-0F9E46ED87C6" name="TREINO_ESPECIFICO PK">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:34 UTC</createdTime>
+<generatorID>1D5AE303-BC6E-9401-2D7E-F8A3FEBFEB6D</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="0DF92FD2-241D-F9C1-5D38-2F1229B150C4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="EB8302C8-2514-A95D-50D9-0A7D8D05BCFE" name="TREINO_ESPECIFICO__IDX">
+<createdBy>rm67163</createdBy>
+<createdTime>2013-03-20 11:27:17 UTC</createdTime>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<indexColumnUsage>
+<colUsage columnID="7ED7A09F-1ED6-C749-335C-923C9A7179F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="086BEE9C-4E9A-580F-ADA0-A569FD6AE753" name="Relation_32">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:35 UTC</createdTime>
+<generatorID>F664C37F-2D83-6B37-B7EE-4BED65F1C399</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="0DF92FD2-241D-F9C1-5D38-2F1229B150C4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="7207AD78-8A41-E344-C2D2-CA0E8C605A43" name="Relation_36">
+<createdBy>christian</createdBy>
+<createdTime>2013-03-09 13:37:35 UTC</createdTime>
+<generatorID>A8060D03-C632-6BF5-147F-D600FCBA887B</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="C8268F88-6AEE-52A0-DA5F-66368E09A85E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="7AF5EE79-2329-ACD1-C2EF-8C491BE70DAE" name="Relation_45">
+<createdBy>rm67163</createdBy>
+<createdTime>2013-03-20 11:27:17 UTC</createdTime>
+<generatorID>AD8594E8-2300-A26A-B72F-D60D7BDCE057</generatorID>
+<ownerDesignName>am_banco</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="7ED7A09F-1ED6-C749-335C-923C9A7179F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
