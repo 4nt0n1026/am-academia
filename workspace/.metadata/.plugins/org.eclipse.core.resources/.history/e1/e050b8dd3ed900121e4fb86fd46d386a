@@ -1,0 +1,17 @@
+package br.com.acad.model;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Exercicio implements Serializable {
+	
+	private int id;
+	
+	private String nome;
+	
+
+	
+	
+	
+	
+}

@@ -1,0 +1,14 @@
+package br.com.acad.model.catGenerico;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ObjetivoCat implements Serializable{
+	
+	private int id;
+	
+	private String nome;
+	
+	public ObjetivoCa
+	
+}

@@ -1,0 +1,22 @@
+package br.com.acad.model.treino;
+
+import java.io.Serializable;
+
+import br.com.acad.model.catGenerico.FaixaEtariaCat;
+import br.com.acad.model.catGenerico.ObjetivoCat;
+import br.com.acad.model.catGenerico.SexoCat;
+
+@SuppressWarnings("serial")
+public class TreinoFixo implements Serializable {
+
+	private SexoCat sexo;
+	
+	private FaixaEtariaCat faixaEtaria;
+	
+	private ObjetivoCat objetivo;
+	
+	private DuracaoTreinoCat duracao;
+	
+	private DiasTreinoCat diasSemana;
+	
+}

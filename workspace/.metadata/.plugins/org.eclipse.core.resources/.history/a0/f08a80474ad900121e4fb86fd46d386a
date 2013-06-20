@@ -1,0 +1,32 @@
+package br.com.acad.model.treino;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Serie implements Serializable{
+
+	private int id;
+	
+	private int numRepeticoes;
+
+	public Serie(){}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNumRepeticoes() {
+		return numRepeticoes;
+	}
+
+	public void setNumRepeticoes(int numRepeticoes) {
+		this.numRepeticoes = numRepeticoes;
+	}
+	
+	
+	
+}

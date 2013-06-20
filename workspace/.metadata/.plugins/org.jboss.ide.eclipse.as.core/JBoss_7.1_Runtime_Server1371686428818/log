@@ -1,0 +1,190 @@
+!SESSION 2013-06-19 20:58:17.942 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_15
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-19 21:01:18.450
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-19 21:01:47.407
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:07:45.400
+!MESSAGE Module AMAcademiaWeb published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:10:43.462
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:13:00.567
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:15:32.720
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:17:38.046
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:18:05.694
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:18:40.317
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:18:46.354
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:19:23.608
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:19:29.821
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:19:53.615
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:19:57.468
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:20:04.753
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:21:32.851
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:23:55.098
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:24:27.227
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:25:16.014
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:25:19.100
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:25:21.455
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:25:23.538
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:26:22.836
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:27:47.231
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:31:14.239
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:32:42.720
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:34:24.228
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:34:28.124
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:34:37.007
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:34:43.077
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:35:14.290
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:35:35.330
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 21:36:35.408
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:34:26.564
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:35:01.634
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:35:32.421
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:35:36.178
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:37:06.438
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:37:16.276
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:39:34.615
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:39:43.725
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:40:04.185
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:42:08.889
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:45:19.599
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:46:47.631
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:47:03.807
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:47:17.669
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:48:26.183
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:48:57.301
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:55:30.114
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 22:59:25.193
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:00:54.561
+!MESSAGE 2 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:01:13.346
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:01:32.757
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:01:52.707
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:02:33.782
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:04:23.475
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:06:20.239
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:08:33.058
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:22:28.922
+!MESSAGE 1 files modified in module AMAcademiaWeb
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:23:27.019
+!MESSAGE 1 files modified in module AMAcademiaWeb
