@@ -49,3 +49,12 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.pa
 
 !ENTRY org.eclipse.osgi 2 1 2013-06-20 08:50:26.278
 !MESSAGE NLS missing message: JBossRuntimeStartup_JBoss_EAP_Server_6_1 in: org.jboss.ide.eclipse.as.core.Messages
+
+!ENTRY org.eclipse.ui 4 4 2013-06-20 09:03:19.891
+!MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard
+
+!ENTRY org.eclipse.ui 4 4 2013-06-20 09:03:19.910
+!MESSAGE Plug-in 'org.eclipse.wst.jsdt.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.wst.jsdt.ui.internal.convertProjects
+
+!ENTRY org.eclipse.ui 4 4 2013-06-20 09:03:19.914
+!MESSAGE Plug-in 'org.eclipse.jpt.jpa.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.jpt.jpa.ui.menu.JpaTools' is invalid): org.eclipse.jpt.jpa.ui.generateEntities

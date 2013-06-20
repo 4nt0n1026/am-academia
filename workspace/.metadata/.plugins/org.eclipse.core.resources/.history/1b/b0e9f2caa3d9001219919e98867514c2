@@ -1,0 +1,21 @@
+package br.com.acad.model.dieta;
+
+import java.io.Serializable;
+
+public class Dieta implements Serializable{
+
+	private int id;
+	
+	private String nome;
+	
+	private Calendar data;
+	
+	private String descricao;
+	
+	private int tempo;
+	
+	//private ProfessorFunc professo;
+	
+	private TipoDietaTreino
+	
+}
