@@ -2,21 +2,41 @@ package br.com.acad.model.treino;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 import br.com.acad.model.catGenerico.FaixaEtariaCat;
 import br.com.acad.model.catGenerico.ObjetivoCat;
 import br.com.acad.model.catGenerico.SexoCat;
 
 @SuppressWarnings("serial")
+@Entity
+@Table(name="ACAD_TREINO_FIXO")
+@PrimaryKeyJoinColumn(name="ID")
 public class TreinoFixo implements Serializable {
 
+	@ManyToOne
+	@JoinColumn(name="SEXO_ID", nullable=false)
 	private SexoCat sexo;
 	
+	@ManyToOne
+	@JoinColumn(name="FAIXA_ETARIA_ID", nullable=false)
 	private FaixaEtariaCat faixaEtaria;
 	
+	@ManyToOne
+	@JoinColumn(name="OBJETIVO_ID", nullable=false)
 	private ObjetivoCat objetivo;
 	
+	@ManyToOne
+	@JoinColumn(name="DURACAO_TREINO_ID", nullable=false)
 	private DuracaoTreinoCat duracao;
 	
+	@ManyToOne
+	@JoinColumn(name="DIAS_SEMANA_ID", nullable=false)
 	private DiasTreinoCat diasSemana;
 	
 	public TreinoFixo(){}

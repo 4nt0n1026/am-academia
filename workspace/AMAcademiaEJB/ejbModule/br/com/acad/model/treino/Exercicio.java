@@ -2,20 +2,42 @@ package br.com.acad.model.treino;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqExercicio", sequenceName="SEQ_EXERCICIO", allocationSize=1)
+@Table(name="ACAD_EXERCICIO")
 public class Exercicio implements Serializable {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqExercicio")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	@Column(length=1000, nullable=true)
 	private String fotoLocal;
 	
+	@ManyToOne
+	@JoinColumn(name="PARTE_CORPO_PRIMARIA_ID", nullable=false)
 	private ParteCorpo parteCorpoPrimaria;
 	
+	@ManyToOne
+	@JoinColumn(name="PARTE_CORPO_SECUNDARIA_ID", nullable=false)
 	private ParteCorpo parteCorpoSecundaria;
 	
 	

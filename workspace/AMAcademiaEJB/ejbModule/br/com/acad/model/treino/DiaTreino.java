@@ -3,38 +3,49 @@ package br.com.acad.model.treino;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqDiaTreino", sequenceName="SEQ_DIA_TREINO", allocationSize=1)
+@Table(name="ACAD_DIA_TREINO")
 public class DiaTreino implements Serializable{
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiaTreino")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	@Column(nullable=false)
 	private Treino treino;
 
-	private List<ExercicioTreino> exercicioTreino;
+	
+	@OneToMany
+	@JoinColumn(name="DIA_TREINO_ID")
+	private List<ExercicioTreino> exerciciosTreino;
 	
 	
 	public DiaTreino(){}
 
-	public DiaTreino(int id, String nome, String descricao, Treino treino,
-			List<ExercicioTreino> exercicioTreino) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.treino = treino;
-		this.exercicioTreino = exercicioTreino;
-	}
-	
-	public List<ExercicioTreino> getExercicioTreino() {
-		return exercicioTreino;
+	public List<ExercicioTreino> getExerciciosTreino() {
+		return exerciciosTreino;
 	}
 
-	public void setExercicioTreino(List<ExercicioTreino> exercicioTreino) {
-		this.exercicioTreino = exercicioTreino;
+	public void setExerciciosTreino(List<ExercicioTreino> exerciciosTreino) {
+		this.exerciciosTreino = exerciciosTreino;
 	}
 
 	public int getId() {

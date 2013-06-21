@@ -3,18 +3,43 @@ package br.com.acad.model.treino;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.acad.model.pessoa.Aluno;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqSolicitacaoTreino", sequenceName="SEQ_SOLICITACAO_TREINO", allocationSize=1)
+@Table(name="ACAD_SOLICITACAO_TREINO")
 public class SolicitacaoTreino implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSolicitacaoTreino")
 	private int id;
 	
+	@Column(length=500, nullable=false)
 	private String descricao;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name="DATA_SOLICITACAO", nullable=false)
 	private Calendar dataSolicitacao;
 	
+	@Column(nullable=false)
 	private boolean respondido;
 
-	//private Aluno aluno;	
+	@ManyToOne
+	@JoinColumn(name="ALUNO_ID", nullable=false)
+	private Aluno aluno;	
 	
 	
 	public SolicitacaoTreino(){}

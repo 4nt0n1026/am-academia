@@ -2,13 +2,29 @@ package br.com.acad.model.treino;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqDiasTreinoCat", sequenceName="SEQ_DIAS_TREINO_CAR", allocationSize=1)
+@Table(name="ACAD_DIAS_TREINO_CAT")
 public class DiasTreinoCat implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiasTreinoCat")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=1, nullable=false)
 	private int qtdDias;
 	
 	public DiasTreinoCat(){}

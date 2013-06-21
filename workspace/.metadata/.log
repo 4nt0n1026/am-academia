@@ -58,3 +58,56 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.pa
 
 !ENTRY org.eclipse.ui 4 4 2013-06-20 09:03:19.914
 !MESSAGE Plug-in 'org.eclipse.jpt.jpa.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.jpt.jpa.ui.menu.JpaTools' is invalid): org.eclipse.jpt.jpa.ui.generateEntities
+!SESSION 2013-06-20 22:02:30.244 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_15
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-20 22:03:08.720
+!MESSAGE NLS missing message: JBossRuntimeStartup_JBoss_EAP_Server_6_1 in: org.jboss.ide.eclipse.as.core.Messages
+
+!ENTRY org.eclipse.jst.server.core 4 0 2013-06-20 23:39:21.221
+!MESSAGE Could not launch in profiling mode because no profilers are configured.
+
+!ENTRY org.jboss.ide.eclipse.as.jmx.integration 4 0 2013-06-21 00:14:29.201
+!MESSAGE Error connecting to jmx for server JBoss 7.1 Runtime Server
+!STACK 1
+org.jboss.tools.jmx.core.JMXException: Unable to reach JBoss instance. Please ensure your server is up and exposes its management ports via the -Djboss.bind.address.management=yourwebsite.com system property
+	at org.jboss.ide.eclipse.as.jmx.integration.JBoss71ServerConnection.createConnection(JBoss71ServerConnection.java:87)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:143)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:127)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:116)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.connectToStartedServer(JBossServerConnection.java:233)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection$1.run(JBossServerConnection.java:225)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.RuntimeException: Operation failed with status WAITING
+	at org.jboss.remotingjmx.RemotingConnector.connect(RemotingConnector.java:154)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:267)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBoss71ServerConnection.createConnection(JBoss71ServerConnection.java:71)
+	... 6 more
+!SUBENTRY 1 org.jboss.ide.eclipse.as.core 4 0 2013-06-21 00:14:29.202
+!MESSAGE Unable to reach JBoss instance. Please ensure your server is up and exposes its management ports via the -Djboss.bind.address.management=yourwebsite.com system property
+!STACK 0
+java.lang.RuntimeException: Operation failed with status WAITING
+	at org.jboss.remotingjmx.RemotingConnector.connect(RemotingConnector.java:154)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:267)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBoss71ServerConnection.createConnection(JBoss71ServerConnection.java:71)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:143)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:127)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:116)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.connectToStartedServer(JBossServerConnection.java:233)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection$1.run(JBossServerConnection.java:225)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2013-06-21 08:44:47.612 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_15
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-21 08:45:24.385
+!MESSAGE NLS missing message: JBossRuntimeStartup_JBoss_EAP_Server_6_1 in: org.jboss.ide.eclipse.as.core.Messages

@@ -188,3 +188,343 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.pa
 
 !ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-19 23:23:27.019
 !MESSAGE 1 files modified in module AMAcademiaWeb
+!SESSION 2013-06-20 22:02:30.244 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_15
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 22:58:53.193
+!MESSAGE Module AMAcademiaEJB published without error.
+
+!ENTRY unknown 0 0 2013-06-20 22:58:53.489
+!MESSAGE OK
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 22:59:03.178
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-20 22:59:39.641
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:01:36.443
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:02:08.775
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:03:17.541
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:03:32.198
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:04:50.843
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:05:28.822
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:07:02.063
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:08:03.238
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:11:45.835
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:12:53.742
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:13:02.446
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:13:16.894
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:14:15.859
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:14:33.178
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:16:17.457
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:16:47.059
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:17:08.824
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:17:11.938
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:18:25.498
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:20:08.321
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:21:31.479
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:22:52.264
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:24:21.870
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:25:22.124
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:26:00.543
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:27:42.851
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2013-06-20 23:27:52.471
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:27:53.361
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:27:53.384
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:27:53.393
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 23:27:58.832
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-20 23:28:21.832
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:29:02.008
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:29:02.017
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:29:02.017
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:29:13.539
+!MESSAGE Module AMAcademiaEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 23:29:19.908
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-20 23:29:37.055
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:33:54.151
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:34:07.516
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:34:52.969
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:36:12.725
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:36:22.178
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:37:03.709
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:37:24.017
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:37:28.484
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:38:27.691
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2013-06-20 23:38:42.216
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:38:42.501
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:38:42.502
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:38:42.503
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 23:38:47.597
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-20 23:39:04.258
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:39:11.035
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:39:11.780
+!MESSAGE Module AMAcademiaEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2013-06-20 23:39:13.242
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:39:15.849
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:39:15.851
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:39:15.851
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 23:39:20.970
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:39:21.109
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 23:39:26.217
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-20 23:39:43.638
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:39:48.095
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:40:23.152
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-20 23:40:26.956
+!MESSAGE Module AMAcademiaEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2013-06-20 23:40:33.617
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:40:37.045
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:40:37.046
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-20 23:40:37.047
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-20 23:40:59.609
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-20 23:41:16.646
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:04:09.492
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:07:26.135
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:07:39.898
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:07:50.892
+!MESSAGE Module AMAcademiaEJB published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2013-06-21 00:07:54.705
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:08:04.704
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:08:04.712
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:08:04.713
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-21 00:08:11.958
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-21 00:08:40.861
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:10:20.255
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:10:33.423
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:10:38.349
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:10:38.360
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:10:38.360
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-21 00:10:46.437
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-21 00:11:09.557
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:13:43.415
+!MESSAGE 1 files modified in module AMAcademiaEJB
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2013-06-21 00:13:46.324
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:13:46.759
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:13:46.760
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2013-06-21 00:13:46.760
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2013-06-21 00:13:53.206
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2013-06-21 00:14:11.453
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.jmx.integration 4 0 2013-06-21 00:14:28.934
+!MESSAGE Error connecting to jmx for server JBoss 7.1 Runtime Server
+!STACK 1
+org.jboss.tools.jmx.core.JMXException: Unable to reach JBoss instance. Please ensure your server is up and exposes its management ports via the -Djboss.bind.address.management=yourwebsite.com system property
+	at org.jboss.ide.eclipse.as.jmx.integration.JBoss71ServerConnection.createConnection(JBoss71ServerConnection.java:87)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:143)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:127)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:116)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.connectToStartedServer(JBossServerConnection.java:233)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection$1.run(JBossServerConnection.java:225)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.RuntimeException: Operation failed with status WAITING
+	at org.jboss.remotingjmx.RemotingConnector.connect(RemotingConnector.java:154)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:267)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBoss71ServerConnection.createConnection(JBoss71ServerConnection.java:71)
+	... 6 more
+!SUBENTRY 1 org.jboss.ide.eclipse.as.core 4 0 2013-06-21 00:14:29.131
+!MESSAGE Unable to reach JBoss instance. Please ensure your server is up and exposes its management ports via the -Djboss.bind.address.management=yourwebsite.com system property
+!STACK 0
+java.lang.RuntimeException: Operation failed with status WAITING
+	at org.jboss.remotingjmx.RemotingConnector.connect(RemotingConnector.java:154)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:267)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBoss71ServerConnection.createConnection(JBoss71ServerConnection.java:71)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:143)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:127)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.run(JBossServerConnection.java:116)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection.connectToStartedServer(JBossServerConnection.java:233)
+	at org.jboss.ide.eclipse.as.jmx.integration.JBossServerConnection$1.run(JBossServerConnection.java:225)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2013-06-21 00:15:32.757
+!MESSAGE 1 files modified in module AMAcademiaEJB

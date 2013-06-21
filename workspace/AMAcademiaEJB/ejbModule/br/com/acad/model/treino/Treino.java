@@ -4,43 +4,62 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import br.com.acad.model.catGenerico.TipoTreinoDieta;
+import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqTreino", sequenceName="SEQ_TREINO", allocationSize=1)
+@Table(name="ACAD_TREINO")
 public abstract class Treino implements Serializable{
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqTreino")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
-	private Calendar data;
-	
-	private TipoTreinoDieta tipoTreino;
-	
-	private List<DiaTreino> diasTreino;
-	
+	@Column(nullable=true)
 	private long tempoDescanso;
 
-	//private ProfessorFunc professor;	
+	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
+	private Calendar data;
+	
+	@ManyToOne
+	@JoinColumn(name="PROFESSOR_ID", nullable=true)
+	private ProfessorFunc professor;
+	
+	@Column(nullable=false)
+	private TipoTreinoDieta tipoTreino;
+	
+	@OneToMany
+	@JoinColumn(name="TREINO_ID")
+	private List<DiaTreino> diasTreino;
+	
 	
 	
 	public Treino(){}
 
-	public Treino(int id, String nome, String descricao, Calendar data,
-			TipoTreinoDieta tipoTreino, List<DiaTreino> diasTreino,
-			long tempoDescanso) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.data = data;
-		this.tipoTreino = tipoTreino;
-		this.diasTreino = diasTreino;
-		this.tempoDescanso = tempoDescanso;
-	}
-
+	
 	public long getTempoDescanso() {
 		return tempoDescanso;
 	}
@@ -99,6 +118,17 @@ public abstract class Treino implements Serializable{
 	public void setTipoTreino(TipoTreinoDieta tipoTreino) {
 		this.tipoTreino = tipoTreino;
 	}
+
+
+	public ProfessorFunc getProfessor() {
+		return professor;
+	}
+
+
+	public void setProfessor(ProfessorFunc professor) {
+		this.professor = professor;
+	}
+	
 	
 	
 	

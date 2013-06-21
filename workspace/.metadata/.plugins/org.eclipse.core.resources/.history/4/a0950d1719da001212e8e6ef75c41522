@@ -1,0 +1,77 @@
+package br.com.acad.model.treino;
+
+import java.io.Serializable;
+import java.util.Calendar;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import br.com.acad.model.pessoa.Aluno;
+
+@SuppressWarnings("serial")
+public class SerieFeita implements Serializable {
+
+	private int id;
+	
+	private double pesoUsado;
+	
+	private Calendar data;
+	
+	private Aluno aluno;
+	
+	@ManyToOne
+	@JoinColumn(name="SERIE_ID")
+	private Serie serie;
+	
+	
+	public SerieFeita(){}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public double getPesoUsado() {
+		return pesoUsado;
+	}
+
+
+	public void setPesoUsado(double pesoUsado) {
+		this.pesoUsado = pesoUsado;
+	}
+
+
+	public Calendar getData() {
+		return data;
+	}
+
+
+	public void setData(Calendar data) {
+		this.data = data;
+	}
+
+
+	public Serie getSerie() {
+		return serie;
+	}
+
+
+	public void setSerie(Serie serie) {
+		this.serie = serie;
+	}
+	
+	
+}

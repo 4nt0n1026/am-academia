@@ -3,31 +3,55 @@ package br.com.acad.model.treino;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.acad.model.pessoa.Aluno;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqSerieFeita", sequenceName="SEQ_SERIE_FEITA", allocationSize=1)
+@Table(name="ACAD_SERIE_FEITA")
 public class SerieFeita implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSerieFeita")
 	private int id;
 	
+	@Column(precision=2, nullable=false)
 	private double pesoUsado;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	private Calendar data;
 	
-	//private Aluno aluno;
+	@ManyToOne
+	@JoinColumn(name="ALUNO_ID")
+	private Aluno aluno;
 	
+	@ManyToOne
+	@JoinColumn(name="SERIE_ID")
 	private Serie serie;
 	
 	
 	public SerieFeita(){}
 
-
-	public SerieFeita(int id, double pesoUsado, Calendar data, Serie serie) {
-		super();
-		this.id = id;
-		this.pesoUsado = pesoUsado;
-		this.data = data;
-		this.serie = serie;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
 
 	public int getId() {
 		return id;

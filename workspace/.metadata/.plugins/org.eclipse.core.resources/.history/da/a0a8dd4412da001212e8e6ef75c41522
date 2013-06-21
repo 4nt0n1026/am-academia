@@ -1,0 +1,38 @@
+package br.com.acad.model.pessoa;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+import br.com.acad.model.treino.Treino;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name="ACAD_ALUNO")
+@PrimaryKeyJoinColumn(name="PESSOA_ID")
+public class Aluno extends Pessoa{
+
+	private double peso;
+	
+	private double altura;
+	
+	private List<Treino> treinos;
+	
+	public Aluno(){}
+	
+	public double getPeso() {
+		return peso;
+	}
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+	public double getAltura() {
+		return altura;
+	}
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+	
+}
