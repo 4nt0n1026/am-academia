@@ -1,0 +1,17 @@
+package br.com.acad.teste;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+import br.com.acad.dao.avisos.impl.AvisoNoticiaDAOImpl;
+
+public class testeGeral  {
+	
+
+
+	public static void main(String[] args) {
+		
+		AvisoNoticiaDAO dao = new DAOTeste().getDao();
+		
+		dao.searchByID(1);
+		
+	}
+}

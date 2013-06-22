@@ -1,0 +1,13 @@
+package br.com.acad.teste;
+
+import javax.ejb.Singleton;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+
+@Singleton
+public class DAOTeste {
+
+	@EJB
+	private AvisoNoticiaDAO dao;
+	
+}

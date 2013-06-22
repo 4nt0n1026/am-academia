@@ -1,28 +1,52 @@
 package br.com.acad.model.dieta;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 import br.com.acad.model.catGenerico.FaixaEtariaCat;
 import br.com.acad.model.catGenerico.ObjetivoCat;
 import br.com.acad.model.catGenerico.SexoCat;
 
 @SuppressWarnings("serial")
+@Entity
+@Table(name="ACAD_DIETA_FIXA")
+@PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
 public class DietaFixa extends Dieta {
 
-	private LimitacaoDietaCat limitacao;
 	
+	@ManyToMany
+	@JoinTable(name="ACAD_DIETA_FIXA_LIMITACAO_CAT", 
+				joinColumns={@JoinColumn(name="DIETA_FIXA_ID")},
+				inverseJoinColumns={@JoinColumn(name="LIMITACAO_ID")})
+	private List<LimitacaoDietaCat> limitacoes;
+	
+	@ManyToOne
+	@JoinColumn(name="SEXO_ID", nullable=false)
 	private SexoCat sexo;
 	
-	private ObjetivoCat objetivo;
+	@ManyToOne
+	@JoinColumn(name="FAIXA_ETARIA_ID", nullable=false)
+	private FaixaEtariaCat faixaEtaria;
 	
-	private FaixaEtariaCat faicaEtaria;
+	@ManyToOne
+	@JoinColumn(name="OBJETIVO_ID", nullable=false)
+	private ObjetivoCat objetivo;
 	
 	public DietaFixa(){}
 
-	public LimitacaoDietaCat getLimitacao() {
-		return limitacao;
+	public List<LimitacaoDietaCat> getLimitacoes() {
+		return limitacoes;
 	}
 
-	public void setLimitacao(LimitacaoDietaCat limitacao) {
-		this.limitacao = limitacao;
+	public void setLimitacoes(List<LimitacaoDietaCat> limitacoes) {
+		this.limitacoes = limitacoes;
 	}
 
 	public SexoCat getSexo() {
@@ -41,13 +65,14 @@ public class DietaFixa extends Dieta {
 		this.objetivo = objetivo;
 	}
 
-	public FaixaEtariaCat getFaicaEtaria() {
-		return faicaEtaria;
+	public FaixaEtariaCat getFaixaEtaria() {
+		return faixaEtaria;
 	}
 
-	public void setFaicaEtaria(FaixaEtariaCat faicaEtaria) {
-		this.faicaEtaria = faicaEtaria;
+	public void setFaixaEtaria(FaixaEtariaCat faixaEtaria) {
+		this.faixaEtaria = faixaEtaria;
 	}
+
 	
 	
 	

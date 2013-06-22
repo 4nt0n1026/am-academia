@@ -2,6 +2,7 @@ package br.com.acad.model.horario;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,10 @@ public class Modalidade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqModalidade")
+	@Column(name="ID_MODALIDADE")
 	private int id;
+	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
 	public int getId() {

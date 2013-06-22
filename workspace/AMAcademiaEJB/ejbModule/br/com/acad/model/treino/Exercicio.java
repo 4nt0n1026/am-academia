@@ -21,6 +21,7 @@ public class Exercicio implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqExercicio")
+	@Column(name="ID_EXERCICIO")
 	private int id;
 	
 	@Column(length=255, nullable=false)
@@ -29,7 +30,7 @@ public class Exercicio implements Serializable {
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
-	@Column(length=1000, nullable=true)
+	@Column(length=500, nullable=true)
 	private String fotoLocal;
 	
 	@ManyToOne

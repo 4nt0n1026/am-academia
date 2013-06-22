@@ -2,11 +2,26 @@ package br.com.acad.model.catGenerico;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqObjetivo", sequenceName="SEQ_OBJETIVO", allocationSize=1)
+@Table(name="ACAD_OBJETIVO_CAT")
 public class ObjetivoCat implements Serializable{
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqObjetivo")
+	@Column(name="ID_OBJETIVO_CAT")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
 	public ObjetivoCat(){}

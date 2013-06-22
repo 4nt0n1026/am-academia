@@ -1,0 +1,21 @@
+package br.com.acad.teste;
+
+import javax.ejb.EJB;
+import javax.ejb.Schedule;
+import javax.ejb.Singleton;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+
+@Singleton
+public class TesteTimer {
+
+	@EJB
+	private AvisoNoticiaDAO dao;
+	
+	@Schedule(hour="*",minute="*",second="1")
+	public void geraRelatorio(){
+		System.out.println("Gerando relatorio....");
+		
+		dao.searchByID(1);
+	}
+}

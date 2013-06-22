@@ -10,3 +10,55 @@
 1371730070592	Move compilation unit
 1371730092326	Rename type 'TreinoTipo'
 1371731914615	Rename field 'duracao'
+1371858539641	Move compilation unit
+1371858544876	Delete element
+1371858697377	Delete element
+1371858704542	Delete element
+1371858727122	Delete element
+1371858775607	Delete element
+1371858849534	Rename package 'br.com.acad.dao.catgenerico.impl'
+1371858855723	Delete element
+1371859002447	Copy compilation unit
+1371859089819	Delete element
+1371863454421	Delete element
+1371863470389	Delete element
+1371864294108	Rename type 'RelatorioTimer'
+1371868587779	Copy compilation unit
+1371868605211	Rename type 'NoticiaCategoria'
+1371868719804	Copy compilation unit
+1371868772175	Rename type 'AvisoNoticia'
+1371919826443	Delete elements
+1371919856817	Copy compilation unit
+1371919890641	Move compilation units
+1371919981197	Move compilation unit
+1371920030866	Copy compilation unit
+1371920037527	Move compilation unit
+1371920141468	Rename type 'AvisoNoticiaDAOImpl'
+1371920200787	Copy compilation unit
+1371920290041	Copy compilation unit
+1371920377550	Copy compilation unit
+1371920388341	Copy compilation unit
+1371920438856	Copy compilation unit
+1371920441513	Copy compilation unit
+1371920464181	Rename type 'FaixaEtariaCatDAOImpl'
+1371920478817	Rename type 'FaixaEtariaCatDAO'
+1371920556062	Copy compilation unit
+1371920564050	Copy compilation unit
+1371920577265	Copy compilation unit
+1371920589160	Copy compilation unit
+1371920601490	Copy compilation unit
+1371920614729	Copy compilation unit
+1371920623632	Copy compilation unit
+1371920627984	Copy compilation unit
+1371920658512	Rename type 'CopyOfDAO'
+1371920665177	Rename type 'SolicitacaoDietaqDAO'
+1371920678000	Copy compilation unit
+1371920832512	Copy compilation unit
+1371920839112	Copy compilation unit
+1371920850042	Copy compilation unit
+1371920858803	Copy compilation unit
+1371920935327	Copy compilation unit
+1371920949583	Copy compilation unit
+1371920961219	Copy compilation unit
+1371920974038	Copy compilation unit
+1371920980878	Copy compilation unit

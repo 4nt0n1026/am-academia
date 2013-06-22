@@ -2,6 +2,7 @@ package br.com.acad.model.horario;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +20,10 @@ public class Aula implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAula")
+	@Column(name="ID_AULA")
 	private int id;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
 	@ManyToOne

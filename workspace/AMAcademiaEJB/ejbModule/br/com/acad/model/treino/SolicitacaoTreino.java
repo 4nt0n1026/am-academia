@@ -25,6 +25,7 @@ public class SolicitacaoTreino implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSolicitacaoTreino")
+	@Column(name="ID_SOLICITACAO_TREINO")
 	private int id;
 	
 	@Column(length=500, nullable=false)

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
@@ -19,6 +18,7 @@ public class DiasTreinoCat implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiasTreinoCat")
+	@Column(name="ID_DIAS_TREINO_CAT")
 	private int id;
 	
 	@Column(length=255, nullable=false)

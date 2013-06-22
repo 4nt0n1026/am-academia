@@ -21,6 +21,7 @@ public class DiaTreino implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiaTreino")
+	@Column(name="ID_DIA_TREINO")
 	private int id;
 	
 	@Column(length=255, nullable=false)

@@ -2,6 +2,7 @@ package br.com.acad.model.contato;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +18,13 @@ public class Telefone implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqTelefone")
+	@Column(name="ID_TELEFONE")
 	private int id;
 	
+	@Column(length=3, nullable=false)
 	private int ddd;
 	
+	@Column(length=12, nullable=false)
 	private String numero;
 	
 	public int getId() {

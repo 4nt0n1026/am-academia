@@ -1,0 +1,19 @@
+package br.com.acad.teste;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+
+@Singleton
+public class TesteTimer {
+
+	@EJB
+	private AvisoNoticiaDAO dao;
+	
+	@Schedule(hour="*",minute="*",second="0")
+	public void geraRelatorio(){
+		System.out.println("Gerando relatorio....");
+		System.out.println("Soma dos pre�os de todos os pacotes: " +
+											pacoteDAO.somaValoresPacotes());
+		System.out.println("Total de pacotes cadastrados: " + 
+											pacoteDAO.contarQdtPacotes());
+	}
+}

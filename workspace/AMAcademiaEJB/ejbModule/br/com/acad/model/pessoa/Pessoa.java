@@ -32,6 +32,7 @@ public abstract class Pessoa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqPessoa")
+	@Column(name="ID_PESSOA")
 	private int id;
 	
 	@Column(length=255, nullable=false)

@@ -25,6 +25,7 @@ public class SerieFeita implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSerieFeita")
+	@Column(name="ID_SERIE_FEITA")
 	private int id;
 	
 	@Column(precision=2, nullable=false)

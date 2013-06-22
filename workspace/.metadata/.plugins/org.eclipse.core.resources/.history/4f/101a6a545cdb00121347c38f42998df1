@@ -1,0 +1,14 @@
+package br.com.acad.dao.catGenerico.impl;
+
+import javax.ejb.Remote;
+
+import br.com.acad.dao.generico.interf.DAO;
+import br.com.acad.model.avisos.Noticia;
+import br.com.acad.model.avisos.NoticiaCat;
+
+@Remote
+public interface NoticiaCatDAO extends DAO<NoticiaCat,Integer>{
+	
+	
+	
+}

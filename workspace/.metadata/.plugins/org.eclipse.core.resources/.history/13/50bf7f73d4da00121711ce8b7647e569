@@ -1,0 +1,6 @@
+package br.com.acad.teste;
+
+@Singleton
+public class DAOTeste {
+
+}

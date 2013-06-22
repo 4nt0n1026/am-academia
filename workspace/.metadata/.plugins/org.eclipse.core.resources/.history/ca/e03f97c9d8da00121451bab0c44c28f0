@@ -1,0 +1,12 @@
+package br.com.acad.teste;
+
+import org.junit.Test;
+
+public class TesteDAO {
+
+	@Test
+	public void test() {
+		System.out.println("teste");
+	}
+
+}

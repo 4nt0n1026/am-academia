@@ -9,11 +9,11 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_TREINO_ESPECIFICO")
-@PrimaryKeyJoinColumn(name="ID")
+@PrimaryKeyJoinColumn(name="ID_TREINO_ESPECIFICO")
 public class TreinoEspecifico extends Treino{
 	
 	@OneToOne
-	@JoinColumn(name="SOLICITACAO_TREINO_ID")
+	@JoinColumn(name="SOLICITACAO_TREINO_ID", nullable=false)
 	private SolicitacaoTreino solicitacao;
 
 	public TreinoEspecifico(){}

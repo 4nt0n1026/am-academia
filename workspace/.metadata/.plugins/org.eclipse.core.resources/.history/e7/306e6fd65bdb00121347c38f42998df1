@@ -1,0 +1,26 @@
+package br.com.acad.teste;
+
+import javax.ejb.EJB;
+import javax.persistence.EntityManager;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+import br.com.acad.dao.avisos.impl.AvisoNoticiaDAOImpl;
+
+public class TesteDAO {
+
+	
+	private AvisoNoticiaDAO dao;
+	
+	@Before
+	public void setUp(){
+		dao = new AvisoNoticiaDAOImpl();
+	}
+	@Test
+	public void test() {
+		dao.searchByID(1);
+	}
+
+}

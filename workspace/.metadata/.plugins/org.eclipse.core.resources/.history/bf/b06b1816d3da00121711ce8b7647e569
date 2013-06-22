@@ -1,0 +1,15 @@
+package br.com.acad.dao.avisos;
+
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+
+import br.com.acad.dao.avisos.impl.AvisoNoticiaDAOImpl;
+import br.com.acad.dao.generico.DAO;
+import br.com.acad.model.avisos.AvisoNoticia;
+
+@Remote
+public interface AvisoNoticiaDAO extends DAO<AvisoNoticia,Integer>{
+	
+	
+	
+}

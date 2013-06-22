@@ -1,0 +1,6 @@
+INDEX VERSION 1.122+/home/christian/am/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2023748440.index
+2906362430.index
+1286988008.index
+1474712355.index
+3704916966.index

@@ -2,6 +2,7 @@ package br.com.acad.model.contato;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +20,10 @@ public class Cidade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqCidade")
+	@Column(name="ID_CIDADE")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
 	@ManyToOne

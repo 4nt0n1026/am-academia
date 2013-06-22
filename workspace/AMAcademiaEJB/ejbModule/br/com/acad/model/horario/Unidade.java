@@ -2,6 +2,7 @@ package br.com.acad.model.horario;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,12 +18,16 @@ public class Unidade implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqUnidade")
+	@Column(name="ID_UNIDADE")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=500, nullable=true)
 	private String fotoLocal;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
 	public int getId() {

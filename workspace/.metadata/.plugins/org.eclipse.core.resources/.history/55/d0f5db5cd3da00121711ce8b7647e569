@@ -1,0 +1,21 @@
+package br.com.acad.teste;
+
+import javax.ejb.EJB;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+import br.com.acad.dao.avisos.impl.AvisoNoticiaDAOImpl;
+import br.com.acad.dao.generico.impl.DAOImpl;
+import br.com.acad.model.pessoa.Pessoa;
+
+public class testeGeral  {
+	
+
+
+	public static void main(String[] args) {
+		
+		AvisoNoticiaDAO dao = new AvisoNoticiaDAOImpl();
+		
+		dao.searchByID(1);
+		
+	}
+}

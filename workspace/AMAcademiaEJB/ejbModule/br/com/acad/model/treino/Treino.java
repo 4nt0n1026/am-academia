@@ -24,10 +24,11 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Entity
 @SequenceGenerator(name="seqTreino", sequenceName="SEQ_TREINO", allocationSize=1)
 @Table(name="ACAD_TREINO")
-public abstract class Treino implements Serializable{
+public class Treino implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqTreino")
+	@Column(name="ID_TREINO")
 	private int id;
 	
 	@Column(length=255, nullable=false)

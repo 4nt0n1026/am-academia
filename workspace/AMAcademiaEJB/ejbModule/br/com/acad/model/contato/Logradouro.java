@@ -2,6 +2,7 @@ package br.com.acad.model.contato;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,18 +20,21 @@ public class Logradouro implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqLogradouro")
+	@Column(name="ID_LOGRADOURO")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=20, nullable=false)
 	private String cep;
 	
 	@ManyToOne()
-	@JoinColumn(name="LOGRADOURO_TIPO_ID")
+	@JoinColumn(name="LOGRADOURO_TIPO_ID", nullable=false)
 	private LogradouroTipo logradouroTipo;
 	
 	@ManyToOne
-	@JoinColumn(name="CIDADE_ID")
+	@JoinColumn(name="CIDADE_ID", nullable=false)
 	private Cidade cidade;
 	
 	public String getNome() {

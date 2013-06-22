@@ -1,0 +1,21 @@
+package br.com.acad.teste;
+
+import javax.ejb.EJB;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+import br.com.acad.dao.generico.impl.DAOImpl;
+import br.com.acad.model.pessoa.Pessoa;
+
+public class testeGeral  {
+	
+	@EJB
+	static
+	AvisoNoticiaDAO dao;
+
+	public static void main(String[] args) {
+		
+		
+		System.out.println(dao.getEntityClass());
+		
+	}
+}

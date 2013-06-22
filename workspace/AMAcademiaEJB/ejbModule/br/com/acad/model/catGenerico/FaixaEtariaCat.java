@@ -2,15 +2,32 @@ package br.com.acad.model.catGenerico;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqFaixaEtaria", sequenceName="SEQ_FAIXA_ETARIA", allocationSize=1)
+@Table(name="ACAD_FAIXA_ETARIA_CAT")
 public class FaixaEtariaCat implements Serializable{
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqFaixaEtaria")
+	@Column(name="ID_FAIXA_ETARIA_CAT")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=2, nullable=false)
 	private int idadeIni;
 	
+	@Column(length=2, nullable=false)
 	private int idadeFim;
 	
 	public FaixaEtariaCat(){}

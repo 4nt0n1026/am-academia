@@ -1,0 +1,22 @@
+package br.com.acad.teste;
+
+import javax.ejb.EJB;
+
+import org.junit.Test;
+
+import br.com.acad.dao.avisos.AvisoNoticiaDAO;
+
+public class TesteDAO {
+
+	@EJB
+	private AvisoNoticiaDAO dao;
+	
+	public void setUp(){
+	 entityManager = mock(EntityManager.class);
+	}
+	@Test
+	public void test() {
+		dao.searchByID(1);
+	}
+
+}

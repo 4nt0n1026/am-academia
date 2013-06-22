@@ -1,0 +1,15 @@
+package br.com.acad.teste;
+
+import br.com.acad.dao.generico.impl.DAOImpl;
+import br.com.acad.model.pessoa.Pessoa;
+
+public class testeGeral  {
+
+	public static void main(String[] args) {
+		
+		DAOImpl<Pessoa, Integer> dao = new DAOImpl<Pessoa, Integer>();
+		
+		System.out.println(dao.getEntityClass().getName());
+		
+	}
+}

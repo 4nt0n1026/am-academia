@@ -2,25 +2,50 @@ package br.com.acad.model.dieta;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@SequenceGenerator(name="seqAlimento", sequenceName="SEQ_ALIMENTO", allocationSize=1)
+@Table(name="ACAD_ALIMENTO")
 public class Alimento implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAlimento")
+	@Column(name="ID_ALIMENTO")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	@Column(precision=2, nullable=false)
 	private double valorEnergetico;
 	
+	@Column(precision=2, nullable=false)
 	private double qtdProteina;
 	
+	@Column(precision=2, nullable=false)
 	private double qtdGordura;
 	
+	@Column(precision=2, nullable=false)
 	private double qtdCarboidrato;
 	
+	@Column(precision=2, nullable=false)
 	private double unidade;
 	
+	@ManyToOne
+	@JoinColumn(name="UNIDADE_MEDIDA_ID", nullable=false)
 	private UnidadeMedida unidadeMedida;
 	
 	public Alimento(){}

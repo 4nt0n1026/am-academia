@@ -1,8 +1,5 @@
 package br.com.acad.model.treino;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,8 +13,8 @@ import br.com.acad.model.catGenerico.SexoCat;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_TREINO_FIXO")
-@PrimaryKeyJoinColumn(name="ID")
-public class TreinoFixo implements Serializable {
+@PrimaryKeyJoinColumn(name="ID_TREINO_FIXO")
+public class TreinoFixo extends Treino {
 
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)

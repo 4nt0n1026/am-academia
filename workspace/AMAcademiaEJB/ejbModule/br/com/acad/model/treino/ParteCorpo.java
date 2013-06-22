@@ -19,6 +19,7 @@ public class ParteCorpo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqParteCopro")
+	@Column(name="ID_PARTE_CORPO")
 	private int id;
 	
 	@Column(length=255, nullable=false)

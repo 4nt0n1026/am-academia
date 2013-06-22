@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="br.com.acad.model.treino.ParteCorpo"/>
-<fullyQualifiedTypeName name="br.com.acad.model.treino.Treino"/>
 <fullyQualifiedTypeName name="br.com.acad.model.treino.TreinoEspecifico"/>
 <fullyQualifiedTypeName name="br.com.acad.model.treino.SolicitacaoTreino"/>
 <fullyQualifiedTypeName name="br.com.acad.model.treino.DiaTreino"/>
@@ -27,15 +26,26 @@
 <fullyQualifiedTypeName name="br.com.acad.model.dieta.DietaEspecifica"/>
 <fullyQualifiedTypeName name="br.com.acad.model.dieta.SolicitacaoDieta"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="br.com.acad.model.pessoa.Aluno"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
 <fullyQualifiedTypeName name="br.com.acad.model.treino.Exercicio"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumns"/>
-<fullyQualifiedTypeName name="javax.persistence.Temporal"/>
+<fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
+<fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
-<fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
-<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="javax.persistence.Temporal"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+<fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+<fullyQualifiedTypeName name="java.sql.Time"/>
+<fullyQualifiedTypeName name="br.com.acad.model.treino.Treino"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="javax.ejb.Singleton"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="br.com.acad.dao.avisos.AvisoNoticiaDAO"/>
+<fullyQualifiedTypeName name="br.com.acad.dao.avisos.impl.AvisoNoticiaDAOImpl"/>
+<fullyQualifiedTypeName name="br.com.acad.model.avisos.NoticiaCat"/>
 </qualifiedTypeNameHistroy>

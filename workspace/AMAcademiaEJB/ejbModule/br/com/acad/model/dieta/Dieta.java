@@ -4,26 +4,58 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import br.com.acad.model.catGenerico.TipoTreinoDieta;
+import br.com.acad.model.pessoa.ProfessorFunc;
 
 
 @SuppressWarnings("serial")
-public abstract class Dieta implements Serializable{
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@SequenceGenerator(name="seqDieta", sequenceName="SEQ_DIETA", allocationSize=1)
+@Table(name="ACAD_DIETA")
+public class Dieta implements Serializable{
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDieta")
+	@Column(name="ID_DIETA")
 	private int id;
 	
+	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	
+	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	@Column(length=2, nullable=false)
 	private int tempo;
 	
-	//private ProfessorFunc professo;
-	
+	@Column(nullable=false)
 	private TipoTreinoDieta tipoDieta;
 	
+	@ManyToOne
+	@JoinColumn(name="PROFESSOR_ID", nullable=true)
+	private ProfessorFunc professor;
+	
+	@OneToMany
+	@JoinColumn(name="DIETA_ID", nullable=true)
 	private List<DiaDieta> diasDieta;
 	
 	public Dieta(){}
@@ -50,6 +82,14 @@ public abstract class Dieta implements Serializable{
 
 	public void setData(Calendar data) {
 		this.data = data;
+	}
+
+	public ProfessorFunc getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(ProfessorFunc professor) {
+		this.professor = professor;
 	}
 
 	public String getDescricao() {

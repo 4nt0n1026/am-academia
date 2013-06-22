@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">
+		Venda
+	</ui:define>
+	<ui:define name="content">
+	    <p:growl autoUpdate="true"/>
+	    <h:form>
+	    	<h:panelGrid columns="3">
+	    		<p:outputLabel value="Nome"/>
+	    		<p:autoComplete value="#{vendaBean.nomeClienteBusca}"/>
+	    		<p:commandButton update="tabelaCliente" value="Buscar" actionListener="#{vendaBean.buscarCliente}"/>
+	    	</h:panelGrid>
+	    	<p:dataTable 
+		    	id="tabelaCliente"
+		    	value="#{vendaBean.listaCliente}" var="cli"
+		    	selection="#{vendaBean.clienteSelecionado}" 
+		    	selectionMode="single"
+	    		rowKey="#{cli.id}">
+	    	<p:column headerText="Nome">
+	    		#{cli.nome}
+	    	</p:column>
+	    	<p:column headerText="cpf">
+	    		#{cli.cpf}
+	    	</p:column>
+	    	</p:dataTable>
+	    
+	    	<h:panelGrid columns="3">
+	    		<p:outputLabel value="Descrição" for="desc"/>
+	    		<p:inputText value="#{vendaBean.descricaoPacoteBusca}" id="desc"/>
+	    		<p:commandButton update="tabelaPacote" value="Buscar" actionListener="#{vendaBean.buscarPacote}"/>
+	    	</h:panelGrid>
+	    	<p:dataTable id="tabelaPacote" 
+	    		value="#{vendaBean.listaPacote}" var="pac"
+	    		selection="#{vendaBean.listaPacotesSelecionados}"
+	    		selectionMode="multiple"
+	    		rowKey="#{pac.id}">
+	    		<p:column headerText="Descrição">
+	    			#{pac.descricao}
+	    		</p:column>
+	    		<p:column headerText="Data Saida">
+	    			<h:outputText value="#{pac.dataSaida.time}">
+	    				<f:convertDateTime pattern="dd/MM/yyyy"/>
+	    			</h:outputText>
+	    		</p:column>
+	    		<p:column headerText="Preço">
+	    			#{pac.preco}
+	    		</p:column>
+	    	</p:dataTable>
+	    	<p:commandButton value="Confirmar" 
+	    	actionListener="#{vendaBean.confirmarCompra}"/>
+	    </h:form>
+	</ui:define>
+</ui:composition>
+</html>
