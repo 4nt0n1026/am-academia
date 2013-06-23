@@ -14,7 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -54,7 +54,7 @@ public abstract class Pessoa implements Serializable {
 	@Column(length=20, nullable=true)
 	private String rg;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="ENDERECO_ID", nullable=true)
 	private Endereco endereco;
 	
