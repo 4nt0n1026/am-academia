@@ -1,0 +1,19 @@
+package br.com.acad.teste;
+
+import br.com.acad.dao.catGenerico.impl.SexoCatDAOImpl;
+import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
+import br.com.acad.model.catGenerico.SexoCat;
+
+public class TesteMain {
+	
+
+	
+	public static void main(String[] args) {
+		TesteDAO daoFactory = new TesteDAO();
+		SexoCatDAO dao = new SexoCatDAOImpl();
+		SexoCat sexo = new SexoCat();
+		sexo.setNome("Masculino");
+		dao.insert(sexo);
+	}
+	
+}

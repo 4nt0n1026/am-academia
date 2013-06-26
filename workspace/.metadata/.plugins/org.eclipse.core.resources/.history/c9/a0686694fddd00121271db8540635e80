@@ -1,0 +1,82 @@
+package br.com.acad.bean;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
+
+import br.com.acad.model.pessoa.Aluno;
+
+@SuppressWarnings("serial")
+@ManagedBean
+@ViewScoped
+public class AlunoBean implements Serializable{
+	
+	//daos
+	
+	
+	
+	//aluno
+	private List<Aluno> alunos;
+	private List<Aluno> alunosFiltered;
+	private SelectItem[] manufacturerOptions;  
+	
+	@PostConstruct
+	public void init(){
+		alunos = new ArrayList<Aluno>();
+		alunosFiltered = new ArrayList<Aluno>();
+		Aluno aluno1 = new Aluno();
+		aluno1.setNome("Christian");
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Amanda");
+		alunos.add(aluno2);
+		alunos.add(aluno1); 
+		
+		String[] nomes = new String[alunos.size()];
+		int i=0;
+		for(Aluno aluno: alunos){
+			nomes[i] = aluno.getNome();
+			i++;
+		}
+		
+		manufacturerOptions = createFilterOptions(nomes);  
+	}
+	
+	 private SelectItem[] createFilterOptions(String[] data)  {  
+	        SelectItem[] options = new SelectItem[data.length + 1];  
+	  
+	        options[0] = new SelectItem("", "Select");  
+	        for(int i = 0; i < data.length; i++) {  
+	            options[i + 1] = new SelectItem(data[i], data[i]);  
+	        }  
+	  
+	        return options;  
+	    } 
+
+	//gets sets
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public List<Aluno> getAlunosFiltered() {
+		return alunosFiltered;
+	}
+
+	public void setAlunosFiltered(List<Aluno> alunosFiltered) {
+		this.alunosFiltered = alunosFiltered;
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,16 @@
+package br.com.acad.teste;
+
+import br.com.acad.dao.pessoa.impl.AlunoDAOImpl;
+import br.com.acad.dao.pessoa.interf.AlunoDAO;
+
+public class TesteMain {
+	
+
+	
+	public static void main(String[] args) {
+		TesteDAO daoFactory = new TesteDAO();
+		AlunoDAO dao = new AlunoDAOImpl()
+		dao.searchByID(1);
+	}
+	
+}

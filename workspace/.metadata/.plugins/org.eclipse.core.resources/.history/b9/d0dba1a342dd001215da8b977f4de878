@@ -1,0 +1,9 @@
+
+
+.ui-widget,     
+    .ui-widget .ui-widget {     
+    font-size: 11px !important;  
+    margin: 0px;
+    padding: 0px
+	font-family: 'Trebuchet MS';
+}   

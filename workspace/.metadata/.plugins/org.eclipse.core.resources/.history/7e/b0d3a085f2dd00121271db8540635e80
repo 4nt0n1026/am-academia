@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">
+	    #{clienteBundle.page_title}
+	</ui:define>
+	<ui:define name="content">
+	<f:loadBundle var="clienteBundle" basename="br.com.fiap.cliente.bundle.clienteBundle"/>
+	<p:growl autoUpdate="true"/>
+	<p:messages autoUpdate="true"/>
+	
+	<p:panel 
+	header="#{clienteBundle.customer_panel}" 
+	toggleable="true" 
+	toggleOrientation="vertical"
+	widgetVar="painel">
+	
+		<p:fieldset legend="#{clienteBundle.client_legend}">
+			<h:form id="formCliente">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="#{clienteBundle.code_field}" for="cod"/>
+				<p:inputText value="#{clienteBean.cliente.id}" id="cod" readonly="true" styleClass="input-xxlarge" />
+				<p:outputLabel value="#{clienteBundle.cpf_field}" for="cpf" />
+				<p:inputMask mask="999.999.999-99" required="true" value="#{clienteBean.cliente.cpf}" id="cpf" styleClass="input-xxlarge" />
+				<p:outputLabel value="#{clienteBundle.name_field}" for="nome" />
+				<p:inputText required="true" value="#{clienteBean.cliente.nome}" id="nome" styleClass="input-xxlarge" />
+				<p:outputLabel  value="#{clienteBundle.birthdate_field}" for="data" styleClass="input-xlarge" />
+				<p:calendar required="true" pattern="dd/MM/yyyy"
+					value="#{clienteBean.cliente.dataNascimento.time}" id="data" />
+				<p:outputLabel value="#{clienteBundle.sexo_label}" for="sexo"/>
+				<p:selectOneRadio value="#{clienteBean.cliente.sexo}">
+					<f:selectItems value="#{sexoBean.sexo}" var="sexo" itemLabel="#{sexo.label}" itemValue="#{sexo}" id="sexo"/>
+				</p:selectOneRadio>
+					
+				<p:graphicImage styleClass="img-circle" width="150" id="fotoMaroto" value="#{clienteBean.foto}"/>
+				<p:fileUpload
+				fileUploadListener="#{clienteBean.sobeFoto}"
+				sizeLimit="1000000000"
+				allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+				auto="false"
+				dragDropSupport="false"
+				id="foto"
+				update="fotoMaroto"/>
+			</h:panelGrid>
+				<p:fieldset legend="Endereço">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Logradouro"/>
+						<p:inputText value="#{clienteBean.cliente.endereco.logradouro}"/>
+						<p:outputLabel value="CEP"/>
+						<p:inputText value="#{clienteBean.cliente.endereco.cep}"/>
+						<p:commandButton value="Mapa" onclick="mapa.show()"/>
+					</h:panelGrid>
+					<p:dialog widgetVar="mapa" modal="true" 
+									showEffect="fade" hideEffect="explode">
+						<m:map address="#{clienteBean.cliente.endereco.logradouro}"
+						zoom="18" partiallyTriggered="true" width="720" 
+						height="400">
+							<m:marker/>
+						</m:map>
+					</p:dialog>
+				</p:fieldset>
+				<br/>
+				<p:commandButton value="#{clienteBundle.save_button}" actionListener="#{clienteBean.salvar}" update="formCliente"/>	
+			</h:form>
+			<h:form id="formBotao">
+				<h:panelGrid columns="3">
+				
+					<p:commandButton onclick="dialogFoto.show()" 
+								value="#{clienteBundle.picture_field}"/>
+								
+					<p:commandButton onclick="confirmation.show()" icon="ui-icon-close" value="#{clienteBundle.remove_button}" update=":formBuscaCliente :formCliente" rendered="#{clienteBean.cliente.id != 0}"/>
+					<p:commandLink value="#{clienteBundle.registerNew_link}" actionListener="#{clienteBean.cadastrarNovo}" update=":formCliente formBotao"/>
+				</h:panelGrid>
+				
+				<p:dialog modal="true" widgetVar="dialogFoto" 
+						showEffect="bounce" hideEffect="explode">
+					<p:graphicImage value="#{clienteBean.foto}"/>
+				</p:dialog>
+				
+				<p:confirmDialog header="Confirmação" 
+					message="Tem certeza?"
+					severity="alert"
+					widgetVar="confirmation">
+					
+					<p:commandButton value="Sim" 
+					actionListener="#{clienteBean.remover}"
+					oncomplete="confirmation.hide()"
+					update=":formBuscaCliente :formCliente"/>
+					<p:commandButton value="Não" 
+					onclick="confirmation.hide()"/>
+					
+				</p:confirmDialog>
+			</h:form>	
+		</p:fieldset>
+	</p:panel>	
+		<p:separator />
+		<h:form id="formBuscaCliente">
+			<p:fieldset legend="#{clienteBundle.clientSearch_legend}">
+				<h:panelGrid columns="3">
+					<p:outputLabel value="#{clienteBundle.name_field}" for="nome"/>
+					<p:autoComplete id="nome" value="#{clienteBean.nomeBusca}" completeMethod="#{clienteBean.completaNomeCliente}"	/>
+					<p:commandButton value="#{clienteBundle.search_button}" update="tabelaCli,formBuscaCliente" actionListener="#{clienteBean.buscar}"/>
+				</h:panelGrid>
+			<p:dataTable value="#{clienteBean.listaCliente}" var="cli" id="tabelaCli"
+				paginator="true" rows="5"
+				emptyMessage="#{clienteBundle.empty_table}"
+				rowsPerPageTemplate="5,10,15"
+				sortOrder="acending"
+				selectionMode="single" rowKey="#{cli.id}" 
+				selection="#{clienteBean.clienteLinhaTabela}"
+				rendered="#{clienteBean.listaCliente != null}"
+				paginatorPosition="top"
+				scrollWidth="700" scrollable="true">
+				<p:ajax oncomplete="painel.expand()" event="rowSelect" update=":formCliente :formBotao" listener="#{clienteBean.alterar}"/>
+				<p:column headerText="#{clienteBundle.code_column}" sortBy="#{cli.id}">
+					#{cli.id}
+				</p:column>
+				<p:column headerText="#{clienteBundle.cpf_column}" sortBy="#{cli.cpf}">
+					#{cli.cpf}
+				</p:column>
+				<p:column headerText="#{clienteBundle.name_column}" sortBy="#{cli.nome}">
+					#{cli.nome}
+				</p:column>
+				<p:column headerText="#{clienteBundle.sexo_column}">
+					#{cli.sexo}
+				</p:column>
+				<p:column headerText="#{clienteBundle.birthdate_column}">
+					<h:outputText value="#{cli.dataNascimento.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:outputText>
+				</p:column>
+				<f:facet name="footer">
+					 #{clienteBundle.cliente_tableFooter} #{clienteBean.listaCliente.size()}
+				</f:facet>
+			</p:dataTable>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

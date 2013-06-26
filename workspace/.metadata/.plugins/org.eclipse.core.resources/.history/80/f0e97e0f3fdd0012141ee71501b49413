@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{languangeBean.locale}" contentType="text/html">
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<meta http-equiv="Pragma" content="no-cache" />
+</h:head>
+
+<h:body>
+	<f:loadBundle var="templateBundle" basename="br.com.fiap.utils.bundle.templateBundle"/>
+	<div id="header">
+		<div id="logo">
+			<div id="imageLogo">
+				<h:graphicImage name="logoFiap.jpg" library="img" />
+			</div>
+			<div id="discLogo">
+				<div id="logout">
+					<h:link outcome="/xhtml/construcao">
+						<h:outputText value="Logout" />
+					</h:link>
+					<h:form>
+						<h:commandLink action="#{languangeBean.changePortuguese()}" ajax="false" >
+						<h:graphicImage name="brasil.png" library="img"/>
+					</h:commandLink>
+					<h:commandLink action="#{languangeBean.changeEnglish()}" ajax="false" >
+						<h:graphicImage name="eua.png" library="img"/>
+					</h:commandLink>
+					</h:form>
+				</div>
+				<div id="disciplina">
+					Plataforma Web e Arquiteturas de Integração
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="menuPrincipal">
+		<p:menubar>
+			<p:menuitem value="#{templateBundle.home_menu}" outcome="/xhtml/index"/>
+			<p:submenu label="#{templateBundle.customer_menu}">
+				<p:menuitem value="#{templateBundle.customer_menu}" outcome="/xhtml/cliente/cliente"/>
+			</p:submenu>
+			<p:submenu label="#{templateBundle.package_menu}">
+				<p:menuitem value="#{templateBundle.package_menu}" outcome="/xhtml/pacote/pacote"/>
+			</p:submenu>
+			<p:submenu label="#{templateBundle.report_menu}">
+				<p:menuitem value="#{templateBundle.lineChart_menu}" outcome="/xhtml/relatorio/graficoLinha"/>
+				<p:menuitem value="#{templateBundle.pieChart_menu}" outcome="/xhtml/relatorio/graficoPizza"/>
+			</p:submenu>
+			<p:submenu label="Vendas">
+				<p:menuitem value="Venda Pacote" outcome="/xhtml/venda/venda"/>
+			</p:submenu>
+		</p:menubar>
+	</div>
+
+
+	<div id="content">
+		<div id="innerContent">
+			<ui:insert name="content">
+			</ui:insert>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div id="menuFooter">
+			<ul>
+				<li><h:link outcome="/xhtml/empresa/empresa">
+						<h:outputText value="#{templateBundle.company_menu}" />
+					</h:link></li>
+				<li><h:link outcome="/xhtml/construcao">
+						<h:outputText value="#{templateBundle.opportunities_menu}" />
+					</h:link></li>
+				<li><h:link outcome="/xhtml/empresa/contato">
+						<h:outputText value="#{templateBundle.contact_menu}" />
+					</h:link></li>
+			</ul>
+		</div>
+		<hr />
+		<div id="copyFooter">
+			Copyright© 2013 - Plataforma Web e Arquiteturas de Integração <br />
+			FIAP - A melhor faculdade de Tecnologia
+		</div>
+	</div>
+
+</h:body>
+</f:view>
+</html>
