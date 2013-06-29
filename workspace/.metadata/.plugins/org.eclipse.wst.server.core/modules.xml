@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <modules>
   <module moduleId="org.eclipse.jst.jee.server:AMAcademiaEAR" serverId="JBoss 7.1 Runtime Server1371686428818"/>
+  <module moduleId="org.eclipse.jst.jee.server:AMAcademia_EAR" serverId="JBoss 7.1 Runtime Server1371686428818"/>
+  <module moduleId="org.eclipse.jst.jee.server:AMAcademiaJSF" serverId="JBoss 7.1 Runtime Server1371686428818"/>
 </modules>

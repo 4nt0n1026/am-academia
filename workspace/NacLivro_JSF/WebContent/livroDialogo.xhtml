@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+	
+		<p:dataTable var="autor" value="#{autorBean.livro.autores}" sortBy="#{autor.nome}">
+			<p:column headerText="Nome" sortBy="#{autor.nome}">  
+	           	<h:outputText value="#{autor.nome} #{autor.sobrenome}" />  
+	       	</p:column>
+	       	<p:column headerText="Sexo" width="20">  
+	           	<h:outputText value="#{autor.sexo.label}" />  
+	       	</p:column>
+	       	<p:column headerText="Data Nascimento" width="20">  
+	           	<h:outputText value="#{autor.dataNascimento.time}" >
+	           		<f:convertDateTime pattern="dd/MM/yy" />
+	           	</h:outputText>  
+	       	</p:column>
+		</p:dataTable>
+
+</h:body>
+</html>

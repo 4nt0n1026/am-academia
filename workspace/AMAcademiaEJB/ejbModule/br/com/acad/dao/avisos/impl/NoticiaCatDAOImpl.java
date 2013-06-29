@@ -1,6 +1,9 @@
 package br.com.acad.dao.avisos.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -13,4 +16,12 @@ public class NoticiaCatDAOImpl extends DAOImpl<NoticiaCat,Integer> implements No
 		super();
 	}
 
+	@Override
+	public List<NoticiaCat> buscaTodos() {
+		TypedQuery<NoticiaCat> q = em.createQuery("from NoticiaCat", NoticiaCat.class);
+		return q.getResultList();
+	}
+
+	
+	
 }

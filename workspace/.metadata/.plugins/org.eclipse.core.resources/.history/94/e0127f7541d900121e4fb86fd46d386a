@@ -1,7 +1,0 @@
-package br.com.acad.model.treino;
-
-import java.io.Serializable;
-
-public class DiaTreino implements Serializable{
-
-}

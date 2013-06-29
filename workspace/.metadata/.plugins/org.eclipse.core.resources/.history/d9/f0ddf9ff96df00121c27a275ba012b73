@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<p:growl autoUpdate="true"/>
+		<p:messages autoUpdate="true"/>
+		<p:layout>
+		
+			<!-- ****************************************************************************************************** -->
+			<!-- NoticiaCat -->
+			<!-- ****************************************************************************************************** -->
+			<p:layoutUnit position="center"   >
+				
+					<p:tabView id="tabView"  dynamic="true" cache="true">  
+	  
+	        			<p:tab id="tba1" title="Tipos de Noticias">  
+	        				
+	        				
+	        				<h:panelGroup id="tabNoticiaCat">
+	        				
+		        				<!-- ****************************************************************************************************** -->
+								<!-- Insert de noticiaCat -->
+								<!-- ****************************************************************************************************** -->
+								<h:panelGroup id="divInsertNoticiaCat"   rendered="#{noticiaCatBean.showIncluirNoticiaCat}">
+									<h:form >
+									    
+									        <h:outputLabel for="idNome" value="Nome" />  
+									        <p:inputText id="idNome" value="#{noticiaCatBean.noticiaCat.nome}" required="true" />  
+									        <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaCatBean.incluirNoticiaCat}" ajax="false" /> 
+								        	<p:button icon="ui-icon ui-icon-close"   action="#{noticiaCatBean.dontShowNoticiaCat}" ajax="false" />  
+							        </h:form>
+								</h:panelGroup> 
+			
+								<!-- ****************************************************************************************************** -->
+								<!-- Menu da tabela de noticiaCat -->
+								<!-- ****************************************************************************************************** -->
+		        				<h:form>
+								<p:toolbar id="menuTabela">  
+		    						<p:toolbarGroup align="left">  
+							        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaCatBean.showNoticiaCat}" ajax="false" />
+							        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaCatBean.atualizar}" ajax="false"  />
+							        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaCatBean.showEditNoticiaCat}" ajax="false" />
+							        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{noticiaCatBean.atualizar}" ajax="false"/>
+							        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+							        	<p:separator />  
+							        </p:toolbarGroup>
+							        
+							        <p:toolbarGroup align="right">  
+							        	Busca:<p:inputText />
+							        </p:toolbarGroup>
+							    </p:toolbar>
+							    
+							   	<!-- ****************************************************************************************************** -->
+								<!-- Tabela de noticiaCat -->
+								<!-- ****************************************************************************************************** -->
+								<p:dataTable value="#{noticiaCatBean.noticiasCats}" var="cat" id="idTabelaCat" emptyMessage="Nenhum tipo de noticia registrado"
+										 widgetVar="tabelaNoticiaCat" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+										 paginatorAlwaysVisible="false" draggableColumns="true" liveResize="true">
+									
+									<p:column headerText="Id" sortBy="#{cat.id}"  >
+										<h:outputText value="#{cat.id}"/>
+									</p:column>
+									
+									<p:column headerText="Nome" sortBy="#{cat.nome}"  >
+										<h:outputText value="#{cat.nome}"/>
+									</p:column>
+								
+									<f:facet name="footer">  
+									</f:facet>
+									
+								</p:dataTable>
+								</h:form>
+								<!-- ****************************************************************************************************** -->
+								
+								
+							</h:panelGroup>
+						</p:tab>
+					</p:tabView>	
+				
+				
+				
+			</p:layoutUnit>
+			<!-- ****************************************************************************************************** -->
+			
+		
+		</p:layout>
+	</ui:define>
+</ui:composition>
+</html>

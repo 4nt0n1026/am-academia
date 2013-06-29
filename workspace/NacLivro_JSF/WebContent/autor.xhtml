@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:growl id="growl" showDetail="true" life="4000" />  
+		
+		<h:form id="panelIncluir" rendered="#{autorBean.isIncluir}">
+		
+			<hr/>
+			<h:outputLabel for="nomeAutor" value="Nome:" />
+			<p:inputText id="nomeAutor" value="#{autorBean.autor.nome}" required="true" />
+			<h:outputLabel for="sobrenomeAutor" value="Sobrenome:" />
+			<p:inputText id="sobrenomeAutor" value="#{autorBean.autor.sobrenome}" required="true"/>
+			<h:outputLabel for="sexoAutor" value="Sexo:" />
+			<p:selectOneMenu id="sexoAutor" value="#{autorBean.autor.sexo}" >
+	    		<f:selectItems value="#{autorBean.sexos}" var="sexo" itemLabel="#{sexo.label}" itemValue="#{sexo}" />					
+	    	</p:selectOneMenu>
+	    	<h:outputLabel for="dataAutor" value="Nascimento:" />
+			<p:inputMask mask="99/99/9999" id="dataAutor" value="#{autorBean.autor.dataNascimento.time}" required="true" >
+				<f:convertDateTime pattern="dd/MM/yy" />
+			</p:inputMask>
+			<p:commandButton icon="ui-icon ui-icon-check" action="#{autorBean.inclui}" ajax="false" />		
+		
+			<p:button icon="ui-icon ui-icon-minus" action="#{autorBean.desativarInclusao}"
+ 						 ajax="true" update="panelIncluir" />
+		
+		</h:form>
+		<hr/>
+		<h:form  id="tabelaAutores">
+	        <p:menubar> 
+	        	<p:menuitem  action="#{autorBean.ativaInclusao}" icon="ui-icon ui-icon-plus" 
+	        				 ajax="false"/>
+	        	<p:menuitem  ajax="true" update="tabelaAutores" action="#{autorBean.remove}"  icon="ui-icon ui-icon-close" />
+	        	<p:menuitem  ajax="true" update="tabelaAutores" action="#{autorBean.atualiza}"  icon="ui-icon ui-icon-refresh" />
+	        	<p:menuitem   icon="ui-icon ui-icon-zoomin" />
+	        </p:menubar>
+	          
+			<p:dataTable var="autor" value="#{autorBean.autores}" sortBy="#{autor.nome}"
+					 selectionMode="single" rowKey="#{autor}"  selection="#{autorBean.autor}">
+				<p:column headerText="Nome" sortBy="#{autor.nome}">  
+	            	<h:outputText value="#{autor.nome} #{autor.sobrenome}" />  
+	        	</p:column>
+	        	<p:column headerText="Sexo" width="20">  
+	            	<h:outputText value="#{autor.sexo.label}" />  
+	        	</p:column>
+	        	<p:column headerText="Data Nascimento" width="20">  
+	            	<h:outputText value="#{autor.dataNascimento.time}" >
+	            		<f:convertDateTime pattern="dd/MM/yy" />
+	            	</h:outputText>  
+	        	</p:column>
+			</p:dataTable>
+			<hr/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

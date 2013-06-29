@@ -1,0 +1,16 @@
+
+
+.ui-widget,     
+    .ui-widget .ui-widget {     
+    font-size: 12px !important;  
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid grey;
+	font-family: 'Trebuchet MS';
+}
+
+.center{
+	text-align: center;
+	border: thin solid black;
+}
+

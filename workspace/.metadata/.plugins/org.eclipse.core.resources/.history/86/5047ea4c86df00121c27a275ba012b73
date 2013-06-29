@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"  
+    xmlns:p="http://primefaces.org/ui">  
+      
+      
+    <h:body>  
+        <!-- Inicio do dialog de inserção de NoticiaCat -->
+		<p:dialog header="Dialog" widgetVar="dlg" closeOnEscape="true" modal="true" dynamic="true" >  
+		    <h:form>
+			    <h:panelGrid columns="2" style="margin-bottom:10px">  
+	            <h:outputLabel for="idNome" value="Nome" />  
+	            <p:inputText id="idNome" value="#{noticiaCatBean.noticiaCat.nome}" />  
+	        	</h:panelGrid>  
+	  
+	        	<p:commandButton id="submitButton" value="Submit" oncomplete="dlg.hide();"/>  
+        	</h:form>
+		</p:dialog>  
+		<!-- Fim do dialog de inserção de NoticiaCat -->
+    </h:body>  
+      
+</html>  
+               

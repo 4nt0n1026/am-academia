@@ -1,0 +1,46 @@
+package br.com.acad.bean.avisos;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
+
+
+@SuppressWarnings("serial")
+@ManagedBean
+@ViewScoped
+public class NoticiaCatDAO implements Serializable {
+
+	//daos
+	@EJB
+	private NoticiaCatDAO noticiaDAO;
+	
+	//noticia cat
+	private NoticiaCat noticiaCat;
+	private List<NoticiaCat> noticiasCats;
+
+	
+	@PostConstruct
+	public void init(){
+		noticiaCat = new NoticiaCat();
+		noticiasCats = noticiaDAO.searchAll();
+	}
+	
+	
+	//gets e sets
+	public NoticiaCatDAO getNoticiaDAO() {
+		return noticiaDAO;
+	}
+
+	public void setNoticiaDAO(NoticiaCatDAO noticiaDAO) {
+		this.noticiaDAO = noticiaDAO;
+	}
+	
+	
+	
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{languangeBean.locale}" contentType="text/html">
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<meta http-equiv="Pragma" content="no-cache" />
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="west" header="menu" collapsible="true" >
+			<div id="menuPrincipal">
+				<h:form>
+					<p:menu >
+						<p:menuitem value="Home" />
+						<p:submenu label="Pessoa">
+							<p:menuitem url="pessoa/aluno.xhtml" value="Alunos"/>
+							<p:menuitem url="pessoa/aluno.xhtml" value="Funcionarios" />
+						</p:submenu>
+						<p:submenu label="Treino">
+							<p:menuitem value="X" />
+						</p:submenu>
+						<p:submenu label="Dieta">
+							<p:menuitem value="X" />
+						</p:submenu>
+						<p:submenu label="Horario">
+							<p:menuitem value="X" />
+						</p:submenu>
+						<p:submenu label="Noticias">
+							<p:menuitem value="X" />
+						</p:submenu>
+						<p:submenu label="Configurações">
+							<p:menuitem value="X" />
+						</p:submenu>
+						
+						
+						 
+			            	<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />  
+		        	</p:menu>  
+				</h:form>
+			</div>
+		</p:layoutUnit>
+
+
+		<div id="content">
+			<p:layoutUnit position="center" header="menu" collapsible="true" >
+				<div id="innerContent">
+					<ui:insert name="content">
+					</ui:insert>
+				</div>
+			</p:layoutUnit>
+		</div>
+		
+	
+</p:layout>
+</h:body>
+</f:view>
+</html>

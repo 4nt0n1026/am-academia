@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:growl id="growl" showDetail="true" life="4000" />  
+		
+		<h:form id="panelIncluir" rendered="#{livroBean.isIncluir}">
+		
+			<hr/>
+			<h:panelGrid columns="6">
+				<h:outputLabel for="isbnLivro" value="ISBN:" />
+				<p:inputText id="isbnLivro" value="#{livroBean.livro.isbn}" required="true" />
+				
+				<h:outputLabel for="tituloLivro" value="Titulo:" />
+				<p:inputText id="tituloLivro" value="#{livroBean.livro.titulo}" required="true" />
+				
+				<h:outputLabel for="precoLivro" value="Preço:" />
+		    	<p:inputText id="precoLivro" value="#{livroBean.livro.preco}" required="true" />
+		    	
+		    	<h:outputLabel value="Editora:" />
+				<p:selectOneMenu value="#{livroBean.livro.editora.id}" >
+		    		<f:selectItems value="#{livroBean.todasEditoras()}" var="edi" itemLabel="#{edi.nome}"
+		    				itemValue="#{edi.id}" />					
+		    	</p:selectOneMenu>
+		    	
+		    	<h:outputLabel for="livroAutor" value="Autores:" />
+		    	<p:selectManyMenu id="livroAutor" value="#{livroBean.idAutoresSelecionados}" >
+		    		<f:selectItems value="#{livroBean.todosAutores()}" var="autor" itemLabel="#{autor.nome}"
+		    					 itemValue="#{autor.id}" />				
+		    	</p:selectManyMenu>
+		    	
+		    	<h:outputLabel for="dataLivro" value="Lançamento:" />
+				<p:inputMask mask="99/99/99" id="datalivro" value="#{livroBean.livro.dataLancamento.time}" required="true" >
+					<f:convertDateTime pattern="dd/MM/yy" />
+				</p:inputMask>
+				
+				<p:commandButton icon="ui-icon ui-icon-check" action="#{livroBean.inclui}" ajax="false" />		
+			
+				<p:button icon="ui-icon ui-icon-minus" action="#{livroBean.desativarInclusao}"
+	 						 ajax="true" update="panelIncluir" />
+	 						 
+			</h:panelGrid>
+		</h:form>
+		<hr/>
+		<h:form  id="tabelaLivros">
+	        <p:menubar> 
+	        	<p:menuitem id="add" action="#{livroBean.ativaInclusao}" icon="ui-icon ui-icon-plus" 
+	        				 ajax="false"/>
+	        	<p:menuitem id="deletar" ajax="true" update="tabelaLivros :growl" action="#{livroBean.remove}"  icon="ui-icon ui-icon-close" />
+	        	<p:menuitem id="atualizar" ajax="true" update="tabelaLivros" action="#{livroBean.atualiza}"  icon="ui-icon ui-icon-refresh" />
+	        	<p:menuitem id="detalhes" ajax="true" update=":detalhes"  action="#{livroBean.ativarAutores}" icon="ui-icon ui-icon-extlink" />
+	        </p:menubar>
+	        <p:tooltip for="add" value="adcionar" showEffect="fade" hideEffect="fade" />  
+	        <p:tooltip for="deletar" value="deletar" showEffect="fade" hideEffect="fade" />
+	        <p:tooltip for="atualizar" value="atualizar" showEffect="fade" hideEffect="fade" />
+	        <p:tooltip for="detalhes" value="mostrar detalhes" showEffect="fade" hideEffect="fade" />
+	          
+	       
+	         
+			<p:dataTable var="livro" value="#{livroBean.livros}" sortBy="#{livro.titulo}"
+					 selectionMode="single" rowKey="#{livro}" selection="#{livroBean.livro}">
+					 
+				<p:column headerText="ISBN" sortBy="#{livro.isbn}">  
+	            	<h:outputText value="#{livro.isbn}" />  
+	        	</p:column>
+	        	
+	        	<p:column headerText="Titulo" sortBy="#{livro.titulo}" >  
+	            	<h:outputText value="#{livro.titulo}" />  
+	        	</p:column>
+	        	
+	        	<p:column headerText="Preco" >  
+	            	<h:outputText value="#{livro.preco}" />  
+	        	</p:column>
+	        	
+	        	<p:column headerText="Data Lançamento" width="20">  
+	            	<h:outputText value="#{livro.dataLancamento.time}" >
+	            		<f:convertDateTime pattern="dd/MM/yy" />
+	            	</h:outputText>  
+	        	</p:column>
+	        	
+	        	<p:column headerText="Editora" >  
+	            	<h:outputText value="#{livro.editora.nome}" />  
+	        	</p:column>
+	        	
+			</p:dataTable>
+			<hr/>
+		</h:form>
+		
+		<h:panelGroup id="detalhes">
+			<p:tabView  rendered="#{livroBean.showAutores}">  
+	   			 <p:tab id="tab1" title="Autores">  
+					<h:form > 
+						<p:dataTable var="autor" value="#{livroBean.detalheAutores}" sortBy="#{autor.nome}">
+							<p:column headerText="Nome" sortBy="#{autor.nome}">  
+					           	<h:outputText value="#{autor.nome} #{autor.sobrenome}" />  
+					       	</p:column>
+					       	
+					       	<p:column headerText="Sexo" width="20">  
+					           	<h:outputText value="#{autor.sexo.label}" />  
+					       	</p:column>
+					       	
+					       	<p:column headerText="Data Nascimento" width="20">  
+					           	<h:outputText value="#{autor.dataNascimento.time}" >
+					           		<f:convertDateTime pattern="dd/MM/yy" />
+					           	</h:outputText>  
+					       	</p:column>
+						</p:dataTable>
+					</h:form>
+				</p:tab>
+					
+				<p:tab id="tab2" title="Exemplares">  
+					<h:form > 
+						<p:menubar> 
+				        	<p:menuitem id="add" action="#{livroBean.incluiExemplar}" icon="ui-icon ui-icon-plus" 
+				        				 ajax="true" update=":growl tabelaExemplares" />
+				        	<p:menuitem id="deletar" ajax="true" update=":growl tabelaExemplares" action="#{livroBean.removeExemplar}"  icon="ui-icon ui-icon-close" />
+				        </p:menubar>
+				        <p:tooltip for="add" value="adcionar" showEffect="fade" hideEffect="fade" />  
+				        <p:tooltip for="deletar" value="deletar" showEffect="fade" hideEffect="fade" />
+				        
+						<p:dataTable id="tabelaExemplares" var="exemplar" value="#{livroBean.detalheExemplares}" 
+								selectionMode="single" rowKey="#{exemplar}" selection="#{livroBean.exemplar}">
+							<p:column headerText="Situação" sortBy="#{exemplar.situacao.label}">  
+					           	<h:outputText value="#{exemplar.situacao.label}" />  
+					       	</p:column>
+					       	
+					       	<p:column headerText="Data de Aquisição" >  
+					           	<h:outputText value="#{exemplar.dtAquisicao.time}" >
+					           		<f:convertDateTime pattern="dd/MM/yyyy"  />
+					           	</h:outputText>  
+					       	</p:column>
+					       	<f:facet name="footer">
+					       		<div align="right">
+						       		<h:outputLabel value="Total de exemplares: " />
+						       		<h:outputText value="#{livroBean.detalheTotalExemplares}" />
+					       		</div>
+					       	</f:facet>
+					      
+						</p:dataTable>
+					</h:form>
+
+				</p:tab>
+			</p:tabView>
+		</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>
+</html>
