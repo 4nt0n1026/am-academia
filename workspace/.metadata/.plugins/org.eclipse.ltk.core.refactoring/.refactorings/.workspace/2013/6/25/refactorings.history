@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;AMAcademiaWeb&apos; to &apos;AMAcademiaEJB&apos;" description="Rename resource &apos;AMAcademiaWeb&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/AMAcademiaWeb" name="AMAcademiaEJB" stamp="1371729821504" updateReferences="true"/>
-</session>
