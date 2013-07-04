@@ -13,3 +13,11 @@
 	text-align: center;
 }
 
+
+.ui-tabs .ui-tabs-panel {
+     -- padding: 20px 0px !important;
+}
+
+.alignTop {
+	vertical-align: top;
+}

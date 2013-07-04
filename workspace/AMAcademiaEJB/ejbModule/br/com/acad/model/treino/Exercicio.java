@@ -1,14 +1,18 @@
 package br.com.acad.model.treino;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,6 +23,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_EXERCICIO")
 public class Exercicio implements Serializable {
 	
+	
+	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqExercicio")
 	@Column(name="ID_EXERCICIO")
@@ -33,28 +39,60 @@ public class Exercicio implements Serializable {
 	@Column(length=500, nullable=true)
 	private String fotoLocal;
 	
-	@ManyToOne
-	@JoinColumn(name="PARTE_CORPO_PRIMARIA_ID", nullable=false)
-	private ParteCorpo parteCorpoPrimaria;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="EXERCICIO_CORPO_PRIMARIO", 
+				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
+				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
+	private List<ParteCorpo> parteCorpoPrimaria;
 	
-	@ManyToOne
-	@JoinColumn(name="PARTE_CORPO_SECUNDARIA_ID", nullable=false)
-	private ParteCorpo parteCorpoSecundaria;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="EXERCICIO_CORPO_SECUNDARIO", 
+				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
+				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
+	private List<ParteCorpo> parteCorpoSecundaria;
 	
 	
+	//metodos
+	/**
+	 * Inclui um ParteCorpo para lista de parteCorpoPrimaria
+	 * @param parte
+	 */
+	public void addParteCorpoPrimaria(ParteCorpo parte){
+		if(this.parteCorpoPrimaria==null){
+			this.parteCorpoPrimaria = new ArrayList<ParteCorpo>();
+			this.parteCorpoPrimaria.add(parte);
+		}else if(!this.parteCorpoPrimaria.contains(parte)){
+			this.parteCorpoPrimaria.add(parte);
+		}
+	}
+	
+	/**
+	 * Inclui um ParteCorpo para lista de parteCorpoSecundaria
+	 * @param parte
+	 */
+	public void addParteCorpoSecundaria(ParteCorpo parte){
+		if(this.parteCorpoSecundaria==null){
+			this.parteCorpoSecundaria = new ArrayList<ParteCorpo>();
+			this.parteCorpoSecundaria.add(parte);
+		}else if(!this.parteCorpoSecundaria.contains(parte)){
+			this.parteCorpoSecundaria.add(parte);
+		}
+	}
+	
+	
+	//Construtores
 	public Exercicio(){}
 	
-	public Exercicio(int id, String nome, String descricao, String fotoLocal,
-			ParteCorpo parteCorpoPrimaria, ParteCorpo parteCorpoSecundaria) {
+	public Exercicio(int id, String nome, String descricao, String fotoLocal) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.fotoLocal = fotoLocal;
-		this.parteCorpoPrimaria = parteCorpoPrimaria;
-		this.parteCorpoSecundaria = parteCorpoSecundaria;
 	}
 
+	
+	//gets e sets
 	public int getId() {
 		return id;
 	}
@@ -87,21 +125,22 @@ public class Exercicio implements Serializable {
 		this.fotoLocal = fotoLocal;
 	}
 
-	public ParteCorpo getParteCorpoPrimaria() {
+	public List<ParteCorpo> getParteCorpoPrimaria() {
 		return parteCorpoPrimaria;
 	}
 
-	public void setParteCorpoPrimaria(ParteCorpo parteCorpoPrimaria) {
+	public void setParteCorpoPrimaria(List<ParteCorpo> parteCorpoPrimaria) {
 		this.parteCorpoPrimaria = parteCorpoPrimaria;
 	}
 
-	public ParteCorpo getParteCorpoSecundaria() {
+	public List<ParteCorpo> getParteCorpoSecundaria() {
 		return parteCorpoSecundaria;
 	}
 
-	public void setParteCorpoSecundaria(ParteCorpo parteCorpoSecundaria) {
+	public void setParteCorpoSecundaria(List<ParteCorpo> parteCorpoSecundaria) {
 		this.parteCorpoSecundaria = parteCorpoSecundaria;
 	}
+
 	
 	
 	

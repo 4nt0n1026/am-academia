@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
+import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.avisos.NoticiaCat;
 
 
@@ -36,31 +37,45 @@ public class NoticiaCatBean implements Serializable {
 	//METODOS
 	/************************************************************************************************************/
 	
-	//init
+	/**
+	 * init
+	 */
 	@PostConstruct
 	public void init(){
-		noticiasCats = noticiaCatDAO.buscaTodos();
+		noticiasCats = noticiaCatDAO.buscarTodos();
 		showIncluirNoticiaCat = false;
 	}
 	
-	//mostra painel de inserção de um novo noticiaCat
+	/**
+	 * mostra painel de inserção de um novo noticiaCat
+	 */
 	public void showNoticiaCat(){
 		noticiaCat = new NoticiaCat();
 		showIncluirNoticiaCat = true;
 	}
 	
-	//mostra painel de edição de um noticiaCat
+	/**
+	 * mostra painel de edição de uma noticiaCat
+	 */
 	public void showEditNoticiaCat(){
-		showIncluirNoticiaCat = true;
+		if(noticiaCat==null){
+			MessagesLogic.addWarnMessage("Erro", "Selecione um tipo de noticia para editar");
+		}else{
+			showIncluirNoticiaCat = true;
+		}
 	}
 	
-	//fecha painel de inserção de noticiaCat
+	/**
+	 * fecha painel de inserção de noticiaCat
+	 */
 	public void dontShowNoticiaCat(){
 		noticiaCat = new NoticiaCat();
 		showIncluirNoticiaCat = false;
 	}
 	
-	//inclui ou edita noticiaCait
+	/**
+	 * inclui ou edita noticiaCat no banco
+	 */
 	public void incluirNoticiaCat(){
 		if(noticiaCat.getId()==0){
 			noticiaCat = noticiaCatDAO.insert(noticiaCat);
@@ -70,20 +85,33 @@ public class NoticiaCatBean implements Serializable {
 		}
 		noticiaCat = new NoticiaCat();
 		showIncluirNoticiaCat = false;
+		
+		MessagesLogic.addInfoMessage("Sucesso", "Tipo de noticia salvo com sucesso");
 	}
 	
-	//deleta noticiaCat
+	/**
+	 * deleta noticiaCat do banco
+	 */
 	public void deletarNoticiaCat(){
-		noticiaCatDAO.removeById(noticiaCat.getId());
-		noticiasCats.remove(noticiaCat);
-		showIncluirNoticiaCat = false;
+		if(noticiaCat != null){
+			noticiaCatDAO.removeById(noticiaCat.getId());
+			noticiasCats.remove(noticiaCat);
+			showIncluirNoticiaCat = false;
+			MessagesLogic.addInfoMessage("Sucesso", "Tipo de noticia deletado com sucesso");
+		}else{
+			MessagesLogic.addWarnMessage("Erro", "Selecione um tipo de noticia para deletar");
+		}
 	}
       
-	//atualiza informações
+	/**
+	 * atualiza informações 
+	 */
 	public void atualizar(){
-		noticiasCats = noticiaCatDAO.buscaTodos();
+		noticiasCats = noticiaCatDAO.buscarTodos();
 		noticiaCat = new NoticiaCat();
 		showIncluirNoticiaCat = false;
+		
+		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
 	}
 
 	

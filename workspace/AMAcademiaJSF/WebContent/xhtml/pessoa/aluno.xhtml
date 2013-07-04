@@ -204,44 +204,59 @@
 							
 						</p:dataTable>
 						<!-- Fim da tabela de solicitacoes de treinos -->
+
+							<p:layout>
+
+								<!-- Inicio layout aluno -->
+								<p:layoutUnit position="north" size="333">
+									<p:tabView id="tabView111" dynamic="true" cache="true">
+
+										<!-- Inicio da tab de telefones -->
+										<p:tab id="tba11" title="Telefones">
+											<h:form>
+												<p:menubar>
+													<p:menuitem icon="ui-icon ui-icon-plus" ajax="false" />
+													<p:menuitem icon="ui-icon ui-icon-close" />
+													<p:menuitem icon="ui-icon ui-icon-refresh" />
+													<p:menuitem icon="ui-icon ui-icon-zoomin" />
+												</p:menubar>
+
+												<p:dataTable value="#{alunoBean.alunos}" var="aluno"
+													id="idTabelaAluno" emptyMessage="Nenhum aluno registrado"
+													widgetVar="tabelaAluno" resizableColumns="true"
+													sortMode="multiple" rows="20" paginator="true"
+													paginatorPosition="bottom" paginatorAlwaysVisible="false"
+													draggableColumns="true">
+
+													<p:column headerText="Nome" sortBy="#{aluno.nome}">
+														<h:outputText value="#{aluno.nome}" />
+													</p:column>
+													<p:column headerText="Nome">
+
+													</p:column>
+													<p:column headerText="Nome">
+
+													</p:column>
+
+													<f:facet name="footer">
+													</f:facet>
+
+												</p:dataTable>
+											</h:form>
+										</p:tab>
+										<!-- Fim da tab de solicitacoes de treinos -->
+										</p:tabView>i
+								</p:layoutUnit>
+							</p:layout>
 						
 					</p:tab>
 					<!-- Fim da tab de solicitacoes de treinos -->
-
+					
 				</p:tabView>
 			</h:form>
-		</p:layoutUnit>
 		
 		
-		<p:layoutUnit position="south" size="333" >
-			<h:form>
-				<p:menubar> 
-		        	<p:menuitem   icon="ui-icon ui-icon-plus" 
-		        				 ajax="false"/>
-		        	<p:menuitem    icon="ui-icon ui-icon-close" />
-		        	<p:menuitem    icon="ui-icon ui-icon-refresh" />
-		        	<p:menuitem   icon="ui-icon ui-icon-zoomin" />
-	        	</p:menubar>
 			
-				<p:dataTable value="#{alunoBean.alunos}" var="aluno" id="idTabelaAluno" emptyMessage="Nenhum aluno registrado"
-						 widgetVar="tabelaAluno" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-						 paginatorAlwaysVisible="false" draggableColumns="true">
-					
-					<p:column headerText="Nome" sortBy="#{aluno.nome}"  >
-						<h:outputText value="#{aluno.nome}"/>
-					</p:column>
-					<p:column headerText="Nome">
-						
-					</p:column>
-					<p:column headerText="Nome">
-						
-					</p:column>
-					
-					<f:facet name="footer">  
-					</f:facet>
-					
-				</p:dataTable>
-			</h:form>
 		</p:layoutUnit>
 		</p:layout>
 	</ui:define>

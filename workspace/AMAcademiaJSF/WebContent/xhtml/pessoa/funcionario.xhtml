@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+				
+			<!-- ****************************************************************************************************** -->
+			<!-- Professor -->
+			<!-- ****************************************************************************************************** -->
+			<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+ 
+       			<p:tab title="Funcionarios" >  
+       				<p:scrollPanel style="width: 100%;height: 850px;border: none;" mode="native" >
+              
+						    
+						    <!-- ****************************************************************************************************** -->
+							<!-- Insert de professor -->
+							<!-- ****************************************************************************************************** -->
+							<h:form id="formProfessorFunc"  >
+								<p:fieldset id="field"  rendered="#{funcionarioBean.showFunc}">
+									<h:panelGrid columns="30" >
+								        <h:outputLabel for="idNome" value="Nome>" />  
+								        <p:inputText id="idNome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Nome Obrigatorio" />
+								        
+								        <h:outputLabel for="idEmail" value="Email:" />   
+								        <p:inputText id="idEmail" value="#{funcionarioBean.funcionario.email}" required="true" requiredMessage="Email obrigatoria"/>  
+								        
+								        <h:outputLabel for="idSenha" value="Senha:" />  
+								        <p:inputText id="idSenha" value="#{funcionarioBean.funcionario.senha}" required="true" requiredMessage="Senha Obrigatorio" />
+								        
+								        <h:outputLabel for="idNasc" value="Nascimento:"  />   
+								        <p:inputMask id="idNasc" value="#{funcionarioBean.funcionario.dataNascimento.time}" mask="99/99/9999" required="true"
+								        			requiredMessage="Data de Nascimento Obrigatoria" >
+								        	<f:convertDateTime pattern="dd/MM/yyyy" />
+								        </p:inputMask>  
+								        
+								        <h:outputLabel for="idCpf" value="CPF:" />   
+								        <p:inputMask id="idCpf" value="#{funcionarioBean.funcionario.cpf}" mask="999.999.999-99"   />  
+								        
+								        <h:outputLabel for="idRg" value="RG:" />   
+								        <p:inputText id="idRg" value="#{funcionarioBean.funcionario.rg}"  />
+								        
+								        <p:commandButton icon="ui-icon ui-icon-check"  action="#{funcionarioBean.incluirFuncionario}" ajax="true" update=":tabView1" /> 
+							        	<p:button icon="ui-icon ui-icon-close"   action="#{funcionarioBean.dontShowFuncionario}" ajax="true" update=":tabView1:formProfessorFunc"  />  
+							        </h:panelGrid>
+								</p:fieldset> 
+					        </h:form>
+	        				
+		
+							<!-- ****************************************************************************************************** -->
+							<!-- Menu da tabela de professor -->
+							<!-- ****************************************************************************************************** -->
+	        				<h:form id="tabelaProfessorFunc">
+								<p:toolbar id="menuTabela">  
+		    						<p:toolbarGroup align="left">  
+							        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{funcionarioBean.showNewFuncionario}" ajax="true" update=":tabView1:formProfessorFunc"  />
+							        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{funcionarioBean.deletarFuncionario}" ajax="true" update=":tabView1:tabelaProfessorFunc" />
+							        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{funcionarioBean.showEditFuncionario}" ajax="true" update=":tabView1:formProfessorFunc" />
+							        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{funcionarioBean.atualizar}" ajax="true" update=":tabView1" />
+							        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+							        	<p:separator />  
+							        </p:toolbarGroup>
+							        
+							        <p:toolbarGroup align="right">  
+							        	Busca:<p:inputText />
+							        </p:toolbarGroup>
+							    </p:toolbar>
+						   	
+						    
+						   	<!-- ****************************************************************************************************** -->
+							<!-- Tabela de professor -->
+							<!-- ****************************************************************************************************** -->
+								<p:dataTable value="#{funcionarioBean.funcionarios}" var="func" emptyMessage="Nenhuma professor registrada"
+										  resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+										 paginatorAlwaysVisible="false" draggableColumns="true" 
+										 selection="#{funcionarioBean.funcionario}" selectionMode="single" rowKey="#{func}">
+									
+									<p:column headerText="Nome" sortBy="#{func.nome}"  >
+										<h:outputText value="#{func.nome}"/>
+									</p:column>
+									
+									<p:column headerText="Email" sortBy="#{func.email}"  >
+										<h:outputText value="#{func.email}"/>
+									</p:column>
+									
+									<p:column headerText="Nascimento" sortBy="#{func.dataNascimento.time}"  >
+										<h:outputText value="#{func.dataNascimento.time}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</p:column>
+									
+									<p:column headerText="CPF" sortBy="#{func.funcFunc.cpf}"  >
+										<h:outputText value="#{func.cpf}"/>
+									</p:column>
+									
+									<p:column headerText="RG" sortBy="#{func.funcFunc.rg}"  >
+										<h:outputText value="#{func.rg}"/>
+									</p:column>
+									
+									<p:column headerText="Formacao" sortBy="#{func.funcFunc.formacao}"  >
+										<h:outputText value="#{func.formacao}"/>
+									</p:column>
+									
+									<f:facet name="footer">  
+										---
+									</f:facet>
+									
+								</p:dataTable>
+							</h:form>
+							<!-- ****************************************************************************************************** -->
+							
+					</p:scrollPanel>
+				</p:tab>
+			</p:tabView>	
+			<!-- ****************************************************************************************************** -->
+	</ui:define>
+</ui:composition>
+</html>

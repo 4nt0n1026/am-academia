@@ -1,6 +1,9 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
@@ -11,6 +14,12 @@ public class ExercicioDAOImpl extends DAOImpl<Exercicio,Integer> implements Exer
 
 	public ExercicioDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Exercicio> buscarTodos() {
+		TypedQuery<Exercicio> q = em.createQuery("from Exercicio", Exercicio.class);
+		return q.getResultList();
 	}
 
 }

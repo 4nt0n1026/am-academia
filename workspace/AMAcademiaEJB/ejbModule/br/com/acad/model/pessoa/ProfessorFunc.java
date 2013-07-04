@@ -20,10 +20,18 @@ public class ProfessorFunc extends Pessoa{
 	@Column(nullable=false)
 	private boolean isProfessor;
 	
+	public ProfessorFunc(){}
+	
+	//Construtor para busca como field
+	public ProfessorFunc(Integer id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
+	}
+	
 	public boolean isProfessor() {
 		return isProfessor;
 	}
-	public void setProfessor(boolean isProfessor) {
+	public void setIsProfessor(boolean isProfessor) {
 		this.isProfessor = isProfessor;
 	}
 	public String getFotoLocal() {

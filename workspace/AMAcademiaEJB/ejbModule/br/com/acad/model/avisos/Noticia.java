@@ -22,21 +22,21 @@ public class Noticia implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqNoticia")
-	@Column(name="ID_AVISO_NOTICIA")
+	@Column(name="ID_NOTICIA")
 	private int id;
 	
 	@Column(length=255, nullable=false)
 	private String titulo;
 	
-	@Column(length=500, nullable=true)
-	private String fotoLocal;
+	@Column(length=1500, nullable=false)
+	private String descricao;
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_FUNC_ID")
 	private ProfessorFunc professorFunc;
 	
 	@ManyToOne
-	@JoinColumn(name="NOTICIA_CATEGORIA_ID")
+	@JoinColumn(name="NOTICIA_CAT_ID")
 	private NoticiaCat categoria;
 	
 	public int getId() {
@@ -51,11 +51,12 @@ public class Noticia implements Serializable {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public String getFotoLocal() {
-		return fotoLocal;
+	
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setFotoLocal(String fotoLocal) {
-		this.fotoLocal = fotoLocal;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public ProfessorFunc getProfessorFunc() {
 		return professorFunc;

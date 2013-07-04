@@ -28,9 +28,8 @@ public class ParteCorpo implements Serializable {
 	
 	public ParteCorpo(){}
 	
-	public ParteCorpo(int id, String nome) {
+	public ParteCorpo(String nome) {
 		super();
-		this.id = id;
 		this.nome = nome;
 	}
 

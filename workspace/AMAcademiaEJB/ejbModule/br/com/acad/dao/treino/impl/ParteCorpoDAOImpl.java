@@ -1,16 +1,25 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
-import br.com.acad.model.treino.ParteCorpo;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.model.treino.ParteCorpo;
 
 @Stateless
 public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements ParteCorpoDAO{
 
 	public ParteCorpoDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<ParteCorpo> buscarTodos() {
+		TypedQuery<ParteCorpo> q = em.createQuery("from ParteCorpo", ParteCorpo.class);
+		return q.getResultList();
 	}
 
 }

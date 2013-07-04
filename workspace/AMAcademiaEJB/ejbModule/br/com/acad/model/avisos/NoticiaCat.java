@@ -24,6 +24,15 @@ public class NoticiaCat implements Serializable{
 	@Column(length=255, nullable=false)
 	private String nome;
 	
+	
+	
+	public NoticiaCat(){}
+	
+	public NoticiaCat(String nome) {
+		this.nome = nome;
+	}
+	
+	
 	public int getId() {
 		return id;
 	}

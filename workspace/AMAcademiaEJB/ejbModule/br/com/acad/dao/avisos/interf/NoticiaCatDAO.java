@@ -10,6 +10,6 @@ import br.com.acad.model.avisos.NoticiaCat;
 @Remote
 public interface NoticiaCatDAO extends DAO<NoticiaCat,Integer>{
 	
-	public List<NoticiaCat> buscaTodos();
+	public List<NoticiaCat> buscarTodos();
 	
 }

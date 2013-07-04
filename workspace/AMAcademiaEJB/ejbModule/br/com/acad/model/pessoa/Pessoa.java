@@ -41,7 +41,7 @@ public abstract class Pessoa implements Serializable {
 	@Column(length=255, nullable=true)
 	private String email;
 	
-	@Column(length=255, nullable=false)
+	@Column(length=255, nullable=true)
 	private String senha;
 	
 	@Temporal(TemporalType.DATE)
