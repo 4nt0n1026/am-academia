@@ -26,10 +26,9 @@ public class DuracaoTreinoCat implements Serializable {
 
 	public DuracaoTreinoCat(){}
 	
-	public DuracaoTreinoCat(int id, String duracao) {
+	public DuracaoTreinoCat( String nome) {
 		super();
-		this.id = id;
-		this.nome = duracao;
+		this.nome = nome;
 	}
 
 	public int getId() {
@@ -40,13 +39,15 @@ public class DuracaoTreinoCat implements Serializable {
 		this.id = id;
 	}
 
-	public String getDuracao() {
+	public String getNome() {
 		return nome;
 	}
 
-	public void setDuracao(String duracao) {
-		this.nome = duracao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
+	
+	
 	
 	
 	

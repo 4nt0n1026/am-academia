@@ -29,12 +29,12 @@ public class DiasTreinoCat implements Serializable {
 	
 	public DiasTreinoCat(){}
 
-	public DiasTreinoCat(int id, String nome, int qtdDias) {
+	public DiasTreinoCat(String nome, int qtdDias) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.qtdDias = qtdDias;
 	}
+
 
 	public int getId() {
 		return id;

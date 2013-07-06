@@ -34,11 +34,12 @@ public class ExercicioBean implements Serializable {
 	private Exercicio exercicio;
 	private List<Exercicio> exercicios;
 	private boolean showExercicio;
+	private boolean showExercicioParte2;
+	private boolean showExercicioParte3;
 	
 	//ParteCorpo
-	private ParteCorpo parteCorpo;
-	private boolean showParteCorpoPrim;
-	private boolean showParteCorpoSec;
+	private List<ParteCorpo> partesCorpo;
+	
 
 	/************************************************************************************************************/
 	//METODOS
@@ -51,12 +52,14 @@ public class ExercicioBean implements Serializable {
 	public void init(){
 		exercicios = exercicioDAO.buscarTodos();
 		showExercicio = false;
+		showExercicioParte2 = false;
+		showExercicioParte3 = false;
 	}
 	
 	
-	/********************
+	/********************/
 	//Exercicio
-	/********************
+	/********************/
 	
 	/**
 	 * mostra painel de inserção de uma nova exercicio 
@@ -83,6 +86,26 @@ public class ExercicioBean implements Serializable {
 	public void dontShowExercicio(){
 		exercicio = new Exercicio();
 		showExercicio = false;
+		showExercicioParte2 = false;
+		showExercicioParte3 = false;
+	}
+	
+	/**
+	 * vai para a parte 2 de inserção de exercicio
+	 */
+	public void goParte2(){
+		showExercicio = false;
+		showExercicioParte2 = true;
+		showExercicioParte3 = false;
+	}
+	
+	/**
+	 * vai para a parte 3 de inserção de exercicio
+	 */
+	public void goParte3(){
+		showExercicio = false;
+		showExercicioParte2 = false;
+		showExercicioParte3 = true;
 	}
 	
 	/**
@@ -97,7 +120,8 @@ public class ExercicioBean implements Serializable {
 		}
 		exercicio = new Exercicio();
 		showExercicio = false;
-		
+		showExercicioParte2 = false;
+		showExercicioParte3 = false;
 		MessagesLogic.addInfoMessage("Sucesso", "Exercicio salva com sucesso");
 	}
 	
@@ -109,72 +133,18 @@ public class ExercicioBean implements Serializable {
 			exercicioDAO.removeById(exercicio.getId());
 			exercicios.remove(exercicio);
 			showExercicio = false;
+			showExercicioParte2 = false;
+			showExercicioParte3 = false;
 			MessagesLogic.addInfoMessage("Sucesso", "Exercicio deletada com sucesso");
 		}else{
 			MessagesLogic.addWarnMessage("Erro", "Selecione um exercicio para deletar");
 		}
 	}
       
-	
-	
-	
-	/********************
+	/********************/
 	//ParteCorpo Primaria
-	/********************
+	/********************/
 	
-	/**
-	 * mostra painel de inserção de uma nova parteCorpoPrimaria
-	 */
-	public void showNewParteCorpoPrimaria(){
-		parteCorpo = new ParteCorpo();
-		showParteCorpoPrim = true;
-	}
-	
-	/**
-	 * mostra painel de edição de parteCorpoPrimaria
-	 */
-	public void showEditParteCorpoPrimaria(){
-		if(parteCorpo==null){
-			MessagesLogic.addWarnMessage("Erro", "Selecione uma parte de corpo para editar");
-		}else{
-			showParteCorpoPrim = true;
-		}
-	}
-	
-	/**
-	 * fecha painel de inserção de parteCorpoPrimaria
-	 */
-	public void dontShowParteCorpoPrimaria(){
-		exercicio = new Exercicio();
-		showParteCorpoPrim = false;
-	}
-	
-	/**
-	 * inclui ou edita ParteCorpo primaria no banco
-	 */
-	public void incluirParteCorpoPrimaria(){
-		parteCorpo = parteCorpoDAO.searchByID(parteCorpo.getId());
-		exercicio.addParteCorpoPrimaria(parteCorpo);
-		exercicioDAO.update(exercicio);
-		parteCorpo = new ParteCorpo();
-		showParteCorpoPrim = false;
-		
-		MessagesLogic.addInfoMessage("Sucesso", "Parte de corpo salva com sucesso");
-	}
-	/**
-	 * deleta parte do corpo do banco
-	 */
-	public void deletarParteCorpoPrimaria(){
-		/*if(exercicio != null){
-			exercicioDAO.removeById(exercicio.getId());
-			exercicios.remove(exercicio);
-			showExercicio = false;
-			MessagesLogic.addInfoMessage("Sucesso", "Exercicio deletada com sucesso");
-		}else{
-			MessagesLogic.addWarnMessage("Erro", "Selecione um exercicio para deletar");
-		}*/
-	}
-      
 	/**
 	 * preenche field de partesCorpo
 	 * @return
@@ -182,10 +152,6 @@ public class ExercicioBean implements Serializable {
 	public List<ParteCorpo> getPartesCorposField() {
 		return parteCorpoDAO.buscarTodos();
 	}
-	
-	
-	
-	
 	
 	/**
 	 * atualiza informações
@@ -220,32 +186,18 @@ public class ExercicioBean implements Serializable {
 	}
 
 
-	public ParteCorpo getParteCorpo() {
-		return parteCorpo;
+	public List<ParteCorpo> getPartesCorpo() {
+		return partesCorpo;
 	}
 
 
-	public void setParteCorpo(ParteCorpo parteCorpo) {
-		this.parteCorpo = parteCorpo;
+	public boolean getShowExercicioParte2() {
+		return showExercicioParte2;
 	}
 
 
-	public boolean getShowParteCorpoPrim() {
-		return showParteCorpoPrim;
+	public boolean getShowExercicioParte3() {
+		return showExercicioParte3;
 	}
-
-
-	public boolean getShowParteCorpoSec() {
-		return showParteCorpoSec;
-	}
-
-
-	
-
-	
-
-
-
-	
 	
 }

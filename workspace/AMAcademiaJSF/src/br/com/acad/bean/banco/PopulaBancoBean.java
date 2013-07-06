@@ -1,7 +1,6 @@
 package br.com.acad.bean.banco;
 
 import java.io.Serializable;
-import java.util.Calendar;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -9,9 +8,13 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.dao.treino.interf.DiasTreinoCatDAO;
+import br.com.acad.dao.treino.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 import br.com.acad.model.avisos.NoticiaCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
+import br.com.acad.model.treino.DiasTreinoCat;
+import br.com.acad.model.treino.DuracaoTreinoCat;
 import br.com.acad.model.treino.ParteCorpo;
 
 @SuppressWarnings("serial")
@@ -24,14 +27,63 @@ public class PopulaBancoBean implements Serializable {
 	@EJB
 	private NoticiaCatDAO noticiaCatDAO;
 	@EJB
-	private ProfessorFuncDAO funcDAO;
+	private ProfessorFuncDAO professorFuncDAO;
+	@EJB
+	private DiasTreinoCatDAO diasTreinoCatDAO;
+	@EJB
+	private DuracaoTreinoCatDAO duracaoTreinoCatDAO;	
 	
 	public void popula(){
 		populaParteCorpo();
 		populaNoticiaCat();
 		populaProfessor();
 		populaFuncionario();
+		populaDuracaoTreinoCat();
+		populaDiasTreinoCat();
 		
+	}
+	
+	/**
+	 * popula info basica de DiasTreinoCat
+	 */
+	public void populaDiasTreinoCat(){
+		DiasTreinoCat dias1 = new DiasTreinoCat("1 vez por semana", 1);
+		diasTreinoCatDAO.insert(dias1);
+		DiasTreinoCat dias2 = new DiasTreinoCat("2 vez por semana", 2);
+		diasTreinoCatDAO.insert(dias2);
+		DiasTreinoCat dias3 = new DiasTreinoCat("3 vez por semana", 3);
+		diasTreinoCatDAO.insert(dias3);
+		DiasTreinoCat dias4 = new DiasTreinoCat("4 vez por semana", 4);
+		diasTreinoCatDAO.insert(dias4);
+		DiasTreinoCat dias5 = new DiasTreinoCat("5 vez por semana", 5);
+		diasTreinoCatDAO.insert(dias5);
+		DiasTreinoCat dias6 = new DiasTreinoCat("6 vez por semana", 6);
+		diasTreinoCatDAO.insert(dias6);
+		DiasTreinoCat dias7 = new DiasTreinoCat("7 vez por semana", 7);
+		diasTreinoCatDAO.insert(dias7);
+		
+	}
+	
+	/**
+	 * popula infos basicas de DuracaoTreinoCatDAO
+	 */
+	public void populaDuracaoTreinoCat(){
+		DuracaoTreinoCat duracao = new DuracaoTreinoCat("Até 15 min");
+		duracaoTreinoCatDAO.insert(duracao);
+		DuracaoTreinoCat duracao2 = new DuracaoTreinoCat("De 15 a 30 min");
+		duracaoTreinoCatDAO.insert(duracao2);
+		DuracaoTreinoCat duracao3 = new DuracaoTreinoCat("De 30 a 45 min");
+		duracaoTreinoCatDAO.insert(duracao3);
+		DuracaoTreinoCat duracao4 = new DuracaoTreinoCat("De 45 a 60 min");
+		duracaoTreinoCatDAO.insert(duracao4);
+		DuracaoTreinoCat duracao5= new DuracaoTreinoCat("De 60 a 75 min");
+		duracaoTreinoCatDAO.insert(duracao5);
+		DuracaoTreinoCat duracao6 = new DuracaoTreinoCat("De 75 a 90 min");
+		duracaoTreinoCatDAO.insert(duracao6);
+		DuracaoTreinoCat duracao7 = new DuracaoTreinoCat("De 90 a 120 min");
+		duracaoTreinoCatDAO.insert(duracao7);
+		DuracaoTreinoCat duracao8 = new DuracaoTreinoCat("Mais de 120 min");
+		duracaoTreinoCatDAO.insert(duracao8);
 	}
 	
 
@@ -88,7 +140,7 @@ public class PopulaBancoBean implements Serializable {
 			f.setIsProfessor(false);
 			f.setSenha("123");
 			f.setRg("22233344401");
-			funcDAO.insert(f);
+			professorFuncDAO.insert(f);
 		}
 		
 	}
@@ -97,15 +149,15 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de ProfessorFunc(Professor)
 	 */
 	public void populaProfessor(){
-		for(int i = 1; i<51; i++){
+		for(int i = 1; i<200; i++){
 			ProfessorFunc p = new ProfessorFunc();
 			p.setNome("Professor " + i);
 			p.setEmail("p" + i + "@gmail.com");
 			p.setCpf("33342523501");
-			p.setIsProfessor(false);
+			p.setIsProfessor(true);
 			p.setSenha("123");
 			p.setRg("22233344401");
-			funcDAO.insert(p);
+			professorFuncDAO.insert(p);
 		}
 		
 		

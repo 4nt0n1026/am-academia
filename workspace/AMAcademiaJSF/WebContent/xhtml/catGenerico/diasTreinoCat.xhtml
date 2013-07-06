@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- Parte Corpo -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+      		<p:tab title="Partes de corpo" >  
+      				
+			    <!-- ****************************************************************************************************** -->
+				<!-- Insert de diasTreinoCat -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formDiasTreinoCat"  >
+					<p:fieldset id="field"  rendered="#{diasTreinoCatBean.showDiasTreinoCat}">
+						<h:panelGrid columns="10">
+						
+					        <h:outputLabel for="idNome" value="Nome" />  
+					        <p:inputText id="idNome" value="#{diasTreinoCatBean.diasTreinoCat.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+					        
+					        <p:commandButton icon="ui-icon ui-icon-check"  action="#{diasTreinoCatBean.incluirDiasTreinoCat}" ajax="true" update=":tabView1" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{diasTreinoCatBean.dontShowDiasTreinoCat}" ajax="true" update=":tabView1:formDiasTreinoCat"  />  
+				        	
+				        </h:panelGrid>
+					</p:fieldset> 
+		        </h:form>
+      				
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de diasTreinoCat -->
+				<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaDiasTreinoCat">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{diasTreinoCatBean.showNewDiasTreinoCat}" ajax="true" update=":tabView1:formDiasTreinoCat" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{diasTreinoCatBean.deletarDiasTreinoCat}" ajax="true" update=":tabView1:tabelaDiasTreinoCat"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{diasTreinoCatBean.showEditDiasTreinoCat}" ajax="true" update=":tabView1:formDiasTreinoCat" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{diasTreinoCatBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right">  
+				        	Busca:<p:inputText />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+			   	<!-- ****************************************************************************************************** -->
+				<!-- Tabela de diasTreinoCat -->
+				<!-- ****************************************************************************************************** -->
+				
+					<p:dataTable value="#{diasTreinoCatBean.diasTreinoCats}" var="dias" emptyMessage="Nenhum tipo de noticia registrado"
+							 widgetVar="tabelaDiasTreinoCat" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+							 paginatorAlwaysVisible="false" draggableColumns="true" 
+							 selection="#{diasTreinoCatBean.diasTreinoCat}" selectionMode="single" rowKey="#{dias}">
+						
+						<p:column headerText="Nome" sortBy="#{dias.nome}"  >
+							<h:outputText value="#{dias.nome}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							---
+						</f:facet>
+						
+					</p:dataTable>
+				</h:form>
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+		
+	</ui:define>
+</ui:composition>
+</html>

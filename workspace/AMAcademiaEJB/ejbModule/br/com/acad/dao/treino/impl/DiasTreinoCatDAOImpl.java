@@ -1,6 +1,9 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.DiasTreinoCatDAO;
@@ -11,6 +14,12 @@ public class DiasTreinoCatDAOImpl extends DAOImpl<DiasTreinoCat,Integer> impleme
 
 	public DiasTreinoCatDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<DiasTreinoCat> buscarTodos() {
+		TypedQuery<DiasTreinoCat> q = em.createQuery("from DiasTreinoCat", DiasTreinoCat.class);
+		return q.getResultList();
 	}
 
 }
