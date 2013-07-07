@@ -1,5 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.contato.interf.LogradouroTipoDAO;
@@ -11,6 +13,12 @@ public class LogradouroTipoDAOImpl extends DAOImpl<LogradouroTipo,Integer> imple
 
 	public LogradouroTipoDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<LogradouroTipo> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

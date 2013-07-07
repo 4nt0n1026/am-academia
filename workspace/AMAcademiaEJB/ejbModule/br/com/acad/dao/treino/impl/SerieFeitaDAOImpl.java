@@ -1,5 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -10,6 +12,12 @@ public class SerieFeitaDAOImpl extends DAOImpl<SerieFeita,Integer> implements Se
 
 	public SerieFeitaDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<SerieFeita> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

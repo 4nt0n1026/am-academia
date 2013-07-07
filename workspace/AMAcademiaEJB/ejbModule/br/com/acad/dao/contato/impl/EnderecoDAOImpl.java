@@ -1,5 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.contato.interf.EnderecoDAO;
@@ -11,6 +13,12 @@ public class EnderecoDAOImpl extends DAOImpl<Endereco,Integer> implements Endere
 
 	public EnderecoDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Endereco> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

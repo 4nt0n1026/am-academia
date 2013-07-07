@@ -1,5 +1,7 @@
 package br.com.acad.dao.dieta.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.dieta.interf.DietaDAO;
@@ -11,6 +13,12 @@ public class DietaDAOImpl extends DAOImpl<Dieta,Integer> implements DietaDAO{
 
 	public DietaDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Dieta> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -15,7 +15,7 @@ public class NoticiaDAOImpl extends DAOImpl<Noticia,Integer> implements NoticiaD
 	public NoticiaDAOImpl() {
 		super();
 	}
-
+	
 	@Override
 	public List<Noticia> buscarTodos() {
 		TypedQuery<Noticia> q = em.createQuery("from Noticia", Noticia.class);

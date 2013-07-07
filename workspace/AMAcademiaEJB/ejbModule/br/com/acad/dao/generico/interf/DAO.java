@@ -15,5 +15,6 @@ public interface DAO<T,K> {
 	
 	void update(T entity);
 	
-	List<T> searchAll();
+	public abstract List<T> buscarTodos();
+	
 }

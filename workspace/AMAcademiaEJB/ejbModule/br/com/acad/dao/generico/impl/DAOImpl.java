@@ -3,16 +3,18 @@ package br.com.acad.dao.generico.impl;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.interf.DAO;
 
-public class DAOImpl<T,K> implements DAO<T,K>{
+@Stateless
+public abstract class DAOImpl<T,K> implements DAO<T,K>{
 
-	@PersistenceContext(name="CLIENTE_ORACLE")
+	@PersistenceContext(unitName="CLIENTE_MYSQL")
 	protected EntityManager em;
+	
 	
 	private Class<T> entityClass;
 	
@@ -46,14 +48,8 @@ public class DAOImpl<T,K> implements DAO<T,K>{
 		em.merge(entity);
 	}
 
-	@Override
-	public List<T> searchAll() {
-		TypedQuery<T> q = em.createQuery("from " + this.entityClass.getName(), this.entityClass);
-		return q.getResultList();
-	}
 
-
-
+	public abstract List<T> buscarTodos();
 	
 	
 	

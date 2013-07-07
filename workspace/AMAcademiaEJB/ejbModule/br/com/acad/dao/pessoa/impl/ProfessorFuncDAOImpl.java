@@ -46,4 +46,10 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		return professores;
 	}
 
+	@Override
+	public List<ProfessorFunc> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

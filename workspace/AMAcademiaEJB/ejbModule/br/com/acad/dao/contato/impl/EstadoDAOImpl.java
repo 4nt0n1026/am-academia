@@ -1,5 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.contato.interf.EstadoDAO;
@@ -11,6 +13,12 @@ public class EstadoDAOImpl extends DAOImpl<Estado,Integer> implements EstadoDAO{
 
 	public EstadoDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Estado> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

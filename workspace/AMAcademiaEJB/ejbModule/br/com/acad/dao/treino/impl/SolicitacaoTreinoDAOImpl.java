@@ -1,5 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -11,6 +13,12 @@ public class SolicitacaoTreinoDAOImpl extends DAOImpl<SolicitacaoTreino,Integer>
 
 	public SolicitacaoTreinoDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<SolicitacaoTreino> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.acad.dao.horario.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -11,6 +13,12 @@ public class AulaDAOImpl extends DAOImpl<Aula,Integer> implements AulaDAO{
 
 	public AulaDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Aula> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

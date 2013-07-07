@@ -1,5 +1,7 @@
 package br.com.acad.dao.dieta.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.dieta.interf.DietaEspecificaDAO;
@@ -11,6 +13,12 @@ public class DietaEspecificaDAOImpl extends DAOImpl<DietaEspecifica,Integer> imp
 
 	public DietaEspecificaDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<DietaEspecifica> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

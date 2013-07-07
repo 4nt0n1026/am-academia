@@ -1,5 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.contato.interf.TelefoneDAO;
@@ -11,6 +13,12 @@ public class TelefoneDAOImpl extends DAOImpl<Telefone,Integer> implements Telefo
 
 	public TelefoneDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Telefone> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

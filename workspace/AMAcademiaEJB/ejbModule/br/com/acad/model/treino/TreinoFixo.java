@@ -6,9 +6,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import br.com.acad.model.catGenerico.FaixaEtariaCat;
-import br.com.acad.model.catGenerico.ObjetivoCat;
-import br.com.acad.model.catGenerico.SexoCat;
+import br.com.acad.model.cat.DiasTreinoCat;
+import br.com.acad.model.cat.DuracaoTreinoCat;
+import br.com.acad.model.cat.FaixaEtariaCat;
+import br.com.acad.model.cat.ObjetivoCat;
+import br.com.acad.model.cat.SexoCat;
 
 @SuppressWarnings("serial")
 @Entity

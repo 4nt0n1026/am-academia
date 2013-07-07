@@ -1,5 +1,7 @@
 package br.com.acad.dao.dieta.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.dieta.interf.RefeicaoDAO;
@@ -11,6 +13,12 @@ public class RefeicaoDAOImpl extends DAOImpl<Refeicao,Integer> implements Refeic
 
 	public RefeicaoDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Refeicao> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

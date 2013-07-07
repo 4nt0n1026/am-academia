@@ -1,5 +1,7 @@
 package br.com.acad.dao.dieta.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.dieta.interf.LimitacaoDietaCatDAO;
@@ -11,6 +13,12 @@ public class LimitacaoDietaCatDAOImpl extends DAOImpl<LimitacaoDietaCat,Integer>
 
 	public LimitacaoDietaCatDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<LimitacaoDietaCat> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

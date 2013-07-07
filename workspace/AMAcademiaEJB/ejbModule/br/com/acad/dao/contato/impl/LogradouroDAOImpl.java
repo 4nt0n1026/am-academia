@@ -1,5 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import br.com.acad.dao.contato.interf.LogradouroDAO;
@@ -11,6 +13,12 @@ public class LogradouroDAOImpl extends DAOImpl<Logradouro,Integer> implements Lo
 
 	public LogradouroDAOImpl() {
 		super();
+	}
+
+	@Override
+	public List<Logradouro> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

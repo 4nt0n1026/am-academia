@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.acad.model.catGenerico.DiaSemana;
+import br.com.acad.model.cat.DiaSemana;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
