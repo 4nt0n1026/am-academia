@@ -1,4 +1,4 @@
-package br.com.acad.bean.catGenerico;
+package br.com.acad.bean.cat;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,9 +8,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.acad.dao.treino.interf.DiasTreinoCatDAO;
+import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
 import br.com.acad.logic.MessagesLogic;
-import br.com.acad.model.treino.DiasTreinoCat;
+import br.com.acad.model.cat.DiasTreinoCat;
 
 
 @SuppressWarnings("serial")

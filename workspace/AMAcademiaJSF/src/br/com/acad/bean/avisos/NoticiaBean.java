@@ -27,6 +27,7 @@ public class NoticiaBean implements Serializable {
 	/************************************************************************************************************/
 	
 	//daos
+	
 	@EJB
 	private NoticiaDAO noticiaDAO;
 	@EJB
@@ -55,7 +56,7 @@ public class NoticiaBean implements Serializable {
 	 * init
 	 */
 	@PostConstruct
-	public void init(){
+	public void init(){ 
 		noticias = noticiaDAO.buscarTodos();
 		showIncluirNoticia = false;
 	}

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- UnidadeMedida -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+      		<p:tab title="UnidadeMedida" >  
+     				
+			    <!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity"  >
+					<p:fieldset id="field"  rendered="#{unidadeMedidaBean.showEntity}">
+						<h:panelGrid columns="10">
+						
+					        <h:outputLabel for="idNome" value="Nome" />  
+					        <p:inputText id="idNome" value="#{unidadeMedidaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+					        
+					        <h:outputLabel for="idSigla" value="Sigla" />  
+					        <p:inputText id="idSigla" value="#{unidadeMedidaBean.entity.sigla}"  required="true" requiredMessage="Nome obrigatorio" />
+
+					        <p:commandButton icon="ui-icon ui-icon-check"  action="#{unidadeMedidaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{unidadeMedidaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+				        	
+				        </h:panelGrid>
+					</p:fieldset> 
+		        </h:form>
+      				
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+      			<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{unidadeMedidaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{unidadeMedidaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{unidadeMedidaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{unidadeMedidaBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right">  
+				        	Busca:<p:inputText />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+			   	<!-- ****************************************************************************************************** -->
+				<!-- Tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				
+					<p:dataTable value="#{unidadeMedidaBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+							 paginatorAlwaysVisible="false" draggableColumns="true" 
+							 selection="#{unidadeMedidaBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							---
+						</f:facet>
+						
+					</p:dataTable>
+				</h:form>
+				<!-- ****************************************************************************************************** -->
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

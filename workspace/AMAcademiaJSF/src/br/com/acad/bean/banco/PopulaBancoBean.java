@@ -7,14 +7,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
+import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
+import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
-import br.com.acad.dao.treino.interf.DiasTreinoCatDAO;
-import br.com.acad.dao.treino.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 import br.com.acad.model.avisos.NoticiaCat;
+import br.com.acad.model.cat.DiasTreinoCat;
+import br.com.acad.model.cat.DuracaoTreinoCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
-import br.com.acad.model.treino.DiasTreinoCat;
-import br.com.acad.model.treino.DuracaoTreinoCat;
 import br.com.acad.model.treino.ParteCorpo;
 
 @SuppressWarnings("serial")

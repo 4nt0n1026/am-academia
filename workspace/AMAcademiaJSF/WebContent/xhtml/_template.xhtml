@@ -41,7 +41,7 @@
 					</p:submenu>
 					<p:submenu label="Horario">
 						<p:menuitem value="Aulas" />
-						<p:menuitem value="Modalidade" />
+						<p:menuitem outcome="/xhtml/horario/modalidade.xhtml" value="Modalidade" />
 						<p:menuitem value="Unidade" />
 					</p:submenu>
 					<p:submenu label="Noticias">
@@ -50,14 +50,13 @@
 					</p:submenu>
 					<p:submenu label="Configurações">
 						<p:submenu label="Categorias">
-							<p:menuitem outcome="/xhtml/catGenerico/diasTreinoCat.xhtml" value="Categoria de dias de treino" />
-							<p:menuitem outcome="/xhtml/catGenerico/duracaoTreinoCat.xhtml" value="Categoria de duração de treino" />
-							<p:menuitem value="Objetivos de treino" />
-							<p:menuitem value="Categoria de sexo" />
-							<p:menuitem value="Categoria de faixa etaria" />
+							<p:menuitem outcome="/xhtml/cat/diasTreinoCat.xhtml" value="Categoria de dias de treino" />
+							<p:menuitem outcome="/xhtml/cat/duracaoTreinoCat.xhtml" value="Categoria de duração de treino" />
+							<p:menuitem outcome="/xhtml/cat/objetivoCat.xhtml" value="Objetivos de treino" />
+							<p:menuitem outcome="/xhtml/cat/sexoCat.xhtml" value="Categoria de sexo" />
+							<p:menuitem outcome="/xhtml/cat/faixaEtariaCat.xhtml" value="Categoria de faixa etaria" />
 							<p:menuitem value="Limitações de dieta" />
-							<p:menuitem value="Unidades de medida" />
-							<p:menuitem value="Modalidade" />
+							<p:menuitem outcome="/xhtml/dieta/unidadeMedida.xhtml" value="Unidade de medida" />
 						</p:submenu>
 						<p:menuitem outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" />
 					</p:submenu>
