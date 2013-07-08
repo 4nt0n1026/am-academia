@@ -31,6 +31,9 @@ public abstract class Bean<T> {
 	public abstract void incluirEntity();
 	public abstract void deletarEntity();
 	
+	/************************************************************************************************************/
+	//METODOS
+	/************************************************************************************************************/
 	
 	/**
 	 * fecha painel de edicao de uma entity
@@ -50,6 +53,10 @@ public abstract class Bean<T> {
 		}
 	}
 
+	/************************************************************************************************************/
+	//METODOS CHAMADOS
+	/************************************************************************************************************/
+	
 	/**
 	 * inclui ou edita Entity no banco
 	 * @param dao DAO da entity a ser inserida
