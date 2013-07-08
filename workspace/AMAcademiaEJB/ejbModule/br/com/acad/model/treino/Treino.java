@@ -2,7 +2,8 @@ package br.com.acad.model.treino;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,7 +55,7 @@ public class Treino implements Serializable{
 	
 	@OneToMany
 	@JoinColumn(name="TREINO_ID")
-	private List<DiaTreino> diasTreino;
+	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 	
 	
 	
@@ -72,11 +73,11 @@ public class Treino implements Serializable{
 
 
 
-	public List<DiaTreino> getDiasTreino() {
+	public Set<DiaTreino> getDiasTreino() {
 		return diasTreino;
 	}
 
-	public void setDiasTreino(List<DiaTreino> diasTreino) {
+	public void setDiasTreino(Set<DiaTreino> diasTreino) {
 		this.diasTreino = diasTreino;
 	}
 

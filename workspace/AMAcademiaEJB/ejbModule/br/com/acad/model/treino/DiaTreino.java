@@ -1,7 +1,8 @@
 package br.com.acad.model.treino;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,16 +37,16 @@ public class DiaTreino implements Serializable{
 	
 	@OneToMany
 	@JoinColumn(name="DIA_TREINO_ID")
-	private List<ExercicioTreino> exerciciosTreino;
+	private Set<ExercicioTreino> exerciciosTreino = new HashSet<ExercicioTreino>();
 	
 	
 	public DiaTreino(){}
 
-	public List<ExercicioTreino> getExerciciosTreino() {
+	public Set<ExercicioTreino> getExerciciosTreino() {
 		return exerciciosTreino;
 	}
 
-	public void setExerciciosTreino(List<ExercicioTreino> exerciciosTreino) {
+	public void setExerciciosTreino(Set<ExercicioTreino> exerciciosTreino) {
 		this.exerciciosTreino = exerciciosTreino;
 	}
 

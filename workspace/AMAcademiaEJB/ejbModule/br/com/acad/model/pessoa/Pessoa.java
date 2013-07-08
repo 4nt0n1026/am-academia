@@ -2,7 +2,8 @@ package br.com.acad.model.pessoa;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -62,7 +63,7 @@ public abstract class Pessoa implements Serializable {
 	@JoinTable(name="ACAD_PESSOA_TELEFONE", 
 				joinColumns={@JoinColumn(name="PESSOA_ID")},
 				inverseJoinColumns={@JoinColumn(name="TELEFONE_ID")})
-	private List<Telefone> telefones;
+	private Set<Telefone> telefones = new HashSet<Telefone>();
 	
 	public Pessoa() {
 		
@@ -119,10 +120,10 @@ public abstract class Pessoa implements Serializable {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public List<Telefone> getTelefones() {
+	public Set<Telefone> getTelefones() {
 		return telefones;
 	}
-	public void setTelefones(List<Telefone> telefones) {
+	public void setTelefones(Set<Telefone> telefones) {
 		this.telefones = telefones;
 	}
 }

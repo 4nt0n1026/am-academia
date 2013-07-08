@@ -2,22 +2,8 @@ package br.com.acad.model.dieta;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -56,7 +42,7 @@ public class Dieta implements Serializable{
 	
 	@OneToMany
 	@JoinColumn(name="DIETA_ID", nullable=true)
-	private List<DiaDieta> diasDieta;
+	private Set<DiaDieta> diasDieta = new HashSet<DiaDieta>();
 	
 	public Dieta(){}
 
@@ -116,11 +102,11 @@ public class Dieta implements Serializable{
 		this.tipoDieta = tipoDieta;
 	}
 
-	public List<DiaDieta> getDiasDieta() {
+	public Set<DiaDieta> getDiasDieta() {
 		return diasDieta;
 	}
 
-	public void setDiasDieta(List<DiaDieta> diasDieta) {
+	public void setDiasDieta(Set<DiaDieta> diasDieta) {
 		this.diasDieta = diasDieta;
 	}
 	

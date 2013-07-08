@@ -1,6 +1,7 @@
 package br.com.acad.model.pessoa;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,30 +29,30 @@ public class Aluno extends Pessoa{
 	@JoinTable(name="ACAD_ALUNO_TREINO", 
 				joinColumns={@JoinColumn(name="ALUNO_ID")},
 				inverseJoinColumns={@JoinColumn(name="TREINO_ID")})
-	private List<Treino> treinos;
+	private Set<Treino> treinos = new HashSet<Treino>();
 	
 	@ManyToMany
 	@JoinTable(name="ACAD_ALUNO_DIETA", 
 				joinColumns={@JoinColumn(name="ALUNO_DIETA")},
 				inverseJoinColumns={@JoinColumn(name="DIETA_ID")})
-	private List<Treino> dietas;
+	private Set<Treino> dietas = new HashSet<Treino>();
 	
 	
 	public Aluno(){}
 	
-	public List<Treino> getDietas() {
+	public Set<Treino> getDietas() {
 		return dietas;
 	}
 
-	public void setDietas(List<Treino> dietas) {
+	public void setDietas(Set<Treino> dietas) {
 		this.dietas = dietas;
 	}
 
-	public List<Treino> getTreinos() {
+	public Set<Treino> getTreinos() {
 		return treinos;
 	}
 
-	public void setTreinos(List<Treino> treinos) {
+	public void setTreinos(Set<Treino> treinos) {
 		this.treinos = treinos;
 	}
 

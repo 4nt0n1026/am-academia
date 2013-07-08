@@ -1,7 +1,9 @@
 package br.com.acad.model.treino;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,11 +33,11 @@ public class ExercicioTreino implements Serializable {
 	
 	@OneToMany
 	@JoinColumn(name="EXERCICIO_TREINO_ID")
-	private List<Serie> series;
+	private Set<Serie> series = new HashSet<Serie>();
 
 	public ExercicioTreino(){}
 	
-	public ExercicioTreino(int id, Exercicio exercicio, List<Serie> series) {
+	public ExercicioTreino(int id, Exercicio exercicio, Set<Serie> series) {
 		super();
 		this.id = id;
 		this.exercicio = exercicio;
@@ -58,11 +60,11 @@ public class ExercicioTreino implements Serializable {
 		this.exercicio = exercicio;
 	}
 
-	public List<Serie> getSeries() {
+	public Set<Serie> getSeries() {
 		return series;
 	}
 
-	public void setSeries(List<Serie> series) {
+	public void setSeries(Set<Serie> series) {
 		this.series = series;
 	}
 	

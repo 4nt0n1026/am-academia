@@ -1,8 +1,9 @@
 package br.com.acad.model.treino;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArraySet;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,40 +44,50 @@ public class Exercicio implements Serializable {
 	@JoinTable(name="EXERCICIO_CORPO_PRIMARIO", 
 				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
 				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
-	private List<ParteCorpo> parteCorpoPrimaria;
+	private Set<ParteCorpo> parteCorpoPrimaria = new HashSet<ParteCorpo>();
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="EXERCICIO_CORPO_SECUNDARIO", 
 				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
 				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
-	private List<ParteCorpo> parteCorpoSecundaria;
+	private Set<ParteCorpo> parteCorpoSecundaria = new HashSet<ParteCorpo>();
 	
 	
 	//metodos
 	/**
-	 * Inclui um ParteCorpo para lista de parteCorpoPrimaria
+	 * Inclui ParteCorpo para lista de parteCorpoPrimaria
 	 * @param parte
+	 * @return booleano se incluiu ou nao
 	 */
-	public void addParteCorpoPrimaria(ParteCorpo parte){
-		if(this.parteCorpoPrimaria==null){
-			this.parteCorpoPrimaria = new ArrayList<ParteCorpo>();
-			this.parteCorpoPrimaria.add(parte);
-		}else if(!this.parteCorpoPrimaria.contains(parte)){
-			this.parteCorpoPrimaria.add(parte);
-		}
+	public boolean addParteCorpoPrimaria(ParteCorpo parte){
+		return this.parteCorpoPrimaria.add(parte);
 	}
 	
 	/**
-	 * Inclui um ParteCorpo para lista de parteCorpoSecundaria
+	 * Inclui ParteCorpo para lista de parteCorpoSecundaria
 	 * @param parte
+	 * @return booleano se incluiu ou nao
 	 */
-	public void addParteCorpoSecundaria(ParteCorpo parte){
-		if(this.parteCorpoSecundaria==null){
-			this.parteCorpoSecundaria = new ArrayList<ParteCorpo>();
-			this.parteCorpoSecundaria.add(parte);
-		}else if(!this.parteCorpoSecundaria.contains(parte)){
-			this.parteCorpoSecundaria.add(parte);
-		}
+	public boolean addParteCorpoSecundaria(ParteCorpo parte){
+		return this.addParteCorpoSecundaria(parte);
+	}
+	
+	/**
+	 * remove ParteCorpo para lista de parteCorpoPrimaria
+	 * @param parte
+	 * @return booleano se removeu ou nao
+	 */
+	public boolean removeParteCorpoPrimaria(ParteCorpo parte){
+		return this.parteCorpoPrimaria.remove(parte);
+	}
+	
+	/**
+	 * remove ParteCorpo para lista de parteCorpoSecundaria
+	 * @param parte
+	 * @return booleano se removeu ou nao
+	 */
+	public boolean removeParteCorpoSecundaria(ParteCorpo parte){
+		return this.parteCorpoSecundaria.remove(parte);
 	}
 	
 	
@@ -125,19 +136,19 @@ public class Exercicio implements Serializable {
 		this.fotoLocal = fotoLocal;
 	}
 
-	public List<ParteCorpo> getParteCorpoPrimaria() {
+	public Set<ParteCorpo> getParteCorpoPrimaria() {
 		return parteCorpoPrimaria;
 	}
 
-	public void setParteCorpoPrimaria(List<ParteCorpo> parteCorpoPrimaria) {
+	public void setParteCorpoPrimaria(Set<ParteCorpo> parteCorpoPrimaria) {
 		this.parteCorpoPrimaria = parteCorpoPrimaria;
 	}
 
-	public List<ParteCorpo> getParteCorpoSecundaria() {
+	public Set<ParteCorpo> getParteCorpoSecundaria() {
 		return parteCorpoSecundaria;
 	}
 
-	public void setParteCorpoSecundaria(List<ParteCorpo> parteCorpoSecundaria) {
+	public void setParteCorpoSecundaria(Set<ParteCorpo> parteCorpoSecundaria) {
 		this.parteCorpoSecundaria = parteCorpoSecundaria;
 	}
 
