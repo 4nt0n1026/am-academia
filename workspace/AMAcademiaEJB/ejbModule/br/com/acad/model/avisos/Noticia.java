@@ -2,16 +2,6 @@ package br.com.acad.model.avisos;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
@@ -19,6 +9,9 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @SequenceGenerator(name="seqNoticia", sequenceName="SEQ_NOTICIA", allocationSize=1)
 @Table(name="ACAD_NOTICIA")
 public class Noticia implements Serializable {
+	
+	// static field para busca no banco
+	public static String[] BUSCA = {"titulo", "descricao", "professorFunc.nome", "categoria.nome"};
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqNoticia")

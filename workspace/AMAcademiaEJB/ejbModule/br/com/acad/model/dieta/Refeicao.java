@@ -1,7 +1,8 @@
 package br.com.acad.model.dieta;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Refeicao implements Serializable{
 	
 	@OneToMany
 	@JoinColumn(name="REFEICAO_ID", nullable=true)
-	private List<ItemRefeicao> itens;
+	private Set<ItemRefeicao> itens = new HashSet<ItemRefeicao>();
 	
 	public Refeicao(){}
 
@@ -49,11 +50,11 @@ public class Refeicao implements Serializable{
 		this.nome = nome;
 	}
 
-	public List<ItemRefeicao> getItens() {
+	public Set<ItemRefeicao> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<ItemRefeicao> itens) {
+	public void setItens(Set<ItemRefeicao> itens) {
 		this.itens = itens;
 	}
 	

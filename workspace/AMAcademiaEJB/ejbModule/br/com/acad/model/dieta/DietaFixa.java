@@ -1,6 +1,7 @@
 package br.com.acad.model.dieta;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -25,7 +26,7 @@ public class DietaFixa extends Dieta {
 	@JoinTable(name="ACAD_DIETA_FIXA_LIMITACAO_CAT", 
 				joinColumns={@JoinColumn(name="DIETA_FIXA_ID")},
 				inverseJoinColumns={@JoinColumn(name="LIMITACAO_ID")})
-	private List<LimitacaoDietaCat> limitacoes;
+	private Set<LimitacaoDietaCat> limitacoes = new HashSet<LimitacaoDietaCat>();
 	
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)
@@ -41,11 +42,11 @@ public class DietaFixa extends Dieta {
 	
 	public DietaFixa(){}
 
-	public List<LimitacaoDietaCat> getLimitacoes() {
+	public Set<LimitacaoDietaCat> getLimitacoes() {
 		return limitacoes;
 	}
 
-	public void setLimitacoes(List<LimitacaoDietaCat> limitacoes) {
+	public void setLimitacoes(Set<LimitacaoDietaCat> limitacoes) {
 		this.limitacoes = limitacoes;
 	}
 

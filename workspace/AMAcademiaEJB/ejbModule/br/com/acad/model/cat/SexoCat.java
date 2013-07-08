@@ -16,6 +16,9 @@ import javax.persistence.Table;
 @Table(name="ACAD_SEXO_CAT")
 public class SexoCat implements Serializable{
 	
+	// static field para busca no banco
+	public static String[] BUSCA = {"nome"};
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSexo")
 	@Column(name="ID_SEXO_CAT")
