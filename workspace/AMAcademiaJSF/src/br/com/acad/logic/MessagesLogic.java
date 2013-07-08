@@ -31,7 +31,24 @@ public class MessagesLogic {
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,headerMsg, msg));
 	}
 	
+	/**
+	 * adciona msg de error
+	 * @param headerMsg
+	 * @param msg
+	 */
+	public static void addErrorMessage(String headerMsg, String msg){
+		FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,headerMsg, msg));
+	}
 	
-	
+	/**
+	 * adciona msg fatal
+	 * @param headerMsg
+	 * @param msg
+	 */
+	public static void addFatalMessage(String headerMsg, String msg){
+		FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,headerMsg, msg));
+	}
 	
 }
