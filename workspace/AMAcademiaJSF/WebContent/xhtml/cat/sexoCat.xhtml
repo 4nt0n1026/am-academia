@@ -9,76 +9,80 @@
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
-			<!-- ****************************************************************************************************** -->
-			<!-- SexoCat -->
-			<!-- ****************************************************************************************************** -->
-			<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
- 
-       			<p:tab title="Categoria de sexo" >  
-       				<p:scrollPanel style="width: 100%;height: 400px;border: none;" mode="native" >
-       				
-					    <!-- ****************************************************************************************************** -->
-						<!-- Insert de sexoCat -->
-						<!-- ****************************************************************************************************** -->
-						<h:form id="formSexoCat"  >
-							<p:fieldset id="field"  rendered="#{sexoCatBean.showSexoCat}">
-								<h:panelGrid columns="10">
-								
-							        <h:outputLabel for="idNome" value="Nome" />  
-							        <p:inputText id="idNome" value="#{sexoCatBean.sexoCat.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-							        
-							        <p:commandButton icon="ui-icon ui-icon-check"  action="#{sexoCatBean.incluirSexoCat}" ajax="true" update=":tabView1" /> 
-						        	<p:button icon="ui-icon ui-icon-close"   action="#{sexoCatBean.dontShowSexoCat}" ajax="true" update=":tabView1:formSexoCat"  />  
-						        	
-						        </h:panelGrid>
-							</p:fieldset> 
-				        </h:form>
-        				
-	
-						<!-- ****************************************************************************************************** -->
-						<!-- Menu da tabela de sexoCat -->
-						<!-- ****************************************************************************************************** -->
-        				<h:form id="tabelaSexoCat">
-							<p:toolbar id="menuTabela">  
-	    						<p:toolbarGroup align="left">  
-						        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{sexoCatBean.showNewSexoCat}" ajax="true" update=":tabView1:formSexoCat" />
-						        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{sexoCatBean.deletarSexoCat}" ajax="true" update=":tabView1:tabelaSexoCat"  />
-						        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{sexoCatBean.showEditSexoCat}" ajax="true" update=":tabView1:formSexoCat" />
-						        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{sexoCatBean.atualizar}" ajax="true" update=":tabView1"/>
-						        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-						        	<p:separator />  
-						        </p:toolbarGroup>
-						        
-						        <p:toolbarGroup align="right">  
-						        	Busca:<p:inputText />
-						        </p:toolbarGroup>
-						    </p:toolbar>
-					   	
-					    
-					   	<!-- ****************************************************************************************************** -->
-						<!-- Tabela de sexoCat -->
-						<!-- ****************************************************************************************************** -->
-						
-							<p:dataTable value="#{sexoCatBean.sexoCats}" var="sexo" emptyMessage="Nenhuma categoria de sexo registrada"
-									 widgetVar="tabelaSexoCat" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-									 paginatorAlwaysVisible="false" draggableColumns="true" 
-									 selection="#{sexoCatBean.sexoCat}" selectionMode="single" rowKey="#{sexo}">
-								
-								<p:column headerText="Nome" sortBy="#{sexo.nome}"  >
-									<h:outputText value="#{sexo.nome}"/>
-								</p:column>
+		<!-- ****************************************************************************************************** -->
+		<!-- SexoCat -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Categoria de Sexo" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{sexoCatBean.showEntity}">
+							<h:panelGrid columns="10">
 							
-								<f:facet name="footer">  
-									---
-								</f:facet>
-								
-							</p:dataTable>
-						</h:form>
-						<!-- ****************************************************************************************************** -->
-					</p:scrollPanel>
-				</p:tab>
-			</p:tabView>	
-			<!-- ****************************************************************************************************** -->
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{sexoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{sexoCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{sexoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{sexoCatBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{sexoCatBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{sexoCatBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{sexoCatBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right">  
+				        	Busca:<p:inputText />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{sexoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+							 paginatorAlwaysVisible="false" draggableColumns="true" 
+							 selection="#{sexoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							---
+						</f:facet>
+						
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
 			
 	</ui:define>
 </ui:composition>

@@ -8,10 +8,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.acad.bean.Bean;
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
 import br.com.acad.dao.avisos.interf.NoticiaDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
-import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.avisos.Noticia;
 import br.com.acad.model.avisos.NoticiaCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -20,117 +20,62 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class NoticiaBean implements Serializable {
+public class NoticiaBean extends Bean<Noticia> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	
-	//daos
 	
 	@EJB
 	private NoticiaDAO noticiaDAO;
 	@EJB
 	private NoticiaCatDAO noticiaCatDAO;
 	@EJB
-	private ProfessorFuncDAO profDAO;
+	private ProfessorFuncDAO professorFuncDAO;
 	
-	//noticia
-	private Noticia noticia;
-	private List<Noticia> noticias;
-	private boolean showIncluirNoticia;
+	/************************************************************************************************************/
+	//METODOS
+	/************************************************************************************************************/
 	
-	//noticiaCat
-	List<NoticiaCat> noticiasCatsField;
-	
-	//professor
-	List<ProfessorFunc> professoresField;
-	
-	
-	
-	/************************************************************************************************************
-	METODOS
-	************************************************************************************************************/
-	
-	/**
-	 * init
-	 */
 	@PostConstruct
-	public void init(){ 
-		noticias = noticiaDAO.buscarTodos();
-		showIncluirNoticia = false;
+	@Override
+	public void init() {
+		dao = noticiaDAO;
+		entities = noticiaDAO.buscarTodos();
 	}
 	
 	/**
-	 * mostra painel de inserção de uma nova noticia
+	 * show form de entity
+	 * 
 	 */
-	public void showNoticia(){
-		noticia = new Noticia();
-		noticia.setCategoria(new NoticiaCat());
-		noticia.setProfessorFunc(new ProfessorFunc());
-		showIncluirNoticia = true;
-	}
-	
-	/**
-	 * mostra painel de edição de um noticia
-	 */
-	public void showEditNoticia(){
-		if(noticia == null){
-			MessagesLogic.addWarnMessage("Erro", "Selecione uma noticia para editar");
-		}else{
-			showIncluirNoticia = true;
-		}
-	}
-	
-	/**
-	 * fecha painel de inserção de noticia
-	 */
-	public void dontShowNoticia(){
-		noticia = new Noticia();
-		showIncluirNoticia = false;
-	}
-	
-	/**
-	 * inclui ou edita noticia no banco
-	 */
-	public void incluirNoticia(){
-		if(noticia.getId()==0){
-			noticia = noticiaDAO.insert(noticia);
-			noticias.add(noticia);
-		}else{
-			noticiaDAO.update(noticia);
-		}
-		noticia = new Noticia();
-		showIncluirNoticia = false;
-		
-		MessagesLogic.addInfoMessage("Sucesso", "Noticia salva com sucesso");
-	}
-	
-	/**
-	 * deleta noticia do banco
-	 */
-	public void deletarNoticia(){
-		if(noticia != null){
-			noticiaDAO.removeById(noticia.getId());
-			noticias.remove(noticia);
-			showIncluirNoticia = false;
-			MessagesLogic.addInfoMessage("Sucesso", "Noticia deletada com sucesso");
-		}else{
-			MessagesLogic.addWarnMessage("Erro", "Selecione uma noticia para deletar");
-		}
-	}
-      
-	/**
-	 * atualiza informações
-	 */
-	public void atualizar(){
-		noticias = noticiaDAO.buscarTodos();
-		noticia = new Noticia();
-		showIncluirNoticia = false;
-		profDAO.buscarFieldNome();
-		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
+	@Override
+	public void showNewEntity() {
+		showEntity = true;
+		entity = new Noticia();
+		entity.setCategoria(new NoticiaCat());
+		entity.setProfessorFunc(new ProfessorFunc());
 	}
 
+	/**
+	 * inclui ou edita entity no banco
+	 */
+	@Override
+	public void incluirEntity() {
+		incluirGeneric( entity!=null? entity.getId():0);
+	}
+
+	/**
+	 * deleta entity do banco
+	 */
+	@Override
+	public void deletarEntity() {
+		deletarGeneric(entity!=null?entity.getId():0);
+	}
+	
+	/************************************************************************************************************/
+	//GET FIELDS
+	/************************************************************************************************************/
+	
 	/**
 	 * busca todas NoticiaCat para preencher o field
 	 */
@@ -142,48 +87,12 @@ public class NoticiaBean implements Serializable {
 	 * busca todos professores e funcionarios para preencher o field
 	 */
 	public List<ProfessorFunc> getProfessoresField() {
-		return profDAO.buscarFieldNome();
-	}
-	
-	/************************************************************************************************************
-	*GETS E SETS
-	************************************************************************************************************/
-	
-	public Noticia getNoticia() {
-		return noticia;
+		return professorFuncDAO.buscarFieldNome();
 	}
 
-	public void setNoticia(Noticia noticia) {
-		this.noticia = noticia;
-	}
-
-	public List<Noticia> getNoticias() {
-		return noticias;
-	}
-
-	public void setNoticias(List<Noticia> noticias) {
-		this.noticias = noticias;
-	}
-
-	public boolean isShowIncluirNoticia() {
-		return showIncluirNoticia;
-	}
-
-	public void setShowIncluirNoticia(boolean showIncluirNoticia) {
-		this.showIncluirNoticia = showIncluirNoticia;
-	}
-
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
+	/************************************************************************************************************/
+	//GETS E SETS
+	/************************************************************************************************************/
 	
 	
 }

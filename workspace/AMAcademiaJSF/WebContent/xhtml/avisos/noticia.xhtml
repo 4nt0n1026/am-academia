@@ -12,55 +12,55 @@
 		<!-- ****************************************************************************************************** -->
 		<!-- Noticia -->
 		<!-- ****************************************************************************************************** -->
-			
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-   			<p:tab title="Noticias" >  
-					    
-			    <!-- ****************************************************************************************************** -->
-				<!-- Insert de noticia -->
-				<!-- ****************************************************************************************************** -->
-				<h:form id="formNoticia"  >
-					<p:fieldset id="field"  rendered="#{noticiaBean.showIncluirNoticia}">
-						<h:panelGrid columns="10" >
-					        <h:outputLabel for="idTitulo" value="Titluo:" />  
-					        <p:inputText id="idTitulo" value="#{noticiaBean.noticia.titulo}" required="true" requiredMessage="Titulo obrigatorio" />
-					        
-					        		 
-					        <h:outputLabel for="idCat" value="Categoria: " />  
-						    <p:selectOneMenu id="idCat" value="#{noticiaBean.noticia.categoria.id}" rendered="true" requiredMessage="Catorgoria Obrigatoria" >  
-						    	<f:selectItem itemLabel="---" itemValue="" />  
-						    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="noticiaCat" itemLabel="#{noticiaCat.nome}" itemValue="#{noticiaCat.id}"/>  
-							</p:selectOneMenu>  
-					        		 
-					       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
-						    <p:selectOneMenu id="idFunc" value="#{noticiaBean.noticia.professorFunc.id}" rendered="true" style="width:250px"
-						    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
-						    	<f:selectItem itemLabel="---" itemValue="" />  
-						    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
-							</p:selectOneMenu>  
-				        </h:panelGrid>
-				        <br/>
-			        	<h:outputLabel for="editor" value="Descrição:"/>
-				        <p:editor id="editor" value="#{noticiaBean.noticia.descricao}" />  
-
-				          
-				        <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.incluirNoticia}" ajax="true" update=":tabView1  " /> 
-			        	<p:button icon="ui-icon ui-icon-close"   action="#{noticiaBean.dontShowNoticia}" ajax="true" update=":tabView1:formNoticia"  />  
-					</p:fieldset> 
-		        </h:form>
+     			<p:tab title="Notícia" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{noticiaBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idTitulo" value="Titluo:" />  
+						        <p:inputText id="idTitulo" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" />
+						        
+						        		 
+						        <h:outputLabel for="idCat" value="Categoria: " />  
+							    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" rendered="true" requiredMessage="Catorgoria Obrigatoria" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
+								</p:selectOneMenu>  
+						        		 
+						       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
+							    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>  
+		
+					        </h:panelGrid>
+					        <br/>
+			        		<h:outputLabel for="editor" value="Descrição:"/>
+			        		<p:editor id="editor" value="#{noticiaBean.entity.descricao}" />  
+						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        <p:button icon="ui-icon ui-icon-close"   action="#{noticiaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+						</p:fieldset> 
+			        </h:form>
       				
 
-				<!-- ****************************************************************************************************** -->
-				<!-- Menu da tabela de noticia -->
-				<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaNoticias">
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
 					<p:toolbar id="menuTabela">  
    						<p:toolbarGroup align="left">  
-				        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaBean.showNoticia}" ajax="true" update=":tabView1:formNoticia"  />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaBean.deletarNoticia}" ajax="true" update=":tabView1:tabelaNoticias  " />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaBean.showEditNoticia}" ajax="true" update=":tabView1:formNoticia  " />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
@@ -72,41 +72,47 @@
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
-					<!-- Tabela de noticia -->
+					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{noticiaBean.noticias}" var="noticia" emptyMessage="Nenhuma noticia registrada"
-							  resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+					<p:dataTable value="#{noticiaBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{noticiaBean.noticia}" selectionMode="single" rowKey="#{noticia}">
+							 selection="#{noticiaBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Titulo" sortBy="#{noticia.titulo}"  >
-							<h:outputText value="#{noticia.titulo}"/>
+						<p:column headerText="Titulo" sortBy="#{entity.titulo}"  >
+							<h:outputText value="#{entity.titulo}"/>
 						</p:column>
 						
-						<p:column headerText="Descrição" sortBy="#{noticia.descricao}"  >
-							<h:outputText value="#{noticia.descricao}"/>
+						<p:column headerText="Descrição" sortBy="#{entity.descricao}"  >
+							<h:outputText value="#{entity.descricao}"/>
 						</p:column>
 						
-						<p:column headerText="Categoria" sortBy="#{noticia.categoria.nome}"  >
-							<h:outputText value="#{noticia.categoria.nome}"/>
+						<p:column headerText="Categoria" sortBy="#{entity.categoria.nome}"  >
+							<h:outputText value="#{entity.categoria.nome}"/>
 						</p:column>
 						
-						<p:column headerText="Professor/Funcionario" sortBy="#{noticia.professorFunc.nome}"  >
-							<h:outputText value="#{noticia.professorFunc.nome}"/>
+						<p:column headerText="Professor/Funcionario" sortBy="#{entity.professorFunc.nome}"  >
+							<h:outputText value="#{entity.professorFunc.nome}"/>
 						</p:column>
-						
+					
 						<f:facet name="footer">  
 							---
 						</f:facet>
 						
 					</p:dataTable>
-					
-				    
 				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
 		</p:tabView>	
 		<!-- ****************************************************************************************************** -->
+			
 	</ui:define>
 </ui:composition>
 </html>

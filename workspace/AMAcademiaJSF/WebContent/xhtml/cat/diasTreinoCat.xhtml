@@ -10,39 +10,40 @@
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
-		<!-- Parte Corpo -->
+		<!-- DiasTreinoCat -->
 		<!-- ****************************************************************************************************** -->
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-      		<p:tab title="Partes de corpo" >  
-      				
-			    <!-- ****************************************************************************************************** -->
-				<!-- Insert de diasTreinoCat -->
-				<!-- ****************************************************************************************************** -->
-				<h:form id="formDiasTreinoCat"  >
-					<p:fieldset id="field"  rendered="#{diasTreinoCatBean.showDiasTreinoCat}">
-						<h:panelGrid columns="10">
-						
-					        <h:outputLabel for="idNome" value="Nome" />  
-					        <p:inputText id="idNome" value="#{diasTreinoCatBean.diasTreinoCat.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-					        
-					        <p:commandButton icon="ui-icon ui-icon-check"  action="#{diasTreinoCatBean.incluirDiasTreinoCat}" ajax="true" update=":tabView1" /> 
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{diasTreinoCatBean.dontShowDiasTreinoCat}" ajax="true" update=":tabView1:formDiasTreinoCat"  />  
-				        	
-				        </h:panelGrid>
-					</p:fieldset> 
-		        </h:form>
+     			<p:tab title="Categoria de dias de treino " >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{diasTreinoCatBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{diasTreinoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{diasTreinoCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{diasTreinoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
       				
 
-				<!-- ****************************************************************************************************** -->
-				<!-- Menu da tabela de diasTreinoCat -->
-				<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaDiasTreinoCat">
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
 					<p:toolbar id="menuTabela">  
    						<p:toolbarGroup align="left">  
-				        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{diasTreinoCatBean.showNewDiasTreinoCat}" ajax="true" update=":tabView1:formDiasTreinoCat" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{diasTreinoCatBean.deletarDiasTreinoCat}" ajax="true" update=":tabView1:tabelaDiasTreinoCat"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{diasTreinoCatBean.showEditDiasTreinoCat}" ajax="true" update=":tabView1:formDiasTreinoCat" />
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{diasTreinoCatBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{diasTreinoCatBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{diasTreinoCatBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
 				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{diasTreinoCatBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
@@ -54,17 +55,16 @@
 				    </p:toolbar>
 			   	
 			    
-			   	<!-- ****************************************************************************************************** -->
-				<!-- Tabela de diasTreinoCat -->
-				<!-- ****************************************************************************************************** -->
-				
-					<p:dataTable value="#{diasTreinoCatBean.diasTreinoCats}" var="dias" emptyMessage="Nenhum tipo de noticia registrado"
-							 widgetVar="tabelaDiasTreinoCat" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{diasTreinoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{diasTreinoCatBean.diasTreinoCat}" selectionMode="single" rowKey="#{dias}">
+							 selection="#{diasTreinoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{dias.nome}"  >
-							<h:outputText value="#{dias.nome}"/>
+						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
@@ -73,11 +73,18 @@
 						
 					</p:dataTable>
 				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
 		</p:tabView>	
 		<!-- ****************************************************************************************************** -->
-		
+			
 	</ui:define>
 </ui:composition>
 </html>

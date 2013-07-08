@@ -1,158 +1,73 @@
 package br.com.acad.bean.avisos;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.acad.bean.Bean;
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
-import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.avisos.NoticiaCat;
 
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class NoticiaCatBean implements Serializable {
+public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
 	
-	//daos
 	@EJB
 	private NoticiaCatDAO noticiaCatDAO;
-	
-	//noticiaCat
-	private NoticiaCat noticiaCat;
-	private List<NoticiaCat> noticiasCats;
-	private boolean showIncluirNoticiaCat;
-	
-	
 	
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
 	
-	/**
-	 * init
-	 */
 	@PostConstruct
-	public void init(){
-		noticiasCats = noticiaCatDAO.buscarTodos();
-		showIncluirNoticiaCat = false;
+	@Override
+	public void init() {
+		dao = noticiaCatDAO;
+		entities = noticiaCatDAO.buscarTodos();
 	}
 	
 	/**
-	 * mostra painel de inserção de um novo noticiaCat
+	 * show form de entity
 	 */
-	public void showNoticiaCat(){
-		noticiaCat = new NoticiaCat();
-		showIncluirNoticiaCat = true;
-	}
-	
-	/**
-	 * mostra painel de edição de uma noticiaCat
-	 */
-	public void showEditNoticiaCat(){
-		if(noticiaCat==null){
-			MessagesLogic.addWarnMessage("Erro", "Selecione um tipo de noticia para editar");
-		}else{
-			showIncluirNoticiaCat = true;
-		}
-	}
-	
-	/**
-	 * fecha painel de inserção de noticiaCat
-	 */
-	public void dontShowNoticiaCat(){
-		noticiaCat = new NoticiaCat();
-		showIncluirNoticiaCat = false;
-	}
-	
-	/**
-	 * inclui ou edita noticiaCat no banco
-	 */
-	public void incluirNoticiaCat(){
-		if(noticiaCat.getId()==0){
-			noticiaCat = noticiaCatDAO.insert(noticiaCat);
-			noticiasCats.add(noticiaCat);
-		}else{
-			noticiaCatDAO.update(noticiaCat);
-		}
-		noticiaCat = new NoticiaCat();
-		showIncluirNoticiaCat = false;
-		
-		MessagesLogic.addInfoMessage("Sucesso", "Tipo de noticia salvo com sucesso");
-	}
-	
-	/**
-	 * deleta noticiaCat do banco
-	 */
-	public void deletarNoticiaCat(){
-		if(noticiaCat != null){
-			noticiaCatDAO.removeById(noticiaCat.getId());
-			noticiasCats.remove(noticiaCat);
-			showIncluirNoticiaCat = false;
-			MessagesLogic.addInfoMessage("Sucesso", "Tipo de noticia deletado com sucesso");
-		}else{
-			MessagesLogic.addWarnMessage("Erro", "Selecione um tipo de noticia para deletar");
-		}
-	}
-      
-	/**
-	 * atualiza informações 
-	 */
-	public void atualizar(){
-		noticiasCats = noticiaCatDAO.buscarTodos();
-		noticiaCat = new NoticiaCat();
-		showIncluirNoticiaCat = false;
-		
-		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
+	@Override
+	public void showNewEntity() {
+		showEntity = true;
+		entity = new NoticiaCat();
 	}
 
+	/**
+	 * inclui ou edita entity no banco
+	 */
+	@Override
+	public void incluirEntity() {
+		incluirGeneric( entity!=null? entity.getId():0);
+	}
+
+	/**
+	 * deleta entity do banco
+	 */
+	@Override
+	public void deletarEntity() {
+		deletarGeneric(entity!=null?entity.getId():0);
+	}
 	
+	/************************************************************************************************************/
+	//GET FIELDS
+	/************************************************************************************************************/
+	
+
 	/************************************************************************************************************/
 	//GETS E SETS
 	/************************************************************************************************************/
-	
-	public NoticiaCat getNoticiaCat() {
-		return noticiaCat;
-	}
-
-
-	public void setNoticiaCat(NoticiaCat noticiaCat) {
-		this.noticiaCat = noticiaCat;
-	}
-
-
-	public List<NoticiaCat> getNoticiasCats() {
-		return noticiasCats;
-	}
-
-
-	public void setNoticiasCats(List<NoticiaCat> noticiasCats) {
-		this.noticiasCats = noticiasCats;
-	}
-
-	public boolean isShowIncluirNoticiaCat() {
-		return showIncluirNoticiaCat;
-	}
-
-	public void setShowIncluirNoticiaCat(boolean showIncluirNoticiaCat) {
-		this.showIncluirNoticiaCat = showIncluirNoticiaCat;
-	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

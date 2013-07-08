@@ -25,18 +25,17 @@ public class ModeloBean extends Bean<Modelo> implements Serializable {
 //	@PostConstruct
 //	@Override
 //	public void init() {
-//		dao = modelDAO;
-//		entities = modelDAO.buscarTodos();
+//		dao = modeloDAO;
+//		entities = modeloDAO.buscarTodos();
 //	}
 //	
 //	/**
 //	 * show form de entity
-//	 * 
 //	 */
 //	@Override
 //	public void showNewEntity() {
 //		showEntity = true;
-//		entity = new Model();
+//		entity = new Modelo();
 //	}
 //
 //	/**

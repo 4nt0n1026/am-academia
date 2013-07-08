@@ -13,35 +13,37 @@
 		<!-- NoticiaCat -->
 		<!-- ****************************************************************************************************** -->
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Categoria de Notícias" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{noticiaCatBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{noticiaCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        
 	
-	 		<p:tab title="Tipos de Noticias" >  
-			    <!-- ****************************************************************************************************** -->
-				<!-- Insert de noticiaCat -->
-				<!-- ****************************************************************************************************** -->
-				<h:form id="formNoticiaCat"  >
-					<p:fieldset id="field"  rendered="#{noticiaCatBean.showIncluirNoticiaCat}">
-						<h:panelGrid columns="10">
-						
-					        <h:outputLabel for="idNome" value="Nome" />  
-					        <p:inputText id="idNome" value="#{noticiaCatBean.noticiaCat.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-					        
-					        <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaCatBean.incluirNoticiaCat}" ajax="true" update=":tabView1" /> 
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{noticiaCatBean.dontShowNoticiaCat}" ajax="true" update=":tabView1:formNoticiaCat"  />  
-				        	
-				        </h:panelGrid>
-					</p:fieldset> 
-		        </h:form>
-	     				
-	
-				<!-- ****************************************************************************************************** -->
-				<!-- Menu da tabela de noticiaCat -->
-				<!-- ****************************************************************************************************** -->
-	     				<h:form id="tabelaNoticiaCat">
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{noticiaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
 					<p:toolbar id="menuTabela">  
-	  						<p:toolbarGroup align="left">  
-				        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaCatBean.showNoticiaCat}" ajax="true" update=":tabView1:formNoticiaCat" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaCatBean.deletarNoticiaCat}" ajax="true" update=":tabView1:tabelaNoticiaCat"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaCatBean.showEditNoticiaCat}" ajax="true" update=":tabView1:formNoticiaCat" />
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaCatBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaCatBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaCatBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
 				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{noticiaCatBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
@@ -53,17 +55,16 @@
 				    </p:toolbar>
 			   	
 			    
-			   	<!-- ****************************************************************************************************** -->
-				<!-- Tabela de noticiaCat -->
-				<!-- ****************************************************************************************************** -->
-				
-					<p:dataTable value="#{noticiaCatBean.noticiasCats}" var="cat" emptyMessage="Nenhum tipo de noticia registrado"
-							 widgetVar="tabelaNoticiaCat" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{noticiaCatBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{noticiaCatBean.noticiaCat}" selectionMode="single" rowKey="#{cat}">
+							 selection="#{noticiaCatBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{cat.nome}"  >
-							<h:outputText value="#{cat.nome}"/>
+						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
@@ -72,10 +73,18 @@
 						
 					</p:dataTable>
 				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
 		</p:tabView>	
 		<!-- ****************************************************************************************************** -->
+			
 	</ui:define>
 </ui:composition>
 </html>

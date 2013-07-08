@@ -5,6 +5,13 @@ import java.util.List;
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.MessagesLogic;
 
+/**
+ * Bean generico com metodos, atributos e assinaturas que todos beans devem possuir.
+ * 
+ * @author Christian Storch
+ * 
+ * @param <T>
+ */
 public abstract class Bean<T> {
 
 	
@@ -23,9 +30,6 @@ public abstract class Bean<T> {
 	//ASSINATURAS
 	/************************************************************************************************************/
 	
-	/**
-	 * mostra painel de inserção de uma nova Entity 
-	 */
 	public abstract void init();
 	public abstract void showNewEntity();
 	public abstract void incluirEntity();
@@ -101,6 +105,7 @@ public abstract class Bean<T> {
 	public void atualizar() {
 		showEntity = false;
 		entities = dao.buscarTodos();
+		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
 	}
 	
 	
