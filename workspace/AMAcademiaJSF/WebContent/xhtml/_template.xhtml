@@ -17,51 +17,51 @@
 		<div id="menuPrincipal">
 			<h:form>
 				<p:menubar>
-					<p:menuitem value="Home" />
+					<p:menuitem icon="ui-icon ui-icon-home" value="Home" />
 					
-					<p:submenu label="Pessoa">
-						<p:menuitem outcome="/xhtml/pessoa/aluno.xhtml" value="Alunos"/>
-						<p:menuitem outcome="/xhtml/pessoa/professor.xhtml" value="Professores" />
-						<p:menuitem outcome="/xhtml/pessoa/funcionario.xhtml" value="Funcionario" />
+					<p:submenu icon="ui-icon ui-icon-person" label="Pessoa">
+						<p:menuitem outcome="/xhtml/pessoa/aluno.xhtml" value="Alunos" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem outcome="/xhtml/pessoa/professor.xhtml" value="Professores" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem outcome="/xhtml/pessoa/funcionario.xhtml" value="Funcionario" icon="ui-icon ui-icon-radio-on"/>
 					</p:submenu>
-					<p:submenu label="Treino">
-						<p:menuitem value="Treinos fixos" />
-						<p:menuitem value="Treinos solicitados" />
-						<p:menuitem value="Solicitações" />
-						<p:menuitem outcome="/xhtml/treino/exercicio.xhtml" value="Exercicios" />
-						<p:submenu label="Configuração">
-							<p:menuitem outcome="/xhtml/treino/parteCorpo.xhtml" value="Partes do Corpo" />
+					<p:submenu icon="ui-icon ui-icon-clipboard" label="Treino">
+						<p:menuitem value="Treinos fixos" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem value="Treinos solicitados" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem value="Solicitações" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem outcome="/xhtml/treino/exercicio.xhtml" value="Exercicios" icon="ui-icon ui-icon-radio-on"/>
+						<p:submenu label="Configuração" icon="ui-icon ui-icon-radio-off">
+							<p:menuitem outcome="/xhtml/treino/parteCorpo.xhtml" value="Partes do Corpo" icon="ui-icon ui-icon-radio-on"/>
 						</p:submenu>
 					</p:submenu>
-					<p:submenu label="Dieta">
-						<p:menuitem value="Dietas fixas" />
-						<p:menuitem value="Dietas solicitadas" />
-						<p:menuitem value="Solicitações" />
-						<p:menuitem value="Alimentos" />
+					<p:submenu icon="ui-icon ui-icon-calculator" label="Dieta">
+						<p:menuitem value="Dietas fixas" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem value="Dietas solicitadas" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem value="Solicitações" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem value="Alimentos" icon="ui-icon ui-icon-radio-on"/>
 					</p:submenu>
-					<p:submenu label="Horario">
-						<p:menuitem value="Aulas" />
-						<p:menuitem outcome="/xhtml/horario/modalidade.xhtml" value="Modalidade" />
-						<p:menuitem value="Unidade" />
+					<p:submenu icon="ui-icon ui-icon-clock" label="Horario">
+						<p:menuitem value="Aulas" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem outcome="/xhtml/horario/modalidade.xhtml" value="Modalidade" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem value="Unidade" icon="ui-icon ui-icon-radio-on"/>
 					</p:submenu>
-					<p:submenu label="Noticias">
-						<p:menuitem outcome="/xhtml/avisos/noticia.xhtml" value="Noticias" />
-						<p:menuitem outcome="/xhtml/avisos/noticiaCat.xhtml" value="Tipos de noticias" />
+					<p:submenu icon="ui-icon ui-icon-image" label="Noticias" >
+						<p:menuitem outcome="/xhtml/avisos/noticia.xhtml" value="Noticias" icon="ui-icon ui-icon-radio-on"/>
+						<p:menuitem outcome="/xhtml/avisos/noticiaCat.xhtml" value="Tipos de noticias" icon="ui-icon ui-icon-radio-on"/>
 					</p:submenu>
-					<p:submenu label="Configurações">
-						<p:submenu label="Categorias">
-							<p:menuitem outcome="/xhtml/cat/diasTreinoCat.xhtml" value="Categoria de dias de treino" />
-							<p:menuitem outcome="/xhtml/cat/duracaoTreinoCat.xhtml" value="Categoria de duração de treino" />
-							<p:menuitem outcome="/xhtml/cat/objetivoCat.xhtml" value="Objetivos de treino" />
-							<p:menuitem outcome="/xhtml/cat/sexoCat.xhtml" value="Categoria de sexo" />
-							<p:menuitem outcome="/xhtml/cat/faixaEtariaCat.xhtml" value="Categoria de faixa etaria" />
-							<p:menuitem value="Limitações de dieta" />
-							<p:menuitem outcome="/xhtml/dieta/unidadeMedida.xhtml" value="Unidade de medida" />
+					<p:submenu icon="ui-icon ui-icon-wrench" label="Configurações">
+						<p:submenu label="Categorias" icon="ui-icon ui-icon-radio-off">
+							<p:menuitem outcome="/xhtml/cat/diasTreinoCat.xhtml" value="Categoria de dias de treino" icon="ui-icon ui-icon-radio-on"/>
+							<p:menuitem outcome="/xhtml/cat/duracaoTreinoCat.xhtml" value="Categoria de duração de treino" icon="ui-icon ui-icon-radio-on"/>
+							<p:menuitem outcome="/xhtml/cat/objetivoCat.xhtml" value="Objetivos de treino" icon="ui-icon ui-icon-radio-on"/>
+							<p:menuitem outcome="/xhtml/cat/sexoCat.xhtml" value="Categoria de sexo" icon="ui-icon ui-icon-radio-on"/>
+							<p:menuitem outcome="/xhtml/cat/faixaEtariaCat.xhtml" value="Categoria de faixa etaria" icon="ui-icon ui-icon-radio-on"/>
+							<p:menuitem value="Limitações de dieta" icon="ui-icon ui-icon-radio-on"/>
+							<p:menuitem outcome="/xhtml/dieta/unidadeMedida.xhtml" value="Unidade de medida" icon="ui-icon ui-icon-radio-on"/>
 						</p:submenu>
-						<p:menuitem outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" />
+						<p:menuitem outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" icon="ui-icon ui-icon-radio-on"/>
 					</p:submenu>
 					 
-					<p:menuitem value="Logout" />
+					<p:menuitem icon="ui-icon ui-icon-extlink" value="Logout" />
 		            	
 	        	</p:menubar>  
 			</h:form>
