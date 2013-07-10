@@ -3,6 +3,7 @@ package br.com.acad.dao.treino.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
@@ -17,8 +18,8 @@ public class SolicitacaoTreinoDAOImpl extends DAOImpl<SolicitacaoTreino,Integer>
 
 	@Override
 	public List<SolicitacaoTreino> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<SolicitacaoTreino> q = em.createQuery("from SolicitacaoTreino", SolicitacaoTreino.class);
+		return q.getResultList();
 	}
 
 }

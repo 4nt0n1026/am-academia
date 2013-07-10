@@ -3,6 +3,7 @@ package br.com.acad.dao.dieta.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.dieta.interf.DietaFixaDAO;
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -17,8 +18,8 @@ public class DietaFixaDAOImpl extends DAOImpl<DietaFixa,Integer> implements Diet
 
 	@Override
 	public List<DietaFixa> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<DietaFixa> q = em.createQuery("from DietaFixa", DietaFixa.class);
+		return q.getResultList();
 	}
 
 }

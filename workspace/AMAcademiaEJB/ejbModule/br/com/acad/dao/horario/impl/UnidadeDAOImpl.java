@@ -3,6 +3,7 @@ package br.com.acad.dao.horario.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.horario.interf.UnidadeDAO;
@@ -17,8 +18,8 @@ public class UnidadeDAOImpl extends DAOImpl<Unidade,Integer> implements UnidadeD
 
 	@Override
 	public List<Unidade> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Unidade> q = em.createQuery("from Unidade", Unidade.class);
+		return q.getResultList();
 	}
 
 }

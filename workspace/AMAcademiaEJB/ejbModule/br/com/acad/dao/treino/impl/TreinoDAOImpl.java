@@ -3,6 +3,7 @@ package br.com.acad.dao.treino.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.TreinoDAO;
@@ -17,8 +18,8 @@ public class TreinoDAOImpl extends DAOImpl<Treino,Integer> implements TreinoDAO{
 
 	@Override
 	public List<Treino> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Treino> q = em.createQuery("from Treino", Treino.class);
+		return q.getResultList();
 	}
 
 }

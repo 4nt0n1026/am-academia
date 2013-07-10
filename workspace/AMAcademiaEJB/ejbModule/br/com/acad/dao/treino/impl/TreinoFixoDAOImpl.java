@@ -3,6 +3,7 @@ package br.com.acad.dao.treino.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
@@ -17,8 +18,8 @@ public class TreinoFixoDAOImpl extends DAOImpl<TreinoFixo,Integer> implements Tr
 
 	@Override
 	public List<TreinoFixo> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<TreinoFixo> q = em.createQuery("from TreinoFixo", TreinoFixo.class);
+		return q.getResultList();
 	}
 
 }

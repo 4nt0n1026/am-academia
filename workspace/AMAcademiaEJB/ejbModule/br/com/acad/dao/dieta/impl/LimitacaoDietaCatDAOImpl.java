@@ -3,6 +3,7 @@ package br.com.acad.dao.dieta.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.dieta.interf.LimitacaoDietaCatDAO;
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -17,8 +18,8 @@ public class LimitacaoDietaCatDAOImpl extends DAOImpl<LimitacaoDietaCat,Integer>
 
 	@Override
 	public List<LimitacaoDietaCat> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<LimitacaoDietaCat> q = em.createQuery("from LimitacaoDietaCat", LimitacaoDietaCat.class);
+		return q.getResultList();
 	}
 
 }

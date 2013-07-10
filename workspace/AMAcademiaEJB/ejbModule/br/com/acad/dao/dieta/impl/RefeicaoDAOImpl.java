@@ -3,6 +3,7 @@ package br.com.acad.dao.dieta.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.dieta.interf.RefeicaoDAO;
 import br.com.acad.dao.generico.impl.DAOImpl;
@@ -17,8 +18,8 @@ public class RefeicaoDAOImpl extends DAOImpl<Refeicao,Integer> implements Refeic
 
 	@Override
 	public List<Refeicao> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Refeicao> q = em.createQuery("from Refeicao", Refeicao.class);
+		return q.getResultList();
 	}
 
 }
