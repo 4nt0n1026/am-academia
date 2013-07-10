@@ -24,6 +24,10 @@ public abstract class Bean<T> {
 	protected T entity;
 	protected List<T> entities;
 	protected boolean showEntity;
+	protected boolean showEntity2;
+	protected boolean showEntity3;
+	protected boolean showEntity4;
+	protected boolean showEntityDeatil;
 	
 	
 	/************************************************************************************************************/
@@ -47,7 +51,7 @@ public abstract class Bean<T> {
 	}
 	
 	/**
-	 * mostra painel de edição de uma Entity
+	 * mostra painel de edicao de uma Entity
 	 */
 	public void showEditEntity(){
 		if(entity!=null){
@@ -108,6 +112,39 @@ public abstract class Bean<T> {
 		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
 	}
 	
+	/**
+	 * fecha formulario 1 e abre o 2.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void showForm2(){
+		showEntity = false;
+		showEntity2 = true;
+		showEntity3 = false;
+		showEntity4 = false;
+	}
+	
+	/**
+	 * fecha formulario 2 e abre o 3.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void showForm3(){
+		showEntity = false;
+		showEntity2 = false;
+		showEntity3 = true;
+		showEntity4 = false;
+	}
+	
+	/**
+	 * fecha formulario 3 e abre o 4.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void showForm4(){
+		showEntity = false;
+		showEntity2 = false;
+		showEntity3 = false;
+		showEntity4 = true;
+	}
+	
 	
 	/************************************************************************************************************/
 	//GETS E SETS
@@ -125,6 +162,16 @@ public abstract class Bean<T> {
 	public void setEntity(T entity) {
 		this.entity = entity;
 	}
+	public boolean getShowEntity2() {
+		return showEntity2;
+	}
+	public boolean getShowEntity3() {
+		return showEntity3;
+	}
+	public boolean getShowEntity4() {
+		return showEntity4;
+	}
+	
 	
 	
 	

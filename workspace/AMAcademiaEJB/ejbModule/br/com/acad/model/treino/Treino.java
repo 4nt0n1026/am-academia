@@ -3,6 +3,7 @@ package br.com.acad.model.treino;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
@@ -27,6 +29,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Table(name="ACAD_TREINO")
 public class Treino implements Serializable{
 
+	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqTreino")
 	@Column(name="ID_TREINO")
@@ -57,11 +60,25 @@ public class Treino implements Serializable{
 	@JoinColumn(name="TREINO_ID")
 	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 	
+	//Metodos
+	public boolean addDiaTreino(DiaTreino dia){
+		return diasTreino.add(dia);
+	}
 	
+	public boolean removeDiaTreino(DiaTreino dia){
+		return diasTreino.remove(dia);
+	}
 	
+	//Gets com DAO
+	public List<DiaTreino> getDiasTreinos(DiaTreinoDAO dao){
+		return dao.buscaPorTreino(this);
+	}
+	
+	//Construtores
 	public Treino(){}
 
 	
+	//Gets e Sets
 	public long getTempoDescanso() {
 		return tempoDescanso;
 	}
@@ -69,9 +86,6 @@ public class Treino implements Serializable{
 	public void setTempoDescanso(long tempoDescanso) {
 		this.tempoDescanso = tempoDescanso;
 	}
-
-
-
 
 	public Set<DiaTreino> getDiasTreino() {
 		return diasTreino;

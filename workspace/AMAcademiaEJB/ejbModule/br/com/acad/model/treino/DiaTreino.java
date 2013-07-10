@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @Table(name="ACAD_DIA_TREINO")
 public class DiaTreino implements Serializable{
 
+	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiaTreino")
 	@Column(name="ID_DIA_TREINO")
@@ -31,17 +32,18 @@ public class DiaTreino implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
-	@Column(nullable=false)
-	private Treino treino;
-
-	
 	@OneToMany
 	@JoinColumn(name="DIA_TREINO_ID")
 	private Set<ExercicioTreino> exerciciosTreino = new HashSet<ExercicioTreino>();
 	
+	//Metodos
 	
+	
+	//Contrutores
 	public DiaTreino(){}
 
+	
+	//Gets e Sets
 	public Set<ExercicioTreino> getExerciciosTreino() {
 		return exerciciosTreino;
 	}
@@ -74,14 +76,6 @@ public class DiaTreino implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public Treino getTreino() {
-		return treino;
-	}
-
-	public void setTreino(Treino treino) {
-		this.treino = treino;
-	}
-	
 	
 	
 }

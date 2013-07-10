@@ -2,6 +2,7 @@ package br.com.acad.model.treino;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 
 
 @SuppressWarnings("serial")
@@ -87,6 +90,15 @@ public class Exercicio implements Serializable {
 	 */
 	public boolean removeParteCorpoSecundaria(ParteCorpo parte){
 		return this.parteCorpoSecundaria.remove(parte);
+	}
+	
+	//Gets com DAO
+	public List<ParteCorpo> getParteCorpoPrimaria(ParteCorpoDAO dao){
+		return dao.buscarPartesPrimarias(this);
+	}
+	
+	public List<ParteCorpo> getParteCorpoSecundaria(ParteCorpoDAO dao){
+		return dao.buscarPartesSecundaria(this);
 	}
 	
 	

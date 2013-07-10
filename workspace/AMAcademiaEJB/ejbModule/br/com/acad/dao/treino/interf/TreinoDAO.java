@@ -9,5 +9,4 @@ import br.com.acad.model.treino.Treino;
 public interface TreinoDAO extends DAO<Treino,Integer>{
 	
 	
-	
 }

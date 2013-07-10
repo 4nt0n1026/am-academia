@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table(name="ACAD_EXERCICIO_TREINO") 
 public class ExercicioTreino implements Serializable {
 
+	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqExercicioTreino")
 	@Column(name="ID_EXERCICIO_TREINO")
@@ -34,6 +35,10 @@ public class ExercicioTreino implements Serializable {
 	@JoinColumn(name="EXERCICIO_TREINO_ID")
 	private Set<Serie> series = new HashSet<Serie>();
 
+	//Metodos
+	
+	
+	//Construtores
 	public ExercicioTreino(){}
 	
 	public ExercicioTreino(int id, Exercicio exercicio, Set<Serie> series) {
@@ -43,6 +48,8 @@ public class ExercicioTreino implements Serializable {
 		this.series = series;
 	}
 
+	
+	//Gets e Sets
 	public int getId() {
 		return id;
 	}

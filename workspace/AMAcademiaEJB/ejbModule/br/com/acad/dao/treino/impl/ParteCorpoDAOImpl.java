@@ -26,7 +26,7 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ParteCorpo> buscaPartesPrimarias(Exercicio exercicio) {
+	public List<ParteCorpo> buscarPartesPrimarias(Exercicio exercicio) {
 		Query q = em.createQuery("select e.parteCorpoPrimaria from Exercicio e where e.id = :id");
 		q.setParameter("id", exercicio.getId());
 		return q.getResultList();
@@ -34,7 +34,7 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ParteCorpo> buscaPartesSecundaria(Exercicio exercicio) {
+	public List<ParteCorpo> buscarPartesSecundaria(Exercicio exercicio) {
 		Query q = em.createQuery("select e.parteCorpoSecundaria from Exercicio e where e.id = :id");
 		q.setParameter("id", exercicio.getId());
 		return q.getResultList();
