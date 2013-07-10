@@ -34,7 +34,7 @@ public class ProfessorBean extends Bean<ProfessorFunc> implements Serializable {
 	@Override
 	public void init() {
 		dao = professorFuncDAO;
-		entities = professorFuncDAO.buscarTodos();
+		entities = professorFuncDAO.buscarTodosProf();
 	}
 	
 	/**

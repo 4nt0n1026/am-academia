@@ -20,7 +20,7 @@
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
-						<p:fieldset id="field"  rendered="#{modeloBean.showEntity}">
+						<p:fieldset id="field"  rendered="#{funcionarioBean.showEntity}">
 							<h:panelGrid columns="10">
 							
 						        <h:outputLabel for="idNome" value="Nome>" />  
@@ -45,8 +45,8 @@
 								        <p:inputText id="idRg" value="#{funcionarioBean.entity.rg}"  />
 								        
 	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{modeloBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{modeloBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{funcionarioBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{funcionarioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
 						</p:fieldset> 
@@ -59,10 +59,10 @@
       				<h:form id="tabelaEntity">
 					<p:toolbar id="menuTabela">  
    						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{modeloBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{modeloBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{modeloBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{modeloBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{funcionarioBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{funcionarioBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{funcionarioBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{funcionarioBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
@@ -76,10 +76,10 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{modeloBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+					<p:dataTable value="#{funcionarioBean.entities}" var="entity" emptyMessage="Nenhum registrado"
 							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{modeloBean.entity}" selectionMode="single" rowKey="#{entity}">
+							 selection="#{funcionarioBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
 						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
 										<h:outputText value="#{entity.nome}"/>
