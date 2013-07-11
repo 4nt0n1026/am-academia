@@ -13,5 +13,6 @@ public interface ProfessorFuncDAO extends DAO<ProfessorFunc,Integer>{
 	public List<ProfessorFunc> buscarTodosProf();
 	public List<ProfessorFunc> buscarTodosFunc();
 	public List<ProfessorFunc> buscarFieldNome();
+	public List<ProfessorFunc> buscarFieldNomeProf();
 	
 }

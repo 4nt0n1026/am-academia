@@ -40,6 +40,11 @@ public class Aluno extends Pessoa{
 	
 	public Aluno(){}
 	
+	public Aluno(Integer id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
+	}
+
 	public Set<Treino> getDietas() {
 		return dietas;
 	}

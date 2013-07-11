@@ -10,28 +10,50 @@
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
-		<!-- ParteCorpo -->
+		<!-- TreinoEspecifico -->
 		<!-- ****************************************************************************************************** -->
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Partes do corpo" >  
+     			<p:tab title="Treinos Especificos" >  
      				
 				    <!-- ****************************************************************************************************** -->
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
-						<p:fieldset id="field"  rendered="#{parteCorpoBean.showEntity}">
+						<!-- TABFORM 1 -->
+						<p:fieldset id="field1"  rendered="#{treinoEspecificoBean.showEntity}">
 							<h:panelGrid columns="10">
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{parteCorpoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        <p:inputText id="idNome" value="#{treinoEspecificoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
 	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{parteCorpoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoEspecificoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoEspecificoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
 						</p:fieldset> 
+						
+						<!-- TABFORM 2 -->
+						<p:fieldset id="field2"  rendered="#{treinoEspecificoBean.showEntity2}">
+					        
+					        Conteudo do form2
+					        
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm3}" ajax="false" update=":tabView1" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />
+
+						</p:fieldset> 
+						
+						<!-- TABFORM 3 -->
+						<p:fieldset id="field3"  rendered="#{treinoEspecificoBean.showEntity3}">
+							
+							Conteudo do form3
+					        
+						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{exercicioBean.incluirEntity}" ajax="false" update=":tabView1" /> 
+					        <p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />  
+					        	
+						</p:fieldset> 
+						
 			        </h:form>
       				
 
@@ -39,29 +61,29 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-						<p:toolbar id="menuTabela">  
-	   						<p:toolbarGroup align="left">  
-					        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{parteCorpoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-					        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{parteCorpoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-					        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{parteCorpoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-					        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1"/>
-					        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-					        	<p:separator />  
-					        </p:toolbarGroup>
-					        
-					        <p:toolbarGroup align="right">  
-					        	Busca:<p:inputText />
-					        </p:toolbarGroup>
-					    </p:toolbar>
-				   	
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton disabled="true" title="novo" icon="ui-icon ui-icon-plus" action="#{treinoEspecificoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoEspecificoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{treinoEspecificoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{treinoEspecificoBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right">  
+				        	Busca:<p:inputText />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{parteCorpoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
+					<p:dataTable value="#{treinoEspecificoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
 							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{parteCorpoBean.entity}" selectionMode="single" rowKey="#{entity}">
+							 selection="#{treinoEspecificoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
 						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
 							<h:outputText value="#{entity.nome}"/>

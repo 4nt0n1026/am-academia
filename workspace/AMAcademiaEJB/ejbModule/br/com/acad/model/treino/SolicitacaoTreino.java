@@ -85,6 +85,16 @@ public class SolicitacaoTreino implements Serializable {
 	public void setDataSolicitacao(Calendar dataSolicitacao) {
 		this.dataSolicitacao = dataSolicitacao;
 	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	
+	
 	
 	
 	

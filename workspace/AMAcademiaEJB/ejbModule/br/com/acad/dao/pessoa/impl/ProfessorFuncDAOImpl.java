@@ -52,4 +52,18 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProfessorFunc> buscarFieldNomeProf() {
+		Query q = em.createQuery("select p.id, p.nome from ProfessorFunc p where p.isProfessor=:true");
+		q.setParameter("true", true);
+		List<ProfessorFunc> professores = new ArrayList<ProfessorFunc>();
+		Collection<Object[]> resultado = q.getResultList();
+		for (Object[] o:resultado){
+			ProfessorFunc p = new ProfessorFunc((Integer) o[0], (String) o[1]);
+			professores.add(p);
+		}
+		return professores;
+	}
+
 }
