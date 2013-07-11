@@ -33,6 +33,10 @@ public class ParteCorpo implements Serializable {
 		this.nome = nome;
 	}
 
+	public ParteCorpo(Integer id) {
+		this.id = id;
+	}
+
 	public int getId() {
 		return id;
 	}

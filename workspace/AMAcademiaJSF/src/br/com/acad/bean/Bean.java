@@ -27,7 +27,7 @@ public abstract class Bean<T> {
 	protected boolean showEntity2;
 	protected boolean showEntity3;
 	protected boolean showEntity4;
-	protected boolean showEntityDeatil;
+	protected boolean showEntityDetail;
 	
 	
 	/************************************************************************************************************/
@@ -47,7 +47,7 @@ public abstract class Bean<T> {
 	 * fecha painel de edicao de uma entity
 	 */
 	public void dontShowEntity() {
-		showEntity = false;
+		closeForms();
 	}
 	
 	/**
@@ -56,60 +56,33 @@ public abstract class Bean<T> {
 	public void showEditEntity(){
 		if(entity!=null){
 			showEntity = true;
+			showEntity2 = false;
+			showEntity3 = false;
+			showEntity4 = false;
+			showEntityDetail = false;
 		}else{
 			MessagesLogic.addWarnMessage("Erro", "Selecione um para editar");
 		}
 	}
-
-	/************************************************************************************************************/
-	//METODOS CHAMADOS
-	/************************************************************************************************************/
 	
-	/**
-	 * inclui ou edita Entity no banco
-	 * @param dao DAO da entity a ser inserida
-	 * @param id id do objeto que sera inserido no banco
-	 */
-	public void incluirGeneric(Integer id) {
-		if(id==0){
-			entity =  dao.insert(entity);
-			entities.add(entity);
-		}else{
-			dao.update(entity);
-		}
-		showEntity = false;		
-		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
-		entity = null;
-	}
-	
-	
-	
-	/**
-	 * Deleta Entity do banco
-	 * @param dao DAO referente a entity a ser excluida
-	 * @param entity objeto que sera excluido
-	 * @param id id da entity que sera excluida
-	 */
-	public void deletarGeneric(Integer id){
-		if(entity != null){
-			dao.removeById(id);
-			entities.remove(entity);
-			showEntity = false;
-			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
-			
-			entity = null;
-		}else{
-			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
-		}
-	}
-
 	/**
 	 * atualiza pagina
 	 */
 	public void atualizar() {
-		showEntity = false;
+		closeForms();
 		entities = dao.buscarTodos();
 		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
+	}
+	
+	/**
+	 * abre formulario 1.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void showForm1(){
+		showEntity = true;
+		showEntity2 = false;
+		showEntity3 = false;
+		showEntity4 = false;
 	}
 	
 	/**
@@ -145,6 +118,76 @@ public abstract class Bean<T> {
 		showEntity4 = true;
 	}
 	
+	/**
+	 * Mostra detalhes da entidade selecionada
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void showFormDetail(){
+		closeForms();
+		showEntityDetail = true;
+	}
+	
+	/**
+	 * Mostra detalhes da entidade selecionada
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void hideFormDetail(){
+		showEntityDetail = false;
+	}
+
+	/************************************************************************************************************/
+	//METODOS CHAMADOS
+	/************************************************************************************************************/
+	
+	/**
+	 * inclui ou edita Entity no banco
+	 * @param dao DAO da entity a ser inserida
+	 * @param id id do objeto que sera inserido no banco
+	 */
+	public void incluirGeneric(Integer id) {
+		if(id==0){
+			entity =  dao.insert(entity);
+			entities.add(entity);
+		}else{
+			dao.update(entity);
+		}
+		closeForms();	
+		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
+		entity = null;
+	}
+	
+	
+	
+	/**
+	 * Deleta Entity do banco
+	 * @param dao DAO referente a entity a ser excluida
+	 * @param entity objeto que sera excluido
+	 * @param id id da entity que sera excluida
+	 */
+	public void deletarGeneric(Integer id){
+		if(entity != null){
+			dao.removeById(id);
+			entities.remove(entity);
+			closeForms();
+			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
+			
+			entity = null;
+		}else{
+			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
+		}
+	}
+
+	/**
+	 * fecha todos formularios.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void closeForms(){
+		showEntity = false;
+		showEntity2 = false;
+		showEntity3 = false;
+		showEntity4 = false;
+	}
+	
 	
 	/************************************************************************************************************/
 	//GETS E SETS
@@ -170,6 +213,9 @@ public abstract class Bean<T> {
 	}
 	public boolean getShowEntity4() {
 		return showEntity4;
+	}
+	public boolean getShowEntityDetail() {
+		return showEntityDetail;
 	}
 	
 	

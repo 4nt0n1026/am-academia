@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,14 +41,14 @@ public class Exercicio implements Serializable {
 	@Column(length=500, nullable=true)
 	private String fotoLocal;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="EXERCICIO_CORPO_PRIMARIO", 
+	@ManyToMany()
+	@JoinTable(name="ACAD_EXERC_CORPO_PRIMARIO", 
 				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
 				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
 	private Set<ParteCorpo> parteCorpoPrimaria = new HashSet<ParteCorpo>();
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="EXERCICIO_CORPO_SECUNDARIO", 
+	@ManyToMany()
+	@JoinTable(name="ACAD_EXERC_CORPO_SECUNDARIO", 
 				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
 				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
 	private Set<ParteCorpo> parteCorpoSecundaria = new HashSet<ParteCorpo>();
@@ -71,7 +70,7 @@ public class Exercicio implements Serializable {
 	 * @return booleano se incluiu ou nao
 	 */
 	public boolean addParteCorpoSecundaria(ParteCorpo parte){
-		return this.addParteCorpoSecundaria(parte);
+		return this.parteCorpoSecundaria.add(parte);
 	}
 	
 	/**
@@ -161,6 +160,13 @@ public class Exercicio implements Serializable {
 
 	public void setParteCorpoSecundaria(Set<ParteCorpo> parteCorpoSecundaria) {
 		this.parteCorpoSecundaria = parteCorpoSecundaria;
+	}
+
+	
+	//ToString
+	@Override
+	public String toString() {
+		return id + "";
 	}
 
 	
