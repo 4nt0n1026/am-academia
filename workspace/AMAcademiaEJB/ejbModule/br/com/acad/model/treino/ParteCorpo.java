@@ -17,6 +17,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_PARTE_CORPO")
 public class ParteCorpo implements Serializable {
 
+	public static String[] STATIC_FIELDS = {"nome"};
+	
 	// Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqParteCopro")

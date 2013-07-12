@@ -1,36 +1,28 @@
-package br.com.acad.bean.avisos;
+package br.com.acad.bean.treino;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
-import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
-import br.com.acad.dao.avisos.interf.NoticiaDAO;
-import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
-import br.com.acad.model.avisos.Noticia;
-import br.com.acad.model.avisos.NoticiaCat;
-import br.com.acad.model.pessoa.ProfessorFunc;
+import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.model.treino.ParteCorpo;
 
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class NoticiaBean extends Bean<Noticia> implements Serializable {
+public class ParteCorpoBean2 extends Bean<ParteCorpo> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
 	
 	@EJB
-	private NoticiaDAO noticiaDAO;
-	@EJB
-	private NoticiaCatDAO noticiaCatDAO;
-	@EJB
-	private ProfessorFuncDAO professorFuncDAO;
+	private ParteCorpoDAO parteCorpoDAO;
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -39,20 +31,19 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		dao = noticiaDAO;
-		entities = noticiaDAO.buscarTodos();
+		page = 1;
+		staticFields = ParteCorpo.STATIC_FIELDS;
+		dao = parteCorpoDAO;
+		entities = parteCorpoDAO.buscarTodos(page, search, order);
 	}
 	
 	/**
 	 * show form de entity
-	 * 
 	 */
 	@Override
 	public void showNewEntity() {
 		showEntity = true;
-		entity = new Noticia();
-		entity.setCategoria(new NoticiaCat());
-		entity.setProfessorFunc(new ProfessorFunc());
+		entity = new ParteCorpo();
 	}
 
 	/**
@@ -75,19 +66,7 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable {
 	//GET FIELDS
 	/************************************************************************************************************/
 	
-	/**
-	 * busca todas NoticiaCat para preencher o field
-	 */
-	public List<NoticiaCat> getNoticiasCatsField() {
-		return noticiaCatDAO.buscarTodos();
-	}
 	
-	/**
-	 * busca todos professores e funcionarios para preencher o field
-	 */
-	public List<ProfessorFunc> getProfessoresField() {
-		return professorFuncDAO.buscarFieldNome();
-	}
 
 	/************************************************************************************************************/
 	//GETS E SETS

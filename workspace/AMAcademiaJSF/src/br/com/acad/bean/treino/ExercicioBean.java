@@ -12,7 +12,7 @@ import javax.faces.bean.ViewScoped;
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
-import br.com.acad.logic.GenericLogic;
+import br.com.acad.logic.SqlLogic;
 import br.com.acad.logic.ParteCorpoLogic;
 import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ParteCorpo;
@@ -110,7 +110,7 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	 * @return
 	 */
 	public String getPartesCorpoPrimDetail() {
-		return GenericLogic.formatListOfObjects(entity.getParteCorpoPrimaria(parteCorpoDAO), ", ");
+		return SqlLogic.formatListOfObjects(entity.getParteCorpoPrimaria(parteCorpoDAO), ", ");
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	 * @return
 	 */
 	public String getPartesCorpoSecDetail() {
-		return GenericLogic.formatListOfObjects(entity.getParteCorpoSecundaria(parteCorpoDAO), ", ");
+		return SqlLogic.formatListOfObjects(entity.getParteCorpoSecundaria(parteCorpoDAO), ", ");
 	}
 
 

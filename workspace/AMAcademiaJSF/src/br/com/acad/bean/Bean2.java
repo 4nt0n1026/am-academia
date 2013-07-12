@@ -19,12 +19,18 @@ public abstract class Bean2<T> {
 	//ATRIBUTOS
 	/************************************************************************************************************/
 
+	// DAO
 	protected DAO<T, Integer> dao;
-	
-	protected Integer id;
+
+	//Entity
 	protected T entity;
 	protected List<T> entities;
 	
+	//Search
+	protected String[] staticFields;
+	protected int page;
+	
+	//Navigation
 	protected boolean showEntity;
 	protected boolean showEntity2;
 	protected boolean showEntity3;
@@ -38,6 +44,8 @@ public abstract class Bean2<T> {
 	
 	public abstract void init();
 	public abstract void showNewEntity();
+	public abstract void incluirEntity();
+	public abstract void deletarEntity();
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -48,41 +56,6 @@ public abstract class Bean2<T> {
 	 */
 	public void dontShowEntity() {
 		closeForms();
-	}
-	
-	/**
-	 * inclui ou edita Entity no banco
-	 * @param dao DAO da entity a ser inserida
-	 * @param id id do objeto que sera inserido no banco
-	 */
-	public void incluirEntity() {
-		if(id==0){
-			entity = dao.insert(entity);
-			entities.add(entity);
-		}else{
-			entity = dao.update(entity);
-		}
-		closeForms();	
-		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
-	}
-	
-	/**
-	 * Deleta Entity do banco
-	 * @param dao DAO referente a entity a ser excluida
-	 * @param entity objeto que sera excluido
-	 * @param id id da entity que sera excluida
-	 */
-	public void deletarEntity(){
-		if(entity != null){
-			dao.removeById(id);
-			entities.remove(entity);
-			closeForms();
-			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
-			
-			entity = null;
-		}else{
-			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
-		}
 	}
 	
 	/**
@@ -107,6 +80,24 @@ public abstract class Bean2<T> {
 		closeForms();
 		entities = dao.buscarTodos();
 		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
+	}
+	
+	/**
+	 * proxima tela da tabela.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void nextPageTable(){
+		page--;
+		atualizar();
+	}
+
+	/**
+	 * tela anterior da tabela.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void previousPageTable(){
+		page++;
+		atualizar();
 	}
 	
 	/**
@@ -174,6 +165,42 @@ public abstract class Bean2<T> {
 	//METODOS CHAMADOS
 	/************************************************************************************************************/
 	
+	/**
+	 * inclui ou edita Entity no banco
+	 * @param dao DAO da entity a ser inserida
+	 * @param id id do objeto que sera inserido no banco
+	 */
+	public void incluirGeneric(Integer id) {
+		if(id==0){
+			entity = dao.insert(entity);
+			entities.add(entity);
+		}else{
+			entity = dao.update(entity);
+		}
+		closeForms();	
+		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
+	}
+	
+	
+	
+	/**
+	 * Deleta Entity do banco
+	 * @param dao DAO referente a entity a ser excluida
+	 * @param entity objeto que sera excluido
+	 * @param id id da entity que sera excluida
+	 */
+	public void deletarGeneric(Integer id){
+		if(entity != null){
+			dao.removeById(id);
+			entities.remove(entity);
+			closeForms();
+			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
+			
+			entity = null;
+		}else{
+			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
+		}
+	}
 
 	/**
 	 * fecha todos formularios.

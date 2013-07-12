@@ -19,10 +19,20 @@ public abstract class Bean<T> {
 	//ATRIBUTOS
 	/************************************************************************************************************/
 
+	// DAO
 	protected DAO<T, Integer> dao;
-	
+
+	//Entity
 	protected T entity;
 	protected List<T> entities;
+	
+	//Search
+	protected String[] staticFields;
+	protected int page;
+	protected String search;
+	protected String order;
+	
+	//Navigation
 	protected boolean showEntity;
 	protected boolean showEntity2;
 	protected boolean showEntity3;
@@ -72,6 +82,24 @@ public abstract class Bean<T> {
 		closeForms();
 		entities = dao.buscarTodos();
 		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
+	}
+	
+	/**
+	 * proxima tela da tabela.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void nextPageTable(){
+		page--;
+		atualizar();
+	}
+
+	/**
+	 * tela anterior da tabela.
+	 * Utilizado somente para casos de formularios mais complexos
+	 */
+	public void previousPageTable(){
+		page++;
+		atualizar();
 	}
 	
 	/**
@@ -215,6 +243,24 @@ public abstract class Bean<T> {
 	}
 	public boolean getShowEntityDetail() {
 		return showEntityDetail;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getOrder() {
+		return order;
+	}
+	public void setOrder(String order) {
+		this.order = order;
 	}
 	
 	

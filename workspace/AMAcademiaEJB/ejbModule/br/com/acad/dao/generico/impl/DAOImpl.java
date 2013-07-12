@@ -13,6 +13,8 @@ import br.com.acad.dao.generico.interf.DAO;
 @Stateless
 public abstract class DAOImpl<T,K> implements DAO<T,K>{
 
+	public static int TABLE_SIZE = 30;
+	
 	@PersistenceContext(unitName="CLIENTE_MYSQL", type=PersistenceContextType.EXTENDED)
 	protected EntityManager em;
 	
