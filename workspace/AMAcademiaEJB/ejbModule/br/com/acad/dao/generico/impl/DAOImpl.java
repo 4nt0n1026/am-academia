@@ -45,7 +45,7 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	}
 
 	@Override
-	public T update(T entity, K id) {
+	public T update(T entity) {
 		em.merge(entity);
 		return entity;
 	}
