@@ -35,6 +35,10 @@ public class ObjetivoCat implements Serializable{
 		this.nome = nome;
 	}
 
+	public ObjetivoCat(String nome) {
+		this.nome = nome;
+	}
+
 	public int getId() {
 		return id;
 	}

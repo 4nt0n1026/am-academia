@@ -20,7 +20,7 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 
 	@Override
 	public List<ParteCorpo> buscarTodos() {
-		TypedQuery<ParteCorpo> q = em.createQuery("from ParteCorpo", ParteCorpo.class);
+		TypedQuery<ParteCorpo> q = em.createQuery("from ParteCorpo order by nome", ParteCorpo.class);
 		return q.getResultList();
 	}
 

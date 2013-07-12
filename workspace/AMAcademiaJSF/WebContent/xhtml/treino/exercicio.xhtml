@@ -28,11 +28,11 @@
 						        <p:inputText id="idNome" value="#{exercicioBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
 						        <h:outputLabel value="Descrição" />  
-								<p:inputTextarea value="#{exercicioBean.entity.descricao}" />
+								<p:inputTextarea value="#{exercicioBean.entity.descricao}" cols="60" />
 	
 					        </h:panelGrid>
 					        
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm2}" ajax="false" update=":tabView1" /> 
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm2}" ajax="false" update="@all" /> 
 				        	<p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />
 				        	  
 						</p:fieldset> 
@@ -69,7 +69,6 @@
 					        	
 						</p:fieldset> 
 			        </h:form>
-      				<br/>
 
 					<!-- ****************************************************************************************************** -->
 					<!-- Menu da tabela de entity -->
@@ -99,8 +98,8 @@
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
 							 selection="#{exercicioBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:ajax event="rowSelect" listener="#{exercicioBean.showFormDetail}"  update=":tabView1:" /> 
-						<p:ajax event="rowUnselect" listener="#{exercicioBean.hideFormDetail}" update="@all"/>  
+						<p:ajax event="rowSelect" listener="#{exercicioBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{exercicioBean.hideFormDetail}" update=":tabView1:detailEntity"/>  
 						
 						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
 							<h:outputText value="#{entity.nome}"/>
@@ -119,13 +118,21 @@
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">	
 					<p:fieldset legend="Detalhes" id="detail"  rendered="#{exercicioBean.showEntityDetail}">
-						<h:panelGrid columns="2">
+						<p:panelGrid columns="2">
 							<h:outputText value="Nome:"/>
 							<h:outputText value="#{exercicioBean.entity.nome}" />
 							
 							<h:outputText value="Descricao:"/>
 							<h:outputText value="#{exercicioBean.entity.descricao}" />
-						</h:panelGrid>
+							
+							<h:outputText value="Partes de corpo primarias"/>
+							<h:outputText value="#{exercicioBean.partesCorpoPrimDetail}" />
+							   
+							
+							<h:outputText value="Partes de corpo secundarias"/>
+							<h:outputText value="#{exercicioBean.partesCorpoSecDetail}" />
+						
+						</p:panelGrid>
 					</p:fieldset>
 				</h:form>
 			

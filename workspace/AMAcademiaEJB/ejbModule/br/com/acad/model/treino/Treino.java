@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,6 +27,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name="seqTreino", sequenceName="SEQ_TREINO", allocationSize=1)
 @Table(name="ACAD_TREINO")
 public class Treino implements Serializable{
@@ -51,7 +54,7 @@ public class Treino implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_ID", nullable=true)
-	private ProfessorFunc professor;
+	private ProfessorFunc professor = new ProfessorFunc();
 	
 	@Column(nullable=false)
 	private TipoTreinoDieta tipoTreino;

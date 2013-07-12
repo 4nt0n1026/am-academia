@@ -1,14 +1,15 @@
 package br.com.acad.teste;
 
-import br.com.acad.model.dieta.UnidadeMedida;
+import java.util.Calendar;
+
+import br.com.acad.logic.PessoaLogic;
 
 
 
 public class teste {
 	public static void main(String[] args) {
-			UnidadeMedida u = new UnidadeMedida();
-			UnidadeMedida u2 = u;
-			u2.setNome("nome da 2");
-			System.out.println(u.getNome());
+			Calendar dtNasc = Calendar.getInstance();
+			dtNasc.set(1989, 02, 24);
+			System.out.println(PessoaLogic.getIdade(dtNasc));
 	}
 }

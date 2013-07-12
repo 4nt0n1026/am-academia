@@ -6,13 +6,14 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import br.com.acad.dao.generico.interf.DAO;
 
 @Stateless
 public abstract class DAOImpl<T,K> implements DAO<T,K>{
 
-	@PersistenceContext(unitName="CLIENTE_MYSQL")
+	@PersistenceContext(unitName="CLIENTE_MYSQL", type=PersistenceContextType.EXTENDED)
 	protected EntityManager em;
 	
 	
@@ -44,8 +45,9 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	}
 
 	@Override
-	public void update(T entity) {
+	public T update(T entity, K id) {
 		em.merge(entity);
+		return entity;
 	}
 
 

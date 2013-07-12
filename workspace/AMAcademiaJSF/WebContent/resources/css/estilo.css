@@ -21,3 +21,11 @@
 .alignTop {
 	vertical-align: top;
 }
+
+.center{
+	text-align: center;
+}
+
+.right{
+	text-align: right;
+}

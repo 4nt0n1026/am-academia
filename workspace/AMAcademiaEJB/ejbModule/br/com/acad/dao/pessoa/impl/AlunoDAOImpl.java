@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.model.pessoa.Aluno;
-import br.com.acad.model.pessoa.ProfessorFunc;
 
 @Stateless
 public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
@@ -29,7 +28,7 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Aluno> buscarFieldNome() {
-		Query q = em.createQuery("select a.id, p.nome from Aluno a");
+		Query q = em.createQuery("select a.id, a.nome from Aluno a");
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		Collection<Object[]> resultado = q.getResultList();
 		for (Object[] o:resultado){

@@ -146,14 +146,13 @@ public abstract class Bean<T> {
 	 */
 	public void incluirGeneric(Integer id) {
 		if(id==0){
-			entity =  dao.insert(entity);
+			entity = dao.insert(entity);
 			entities.add(entity);
 		}else{
-			dao.update(entity);
+			entity = dao.update(entity, id);
 		}
 		closeForms();	
 		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
-		entity = null;
 	}
 	
 	

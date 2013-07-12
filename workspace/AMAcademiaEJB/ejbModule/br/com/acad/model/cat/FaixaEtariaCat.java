@@ -44,6 +44,10 @@ public class FaixaEtariaCat implements Serializable{
 	}
 
 	
+	public FaixaEtariaCat(String nome) {
+		this.nome= nome;
+	}
+
 	public int getIdadeIni() {
 		return idadeIni;
 	}

@@ -1,6 +1,7 @@
 package br.com.acad.bean.treino;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -68,12 +69,7 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	public void showNewEntity() {
 		showEntity = true;
 		entity = new TreinoFixo();
-		entity.setDiasSemana(new DiasTreinoCat());
-		entity.setDuracao(new DuracaoTreinoCat());
-		entity.setFaixaEtaria(new FaixaEtariaCat());
-		entity.setObjetivo(new ObjetivoCat());
 		entity.setProfessor(new ProfessorFunc());
-		entity.setSexo(new SexoCat());
 	}
 
 	/**
@@ -81,6 +77,7 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	 */
 	@Override
 	public void incluirEntity() {
+		entity.setData(Calendar.getInstance());
 		entity.setTipoTreino(TipoTreinoDieta.FIXO);
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
@@ -128,7 +125,7 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	/**
 	 * busca todos SexoCat para preencher o field
 	 */
-	public List<SexoCat> getSexoCattField() {
+	public List<SexoCat> getSexoCatField() {
 		return sexoCatDAO.buscarTodos();
 	}
 	

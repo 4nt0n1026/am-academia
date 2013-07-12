@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name="ACAD_PARTE_CORPO")
 public class ParteCorpo implements Serializable {
 
+	// Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqParteCopro")
 	@Column(name="ID_PARTE_CORPO")
@@ -25,12 +26,25 @@ public class ParteCorpo implements Serializable {
 	@Column(length=255, nullable=false)
 	private String nome;
 
-	
+	// Construtores
 	public ParteCorpo(){}
 	
 	public ParteCorpo(String nome) {
 		super();
 		this.nome = nome;
+	}
+
+	// toString()
+	@Override
+	public String toString() {
+		return this.nome;
+	}
+	
+	
+	// Gets e Sets
+	public ParteCorpo(int id) {
+		super();
+		this.id = id;
 	}
 
 	public ParteCorpo(Integer id) {

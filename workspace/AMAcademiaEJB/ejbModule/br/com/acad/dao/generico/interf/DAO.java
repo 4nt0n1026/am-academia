@@ -13,7 +13,7 @@ public interface DAO<T,K> {
 	
 	T searchByID(K id);
 	
-	void update(T entity);
+	T update(T entity, K id);
 	
 	public abstract List<T> buscarTodos();
 	

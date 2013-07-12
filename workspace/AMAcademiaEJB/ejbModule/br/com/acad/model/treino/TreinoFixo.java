@@ -20,76 +20,68 @@ public class TreinoFixo extends Treino {
 
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)
-	private SexoCat sexo;
+	private SexoCat sexoCat = new SexoCat();
 	
 	@ManyToOne
 	@JoinColumn(name="FAIXA_ETARIA_ID", nullable=false)
-	private FaixaEtariaCat faixaEtaria;
+	private FaixaEtariaCat faixaEtariaCat = new FaixaEtariaCat();
 	
 	@ManyToOne
 	@JoinColumn(name="OBJETIVO_ID", nullable=false)
-	private ObjetivoCat objetivo;
+	private ObjetivoCat objetivoCat = new ObjetivoCat();
 	
 	@ManyToOne
 	@JoinColumn(name="DURACAO_TREINO_ID", nullable=false)
-	private DuracaoTreinoCat duracao;
+	private DuracaoTreinoCat duracaoTreinoCat = new DuracaoTreinoCat();
 	
 	@ManyToOne
 	@JoinColumn(name="DIAS_SEMANA_ID", nullable=false)
-	private DiasTreinoCat diasSemana;
+	private DiasTreinoCat diasTreinoCat = new DiasTreinoCat();
 	
 	public TreinoFixo(){}
 
-	public TreinoFixo(SexoCat sexo, FaixaEtariaCat faixaEtaria,
-			ObjetivoCat objetivo, DuracaoTreinoCat duracao,
-			DiasTreinoCat diasSemana) {
-		super();
-		this.sexo = sexo;
-		this.faixaEtaria = faixaEtaria;
-		this.objetivo = objetivo;
-		this.duracao = duracao;
-		this.diasSemana = diasSemana;
+	public SexoCat getSexoCat() {
+		return sexoCat;
 	}
 
-	public SexoCat getSexo() {
-		return sexo;
+	public void setSexoCat(SexoCat sexoCat) {
+		this.sexoCat = sexoCat;
 	}
 
-	public void setSexo(SexoCat sexo) {
-		this.sexo = sexo;
+	public FaixaEtariaCat getFaixaEtariaCat() {
+		return faixaEtariaCat;
 	}
 
-	public FaixaEtariaCat getFaixaEtaria() {
-		return faixaEtaria;
+	public void setFaixaEtariaCat(FaixaEtariaCat faixaEtariaCat) {
+		this.faixaEtariaCat = faixaEtariaCat;
 	}
 
-	public void setFaixaEtaria(FaixaEtariaCat faixaEtaria) {
-		this.faixaEtaria = faixaEtaria;
+	public ObjetivoCat getObjetivoCat() {
+		return objetivoCat;
 	}
 
-	public ObjetivoCat getObjetivo() {
-		return objetivo;
+	public void setObjetivoCat(ObjetivoCat objetivoCat) {
+		this.objetivoCat = objetivoCat;
 	}
 
-	public void setObjetivo(ObjetivoCat objetivo) {
-		this.objetivo = objetivo;
+	public DuracaoTreinoCat getDuracaoTreinoCat() {
+		return duracaoTreinoCat;
 	}
 
-	public DuracaoTreinoCat getDuracao() {
-		return duracao;
+	public void setDuracaoTreinoCat(DuracaoTreinoCat duracaoTreinoCat) {
+		this.duracaoTreinoCat = duracaoTreinoCat;
 	}
 
-	public void setDuracao(DuracaoTreinoCat duracao) {
-		this.duracao = duracao;
+	public DiasTreinoCat getDiasTreinoCat() {
+		return diasTreinoCat;
 	}
 
-	public DiasTreinoCat getDiasSemana() {
-		return diasSemana;
+	public void setDiasTreinoCat(DiasTreinoCat diasTreinoCat) {
+		this.diasTreinoCat = diasTreinoCat;
 	}
 
-	public void setDiasSemana(DiasTreinoCat diasSemana) {
-		this.diasSemana = diasSemana;
-	}
+	
+
 	
 	
 	

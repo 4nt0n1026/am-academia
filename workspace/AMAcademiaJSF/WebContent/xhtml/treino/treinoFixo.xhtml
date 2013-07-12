@@ -22,16 +22,57 @@
 					<h:form id="formEntity"  >
 						<!-- TABFORM 1 -->
 						<p:fieldset id="field1"  rendered="#{treinoFixoBean.showEntity}">
-							<h:panelGrid columns="10">
+							<h:panelGrid columns="6">
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
 						        <p:inputText id="idNome" value="#{treinoFixoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+
+						        <h:outputLabel for="idDesc" value="Descricao" />  
+						        <p:inputTextarea id="idDesc" value="#{treinoFixoBean.entity.descricao}" cols="50"/> 
 						        
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
+						        <h:outputLabel for="idProf" value="Professor: " />  
+							    <p:selectOneMenu id="idProf" value="#{treinoFixoBean.entity.professor.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>   
+						        
+						    </h:panelGrid>
+						    <h:panelGrid columns="10">
+								<h:outputLabel for="idObjetivo" value="Objetivo: " />  
+							    <p:selectOneMenu id="idObjetivo" value="#{treinoFixoBean.entity.objetivoCat.id}" rendered="true" requiredMessage="Objetivo obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.objetivoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}"/>  
+								</p:selectOneMenu> 
+								
+								<h:outputLabel for="idFaixa" value="Faixa Etaria: " />  
+							    <p:selectOneMenu id="idFaixa" value="#{treinoFixoBean.entity.faixaEtariaCat.id}" rendered="true" requiredMessage="Faixa Etaria obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.faixaEtariaCatField}" var="faixa" itemLabel="#{faixa.nome}" itemValue="#{faixa.id}"/>  
+								</p:selectOneMenu> 
+								
+								<h:outputLabel for="idDias" value="Quantidade de dias na semana " />  
+							    <p:selectOneMenu id="idDias" value="#{treinoFixoBean.entity.diasTreinoCat.id}" rendered="true" requiredMessage="Quantidade de dias obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.diasTreinoCatField}" var="dias" itemLabel="#{dias.nome}" itemValue="#{dias.id}"/>  
+								</p:selectOneMenu> 
+
+								<h:outputLabel for="idDuracao" value="Duracao " />  
+							    <p:selectOneMenu id="idDuracao" value="#{treinoFixoBean.entity.duracaoTreinoCat.id}" rendered="true" requiredMessage="Duracao obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.duracaoTreinoCatField}" var="duracao" itemLabel="#{duracao.nome}" itemValue="#{duracao.id}"/>  
+								</p:selectOneMenu> 
+
+								<h:outputLabel for="idSexo" value="Sexo " />  
+							    <p:selectOneMenu id="idSexo" value="#{treinoFixoBean.entity.sexoCat.id}" rendered="true" requiredMessage="Sexo obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.sexoCatField}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo.id}"/>  
+								</p:selectOneMenu> 
 					        </h:panelGrid>
+
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+					        	
 						</p:fieldset> 
 						
 						<!-- TABFORM 2 -->
@@ -86,6 +127,30 @@
 						
 						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
 							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.objetivoCat.nome}"  >
+							<h:outputText value="#{entity.objetivoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.duracaoTreinoCat.nome}"  >
+							<h:outputText value="#{entity.duracaoTreinoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.diasTreinoCat.nome}"  >
+							<h:outputText value="#{entity.diasTreinoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.faixaEtariaCat.nome}"  >
+							<h:outputText value="#{entity.faixaEtariaCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.sexoCat.nome}"  >
+							<h:outputText value="#{entity.sexoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.professor.nome}"  >
+							<h:outputText value="#{entity.professor.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  

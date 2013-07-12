@@ -35,6 +35,10 @@ public class SexoCat implements Serializable{
 		this.nome = nome;
 	}
 
+	public SexoCat(String nome) {
+		this.nome = nome;
+	}
+
 	public int getId() {
 		return id;
 	}

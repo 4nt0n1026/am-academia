@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 
 
+
+
 @SuppressWarnings("serial")
 @Entity
 @SequenceGenerator(name="seqExercicio", sequenceName="SEQ_EXERCICIO", allocationSize=1)
@@ -55,6 +57,28 @@ public class Exercicio implements Serializable {
 	
 	
 	//metodos
+	/**
+	 * Apaga listas de partes de corpo Primarias e Secundarias
+	 */
+	public void zeraPartesCorpos(){
+		this.zeraParteCorpoPrimaria();
+		this.zeraParteCorpoSecundaria();
+	}
+	
+	/**
+	 * Apaga lista de ParteCorpoPrimaria
+	 */
+	public void zeraParteCorpoPrimaria(){
+		this.parteCorpoPrimaria = new HashSet<ParteCorpo>();
+	}
+	
+	/**
+	 * Apaga lista de ParteCorpoSecundaria
+	 */
+	public void zeraParteCorpoSecundaria(){
+		this.parteCorpoSecundaria = new HashSet<ParteCorpo>();
+	}
+	
 	/**
 	 * Inclui ParteCorpo para lista de parteCorpoPrimaria
 	 * @param parte

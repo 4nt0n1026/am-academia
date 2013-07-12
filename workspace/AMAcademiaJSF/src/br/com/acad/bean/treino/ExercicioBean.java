@@ -12,6 +12,8 @@ import javax.faces.bean.ViewScoped;
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.logic.GenericLogic;
+import br.com.acad.logic.ParteCorpoLogic;
 import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ParteCorpo;
 
@@ -54,12 +56,25 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 		idsParteCorpoPrimaria = new ArrayList<String>();
 		idsParteCorpoSecundaria = new ArrayList<String>();
 	}
+	
+	/**
+	 * show form de edit buscando as partes de corpo
+	 */
+	@Override
+	public void showEditEntity() {
+		idsParteCorpoPrimaria = ParteCorpoLogic.getIds(entity.getParteCorpoPrimaria(parteCorpoDAO));
+		idsParteCorpoSecundaria = ParteCorpoLogic.getIds(entity.getParteCorpoSecundaria(parteCorpoDAO));
+		super.showEditEntity();
+	}
 
 	/**
 	 * inclui ou edita entity no banco
 	 */
 	@Override
 	public void incluirEntity() {
+		// Apaga as listas de parte corpo para edicao (nao afeta inclusao)
+		entity.zeraPartesCorpos();;
+		
 		// Transforma os ids de parte de corpo em List de Parte Corpo
 		for(String id : idsParteCorpoPrimaria){
 			entity.addParteCorpoPrimaria(new ParteCorpo(Integer.parseInt(id)));
@@ -79,7 +94,6 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
 	
-	
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/
@@ -89,6 +103,22 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	 */
 	public List<ParteCorpo> getPartesCorposField() {
 		return parteCorpoDAO.buscarTodos();
+	}
+	
+	/**
+	 * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
+	 * @return
+	 */
+	public String getPartesCorpoPrimDetail() {
+		return GenericLogic.formatListOfObjects(entity.getParteCorpoPrimaria(parteCorpoDAO), ", ");
+	}
+
+	/**
+	 * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
+	 * @return
+	 */
+	public String getPartesCorpoSecDetail() {
+		return GenericLogic.formatListOfObjects(entity.getParteCorpoSecundaria(parteCorpoDAO), ", ");
 	}
 
 
@@ -111,7 +141,12 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	public void setIdsParteCorpoSecundaria(List<String> idsParteCorpoSecundaria) {
 		this.idsParteCorpoSecundaria = idsParteCorpoSecundaria;
 	}
+
 	
 
+	
+	
+	
+	
 	
 }

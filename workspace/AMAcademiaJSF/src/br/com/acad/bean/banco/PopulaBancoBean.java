@@ -9,11 +9,17 @@ import javax.faces.bean.ViewScoped;
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
 import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
 import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
+import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
+import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
+import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 import br.com.acad.model.avisos.NoticiaCat;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
+import br.com.acad.model.cat.FaixaEtariaCat;
+import br.com.acad.model.cat.ObjetivoCat;
+import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
 import br.com.acad.model.treino.ParteCorpo;
 
@@ -32,6 +38,13 @@ public class PopulaBancoBean implements Serializable {
 	private DiasTreinoCatDAO diasTreinoCatDAO;
 	@EJB
 	private DuracaoTreinoCatDAO duracaoTreinoCatDAO;	
+	@EJB
+	private ObjetivoCatDAO objetivoCatDAO;	
+	@EJB
+	private SexoCatDAO sexoCatDAO;
+	@EJB
+	private FaixaEtariaCatDAO faixaEtariaCatDAO;
+	
 	
 	public void popula(){
 		populaParteCorpo();
@@ -40,7 +53,40 @@ public class PopulaBancoBean implements Serializable {
 		populaFuncionario();
 		populaDuracaoTreinoCat();
 		populaDiasTreinoCat();
+		populaObjetivoCat();
+		populaSexoCat();
+		populaFaixaEtariaCat();
+	}
+	
+	/**
+	 * popula info basica de FaixaEtariaCat
+	 */
+	public void populaFaixaEtariaCat(){
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("Até 15 anos"));
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 16 a 19 anos"));
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 20 a 30 anos"));
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 31 a 45 anos"));
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 46 a 60 anos"));
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("Mais de 60 anos"));
 		
+	}
+	
+	/**
+	 * popula info basica de SexoCat
+	 */
+	public void populaSexoCat(){
+		sexoCatDAO.insert(new SexoCat("Masculino"));
+		sexoCatDAO.insert(new SexoCat("Feminino"));
+		sexoCatDAO.insert(new SexoCat("Todos"));
+	}
+	
+	/**
+	 * popula info basica de ObjetivoCat
+	 */
+	public void populaObjetivoCat(){
+		objetivoCatDAO.insert(new ObjetivoCat("Hipertrofia"));
+		objetivoCatDAO.insert(new ObjetivoCat("Saude"));
+		objetivoCatDAO.insert(new ObjetivoCat("Emagrecer"));
 	}
 	
 	/**

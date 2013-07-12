@@ -12,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
+import br.com.acad.logic.PessoaLogic;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.SolicitacaoTreino;
 
@@ -79,6 +80,18 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	 */
 	public List<Aluno> getAlunosField() {
 		return alunoDAO.buscarFieldNome();
+	}
+	
+	/**
+	 * Mostra a idade do aluno a partir da data de nasciemento
+	 * @return
+	 */
+	public int getIdadeAlunoDetail(){
+		if(entity.getAluno().getDataNascimento()!=null){
+			return PessoaLogic.getIdade(entity.getAluno().getDataNascimento());
+		}else{
+			return 0;
+		}
 	}
 	
 

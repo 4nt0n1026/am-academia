@@ -23,14 +23,15 @@
 						<p:fieldset id="field"  rendered="#{solicitacaoTreinoBean.showEntity}">
 							<h:panelGrid columns="10">
 							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{solicitacaoTreinoBean.entity.descricao}" required="true" requiredMessage="Nome obrigatorio" />  
+						        <h:outputLabel for="idDesc" value="Descricao" />  
+						        <p:inputTextarea id="idDesc" value="#{solicitacaoTreinoBean.entity.descricao}" cols="60" 
+						        		required="true" requiredMessage="Nome obrigatorio" />  
 						        
 						        <h:outputLabel for="idAluno" value="Aluno: " />  
-							    <p:selectOneMenu id="idAluno" value="#{noticiaBean.entity.aluno.id}" rendered="true" style="width:250px"
+							    <p:selectOneMenu id="idAluno" value="#{solicitacaoTreinoBean.entity.aluno.id}" rendered="true" style="width:250px"
 							    			requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains" >  
 							    	<f:selectItem itemLabel="---" itemValue="" />  
-							    	<f:selectItems value="#{noticiaBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}"/>  
+							    	<f:selectItems value="#{solicitacaoTreinoBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}"/>  
 								</p:selectOneMenu>  
 	
 						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoTreinoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
@@ -69,18 +70,25 @@
 							 paginatorAlwaysVisible="false" draggableColumns="true" 
 							 selection="#{solicitacaoTreinoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nascimento" sortBy="#{entity.dataSolicitacao.time}"  >
+						<p:ajax event="rowSelect" listener="#{solicitacaoTreinoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{solicitacaoTreinoBean.hideFormDetail}" update=":tabView1:detailEntity"/> 
+						
+						<p:column headerText="Data" sortBy="#{entity.dataSolicitacao.time}" width="10" styleClass="center">
 							<h:outputText value="#{entity.dataSolicitacao.time}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entity.aluno.nome}" width="10" styleClass="center">
+							<h:outputText value="#{entity.aluno.nome}"/>
+						</p:column>
 						
-						<p:column headerText="Nome" sortBy="#{entity.descricao}"  >
+						<p:column headerText="Descricao" sortBy="#{entity.descricao}" width="80" >
 							<h:outputText value="#{entity.descricao}"/>
 						</p:column>
 						
-						<p:column headerText="Nome" sortBy="#{entity.aluno.nome}"  >
-							<h:outputText value="#{entity.aluno.nome}"/>
+						<p:column headerText="Respondido" sortBy="#{entity.respondido}" width="5" styleClass="center" >
+							<p:selectBooleanCheckbox disabled="true" value="#{entity.respondido}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
@@ -93,7 +101,26 @@
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-			
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoTreinoBean.showEntityDetail}">
+						<p:panelGrid columns="2">
+							<h:outputText value="Nome do aluno:"/>
+							<h:outputText value="#{solicitacaoTreinoBean.entity.aluno.nome}" />
+							
+							<h:outputText value="Peso do aluno:"/>
+							<h:outputText value="#{solicitacaoTreinoBean.entity.aluno.peso}" />
+							
+							<h:outputText value="Altura do aluno:"/>
+							<h:outputText value="#{solicitacaoTreinoBean.entity.aluno.altura}" />
+							
+							<h:outputText value="Idade do aluno:"/>
+							<h:outputText value="#{solicitacaoTreinoBean.idadeAlunoDetail}" />
+							
+							<h:outputText value="Descricao:"/>
+							<h:outputText value="#{solicitacaoTreinoBean.entity.descricao}" />
+						</p:panelGrid>
+					</p:fieldset>
+				</h:form>
 			
 			
 				<!-- ****************************************************************************************************** -->
