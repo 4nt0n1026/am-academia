@@ -22,4 +22,16 @@ public class UnidadeDAOImpl extends DAOImpl<Unidade,Integer> implements UnidadeD
 		return q.getResultList();
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Unidade> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

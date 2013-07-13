@@ -10,6 +10,7 @@ import br.com.acad.model.treino.Exercicio;
 @Remote
 public interface ExercicioDAO extends DAO<Exercicio,Integer>{
 	
+
 	public List<Exercicio> buscarTodos();
 	
 }

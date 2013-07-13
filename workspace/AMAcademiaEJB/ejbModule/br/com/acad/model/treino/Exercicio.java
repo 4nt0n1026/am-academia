@@ -28,6 +28,8 @@ import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 public class Exercicio implements Serializable {
 	
 	
+	public static final String[] STATIC_FIELDS = {"nome"};
+
 	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqExercicio")

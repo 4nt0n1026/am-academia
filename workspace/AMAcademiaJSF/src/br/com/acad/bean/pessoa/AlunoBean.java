@@ -1,7 +1,7 @@
 package br.com.acad.bean.pessoa;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -32,8 +32,11 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = alunoDAO;
-		entities = alunoDAO.buscarTodos();
+		staticFields = Aluno.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**
@@ -43,7 +46,7 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	public void showNewEntity() {
 		showEntity = true;
 		entity = new Aluno();
-		entity.setDataNascimento(Calendar.getInstance());
+		entity.setDataNascimento(new GregorianCalendar());
 	}
 
 	/**
@@ -61,6 +64,7 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	public void deletarEntity() {
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
+	
 	
 	/************************************************************************************************************/
 	//GET FIELDS

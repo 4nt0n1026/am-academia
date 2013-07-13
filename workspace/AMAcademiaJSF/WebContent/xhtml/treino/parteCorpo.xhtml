@@ -28,7 +28,7 @@
 						        
 	
 						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{parteCorpoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	<p:button icon="ui-icon ui-icon-close"  action="#{parteCorpoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
 						</p:fieldset> 
@@ -44,38 +44,50 @@
 					        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{parteCorpoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
 					        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{parteCorpoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
 					        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{parteCorpoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-					        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1"/>
+					        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1:formEntity :tabView1:tabelaEntity"/>
 					        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 					        	<p:separator />  
 					        </p:toolbarGroup>
 					        
 					        <p:toolbarGroup align="right">  
-					        	Busca:<p:inputText />
+					        	Busca:<p:inputText value="#{parteCorpoBean.search}" />
+					        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1" />
+					        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{parteCorpoBean.resetSearch}" ajax="true" update=":tabView1" />
 					        </p:toolbarGroup>
+					        
 					    </p:toolbar>
 				   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{parteCorpoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
+					<p:dataTable value="#{parteCorpoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" resizableColumns="true" 
 							 selection="#{parteCorpoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome"  >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
+					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{parteCorpoBean.previousPageTable}" 
+										rendered="#{parteCorpoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{parteCorpoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{parteCorpoBean.nextPageTable}" 
+										rendered="#{parteCorpoBean.page != parteCorpoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{parteCorpoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{parteCorpoBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->
-				<!-- info de entity -->
+				<!-- Detail de entity -->
 				<!-- ****************************************************************************************************** -->
 			
 			

@@ -21,4 +21,17 @@ public class LogradouroTipoDAOImpl extends DAOImpl<LogradouroTipo,Integer> imple
 		return null;
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<LogradouroTipo> buscarTodos(int page, String txtSearch,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

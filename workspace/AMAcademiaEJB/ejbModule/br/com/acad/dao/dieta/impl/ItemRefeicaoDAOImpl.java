@@ -22,4 +22,17 @@ public class ItemRefeicaoDAOImpl extends DAOImpl<ItemRefeicao,Integer> implement
 		return q.getResultList();
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<ItemRefeicao> buscarTodos(int page, String txtSearch,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

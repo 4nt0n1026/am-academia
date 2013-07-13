@@ -16,6 +16,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_NOTICIA_CAT")
 public class NoticiaCat implements Serializable{
 
+	public static final String[] STATIC_FIELDS = {"nome"};
+
 	// static field para busca no banco
 	public static String[] BUSCA = {"nome"};
 	

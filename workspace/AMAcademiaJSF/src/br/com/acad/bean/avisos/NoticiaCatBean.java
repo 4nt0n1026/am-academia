@@ -31,8 +31,11 @@ public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = noticiaCatDAO;
-		entities = noticiaCatDAO.buscarTodos();
+		staticFields = NoticiaCat.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**

@@ -11,8 +11,6 @@ import br.com.acad.model.treino.ParteCorpo;
 @Remote
 public interface ParteCorpoDAO extends DAO<ParteCorpo,Integer>{
 	
-	public List<ParteCorpo> buscarTodos();
-	public List<ParteCorpo> buscarTodos(int page, String txtSearch, String order);
 	public List<ParteCorpo> buscarPartesPrimarias(Exercicio exercicio);
 	public List<ParteCorpo> buscarPartesSecundaria(Exercicio exercicio);
 	

@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
+import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.pessoa.Aluno;
 
 @Stateless
@@ -36,6 +37,27 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 			alunos.add(a);
 		}
 		return alunos;
+	}
+
+	@Override
+	public long contarTodos(String search) {
+		Query q = em.createQuery(SqlLogic.getCountSql(Aluno.STATIC_FIELDS, "Aluno", search));
+		return  (Long) q.getSingleResult();
+	}
+
+	@Override
+	public List<Aluno> buscarTodos(int page, String txtSearch, String order) {
+		TypedQuery<Aluno> q = em.createQuery(SqlLogic.getSql(Aluno.STATIC_FIELDS, "Aluno", txtSearch, order), Aluno.class);
+				
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
 	}
 
 }

@@ -16,6 +16,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_UNIDADE_MEDIDA")
 public class UnidadeMedida implements Serializable {
 	
+	public static final String[] STATIC_FIELDS = {"nome", "sigla"};
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqUnidadeMedida")
 	@Column(name="ID_UNIDADE_MEDIDA")

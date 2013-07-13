@@ -21,4 +21,16 @@ public class EnderecoDAOImpl extends DAOImpl<Endereco,Integer> implements Endere
 		return null;
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Endereco> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

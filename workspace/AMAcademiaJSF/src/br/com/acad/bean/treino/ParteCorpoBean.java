@@ -31,9 +31,13 @@ public class ParteCorpoBean extends Bean<ParteCorpo> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = parteCorpoDAO;
-		entities = parteCorpoDAO.buscarTodos();
+		staticFields = ParteCorpo.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
+	
 	
 	/**
 	 * show form de entity

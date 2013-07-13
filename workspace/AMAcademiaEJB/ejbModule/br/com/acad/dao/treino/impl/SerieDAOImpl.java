@@ -31,4 +31,16 @@ public class SerieDAOImpl extends DAOImpl<Serie,Integer> implements SerieDAO{
 		return q.getResultList();
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Serie> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

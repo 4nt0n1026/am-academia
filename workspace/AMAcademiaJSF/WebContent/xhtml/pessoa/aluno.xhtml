@@ -72,8 +72,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{alunoBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{alunoBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{alunoBean.resetSearch}" ajax="true" update=":tabView1" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -81,44 +84,53 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{alunoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{alunoBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{alunoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+								resizableColumns="true" selection="#{alunoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-							<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+							<p:column headerText="Nome"   >
 								<h:outputText value="#{entity.nome}"/>
 							</p:column>
 						
 							
-							<p:column headerText="Email" sortBy="#{entity.email}"  >
+							<p:column headerText="Email"  >
 								<h:outputText value="#{entity.email}"/>
 							</p:column>
 							
-							<p:column headerText="Nascimento" sortBy="#{entity.dataNascimento.time}"  >
+							<p:column headerText="Nascimento"   >
 								<h:outputText value="#{entity.dataNascimento.time}">
 									<f:convertDateTime pattern="dd/MM/yyyy" />
 								</h:outputText>
 							</p:column>
 							
-							<p:column headerText="CPF" sortBy="#{entity.cpf}"  >
+							<p:column headerText="CPF"  >
 								<h:outputText value="#{entity.cpf}"/>
 							</p:column>
 							
-							<p:column headerText="RG" sortBy="#{entity.rg}"  >
+							<p:column headerText="RG"  >
 								<h:outputText value="#{entity.rg}"/>
 							</p:column>
 							
-							<p:column headerText="Peso" sortBy="#{entity.peso}"  >
+							<p:column headerText="Peso" >
 								<h:outputText value="#{entity.peso}"/>
 							</p:column>
 							
-							<p:column headerText="Altura" sortBy="#{entity.altura}"  >
+							<p:column headerText="Altura" >
 								<h:outputText value="#{entity.altura}"/>
 							</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{alunoBean.previousPageTable}" 
+										rendered="#{alunoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{alunoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{alunoBean.nextPageTable}" 
+										rendered="#{alunoBean.page != alunoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{alunoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{alunoBean.totalPages}" />
+							</div>
 						</f:facet>
 						
 					</p:dataTable>

@@ -21,7 +21,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 public class Noticia implements Serializable {
 	
 	// static field para busca no banco
-	public static String[] BUSCA = {"titulo", "descricao", "professorFunc.nome", "categoria.nome"};
+	public static final String[] STATIC_FIELDS = {"titulo", "professorFunc.nome", "categoria.nome"};
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqNoticia")

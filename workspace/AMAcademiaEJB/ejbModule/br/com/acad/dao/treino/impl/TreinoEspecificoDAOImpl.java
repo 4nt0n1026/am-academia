@@ -22,4 +22,17 @@ public class TreinoEspecificoDAOImpl extends DAOImpl<TreinoEspecifico,Integer> i
 		return q.getResultList();
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<TreinoEspecifico> buscarTodos(int page, String txtSearch,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -22,4 +22,16 @@ public class TreinoDAOImpl extends DAOImpl<Treino,Integer> implements TreinoDAO{
 		return q.getResultList();
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Treino> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -32,8 +32,11 @@ public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializab
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = unidadeMedidaDAO;
-		entities = unidadeMedidaDAO.buscarTodos();
+		staticFields = UnidadeMedida.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**

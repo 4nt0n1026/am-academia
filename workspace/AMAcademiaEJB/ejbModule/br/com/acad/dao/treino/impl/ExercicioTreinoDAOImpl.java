@@ -30,6 +30,19 @@ public class ExercicioTreinoDAOImpl extends DAOImpl<ExercicioTreino,Integer> imp
 		q.setParameter("id", dia.getId());
 		return q.getResultList();
 	}
+
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<ExercicioTreino> buscarTodos(int page, String txtSearch,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

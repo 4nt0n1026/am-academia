@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.acad.model.treino.ParteCorpo;
+
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -21,12 +23,15 @@ public class ModeloBean extends Bean<Modelo> implements Serializable {
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
-//	
+	
 //	@PostConstruct
 //	@Override
 //	public void init() {
+//		page = 1;
 //		dao = modeloDAO;
-//		entities = modeloDAO.buscarTodos();
+//		staticFields = Modelo.STATIC_FIELDS;
+//		atualizar();
+//		atualizaPages();
 //	}
 //	
 //	/**
@@ -53,7 +58,7 @@ public class ModeloBean extends Bean<Modelo> implements Serializable {
 //	public void deletarEntity() {
 //		deletarGeneric(entity!=null?entity.getId():0);
 //	}
-//	
+	
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/

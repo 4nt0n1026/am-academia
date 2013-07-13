@@ -29,10 +29,10 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 	public List<ParteCorpo> buscarTodos(int page, String txtSearch, String order) {
 		TypedQuery<ParteCorpo> q = em.createQuery(SqlLogic.getSql(ParteCorpo.STATIC_FIELDS, "ParteCorpo", txtSearch, order), ParteCorpo.class);
 		
-		q.setMaxResults(TABLE_SIZE);
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
 
 		if(page>0){
-		q.setFirstResult((page -1)*TABLE_SIZE);
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
 		}else{
 			q.setFirstResult(1);
 		}
@@ -54,6 +54,12 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 		Query q = em.createQuery("select e.parteCorpoSecundaria from Exercicio e where e.id = :id");
 		q.setParameter("id", exercicio.getId());
 		return q.getResultList();
+	}
+
+	@Override
+	public long contarTodos(String search) {
+		Query q = em.createQuery(SqlLogic.getCountSql(ParteCorpo.STATIC_FIELDS, "ParteCorpo", search));
+		return  (Long) q.getSingleResult();
 	}
 
 }

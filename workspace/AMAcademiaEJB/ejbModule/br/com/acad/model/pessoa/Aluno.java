@@ -19,6 +19,8 @@ import br.com.acad.model.treino.Treino;
 @PrimaryKeyJoinColumn(name="ID_PESSOA_ID")
 public class Aluno extends Pessoa{
 
+	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg", "peso", "altura"};
+
 	@Column(nullable=true, precision=2)
 	private double peso;
 	

@@ -17,4 +17,8 @@ public interface DAO<T,K> {
 	
 	public abstract List<T> buscarTodos();
 	
+	public abstract long contarTodos(String search);
+	
+	public abstract List<T> buscarTodos(int page, String search, String order);
+	
 }

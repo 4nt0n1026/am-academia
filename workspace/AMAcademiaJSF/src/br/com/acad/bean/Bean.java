@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.MessagesLogic;
+import br.com.acad.logic.SqlLogic;
 
 /**
  * Bean generico com metodos, atributos e assinaturas que todos beans devem possuir.
@@ -31,12 +32,16 @@ public abstract class Bean<T> {
 	protected int page;
 	protected String search;
 	protected String order;
+	protected long totalPages;
+	protected long totalEntities;
 	
 	//Navigation
 	protected boolean showEntity;
 	protected boolean showEntity2;
 	protected boolean showEntity3;
 	protected boolean showEntity4;
+	
+	//Detail
 	protected boolean showEntityDetail;
 	
 	
@@ -80,26 +85,52 @@ public abstract class Bean<T> {
 	 */
 	public void atualizar() {
 		closeForms();
-		entities = dao.buscarTodos();
+		entities = dao.buscarTodos(page, search, order);
+		atualizaPages();
+	}
+
+	/**
+	 * Apaga o filtro de search
+	 */
+	public void resetSearch() {
+		search = "";
+		closeForms();
+		entities = dao.buscarTodos(page, search, order);
+		atualizaPages();
+	}
+
+	/**
+	 * atualiza pagina com msg de sucesso
+	 */
+	public void atualizarComMsg() {
+		closeForms();
+		entities = dao.buscarTodos(page, search, order);
+		atualizaPages();
 		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
 	}
 	
 	/**
 	 * proxima tela da tabela.
-	 * Utilizado somente para casos de formularios mais complexos
 	 */
 	public void nextPageTable(){
-		page--;
-		atualizar();
+		if(page<totalPages){
+			page++;
+			atualizar();
+		}else{
+			MessagesLogic.addWarnMessage("Aviso", "ultima pagina");
+		}
 	}
 
 	/**
 	 * tela anterior da tabela.
-	 * Utilizado somente para casos de formularios mais complexos
 	 */
 	public void previousPageTable(){
-		page++;
-		atualizar();
+		if(page>1){
+			page--;
+			atualizar();
+		}else{
+			MessagesLogic.addWarnMessage("Aviso", "primeira pagina");
+		}
 	}
 	
 	/**
@@ -162,10 +193,24 @@ public abstract class Bean<T> {
 	public void hideFormDetail(){
 		showEntityDetail = false;
 	}
+	
+
 
 	/************************************************************************************************************/
 	//METODOS CHAMADOS
 	/************************************************************************************************************/
+	
+	/**
+	 * Atualiza o total de entities e o total de paginas
+	 */
+	public void atualizaPages(){
+		totalEntities = dao.contarTodos(search);
+		totalPages = (totalEntities/SqlLogic.TABLE_SIZE); 
+		totalPages += totalEntities%SqlLogic.TABLE_SIZE!=0?1:0;
+		if(totalPages==0){
+			totalPages = 1;
+		}
+	}
 	
 	/**
 	 * inclui ou edita Entity no banco
@@ -175,11 +220,11 @@ public abstract class Bean<T> {
 	public void incluirGeneric(Integer id) {
 		if(id==0){
 			entity = dao.insert(entity);
-			entities.add(entity);
 		}else{
 			entity = dao.update(entity);
 		}
-		closeForms();	
+		closeForms();
+		atualizar();
 		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
 	}
 	
@@ -194,11 +239,8 @@ public abstract class Bean<T> {
 	public void deletarGeneric(Integer id){
 		if(entity != null){
 			dao.removeById(id);
-			entities.remove(entity);
-			closeForms();
+			atualizar();
 			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
-			
-			entity = null;
 		}else{
 			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
 		}
@@ -262,6 +304,13 @@ public abstract class Bean<T> {
 	public void setOrder(String order) {
 		this.order = order;
 	}
+	public long getTotalPages() {
+		return totalPages;
+	}
+	public long getTotalEntities() {
+		return totalEntities;
+	}
+	
 	
 	
 	

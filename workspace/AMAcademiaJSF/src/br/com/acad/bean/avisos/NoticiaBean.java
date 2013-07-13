@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -39,8 +40,11 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = noticiaDAO;
-		entities = noticiaDAO.buscarTodos();
+		staticFields = Noticia.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**

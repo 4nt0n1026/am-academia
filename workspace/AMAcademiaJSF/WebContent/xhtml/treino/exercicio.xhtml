@@ -85,30 +85,40 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
-				        </p:toolbarGroup>
+					        	Busca:<p:inputText value="#{exercicioBean.search}" />
+					        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{exercicioBean.atualizar}" ajax="true" update=":tabView1" />
+					        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{exercicioBean.resetSearch}" ajax="true" update=":tabView1" />
+					        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{exercicioBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{exercicioBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{exercicioBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity"
+								 resizableColumns="true"  selection="#{exercicioBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
 						<p:ajax event="rowSelect" listener="#{exercicioBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
 						<p:ajax event="rowUnselect" listener="#{exercicioBean.hideFormDetail}" update=":tabView1:detailEntity"/>  
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 						
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{exercicioBean.previousPageTable}" 
+										rendered="#{exercicioBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{exercicioBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{exercicioBean.nextPageTable}" 
+										rendered="#{exercicioBean.page != exercicioBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{exercicioBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{exercicioBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 				<br/>

@@ -22,4 +22,16 @@ public class RefeicaoDAOImpl extends DAOImpl<Refeicao,Integer> implements Refeic
 		return q.getResultList();
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Refeicao> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

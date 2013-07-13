@@ -21,4 +21,16 @@ public class TelefoneDAOImpl extends DAOImpl<Telefone,Integer> implements Telefo
 		return null;
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Telefone> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

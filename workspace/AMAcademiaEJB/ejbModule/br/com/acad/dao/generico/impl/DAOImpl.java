@@ -13,8 +13,6 @@ import br.com.acad.dao.generico.interf.DAO;
 @Stateless
 public abstract class DAOImpl<T,K> implements DAO<T,K>{
 
-	public static int TABLE_SIZE = 30;
-	
 	@PersistenceContext(unitName="CLIENTE_MYSQL", type=PersistenceContextType.EXTENDED)
 	protected EntityManager em;
 	
@@ -55,6 +53,9 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 
 	public abstract List<T> buscarTodos();
 	
+	public abstract long contarTodos(String search);
+	
+	public abstract List<T> buscarTodos(int page, String txtSearch, String order);
 	
 	
 }

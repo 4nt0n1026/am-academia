@@ -49,8 +49,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{modeloBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{modeloBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{modeloBean.resetSearch}" ajax="true" update=":tabView1" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -58,19 +61,27 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{modeloBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{modeloBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{modeloBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{modeloBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{modeloBean.previousPageTable}" 
+										rendered="#{modeloBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{modeloBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{modeloBean.nextPageTable}" 
+										rendered="#{modeloBean.page != modeloBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{modeloBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{modeloBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			

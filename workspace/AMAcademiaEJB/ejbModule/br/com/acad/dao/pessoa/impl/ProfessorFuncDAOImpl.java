@@ -66,4 +66,17 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		return professores;
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<ProfessorFunc> buscarTodos(int page, String txtSearch,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

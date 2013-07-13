@@ -21,4 +21,16 @@ public class EstadoDAOImpl extends DAOImpl<Estado,Integer> implements EstadoDAO{
 		return null;
 	}
 
+	@Override
+	public long contarTodos(String search) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Estado> buscarTodos(int page, String txtSearch, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

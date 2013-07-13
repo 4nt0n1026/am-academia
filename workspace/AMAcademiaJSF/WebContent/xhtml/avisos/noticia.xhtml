@@ -65,8 +65,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{noticiaBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{noticiaBean.resetSearch}" ajax="true" update=":tabView1" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -74,10 +77,8 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{noticiaBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{noticiaBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{noticiaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							 resizableColumns="true" selection="#{noticiaBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
 						<p:column headerText="Titulo" sortBy="#{entity.titulo}"  >
 							<h:outputText value="#{entity.titulo}"/>
@@ -96,9 +97,19 @@
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{noticiaBean.previousPageTable}" 
+										rendered="#{noticiaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{noticiaBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{noticiaBean.nextPageTable}" 
+										rendered="#{noticiaBean.page != noticiaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{noticiaBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{noticiaBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			
