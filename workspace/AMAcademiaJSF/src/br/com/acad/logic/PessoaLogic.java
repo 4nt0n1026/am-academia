@@ -8,6 +8,7 @@ public class PessoaLogic {
 	 * Retorna a idade da pessoa passando a data de nascimento
 	 * @param dataNascimento
 	 * @return
+	 * testeGit
 	 */
 	public static int getIdade(Calendar dataNascimento){
 		Calendar dataAtual = Calendar.getInstance();
