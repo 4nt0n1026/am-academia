@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_ALIMENTO")
 public class Alimento implements Serializable {
 
+	public static final String[] STATIC_FIELDS = {"nome"};
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAlimento")
 	@Column(name="ID_ALIMENTO")

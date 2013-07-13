@@ -8,23 +8,22 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
-import br.com.acad.dao.dieta.interf.UnidadeMedidaDAO;
-import br.com.acad.model.dieta.UnidadeMedida;
+import br.com.acad.dao.dieta.interf.AlimentoDAO;
+import br.com.acad.model.dieta.Alimento;
 
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializable {
+public class AlimentoBean extends Bean<Alimento> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
 	
 	@EJB
-	private UnidadeMedidaDAO unidadeMedidaDAO;
+	private AlimentoDAO alimentoDAO;
 	
-
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
@@ -33,8 +32,8 @@ public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializab
 	@Override
 	public void init() {
 		page = 1;
-		dao = unidadeMedidaDAO;
-		staticFields = UnidadeMedida.STATIC_FIELDS;
+		dao = alimentoDAO;
+		staticFields = Alimento.STATIC_FIELDS;
 		atualizar();
 		atualizaPages();
 	}
@@ -45,18 +44,17 @@ public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializab
 	@Override
 	public void showNewEntity() {
 		showEntity = true;
-		entity = new UnidadeMedida();
+		entity = new Alimento();
 	}
-
+	
 	/**
 	 * inclui ou edita entity no banco
 	 */
 	@Override
 	public void incluirEntity() {
-		
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
-
+	
 	/**
 	 * deleta entity do banco
 	 */
@@ -70,17 +68,10 @@ public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializab
 	/************************************************************************************************************/
 	
 	
+
 	/************************************************************************************************************/
 	//GETS E SETS
 	/************************************************************************************************************/
-	
-
-
-	
-
-	
-	
-
 	
 	
 }
