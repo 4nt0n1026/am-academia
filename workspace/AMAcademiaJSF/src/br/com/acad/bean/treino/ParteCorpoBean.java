@@ -35,7 +35,6 @@ public class ParteCorpoBean extends Bean<ParteCorpo> implements Serializable {
 		dao = parteCorpoDAO;
 		staticFields = ParteCorpo.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	

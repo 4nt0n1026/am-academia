@@ -35,7 +35,6 @@ public class ObjetivoCatBean extends Bean<ObjetivoCat> implements Serializable {
 		dao = objetivoCatDAO;
 		staticFields = ObjetivoCat.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

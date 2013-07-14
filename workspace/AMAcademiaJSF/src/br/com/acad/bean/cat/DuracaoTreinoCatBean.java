@@ -35,7 +35,6 @@ public class DuracaoTreinoCatBean extends Bean<DuracaoTreinoCat> implements Seri
 		dao = duracaoTreinoCatDAO;
 		staticFields = DuracaoTreinoCat.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

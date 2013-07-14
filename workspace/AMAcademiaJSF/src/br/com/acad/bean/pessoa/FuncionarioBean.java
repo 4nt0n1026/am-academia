@@ -36,7 +36,6 @@ public class FuncionarioBean extends Bean<ProfessorFunc> implements Serializable
 		dao = professorFuncDAO;
 		staticFields = ProfessorFunc.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

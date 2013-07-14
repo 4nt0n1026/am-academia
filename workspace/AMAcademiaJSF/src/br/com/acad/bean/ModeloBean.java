@@ -31,7 +31,6 @@ public class ModeloBean extends Bean<Modelo> implements Serializable {
 //		dao = modeloDAO;
 //		staticFields = Modelo.STATIC_FIELDS;
 //		atualizar();
-//		atualizaPages();
 //	}
 //	
 //	/**

@@ -36,7 +36,6 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 		dao = alunoDAO;
 		staticFields = Aluno.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

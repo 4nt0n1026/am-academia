@@ -35,7 +35,6 @@ public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable {
 		dao = noticiaCatDAO;
 		staticFields = NoticiaCat.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

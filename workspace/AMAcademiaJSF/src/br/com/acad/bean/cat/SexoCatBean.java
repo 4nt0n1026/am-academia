@@ -35,7 +35,6 @@ public class SexoCatBean extends Bean<SexoCat> implements Serializable {
 		dao = sexoCatDAO;
 		staticFields = SexoCat.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

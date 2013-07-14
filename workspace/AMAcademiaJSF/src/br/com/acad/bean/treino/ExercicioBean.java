@@ -46,7 +46,6 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 		dao = exercicioDAO;
 		staticFields = Exercicio.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

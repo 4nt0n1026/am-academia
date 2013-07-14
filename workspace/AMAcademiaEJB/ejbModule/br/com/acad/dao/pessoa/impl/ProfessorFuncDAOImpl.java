@@ -110,7 +110,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		StringBuilder sql = new StringBuilder("from ProfessorFunc ");
 		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search);
 		if(sqlWhere.length()>1){
-			sql.append(sqlWhere).append(" and isProfessor = true");
+			sql.append(sqlWhere).append(" and isProfessor = false");
 		}else{
 			sql.append(" where isProfessor = false");
 		}

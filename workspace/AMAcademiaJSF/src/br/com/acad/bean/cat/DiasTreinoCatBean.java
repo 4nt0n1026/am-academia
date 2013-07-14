@@ -35,7 +35,6 @@ public class DiasTreinoCatBean extends Bean<DiasTreinoCat> implements Serializab
 		dao = diasTreinoCatDAO;
 		staticFields = DiasTreinoCat.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

@@ -36,7 +36,6 @@ public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializab
 		dao = unidadeMedidaDAO;
 		staticFields = UnidadeMedida.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

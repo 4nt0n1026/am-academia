@@ -35,7 +35,6 @@ public class AlimentoBean extends Bean<Alimento> implements Serializable {
 		dao = alimentoDAO;
 		staticFields = Alimento.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**

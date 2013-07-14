@@ -35,7 +35,6 @@ public class FaixaEtariaCatBean extends Bean<FaixaEtariaCat> implements Serializ
 		dao = faixaEtariaCatDAO;
 		staticFields = FaixaEtariaCat.STATIC_FIELDS;
 		atualizar();
-		atualizaPages();
 	}
 	
 	/**
