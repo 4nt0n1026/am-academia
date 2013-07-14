@@ -1,13 +1,17 @@
 package br.com.acad.logic;
 
 
+/**
+ * @author Christian Storch
+ *
+ */
 public class SqlLogic {
 
 	
 	/**
 	 * tamanho padrao de todas as tabelas dos xhtml
 	 */
-	public static int TABLE_SIZE = 4;
+	public static int TABLE_SIZE = 20;
 	
 	/**
 	 * Cria clausula where da sql 
@@ -18,15 +22,15 @@ public class SqlLogic {
 	public static String getWhereSql(String[] lista, String txtSearch){
 		
 		if(txtSearch !=null && txtSearch.length()>0){
-			StringBuilder fields = new StringBuilder(" where ");
+			StringBuilder fields = new StringBuilder(" where (");
 			
 			for (String field : lista) {
 				if(fields.length()>8){
 					fields.append(" or ");
 				}
 				fields.append(field).append(" like '%").append(txtSearch).append("%'");
-				
 			}
+			fields.append(")");
 	
 			return fields.toString();
 		}

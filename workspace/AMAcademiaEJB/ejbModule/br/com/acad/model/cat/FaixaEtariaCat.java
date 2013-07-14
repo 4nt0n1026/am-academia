@@ -16,9 +16,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_FAIXA_ETARIA_CAT")
 public class FaixaEtariaCat implements Serializable{
 	
-	// static field para busca no banco
-	public static String[] BUSCA = {"nome"};
-	
+	public static final String[] STATIC_FIELDS = {"nome"};
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqFaixaEtaria")
 	@Column(name="ID_FAIXA_ETARIA_CAT")

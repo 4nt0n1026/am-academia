@@ -31,8 +31,11 @@ public class DiasTreinoCatBean extends Bean<DiasTreinoCat> implements Serializab
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = diasTreinoCatDAO;
-		entities = diasTreinoCatDAO.buscarTodos();
+		staticFields = DiasTreinoCat.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**

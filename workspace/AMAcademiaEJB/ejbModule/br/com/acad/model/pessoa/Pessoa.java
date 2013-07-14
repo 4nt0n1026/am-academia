@@ -2,6 +2,7 @@ package br.com.acad.model.pessoa;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,7 +48,7 @@ public abstract class Pessoa implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_NASCIMENTO")
-	private Calendar dataNascimento;
+	private Calendar dataNascimento = new GregorianCalendar();
 	
 	@Column(length=20, nullable=true)
 	private String cpf;

@@ -11,6 +11,8 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="ID_PESSOA_PROFESSOR_FUNC")
 public class ProfessorFunc extends Pessoa{
 
+	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg"};
+
 	@Column(length=500, nullable=true)
 	private String fotoLocal;
 	

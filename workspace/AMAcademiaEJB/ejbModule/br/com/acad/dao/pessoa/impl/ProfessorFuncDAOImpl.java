@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 @Stateless
@@ -17,20 +18,6 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 
 	public ProfessorFuncDAOImpl() {
 		super();
-	}
-
-	@Override
-	public List<ProfessorFunc> buscarTodosProf() {
-		TypedQuery<ProfessorFunc> q = em.createQuery("from ProfessorFunc p where p.isProfessor=:bool", ProfessorFunc.class);
-		q.setParameter("bool", true);
-		return q.getResultList();
-	}
-	
-	@Override
-	public List<ProfessorFunc> buscarTodosFunc() {
-		TypedQuery<ProfessorFunc> q = em.createQuery("from ProfessorFunc p where p.isProfessor=:bool", ProfessorFunc.class);
-		q.setParameter("bool", false);
-		return q.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -46,11 +33,6 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		return professores;
 	}
 
-	@Override
-	public List<ProfessorFunc> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -73,8 +55,81 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	}
 
 	@Override
-	public List<ProfessorFunc> buscarTodos(int page, String txtSearch,
+	public List<ProfessorFunc> buscarTodos(int page, String search,
 			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosProf(String search) {
+		if(search==null || search.length()==0){
+			search=" ";
+		}
+		String sql = SqlLogic.getCountSql(ProfessorFunc.STATIC_FIELDS, "ProfessorFunc", search) + " and isProfessor = true";
+		Query q = em.createQuery(sql);
+		return  (Long) q.getSingleResult();
+	}
+
+	@Override
+	public long contarTodosFunc(String search) {
+		if(search==null || search.length()==0){
+			search=" ";
+		}
+		String sql = SqlLogic.getCountSql(ProfessorFunc.STATIC_FIELDS, "ProfessorFunc", search) + " and isProfessor = false";
+		Query q = em.createQuery(sql);
+		return  (Long) q.getSingleResult();
+	}
+
+	@Override
+	public List<ProfessorFunc> buscarTodosProf(int page, String search, String order) {
+		StringBuilder sql = new StringBuilder("from ProfessorFunc ");
+		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search);
+		if(sqlWhere.length()>4){
+			sql.append(sqlWhere).append(" and isProfessor = true");
+		}else{
+			sql.append(" where isProfessor = true");
+		}
+		
+		TypedQuery<ProfessorFunc> q = em.createQuery(sql.toString(), ProfessorFunc.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public List<ProfessorFunc> buscarTodosFunc(int page, String search,
+			String order) {
+		StringBuilder sql = new StringBuilder("from ProfessorFunc ");
+		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search);
+		if(sqlWhere.length()>1){
+			sql.append(sqlWhere).append(" and isProfessor = true");
+		}else{
+			sql.append(" where isProfessor = false");
+		}
+		
+		TypedQuery<ProfessorFunc> q = em.createQuery(sql.toString(), ProfessorFunc.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public List<ProfessorFunc> buscarTodos() {
 		// TODO Auto-generated method stub
 		return null;
 	}

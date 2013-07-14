@@ -85,7 +85,7 @@ public abstract class Bean<T> {
 	 */
 	public void atualizar() {
 		closeForms();
-		entities = dao.buscarTodos(page, search, order);
+		entities = buscarTodos();
 		atualizaPages();
 	}
 
@@ -95,7 +95,7 @@ public abstract class Bean<T> {
 	public void resetSearch() {
 		search = "";
 		closeForms();
-		entities = dao.buscarTodos(page, search, order);
+		entities = buscarTodos();
 		atualizaPages();
 	}
 
@@ -104,7 +104,7 @@ public abstract class Bean<T> {
 	 */
 	public void atualizarComMsg() {
 		closeForms();
-		entities = dao.buscarTodos(page, search, order);
+		entities = buscarTodos();
 		atualizaPages();
 		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
 	}
@@ -204,7 +204,7 @@ public abstract class Bean<T> {
 	 * Atualiza o total de entities e o total de paginas
 	 */
 	public void atualizaPages(){
-		totalEntities = dao.contarTodos(search);
+		totalEntities = contarTodos();
 		totalPages = (totalEntities/SqlLogic.TABLE_SIZE); 
 		totalPages += totalEntities%SqlLogic.TABLE_SIZE!=0?1:0;
 		if(totalPages==0){
@@ -257,6 +257,17 @@ public abstract class Bean<T> {
 		showEntity4 = false;
 	}
 	
+	/**
+	 * retorna busca de todas as entities para tabela
+	 * @return
+	 */
+	public List<T> buscarTodos(){
+		return dao.buscarTodos(page, search, order);
+	}
+	
+	public long contarTodos(){
+		return dao.contarTodos(search);
+	}
 	
 	/************************************************************************************************************/
 	//GETS E SETS

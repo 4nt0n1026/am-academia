@@ -67,8 +67,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{professorBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{professorBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{professorBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -76,40 +79,49 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{professorBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{professorBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{professorBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							 resizableColumns="true" selection="#{professorBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome"   >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 						
-						<p:column headerText="Email" sortBy="#{entity.email}"  >
+						<p:column headerText="Email"  >
 							<h:outputText value="#{entity.email}"/>
 						</p:column>
 						
-						<p:column headerText="Nascimento" sortBy="#{entity.dataNascimento.time}"  >
+						<p:column headerText="Nascimento"  >
 							<h:outputText value="#{entity.dataNascimento.time}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
 						
-						<p:column headerText="CPF" sortBy="#{entity.professorFunc.cpf}"  >
+						<p:column headerText="CPF" >
 							<h:outputText value="#{entity.cpf}"/>
 						</p:column>
 						
-						<p:column headerText="RG" sortBy="#{entity.professorFunc.rg}"  >
+						<p:column headerText="RG" >
 							<h:outputText value="#{entity.rg}"/>
 						</p:column>
 						
-						<p:column headerText="Formacao" sortBy="#{entity.professorFunc.formacao}"  >
+						<p:column headerText="Formacao" >
 							<h:outputText value="#{entity.formacao}"/>
 						</p:column>
-						<f:facet name="footer">  
-							---
-						</f:facet>
 						
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{professorBean.previousPageTable}" 
+										rendered="#{professorBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{professorBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{professorBean.nextPageTable}" 
+										rendered="#{professorBean.page != professorBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{professorBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{professorBean.totalPages}" />
+							</div>
+						</f:facet>
 					</p:dataTable>
 				</h:form>
 			

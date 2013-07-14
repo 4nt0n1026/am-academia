@@ -49,8 +49,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{diasTreinoCatBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{diasTreinoCatBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{diasTreinoCatBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -58,19 +61,27 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{diasTreinoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{diasTreinoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{diasTreinoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity"
+							 resizableColumns="true" selection="#{diasTreinoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome">
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{diasTreinoCatBean.previousPageTable}" 
+										rendered="#{diasTreinoCatBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{diasTreinoCatBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{diasTreinoCatBean.nextPageTable}" 
+										rendered="#{diasTreinoCatBean.page != diasTreinoCatBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{diasTreinoCatBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{diasTreinoCatBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			

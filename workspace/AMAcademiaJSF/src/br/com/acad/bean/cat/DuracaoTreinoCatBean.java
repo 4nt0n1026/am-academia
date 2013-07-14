@@ -31,8 +31,11 @@ public class DuracaoTreinoCatBean extends Bean<DuracaoTreinoCat> implements Seri
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = duracaoTreinoCatDAO;
-		entities = duracaoTreinoCatDAO.buscarTodos();
+		staticFields = DuracaoTreinoCat.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**

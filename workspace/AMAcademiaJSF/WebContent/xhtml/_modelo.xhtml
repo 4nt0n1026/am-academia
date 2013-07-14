@@ -52,8 +52,8 @@
 				        <p:toolbarGroup align="right"> 
 			        		<p:separator />  
 				        	Busca:<p:inputText value="#{modeloBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{modeloBean.atualizar}" ajax="true" update=":tabView1" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{modeloBean.resetSearch}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{modeloBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{modeloBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	

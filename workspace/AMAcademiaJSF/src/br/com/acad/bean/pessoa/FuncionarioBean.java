@@ -1,7 +1,7 @@
 package br.com.acad.bean.pessoa;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -10,7 +10,6 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
-import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 
@@ -33,8 +32,11 @@ public class FuncionarioBean extends Bean<ProfessorFunc> implements Serializable
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = professorFuncDAO;
-		entities = professorFuncDAO.buscarTodosFunc();
+		staticFields = ProfessorFunc.STATIC_FIELDS;
+		atualizar();
+		atualizaPages();
 	}
 	
 	/**
@@ -44,7 +46,6 @@ public class FuncionarioBean extends Bean<ProfessorFunc> implements Serializable
 	public void showNewEntity() {
 		showEntity = true;
 		entity = new ProfessorFunc();
-		entity.setDataNascimento(Calendar.getInstance());
 	}
 
 	/**
@@ -65,15 +66,22 @@ public class FuncionarioBean extends Bean<ProfessorFunc> implements Serializable
 	}
 	
 	/**
-	 * Metodo atualizar override para filtrar a busca com somente professores
+	 * Sobreescrita do metodo buscarTodos para buscar somente funcionario
 	 */
 	@Override
-	public void atualizar() {
-		showEntity = false;
-		entities = professorFuncDAO.buscarTodosFunc();
-		MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
+	public List<ProfessorFunc> buscarTodos() {
+		return professorFuncDAO.buscarTodosFunc(page, search, order);
 	}
 	
+	
+	/**
+	 * Sobreescrita do metodo contarTodos para contar somente funcionario
+	 */
+	@Override
+	public long contarTodos() {
+		return professorFuncDAO.contarTodosFunc(search);
+	}
+
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/

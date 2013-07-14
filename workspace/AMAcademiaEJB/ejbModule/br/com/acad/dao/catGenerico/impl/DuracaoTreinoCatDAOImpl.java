@@ -3,10 +3,12 @@ package br.com.acad.dao.catGenerico.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.generico.impl.DAOImpl;
+import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.cat.DuracaoTreinoCat;
 
 @Stateless
@@ -24,15 +26,24 @@ public class DuracaoTreinoCatDAOImpl extends DAOImpl<DuracaoTreinoCat,Integer> i
 
 	@Override
 	public long contarTodos(String search) {
-		// TODO Auto-generated method stub
-		return 0;
+		Query q = em.createQuery(SqlLogic.getCountSql(DuracaoTreinoCat.STATIC_FIELDS, "DuracaoTreinoCat", search));
+		return  (Long) q.getSingleResult();
 	}
 
 	@Override
-	public List<DuracaoTreinoCat> buscarTodos(int page, String txtSearch,
-			String order) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DuracaoTreinoCat> buscarTodos(int page, String txtSearch, String order) {
+		TypedQuery<DuracaoTreinoCat> q = em.createQuery(SqlLogic.getSql(DuracaoTreinoCat.STATIC_FIELDS, "DuracaoTreinoCat", txtSearch, order), DuracaoTreinoCat.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
 	}
+
 
 }

@@ -14,7 +14,7 @@
 		<!-- ****************************************************************************************************** -->
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Categoria de Sexo" >  
+     			<p:tab title="Categoria de sexo" >  
      				
 				    <!-- ****************************************************************************************************** -->
 					<!-- Insert de entity -->
@@ -25,6 +25,7 @@
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
 						        <p:inputText id="idNome" value="#{sexoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        
 	
 						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{sexoCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
 					        	<p:button icon="ui-icon ui-icon-close"   action="#{sexoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
@@ -48,8 +49,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{sexoCatBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{sexoCatBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{sexoCatBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -57,19 +61,27 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{sexoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{sexoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{sexoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{sexoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{sexoCatBean.previousPageTable}" 
+										rendered="#{sexoCatBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{sexoCatBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{sexoCatBean.nextPageTable}" 
+										rendered="#{sexoCatBean.page != sexoCatBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{sexoCatBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{sexoCatBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			

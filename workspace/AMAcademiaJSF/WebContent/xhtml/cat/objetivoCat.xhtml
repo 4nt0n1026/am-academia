@@ -49,8 +49,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{objetivoCatBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{objetivoCatBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{objetivoCatBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -58,19 +61,27 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{objetivoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{objetivoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{objetivoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{objetivoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{objetivoCatBean.previousPageTable}" 
+										rendered="#{objetivoCatBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{objetivoCatBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{objetivoCatBean.nextPageTable}" 
+										rendered="#{objetivoCatBean.page != objetivoCatBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{objetivoCatBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{objetivoCatBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			
