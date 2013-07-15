@@ -18,6 +18,9 @@ import br.com.acad.model.cat.SexoCat;
 @PrimaryKeyJoinColumn(name="ID_TREINO_FIXO")
 public class TreinoFixo extends Treino {
 
+	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", 
+						"objetivoCat.nome", "duracaoTreinoCat.nome", "diasTreinoCat.nome"};
+
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)
 	private SexoCat sexoCat = new SexoCat();

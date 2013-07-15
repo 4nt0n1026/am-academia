@@ -31,8 +31,10 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = treinoEspecificoDAO;
-		entities = treinoEspecificoDAO.buscarTodos();
+		staticFields = TreinoEspecifico.STATIC_FIELDS;
+		atualizar();
 	}
 	
 	/**
@@ -41,6 +43,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	 */
 	@Override
 	public void showNewEntity() {}
+
 
 	/**
 	 * inclui ou edita entity no banco
@@ -57,7 +60,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	public void deletarEntity() {
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
-
+	
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/

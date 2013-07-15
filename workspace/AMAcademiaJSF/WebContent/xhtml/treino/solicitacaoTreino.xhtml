@@ -56,8 +56,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{solicitacaoTreinoBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoTreinoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{solicitacaoTreinoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -65,36 +68,44 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{solicitacaoTreinoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{solicitacaoTreinoBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{solicitacaoTreinoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{solicitacaoTreinoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
 						<p:ajax event="rowSelect" listener="#{solicitacaoTreinoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
 						<p:ajax event="rowUnselect" listener="#{solicitacaoTreinoBean.hideFormDetail}" update=":tabView1:detailEntity"/> 
 						
-						<p:column headerText="Data" sortBy="#{entity.dataSolicitacao.time}" width="10" styleClass="center">
+						<p:column headerText="Data" width="10" styleClass="center">
 							<h:outputText value="#{entity.dataSolicitacao.time}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.aluno.nome}" width="10" styleClass="center">
+						<p:column headerText="Nome" width="10" styleClass="center">
 							<h:outputText value="#{entity.aluno.nome}"/>
 						</p:column>
 						
-						<p:column headerText="Descricao" sortBy="#{entity.descricao}" width="80" >
+						<p:column headerText="Descricao" width="80" >
 							<h:outputText value="#{entity.descricao}"/>
 						</p:column>
 						
-						<p:column headerText="Respondido" sortBy="#{entity.respondido}" width="5" styleClass="center" >
+						<p:column headerText="Respondido" width="5" styleClass="center" >
 							<p:selectBooleanCheckbox disabled="true" value="#{entity.respondido}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{solicitacaoTreinoBean.previousPageTable}" 
+										rendered="#{solicitacaoTreinoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{solicitacaoTreinoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{solicitacaoTreinoBean.nextPageTable}" 
+										rendered="#{solicitacaoTreinoBean.page != solicitacaoTreinoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{solicitacaoTreinoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{solicitacaoTreinoBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			

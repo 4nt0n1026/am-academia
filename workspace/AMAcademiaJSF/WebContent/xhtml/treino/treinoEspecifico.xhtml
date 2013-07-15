@@ -28,7 +28,7 @@
 						        <p:inputText id="idNome" value="#{treinoEspecificoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
 	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoEspecificoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+						        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoEspecificoBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
 					        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoEspecificoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
@@ -39,8 +39,9 @@
 					        
 					        Conteudo do form2
 					        
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm3}" ajax="false" update=":tabView1" /> 
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{treinoEspecificoBean.showForm1}" ajax="true" update=":tabView1:formEntity" /> 
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoEspecificoBean.showForm3}" ajax="true" update=":tabView1:formEntity" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoEspecificoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
 
 						</p:fieldset> 
 						
@@ -49,11 +50,11 @@
 							
 							Conteudo do form3
 					        
-						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{exercicioBean.incluirEntity}" ajax="false" update=":tabView1" /> 
-					        <p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />  
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{treinoEspecificoBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
+						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoEspecificoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        <p:button icon="ui-icon ui-icon-close"   action="#{treinoEspecificoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 						</p:fieldset> 
-						
 			        </h:form>
       				
 
@@ -71,8 +72,11 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{treinoEspecificoBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoEspecificoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoEspecificoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -80,19 +84,27 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{treinoEspecificoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{treinoEspecificoBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{treinoEspecificoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{treinoEspecificoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
 						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{treinoEspecificoBean.previousPageTable}" 
+										rendered="#{treinoEspecificoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{treinoEspecificoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{treinoEspecificoBean.nextPageTable}" 
+										rendered="#{treinoEspecificoBean.page != treinoEspecificoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{treinoEspecificoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{treinoEspecificoBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			

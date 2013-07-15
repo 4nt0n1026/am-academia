@@ -70,8 +70,8 @@
 								</p:selectOneMenu> 
 					        </h:panelGrid>
 
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+							<p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoFixoBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
 					        	
 						</p:fieldset> 
 						
@@ -80,8 +80,9 @@
 					        
 					        Conteudo do form2
 					        
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm3}" ajax="false" update=":tabView1" /> 
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{treinoFixoBean.showForm1}" ajax="true" update=":tabView1:formEntity" /> 
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoFixoBean.showForm3}" ajax="true" update=":tabView1:formEntity" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
 
 						</p:fieldset> 
 						
@@ -90,8 +91,9 @@
 							
 							Conteudo do form3
 					        
-						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{exercicioBean.incluirEntity}" ajax="false" update=":tabView1" /> 
-					        <p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />  
+					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{treinoFixoBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
+						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        <p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 						</p:fieldset> 
 			        </h:form>
@@ -104,15 +106,18 @@
 					<p:toolbar id="menuTabela">  
    						<p:toolbarGroup align="left">  
 				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{treinoFixoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoFixoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoFixoBean.deletarEntity}" ajax="true" update=":tabView1"  />
 				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{treinoFixoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
 				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right">  
-				        	Busca:<p:inputText />
+				       <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{treinoFixoBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoFixoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -120,50 +125,97 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{treinoFixoBean.entities}" var="entity" emptyMessage="Nenhum registrado"
-							 widgetVar="tabelaEntity" resizableColumns="true" sortMode="multiple" rows="20" paginator="true" paginatorPosition="bottom" 
-							 paginatorAlwaysVisible="false" draggableColumns="true" 
-							 selection="#{treinoFixoBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{treinoFixoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{treinoFixoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:ajax event="rowSelect" listener="#{treinoFixoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{treinoFixoBean.hideFormDetail}" update=":tabView1:detailEntity"/>
+						
+						<p:column headerText="Data" >
+							<h:outputText value="#{entity.data.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.objetivoCat.nome}"  >
+						<p:column headerText="Objetivo" >
 							<h:outputText value="#{entity.objetivoCat.nome}"/>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.duracaoTreinoCat.nome}"  >
+						<p:column headerText="Duração"  >
 							<h:outputText value="#{entity.duracaoTreinoCat.nome}"/>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.diasTreinoCat.nome}"  >
+						<p:column headerText="Dias na Semana"  >
 							<h:outputText value="#{entity.diasTreinoCat.nome}"/>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.faixaEtariaCat.nome}"  >
+						<p:column headerText="Faixa Etaria" >
 							<h:outputText value="#{entity.faixaEtariaCat.nome}"/>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.sexoCat.nome}"  >
+						<p:column headerText="Sexo">
 							<h:outputText value="#{entity.sexoCat.nome}"/>
 						</p:column>
 
-						<p:column headerText="Nome" sortBy="#{entity.professor.nome}"  >
+						<p:column headerText="Professor"  >
 							<h:outputText value="#{entity.professor.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  
-							---
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{treinoFixoBean.previousPageTable}" 
+										rendered="#{treinoFixoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{treinoFixoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{treinoFixoBean.nextPageTable}" 
+										rendered="#{treinoFixoBean.page != treinoFixoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{treinoFixoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{treinoFixoBean.totalPages}" />
+							</div>
 						</f:facet>
-						
 					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-			
+				<br/>
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{treinoFixoBean.showEntityDetail}">
+						<p:panelGrid columns="2">
+							<h:outputText value="Nome:"/>
+							<h:outputText value="#{treinoFixoBean.entity.nome}" />
+							
+							<h:outputText value="Descricao:"/>
+							<h:outputText value="#{treinoFixoBean.entity.descricao}" />
+							
+							<h:outputText value="Objetivo:"/>
+							<h:outputText value="#{treinoFixoBean.entity.objetivoCat.nome}"/>
+							   
+							<h:outputText value="Duração"/>
+							<h:outputText value="#{treinoFixoBean.entity.duracaoTreinoCat.nome}"/>
+							
+							<h:outputText value="Dias na Semana:"/>
+							<h:outputText value="#{treinoFixoBean.entity.diasTreinoCat.nome}"/>
+							
+							<h:outputText value="Faixa Etaria:"/>
+							<h:outputText value="#{treinoFixoBean.entity.faixaEtariaCat.nome}"/>
+							
+							<h:outputText value="Sexo:"/>
+							<h:outputText value="#{treinoFixoBean.entity.sexoCat.nome}"/>
+							
+							<h:outputText value="Professor:"/>
+							<h:outputText value="#{treinoFixoBean.entity.professor.nome}"/>
+						
+						</p:panelGrid>
+					</p:fieldset>
+				</h:form>
 			
 			
 				<!-- ****************************************************************************************************** -->

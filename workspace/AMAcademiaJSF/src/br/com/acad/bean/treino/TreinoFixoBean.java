@@ -58,8 +58,10 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
+		page = 1;
 		dao = treinoFixoDAO;
-		entities = treinoFixoDAO.buscarTodos();
+		staticFields = TreinoFixo.STATIC_FIELDS;
+		atualizar();
 	}
 	
 	/**
@@ -77,8 +79,10 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	 */
 	@Override
 	public void incluirEntity() {
-		entity.setData(Calendar.getInstance());
-		entity.setTipoTreino(TipoTreinoDieta.FIXO);
+		if(entity.getId()==0){
+			entity.setData(Calendar.getInstance());
+			entity.setTipoTreino(TipoTreinoDieta.FIXO);
+		}
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 

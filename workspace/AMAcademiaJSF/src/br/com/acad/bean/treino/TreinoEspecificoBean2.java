@@ -1,8 +1,6 @@
 package br.com.acad.bean.treino;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -10,26 +8,21 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
-import br.com.acad.dao.pessoa.interf.AlunoDAO;
-import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
-import br.com.acad.logic.PessoaLogic;
-import br.com.acad.model.pessoa.Aluno;
-import br.com.acad.model.treino.SolicitacaoTreino;
+import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
+import br.com.acad.model.treino.TreinoEspecifico;
 
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Serializable {
+public class TreinoEspecificoBean2 extends Bean<TreinoEspecifico> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
 	
 	@EJB
-	private SolicitacaoTreinoDAO solicitacaoTreinoDAO;
-	@EJB
-	private AlunoDAO alunoDAO;
+	private TreinoEspecificoDAO treinoEspecificoDAO;
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -38,32 +31,22 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
-		dao = solicitacaoTreinoDAO;
-		staticFields = SolicitacaoTreino.STATIC_FIELDS;
-		atualizar();
+		dao = treinoEspecificoDAO;
+		entities = treinoEspecificoDAO.buscarTodos();
 	}
 	
 	/**
 	 * show form de entity
+	 * Não é possivel incluir um treino especifico. Precisa ser por meio de resposta a uma solicitação. Metodo nao implementado
 	 */
 	@Override
-	public void showNewEntity() {
-		showEntity = true;
-		entity = new SolicitacaoTreino();
-		entity.setAluno(new Aluno());
-	}
+	public void showNewEntity() {}
 
 	/**
 	 * inclui ou edita entity no banco
 	 */
 	@Override
 	public void incluirEntity() {
-		// Se for nova instancia
-		if(entity.getId()==0) {
-			entity.setDataSolicitacao(Calendar.getInstance());
-			entity.setRespondido(false);
-		}
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 
@@ -74,29 +57,11 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	public void deletarEntity() {
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
-	
+
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/
 	
-	/**
-	 * busca todos alunos para preencher o field
-	 */
-	public List<Aluno> getAlunosField() {
-		return alunoDAO.buscarFieldNome();
-	}
-	
-	/**
-	 * Mostra a idade do aluno a partir da data de nasciemento
-	 * @return
-	 */
-	public int getIdadeAlunoDetail(){
-		if(entity.getAluno().getDataNascimento()!=null){
-			return PessoaLogic.getIdade(entity.getAluno().getDataNascimento());
-		}else{
-			return 0;
-		}
-	}
 	
 
 	/************************************************************************************************************/

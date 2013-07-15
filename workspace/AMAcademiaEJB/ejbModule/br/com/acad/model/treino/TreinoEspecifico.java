@@ -12,10 +12,12 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="ID_TREINO_ESPECIFICO")
 public class TreinoEspecifico extends Treino{
 	
+	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
+	
 	@OneToOne
 	@JoinColumn(name="SOLICITACAO_TREINO_ID", nullable=false)
 	private SolicitacaoTreino solicitacao;
-
+	
 	public TreinoEspecifico(){}
 
 	public SolicitacaoTreino getSolicitacao() {

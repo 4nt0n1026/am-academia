@@ -239,6 +239,7 @@ public abstract class Bean<T> {
 	public void deletarGeneric(Integer id){
 		if(entity != null){
 			dao.removeById(id);
+			closeForms();
 			atualizar();
 			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
 		}else{

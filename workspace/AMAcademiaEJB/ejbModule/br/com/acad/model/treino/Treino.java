@@ -54,7 +54,7 @@ public class Treino implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_ID", nullable=true)
-	private ProfessorFunc professor = new ProfessorFunc();
+	private ProfessorFunc professor;
 	
 	@Column(nullable=false)
 	private TipoTreinoDieta tipoTreino;

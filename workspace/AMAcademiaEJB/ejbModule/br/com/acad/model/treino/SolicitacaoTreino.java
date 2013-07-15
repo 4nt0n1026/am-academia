@@ -23,6 +23,8 @@ import br.com.acad.model.pessoa.Aluno;
 @Table(name="ACAD_SOLICITACAO_TREINO")
 public class SolicitacaoTreino implements Serializable {
 
+	public static final String[] STATIC_FIELDS = {"dataSolicitacao", "aluno.nome", "descricao" };
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSolicitacaoTreino")
 	@Column(name="ID_SOLICITACAO_TREINO")
