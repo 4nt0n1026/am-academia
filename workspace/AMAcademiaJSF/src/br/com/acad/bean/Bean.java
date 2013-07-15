@@ -23,11 +23,11 @@ public abstract class Bean<T> {
 	// DAO
 	protected DAO<T, Integer> dao;
 
-	//Entity
+	// Entity
 	protected T entity;
 	protected List<T> entities;
 	
-	//Search
+	// Search
 	protected String[] staticFields;
 	protected int page;
 	protected String search;
@@ -35,13 +35,13 @@ public abstract class Bean<T> {
 	protected long totalPages;
 	protected long totalEntities;
 	
-	//Navigation
+	// Navigation
 	protected boolean showEntity;
 	protected boolean showEntity2;
 	protected boolean showEntity3;
 	protected boolean showEntity4;
 	
-	//Detail
+	// Detail
 	protected boolean showEntityDetail;
 	
 	
@@ -194,7 +194,7 @@ public abstract class Bean<T> {
 		showEntityDetail = false;
 	}
 	
-
+	
 
 	/************************************************************************************************************/
 	//METODOS CHAMADOS
@@ -257,7 +257,7 @@ public abstract class Bean<T> {
 		showEntity3 = false;
 		showEntity4 = false;
 	}
-	
+
 	/**
 	 * retorna busca de todas as entities para tabela
 	 * @return
@@ -322,12 +322,6 @@ public abstract class Bean<T> {
 	public long getTotalEntities() {
 		return totalEntities;
 	}
-	
-	
-	
-	
-	
-
 	
 	
 	

@@ -77,9 +77,46 @@
 						
 						<!-- TABFORM 2 -->
 						<p:fieldset id="field2"  rendered="#{treinoFixoBean.showEntity2}">
-					        
-					        Conteudo do form2
-					        
+					       	<p:layout style="min-width:400px;min-height:300px;" id="layout">  
+					       	
+					       		<!-- COMPLEX FORM 1 - DiaTreino -->
+							    <p:layoutUnit  position="west" resizable="true" size="300" minSize="40" maxSize="400"> 
+							    	<h:panelGrid columns="3"> 
+							    		<!-- Menu do complexForm -->
+								        <h3>Dias de treino</h3>
+								        <p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{treinoFixoBean.newDiaTreino}"  ajax="true" update=":tabView1:formEntity" />
+								        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" ajax="true" update=":tabView1:formEntity"  />
+							        </h:panelGrid>
+							        
+							        <!-- Form do complexForm -->
+							        <p:fieldset id="complexField1" >
+							        	<h:inputText value="#{treinoFixoBean.diaTreino.nome}" />
+							        	<p:commandButton icon="ui-icon ui-icon-check"  ajax="true" update="@this" />
+							        </p:fieldset>
+							        
+							        <!-- Table do complexForm -->
+							        <p:dataTable id="diaTreinoTable" var="dia" value="#{treinoFixoBean.diasTreino}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
+               										 selection="#{treinoFixoBean.diaTreino}" selectionMode="single">  
+               							
+               							<p:column headerText="Nome">
+               								<h:outputText value="#{dia.nome}" />
+               							</p:column>
+									</p:dataTable>
+							    </p:layoutUnit>  
+							    
+					       		<!-- COMPLEX FORM 2 - Exercicio -->
+							    <p:layoutUnit position="center">  
+							    	<h:panelGrid columns="3">
+								        <h3>Exercicios</h3> 
+										<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" ajax="true" update=":tabView1:formEntity" />
+										<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" ajax="true" update=":tabView1"  />
+										<p:fieldset id="complexField2"  rendered="#{treinoFixoBean.showComplexEntity2}">
+											Teste
+								        </p:fieldset>
+							        </h:panelGrid>
+							    </p:layoutUnit>  
+							</p:layout>
+												        
 					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{treinoFixoBean.showForm1}" ajax="true" update=":tabView1:formEntity" /> 
 					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoFixoBean.showForm3}" ajax="true" update=":tabView1:formEntity" /> 
 				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />

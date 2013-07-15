@@ -24,6 +24,8 @@ import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
+import br.com.acad.model.treino.DiaTreino;
+import br.com.acad.model.treino.ExercicioTreino;
 import br.com.acad.model.treino.TreinoFixo;
 
 
@@ -50,6 +52,13 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	private SexoCatDAO sexoCatDAO;
 	@EJB
 	private ProfessorFuncDAO professorFuncDAO;
+	
+	private DiaTreino diaTreino;
+	private List<DiaTreino> diasTreino;
+	
+	private ExercicioTreino exercicioTreino;
+	private List<ExercicioTreino> exerciciosTreino; 
+	
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -92,6 +101,15 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	@Override
 	public void deletarEntity() {
 		deletarGeneric(entity!=null?entity.getId():0);
+	}
+	
+	// DiaTreino
+	
+	/**
+	 * show form de novo DiaTreino
+	 */
+	public void newDiaTreino(){
+		diaTreino = new DiaTreino();
 	}
 	
 	/************************************************************************************************************/
@@ -139,11 +157,37 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	public List<ProfessorFunc> getProfessorFuncField() {
 		return professorFuncDAO.buscarFieldNomeProf();
 	}
-	
 
 	/************************************************************************************************************/
 	//GETS E SETS
 	/************************************************************************************************************/
+	
+	public DiaTreino getDiaTreino() {
+		return diaTreino;
+	}
+
+	public void setDiaTreino(DiaTreino diaTreino) {
+		this.diaTreino = diaTreino;
+	}
+
+	public ExercicioTreino getExercicioTreino() {
+		return exercicioTreino;
+	}
+
+	public void setExercicioTreino(ExercicioTreino exercicioTreino) {
+		this.exercicioTreino = exercicioTreino;
+	}
+
+	public List<DiaTreino> getDiasTreino() {
+		return diasTreino;
+	}
+
+	public List<ExercicioTreino> getExerciciosTreino() {
+		return exerciciosTreino;
+	}
+	
+	
+	
 	
 	
 }

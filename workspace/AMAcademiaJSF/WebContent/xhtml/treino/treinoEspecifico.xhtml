@@ -26,7 +26,6 @@
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
 						        <p:inputText id="idNome" value="#{treinoEspecificoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-						        
 	
 						        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoEspecificoBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
 					        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoEspecificoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
@@ -87,7 +86,7 @@
 					<p:dataTable value="#{treinoEspecificoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
 							resizableColumns="true"  selection="#{treinoEspecificoBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome"  >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					
