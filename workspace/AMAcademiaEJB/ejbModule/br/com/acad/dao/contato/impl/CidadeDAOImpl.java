@@ -1,6 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 
@@ -31,6 +32,19 @@ public class CidadeDAOImpl extends DAOImpl<Cidade,Integer> implements CidadeDAO{
 	public List<Cidade> buscarTodos(int page, String txtSearch, String order) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Cidade> filtrarTodos(int page, Map<String, String> filtros,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

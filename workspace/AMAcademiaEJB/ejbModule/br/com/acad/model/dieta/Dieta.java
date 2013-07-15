@@ -31,6 +31,8 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Table(name="ACAD_DIETA")
 public class Dieta implements Serializable{
 
+	public static final String[] STATIC_FIELDS = null;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDieta")
 	@Column(name="ID_DIETA")

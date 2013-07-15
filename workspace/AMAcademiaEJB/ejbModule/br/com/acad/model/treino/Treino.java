@@ -32,6 +32,8 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Table(name="ACAD_TREINO")
 public class Treino implements Serializable{
 
+	public static final String[] STATIC_FIELDS = null;
+
 	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqTreino")

@@ -1,6 +1,7 @@
 package br.com.acad.dao.horario.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
@@ -33,6 +34,19 @@ public class HorarioAulaDAOImpl extends DAOImpl<HorarioAula,Integer> implements 
 			String order) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<HorarioAula> filtrarTodos(int page,
+			Map<String, String> filtros, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

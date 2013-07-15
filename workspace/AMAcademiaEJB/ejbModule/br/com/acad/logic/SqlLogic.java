@@ -1,5 +1,7 @@
 package br.com.acad.logic;
 
+import java.util.Map;
+
 
 /**
  * @author Christian Storch
@@ -14,7 +16,7 @@ public class SqlLogic {
 	public static int TABLE_SIZE = 20;
 	
 	/**
-	 * Cria clausula where da sql 
+	 * Cria clausula where da sql com search basico
 	 * @param lista
 	 * @param txtSearch
 	 * @return
@@ -38,7 +40,7 @@ public class SqlLogic {
 	}
 
 	/**
-	 * gera String de sql com uma lista de atributos e um filtro
+	 * gera String de sql com uma lista de atributos e um search
 	 * @param lista
 	 * @param search
 	 * @return
@@ -57,7 +59,7 @@ public class SqlLogic {
 	}
 	
 	/**
-	 * gera String de sql para count com uma lista de atributos e um filtro
+	 * gera String de sql para count com uma lista de atributos e um search
 	 * @param lista
 	 * @param modelName
 	 * @param search
@@ -71,8 +73,52 @@ public class SqlLogic {
 		return sql.toString();
 	}
 	
+	/**
+	 * gera String de sql para filtrar resultados
+	 * @param filtros
+	 * @param modelName
+	 * @param order
+	 * @return
+	 */
+	public static String getFilterSql(Map<String, String> filtros, String modelName, String order){
+		StringBuilder sql = new StringBuilder("from ");
+		sql.append(modelName);
+		String where = getCountFilterSql(filtros);
+		sql.append(where.toString());
+		return sql.toString();
+	}
+
+	/**
+	 * Cria clausula where da sql com search basico
+	 * @param filtros
+	 * @return
+	 */
+	private static String getCountFilterSql(Map<String, String> filtros) {
+		StringBuilder where = new StringBuilder(" where ");
+		for (String column : filtros.keySet()) {
+			String filtro = filtros.get(column);
+			if(where.length()>6){
+				where.append(" and ");
+			}
+			where.append(column).append(" = ").append(filtro);
+		}
+		return where.toString();
+	}
 	
-	
+	/**
+	 * gera String de sql para count com uma lista de atributos e um filtro
+	 * @param lista
+	 * @param modelName
+	 * @param search
+	 * @return
+	 */
+	public static String getCountFilterSql(String modelName, Map<String, String> filtros){
+		StringBuilder sql = new StringBuilder();
+		sql.append("select count(id) from ").append(modelName).append(getCountFilterSql(filtros));
+		
+		System.out.println(sql.toString());
+		return sql.toString();
+	}
 	
 	
 }

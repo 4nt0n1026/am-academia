@@ -1,6 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -45,4 +46,24 @@ public class ExercicioDAOImpl extends DAOImpl<Exercicio,Integer> implements Exer
 		return q.getResultList();
 	}
 
+	@Override
+	public List<Exercicio> filtrarTodos(int page, Map<String, String> filtros, String order){
+		TypedQuery<Exercicio> q = em.createQuery(SqlLogic.getFilterSql(filtros, "Exercicio", order), Exercicio.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		Query q = em.createQuery(SqlLogic.getCountFilterSql("Exercicio", filtros));
+		return  (Long) q.getSingleResult();
+	}
 }

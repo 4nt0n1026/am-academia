@@ -1,6 +1,7 @@
 package br.com.acad.dao.generico.interf;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Remote;
 
@@ -20,5 +21,9 @@ public interface DAO<T,K> {
 	public abstract long contarTodos(String search);
 	
 	public abstract List<T> buscarTodos(int page, String search, String order);
+	
+	public abstract List<T> filtrarTodos(int page, Map<String, String> filtros, String order);
+	
+	public abstract long contarTodosFiltro(Map<String, String> filtros);
 	
 }

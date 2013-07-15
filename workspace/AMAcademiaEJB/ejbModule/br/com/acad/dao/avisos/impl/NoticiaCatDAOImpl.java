@@ -1,6 +1,7 @@
 package br.com.acad.dao.avisos.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -43,6 +44,19 @@ public class NoticiaCatDAOImpl extends DAOImpl<NoticiaCat,Integer> implements No
 		}
 		
 		return q.getResultList();
+	}
+
+	@Override
+	public List<NoticiaCat> filtrarTodos(int page, Map<String, String> filtros,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @Table(name="ACAD_AULA")
 public class Aula implements Serializable{
 
+	public static final String[] STATIC_FIELDS = null;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAula")
 	@Column(name="ID_AULA")

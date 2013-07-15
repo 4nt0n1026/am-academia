@@ -1,6 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 
@@ -30,6 +31,19 @@ public class SerieFeitaDAOImpl extends DAOImpl<SerieFeita,Integer> implements Se
 	public List<SerieFeita> buscarTodos(int page, String txtSearch, String order) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<SerieFeita> filtrarTodos(int page, Map<String, String> filtros,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

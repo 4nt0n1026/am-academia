@@ -1,12 +1,15 @@
 package br.com.acad.dao.treino.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.TreinoDAO;
+import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.treino.Treino;
 
 @Stateless
@@ -24,14 +27,44 @@ public class TreinoDAOImpl extends DAOImpl<Treino,Integer> implements TreinoDAO{
 
 	@Override
 	public long contarTodos(String search) {
-		// TODO Auto-generated method stub
-		return 0;
+		Query q = em.createQuery(SqlLogic.getCountSql(Treino.STATIC_FIELDS, "Treino", search));
+		return  (Long) q.getSingleResult();
 	}
 
 	@Override
 	public List<Treino> buscarTodos(int page, String txtSearch, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Treino> q = em.createQuery(SqlLogic.getSql(Treino.STATIC_FIELDS, "Treino", txtSearch, order), Treino.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+	
+	@Override
+	public List<Treino> filtrarTodos(int page, Map<String, String> filtros, String order){
+		TypedQuery<Treino> q = em.createQuery(SqlLogic.getFilterSql(filtros, "Treino", order), Treino.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		Query q = em.createQuery(SqlLogic.getCountFilterSql("Treino", filtros));
+		return  (Long) q.getSingleResult();
 	}
 
 }

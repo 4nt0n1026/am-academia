@@ -1,6 +1,7 @@
 package br.com.acad.dao.catGenerico.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -43,6 +44,19 @@ public class ObjetivoCatDAOImpl extends DAOImpl<ObjetivoCat,Integer> implements 
 		}
 		
 		return q.getResultList();
+	}
+
+	@Override
+	public List<ObjetivoCat> filtrarTodos(int page, Map<String, String> filtros,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

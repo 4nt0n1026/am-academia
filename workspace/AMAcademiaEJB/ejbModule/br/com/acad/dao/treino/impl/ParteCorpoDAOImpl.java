@@ -1,6 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -60,6 +61,19 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 	public long contarTodos(String search) {
 		Query q = em.createQuery(SqlLogic.getCountSql(ParteCorpo.STATIC_FIELDS, "ParteCorpo", search));
 		return  (Long) q.getSingleResult();
+	}
+
+	@Override
+	public List<ParteCorpo> filtrarTodos(int page, Map<String, String> filtros,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -3,6 +3,7 @@ package br.com.acad.dao.pessoa.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -132,6 +133,19 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	public List<ProfessorFunc> buscarTodos() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ProfessorFunc> filtrarTodos(int page,
+			Map<String, String> filtros, String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

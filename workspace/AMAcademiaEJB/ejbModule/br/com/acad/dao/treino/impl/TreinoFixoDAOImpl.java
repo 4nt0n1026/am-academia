@@ -1,6 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -45,5 +46,25 @@ public class TreinoFixoDAOImpl extends DAOImpl<TreinoFixo,Integer> implements Tr
 		return q.getResultList();
 	}
 
+	@Override
+	public List<TreinoFixo> filtrarTodos(int page, Map<String, String> filtros, String order){
+		TypedQuery<TreinoFixo> q = em.createQuery(SqlLogic.getFilterSql(filtros, "TreinoFixo", order), TreinoFixo.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		Query q = em.createQuery(SqlLogic.getCountFilterSql("TreinoFixo", filtros));
+		return  (Long) q.getSingleResult();
+	}
 
 }

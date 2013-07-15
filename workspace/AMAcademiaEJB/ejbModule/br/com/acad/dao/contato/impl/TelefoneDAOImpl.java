@@ -1,6 +1,7 @@
 package br.com.acad.dao.contato.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 
@@ -32,5 +33,19 @@ public class TelefoneDAOImpl extends DAOImpl<Telefone,Integer> implements Telefo
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Telefone> filtrarTodos(int page, Map<String, String> filtros,
+			String order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }
