@@ -33,3 +33,7 @@
 .left{
 	text-align: left;
 }
+
+.floatLeft{
+	float: left;
+}

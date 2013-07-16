@@ -27,6 +27,7 @@ public abstract class Bean<T> {
 	protected T entity;
 	protected List<T> entities;
 	
+	
 	// Search
 	protected String[] staticFields;
 	protected int page;
@@ -40,6 +41,10 @@ public abstract class Bean<T> {
 	protected boolean showEntity2;
 	protected boolean showEntity3;
 	protected boolean showEntity4;
+
+	// Complex Navigation
+	protected boolean showComplexForm1;
+	protected boolean showComplexForm2;
 	
 	// Detail
 	protected boolean showEntityDetail;
@@ -195,6 +200,8 @@ public abstract class Bean<T> {
 	}
 	
 	
+	
+	
 
 	/************************************************************************************************************/
 	//METODOS CHAMADOS
@@ -246,6 +253,16 @@ public abstract class Bean<T> {
 			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
 		}
 	}
+	
+	public void showComplex1(){
+		showComplexForm1 = true;
+		showComplexForm2 = false;
+	}
+
+	public void showComplex2(){
+		showComplexForm1 = false;
+		showComplexForm2 = true;
+	}
 
 	/**
 	 * fecha todos formularios.
@@ -266,6 +283,10 @@ public abstract class Bean<T> {
 		return dao.buscarTodos(page, search, order);
 	}
 	
+	/**
+	 * retorna contagem de todos as entities
+	 * @return
+	 */
 	public long contarTodos(){
 		return dao.contarTodos(search);
 	}
@@ -322,6 +343,15 @@ public abstract class Bean<T> {
 	public long getTotalEntities() {
 		return totalEntities;
 	}
+	public boolean getShowComplexForm1() {
+		return showComplexForm1;
+	}
+	public boolean getShowComplexForm2() {
+		return showComplexForm2;
+	}
+	
+	
+	
 	
 	
 	
