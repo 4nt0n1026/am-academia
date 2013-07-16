@@ -1,5 +1,7 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import javax.persistence.TypedQuery;
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.logic.SqlLogic;
+import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.Exercicio;
 
 @Stateless
@@ -65,5 +68,18 @@ public class ExercicioDAOImpl extends DAOImpl<Exercicio,Integer> implements Exer
 	public long contarTodosFiltro(Map<String, String> filtros) {
 		Query q = em.createQuery(SqlLogic.getCountFilterSql("Exercicio", filtros));
 		return  (Long) q.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Exercicio> buscarFieldNome() {
+		Query q = em.createQuery("select e.id, e.nome from Exercicio e");
+		List<Exercicio> alunos = new ArrayList<Exercicio>();
+		Collection<Object[]> resultado = q.getResultList();
+		for (Object[] o:resultado){
+			Exercicio e = new Exercicio((Integer) o[0], (String) o[1]);
+			alunos.add(e);
+		}
+		return alunos;
 	}
 }

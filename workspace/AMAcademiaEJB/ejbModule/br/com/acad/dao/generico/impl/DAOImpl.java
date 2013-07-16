@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
 import br.com.acad.dao.generico.interf.DAO;
-import br.com.acad.model.avisos.Noticia;
 
 @Stateless
 public abstract class DAOImpl<T,K> implements DAO<T,K>{

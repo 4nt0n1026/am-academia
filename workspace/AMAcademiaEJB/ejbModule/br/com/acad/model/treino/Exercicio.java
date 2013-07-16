@@ -139,6 +139,11 @@ public class Exercicio implements Serializable {
 	}
 
 	
+	public Exercicio(Integer id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
+
 	//gets e sets
 	public int getId() {
 		return id;

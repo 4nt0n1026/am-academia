@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -61,7 +62,7 @@ public class Treino implements Serializable{
 	@Column(nullable=false)
 	private TipoTreinoDieta tipoTreino;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="TREINO_ID")
 	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 	
@@ -72,6 +73,13 @@ public class Treino implements Serializable{
 	
 	public boolean removeDiaTreino(DiaTreino dia){
 		return diasTreino.remove(dia);
+	}
+	
+	/**
+	 * Apaga lista de DiaTreino
+	 */
+	public void resetDiasTreino(){
+		this.diasTreino = new HashSet<DiaTreino>();
 	}
 	
 	//Gets com DAO

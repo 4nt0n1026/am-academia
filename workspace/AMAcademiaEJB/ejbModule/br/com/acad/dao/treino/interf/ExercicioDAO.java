@@ -12,5 +12,6 @@ public interface ExercicioDAO extends DAO<Exercicio,Integer>{
 	
 
 	public List<Exercicio> buscarTodos();
+	public List<Exercicio> buscarFieldNome();
 	
 }

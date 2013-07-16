@@ -5,8 +5,6 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.acad.model.treino.ParteCorpo;
-
 
 @SuppressWarnings("serial")
 @ManagedBean

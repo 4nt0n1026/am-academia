@@ -1,7 +1,6 @@
 package br.com.acad.bean.treino;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -25,8 +24,6 @@ import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
-import br.com.acad.model.treino.DiaTreino;
-import br.com.acad.model.treino.ExercicioTreino;
 import br.com.acad.model.treino.TreinoFixo;
 
 
@@ -54,16 +51,6 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	@EJB
 	private ProfessorFuncDAO professorFuncDAO;
 	
-	private List<DiaTreino> diasTreino = new ArrayList<DiaTreino>();
-	private DiaTreino diaTreino;
-	
-	
-	private ExercicioTreino exercicioTreino;
-	private List<ExercicioTreino> exerciciosTreino; 
-	
-	private String nomeDia = new String();
-	private int idDia;
-	
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -86,7 +73,6 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 		showEntity = true;
 		entity = new TreinoFixo();
 		entity.setProfessor(new ProfessorFunc());
-		diasTreino = new ArrayList<DiaTreino>();
 	}
 
 	/**
@@ -109,25 +95,6 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
 	
-	// DiaTreino
-	/**
-	 * show form de novo DiaTreino
-	 */
-	public void newDiaTreino(){
-		nomeDia = new String();
-	}
-	
-	/**
-	 * Inclui diaTeino na lista
-	 */
-	public void incluirDiaTreino(){
-		diasTreino.add(diaTreino);
-	}
-	
-	public void showNewComplex1(){
-		diaTreino = new DiaTreino();
-		showComplex1();
-	}
 	
 	/************************************************************************************************************/
 	//GET FIELDS
@@ -180,50 +147,6 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	/************************************************************************************************************/
 	
 
-	public ExercicioTreino getExercicioTreino() {
-		return exercicioTreino;
-	}
-
-	public void setExercicioTreino(ExercicioTreino exercicioTreino) {
-		this.exercicioTreino = exercicioTreino;
-	}
-
-	public List<DiaTreino> getDiasTreino() {
-		return diasTreino;
-	}
-
-	public List<ExercicioTreino> getExerciciosTreino() {
-		return exerciciosTreino;
-	}
-
-	public String getNomeDia() {
-		return nomeDia;
-	}
-
-	public void setNomeDia(String nomeDia) {
-		this.nomeDia = nomeDia;
-	}
-
-	public int getIdDia() {
-		return idDia;
-	}
-
-	public void setIdDia(int idDia) {
-		this.idDia = idDia;
-	}
-
-	public DiaTreino getDiaTreino() {
-		return diaTreino;
-	}
-
-	public void setDiaTreino(DiaTreino diaTreino) {
-		this.diaTreino = diaTreino;
-	}
-	
-	
-
-	
-	
 	
 	
 	

@@ -2,6 +2,7 @@ package br.com.acad.model.treino;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 
 @SuppressWarnings("serial")
 @Entity
@@ -37,7 +40,21 @@ public class DiaTreino implements Serializable{
 	private Set<ExercicioTreino> exerciciosTreino = new HashSet<ExercicioTreino>();
 	
 	//Metodos
+	public boolean addExercicioTreino(ExercicioTreino exercicioTreino){
+		return exerciciosTreino.add(exercicioTreino);
+	}
+
+	public boolean removeExercicioTreino(ExercicioTreino exercicioTreino){
+		return exerciciosTreino.remove(exercicioTreino);
+	}
 	
+	public void resetExerciciosTreino(){
+		this.exerciciosTreino = new HashSet<ExercicioTreino>();
+	}
+	
+	public List<ExercicioTreino> getExerciciosTreino(ExercicioTreinoDAO exercicioTreinoDAO) {
+		return exercicioTreinoDAO.buscarPorDiaTreino(this);
+	}
 	
 	//Contrutores
 	public DiaTreino(){}
@@ -75,6 +92,8 @@ public class DiaTreino implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	
 
 	
 	

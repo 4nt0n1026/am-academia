@@ -204,7 +204,7 @@ public abstract class Bean<T> {
 	
 
 	/************************************************************************************************************/
-	//METODOS CHAMADOS
+	//METODOS INTERNOS
 	/************************************************************************************************************/
 	
 	/**
@@ -224,7 +224,7 @@ public abstract class Bean<T> {
 	 * @param dao DAO da entity a ser inserida
 	 * @param id id do objeto que sera inserido no banco
 	 */
-	public void incluirGeneric(Integer id) {
+	protected void incluirGeneric(Integer id) {
 		if(id==0){
 			entity = dao.insert(entity);
 		}else{
@@ -243,7 +243,7 @@ public abstract class Bean<T> {
 	 * @param entity objeto que sera excluido
 	 * @param id id da entity que sera excluida
 	 */
-	public void deletarGeneric(Integer id){
+	protected void deletarGeneric(Integer id){
 		if(entity != null){
 			dao.removeById(id);
 			closeForms();
@@ -279,7 +279,7 @@ public abstract class Bean<T> {
 	 * retorna busca de todas as entities para tabela
 	 * @return
 	 */
-	public List<T> buscarTodos(){
+	protected List<T> buscarTodos(){
 		return dao.buscarTodos(page, search, order);
 	}
 	
@@ -287,7 +287,7 @@ public abstract class Bean<T> {
 	 * retorna contagem de todos as entities
 	 * @return
 	 */
-	public long contarTodos(){
+	protected long contarTodos(){
 		return dao.contarTodos(search);
 	}
 	

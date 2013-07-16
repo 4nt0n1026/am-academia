@@ -13,4 +13,5 @@ public interface ExercicioTreinoDAO extends DAO<ExercicioTreino,Integer>{
 	
 	public List<ExercicioTreino> buscarPorDiaTreino(DiaTreino dia);
 	
+	
 }
