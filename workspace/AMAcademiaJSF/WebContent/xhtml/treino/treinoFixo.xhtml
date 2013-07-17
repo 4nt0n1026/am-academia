@@ -14,54 +14,86 @@
 		<!-- ****************************************************************************************************** -->
 		<!-- Dialog de criacao de treino -->
 		<!-- ****************************************************************************************************** -->
-		<p:dialog widgetVar="dlgTreino" closeOnEscape="true" closable="true">
-			<h:form>
-				<p:fieldset id="field2" >
-			       	<p:layout style="min-width:400px;min-height:300px;" id="layout">  
-			       	
-			       		<!-- COMPLEX FORM 1 - DiaTreino -->
-					    <p:layoutUnit  position="west" resizable="true" size="300" minSize="40" maxSize="400"> 
-					    	<h:panelGrid columns="3"> 
-					    		<!-- Menu do complexForm -->
-						        <h3>Dias de treino</h3>
-						        <p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{treinoFixoBean.showNewComplex1}"  ajax="false" update=":tabView1:formEntity" />
-						        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" ajax="false" update=":tabView1:formEntity"  />
-					        </h:panelGrid>
+		<p:dialog id="dialogTreino" widgetVar="dlgTreino" height="600" width="800" draggable="false" header="Criação de treino" modal="true" closeOnEscape="true" closable="true">
+			<p:fieldset id="field2" >
+		       	<p:layout style="min-width:700px;min-height:550px;" id="layout">  
+		       		
+		       		<!-- COMPLEX FORM 1 - DiaTreino -->
+				    <p:layoutUnit id="layourUnit" position="west" resizable="true" size="300" minSize="40" maxSize="400"> 
+						<h:form id="formDialog">
+					    	<h3>Dias de treino</h3>
+					    	
+					        <!-- Form do DiaDieta -->
+					        <p:panelGrid columns="2">
+					        	<h:inputText value="#{criacaoTreinoBean.diaTreino.nome}" required="true" requiredMessage="Nome do dia obrigatorio" />
+					        	<p:commandButton icon="ui-icon ui-icon-check" action="#{criacaoTreinoBean.incluirDiaTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+					    	</p:panelGrid>
 					        
-					        <!-- Form do complexForm -->
-					        <p:panelGrid rendered="#{treinoFixoBean.showComplexForm1}">
-					        	<h:inputText value="#{treinoFixoBean.diaTreino.nome}" />
-					        	<p:commandButton icon="ui-icon ui-icon-check" action="#{treinoFixoBean.incluirDiaTreino}" ajax="false" update=":tabView1:formEntity" />
-					        </p:panelGrid>
-					        <!-- Table do complexForm -->
-					        <p:dataTable id="diaTreinoTable" var="dia" value="#{treinoFixoBean.diasTreino}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
-		           										 selection="#{treinoFixoBean.diaTreino}" selectionMode="single">  
-		           							
-		           							<p:column >
-		           								<h:outputText value="#{dia.nome}" />
-		           							</p:column>
+		           		</h:form>		
+		           		<h:form id="tableDialog">		
+
+				    		<!-- Menu do DiaDieta -->
+		           			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoTreinoBean.newDiaTreino}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+					        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoTreinoBean.excluirDiaTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2"  />
+			
+					        <!-- Table do DiaDieta -->
+					        <p:dataTable id="diaTreinoTable" var="dia" value="#{criacaoTreinoBean.dias}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
+		           										 selection="#{criacaoTreinoBean.diaTreino}"  selectionMode="single">  
+		           				
+		           				<p:ajax event="rowSelect" listener="#{criacaoTreinoBean.onSelectDiaTreino}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2" /> 
+								<p:ajax event="rowUnselect" listener="#{criacaoTreinoBean.onUnselectDiaTreino}" update=":formDialog :tableDialog :formDialog2 :tableDialog2"/> 
+		           				
+       							<p:column >
+       								<h:outputText value="#{dia.nome}" />
+       							</p:column>
 							</p:dataTable>
-					    </p:layoutUnit>  
+					 	</h:form>
+					</p:layoutUnit>  
+					
 					    
-			       		<!-- COMPLEX FORM 2 - Exercicio -->
-					    <p:layoutUnit position="center">  
-					    	<h:panelGrid columns="3">
-						        <h3>Exercicios</h3> 
-								<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" ajax="false" update=":tabView1:formEntity" />
-								<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" ajax="false" update=":tabView1"  />
-								<p:fieldset id="complexField2"  >
-									Teste
-						        </p:fieldset>
-					        </h:panelGrid>
-					    </p:layoutUnit>  
-					</p:layout>
-										        
-			        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{treinoFixoBean.showForm1}" ajax="false" update=":tabView1:formEntity" /> 
-			        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoFixoBean.showForm3}" ajax="false" update=":tabView1:formEntity" /> 
-		        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />
-		
-				</p:fieldset> 
-			</h:form>
+			       	<!-- COMPLEX FORM 2 - Exercicio -->
+				    <p:layoutUnit position="center"> 
+				    	<h:form id="formDialog2" >
+					    	<h3>Exercicios</h3>
+					    	
+					        <!-- Form de exericicio -->
+					        <p:panelGrid columns="2">
+					        	<h:outputLabel value="Exercicio " />  
+							    <p:selectOneMenu value="#{criacaoTreinoBean.exercicioTreino.exercicio.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Exercicio Obrigatorio" filter="true" filterMatchMode="contains" disabled="#{!criacaoTreinoBean.showExercicioTreino}" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{criacaoTreinoBean.exerciciosField}" var="exec" itemLabel="#{exec.nome}" itemValue="#{exec.id}"/>  
+								</p:selectOneMenu>  
+					        	<p:commandButton disabled="#{!criacaoTreinoBean.showExercicioTreino}" icon="ui-icon ui-icon-check" action="#{criacaoTreinoBean.incluirExercicioTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+					    	</p:panelGrid>
+					        
+		           		</h:form>		
+		           		<h:form id="tableDialog2" >		
+
+				    		<!-- Menu de exercicio -->
+		           			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoTreinoBean.newExercicioTreino}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
+		           							disabled="#{!criacaoTreinoBean.showExercicioTreino}"/>
+					        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoTreinoBean.excluirExercicioTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
+					        				disabled="#{!criacaoTreinoBean.showExercicioTreino}"/>
+			
+					        <!-- Table do exercicio -->
+					        <p:dataTable id="diaTreinoTable" var="exec" value="#{criacaoTreinoBean.exercicios}" rowKey="#{exec}" emptyMessage="Nenhum exercicio registrado"
+		           										 selection="#{criacaoTreinoBean.exercicioTreino}"  selectionMode="single">  
+       							<p:column >
+       								<h:outputText value="#{exec.exercicio.id}" />
+       							</p:column>
+							</p:dataTable>
+					 	</h:form> 
+					 	
+				    </p:layoutUnit>  
+				</p:layout>
+				
+				<h:form>
+		        	<p:commandButton value="salvar"  action="#{criacaoTreinoBean.salvarTreino}" ajax="false" update=":tabView1:formEntity" /> 
+	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgTreino.close()" ajax="false" update=":tabView1"   />
+				</h:form>	
+							        
+			</p:fieldset> 
 		</p:dialog>
 		<!-- ****************************************************************************************************** -->
 		<!-- TreinoFixo -->
@@ -124,8 +156,8 @@
 								</p:selectOneMenu> 
 					        </h:panelGrid>
 
-							<p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{treinoFixoBean.closeForms}" onclick="dlgTreino.show();" ajax="true" update="@all" />
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="false" update=":tabView1:formEntity"  />
+							<p:commandButton value="Adcionar Exercicios" action="#{criacaoTreinoBean.newTreinoFixo}" onclick="dlgTreino.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
 					        	
 						</p:fieldset> 
 						
@@ -140,10 +172,10 @@
       				<h:form id="tabelaEntity">
 					<p:toolbar id="menuTabela">  
    						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{treinoFixoBean.showNewEntity}" ajax="false" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoFixoBean.deletarEntity}" ajax="false" update=":tabView1"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{treinoFixoBean.showEditEntity}" ajax="false" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{treinoFixoBean.atualizar}" ajax="false" update=":tabView1"/>
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{treinoFixoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoFixoBean.deletarEntity}" ajax="true" update=":tabView1"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{treinoFixoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
@@ -151,8 +183,8 @@
 				       <p:toolbarGroup align="right"> 
 			        		<p:separator />  
 				        	Busca:<p:inputText value="#{treinoFixoBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.atualizar}" ajax="false" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoFixoBean.resetSearch}" ajax="false" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoFixoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -202,12 +234,12 @@
 					
 						<f:facet name="footer">  
 							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{treinoFixoBean.previousPageTable}" 
-										rendered="#{treinoFixoBean.page != 1}" ajax="false" update=":tabView1:tabelaEntity" />
+										rendered="#{treinoFixoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
 										
 							---<h:outputText value="#{treinoFixoBean.page}" />---
 							
 							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{treinoFixoBean.nextPageTable}" 
-										rendered="#{treinoFixoBean.page != treinoFixoBean.totalPages}"  ajax="false" update=":tabView1:tabelaEntity"/>
+										rendered="#{treinoFixoBean.page != treinoFixoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
 										
 							<div class="left">
 								<h:outputText value="Total de itens: #{treinoFixoBean.totalEntities} - " />
@@ -247,6 +279,13 @@
 							
 							<h:outputText value="Professor:"/>
 							<h:outputText value="#{treinoFixoBean.entity.professor.nome}"/>
+							
+							<ui:repeat var="dia" value="#{treinoFixoBean.entity.diasTreino}">
+								<h:outputText value="#{dia.nome}"/>
+								<ui:repeat var="exer" value="#{dia.exerciciosTreino}">
+									<h:outputText value="#{exer.exercicio.nome}" />
+								</ui:repeat>
+							</ui:repeat>
 						
 						</p:panelGrid>
 					</p:fieldset>

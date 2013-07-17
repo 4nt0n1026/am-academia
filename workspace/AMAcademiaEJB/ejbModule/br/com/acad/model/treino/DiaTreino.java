@@ -5,8 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +37,7 @@ public class DiaTreino implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
-	@OneToMany
+	@OneToMany( cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DIA_TREINO_ID")
 	private Set<ExercicioTreino> exerciciosTreino = new HashSet<ExercicioTreino>();
 	
@@ -58,8 +60,12 @@ public class DiaTreino implements Serializable{
 	
 	//Contrutores
 	public DiaTreino(){}
-
 	
+	public DiaTreino(String nome) {
+		super();
+		this.nome = nome;
+	}
+
 	//Gets e Sets
 	public Set<ExercicioTreino> getExerciciosTreino() {
 		return exerciciosTreino;

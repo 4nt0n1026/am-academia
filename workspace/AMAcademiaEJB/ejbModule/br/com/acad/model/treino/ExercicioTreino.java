@@ -29,7 +29,7 @@ public class ExercicioTreino implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="EXERCICIO_ID", nullable=false)
-	private Exercicio exercicio;
+	private Exercicio exercicio = new Exercicio();
 	
 	@OneToMany
 	@JoinColumn(name="EXERCICIO_TREINO_ID")

@@ -13,7 +13,7 @@ import br.com.acad.model.treino.TreinoEspecifico;
 
 
 @SuppressWarnings("serial")
-@ManagedBean
+@ManagedBean(name="treinoEspecificoBean")
 @ViewScoped
 public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Serializable {
 

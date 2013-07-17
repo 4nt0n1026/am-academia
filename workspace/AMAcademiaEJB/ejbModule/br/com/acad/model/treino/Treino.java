@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,7 +63,7 @@ public class Treino implements Serializable{
 	@Column(nullable=false)
 	private TipoTreinoDieta tipoTreino;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="TREINO_ID")
 	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 	
@@ -157,6 +158,7 @@ public class Treino implements Serializable{
 	public void setProfessor(ProfessorFunc professor) {
 		this.professor = professor;
 	}
+	
 	
 	
 	

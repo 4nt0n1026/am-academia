@@ -14,11 +14,13 @@ import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
+import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.treino.DiaTreino;
 import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ExercicioTreino;
 import br.com.acad.model.treino.Treino;
+import br.com.acad.model.treino.TreinoFixo;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -48,11 +50,10 @@ public class CriacaoTreinoBean implements Serializable {
 	
 	private DiaTreino diaTreino;
 	private List<DiaTreino> dias;
-	private boolean showDiaTreino;
-	
+
+	private boolean showExercicioTreino;
 	private ExercicioTreino exercicioTreino;
 	private List<ExercicioTreino> exercicios;
-	private boolean showExercicioTreino;
 
 	
 	/************************************************************************************************************/
@@ -61,8 +62,8 @@ public class CriacaoTreinoBean implements Serializable {
 	
 	@PostConstruct
 	public void init(){
-		showDiaTreino = false;
 		showExercicioTreino = false;
+		exercicioTreino = new ExercicioTreino();
 		dias = new ArrayList<DiaTreino>();
 		exercicios = new ArrayList<ExercicioTreino>();
 	}
@@ -71,9 +72,11 @@ public class CriacaoTreinoBean implements Serializable {
 	/**
 	 * Criacao de um novo treino fixo
 	 */
-	public void novoTreinoFixo(){
+	public void newTreinoFixo(){
 		treino = treinoFixoBean.getEntity();
 		treino.setTipoTreino(TipoTreinoDieta.FIXO);
+		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
+		diaTreino = new DiaTreino();
 	}
 	
 	/**
@@ -83,24 +86,7 @@ public class CriacaoTreinoBean implements Serializable {
 		treino = treinoEspecificoBean.getEntity();
 		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
 	}
-	
-	// DiaTreino
-	/**
-	 * Abre form de um novo DiaTreino
-	 */
-	public void newDiaTreino(){
-		showDiaTreino = true;
-		diaTreino = new DiaTreino();
-	}
-	
-	/**
-	 * Inclui um DiaTreino a lista de dias
-	 */
-	public void incluirDiaTreino(){
-		dias.add(diaTreino);
-		showDiaTreino = false;
-	}
-	
+
 	/**
 	 * Salva os dias e os exercicios do treino
 	 */
@@ -109,6 +95,56 @@ public class CriacaoTreinoBean implements Serializable {
 		for(DiaTreino dia : dias){
 			treino.addDiaTreino(dia);
 		}
+		treinoFixoBean.setEntity((TreinoFixo) treino);
+		treinoFixoBean.incluirEntity();
+	}
+	
+	// DiaTreino
+	/**
+	 * Abre form de um novo DiaTreino
+	 */
+	public void newDiaTreino(){
+		diaTreino = new DiaTreino();
+		showExercicioTreino = false;
+	}
+	
+	/**
+	 * Inclui um DiaTreino a lista de dias
+	 */
+	public void incluirDiaTreino(){
+		showExercicioTreino = false;
+		if(!dias.contains(diaTreino)){
+			dias.add(diaTreino);
+		}
+		diaTreino = new DiaTreino();
+	}
+	
+	/**
+	 * Exclui diaTreino da lista de dias
+	 */
+	public void excluirDiaTreino(){
+		if(diaTreino!=null && diaTreino.getNome().length()>1){
+			dias.remove(diaTreino);
+		}else{
+			MessagesLogic.addWarnMessage("Aviso", "Selecione um dia de treino antes de excluir");
+		}
+		showExercicioTreino = false;
+		diaTreino = new DiaTreino();
+	}
+	
+	/**
+	 * ao selecionar diaTreino da lista
+	 */
+	public void onSelectDiaTreino(){
+		showExercicioTreino = true;
+		refreshExercicioTreino();
+	}
+	
+	/**
+	 * ao desselecionar diaTreino da lista
+	 */
+	public void onUnselectDiaTreino(){
+		showExercicioTreino = false;
 	}
 	
 	// ExercicioTreino
@@ -116,7 +152,6 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Abre form de um novo exercicioTreino
 	 */
 	public void newExercicioTreino(){
-		showExercicioTreino = true;
 		exercicioTreino = new ExercicioTreino();
 	}
 	
@@ -125,6 +160,7 @@ public class CriacaoTreinoBean implements Serializable {
 	 */
 	public void refreshExercicioTreino(){
 		exercicios = diaTreino.getExerciciosTreino(exercicioTreinoDAO);
+		exercicios.addAll(diaTreino.getExerciciosTreino());
 	}
 	
 	/**
@@ -132,9 +168,21 @@ public class CriacaoTreinoBean implements Serializable {
 	 */
 	public void incluirExercicioTreino(){
 		diaTreino.addExercicioTreino(exercicioTreino);
-		showExercicioTreino = false;
+		exercicios.add(exercicioTreino);
+		exercicioTreino = new ExercicioTreino();
 	}
 	
+	/**
+	 * Exclui ExercicioTreino da lista de exercicios
+	 */
+	public void excluirExercicioTreino(){
+		if(exercicioTreino!=null && exercicioTreino.getExercicio()!=null && exercicioTreino.getSeries() !=null){
+			exercicios.remove(exercicioTreino);
+		}else{
+			MessagesLogic.addWarnMessage("Aviso", "Selecione um exercicio antes de excluir");
+		}
+		exercicioTreino = new ExercicioTreino();
+	}
 	
 
 	/************************************************************************************************************/
@@ -177,17 +225,30 @@ public class CriacaoTreinoBean implements Serializable {
 		return dias;
 	}
 
-	public boolean getShowDiaTreino() {
-		return showDiaTreino;
-	}
-
 	public List<ExercicioTreino> getExercicios() {
 		return exercicios;
+	}
+
+	public TreinoFixoBean getTreinoFixoBean() {
+		return treinoFixoBean;
+	}
+
+	public void setTreinoFixoBean(TreinoFixoBean treinoFixoBean) {
+		this.treinoFixoBean = treinoFixoBean;
+	}
+
+	public TreinoEspecificoBean getTreinoEspecificoBean() {
+		return treinoEspecificoBean;
+	}
+
+	public void setTreinoEspecificoBean(TreinoEspecificoBean treinoEspecificoBean) {
+		this.treinoEspecificoBean = treinoEspecificoBean;
 	}
 
 	public boolean getShowExercicioTreino() {
 		return showExercicioTreino;
 	}
+
 	
 	
 }
