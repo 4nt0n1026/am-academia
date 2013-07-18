@@ -16,7 +16,10 @@ import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
 import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
 import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.dao.treino.interf.DiaTreinoDAO;
+import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
+import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
 import br.com.acad.model.cat.FaixaEtariaCat;
@@ -50,6 +53,12 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	private SexoCatDAO sexoCatDAO;
 	@EJB
 	private ProfessorFuncDAO professorFuncDAO;
+	@EJB
+	private DiaTreinoDAO diaTreinoDAO;
+	@EJB
+	private ExercicioTreinoDAO exercicioTreinoDAO;
+	
+	private String textoTreino;
 	
 	
 	/************************************************************************************************************/
@@ -93,6 +102,12 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	@Override
 	public void deletarEntity() {
 		deletarGeneric(entity!=null?entity.getId():0);
+	}
+	
+	@Override
+	public void showFormDetail() {
+		textoTreino = TreinoLogic.getTreinoString(entity);
+		super.showFormDetail();
 	}
 	
 	
@@ -141,11 +156,15 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	public List<ProfessorFunc> getProfessorFuncField() {
 		return professorFuncDAO.buscarFieldNomeProf();
 	}
+	
 
 	/************************************************************************************************************/
 	//GETS E SETS
 	/************************************************************************************************************/
 	
+	public String getTextoTreino() {
+		return textoTreino;
+	}
 
 	
 	

@@ -42,10 +42,6 @@ public abstract class Bean<T> {
 	protected boolean showEntity3;
 	protected boolean showEntity4;
 
-	// Complex Navigation
-	protected boolean showComplexForm1;
-	protected boolean showComplexForm2;
-	
 	// Detail
 	protected boolean showEntityDetail;
 	
@@ -254,16 +250,6 @@ public abstract class Bean<T> {
 		}
 	}
 	
-	public void showComplex1(){
-		showComplexForm1 = true;
-		showComplexForm2 = false;
-	}
-
-	public void showComplex2(){
-		showComplexForm1 = false;
-		showComplexForm2 = true;
-	}
-
 	/**
 	 * fecha todos formularios.
 	 * Utilizado somente para casos de formularios mais complexos
@@ -343,17 +329,6 @@ public abstract class Bean<T> {
 	public long getTotalEntities() {
 		return totalEntities;
 	}
-	public boolean getShowComplexForm1() {
-		return showComplexForm1;
-	}
-	public boolean getShowComplexForm2() {
-		return showComplexForm2;
-	}
-	
-	
-	
-	
-	
 	
 	
 	

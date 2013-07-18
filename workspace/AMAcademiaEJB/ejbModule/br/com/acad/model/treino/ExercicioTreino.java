@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,12 +33,22 @@ public class ExercicioTreino implements Serializable {
 	@JoinColumn(name="EXERCICIO_ID", nullable=false)
 	private Exercicio exercicio = new Exercicio();
 	
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="EXERCICIO_TREINO_ID")
 	private Set<Serie> series = new HashSet<Serie>();
 
 	//Metodos
+	public boolean addSerie(Serie serie){
+		return series.add(serie);
+	}
 	
+	public boolean removeSerie(Serie serie){
+		return series.remove(serie);
+	}
+
+	public void resetSerie(){
+		series = new HashSet<Serie>();
+	}
 	
 	//Construtores
 	public ExercicioTreino(){}

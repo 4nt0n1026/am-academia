@@ -12,7 +12,9 @@ import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
 import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
 import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
+import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 import br.com.acad.model.avisos.NoticiaCat;
 import br.com.acad.model.cat.DiasTreinoCat;
@@ -20,7 +22,9 @@ import br.com.acad.model.cat.DuracaoTreinoCat;
 import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
+import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.ProfessorFunc;
+import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ParteCorpo;
 
 @SuppressWarnings("serial")
@@ -44,6 +48,11 @@ public class PopulaBancoBean implements Serializable {
 	private SexoCatDAO sexoCatDAO;
 	@EJB
 	private FaixaEtariaCatDAO faixaEtariaCatDAO;
+	@EJB
+	private AlunoDAO alunoDAO;
+	@EJB
+	private ExercicioDAO exercicioDAO;
+	
 	
 	
 	public void popula(){
@@ -56,25 +65,47 @@ public class PopulaBancoBean implements Serializable {
 		populaObjetivoCat();
 		populaSexoCat();
 		populaFaixaEtariaCat();
+		populaAluno();
+		populaExercicio();
+	}
+	
+	private void populaExercicio(){
+		Exercicio ex = new Exercicio("Supino");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("Remada");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("Rosca");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("Remada Alta");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("Leg Press");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("CrossOver");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("Agachamento");
+		exercicioDAO.insert(ex);
+		ex = new Exercicio("Desenvolvimento Ombro");
+		exercicioDAO.insert(ex);
 	}
 	
 	/**
 	 * popula info basica de FaixaEtariaCat
 	 */
-	public void populaFaixaEtariaCat(){
+	private void populaFaixaEtariaCat(){
 		faixaEtariaCatDAO.insert(new FaixaEtariaCat("Até 15 anos"));
 		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 16 a 19 anos"));
 		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 20 a 30 anos"));
 		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 31 a 45 anos"));
 		faixaEtariaCatDAO.insert(new FaixaEtariaCat("De 46 a 60 anos"));
 		faixaEtariaCatDAO.insert(new FaixaEtariaCat("Mais de 60 anos"));
+		faixaEtariaCatDAO.insert(new FaixaEtariaCat("Todas as idades"));
 		
 	}
 	
 	/**
 	 * popula info basica de SexoCat
 	 */
-	public void populaSexoCat(){
+	private void populaSexoCat(){
 		sexoCatDAO.insert(new SexoCat("Masculino"));
 		sexoCatDAO.insert(new SexoCat("Feminino"));
 		sexoCatDAO.insert(new SexoCat("Todos"));
@@ -83,7 +114,7 @@ public class PopulaBancoBean implements Serializable {
 	/**
 	 * popula info basica de ObjetivoCat
 	 */
-	public void populaObjetivoCat(){
+	private void populaObjetivoCat(){
 		objetivoCatDAO.insert(new ObjetivoCat("Hipertrofia"));
 		objetivoCatDAO.insert(new ObjetivoCat("Saude"));
 		objetivoCatDAO.insert(new ObjetivoCat("Emagrecer"));
@@ -92,7 +123,7 @@ public class PopulaBancoBean implements Serializable {
 	/**
 	 * popula info basica de DiasTreinoCat
 	 */
-	public void populaDiasTreinoCat(){
+	private void populaDiasTreinoCat(){
 		DiasTreinoCat dias1 = new DiasTreinoCat("1 vez por semana", 1);
 		diasTreinoCatDAO.insert(dias1);
 		DiasTreinoCat dias2 = new DiasTreinoCat("2 vez por semana", 2);
@@ -113,7 +144,7 @@ public class PopulaBancoBean implements Serializable {
 	/**
 	 * popula infos basicas de DuracaoTreinoCatDAO
 	 */
-	public void populaDuracaoTreinoCat(){
+	private void populaDuracaoTreinoCat(){
 		DuracaoTreinoCat duracao = new DuracaoTreinoCat("Até 15 min");
 		duracaoTreinoCatDAO.insert(duracao);
 		DuracaoTreinoCat duracao2 = new DuracaoTreinoCat("De 15 a 30 min");
@@ -136,7 +167,7 @@ public class PopulaBancoBean implements Serializable {
 	/**
 	 * popula infos basicas de ParteCorpo
 	 */
-	public void populaParteCorpo(){
+	private void populaParteCorpo(){
 		ParteCorpo p1 = new ParteCorpo("Biceps");
 		parteCorpoDAO.insert(p1);
 		ParteCorpo p2 = new ParteCorpo("Triceps");
@@ -159,12 +190,14 @@ public class PopulaBancoBean implements Serializable {
 		parteCorpoDAO.insert(p10);
 		ParteCorpo p11 = new ParteCorpo("Trapezio");
 		parteCorpoDAO.insert(p11);
+		ParteCorpo p12 = new ParteCorpo("Ombro");
+		parteCorpoDAO.insert(p12);
 	}
 	
 	/**
 	 * popula infos basicas de NoticiaCat
 	 */
-	public void populaNoticiaCat(){
+	private void populaNoticiaCat(){
 		NoticiaCat n1 = new NoticiaCat("Avisos");
 		noticiaCatDAO.insert(n1);
 		NoticiaCat n2 = new NoticiaCat("Noticias");
@@ -177,7 +210,7 @@ public class PopulaBancoBean implements Serializable {
 	/**
 	 * popula infos basicas de ProfessorFunc(Funcionarios)
 	 */
-	public void populaFuncionario(){
+	private void populaFuncionario(){
 		for(int i = 1; i<51; i++){
 			ProfessorFunc f = new ProfessorFunc();
 			f.setNome("Funcionario " + i);
@@ -194,7 +227,7 @@ public class PopulaBancoBean implements Serializable {
 	/**
 	 * popula infos basicas de ProfessorFunc(Professor)
 	 */
-	public void populaProfessor(){
+	private void populaProfessor(){
 		for(int i = 1; i<200; i++){
 			ProfessorFunc p = new ProfessorFunc();
 			p.setNome("Professor " + i);
@@ -205,9 +238,23 @@ public class PopulaBancoBean implements Serializable {
 			p.setRg("22233344401");
 			professorFuncDAO.insert(p);
 		}
-		
-		
-		
+	}
+	
+	/**
+	 * popula infos basicas de Aluno
+	 */
+	private void populaAluno(){
+		for(int i = 1; i<200; i++){
+			Aluno a = new Aluno();
+			a.setNome("Aluno " + i);
+			a.setEmail("aluno" + i + "@gmail.com");
+			a.setCpf("33342523501");
+			a.setAltura(1.70);
+			a.setPeso(70);
+			a.setSenha("123");
+			a.setRg("22233344401");
+			alunoDAO.insert(a);
+		}
 	}
 	
 }

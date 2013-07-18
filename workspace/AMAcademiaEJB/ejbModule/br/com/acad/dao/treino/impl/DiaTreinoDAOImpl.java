@@ -27,6 +27,7 @@ public class DiaTreinoDAOImpl extends DAOImpl<DiaTreino,Integer> implements DiaT
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<DiaTreino> buscaPorTreino(Treino treino) {
+		
 		Query q = em.createQuery("select t.diasTreino from Treino t where t.id=:id");
 		q.setParameter("id", treino.getId());
 		return q.getResultList();

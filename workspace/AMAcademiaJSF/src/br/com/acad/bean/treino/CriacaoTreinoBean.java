@@ -2,6 +2,7 @@ package br.com.acad.bean.treino;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,9 @@ import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.treino.DiaTreino;
 import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ExercicioTreino;
+import br.com.acad.model.treino.Serie;
 import br.com.acad.model.treino.Treino;
+import br.com.acad.model.treino.TreinoEspecifico;
 import br.com.acad.model.treino.TreinoFixo;
 
 @SuppressWarnings("serial")
@@ -45,6 +48,8 @@ public class CriacaoTreinoBean implements Serializable {
 	private TreinoFixoBean treinoFixoBean; 
 	@ManagedProperty(value="#{treinoEspecificoBean}") 
 	private TreinoEspecificoBean treinoEspecificoBean; 
+	@ManagedProperty(value="#{solicitacaoTreinoBean}") 
+	private SolicitacaoTreinoBean solicitacaoTreinoBean; 
 	
 	private Treino treino;
 	
@@ -54,6 +59,8 @@ public class CriacaoTreinoBean implements Serializable {
 	private boolean showExercicioTreino;
 	private ExercicioTreino exercicioTreino;
 	private List<ExercicioTreino> exercicios;
+	
+	private List<Serie> series = new ArrayList<Serie>();
 
 	
 	/************************************************************************************************************/
@@ -63,7 +70,7 @@ public class CriacaoTreinoBean implements Serializable {
 	@PostConstruct
 	public void init(){
 		showExercicioTreino = false;
-		exercicioTreino = new ExercicioTreino();
+		newExercicioTreino();
 		dias = new ArrayList<DiaTreino>();
 		exercicios = new ArrayList<ExercicioTreino>();
 	}
@@ -82,21 +89,57 @@ public class CriacaoTreinoBean implements Serializable {
 	/**
 	 * Criacao de um novo treino especifico
 	 */
-	public void novoTreinoEspecifico(){
+	public void newTreinoEspecifico(){
 		treino = treinoEspecificoBean.getEntity();
 		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
+		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
+		diaTreino = new DiaTreino();
 	}
 
 	/**
-	 * Salva os dias e os exercicios do treino
+	 * Criacao de um novo treino especifico de resposta
 	 */
-	public void salvarTreino(){
+	public void newTreinoEspecificoResposta(){
+		treino = solicitacaoTreinoBean.getTreino();
+		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
+		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
+		diaTreino = new DiaTreino();
+	}
+
+	/**
+	 * Salva os dias e os exercicios do treino fixo
+	 */
+	public void salvarTreinoFixo(){
 		treino.resetDiasTreino();
 		for(DiaTreino dia : dias){
 			treino.addDiaTreino(dia);
 		}
 		treinoFixoBean.setEntity((TreinoFixo) treino);
 		treinoFixoBean.incluirEntity();
+	}
+
+	/**
+	 * Salva os dias e os exercicios do treino especifico
+	 */
+	public void salvarTreinoEspecifico(){
+		treino.resetDiasTreino();
+		for(DiaTreino dia : dias){
+			treino.addDiaTreino(dia);
+		}
+		treinoEspecificoBean.setEntity((TreinoEspecifico) treino);
+		treinoEspecificoBean.incluirEntity();
+	}
+	
+	/**
+	 * Salva os dias e os exercicios do treino de resposta
+	 */
+	public void salvarTreinoEspecificoResposta(){
+		treino.resetDiasTreino();
+		for(DiaTreino dia : dias){
+			treino.addDiaTreino(dia);
+		}
+		solicitacaoTreinoBean.setTreino((TreinoEspecifico) treino);
+		solicitacaoTreinoBean.incluirTreinoResposta();;
 	}
 	
 	// DiaTreino
@@ -138,6 +181,7 @@ public class CriacaoTreinoBean implements Serializable {
 	public void onSelectDiaTreino(){
 		showExercicioTreino = true;
 		refreshExercicioTreino();
+		newExercicioTreino();
 	}
 	
 	/**
@@ -153,35 +197,72 @@ public class CriacaoTreinoBean implements Serializable {
 	 */
 	public void newExercicioTreino(){
 		exercicioTreino = new ExercicioTreino();
+		series = new ArrayList<Serie>();
 	}
 	
 	/**
 	 * Atualiza os exercicios ao clicar em um diaTreino
 	 */
 	public void refreshExercicioTreino(){
-		exercicios = diaTreino.getExerciciosTreino(exercicioTreinoDAO);
-		exercicios.addAll(diaTreino.getExerciciosTreino());
+		exercicios = new ArrayList<ExercicioTreino>(diaTreino.getExerciciosTreino());
 	}
 	
 	/**
 	 * Inclui um ExercicioTreino a lista de exercicios
 	 */
 	public void incluirExercicioTreino(){
+		if(exercicios.contains(exercicioTreino)){
+			exercicios.remove(exercicioTreino);
+			diaTreino.removeExercicioTreino(exercicioTreino);
+		}
+		exercicioTreino.setSeries(new HashSet<Serie>(series));
+		exercicioTreino.setExercicio(exercicioDAO.searchByID(exercicioTreino.getExercicio().getId()));
 		diaTreino.addExercicioTreino(exercicioTreino);
 		exercicios.add(exercicioTreino);
-		exercicioTreino = new ExercicioTreino();
+		newExercicioTreino();
 	}
 	
 	/**
 	 * Exclui ExercicioTreino da lista de exercicios
 	 */
 	public void excluirExercicioTreino(){
-		if(exercicioTreino!=null && exercicioTreino.getExercicio()!=null && exercicioTreino.getSeries() !=null){
+		if(exercicioTreino!=null && exercicioTreino.getExercicio()!=null ){
 			exercicios.remove(exercicioTreino);
+			diaTreino.removeExercicioTreino(exercicioTreino);
 		}else{
 			MessagesLogic.addWarnMessage("Aviso", "Selecione um exercicio antes de excluir");
 		}
 		exercicioTreino = new ExercicioTreino();
+
+	}
+
+	/**
+	 * ao selecionar exercicioTreino da lista
+	 */
+	public void onSelectExercicioTreino(){
+		series = new ArrayList<Serie>(exercicioTreino.getSeries());
+	}
+
+	/**
+	 * ao selecionar exercicioTreino da lista
+	 */
+	public void onUnselectExercicioTreino(){
+	}
+	
+	// Series
+	
+	/**
+	 * Adciona um serie
+	 */
+	public void addSerie(){
+		series.add(new Serie());
+	}
+	
+	/**
+	 * Reseta a lista de series
+	 */
+	public void resetSeries(){ 
+		series = new ArrayList<Serie>();
 	}
 	
 
@@ -249,6 +330,23 @@ public class CriacaoTreinoBean implements Serializable {
 		return showExercicioTreino;
 	}
 
+	public List<Serie> getSeries() {
+		return series;
+	}
+
+	public void setSeries(List<Serie> series) {
+		this.series = series;
+	}
+
+	public SolicitacaoTreinoBean getSolicitacaoTreinoBean() {
+		return solicitacaoTreinoBean;
+	}
+
+	public void setSolicitacaoTreinoBean(SolicitacaoTreinoBean solicitacaoTreinoBean) {
+		this.solicitacaoTreinoBean = solicitacaoTreinoBean;
+	}
+
+	
 	
 	
 }

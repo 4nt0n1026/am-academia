@@ -34,6 +34,7 @@ public class ParteCorpoBean extends Bean<ParteCorpo> implements Serializable {
 		page = 1;
 		dao = parteCorpoDAO;
 		staticFields = ParteCorpo.STATIC_FIELDS;
+		order = staticFields[0];
 		atualizar();
 	}
 	

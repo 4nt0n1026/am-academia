@@ -12,7 +12,6 @@ import javax.persistence.TypedQuery;
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.logic.SqlLogic;
-import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.Exercicio;
 
 @Stateless

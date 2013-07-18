@@ -138,7 +138,11 @@ public class Exercicio implements Serializable {
 		this.fotoLocal = fotoLocal;
 	}
 
-	
+
+	public Exercicio(String nome) {
+		this.nome = nome;
+	}
+
 	public Exercicio(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;

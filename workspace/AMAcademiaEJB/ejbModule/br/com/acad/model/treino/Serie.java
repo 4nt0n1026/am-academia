@@ -30,6 +30,11 @@ public class Serie implements Serializable{
 	
 	public Serie(){}
 	
+	@Override
+	public String toString() {
+		return  String.valueOf(numRepeticoes);
+	}
+
 	public long getDuracaoSeg() {
 		return duracaoSeg;
 	}
