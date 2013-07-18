@@ -266,6 +266,9 @@ public abstract class Bean<T> {
 	 * @return
 	 */
 	protected List<T> buscarTodos(){
+		if(search!=null && search.length()>0){
+			page = 1;
+		}
 		return dao.buscarTodos(page, search, order);
 	}
 	

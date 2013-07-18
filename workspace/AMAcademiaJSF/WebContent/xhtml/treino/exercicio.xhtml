@@ -46,6 +46,11 @@
 									<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}"  />  
 								</p:selectManyButton>
 								
+								<h:outputLabel value="Partes de Corpo Secunaria:" /> 
+								<p:selectManyButton value="#{exercicioBean.idsParteCorpoSecundaria}">
+									<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}" />  
+								</p:selectManyButton>
+								
 					        </h:panelGrid>
 					        
 					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{exercicioBean.showForm1}" ajax="true" update=":tabView1:formEntity" /> 
@@ -58,11 +63,10 @@
 						<p:fieldset id="field3"  rendered="#{exercicioBean.showEntity3}">
 							<h:panelGrid columns="1">
 							
-								<h:outputLabel value="Partes de Corpo Secunaria:" /> 
-								<p:selectManyButton value="#{exercicioBean.idsParteCorpoSecundaria}">
-									<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}" />  
-								</p:selectManyButton>
-	
+						        <p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.foto}"  />
+								<p:fileUpload fileUploadListener="#{exercicioBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+											auto="false" mode="advanced" id="foto" update="fotoExercicio"  />
+							        
 					        </h:panelGrid>
 					        
 					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
@@ -131,19 +135,23 @@
 				<h:form id="detailEntity">	
 					<p:fieldset legend="Detalhes" id="detail"  rendered="#{exercicioBean.showEntityDetail}">
 						<p:panelGrid columns="2">
-							<h:outputText value="Nome:"/>
-							<h:outputText value="#{exercicioBean.entity.nome}" />
-							
-							<h:outputText value="Descricao:"/>
-							<h:outputText value="#{exercicioBean.entity.descricao}" />
-							
-							<h:outputText value="Partes de corpo primarias"/>
-							<h:outputText value="#{exercicioBean.partesCorpoPrimDetail}" />
-							   
-							
-							<h:outputText value="Partes de corpo secundarias"/>
-							<h:outputText value="#{exercicioBean.partesCorpoSecDetail}" />
 						
+							<p:panelGrid columns="2">
+								<h:outputText value="Nome:"/>
+								<h:outputText value="#{exercicioBean.entity.nome}" />
+								
+								<h:outputText value="Descricao:"/>
+								<h:outputText value="#{exercicioBean.entity.descricao}" />
+								
+								<h:outputText value="Partes de corpo primarias"/>
+								<h:outputText value="#{exercicioBean.partesCorpoPrimDetail}" />
+								
+								<h:outputText value="Partes de corpo secundarias"/>
+								<h:outputText value="#{exercicioBean.partesCorpoSecDetail}" />
+							</p:panelGrid>
+							
+							<h:graphicImage value="#{exercicioBean.foto}" />
+							
 						</p:panelGrid>
 					</p:fieldset>
 				</h:form>
