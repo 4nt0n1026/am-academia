@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name="ACAD_AULA")
 public class Aula implements Serializable{
 
-	public static final String[] STATIC_FIELDS = null;
+	public static final String[] STATIC_FIELDS = {"descricao", "modalidade.nome"};
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAula")

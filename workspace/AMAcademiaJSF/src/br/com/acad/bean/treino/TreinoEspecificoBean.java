@@ -1,6 +1,7 @@
 package br.com.acad.bean.treino;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -8,7 +9,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
+import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
+import br.com.acad.logic.TreinoLogic;
+import br.com.acad.model.pessoa.ProfessorFunc;
 import br.com.acad.model.treino.TreinoEspecifico;
 
 
@@ -23,6 +27,10 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	
 	@EJB
 	private TreinoEspecificoDAO treinoEspecificoDAO;
+	@EJB
+	private ProfessorFuncDAO professorFuncDAO;
+	
+	public String textoTreino;
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -61,15 +69,33 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
 	
+	@Override
+	public void showFormDetail() {
+		textoTreino = TreinoLogic.getTreinoString(entity);
+		super.showFormDetail();
+	}
+
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/
+	
+	/**
+	 * busca todos ProfessorFunc para preencher o field
+	 */
+	public List<ProfessorFunc> getProfessorFuncField() {
+		return professorFuncDAO.buscarFieldNomeProf();
+	}
 	
 	
 
 	/************************************************************************************************************/
 	//GETS E SETS
 	/************************************************************************************************************/
+	
+	public String getTextoTreino() {
+		return textoTreino;
+	}
+	
 	
 	
 }

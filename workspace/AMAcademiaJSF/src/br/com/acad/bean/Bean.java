@@ -226,7 +226,6 @@ public abstract class Bean<T> {
 		}else{
 			entity = dao.update(entity);
 		}
-		closeForms();
 		atualizar();
 		MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
 	}
@@ -242,7 +241,6 @@ public abstract class Bean<T> {
 	protected void deletarGeneric(Integer id){
 		if(entity != null){
 			dao.removeById(id);
-			closeForms();
 			atualizar();
 			MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
 		}else{
