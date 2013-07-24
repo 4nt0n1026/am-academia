@@ -46,7 +46,7 @@
 						        
 						        <h:outputLabel for="idUnidadeMedida" value="Unidade de Medida " />  
 							    <p:selectOneMenu id="idUnidadeMedida" value="#{alimentoBean.entity.unidadeMedida.id}" rendered="true" style="width:250px"
-							    			requiredMessage="Unidade de medida Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    			requiredMessage="Unidade de medida Obrigatorio" >  
 							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{alimentoBean.unidadeMedidaField}" var="uniMed" itemLabel="#{uniMed.sigla}" itemValue="#{uniMed.id}"/>  
 								</p:selectOneMenu>  
