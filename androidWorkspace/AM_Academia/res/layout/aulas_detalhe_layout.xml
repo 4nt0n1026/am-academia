@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/back"
+    tools:context=".AulasDetalheActivity" >
+
+    <TextView
+        android:id="@+idAulasDetalhe/nome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/titulo_background"
+        android:textColor="@color/titulo"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/section"
+        android:text="@string/descricao"
+        />
+
+    <TextView 
+        android:id="@+idAulasDetalhe/descricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/section"
+        android:text="@string/horarios"
+        />
+    
+    <TextView 
+        android:id="@+idAulasDetalhe/horarios"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    
+</LinearLayout>

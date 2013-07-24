@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Geral -->
+    <string name="app_name">AM_Academia</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Login -->
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+
+    <!-- Home -->
+    <string name="title_activity_home">Home</string>
+    <string name="treino">Treino</string>
+    <string name="dieta">Dieta</string>
+    <string name="aulas">Aulas</string>
+    <string name="noticias">Notícias</string>
+    <string name="sair">Sair</string>
+    <string name="config">Configurações</string>
+    <string name="btntreino">btnTreino</string>
+    <string name="title_activity_treino">Treino</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_dieta">Dieta</string>
+    <string name="title_activity_aulas">Aulas</string>
+    <string name="title_activity_noticias">Noticias</string>
+    <string name="title_activity_aulas_detalhe">Detalhe da Aula</string>
+
+    <!-- Aulas Detalhes -->
+    <string name="descricao">Descrição</string>
+    <string name="horarios">Horarios</string>
+    <string name="title_activity_noticia_detalhe">Detalhe da Notícia</string>
+
+</resources>
