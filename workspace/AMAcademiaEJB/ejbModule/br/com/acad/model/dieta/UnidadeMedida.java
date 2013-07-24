@@ -31,6 +31,12 @@ public class UnidadeMedida implements Serializable {
 	
 	public UnidadeMedida(){}
 
+	public UnidadeMedida(Integer id, String nome, String sigla) {
+		this.id = id;
+		this.nome = nome;
+		this.sigla = sigla;
+	}
+
 	public int getId() {
 		return id;
 	}
