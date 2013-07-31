@@ -31,7 +31,8 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f100000;
+        public static final int action_settings=0x7f0c0001;
+        public static final int editText1=0x7f0c0000;
     }
     public static final class idAulas {
         public static final int listModalidade=0x7f0a0000;
@@ -41,46 +42,57 @@ public final class R {
         public static final int horarios=0x7f090002;
         public static final int nome=0x7f090000;
     }
+    public static final class idFormBuscaTreino {
+        public static final int diasSemanaSpinner=0x7f0b0003;
+        public static final int duracaoSpinner=0x7f0b0004;
+        public static final int faixaSpinner=0x7f0b0001;
+        public static final int objetivoSpinner=0x7f0b0002;
+        public static final int sexoSpinner=0x7f0b0000;
+    }
     public static final class idListaLayout {
-        public static final int image=0x7f0b0000;
-        public static final int texto=0x7f0b0001;
+        public static final int image=0x7f0d0000;
+        public static final int texto=0x7f0d0001;
     }
     public static final class idLogin {
-        public static final int login=0x7f0c0000;
-        public static final int senha=0x7f0c0001;
+        public static final int login=0x7f0e0000;
+        public static final int senha=0x7f0e0001;
     }
     public static final class idNoticias {
-        public static final int listNoticias=0x7f0e0000;
+        public static final int listNoticias=0x7f100000;
     }
     public static final class idNoticiasDetalhe {
-        public static final int categoria=0x7f0d0002;
-        public static final int data=0x7f0d0001;
-        public static final int descricao=0x7f0d0003;
-        public static final int nome=0x7f0d0000;
+        public static final int categoria=0x7f0f0002;
+        public static final int data=0x7f0f0001;
+        public static final int descricao=0x7f0f0003;
+        public static final int nome=0x7f0f0000;
     }
     public static final class idTreino {
-        public static final int listMenuTreino=0x7f0f0000;
+        public static final int listMenuTreino=0x7f110000;
     }
     public static final class layout {
         public static final int aulas_detalhe_layout=0x7f030000;
         public static final int aulas_layout=0x7f030001;
         public static final int dieta_layout=0x7f030002;
-        public static final int home_layout=0x7f030003;
-        public static final int lista_foto_layout=0x7f030004;
-        public static final int login_layout=0x7f030005;
-        public static final int noticia_detalhe_layout=0x7f030006;
-        public static final int noticias_layout=0x7f030007;
-        public static final int treino_layout=0x7f030008;
+        public static final int form_busca_treino_layout=0x7f030003;
+        public static final int form_solicitacao_treino_layout=0x7f030004;
+        public static final int home_layout=0x7f030005;
+        public static final int lista_foto_layout=0x7f030006;
+        public static final int login_layout=0x7f030007;
+        public static final int noticia_detalhe_layout=0x7f030008;
+        public static final int noticias_layout=0x7f030009;
+        public static final int treino_layout=0x7f03000a;
     }
     public static final class menu {
         public static final int aulas=0x7f080000;
         public static final int aulas_detalhe=0x7f080001;
         public static final int dieta=0x7f080002;
-        public static final int home=0x7f080003;
-        public static final int login=0x7f080004;
-        public static final int noticia_detalhe=0x7f080005;
-        public static final int noticias=0x7f080006;
-        public static final int treino=0x7f080007;
+        public static final int form_busca_treino=0x7f080003;
+        public static final int form_solicitacao=0x7f080004;
+        public static final int home=0x7f080005;
+        public static final int login=0x7f080006;
+        public static final int noticia_detalhe=0x7f080007;
+        public static final int noticias=0x7f080008;
+        public static final int treino=0x7f080009;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -89,23 +101,36 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int aulas=0x7f060008;
         public static final int btntreino=0x7f06000c;
+        public static final int buscar=0x7f06001c;
         public static final int config=0x7f06000b;
         /**  Aulas Detalhes 
          */
         public static final int descricao=0x7f060013;
+        public static final int dias_semana=0x7f060018;
         public static final int dieta=0x7f060007;
+        /**  Busca Treino 
+         */
+        public static final int duracao_treino=0x7f060017;
         public static final int entrar=0x7f060004;
+        /**  Solicitacao 
+         */
+        public static final int enviar=0x7f06001e;
+        public static final int faixa_etaria=0x7f06001a;
         public static final int hello_world=0x7f06000e;
         public static final int horarios=0x7f060014;
         /**  Login 
          */
         public static final int login=0x7f060002;
         public static final int noticias=0x7f060009;
+        public static final int objetivo=0x7f060019;
         public static final int sair=0x7f06000a;
         public static final int senha=0x7f060003;
+        public static final int sexo=0x7f06001b;
         public static final int title_activity_aulas=0x7f060010;
         public static final int title_activity_aulas_detalhe=0x7f060012;
         public static final int title_activity_dieta=0x7f06000f;
+        public static final int title_activity_form_busca_treino=0x7f060016;
+        public static final int title_activity_form_solicitacao=0x7f06001d;
         /**  Home 
          */
         public static final int title_activity_home=0x7f060005;

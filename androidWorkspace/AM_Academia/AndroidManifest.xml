@@ -80,6 +80,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="NoticiaActivity" />
         </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.FormBuscaTreinoActivity"
+            android:label="@string/title_activity_form_busca_treino" >
+        </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.FormSolicitacaoTreinoActivity"
+            android:label="@string/title_activity_form_solicitacao" >
+        </activity>
     </application>
 
 </manifest>

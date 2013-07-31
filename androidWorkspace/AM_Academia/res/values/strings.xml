@@ -30,5 +30,18 @@
     <string name="descricao">Descrição</string>
     <string name="horarios">Horarios</string>
     <string name="title_activity_noticia_detalhe">Detalhe da Notícia</string>
+    <string name="title_activity_form_busca_treino">Formulario de Busca de Treino</string>
+
+    <!-- Busca Treino -->
+    <string name="duracao_treino">Duração do treino</string>
+    <string name="dias_semana">Quantidade de dias na semana</string>
+    <string name="objetivo">Objetivo</string>
+    <string name="faixa_etaria">Faixa etaria</string>
+    <string name="sexo">Sexo</string>
+    <string name="buscar">Buscar</string>
+    <string name="title_activity_form_solicitacao">Formulario de Solicitação</string>
+    
+    <!-- Solicitacao -->
+    <string name="enviar">Enviar</string>
 
 </resources>

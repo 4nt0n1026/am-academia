@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,13 +51,17 @@ public class TreinoActivity extends Activity {
 				
 				// Buscar Treinos Prontos-------------------------
 				case 1:
-					// TODO - vai para busca de treinos
+					// Vai para busca de treinos
+					Intent goFormBuscaTreino =  new Intent(TreinoActivity.this, FormBuscaTreinoActivity.class);
+					startActivity(goFormBuscaTreino);
 					break;
 				//------------------------------------------------
 			
 				// Solicitar Treino-------------------------------
 				case 2:
-					// TODO - Vai para solicitacao de treino
+					// Vai para solicitacao de treino
+					Intent goFormSolicitacao =  new Intent(TreinoActivity.this, FormSolicitacaoTreinoActivity.class);
+					startActivity(goFormSolicitacao);
 					break;
 				//------------------------------------------------
 
