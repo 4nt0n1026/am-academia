@@ -10,25 +10,28 @@
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
-		<!-- Modalidade -->
+		<!-- Aula -->
 		<!-- ****************************************************************************************************** -->
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Modalidades" >  
+     			<p:tab title="Aulas" >  
      				
 				    <!-- ****************************************************************************************************** -->
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
-						<p:fieldset id="field"  rendered="#{modalidadeBean.showEntity}">
+						<p:fieldset id="field"  rendered="#{aulaBean.showEntity}">
 							<h:panelGrid columns="10">
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{modalidadeBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        <p:inputText id="idNome" value="#{aulaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        
+						        <h:outputLabel for="idDesc" value="Descrição" />  
+						        <p:inputTextarea id="idDesc" value="#{aulaBean.entity.descricao}" required="false" cols="80"  />  
 						        
 	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{modalidadeBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{modalidadeBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{aulaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{aulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
 						</p:fieldset> 
@@ -41,19 +44,19 @@
       				<h:form id="tabelaEntity">
 					<p:toolbar id="menuTabela">  
    						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{modalidadeBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{modalidadeBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{modalidadeBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{modalidadeBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{aulaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{aulaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{aulaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{aulaBean.atualizar}" ajax="true" update=":tabView1"/>
 				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
 			        		<p:separator />  
-				        	Busca:<p:inputText value="#{modalidadeBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{modalidadeBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{modalidadeBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	Busca:<p:inputText value="#{aulaBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{aulaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{aulaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
 				        </p:toolbarGroup>
 				    </p:toolbar>
 			   	
@@ -61,25 +64,28 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{modalidadeBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{modalidadeBean.entity}" selectionMode="single" rowKey="#{entity}">
+					<p:dataTable value="#{aulaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{aulaBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:ajax event="rowSelect" listener="#{aulaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{aulaBean.hideFormDetail}" update=":tabView1:detailEntity"/>
 						
 						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
-					
+
 						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{modalidadeBean.previousPageTable}" 
-										rendered="#{modalidadeBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{aulaBean.previousPageTable}" 
+										rendered="#{aulaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
 										
-							---<h:outputText value="#{modalidadeBean.page}" />---
+							---<h:outputText value="#{aulaBean.page}" />---
 							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{modalidadeBean.nextPageTable}" 
-										rendered="#{modalidadeBean.page != modalidadeBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{aulaBean.nextPageTable}" 
+										rendered="#{aulaBean.page != aulaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
 										
 							<div class="left">
-								<h:outputText value="Total de itens: #{modalidadeBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{modalidadeBean.totalPages}" />
+								<h:outputText value="Total de itens: #{aulaBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{aulaBean.totalPages}" />
 							</div>
 						</f:facet>
 					</p:dataTable>
@@ -88,7 +94,20 @@
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-			
+				<br/>
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{aulaBean.showEntityDetail}">
+							
+						<p:panelGrid columns="2">
+							<h:outputText value="Nome:"/>
+							<h:outputText value="#{aulaBean.entity.nome}" />
+							
+							<h:outputText value="Descrição: "/>
+							<h:outputText value="#{aulaBean.entity.descricao}"/>
+						</p:panelGrid>
+							
+					</p:fieldset>
+				</h:form>
 			
 			
 				<!-- ****************************************************************************************************** -->

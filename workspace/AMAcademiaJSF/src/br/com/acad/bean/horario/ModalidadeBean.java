@@ -8,21 +8,21 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
-import br.com.acad.dao.horario.interf.ModalidadeDAO;
-import br.com.acad.model.horario.Modalidade;
+import br.com.acad.dao.horario.interf.AulaDAO;
+import br.com.acad.model.horario.Aula;
 
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
-public class ModalidadeBean extends Bean<Modalidade> implements Serializable {
+public class ModalidadeBean extends Bean<Aula> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
 	
 	@EJB
-	private ModalidadeDAO modalidadeDAO;
+	private AulaDAO aulaDAO;
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -32,8 +32,8 @@ public class ModalidadeBean extends Bean<Modalidade> implements Serializable {
 	@Override
 	public void init() {
 		page = 1;
-		dao = modalidadeDAO;
-		staticFields = Modalidade.STATIC_FIELDS;
+		dao = aulaDAO;
+		staticFields = Aula.STATIC_FIELDS;
 		atualizar();
 	}
 	
@@ -43,7 +43,7 @@ public class ModalidadeBean extends Bean<Modalidade> implements Serializable {
 	@Override
 	public void showNewEntity() {
 		showEntity = true;
-		entity = new Modalidade();
+		entity = new Aula();
 	}
 
 	/**
