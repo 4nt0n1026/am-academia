@@ -31,14 +31,14 @@ public class AulasActivity extends Activity {
 		aulas.add(new Aula(3, "Jiu Jitsu"));
 		// -------------------------------------------------------
 		
-		// Cria adapter e preenche lista-----------------------------------
+		// Cria adapter e preenche listaView----------------------
 		ArrayAdapter<Aula> adapter = new ArrayAdapter<Aula>(this, android.R.layout.simple_list_item_1, aulas);
 		
 		ListView listAulas = (ListView) findViewById(R.idAulas.listModalidade);
 		listAulas.setAdapter(adapter);
 		// -------------------------------------------------------
 		
-		// Ao clicar em item da lista------------------------------
+		// Ao clicar em item da lista-----------------------------
 		listAulas.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

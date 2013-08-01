@@ -31,8 +31,7 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f0c0001;
-        public static final int editText1=0x7f0c0000;
+        public static final int action_settings=0x7f130000;
     }
     public static final class idAulas {
         public static final int listModalidade=0x7f0a0000;
@@ -49,25 +48,31 @@ public final class R {
         public static final int objetivoSpinner=0x7f0b0002;
         public static final int sexoSpinner=0x7f0b0000;
     }
+    public static final class idFormSolicitacaoTreino {
+        public static final int descricao=0x7f0c0000;
+    }
+    public static final class idListBuscaTreino {
+        public static final int listTreinos=0x7f0d0000;
+    }
     public static final class idListaLayout {
-        public static final int image=0x7f0d0000;
-        public static final int texto=0x7f0d0001;
+        public static final int image=0x7f0e0000;
+        public static final int texto=0x7f0e0001;
     }
     public static final class idLogin {
-        public static final int login=0x7f0e0000;
-        public static final int senha=0x7f0e0001;
+        public static final int login=0x7f0f0000;
+        public static final int senha=0x7f0f0001;
     }
     public static final class idNoticias {
-        public static final int listNoticias=0x7f100000;
+        public static final int listNoticias=0x7f110000;
     }
     public static final class idNoticiasDetalhe {
-        public static final int categoria=0x7f0f0002;
-        public static final int data=0x7f0f0001;
-        public static final int descricao=0x7f0f0003;
-        public static final int nome=0x7f0f0000;
+        public static final int categoria=0x7f100002;
+        public static final int data=0x7f100001;
+        public static final int descricao=0x7f100003;
+        public static final int nome=0x7f100000;
     }
     public static final class idTreino {
-        public static final int listMenuTreino=0x7f110000;
+        public static final int listMenuTreino=0x7f120000;
     }
     public static final class layout {
         public static final int aulas_detalhe_layout=0x7f030000;
@@ -76,11 +81,12 @@ public final class R {
         public static final int form_busca_treino_layout=0x7f030003;
         public static final int form_solicitacao_treino_layout=0x7f030004;
         public static final int home_layout=0x7f030005;
-        public static final int lista_foto_layout=0x7f030006;
-        public static final int login_layout=0x7f030007;
-        public static final int noticia_detalhe_layout=0x7f030008;
-        public static final int noticias_layout=0x7f030009;
-        public static final int treino_layout=0x7f03000a;
+        public static final int list_busca_treino_layout=0x7f030006;
+        public static final int lista_foto_layout=0x7f030007;
+        public static final int login_layout=0x7f030008;
+        public static final int noticia_detalhe_layout=0x7f030009;
+        public static final int noticias_layout=0x7f03000a;
+        public static final int treino_layout=0x7f03000b;
     }
     public static final class menu {
         public static final int aulas=0x7f080000;
@@ -89,10 +95,11 @@ public final class R {
         public static final int form_busca_treino=0x7f080003;
         public static final int form_solicitacao=0x7f080004;
         public static final int home=0x7f080005;
-        public static final int login=0x7f080006;
-        public static final int noticia_detalhe=0x7f080007;
-        public static final int noticias=0x7f080008;
-        public static final int treino=0x7f080009;
+        public static final int list_busca_treino=0x7f080006;
+        public static final int login=0x7f080007;
+        public static final int noticia_detalhe=0x7f080008;
+        public static final int noticias=0x7f080009;
+        public static final int treino=0x7f08000a;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -134,6 +141,7 @@ public final class R {
         /**  Home 
          */
         public static final int title_activity_home=0x7f060005;
+        public static final int title_activity_list_busca_treino=0x7f06001f;
         public static final int title_activity_noticia_detalhe=0x7f060015;
         public static final int title_activity_noticias=0x7f060011;
         public static final int title_activity_treino=0x7f06000d;

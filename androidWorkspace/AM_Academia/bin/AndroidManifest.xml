@@ -88,6 +88,10 @@
             android:name="br.com.acad.activity.treino.FormSolicitacaoTreinoActivity"
             android:label="@string/title_activity_form_solicitacao" >
         </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.ListBuscaTreinoActivity"
+            android:label="@string/title_activity_list_busca_treino" >
+        </activity>
     </application>
 
 </manifest>

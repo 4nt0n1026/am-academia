@@ -40,8 +40,9 @@
     <string name="sexo">Sexo</string>
     <string name="buscar">Buscar</string>
     <string name="title_activity_form_solicitacao">Formulario de Solicitação</string>
-    
+
     <!-- Solicitacao -->
     <string name="enviar">Enviar</string>
+    <string name="title_activity_list_busca_treino">Resultado da busca</string>
 
 </resources>
