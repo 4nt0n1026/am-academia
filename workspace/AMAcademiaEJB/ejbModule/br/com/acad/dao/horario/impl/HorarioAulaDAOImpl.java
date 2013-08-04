@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.horario.interf.HorarioAulaDAO;
+import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.horario.HorarioAula;
 
 @Stateless
@@ -25,20 +27,28 @@ public class HorarioAulaDAOImpl extends DAOImpl<HorarioAula,Integer> implements 
 
 	@Override
 	public long contarTodos(String search) {
-		// TODO Auto-generated method stub
-		return 0;
+		Query q = em.createQuery(SqlLogic.getCountSql(HorarioAula.STATIC_FIELDS, "HorarioAula", search));
+		return  (Long) q.getSingleResult();
 	}
 
 	@Override
-	public List<HorarioAula> buscarTodos(int page, String txtSearch,
+	public List<HorarioAula> buscarTodos(int page, String txtSearch, String order) {
+		TypedQuery<HorarioAula> q = em.createQuery(SqlLogic.getSql(HorarioAula.STATIC_FIELDS, "HorarioAula", txtSearch, order), HorarioAula.class);
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public List<HorarioAula> filtrarTodos(int page, Map<String, String> filtros,
 			String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<HorarioAula> filtrarTodos(int page,
-			Map<String, String> filtros, String order) {
 		// TODO Auto-generated method stub
 		return null;
 	}

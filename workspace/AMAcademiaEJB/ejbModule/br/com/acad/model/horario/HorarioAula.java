@@ -15,7 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.acad.model.cat.DiaSemana;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
@@ -23,6 +22,8 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @SequenceGenerator(name="seqHorarioAula", sequenceName="SEQ_HORARIO_AULA", allocationSize=1)
 @Table(name="ACAD_HORARIO_AULA")
 public class HorarioAula implements Serializable {
+
+	public static final String[] STATIC_FIELDS = {"unidade.nome", "professor.nome", "aula.nome"};
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqHorarioAula")
@@ -34,7 +35,7 @@ public class HorarioAula implements Serializable {
 	private Calendar hora;
 	
 	@Column(name="DIA_SEMANA")
-	private DiaSemana diaSemana;
+	private String diasSemana;
 	
 	@ManyToOne
 	@JoinColumn(name="UNIDADE_ID")
@@ -43,7 +44,17 @@ public class HorarioAula implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_ID")
 	private ProfessorFunc professor;
+
+	@ManyToOne
+	@JoinColumn(name="AULA_ID")
+	private Aula aula;
 	
+	public Aula getAula() {
+		return aula;
+	}
+	public void setAula(Aula aula) {
+		this.aula = aula;
+	}
 	public int getId() {
 		return id;
 	}
@@ -55,12 +66,6 @@ public class HorarioAula implements Serializable {
 	}
 	public void setHora(Calendar hora) {
 		this.hora = hora;
-	}
-	public DiaSemana getDiaSemana() {
-		return diaSemana;
-	}
-	public void setDiaSemana(DiaSemana diaSemana) {
-		this.diaSemana = diaSemana;
 	}
 	public Unidade getUnidade() {
 		return unidade;
@@ -74,5 +79,12 @@ public class HorarioAula implements Serializable {
 	public void setProfessor(ProfessorFunc professor) {
 		this.professor = professor;
 	}
+	public String getDiasSemana() {
+		return diasSemana;
+	}
+	public void setDiasSemana(String diasSemana) {
+		this.diasSemana = diasSemana;
+	}
+	
 	
 }

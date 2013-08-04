@@ -1,5 +1,7 @@
 package br.com.acad.dao.horario.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +59,19 @@ public class UnidadeDAOImpl extends DAOImpl<Unidade,Integer> implements UnidadeD
 	public long contarTodosFiltro(Map<String, String> filtros) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Unidade> buscarTodosField() {
+		Query q = em.createQuery("select u.id, u.nome from Unidade u");
+		List<Unidade> unidades = new ArrayList<Unidade>();
+		Collection<Object[]> resultado = q.getResultList();
+		for (Object[] o:resultado){
+			Unidade u = new Unidade((Integer) o[0], (String) o[1]);
+			unidades.add(u);
+		}
+		return unidades;
 	}
 
 }

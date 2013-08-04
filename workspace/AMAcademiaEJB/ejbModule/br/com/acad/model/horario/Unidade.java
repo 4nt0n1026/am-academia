@@ -32,6 +32,17 @@ public class Unidade implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	
+	public Unidade() {
+	}
+	
+	public Unidade(Integer id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
+	
+	
+	
 	public int getId() {
 		return id;
 	}

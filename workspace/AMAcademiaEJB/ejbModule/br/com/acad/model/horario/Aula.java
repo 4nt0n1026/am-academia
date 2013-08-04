@@ -29,7 +29,6 @@ public class Aula implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
-	
 	public int getId() {
 		return id;
 	}

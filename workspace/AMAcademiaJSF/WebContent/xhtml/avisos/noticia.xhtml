@@ -28,13 +28,13 @@
 						        
 						        		 
 						        <h:outputLabel for="idCat" value="Categoria: " />  
-							    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" rendered="true" requiredMessage="Catorgoria Obrigatoria" >  
+							    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria" >  
 							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
 								</p:selectOneMenu>  
 						        		 
 						       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
-							    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" rendered="true" style="width:250px"
+							    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" required="true" style="width:250px"
 							    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
 							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  

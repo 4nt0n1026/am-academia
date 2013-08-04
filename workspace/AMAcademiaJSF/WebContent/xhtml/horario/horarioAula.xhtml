@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- HorarioAula -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Horario das Aulas" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{horarioAulaBean.showEntity}">
+							<h:panelGrid columns="10">
+
+						       	<h:outputLabel for="idHora" value="Hora " />  
+								<p:inputMask mask="99:99" value="#{horarioAulaBean.entity.hora.time}">
+									<f:convertDateTime pattern="hh:mm" />
+								</p:inputMask>
+							
+						       	<h:outputLabel for="idAula" value="Aula " />  
+							    <p:selectOneMenu id="idAula" value="#{horarioAulaBean.entity.aula.id}" required="true" style="width:250px"
+							    			requiredMessage="Aula Obrigatoria" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItems value="#{horarioAulaBean.aulasField}" var="aula" itemLabel="#{aula.nome}" itemValue="#{aula.id}"/>  
+								</p:selectOneMenu>  
+	
+						        <h:outputLabel for="idUnidade" value="Unidade " />  
+							    <p:selectOneMenu id="idUnidade" value="#{horarioAulaBean.entity.unidade.id}" required="true" requiredMessage="Unidade Obrigatoria" >  
+							    	<f:selectItems value="#{horarioAulaBean.unidadesField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
+								</p:selectOneMenu>  
+						        		 
+						       	<h:outputLabel for="idFunc" value="Professor " />  
+							    <p:selectOneMenu id="idFunc" value="#{horarioAulaBean.entity.professor.id}" required="true" style="width:250px"
+							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItems value="#{horarioAulaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>  
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{horarioAulaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{horarioAulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{horarioAulaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{horarioAulaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{horarioAulaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{horarioAulaBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{horarioAulaBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{horarioAulaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{horarioAulaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{horarioAulaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{horarioAulaBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Aula">
+							<h:outputText value="#{entity.aula.nome}" />
+						</p:column>
+
+						<p:column headerText="Dias na Semana">
+							<h:outputText value="#{entity.diasSemana}" />
+						</p:column>
+						
+						<p:column headerText="Hora" >
+							<h:outputText value="#{entity.hora.time}">
+								<f:convertDateTime pattern="hh:mm" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Unidade">
+							<h:outputText value="#{entity.unidade.nome}" />
+						</p:column>
+
+						<p:column headerText="professor">
+							<h:outputText value="#{entity.professor.nome}" />
+						</p:column>
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{horarioAulaBean.previousPageTable}" 
+										rendered="#{horarioAulaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{horarioAulaBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{horarioAulaBean.nextPageTable}" 
+										rendered="#{horarioAulaBean.page != horarioAulaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{horarioAulaBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{horarioAulaBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>
