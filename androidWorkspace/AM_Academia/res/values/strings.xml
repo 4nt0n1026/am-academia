@@ -44,5 +44,11 @@
     <!-- Solicitacao -->
     <string name="enviar">Enviar</string>
     <string name="title_activity_list_busca_treino">Resultado da busca</string>
-
+    <string name="title_activity_detalhe_busca_treino">Detalhe do Treino</string>
+	
+	<!-- detalhe Treino -->    
+    <string name="adcionar_treino">Adcionar treino aos Meus Treinos</string>    
+    <string name="data">Data</string>
+    <string name="professor">Professor</string>
+    
 </resources>
