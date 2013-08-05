@@ -26,6 +26,9 @@ public class ObjetivoCat implements Serializable{
 	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=255, nullable=true)
+	private String localFotoIcone;
+	
 	public ObjetivoCat(){}
 
 	public ObjetivoCat(int id, String nome) {

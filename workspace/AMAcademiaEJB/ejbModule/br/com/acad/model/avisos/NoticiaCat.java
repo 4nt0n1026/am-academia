@@ -29,6 +29,9 @@ public class NoticiaCat implements Serializable{
 	@Column(length=255, nullable=false)
 	private String nome;
 	
+	@Column(length=255, nullable=true)
+	private String fotoLocalIcone;
+	
 	
 	
 	public NoticiaCat(){}
@@ -50,5 +53,14 @@ public class NoticiaCat implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getFotoLocalIcone() {
+		return fotoLocalIcone;
+	}
+
+	public void setFotoLocalIcone(String fotoLocalIcone) {
+		this.fotoLocalIcone = fotoLocalIcone;
+	}
+	
 	
 }
