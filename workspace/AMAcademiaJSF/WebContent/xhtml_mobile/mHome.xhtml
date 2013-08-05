@@ -1,0 +1,37 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"        
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+    <pm:page title="Home">
+    
+    	<!-- Home -->
+    	<pm:view id="main">
+    		<pm:header title="Home">
+                <f:facet name="left"><p:button value="back" onclick="PrimeFaces.back()" /></f:facet>
+            </pm:header>
+			
+			<pm:content>
+				<h:form>
+					<p:dataList value="#{mHomeBean.itens}"  type="inset" var="item">  
+						<f:facet name="header">Menu</f:facet>
+						
+						<f:attribute name="iconSplit" value="true" />                    
+						<h:outputLink value="#{item.caminho}">
+							<f:attribute name="icon" value="gear" />
+							<p:graphicImage value="#{item.fotoLocal}" />
+							<h2>#{item.nome}</h2>                                                
+						</h:outputLink>
+					</p:dataList>
+	            </h:form>
+				
+			</pm:content> 
+            
+		</pm:view>
+    
+    </pm:page>
+</f:view>
