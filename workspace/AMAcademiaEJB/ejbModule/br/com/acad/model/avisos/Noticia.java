@@ -1,6 +1,7 @@
 package br.com.acad.model.avisos;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +43,8 @@ public class Noticia implements Serializable {
 	@JoinColumn(name="NOTICIA_CAT_ID")
 	private NoticiaCat categoria;
 	
+	private Calendar data;
+	
 	public int getId() {
 		return id;
 	}
@@ -73,4 +76,12 @@ public class Noticia implements Serializable {
 	public void setCategoria(NoticiaCat categoria) {
 		this.categoria = categoria;
 	}
+	public Calendar getData() {
+		return data;
+	}
+	public void setData(Calendar data) {
+		this.data = data;
+	}
+	
+	
 }

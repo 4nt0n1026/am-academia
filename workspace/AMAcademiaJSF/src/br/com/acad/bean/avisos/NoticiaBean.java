@@ -1,6 +1,7 @@
 package br.com.acad.bean.avisos;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -63,6 +64,7 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable {
 	 */
 	@Override
 	public void incluirEntity() {
+		entity.setData(Calendar.getInstance());
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 

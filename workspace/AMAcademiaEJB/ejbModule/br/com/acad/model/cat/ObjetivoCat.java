@@ -27,7 +27,7 @@ public class ObjetivoCat implements Serializable{
 	private String nome;
 	
 	@Column(length=255, nullable=true)
-	private String localFotoIcone;
+	private String fotoLocalIcone;
 	
 	public ObjetivoCat(){}
 
@@ -56,6 +56,15 @@ public class ObjetivoCat implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getFotoLocalIcone() {
+		return fotoLocalIcone;
+	}
+
+	public void setFotoLocalIcone(String fotoLocalIcone) {
+		this.fotoLocalIcone = fotoLocalIcone;
+	}
+	
 	
 	
 	

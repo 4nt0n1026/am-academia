@@ -26,6 +26,17 @@
 						        <h:outputLabel for="idNome" value="Nome" />  
 						        <p:inputText id="idNome" value="#{noticiaCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
+						        <p:selectOneMenu value="#{noticiaCatBean.entity.fotoLocalIcone}" effect="fade"  >  
+						            <f:selectItems value="#{iconeBean.icones}" var="icon"  itemLabelEscaped="false" itemValue="#{icon}"/>  
+						  
+						            <p:column>  
+						                <p:graphicImage value="/resources/images/icons/Album.png" />  
+						            </p:column>  
+						  
+						            <p:column>  
+						            	#{icon}
+						            </p:column>  
+						        </p:selectOneMenu> 
 	
 						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
 					        	<p:button icon="ui-icon ui-icon-close"   action="#{noticiaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  

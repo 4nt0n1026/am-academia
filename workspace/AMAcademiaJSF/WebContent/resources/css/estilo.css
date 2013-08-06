@@ -37,3 +37,11 @@
 .floatLeft{
 	float: left;
 }
+
+.floatRight{
+	float: right;
+}
+
+.mobileSection{
+	background-color: blue;
+}

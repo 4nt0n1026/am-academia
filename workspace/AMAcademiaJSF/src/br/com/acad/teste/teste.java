@@ -8,8 +8,10 @@ import br.com.acad.logic.PessoaLogic;
 
 public class teste {
 	public static void main(String[] args) {
-			Calendar dtNasc = Calendar.getInstance();
-			dtNasc.set(1989, 02, 24);
-			System.out.println(PessoaLogic.getIdade(dtNasc));
+			String s1 = new String("dia");
+			String s2 = new String("dia");
+			
+			System.out.println(s1.equals(s2));
+			
 	}
 }
