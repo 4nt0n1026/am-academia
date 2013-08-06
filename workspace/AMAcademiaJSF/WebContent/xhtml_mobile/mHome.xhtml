@@ -11,9 +11,7 @@
     
     	<!-- Home -->
     	<pm:view id="main">
-    		<pm:header title="Home">
-                <f:facet name="left"><p:button value="back" onclick="PrimeFaces.back()" /></f:facet>
-            </pm:header>
+    		<pm:header title="Home"/>
 			
 			<pm:content>
 				<h:form>
@@ -23,7 +21,7 @@
 						<f:attribute name="iconSplit" value="true" />                    
 						<h:outputLink value="#{item.caminho}">
 							<f:attribute name="icon" value="gear" />
-							<p:graphicImage value="#{item.fotoLocal}" />
+							<p:graphicImage value="/resources/images/icons/#{item.fotoLocal}" />
 							<h2>#{item.nome}</h2>                                                
 						</h:outputLink>
 					</p:dataList>

@@ -15,19 +15,28 @@ import br.com.acad.model.mobile.ItemMenu;
 @ViewScoped
 public class MHomeBean implements Serializable{
 
+	/************************************************************************************************************/
+	//ATRIBUTOS
+	/************************************************************************************************************/
 	private List<ItemMenu> itens = new ArrayList<ItemMenu>();
 
+	/************************************************************************************************************/
+	//METODOS
+	/************************************************************************************************************/
 	@PostConstruct
 	public void init(){
-		itens.add(new ItemMenu("Treino", "/resources/images/semIcone.jpg", "#treino"));
-		itens.add(new ItemMenu("Dieta", "/resources/images/semIcone.jpg", "#treino"));
-		itens.add(new ItemMenu("Aulas", "/resources/images/semIcone.jpg", "#treino"));
-		itens.add(new ItemMenu("Noticias", "/resources/images/semIcone.jpg", "#treino"));
-		itens.add(new ItemMenu("Configurações", "/resources/images/semIcone.jpg", "#treino"));
-		itens.add(new ItemMenu("Logout", "/resources/images/semIcone.jpg", "#treino"));
+		itens.add(new ItemMenu("Treino", "weight.png", "#treino"));
+		itens.add(new ItemMenu("Dieta", "apple.png", "#treino"));
+		itens.add(new ItemMenu("Aulas", "gloves.png", "#treino"));
+		itens.add(new ItemMenu("Noticias", "news.png", "mNoticias.xhtml"));
+		itens.add(new ItemMenu("Configurações", "config.png", "#treino"));
+		itens.add(new ItemMenu("Logout", "logout.png", "#treino"));
 		
 	}
 	
+	/************************************************************************************************************/
+	//GETs e SETs
+	/************************************************************************************************************/
 	public List<ItemMenu> getItens() {
 		return itens;
 	}
