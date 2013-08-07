@@ -1,0 +1,53 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"        
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+    <pm:page title="Noticias">
+    	
+    	<!-- Modalidades lista -->
+    	<pm:view id="noticias">
+	    	<pm:header title="Aulas">
+                <f:facet name="left"><p:button value="back" onclick="PrimeFaces.back()" /></f:facet>
+            </pm:header>
+			
+			<pm:content>
+				<h:form>
+					<p:dataList value="#{mAulasBean.aulas}"  type="inset" var="item" >  
+						<f:facet name="header">Modalidades</f:facet>
+						
+						<p:commandLink action="#{mAulasBean.selectAula}" ajax="true" update=":aulaDetalhe" >
+							<f:setPropertyActionListener value="#{item}" target="#{mAulasBean.aula}" />
+							<h2>#{item.nome}</h2>   
+						</p:commandLink>
+						
+					</p:dataList>
+				</h:form>
+			</pm:content>
+    	</pm:view>
+    	
+    	<!-- Noticias lista -->
+    	<pm:view id="aulaDetalhe">
+	    	<pm:header title="#{mAulasBean.aula.nome}">
+                <f:facet name="left"><p:button value="back" icon="back" onclick="PrimeFaces.back()" /></f:facet>
+            </pm:header>
+			
+			<pm:content id="contentDetalhe">
+				<h:form>
+					<p:outputPanel layout="block" style="text-align:center" >
+						<h:outputText value="#{mAulasBean.aula.descricao}" /><br/>
+					</p:outputPanel>
+					<p:outputPanel layout="block" style="text-align:center" >
+						<h:outputText value="#{mAulasBean.horarios}" escape="false" /><br/>
+					</p:outputPanel>
+				</h:form>
+			</pm:content>
+		</pm:view>
+		
+    	
+    </pm:page>
+</f:view>

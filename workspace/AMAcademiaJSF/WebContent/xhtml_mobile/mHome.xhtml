@@ -9,8 +9,34 @@
 
     <pm:page title="Home">
     
+    	<!-- Login -->
+    	<pm:view id="login">
+    		<pm:header title="Login"/>
+			
+			<pm:content>
+				<h:form>
+
+					<pm:field>
+						<h:outputLabel for="idEmail" value="Email: "/>
+						<h:inputText id="idEmail" value="#{mLoginBean.aluno.email}"/>
+					</pm:field>
+					
+					<pm:field>
+						<h:outputLabel for="idSenha" value="Senha: "/>
+						<h:inputText id="idSenha" value="#{mLoginBean.aluno.senha}"/>
+					</pm:field>
+					
+					<p:commandButton value="Entrar" action="#{mLoginBean.logar}"/>
+					
+	            </h:form>
+				
+			</pm:content> 
+            
+		</pm:view>
+    
+    
     	<!-- Home -->
-    	<pm:view id="main">
+    	<pm:view id="home">
     		<pm:header title="Home"/>
 			
 			<pm:content>
@@ -19,11 +45,11 @@
 						<f:facet name="header">Menu</f:facet>
 						
 						<f:attribute name="iconSplit" value="true" />                    
-						<h:outputLink value="#{item.caminho}">
+						<p:commandLink action="#{item.getCaminho()}">
 							<f:attribute name="icon" value="gear" />
-							<p:graphicImage value="/resources/images/icons/#{item.fotoLocal}" />
+							<p:graphicImage value="/resources/images/icons/#{item.fotoLocal}.png" />
 							<h2>#{item.nome}</h2>                                                
-						</h:outputLink>
+						</p:commandLink>
 					</p:dataList>
 	            </h:form>
 				
