@@ -29,8 +29,6 @@ public class Aula implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
-	@Column(length=255, nullable=true)
-	private String fotoLocalIcone;
 	
 	public int getId() {
 		return id;
@@ -49,12 +47,6 @@ public class Aula implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getFotoLocalIcone() {
-		return fotoLocalIcone;
-	}
-	public void setFotoLocalIcone(String fotoLocalIcone) {
-		this.fotoLocalIcone = fotoLocalIcone;
 	}
 	
 	
