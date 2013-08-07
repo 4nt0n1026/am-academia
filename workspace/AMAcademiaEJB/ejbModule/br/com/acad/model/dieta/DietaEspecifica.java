@@ -12,6 +12,8 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
 public class DietaEspecifica extends Dieta {
 
+	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
+	
 	@OneToOne
 	@JoinColumn(name="SOLICITACAO_DIETA_ID", nullable=false)
 	private SolicitacaoDieta solicitacao;

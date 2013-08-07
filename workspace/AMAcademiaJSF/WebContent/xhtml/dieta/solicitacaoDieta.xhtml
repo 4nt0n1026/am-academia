@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+	
+		<!-- ****************************************************************************************************** -->
+		<!-- Dialog de criacao de dieta -->
+		<!-- ****************************************************************************************************** -->
+		<p:dialog id="dialogDieta" widgetVar="dlgDieta" height="600" width="800" draggable="false" header="Criação de dieta" modal="true" closeOnEscape="true" closable="true">
+			<p:fieldset id="field2" >
+		       	<p:layout style="min-width:700px;min-height:550px;" id="layout">  
+		       		
+		       		<!-- COMPLEX FORM 1 - DiaDieta -->
+				    <p:layoutUnit id="layourUnit" position="west" resizable="true" size="300" minSize="40" maxSize="400"> 
+						<h:form id="formDialog">
+					    	<h3>Dias de dieta</h3>
+					    	
+					        <!-- Form do DiaDieta -->
+					        <p:panelGrid columns="2">
+					        	<h:inputText value="#{criacaoDietaBean.diaDieta.nome}" required="true" requiredMessage="Nome do dia obrigatorio" />
+					        	<p:commandButton icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirDiaDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+					    	</p:panelGrid>
+					        
+		           		</h:form>		
+		           		<h:form id="tableDialog">		
+
+				    		<!-- Menu do DiaDieta -->
+		           			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newDiaDieta}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+					        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirDiaDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2"  />
+			
+					        <!-- Table do DiaDieta -->
+					        <p:dataTable id="diaDietaTable" var="dia" value="#{criacaoDietaBean.dias}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
+		           										 selection="#{criacaoDietaBean.diaDieta}"  selectionMode="single">  
+		           				
+		           				<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectDiaDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2" /> 
+								<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectDiaDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2"/> 
+		           				
+       							<p:column >
+       								<h:outputText value="#{dia.nome}" />
+       							</p:column>
+							</p:dataTable>
+					 	</h:form>
+					</p:layoutUnit>  
+					
+					    
+			       	<!-- COMPLEX FORM 2 - Exercicio -->
+				    <p:layoutUnit position="center"> 
+				    	<h:form id="formDialog2" >
+					    	<h3>Exercicios</h3>
+					    	
+					        <!-- Form de exericicio -->
+					        <p:panelGrid columns="1">
+					        	<p:panelGrid columns="2">
+						        	<h:outputLabel value="Exercicio " />  
+								    <p:selectOneMenu value="#{criacaoDietaBean.exercicioDieta.exercicio.id}" rendered="true" style="width:250px"
+								    			requiredMessage="Exercicio Obrigatorio" filter="true" filterMatchMode="contains" disabled="#{!criacaoDietaBean.showExercicioDieta}" >  
+								    	<f:selectItems value="#{criacaoDietaBean.exerciciosField}" var="exec" itemLabel="#{exec.nome}" itemValue="#{exec.id}"/>
+									</p:selectOneMenu>  
+							    </p:panelGrid >
+
+					        	<p:panelGrid columns="2">
+						        	<h:outputLabel value="Series " />  
+						        	<h:panelGroup>
+								    	<ui:repeat var="serie" value="#{criacaoDietaBean.series}">
+								    		<p:inputText value="#{serie.numRepeticoes}" size="2" disabled="#{!criacaoDietaBean.showExercicioDieta}" />
+								    	</ui:repeat>
+								    	<p:commandButton disabled="#{!criacaoDietaBean.showExercicioDieta}" icon="ui-icon ui-icon-circle-plus" action="#{criacaoDietaBean.addSerie}" ajax="true" update=":formDialog2 " />
+								    	<p:commandButton disabled="#{!criacaoDietaBean.showExercicioDieta}" icon="ui-icon ui-icon-circle-minus" action="#{criacaoDietaBean.resetSeries}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+							    	</h:panelGroup>
+							    </p:panelGrid>
+							    
+					        	<p:commandButton disabled="#{!criacaoDietaBean.showExercicioDieta}" icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirExercicioDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+					    	</p:panelGrid>
+					        
+		           		</h:form>		
+		           		<h:form id="tableDialog2" >		
+
+				    		<!-- Menu de exercicio -->
+		           			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newExercicioDieta}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
+		           							disabled="#{!criacaoDietaBean.showExercicioDieta}"/>
+					        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirExercicioDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
+					        				disabled="#{!criacaoDietaBean.showExercicioDieta}"/>
+			
+					        <!-- Table do exercicio -->
+					        <p:dataTable id="diaDietaTable" var="exec" value="#{criacaoDietaBean.exercicios}" rowKey="#{exec}" emptyMessage="Nenhum exercicio registrado"
+		           										 selection="#{criacaoDietaBean.exercicioDieta}"  selectionMode="single">  
+		           										 
+		           				<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectExercicioDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2" /> 
+								<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectExercicioDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2"/> 
+								
+       							<p:column >
+       								<h:outputText value="#{exec.exercicio.nome}"  />
+       							</p:column>
+							</p:dataTable>
+					 	</h:form> 
+					 	
+				    </p:layoutUnit>  
+				</p:layout>
+				
+				<h:form>
+		        	<p:commandButton value="salvar"  action="#{criacaoDietaBean.salvarDietaEspecificoResposta}" ajax="false" update=":tabView1:formEntity" /> 
+	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgDieta.close()" ajax="false" update=":tabView1"   />
+				</h:form>	
+							        
+			</p:fieldset> 
+		</p:dialog>
+		
+		<!-- ****************************************************************************************************** -->
+		<!-- SolicitacaoDieta -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Solicitações de dieta" >  
+     				
+     				<!-- ****************************************************************************************************** -->
+					<!-- form de resposta a Solicitacao -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formDieta"  >
+						<p:fieldset id="field1"  rendered="#{solicitacaoDietaBean.showDieta}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{solicitacaoDietaBean.dieta.nome}" required="true" requiredMessage="Nome obrigatorio" />
+						        
+						        <h:outputLabel  value="Professor: " />  
+							    <p:selectOneMenu  value="#{solicitacaoDietaBean.dieta.professor.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItems value="#{solicitacaoDietaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>    
+	
+								<p:commandButton value="Adcionar Exercicios" action="#{criacaoDietaBean.newDietaEspecificoResposta}" onclick="dlgDieta.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity :tabView1:formDieta"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+						
+			        </h:form>
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{solicitacaoDietaBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idDesc" value="Descricao" />  
+						        <p:inputTextarea id="idDesc" value="#{solicitacaoDietaBean.entity.descricao}" cols="60" 
+						        		required="true" requiredMessage="Nome obrigatorio" />  
+						        
+						        <h:outputLabel for="idAluno" value="Aluno: " />  
+							    <p:selectOneMenu id="idAluno" value="#{solicitacaoDietaBean.entity.aluno.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{solicitacaoDietaBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}"/>  
+								</p:selectOneMenu>  
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoDietaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{solicitacaoDietaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{solicitacaoDietaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{solicitacaoDietaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{solicitacaoDietaBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator /> 
+				        	<p:menuButton value="Funções"> 
+				        		<p:menuitem  value="Responder solicitação" icon="ui-icon ui-icon-clipboard" action="#{solicitacaoDietaBean.responder}" ajax="true" update=":tabView1:formDieta" />
+				        	</p:menuButton>
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right"> 
+			        		<p:separator />  
+				        	Busca:<p:inputText value="#{solicitacaoDietaBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoDietaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{solicitacaoDietaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{solicitacaoDietaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{solicitacaoDietaBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:ajax event="rowSelect" listener="#{solicitacaoDietaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{solicitacaoDietaBean.hideFormDetail}" update=":tabView1:detailEntity"/> 
+						
+						<p:column headerText="Data" width="10" styleClass="center">
+							<h:outputText value="#{entity.dataSolicitacao.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Nome" width="10" styleClass="center">
+							<h:outputText value="#{entity.aluno.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Descricao" width="80" >
+							<h:outputText value="#{entity.descricao}"/>
+						</p:column>
+						
+						<p:column headerText="Respondido" width="5" styleClass="center" >
+							<p:selectBooleanCheckbox disabled="true" value="#{entity.respondido}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{solicitacaoDietaBean.previousPageTable}" 
+										rendered="#{solicitacaoDietaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{solicitacaoDietaBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{solicitacaoDietaBean.nextPageTable}" 
+										rendered="#{solicitacaoDietaBean.page != solicitacaoDietaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{solicitacaoDietaBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{solicitacaoDietaBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoDietaBean.showEntityDetail}">
+						<p:panelGrid columns="2">
+							<h:outputText value="Nome do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.nome}" />
+							
+							<h:outputText value="Peso do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.peso}" />
+							
+							<h:outputText value="Altura do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.altura}" />
+							
+							<h:outputText value="Idade do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.idadeAlunoDetail}" />
+							
+							<h:outputText value="Descricao:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.descricao}" />
+						</p:panelGrid>
+					</p:fieldset>
+				</h:form>
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>
