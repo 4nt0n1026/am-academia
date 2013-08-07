@@ -3,3 +3,5 @@ workspace/AMAcademiaEJB/build/
 workspace/AMAcademiaJSF/build/
 androidWorkspace/.metadata/
 androidWorkspace/AM_Academia/bin/
+.metadata/
+RemoteSystemsTempFiles/
