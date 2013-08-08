@@ -8,6 +8,7 @@ public class ItemMenu implements Serializable {
 	private String nome;
 	private String fotoLocal;
 	private String caminho;
+	private String update;
 	
 	public ItemMenu(String nome, String fotoLocal, String caminho) {
 		super();
@@ -16,6 +17,13 @@ public class ItemMenu implements Serializable {
 		this.caminho = caminho;
 	}
 	
+	public ItemMenu(String nome, String fotoLocal, String caminho,String update) {
+		this.nome = nome;
+		this.fotoLocal = fotoLocal;
+		this.caminho = caminho;
+		this.update = update;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -33,6 +41,14 @@ public class ItemMenu implements Serializable {
 	}
 	public void setCaminho(String caminho) {
 		this.caminho = caminho;
+	}
+
+	public String getUpdate() {
+		return update;
+	}
+
+	public void setUpdate(String update) {
+		this.update = update;
 	}
 	
 	

@@ -18,7 +18,7 @@
 			
 			<pm:content>
 				<h:form>
-					<p:dataList value="#{mNoticiasBean.noticias}"  type="inset" var="item" >  
+					<p:dataList value="#{mNoticiasBean.noticias}" var="item" >  
 						<f:facet name="header">Noticias</f:facet>
 						
 						<f:attribute name="iconSplit" value="true" />                    
@@ -41,7 +41,7 @@
 			</pm:content>
     	</pm:view>
     	
-    	<!-- Noticias lista -->
+    	<!-- Noticias Detalhe -->
     	<pm:view id="noticiaDetalhe">
 	    	<pm:header title="Home">
                 <f:facet name="left"><p:button value="back" icon="back" onclick="PrimeFaces.back()" /></f:facet>

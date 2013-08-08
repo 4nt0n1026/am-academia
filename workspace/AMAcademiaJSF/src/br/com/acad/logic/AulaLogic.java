@@ -28,7 +28,7 @@ public class AulaLogic {
 		for (HorarioAula horario : horarios) {
 			String strHorario = new String();
 			if(unidadeHorario.get(horario.getUnidade().getNome()) == null){
-				unidadeHorario.put(horario.getUnidade().getNome(), horario.getUnidade().getNome() + ": <br/>");
+				unidadeHorario.put(horario.getUnidade().getNome(), "<h3>" + horario.getUnidade().getNome() + "</h3>");
 			}
 			strHorario = unidadeHorario.get(horario.getUnidade().getNome());
 			strHorario += horario.getDiasSemana() + " - " + df.format(horario.getHora().getTime()) + "(" + horario.getProfessor().getNome() + ")<br/>";

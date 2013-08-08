@@ -38,9 +38,20 @@
 			
 			<pm:content id="contentDetalhe">
 				<h:form>
+					<p:dataList  type="inset" var="item" >  
+						<f:facet name="header">Descrição</f:facet>
+					</p:dataList>
+					
 					<p:outputPanel layout="block" style="text-align:center" >
 						<h:outputText value="#{mAulasBean.aula.descricao}" /><br/>
 					</p:outputPanel>
+					<br/>
+					
+					
+					<p:dataList  type="inset" var="item" >  
+						<f:facet name="header">Horarios</f:facet>
+					</p:dataList>
+					
 					<p:outputPanel layout="block" style="text-align:center" >
 						<h:outputText value="#{mAulasBean.horarios}" escape="false" /><br/>
 					</p:outputPanel>
