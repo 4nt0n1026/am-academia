@@ -1,44 +1,27 @@
 package br.com.acad.bean.mobile;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-
-import br.com.acad.model.mobile.ItemMenu;
+import javax.faces.bean.RequestScoped;
 
 @SuppressWarnings("serial")
 @ManagedBean
-@ViewScoped
-public class MHomeBean implements Serializable{
+@RequestScoped
+public class MNavigationBeanBean implements Serializable{
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	private List<ItemMenu> itens = new ArrayList<ItemMenu>();
 
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
-	@PostConstruct
-	public void init(){
-		itens.add(new ItemMenu("Treino", "weight", "#treino"));
-		itens.add(new ItemMenu("Dieta", "apple", "#treino"));
-		itens.add(new ItemMenu("Aulas", "gloves", "mAulas.xhtml"));
-		itens.add(new ItemMenu("Noticias", "news", "mNoticias.xhtml"));
-		itens.add(new ItemMenu("Configurações", "config", "#treino"));
-		itens.add(new ItemMenu("Logout", "logout", "#{mLoginBean.logout}"));
-	}
 	
 	/************************************************************************************************************/
 	//GETs e SETs
 	/************************************************************************************************************/
-	public List<ItemMenu> getItens() {
-		return itens;
-	}
+
 	
 	
 }

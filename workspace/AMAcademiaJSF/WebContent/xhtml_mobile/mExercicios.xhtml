@@ -1,0 +1,82 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"        
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+    <pm:page title="Home">
+    	
+		<!-- Partes de corpo -->
+    	<ui:composition>
+    		<pm:view id="parteCorpo">
+		    	<pm:header title="Partes de Corpo">
+	                 <f:facet name="left"><p:commandButton action="mTreino.xhtml" swatch="b" value="voltar" icon="back"/></f:facet>
+	            </pm:header>
+				
+				<pm:content>
+					<h:form>
+						<p:dataList value="#{mExerciciosBean.partesCorpo}" var="parte" >
+							<f:facet name="header">Selecione uma</f:facet>
+							
+							<p:commandLink action="#{mExerciciosBean.selectParteCorpo}" ajax="true" update=":exerciciosList">
+								
+								<f:setPropertyActionListener value="#{parte}" target="#{mExerciciosBean.parteCorpo}" />
+								
+								<h:outputText value="#{parte.nome}" />
+								
+							</p:commandLink>
+						</p:dataList>
+					</h:form>
+				</pm:content>
+			</pm:view>
+		
+			<!-- Exercicios lista -->
+    		<pm:view id="exerciciosList">
+		    	<pm:header title="">
+	                <f:facet name="left"><p:commandButton action="mTreino.xhtml" swatch="b" value="voltar" icon="back"/></f:facet>
+	            </pm:header>
+	            <pm:content>
+					<h:form>
+						<p:dataList value="#{mExerciciosBean.exercicios}" var="exec" >
+							<f:facet name="header">Selecione uma</f:facet>
+							
+							<p:commandLink action="#{mExerciciosBean.selectExercicio}" ajax="true" update=":exercicioDetalhe">
+								
+								<f:setPropertyActionListener value="#{exec}" target="#{mExerciciosBean.exercicio}" />
+								
+								<h:outputText value="#{exec.nome}" />
+								
+							</p:commandLink>
+						</p:dataList>
+					</h:form>
+				</pm:content>
+			</pm:view>
+			
+			
+			<!-- Exercicio detalhe -->
+    		<pm:view id="exercicioDetalhe">
+		    	<pm:header title="#{mExerciciosBean.exercicio.nome}">
+	                <f:facet name="left"><p:commandButton action="mTreino.xhtml" swatch="b" value="voltar" icon="back"/></f:facet>
+	            </pm:header>
+				<pm:content>
+					<p:graphicImage value="/resources/images/#{mExerciciosBean.exercicio.fotoLocal}" />
+					<h:outputText value="#{mExerciciosBean.exercicio.descricao}"/>
+
+					<div class="ui-bar ui-bar-b">
+					    <h3>Musculos Primarios</h3>
+					</div>
+					<h:outputText value="#{mExerciciosBean.exercicio.parteCorpoSecundaria}"/>
+
+					<div class="ui-bar ui-bar-b">
+					    <h3>Musculos Secundarios</h3>
+					</div>
+					<h:outputText value="#{mExerciciosBean.partesPrimarias}"/>
+				</pm:content>
+			</pm:view>  
+	</ui:composition> 	
+    
+    </pm:page>
+</f:view>

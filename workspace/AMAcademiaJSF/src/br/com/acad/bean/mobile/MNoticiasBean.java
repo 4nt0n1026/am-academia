@@ -53,7 +53,7 @@ public class MNoticiasBean implements Serializable{
 	 */
 	public String ajuda(){
 		noticiaCats = noticiaCatDAO.buscarTodos();
-		return "pm:ajuda?lazyLoad=true";
+		return "pm:ajudaNoticias?lazyLoad=true";
 	}
 
 	/************************************************************************************************************/

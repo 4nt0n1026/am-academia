@@ -7,35 +7,58 @@
         contentType="text/html"
         renderKitId="PRIMEFACES_MOBILE">
 
-    <pm:page title="Noticias">
-    	
-    	<!-- Menu de treino -->
+	<pm:page title="Menu do Treino">
+		<ui:composition>
     	<pm:view id="treino">
+    		<!-- Menu de treino -->
 	    	<pm:header title="Treino">
-                <f:facet name="left"><p:button value="back" onclick="PrimeFaces.back()" /></f:facet>
+                <f:facet name="left"><p:commandButton action="mHome.xhtml" swatch="b" value="voltar" icon="back"/></f:facet>
             </pm:header>
 			
 			<pm:content>
-				<h:form>
-					
-				</h:form>
-			</pm:content>
-    	</pm:view>
-    	
-    	
-		
-		<!-- Partes de corpo -->
-    	<pm:view id="partesCorpo">
-	    	<pm:header title="Partes de Corpo">
-                <f:facet name="left"><p:button value="back" onclick="PrimeFaces.back()" /></f:facet>
-            </pm:header>
 			
-			<pm:content>
 				<h:form>
-					
+					<ul data-role="listview" >
+						<li>
+							<a href="#">
+								<p:graphicImage value="/resources/images/icons/weight.png" />
+								<h3>Meus Treinos</h3>
+								<p>Visualizar e executar treinos incluidos na área do aluno</p>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p:graphicImage value="/resources/images/icons/search.png" />
+								<h3>Buscar Treinos Prontos</h3>
+								<p>Buscar inteligente de treinos prontos </p>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p:graphicImage value="/resources/images/icons/mail.png" />
+								<h3>Solicitar Treino</h3>
+								<p>Enviar um pedido de treino personalizado</p>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p:graphicImage value="/resources/images/icons/checkList.png" />
+								<h3>Minhas Solicitações</h3>
+								<p>Visualizar minhas solicitaçoes</p>
+							</a>
+						</li>
+						<li>
+							<p:commandLink action="#{mExerciciosBean.init}" ajax="true" update=":parteCorpo">
+								<p:graphicImage value="/resources/images/icons/chest.png" />
+								<h3>Exercicios</h3>
+								<p>Buscar e visualizar exercicios</p>
+							</p:commandLink>
+						</li>
+					</ul>
 				</h:form>
 			</pm:content>
-    	</pm:view>
     	
-    </pm:page>
+		</pm:view>
+   		</ui:composition>
+   	</pm:page>
 </f:view>
