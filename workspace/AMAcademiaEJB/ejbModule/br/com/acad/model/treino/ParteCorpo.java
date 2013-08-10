@@ -1,12 +1,14 @@
 package br.com.acad.model.treino;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,6 +29,9 @@ public class ParteCorpo implements Serializable {
 	
 	@Column(length=255, nullable=false)
 	private String nome;
+	
+	@ManyToMany(mappedBy="parteCorpoPrimaria")
+	private Set<Exercicio> exerciciosPrimarios;
 
 	// Construtores
 	public ParteCorpo(){}
@@ -68,6 +73,15 @@ public class ParteCorpo implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public Set<Exercicio> getExerciciosPrimarios() {
+		return exerciciosPrimarios;
+	}
+
+	public void setExerciciosPrimarios(Set<Exercicio> exerciciosPrimarios) {
+		this.exerciciosPrimarios = exerciciosPrimarios;
+	}
+
 	
 	
 	

@@ -40,7 +40,7 @@ public abstract class Pessoa implements Serializable {
 	@Column(length=255, nullable=false)
 	private String nome;
 	
-	@Column(length=255, nullable=true)
+	@Column(length=255, nullable=true, unique=true )
 	private String email;
 	
 	@Column(length=255, nullable=true)

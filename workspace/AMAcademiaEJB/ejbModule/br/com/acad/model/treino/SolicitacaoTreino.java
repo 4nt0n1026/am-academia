@@ -61,6 +61,11 @@ public class SolicitacaoTreino implements Serializable {
 		this.respondido = respondido;
 	}
 
+	public SolicitacaoTreino(Integer id, Calendar dataSolicitacao) {
+		this.id = id;
+		this.dataSolicitacao = dataSolicitacao;
+	}
+
 	public boolean isRespondido() {
 		return respondido;
 	}

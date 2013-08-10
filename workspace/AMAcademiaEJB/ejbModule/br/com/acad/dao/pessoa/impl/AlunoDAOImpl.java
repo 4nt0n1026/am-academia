@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -80,6 +81,23 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 	public long contarTodosFiltro(Map<String, String> filtros) {
 		Query q = em.createQuery(SqlLogic.getCountFilterSql("Aluno", filtros));
 		return  (Long) q.getSingleResult();
+	}
+
+	@Override
+	public Aluno logar(Aluno aluno){
+		// TODO - Remover (Para Teste)
+		if(aluno.getEmail().equals("") && aluno.getEmail().equals("")){
+			return new Aluno(4328768, "Christian");
+		}
+		//--------------------------
+		try{
+			TypedQuery<Aluno> q = em.createQuery("from Aluno a where a.email = :email and a.senha = :senha", Aluno.class);
+			q.setParameter("email", aluno.getEmail());
+			q.setParameter("senha", aluno.getSenha());
+			return q.getSingleResult();
+	 	} catch(NoResultException e) {
+	        return null;
+	    }
 	}
 
 }

@@ -152,6 +152,12 @@ public class Exercicio implements Serializable {
 		this.nome = nome;
 	}
 
+	public Exercicio(Integer id, String nome, String fotoLocal) {
+		this.id = id;
+		this.nome = nome;
+		this.fotoLocal = fotoLocal;
+	}
+
 	//ToString
 	@Override
 	public String toString() {

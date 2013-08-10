@@ -1,5 +1,8 @@
 package br.com.acad.dao.treino.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +13,7 @@ import javax.persistence.TypedQuery;
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
 import br.com.acad.logic.SqlLogic;
+import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.SolicitacaoTreino;
 
 @Stateless
@@ -65,5 +69,19 @@ public class SolicitacaoTreinoDAOImpl extends DAOImpl<SolicitacaoTreino,Integer>
 	public long contarTodosFiltro(Map<String, String> filtros) {
 		Query q = em.createQuery(SqlLogic.getCountFilterSql("SolicitacaoTreino", filtros));
 		return  (Long) q.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SolicitacaoTreino> buscarPorAluno(Aluno aluno) {
+		Query q = em.createQuery("select s.id, s.dataSolicitacao from SolicitacaoTreino s where s.aluno.id = :id)");
+		q.setParameter("id", aluno.getId());
+		List<SolicitacaoTreino> solicitacoes = new ArrayList<SolicitacaoTreino>();
+		Collection<Object[]> resultado = q.getResultList();
+		for (Object[] o:resultado){
+			SolicitacaoTreino s = new SolicitacaoTreino((Integer) o[0], (Calendar) o[1]);
+			solicitacoes.add(s);
+		}
+		return solicitacoes;
 	}
 }

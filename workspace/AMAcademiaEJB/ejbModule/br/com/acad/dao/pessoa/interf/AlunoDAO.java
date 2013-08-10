@@ -12,5 +12,6 @@ public interface AlunoDAO extends DAO<Aluno,Integer>{
 	
 	public List<Aluno> buscarTodos();
 	public List<Aluno> buscarFieldNome();
+	public Aluno logar(Aluno aluno);
 	
 }

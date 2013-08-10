@@ -12,7 +12,7 @@
     		<!-- Noticias lista -->
 	    	<pm:view id="noticias" >
 		    	<pm:header title="Home" >
-		    		 <f:facet name="left"><p:commandButton action="mHome.xhtml" swatch="b" value="voltar" icon="back"/></f:facet>
+		    		 <f:facet name="left"><p:commandButton action="pm:home" swatch="b" value="voltar" icon="back"/></f:facet>
 	                <f:facet name="right"><p:commandButton value="?" action="#{mNoticiasBean.ajuda}" swatch="b" ajax="true" update="ajudaNoticias"/></f:facet>
 	            </pm:header>
 				
@@ -21,8 +21,6 @@
 						<p:dataList value="#{mNoticiasBean.noticias}" var="item" >  
 							<f:facet name="header">Noticias</f:facet>
 							
-							<f:attribute name="iconSplit" value="true" />                    
-							<f:attribute name="icon" value="gear" />
 							
 							<p:commandLink action="#{mNoticiasBean.selectNoticia}" ajax="true" update=":noticiaDetalhe" >
 								

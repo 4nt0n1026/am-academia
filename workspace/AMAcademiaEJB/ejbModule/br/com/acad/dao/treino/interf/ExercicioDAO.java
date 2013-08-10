@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.model.treino.Exercicio;
+import br.com.acad.model.treino.ParteCorpo;
 
 @Remote
 public interface ExercicioDAO extends DAO<Exercicio,Integer>{
@@ -13,5 +14,7 @@ public interface ExercicioDAO extends DAO<Exercicio,Integer>{
 
 	public List<Exercicio> buscarTodos();
 	public List<Exercicio> buscarFieldNome();
+	
+	public List<Exercicio> buscarPorParteCorpo(ParteCorpo parteCorpo);
 	
 }

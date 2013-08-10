@@ -12,7 +12,7 @@
 	    	<!-- Modalidades lista -->
 	    	<pm:view id="aulas">
 		    	<pm:header title="Aulas">
-		    		<f:facet name="left"><p:commandButton action="mHome.xhtml" swatch="b" value="voltar" icon="back" inline="true"/></f:facet>
+		    		<f:facet name="left"><p:commandButton action="pm:home" swatch="b" value="voltar" icon="back" ajax="true"/></f:facet>
 	            </pm:header>
 				
 				<pm:content>
@@ -33,7 +33,7 @@
 	    	<!-- Aula Detalhe -->
 	    	<pm:view id="aulaDetalhe">
 		    	<pm:header title="#{mAulasBean.aula.nome}">
-	                 <f:facet name="left"><a href="mAulas.xhtml" data-role="button" data-theme="b" data-rel="back" data-inline="true">Voltar</a></f:facet>
+	                 <f:facet name="left"><p:commandLink action="pm:aulas" swatch="b" value="voltar" /></f:facet>
 	            </pm:header>
 				
 				<pm:content>

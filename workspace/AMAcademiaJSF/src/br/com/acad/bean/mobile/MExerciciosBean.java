@@ -44,11 +44,12 @@ public class MExerciciosBean implements Serializable{
 	}
 
 	public String selectParteCorpo(){
-		exercicios = exercicioDAO.buscarTodos();
+		exercicios = exercicioDAO.buscarPorParteCorpo(parteCorpo);
 		return "pm:exerciciosList";
 	}
 	
 	public String selectExercicio(){
+		exercicio = exercicioDAO.searchByID(exercicio.getId());
 		partesPrimarias = getPartesCorpoPrimDetail();
 		partesSecundarias = getPartesCorpoSecDetail();
 		return "pm:exercicioDetalhe";
@@ -62,7 +63,7 @@ public class MExerciciosBean implements Serializable{
 	 * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
 	 * @return
 	 */
-	public String getPartesCorpoPrimDetail() {
+	private String getPartesCorpoPrimDetail() {
 		return GenericLogic.formatListOfObjects(exercicio.getParteCorpoPrimaria(parteCorpoDAO), ", ");
 	}
 
@@ -70,7 +71,7 @@ public class MExerciciosBean implements Serializable{
 	 * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
 	 * @return
 	 */
-	public String getPartesCorpoSecDetail() {
+	private String getPartesCorpoSecDetail() {
 		return GenericLogic.formatListOfObjects(exercicio.getParteCorpoSecundaria(parteCorpoDAO), ", ");
 	}
 

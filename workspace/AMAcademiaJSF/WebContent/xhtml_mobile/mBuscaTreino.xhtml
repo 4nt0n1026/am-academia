@@ -1,0 +1,29 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"        
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+	<pm:page title="Treinos">
+		<ui:composition>
+    	<pm:view id="buscaTreino">
+    		<!-- Menu de treino -->
+	    	<pm:header title="Busca de treinos">
+                <f:facet name="left"><p:commandButton action="pm:treino" swatch="b" value="voltar" icon="back"/></f:facet>
+            </pm:header>
+			
+			<pm:content>
+				<h:form>
+					<pm:field>
+						
+					</pm:field>
+				</h:form>
+			</pm:content>
+    	
+		</pm:view>
+   		</ui:composition>
+   	</pm:page>
+</f:view>

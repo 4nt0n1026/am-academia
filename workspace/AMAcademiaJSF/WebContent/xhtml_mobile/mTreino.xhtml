@@ -12,7 +12,7 @@
     	<pm:view id="treino">
     		<!-- Menu de treino -->
 	    	<pm:header title="Treino">
-                <f:facet name="left"><p:commandButton action="mHome.xhtml" swatch="b" value="voltar" icon="back"/></f:facet>
+                <f:facet name="left"><p:commandButton action="pm:home" swatch="b" value="voltar" icon="back"/></f:facet>
             </pm:header>
 			
 			<pm:content>
@@ -23,29 +23,29 @@
 							<a href="#">
 								<p:graphicImage value="/resources/images/icons/weight.png" />
 								<h3>Meus Treinos</h3>
-								<p>Visualizar e executar treinos incluidos na área do aluno</p>
+								<p>Treinos incluidos na área do aluno</p>
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<p:commandLink action="pm:buscaTreino" ajax="true" update=":buscaTreino">
 								<p:graphicImage value="/resources/images/icons/search.png" />
 								<h3>Buscar Treinos Prontos</h3>
-								<p>Buscar inteligente de treinos prontos </p>
-							</a>
+								<p>Buscar de treinos prontos </p>
+							</p:commandLink>
 						</li>
 						<li>
-							<a href="#">
+							<p:commandLink action="#{mSolicitacaoTreinoBean.init}" ajax="true" update=":solicitacao">
 								<p:graphicImage value="/resources/images/icons/mail.png" />
 								<h3>Solicitar Treino</h3>
 								<p>Enviar um pedido de treino personalizado</p>
-							</a>
+							</p:commandLink>
 						</li>
 						<li>
-							<a href="#">
+							<p:commandLink action="#{mSolicitacaoTreinoBean.minhasSolicitacoes}" ajax="true" update=":minhasSolicitacoes">
 								<p:graphicImage value="/resources/images/icons/checkList.png" />
 								<h3>Minhas Solicitações</h3>
-								<p>Visualizar minhas solicitaçoes</p>
-							</a>
+								<p>Solicitações aguardando resposta</p>
+							</p:commandLink>
 						</li>
 						<li>
 							<p:commandLink action="#{mExerciciosBean.init}" ajax="true" update=":parteCorpo">

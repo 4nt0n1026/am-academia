@@ -14,7 +14,9 @@
     		<pm:header title="Login"/>
 			
 			<pm:content>
-				<h:form>
+				<p:growl autoUpdate="true" showDetail="true" swatch="b" />
+				
+				<h:form id="formLogin">
 					<pm:field>
 						<h:outputLabel for="idEmail" value="Email: "/>
 						<h:inputText id="idEmail" value="#{mLoginBean.aluno.email}"/>
@@ -25,7 +27,7 @@
 						<h:inputText id="idSenha" value="#{mLoginBean.aluno.senha}"/>
 					</pm:field>
 					
-					<p:commandButton value="Entrar" action="#{mLoginBean.logar}"/>
+					<p:commandButton value="Entrar" swatch="b" action="#{mLoginBean.logar}" ajax="true" update="formLogin"/>
 					
 	            </h:form>
 				
@@ -54,13 +56,13 @@
 							</p:commandLink>
 						</li>
 						<li>
-							<p:commandLink action="pm:aulas">
+							<p:commandLink action="#{mAulasBean.init}" ajax="true" update=":aulas">
 								<p:graphicImage value="/resources/images/icons/gloves.png" />
 								<h3>Aulas</h3>
 							</p:commandLink>
 						</li>
 						<li>
-							<p:commandLink action="pm:noticias">
+							<p:commandLink action="#{mNoticiasBean.init}" ajax="true" update=":noticias">
 								<p:graphicImage value="/resources/images/icons/news.png" />
 								<h3>Avisos</h3>
 							</p:commandLink>
@@ -95,6 +97,12 @@
 		
 		<!-- Aulas -->
     	<ui:include src="/xhtml_mobile/mAulas.xhtml"/>
+
+		<!-- Solicitacao -->
+    	<ui:include src="/xhtml_mobile/mSolicitacao.xhtml"/>
+
+		<!-- Busca de treino -->
+    	<ui:include src="/xhtml_mobile/mBuscaTreino.xhtml"/>
     	
     </pm:page>
 </f:view>
