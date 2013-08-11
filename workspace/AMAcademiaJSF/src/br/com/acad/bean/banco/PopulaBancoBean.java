@@ -69,22 +69,67 @@ public class PopulaBancoBean implements Serializable {
 		populaExercicio();
 	}
 	
+	/**
+	 * popula infos basicas de ParteCorpo
+	 */
+	private void populaParteCorpo(){
+		ParteCorpo p1 = new ParteCorpo("Biceps");
+		parteCorpoDAO.insert(p1);
+		ParteCorpo p2 = new ParteCorpo("Triceps");
+		parteCorpoDAO.insert(p2);
+		ParteCorpo p3 = new ParteCorpo("Costas");
+		parteCorpoDAO.insert(p3);
+		ParteCorpo p4 = new ParteCorpo("Lombar");
+		parteCorpoDAO.insert(p4);
+		ParteCorpo p5 = new ParteCorpo("Peito");
+		parteCorpoDAO.insert(p5);
+		ParteCorpo p6 = new ParteCorpo("Panturrilha");
+		parteCorpoDAO.insert(p6);
+		ParteCorpo p7 = new ParteCorpo("Coxas");
+		parteCorpoDAO.insert(p7);
+		ParteCorpo p8 = new ParteCorpo("Gluteos");
+		parteCorpoDAO.insert(p8);
+		ParteCorpo p9 = new ParteCorpo("Abdomen");
+		parteCorpoDAO.insert(p9);
+		ParteCorpo p10 = new ParteCorpo("Antebraço");
+		parteCorpoDAO.insert(p10);
+		ParteCorpo p11 = new ParteCorpo("Trapezio");
+		parteCorpoDAO.insert(p11);
+		ParteCorpo p12 = new ParteCorpo("Ombro");
+		parteCorpoDAO.insert(p12);
+	}
+	
 	private void populaExercicio(){
-		Exercicio ex = new Exercicio("Supino");
+		Exercicio ex = new Exercicio("Supino", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO), 
+				"O supino com barra em banco plano é o exercício mais conhecido e realizado nos ginásios. "
+						+ "Embora não existam músculos peitorais “superiores” e “inferiores”, o supino plano "
+						+ "parece recrutar mais as fibras intermédias (parte esternocostal).",
+				"supino_barra.jpg");
 		exercicioDAO.insert(ex);
-		ex = new Exercicio("Remada");
+		
+		ex = new Exercicio("Supino Inclinado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO), 
+				"Esta variação do supino plano coloca uma maior ênfase na parte clavicular (superior) do grande peitoral."
+				+ " O supino inclinado com um ângulo de +45 graus, proporciona uma estimulação 69% mais elevada na “parte "
+				+ "superior do peitoral”.",
+				"supino_inclinado_barra.jpg");
 		exercicioDAO.insert(ex);
-		ex = new Exercicio("Rosca");
+		
+		ex = new Exercicio("Supino Declinado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO), 
+				" O supino declinado é a variação do supino que recruta uma maior percentagem de fibras muscular, muito "
+				+ "devido ao fato de também ser o tipo de supino em que é possível utilizar mais peso.",
+				"supino_declinado_barra.jpg");
 		exercicioDAO.insert(ex);
-		ex = new Exercicio("Remada Alta");
-		exercicioDAO.insert(ex);
-		ex = new Exercicio("Leg Press");
-		exercicioDAO.insert(ex);
-		ex = new Exercicio("CrossOver");
-		exercicioDAO.insert(ex);
-		ex = new Exercicio("Agachamento");
-		exercicioDAO.insert(ex);
-		ex = new Exercicio("Desenvolvimento Ombro");
+		
+		ex = new Exercicio("Levantamento Terra", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS, PopulaBancoLogic.LOMBAR, PopulaBancoLogic.GLUTEOS, PopulaBancoLogic.TRAPEZIO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO, PopulaBancoLogic.COXAS, PopulaBancoLogic.ABDOMEN), 
+				"Nesta variação do peso morto, a mais conhecida de todas, tudo é projetado para a maximização técnica da "
+				+ "quantidade de peso levantado. Os quadris começam mais elevados do que os joelhos (basicamente colocando "
+				+ "os joelhos no mesmo ângulo que um quarto do agachamento) e os ombros estão um pouco atrás da barra na "
+				+ "posição de partida. Isto permite-lhe utilizar ao máximo a parte inferior das costas, glúteos, e quadríceps.",
+				"peso_morto_levantamento_terra.jpg");
 		exercicioDAO.insert(ex);
 	}
 	
@@ -164,35 +209,7 @@ public class PopulaBancoBean implements Serializable {
 	}
 	
 
-	/**
-	 * popula infos basicas de ParteCorpo
-	 */
-	private void populaParteCorpo(){
-		ParteCorpo p1 = new ParteCorpo("Biceps");
-		parteCorpoDAO.insert(p1);
-		ParteCorpo p2 = new ParteCorpo("Triceps");
-		parteCorpoDAO.insert(p2);
-		ParteCorpo p3 = new ParteCorpo("Costas");
-		parteCorpoDAO.insert(p3);
-		ParteCorpo p4 = new ParteCorpo("Lombar");
-		parteCorpoDAO.insert(p4);
-		ParteCorpo p5 = new ParteCorpo("Peito");
-		parteCorpoDAO.insert(p5);
-		ParteCorpo p6 = new ParteCorpo("Panturrilha");
-		parteCorpoDAO.insert(p6);
-		ParteCorpo p7 = new ParteCorpo("Coxas");
-		parteCorpoDAO.insert(p7);
-		ParteCorpo p8 = new ParteCorpo("Gluteos");
-		parteCorpoDAO.insert(p8);
-		ParteCorpo p9 = new ParteCorpo("Abdomen");
-		parteCorpoDAO.insert(p9);
-		ParteCorpo p10 = new ParteCorpo("Antebraço");
-		parteCorpoDAO.insert(p10);
-		ParteCorpo p11 = new ParteCorpo("Trapezio");
-		parteCorpoDAO.insert(p11);
-		ParteCorpo p12 = new ParteCorpo("Ombro");
-		parteCorpoDAO.insert(p12);
-	}
+	
 	
 	/**
 	 * popula infos basicas de NoticiaCat

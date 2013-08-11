@@ -63,9 +63,11 @@
 						<p:fieldset id="field3"  rendered="#{exercicioBean.showEntity3}">
 							<h:panelGrid columns="1">
 							
-						        <p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.foto}"  />
+						        <p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.fotoExercicio}"  />
 								<p:fileUpload fileUploadListener="#{exercicioBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
 											auto="false" mode="advanced" id="foto" update="fotoExercicio"  />
+											
+							  
 							        
 					        </h:panelGrid>
 					        
@@ -150,7 +152,7 @@
 								<h:outputText value="#{exercicioBean.partesCorpoSecDetail}" />
 							</p:panelGrid>
 							
-							<h:graphicImage value="#{exercicioBean.foto}" />
+							<h:graphicImage value="#{exercicioBean.fotoExercicio}" />
 							
 						</p:panelGrid>
 					</p:fieldset>

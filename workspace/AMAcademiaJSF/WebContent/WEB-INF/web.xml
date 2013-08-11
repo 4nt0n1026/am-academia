@@ -47,4 +47,20 @@
 	</filter-mapping>
   
   
+  
+  
+ 	<filter>
+	    <filter-name>
+	        cronometro
+	    </filter-name>
+	    <filter-class>
+	        br.com.acad.filter.FiltroTempoDeExecucao
+	    </filter-class>
+	</filter>
+	
+	<filter-mapping>
+	    <filter-name>cronometro</filter-name>
+	    <url-pattern>/xhtml/*</url-pattern>
+	</filter-mapping>
+  
 </web-app>

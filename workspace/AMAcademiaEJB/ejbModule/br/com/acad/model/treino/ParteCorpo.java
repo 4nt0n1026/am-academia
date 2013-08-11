@@ -41,6 +41,10 @@ public class ParteCorpo implements Serializable {
 		this.nome = nome;
 	}
 
+	public ParteCorpo(int id) {
+		this.id = id;
+	}
+
 	// toString()
 	@Override
 	public String toString() {
@@ -49,15 +53,6 @@ public class ParteCorpo implements Serializable {
 	
 	
 	// Gets e Sets
-	public ParteCorpo(int id) {
-		super();
-		this.id = id;
-	}
-
-	public ParteCorpo(Integer id) {
-		this.id = id;
-	}
-
 	public int getId() {
 		return id;
 	}

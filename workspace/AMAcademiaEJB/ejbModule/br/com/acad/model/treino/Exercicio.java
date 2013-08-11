@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -45,9 +44,6 @@ public class Exercicio implements Serializable {
 	
 	@Column(length=500, nullable=true)
 	private String fotoLocal;
-	
-	@Lob
-	private byte[] foto;
 	
 	@ManyToMany()
 	@JoinTable(name="ACAD_EXERC_CORPO_PRIMARIO", 
@@ -158,6 +154,14 @@ public class Exercicio implements Serializable {
 		this.fotoLocal = fotoLocal;
 	}
 
+	public Exercicio(String nome, Set<ParteCorpo> parteCorpoPrimaria, Set<ParteCorpo> parteCorpoSecundaria, String descricao, String fotoLocal) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.fotoLocal = fotoLocal;
+		this.parteCorpoPrimaria = parteCorpoPrimaria;
+		this.parteCorpoSecundaria = parteCorpoSecundaria;
+	}
+
 	//ToString
 	@Override
 	public String toString() {
@@ -215,22 +219,6 @@ public class Exercicio implements Serializable {
 	
 	
 
-	
-	public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-	}
-
-
-
-	
-	
-	
-
-	
 	
 	
 	
