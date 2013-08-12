@@ -131,6 +131,77 @@ public class PopulaBancoBean implements Serializable {
 				+ "posição de partida. Isto permite-lhe utilizar ao máximo a parte inferior das costas, glúteos, e quadríceps.",
 				"peso_morto_levantamento_terra.jpg");
 		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Puxada Polia Alta (Frente)", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), 
+				"A puxada de dorsais em polia alta (pela frente) tem como alvo principal o grande dorsal. Este é um músculo "
+				+ "grande que ocupa uma grande extensão das costas.",
+				"puxada_dorsais_polia_alta.jpg");
+		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Puxada Polia Alta Supinada", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), 
+				" Esta variação da puxada de dorsais em polia alta (pela frente) diferencia-se da variação anterior por recrutar "
+				+ "e trabalhar mais os bíceps.",
+				"puxada_dorsais_polia_alta_supinação.jpg");
+		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Remada com Barra", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS, PopulaBancoLogic.ANTEBRACO), 
+				" Esta variação da puxada de dorsais em polia alta (pela frente) diferencia-se da variação anterior por recrutar e trabalhar mais os bíceps.",
+				"remada_com_barra.jpg");
+		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Press Militar", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.TRAPEZIO), 
+				" O movimento mais conhecido para trabalhar os deltóides. Deverá ter cuidado para não usar demasiada carga que possa comprometer a execução "
+				+ "correta e fluída do exercício. A versão de press militar à nuca é na verdade a mais eficiente para trabalhar as três cabeças dos deltóides.",
+				"press_militar_barra.jpg");
+		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Remada Alta", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO, PopulaBancoLogic.TRAPEZIO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), 
+				"  Este é um excelente movimento composto para atingir a parte medial dos deltóides.",
+				"remada_vertical.jpg");
+		
+		ex = new Exercicio("Desenvolvimento com halteres", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.TRAPEZIO), 
+				" Este é muito provavelmente o melhor exercício geral para os deltóides, pois permite a realização de um arco de movimento mais natural.",
+				"press_militar_halteres1.jpg");
+		
+		ex = new Exercicio("Curl com barra", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO), 
+				"  O curl com barra é o movimento mais conhecido, o mais usado e também um dos mais mal executados do ginásio. Para aprender a realizá-lo "
+				+ "da forma correta, é aconselhável que comece por apoiar as costas numa estrutura sólida como um pilar e usar cargas moderadas.",
+				"curl_barra_reta.jpg");
+		
+		ex = new Exercicio("Concentrada", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), 
+				PopulaBancoLogic.getPartesCorpo(), 
+				" Segundo análises EMG, este é o exercícios mais eficiente para os bíceps quando realizado de forma excêntrica + contrações de "
+				+ "pico/máximas. Mais uma vez, utilize pesos que consiga controlar bem e não faça batota.",
+				"curl_concentracao.jpg");
+		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Paralela", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), 
+				PopulaBancoLogic.getPartesCorpo(), 
+				" Um dos melhores exercícios para trabalhar os tríceps (cabeça medial, lateral e longa dos tríceps), e também trabalha o grande "
+				+ "peitoral e deltóides. Segundo análises EMG, os fundos em barras paralelas, juntamente com os fundos entre bancos, são os dois "
+				+ "exercícios mais eficientes para trabalhar os tríceps.",
+				"fundos_barras_paralelas.jpg");
+		exercicioDAO.insert(ex);
+		
+		ex = new Exercicio("Paralela", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.PEITO), 
+				PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO), 
+				" Um dos melhores exercícios para trabalhar os tríceps (cabeça medial, lateral e longa dos tríceps), e também trabalha o grande "
+						+ "peitoral e deltóides. Segundo análises EMG, os fundos em barras paralelas, juntamente com os fundos entre bancos, são os dois "
+						+ "exercícios mais eficientes para trabalhar os tríceps.",
+				"fundos_barras_paralelas.jpg");
+		
+		ex = new Exercicio("Extensões de tríceps sentado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS), 
+				PopulaBancoLogic.getPartesCorpo(), 
+				"  Esta variação do exercícios extensões de tríceps deitado, encontra-se ao mesmo nível em termos de eficiência de ativação dos tríceps.",
+				"extensão_triceps_sentado.jpg");
+		exercicioDAO.insert(ex);
 	}
 	
 	/**
