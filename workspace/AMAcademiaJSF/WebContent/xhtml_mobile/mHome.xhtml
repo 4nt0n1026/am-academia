@@ -14,7 +14,6 @@
     		<pm:header title="Login"/>
 			
 			<pm:content>
-				<p:growl autoUpdate="true" showDetail="true" swatch="b" />
 				
 				<h:form id="formLogin">
 					<pm:field>
@@ -28,6 +27,7 @@
 					</pm:field>
 					
 					<p:commandButton value="Entrar" swatch="b" action="#{mLoginBean.logar}" ajax="true" update="formLogin"/>
+					<p:growl autoUpdate="true" showDetail="true" swatch="b" />
 					
 	            </h:form>
 				

@@ -261,6 +261,15 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de Aluno
 	 */
 	private void populaAluno(){
+		Aluno c = new Aluno();
+		c.setNome("Christian ");
+		c.setEmail("c@gmail.com");
+		c.setCpf("33342523501");
+		c.setAltura(1.76);
+		c.setPeso(70);
+		c.setSenha("r");
+		c.setRg("22233344401");
+		alunoDAO.insert(c);
 		for(int i = 1; i<200; i++){
 			Aluno a = new Aluno();
 			a.setNome("Aluno " + i);

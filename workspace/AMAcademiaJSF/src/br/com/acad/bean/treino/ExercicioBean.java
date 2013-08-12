@@ -166,6 +166,15 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	/************************************************************************************************************/
 	//GETS E SETS
 	/************************************************************************************************************/
+	
+	public String getFotoExercicio() {
+		fotoExercicio = entity.getFotoLocal();
+		if(fotoExercicio!=null && fotoExercicio.length()>1){
+			return "/" + PathLogic.PATH_EXERCICIOS + fotoExercicio;
+		}
+		return "/" + PathLogic.PATH_EXERCICIOS + "semFoto.jpg";
+	}
+	
 	public List<String> getIdsParteCorpoPrimaria() {
 		return idsParteCorpoPrimaria;
 	}
@@ -180,15 +189,6 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 
 	public void setIdsParteCorpoSecundaria(List<String> idsParteCorpoSecundaria) {
 		this.idsParteCorpoSecundaria = idsParteCorpoSecundaria;
-	}
-
-	public String getFotoExercicio() {
-		fotoExercicio = entity.getFotoLocal();
-		if(fotoExercicio!=null && fotoExercicio.length()>1){
-			String path = "/" + PathLogic.PATH_EXERCICIOS + fotoExercicio;
-			return path;
-		}
-		return "/" + PathLogic.PATH_EXERCICIOS + "semFoto.jpg";
 	}
 
 	public void setFotoExercicio(String fotoExercicio) {
