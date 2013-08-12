@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,21 +18,38 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@SequenceGenerator(name="seqDiaDieta", sequenceName="SEQ_DIA_DIETA", allocationSize=1)
+@SequenceGenerator(name="seqRefeicao", sequenceName="SEQ_DIA_DIETA", allocationSize=1)
 @Table(name="ACAD_DIA_DIETA")
 public class DiaDieta implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiaDieta")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqRefeicao")
 	@Column(name="ID_DIA_DIETA")
 	private int id;
 	
 	@Column(length=255, nullable=false)
 	private String nome;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DIA_DIETA_ID")
 	private Set<Refeicao> refeicoes = new HashSet<Refeicao>();
+	
+	//Metodos
+	public boolean addRefeicao(Refeicao refeicao){
+		return refeicoes.add(refeicao);
+	}
+	
+	public boolean removeRefeicao(Refeicao refeicao){
+		return refeicoes.remove(refeicao);
+	}
+	
+	/**
+	 * Apaga lista de Refeicao
+	 */
+	public void resetRefeicoes(){
+		this.refeicoes = new HashSet<Refeicao>();
+	}
+	
 	
 	public DiaDieta(){}
 

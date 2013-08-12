@@ -41,6 +41,11 @@ public class NoticiaCat implements Serializable{
 	}
 	
 	
+	public NoticiaCat(String nome, String icone) {
+		this.nome = nome;
+		this.fotoLocalIcone = icone;
+	}
+
 	public int getId() {
 		return id;
 	}

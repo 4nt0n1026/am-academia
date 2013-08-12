@@ -17,7 +17,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 
 
 @SuppressWarnings("serial")
-@ManagedBean(name="dietaEspecificaoBean")
+@ManagedBean
 @ViewScoped
 public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serializable {
 
@@ -47,7 +47,7 @@ public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serial
 	
 	/**
 	 * show form de entity
-	 * Não é possivel incluir um treino especifico. Precisa ser por meio de resposta a uma solicitação. Metodo nao implementado
+	 * Não é possivel incluir um dieta especifico. Precisa ser por meio de resposta a uma solicitação. Metodo nao implementado
 	 */
 	@Override
 	public void showNewEntity() {}

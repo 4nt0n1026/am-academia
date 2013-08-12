@@ -13,100 +13,15 @@
 		<!-- ****************************************************************************************************** -->
 		<!-- Dialog de criacao de dieta -->
 		<!-- ****************************************************************************************************** -->
-		<p:dialog id="dialogDieta" widgetVar="dlgDieta" height="600" width="800" draggable="false" header="Criação de dieta" modal="true" closeOnEscape="true" closable="true">
+		<p:dialog id="dialogDieta" widgetVar="dlgDieta" height="500" width="800" draggable="false" header="Criação de dieta" modal="true" closeOnEscape="true" closable="true">
 			<p:fieldset id="field2" >
-		       	<p:layout style="min-width:700px;min-height:550px;" id="layout">  
-		       		
-		       		<!-- COMPLEX FORM 1 - DiaDieta -->
-				    <p:layoutUnit id="layourUnit" position="west" resizable="true" size="300" minSize="40" maxSize="400"> 
-						<h:form id="formDialog">
-					    	<h3>Dias de dieta</h3>
-					    	
-					        <!-- Form do DiaDieta -->
-					        <p:panelGrid columns="2">
-					        	<h:inputText value="#{criacaoDietaBean.diaDieta.nome}" required="true" requiredMessage="Nome do dia obrigatorio" />
-					        	<p:commandButton icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirDiaDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
-					    	</p:panelGrid>
-					        
-		           		</h:form>		
-		           		<h:form id="tableDialog">		
-
-				    		<!-- Menu do DiaDieta -->
-		           			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newDiaDieta}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
-					        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirDiaDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2"  />
-			
-					        <!-- Table do DiaDieta -->
-					        <p:dataTable id="diaDietaTable" var="dia" value="#{criacaoDietaBean.dias}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
-		           										 selection="#{criacaoDietaBean.diaDieta}"  selectionMode="single">  
-		           				
-		           				<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectDiaDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2" /> 
-								<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectDiaDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2"/> 
-		           				
-       							<p:column >
-       								<h:outputText value="#{dia.nome}" />
-       							</p:column>
-							</p:dataTable>
-					 	</h:form>
-					</p:layoutUnit>  
-					
-					    
-			       	<!-- COMPLEX FORM 2 - Exercicio -->
-				    <p:layoutUnit position="center"> 
-				    	<h:form id="formDialog2" >
-					    	<h3>Exercicios</h3>
-					    	
-					        <!-- Form de exericicio -->
-					        <p:panelGrid columns="1">
-					        	<p:panelGrid columns="2">
-						        	<h:outputLabel value="Exercicio " />  
-								    <p:selectOneMenu value="#{criacaoDietaBean.exercicioDieta.exercicio.id}" rendered="true" style="width:250px"
-								    			requiredMessage="Exercicio Obrigatorio" filter="true" filterMatchMode="contains" disabled="#{!criacaoDietaBean.showExercicioDieta}" >  
-								    	<f:selectItems value="#{criacaoDietaBean.exerciciosField}" var="exec" itemLabel="#{exec.nome}" itemValue="#{exec.id}"/>
-									</p:selectOneMenu>  
-							    </p:panelGrid >
-
-					        	<p:panelGrid columns="2">
-						        	<h:outputLabel value="Series " />  
-						        	<h:panelGroup>
-								    	<ui:repeat var="serie" value="#{criacaoDietaBean.series}">
-								    		<p:inputText value="#{serie.numRepeticoes}" size="2" disabled="#{!criacaoDietaBean.showExercicioDieta}" />
-								    	</ui:repeat>
-								    	<p:commandButton disabled="#{!criacaoDietaBean.showExercicioDieta}" icon="ui-icon ui-icon-circle-plus" action="#{criacaoDietaBean.addSerie}" ajax="true" update=":formDialog2 " />
-								    	<p:commandButton disabled="#{!criacaoDietaBean.showExercicioDieta}" icon="ui-icon ui-icon-circle-minus" action="#{criacaoDietaBean.resetSeries}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
-							    	</h:panelGroup>
-							    </p:panelGrid>
-							    
-					        	<p:commandButton disabled="#{!criacaoDietaBean.showExercicioDieta}" icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirExercicioDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
-					    	</p:panelGrid>
-					        
-		           		</h:form>		
-		           		<h:form id="tableDialog2" >		
-
-				    		<!-- Menu de exercicio -->
-		           			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newExercicioDieta}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
-		           							disabled="#{!criacaoDietaBean.showExercicioDieta}"/>
-					        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirExercicioDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
-					        				disabled="#{!criacaoDietaBean.showExercicioDieta}"/>
-			
-					        <!-- Table do exercicio -->
-					        <p:dataTable id="diaDietaTable" var="exec" value="#{criacaoDietaBean.exercicios}" rowKey="#{exec}" emptyMessage="Nenhum exercicio registrado"
-		           										 selection="#{criacaoDietaBean.exercicioDieta}"  selectionMode="single">  
-		           										 
-		           				<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectExercicioDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2" /> 
-								<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectExercicioDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2"/> 
-								
-       							<p:column >
-       								<h:outputText value="#{exec.exercicio.nome}"  />
-       							</p:column>
-							</p:dataTable>
-					 	</h:form> 
-					 	
-				    </p:layoutUnit>  
-				</p:layout>
+		       
+		       	<!-- Criacao Dieta -->
+    			<ui:include src="/xhtml/dieta/criacaoDieta.xhtml"/>
 				
 				<h:form>
-		        	<p:commandButton value="salvar"  action="#{criacaoDietaBean.salvarDietaEspecificoResposta}" ajax="false" update=":tabView1:formEntity" /> 
-	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgDieta.close()" ajax="false" update=":tabView1"   />
+		        	<p:commandButton value="salvar"  action="#{criacaoDietaBean.salvarDietaEspecificaResposta}" ajax="true" update="@all" /> 
+	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgDieta.close()" ajax="true" update="@all" />
 				</h:form>	
 							        
 			</p:fieldset> 
@@ -135,7 +50,7 @@
 							    	<f:selectItems value="#{solicitacaoDietaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
 								</p:selectOneMenu>    
 	
-								<p:commandButton value="Adcionar Exercicios" action="#{criacaoDietaBean.newDietaEspecificoResposta}" onclick="dlgDieta.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+								<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecificaResposta}" onclick="dlgDieta.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
 					        	<p:button icon="ui-icon ui-icon-close"   action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity :tabView1:formDieta"  />  
 					        	
 					        </h:panelGrid>

@@ -32,6 +32,22 @@ public class Refeicao implements Serializable{
 	@JoinColumn(name="REFEICAO_ID", nullable=true)
 	private Set<ItemRefeicao> itens = new HashSet<ItemRefeicao>();
 	
+	//Metodos
+	public boolean addItem(ItemRefeicao item){
+		return itens.add(item);
+	}
+	
+	public boolean removeItem(ItemRefeicao item){
+		return itens.remove(item);
+	}
+	
+	/**
+	 * Apaga lista de Refeicao
+	 */
+	public void resetItens(){
+		this.itens = new HashSet<ItemRefeicao>();
+	}
+	
 	public Refeicao(){}
 
 	public int getId() {

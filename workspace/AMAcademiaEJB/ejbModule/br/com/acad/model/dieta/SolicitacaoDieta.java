@@ -46,6 +46,11 @@ public class SolicitacaoDieta implements Serializable {
 	
 	public SolicitacaoDieta(){}
 
+	public SolicitacaoDieta(Integer id, Calendar data) {
+		this.id = id;
+		this.dataSolicitacao = data;
+	}
+
 	public int getId() {
 		return id;
 	}

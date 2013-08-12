@@ -32,6 +32,8 @@ public class ItemRefeicao implements Serializable {
 	
 	public ItemRefeicao(){}
 
+	
+
 	public int getId() {
 		return id;
 	}

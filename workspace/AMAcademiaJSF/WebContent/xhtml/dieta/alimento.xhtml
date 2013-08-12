@@ -21,40 +21,44 @@
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
 						<p:fieldset id="field"  rendered="#{alimentoBean.showEntity}">
-							<h:panelGrid columns="10">
+							<h:panelGrid columns="6">
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
 						        <p:inputText id="idNome" value="#{alimentoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
 						        <h:outputLabel for="idDescricao" value="Descrição" />  
-						        <p:inputText id="idDescricao" value="#{alimentoBean.entity.descricao}" />
+						        <p:inputTextarea id="idDescricao" cols="50" rows="2" value="#{alimentoBean.entity.descricao}" />
 						        
+					        </h:panelGrid>
+							<h:panelGrid columns="6">
+							
 						        <h:outputLabel for="idValorEnergetico" value="Valor Energético" />  
 						        <p:inputText id="idValorEnergetico" value="#{alimentoBean.entity.valorEnergetico}" required="true" requiredMessage="Valor Energético obrigatorio" />
 						        
-						        <h:outputLabel for="idQtdProteina" value="Quantidade de proteína" />  
+						        <h:outputLabel for="idQtdProteina" value="Qtd. proteína" />  
 						        <p:inputText id="idQtdProteina" value="#{alimentoBean.entity.qtdProteina}" required="true" requiredMessage="Quantidade de proteína obrigatorio" />
 						        
-						        <h:outputLabel for="idQtdGordura" value="Quantidade de Gordura" />  
+						        <h:outputLabel for="idQtdGordura" value="Qtd. Gordura" />  
 						        <p:inputText id="idQtdGordura" value="#{alimentoBean.entity.qtdGordura}" required="true" requiredMessage="Quantidade de gordura obrigatorio" />
 						        
-						        <h:outputLabel for="idQtdCarboidrato" value="Quantidade de Carboídrato" />  
+						        <h:outputLabel for="idQtdCarboidrato" value="Qtd Carboídrato" />  
 						        <p:inputText id="idQtdCarboidrato" value="#{alimentoBean.entity.qtdCarboidrato}" required="true" requiredMessage="Quantidade de carboídrato obrigatorio" />
 						        
 						        <h:outputLabel for="idUnidade" value="Unidade" />  
 						        <p:inputText id="idUnidade" value="#{alimentoBean.entity.unidade}" required="true" requiredMessage="Unidade obrigatorio" />
 						        
 						        <h:outputLabel for="idUnidadeMedida" value="Unidade de Medida " />  
-							    <p:selectOneMenu id="idUnidadeMedida" value="#{alimentoBean.entity.unidadeMedida.id}" rendered="true" style="width:250px"
+							    <p:selectOneMenu id="idUnidadeMedida" value="#{alimentoBean.entity.unidadeMedida.id}" 
 							    			requiredMessage="Unidade de medida Obrigatorio" >  
 							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{alimentoBean.unidadeMedidaField}" var="uniMed" itemLabel="#{uniMed.sigla}" itemValue="#{uniMed.id}"/>  
 								</p:selectOneMenu>  
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{alimentoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{alimentoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
+
 					        </h:panelGrid>
+
+					        <p:commandButton icon="ui-icon ui-icon-check"  action="#{alimentoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{alimentoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+				        	  
 						</p:fieldset> 
 			        </h:form>
       				

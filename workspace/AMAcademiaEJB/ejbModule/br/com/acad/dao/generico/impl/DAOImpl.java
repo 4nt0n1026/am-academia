@@ -14,7 +14,7 @@ import br.com.acad.dao.generico.interf.DAO;
 @Stateless
 public abstract class DAOImpl<T,K> implements DAO<T,K>{
 
-	@PersistenceContext(unitName="CLIENTE_ORACLE", type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(unitName="CLIENTE_MYSQL", type=PersistenceContextType.EXTENDED)
 	protected EntityManager em;
 	
 	

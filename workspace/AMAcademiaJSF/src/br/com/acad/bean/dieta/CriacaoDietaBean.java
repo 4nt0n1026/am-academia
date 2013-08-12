@@ -1,8 +1,7 @@
-/*package br.com.acad.bean.dieta;
+package br.com.acad.bean.dieta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,346 +14,409 @@ import br.com.acad.dao.dieta.interf.AlimentoDAO;
 import br.com.acad.dao.dieta.interf.DietaEspecificaDAO;
 import br.com.acad.dao.dieta.interf.DietaFixaDAO;
 import br.com.acad.dao.dieta.interf.ItemRefeicaoDAO;
-import br.com.acad.dao.dieta.interf.RefeicaoDAO;
-import br.com.acad.dao.treino.interf.ExercicioDAO;
-import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
-import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
-import br.com.acad.dao.treino.interf.TreinoFixoDAO;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.cat.TipoTreinoDieta;
-import br.com.acad.model.treino.DiaTreino;
-import br.com.acad.model.treino.Exercicio;
-import br.com.acad.model.treino.ExercicioTreino;
-import br.com.acad.model.treino.Serie;
-import br.com.acad.model.treino.Treino;
-import br.com.acad.model.treino.TreinoEspecifico;
-import br.com.acad.model.treino.TreinoFixo;
+import br.com.acad.model.dieta.Alimento;
+import br.com.acad.model.dieta.DiaDieta;
+import br.com.acad.model.dieta.Dieta;
+import br.com.acad.model.dieta.DietaEspecifica;
+import br.com.acad.model.dieta.DietaFixa;
+import br.com.acad.model.dieta.ItemRefeicao;
+import br.com.acad.model.dieta.Refeicao;
 
 @SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
 public class CriacaoDietaBean implements Serializable {
 
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	//ATRIBUTOS
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	
 	@EJB
 	private DietaFixaDAO dietaFixaDAO;
 	@EJB
 	private DietaEspecificaDAO dietaEspecificaDAO;
 	@EJB
-	private RefeicaoDAO refeicaoDAO;
+	private AlimentoDAO alimentoDAO;
 	@EJB
 	private ItemRefeicaoDAO itemRefeicaoDAO;
-	@EJB
-	private AlimentoDAO alimentoDAO;
 	
 	// Inject outros beans
 	@ManagedProperty(value="#{dietaFixaBean}") 
 	private DietaFixaBean dietaFixaBean; 
-	@ManagedProperty(value="#{treinoEspecificoBean}") 
-	private DietaEspecificaBean treinoEspecificoBean; 
-	@ManagedProperty(value="#{solicitacaoTreinoBean}") 
-	private SolicitacaoTreinoBean solicitacaoTreinoBean; 
+	@ManagedProperty(value="#{dietaEspecificaBean}") 
+	private DietaEspecificaBean dietaEspecificaBean; 
+	@ManagedProperty(value="#{solicitacaoDietaBean}") 
+	private SolicitacaoDietaBean solicitacaoDietaBean; 
 	
-	private Treino treino;
+	private Dieta dieta;
 	
-	private DiaTreino diaTreino;
-	private List<DiaTreino> dias;
+	private DiaDieta diaDieta;
+	private List<DiaDieta> dias;
+	
+	private boolean showRefeicao;
+	private Refeicao refeicao;
+	private List<Refeicao> refeicoes;
 
-	private boolean showExercicioTreino;
-	private ExercicioTreino exercicioTreino;
-	private List<ExercicioTreino> exercicios;
+	private boolean showItemRefeicao;
+	private ItemRefeicao itemRefeicao;
+	private List<ItemRefeicao> itensRefeicao;
 	
-	private List<Serie> series = new ArrayList<Serie>();
-
 	
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	//METODOS
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	
 	@PostConstruct
 	public void init(){
-		showExercicioTreino = false;
-		newExercicioTreino();
-		dias = new ArrayList<DiaTreino>();
-		exercicios = new ArrayList<ExercicioTreino>();
+		showRefeicao = false;
+		showItemRefeicao = false;
+		newRefeicao();
+		clearAll();
 	}
 	
-	// Treino
-	*//**
-	 * Criacao de um novo treino fixo
-	 *//*
-	public void newTreinoFixo(){
-		treino = treinoFixoBean.getEntity();
-		treino.setTipoTreino(TipoTreinoDieta.FIXO);
-		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
-		diaTreino = new DiaTreino();
+	/**
+	 * Zera todas as listas e entities
+	 */
+	public void clearAll(){
+		dias = new ArrayList<DiaDieta>();
+		itensRefeicao = new ArrayList<ItemRefeicao>();
+		refeicoes = new ArrayList<Refeicao>();
+		diaDieta = new DiaDieta();
+		refeicao = new Refeicao();
+		itemRefeicao = new ItemRefeicao();
 	}
 	
-	*//**
-	 * Criacao de um novo treino especifico
-	 *//*
-	public void newTreinoEspecifico(){
-		treino = treinoEspecificoBean.getEntity();
-		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
-		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
-		diaTreino = new DiaTreino();
+	// Dieta
+	/**
+	 * Criacao de um novo dieta fixo
+	 */
+	public void newDietaFixa(){
+		clearAll();
+		dieta = dietaFixaBean.getEntity();
+		dieta.setTipoDieta(TipoTreinoDieta.FIXO);
+		dias = new ArrayList<DiaDieta>(dieta.getDiasDieta());
+		diaDieta = new DiaDieta();
+	}
+	
+	/**
+	 * Criacao de um novo dieta especifico
+	 */
+	public void newDietaEspecifica(){
+		clearAll();
+		dieta = dietaEspecificaBean.getEntity();
+		dieta.setTipoDieta(TipoTreinoDieta.ESPECIFICO);
+		dias = new ArrayList<DiaDieta>(dieta.getDiasDieta());
+		diaDieta = new DiaDieta();
 	}
 
-	*//**
-	 * Criacao de um novo treino especifico de resposta
-	 *//*
-	public void newTreinoEspecificoResposta(){
-		treino = solicitacaoTreinoBean.getTreino();
-		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
-		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
-		diaTreino = new DiaTreino();
+	/**
+	 * Criacao de um novo dieta especifico de resposta
+	 */
+	public void newDietaEspecificaResposta(){
+		clearAll();
+		dieta = solicitacaoDietaBean.getDieta();
+		dieta.setTipoDieta(TipoTreinoDieta.ESPECIFICO);
+		dias = new ArrayList<DiaDieta>(dieta.getDiasDieta());
+		diaDieta = new DiaDieta();
 	}
 
-	*//**
-	 * Salva os dias e os exercicios do treino fixo
-	 *//*
-	public void salvarTreinoFixo(){
-		treino.resetDiasTreino();
-		for(DiaTreino dia : dias){
-			treino.addDiaTreino(dia);
+	/**
+	 * Salva os dias e os exercicios do dieta fixo
+	 */
+	public void salvarDietaFixa(){
+		dieta.resetDiasDieta();
+		for(DiaDieta dia : dias){
+			dieta.addDiaDieta(dia);
 		}
-		treinoFixoBean.setEntity((TreinoFixo) treino);
-		treinoFixoBean.incluirEntity();
+		dietaFixaBean.setEntity((DietaFixa) dieta);
+		dietaFixaBean.incluirEntity();
 	}
 
-	*//**
-	 * Salva os dias e os exercicios do treino especifico
-	 *//*
-	public void salvarTreinoEspecifico(){
-		treino.resetDiasTreino();
-		for(DiaTreino dia : dias){
-			treino.addDiaTreino(dia);
+	/**
+	 * Salva os dias e os exercicios do dieta especifico
+	 */
+	public void salvarDietaEspecifica(){
+		dieta.resetDiasDieta();
+		for(DiaDieta dia : dias){
+			dieta.addDiaDieta(dia);
 		}
-		treinoEspecificoBean.setEntity((TreinoEspecifico) treino);
-		treinoEspecificoBean.incluirEntity();
+		dietaEspecificaBean.setEntity((DietaEspecifica) dieta);
+		dietaEspecificaBean.incluirEntity();
 	}
 	
-	*//**
-	 * Salva os dias e os exercicios do treino de resposta
-	 *//*
-	public void salvarTreinoEspecificoResposta(){
-		treino.resetDiasTreino();
-		for(DiaTreino dia : dias){
-			treino.addDiaTreino(dia);
+	/**
+	 * Salva os dias e os exercicios do dieta de resposta
+	 */
+	public void salvarDietaEspecificaResposta(){
+		dieta.resetDiasDieta();
+		for(DiaDieta dia : dias){
+			dieta.addDiaDieta(dia);
 		}
-		solicitacaoTreinoBean.setTreino((TreinoEspecifico) treino);
-		solicitacaoTreinoBean.incluirTreinoResposta();;
+		solicitacaoDietaBean.setDieta((DietaEspecifica) dieta);
+		solicitacaoDietaBean.incluirDietaResposta();;
 	}
 	
-	// DiaTreino
-	*//**
-	 * Abre form de um novo DiaTreino
-	 *//*
-	public void newDiaTreino(){
-		diaTreino = new DiaTreino();
-		showExercicioTreino = false;
+	// DiaDieta
+	/**
+	 * Abre form de um novo DiaDieta
+	 */
+	public void newDiaDieta(){
+		diaDieta = new DiaDieta();
+		showRefeicao = false;
+		showItemRefeicao = false;
 	}
 	
-	*//**
-	 * Inclui um DiaTreino a lista de dias
-	 *//*
-	public void incluirDiaTreino(){
-		showExercicioTreino = false;
-		if(!dias.contains(diaTreino)){
-			dias.add(diaTreino);
+	/**
+	 * Inclui um DiaDieta a lista de dias
+	 */
+	public void incluirDiaDieta(){
+		showRefeicao = false;
+		showItemRefeicao = false;
+		if(!dias.contains(diaDieta)){
+			dias.add(diaDieta);
 		}
-		diaTreino = new DiaTreino();
+		diaDieta = new DiaDieta();
 	}
 	
-	*//**
-	 * Exclui diaTreino da lista de dias
-	 *//*
-	public void excluirDiaTreino(){
-		if(diaTreino!=null && diaTreino.getNome().length()>1){
-			dias.remove(diaTreino);
+	/**
+	 * Exclui diaDieta da lista de dias
+	 */
+	public void excluirDiaDieta(){
+		if(diaDieta!=null && diaDieta.getNome().length()>1){
+			dias.remove(diaDieta);
 		}else{
-			MessagesLogic.addWarnMessage("Aviso", "Selecione um dia de treino antes de excluir");
+			MessagesLogic.addWarnMessage("Aviso", "Selecione um dia de dieta antes de excluir");
 		}
-		showExercicioTreino = false;
-		diaTreino = new DiaTreino();
+		showRefeicao = false;
+		showItemRefeicao = false;
+		diaDieta = new DiaDieta();
 	}
 	
-	*//**
-	 * ao selecionar diaTreino da lista
-	 *//*
-	public void onSelectDiaTreino(){
-		showExercicioTreino = true;
-		refreshExercicioTreino();
-		newExercicioTreino();
+	/**
+	 * ao selecionar diaDieta da lista
+	 */
+	public void onSelectDiaDieta(){
+		showRefeicao = true;
+		showItemRefeicao = false;
+		refreshRefeicao();
+		newRefeicao();
 	}
 	
-	*//**
-	 * ao desselecionar diaTreino da lista
-	 *//*
-	public void onUnselectDiaTreino(){
-		showExercicioTreino = false;
+	/**
+	 * ao desselecionar diaDieta da lista
+	 */
+	public void onUnselectDiaDieta(){
+		showRefeicao = false;
+		showItemRefeicao = false;
 	}
 	
-	// ExercicioTreino
-	*//**
-	 * Abre form de um novo exercicioTreino
-	 *//*
-	public void newExercicioTreino(){
-		exercicioTreino = new ExercicioTreino();
-		series = new ArrayList<Serie>();
+	// Refeicao
+	/**
+	 * Abre form de uma nova refeicao
+	 */
+	public void newRefeicao(){
+		refeicao = new Refeicao();
 	}
 	
-	*//**
-	 * Atualiza os exercicios ao clicar em um diaTreino
-	 *//*
-	public void refreshExercicioTreino(){
-		exercicios = new ArrayList<ExercicioTreino>(diaTreino.getExerciciosTreino());
+	/**
+	 * Atualiza as refeicoes ao clicar em um diaDieta
+	 */
+	public void refreshRefeicao(){
+		refeicoes = new ArrayList<Refeicao>(diaDieta.getRefeicoes());
 	}
 	
-	*//**
-	 * Inclui um ExercicioTreino a lista de exercicios
-	 *//*
-	public void incluirExercicioTreino(){
-		if(exercicios.contains(exercicioTreino)){
-			exercicios.remove(exercicioTreino);
-			diaTreino.removeExercicioTreino(exercicioTreino);
+	/**
+	 * Inclui um Refeicao a lista de refeicoes
+	 */
+	public void incluirRefeicao(){
+		if(refeicoes.contains(refeicao)){
+			refeicoes.remove(refeicao);
+			diaDieta.removeRefeicao(refeicao);
 		}
-		exercicioTreino.setSeries(new HashSet<Serie>(series));
-		exercicioTreino.setExercicio(exercicioDAO.searchByID(exercicioTreino.getExercicio().getId()));
-		diaTreino.addExercicioTreino(exercicioTreino);
-		exercicios.add(exercicioTreino);
-		newExercicioTreino();
+		diaDieta.addRefeicao(refeicao);
+		refeicoes.add(refeicao);
+		newRefeicao();
 	}
 	
-	*//**
-	 * Exclui ExercicioTreino da lista de exercicios
-	 *//*
-	public void excluirExercicioTreino(){
-		if(exercicioTreino!=null && exercicioTreino.getExercicio()!=null ){
-			exercicios.remove(exercicioTreino);
-			diaTreino.removeExercicioTreino(exercicioTreino);
+	/**
+	 * Exclui Refeicao da lista de refeicoes
+	 */
+	public void excluirRefeicao(){
+		if(refeicao!=null){
+			refeicoes.remove(refeicao);
+			diaDieta.removeRefeicao(refeicao);
 		}else{
-			MessagesLogic.addWarnMessage("Aviso", "Selecione um exercicio antes de excluir");
+			MessagesLogic.addWarnMessage("Aviso", "Selecione uma refeicao antes de excluir");
 		}
-		exercicioTreino = new ExercicioTreino();
+		newRefeicao();
 
 	}
 
-	*//**
-	 * ao selecionar exercicioTreino da lista
-	 *//*
-	public void onSelectExercicioTreino(){
-		series = new ArrayList<Serie>(exercicioTreino.getSeries());
+	/**
+	 * ao selecionar refeicao da lista
+	 */
+	public void onSelectRefeicao(){
+		showItemRefeicao = true;
 	}
 
-	*//**
-	 * ao selecionar exercicioTreino da lista
-	 *//*
-	public void onUnselectExercicioTreino(){
+	/**
+	 * ao selecionar refeicao da lista
+	 */
+	public void onUnselectRefeicao(){
+		showItemRefeicao = false;
 	}
 	
-	// Series
 	
-	*//**
-	 * Adciona um serie
-	 *//*
-	public void addSerie(){
-		series.add(new Serie());
+	
+	// ItemItemRefeicao
+	
+	/**
+	 * Abre form de um novo ItemRefeicao
+	 */
+	public void newItemRefeicao(){
+		itemRefeicao = new ItemRefeicao();
 	}
 	
-	*//**
-	 * Reseta a lista de series
-	 *//*
-	public void resetSeries(){ 
-		series = new ArrayList<Serie>();
+	/**
+	 * Atualiza as itensRefeicao ao clicar em uma refeicao
+	 */
+	public void refreshItemRefeicao(){
+		itensRefeicao = new ArrayList<ItemRefeicao>(refeicao.getItens());
+	}
+	
+	/**
+	 * Inclui um ItemRefeicao a lista de itensRefeicao
+	 */
+	public void incluirItemRefeicao(){
+		if(itensRefeicao.contains(itemRefeicao)){
+			itensRefeicao.remove(itemRefeicao);
+			refeicao.removeItem(itemRefeicao);
+		}
+		refeicao.addItem(itemRefeicao);
+		itensRefeicao.add(itemRefeicao);
+		newItemRefeicao();
+	}
+	
+	/**
+	 * Exclui ItemRefeicao da lista de itensRefeicao
+	 */
+	public void excluirItemRefeicao(){
+		if(itemRefeicao!=null){
+			itensRefeicao.remove(itemRefeicao);
+			refeicao.removeItem(itemRefeicao);
+		}else{
+			MessagesLogic.addWarnMessage("Aviso", "Selecione um item antes de excluir");
+		}
+		newItemRefeicao();
+
+	}
+
+	/**
+	 * ao selecionar refeicao da lista
+	 */
+	public void onSelectItemRefeicao(){
+	}
+
+	/**
+	 * ao selecionar refeicao da lista
+	 */
+	public void onUnselectItemRefeicao(){
 	}
 	
 
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	//GET FIELDS
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	
-	public List<Exercicio> getExerciciosField(){
-		return exercicioDAO.buscarFieldNome();
+	public List<Alimento> getAlimentosField(){
+		return alimentoDAO.buscarTodos();
 	}
 	
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	//GETS E SETS
-	*//************************************************************************************************************//*
+	/************************************************************************************************************/
 	
-	public Treino getTreino() {
-		return treino;
+	public Dieta getDieta() {
+		return dieta;
 	}
 
-	public void setTreino(Treino treino) {
-		this.treino = treino;
+	public void setDieta(Dieta dieta) {
+		this.dieta = dieta;
 	}
 
-	public DiaTreino getDiaTreino() {
-		return diaTreino;
+	public DiaDieta getDiaDieta() {
+		return diaDieta;
 	}
 
-	public void setDiaTreino(DiaTreino diaTreino) {
-		this.diaTreino = diaTreino;
+	public void setDiaDieta(DiaDieta diaDieta) {
+		this.diaDieta = diaDieta;
 	}
 
-	public ExercicioTreino getExercicioTreino() {
-		return exercicioTreino;
+	public Refeicao getRefeicao() {
+		return refeicao;
 	}
 
-	public void setExercicioTreino(ExercicioTreino exercicioTreino) {
-		this.exercicioTreino = exercicioTreino;
+	public void setRefeicao(Refeicao refeicao) {
+		this.refeicao = refeicao;
 	}
 
-	public List<DiaTreino> getDias() {
+	public ItemRefeicao getItemRefeicao() {
+		return itemRefeicao;
+	}
+
+	public void setItemRefeicao(ItemRefeicao itemRefeicao) {
+		this.itemRefeicao = itemRefeicao;
+	}
+
+	public DietaFixaBean getDietaFixaBean() {
+		return dietaFixaBean;
+	}
+
+	public DietaEspecificaBean getDietaEspecificaBean() {
+		return dietaEspecificaBean;
+	}
+
+	public SolicitacaoDietaBean getSolicitacaoDietaBean() {
+		return solicitacaoDietaBean;
+	}
+
+	public List<DiaDieta> getDias() {
 		return dias;
 	}
 
-	public List<ExercicioTreino> getExercicios() {
-		return exercicios;
+	public boolean getShowRefeicao() {
+		return showRefeicao;
 	}
 
-	public DietaFixaBean getTreinoFixoBean() {
-		return treinoFixoBean;
+	public List<Refeicao> getRefeicoes() {
+		return refeicoes;
 	}
 
-	public void setTreinoFixoBean(DietaFixaBean treinoFixoBean) {
-		this.treinoFixoBean = treinoFixoBean;
+	public boolean getShowItemRefeicao() {
+		return showItemRefeicao;
 	}
 
-	public DietaEspecificaBean getTreinoEspecificoBean() {
-		return treinoEspecificoBean;
+	public List<ItemRefeicao> getItensRefeicao() {
+		return itensRefeicao;
 	}
 
-	public void setTreinoEspecificoBean(DietaEspecificaBean treinoEspecificoBean) {
-		this.treinoEspecificoBean = treinoEspecificoBean;
+	public void setDietaFixaBean(DietaFixaBean dietaFixaBean) {
+		this.dietaFixaBean = dietaFixaBean;
 	}
 
-	public boolean getShowExercicioTreino() {
-		return showExercicioTreino;
+	public void setDietaEspecificaBean(DietaEspecificaBean dietaEspecificaBean) {
+		this.dietaEspecificaBean = dietaEspecificaBean;
 	}
 
-	public List<Serie> getSeries() {
-		return series;
+	public void setSolicitacaoDietaBean(SolicitacaoDietaBean solicitacaoDietaBean) {
+		this.solicitacaoDietaBean = solicitacaoDietaBean;
 	}
-
-	public void setSeries(List<Serie> series) {
-		this.series = series;
-	}
-
-	public SolicitacaoTreinoBean getSolicitacaoTreinoBean() {
-		return solicitacaoTreinoBean;
-	}
-
-	public void setSolicitacaoTreinoBean(SolicitacaoTreinoBean solicitacaoTreinoBean) {
-		this.solicitacaoTreinoBean = solicitacaoTreinoBean;
-	}
+	
+	
 
 	
 	
 	
 }
-*/

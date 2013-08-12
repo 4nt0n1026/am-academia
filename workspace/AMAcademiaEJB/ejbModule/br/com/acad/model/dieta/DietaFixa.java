@@ -21,6 +21,7 @@ import br.com.acad.model.cat.SexoCat;
 @PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
 public class DietaFixa extends Dieta {
 
+	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat", "objeticoCat"};
 	
 	@ManyToMany
 	@JoinTable(name="ACAD_DIETA_FIXA_LIMITACAO_CAT", 
@@ -30,15 +31,15 @@ public class DietaFixa extends Dieta {
 	
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)
-	private SexoCat sexo;
+	private SexoCat sexoCat;
 	
 	@ManyToOne
 	@JoinColumn(name="FAIXA_ETARIA_ID", nullable=false)
-	private FaixaEtariaCat faixaEtaria;
+	private FaixaEtariaCat faixaEtariaCat;
 	
 	@ManyToOne
 	@JoinColumn(name="OBJETIVO_ID", nullable=false)
-	private ObjetivoCat objetivo;
+	private ObjetivoCat objetivoCat;
 	
 	public DietaFixa(){}
 
@@ -50,28 +51,28 @@ public class DietaFixa extends Dieta {
 		this.limitacoes = limitacoes;
 	}
 
-	public SexoCat getSexo() {
-		return sexo;
+	public SexoCat getSexoCat() {
+		return sexoCat;
 	}
 
-	public void setSexo(SexoCat sexo) {
-		this.sexo = sexo;
+	public void setSexoCat(SexoCat sexoCat) {
+		this.sexoCat = sexoCat;
 	}
 
-	public ObjetivoCat getObjetivo() {
-		return objetivo;
+	public FaixaEtariaCat getFaixaEtariaCat() {
+		return faixaEtariaCat;
 	}
 
-	public void setObjetivo(ObjetivoCat objetivo) {
-		this.objetivo = objetivo;
+	public void setFaixaEtariaCat(FaixaEtariaCat faixaEtariaCat) {
+		this.faixaEtariaCat = faixaEtariaCat;
 	}
 
-	public FaixaEtariaCat getFaixaEtaria() {
-		return faixaEtaria;
+	public ObjetivoCat getObjetivoCat() {
+		return objetivoCat;
 	}
 
-	public void setFaixaEtaria(FaixaEtariaCat faixaEtaria) {
-		this.faixaEtaria = faixaEtaria;
+	public void setObjetivoCat(ObjetivoCat objetivoCat) {
+		this.objetivoCat = objetivoCat;
 	}
 
 	

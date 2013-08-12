@@ -5,8 +5,10 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +33,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Table(name="ACAD_DIETA")
 public class Dieta implements Serializable{
 
-	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", 
-		"objetivoCat.nome"};
+	public static final String[] STATIC_FIELDS = null;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDieta")
@@ -58,9 +59,25 @@ public class Dieta implements Serializable{
 	@JoinColumn(name="PROFESSOR_ID", nullable=true)
 	private ProfessorFunc professor;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DIETA_ID", nullable=true)
 	private Set<DiaDieta> diasDieta = new HashSet<DiaDieta>();
+	
+	//Metodos
+	public boolean addDiaDieta(DiaDieta dia){
+		return diasDieta.add(dia);
+	}
+	
+	public boolean removeDiaDieta(DiaDieta dia){
+		return diasDieta.remove(dia);
+	}
+	
+	/**
+	 * Apaga lista de DiaDieta
+	 */
+	public void resetDiasDieta(){
+		this.diasDieta = new HashSet<DiaDieta>();
+	}
 	
 	public Dieta(){}
 

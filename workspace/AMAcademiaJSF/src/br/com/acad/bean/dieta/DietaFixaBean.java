@@ -13,10 +13,8 @@ import br.com.acad.bean.Bean;
 import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
 import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
 import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
-import br.com.acad.dao.dieta.interf.DiaDietaDAO;
 import br.com.acad.dao.dieta.interf.DietaFixaDAO;
 import br.com.acad.dao.dieta.interf.LimitacaoDietaCatDAO;
-import br.com.acad.dao.dieta.interf.RefeicaoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.logic.DietaLogic;
 import br.com.acad.model.cat.FaixaEtariaCat;
@@ -49,10 +47,6 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable {
 	private SexoCatDAO sexoCatDAO;
 	@EJB
 	private ProfessorFuncDAO professorFuncDAO;
-	@EJB
-	private DiaDietaDAO diaDietaDAO;
-	@EJB
-	private RefeicaoDAO refeicaoDAO;
 	
 	private String textoDieta;
 	
@@ -78,6 +72,9 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable {
 		showEntity = true;
 		entity = new DietaFixa();
 		entity.setProfessor(new ProfessorFunc());
+		entity.setObjetivoCat(new ObjetivoCat());
+		entity.setFaixaEtariaCat(new FaixaEtariaCat());
+		entity.setSexoCat(new SexoCat());
 	}
 
 	/**

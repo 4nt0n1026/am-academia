@@ -26,7 +26,7 @@ public class UnidadeMedida implements Serializable {
 	@Column(length=255, nullable=false)
 	private String nome;
 	
-	@Column(length=2, nullable=false)
+	@Column(length=10, nullable=false)
 	private String sigla;
 	
 	public UnidadeMedida(){}

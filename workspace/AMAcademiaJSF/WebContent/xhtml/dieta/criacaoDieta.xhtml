@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+   	<ui:composition>
+   		
+		       		
+       	<!-- COMPLEX FORM 1 - DiaDieta -->
+       	<p:fieldset legend="Dias de dieta"> 
+			<h:form id="formDialog">
+			
+		        <!-- Form do DiaDieta -->
+		        <p:panelGrid columns="2">
+		        	<h:inputText value="#{criacaoDietaBean.diaDieta.nome}" required="true" requiredMessage="Nome do dia obrigatorio" />
+		        	<p:commandButton icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirDiaDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" />
+		    	</p:panelGrid>
+		        
+          		</h:form>		
+          		<h:form id="tableDialog">		
+
+	    		<!-- Menu do DiaDieta -->
+          			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newDiaDieta}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" />
+		        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirDiaDieta}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"  />
+
+		        <!-- Table do DiaDieta -->
+		        <p:dataTable id="diaDietaTable" var="dia" value="#{criacaoDietaBean.dias}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
+          										 selection="#{criacaoDietaBean.diaDieta}"  selectionMode="single">  
+          				
+          				<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectDiaDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"  /> 
+					<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectDiaDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"/> 
+          				
+					<p:column >
+						<h:outputText value="#{dia.nome}" />
+					</p:column>
+					
+				</p:dataTable>
+		 	</h:form>
+		</p:fieldset>
+		
+		<br/>
+		<hr/>
+		
+      	<!-- COMPLEX FORM 2 - Refeicao -->
+		<p:fieldset legend="Refeições"> 
+			<h:form id="formDialog2">
+		    	
+		        <!-- Form do Refeicao -->
+		        <p:panelGrid columns="2">
+		        	<h:inputText value="#{criacaoDietaBean.refeicao.nome}" required="true" requiredMessage="refeição obrigatorio" />
+		        	<p:commandButton icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirRefeicao}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"
+		        				disabled="#{!criacaoDietaBean.showRefeicao}" />
+		    	</p:panelGrid>
+		        
+          		</h:form>		
+          		<h:form id="tableDialog2">		
+
+	    		<!-- Menu do Refeicao -->
+          			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newRefeicao}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"
+          						disabled="#{!criacaoDietaBean.showRefeicao}"  />
+		        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirRefeicao}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" 
+		        			disabled="#{!criacaoDietaBean.showRefeicao}"  />
+
+		        <!-- Table do Refeicao -->
+		        <p:dataTable id="diaDietaTable" var="dia" value="#{criacaoDietaBean.refeicoes}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"
+          										 selection="#{criacaoDietaBean.refeicao}"  selectionMode="single">  
+          				
+          				<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectRefeicao}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" /> 
+					<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectRefeicao}" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"/> 
+          				
+					<p:column >
+						<h:outputText value="#{dia.nome}" />
+					</p:column>
+				</p:dataTable>
+		 	</h:form>
+		</p:fieldset>
+		
+		<br/>
+		<hr/>		
+			    
+	    <!-- COMPLEX FORM 3 - ItemRefeicao -->
+	    <p:fieldset legend="Alimentos"> 
+	    	<h:form id="formDialog3" >
+		    	
+		        <!-- Form de exericicio -->
+		        <p:panelGrid columns="1">
+		        	<p:panelGrid columns="2">
+			        	<h:outputLabel value="Alimento " />  
+					    <p:selectOneMenu value="#{criacaoDietaBean.itemRefeicao.alimento.id}" rendered="true" style="width:250px"
+					    			requiredMessage="Alimento Obrigatorio" filter="true" filterMatchMode="contains" disabled="#{!criacaoDietaBean.showItemRefeicao}" >  
+					    	<f:selectItems value="#{criacaoDietaBean.alimentosField}" var="alimento" itemLabel="#{alimento.nome}" itemValue="#{alimento.id}"/>
+						</p:selectOneMenu>  
+				    </p:panelGrid >
+					
+					<h:panelGrid columns="3">
+						<h:outputLabel for="qtd" value="Quantidade:" />
+						<p:inputText id="qtd" size="10" value="#{criacaoDietaBean.itemRefeicao.quantidade}" disabled="#{!criacaoDietaBean.showItemRefeicao}" />
+						<h:outputText value="#{criacaoDietaBean.itemRefeicao.alimento.unidadeMedida.nome}" />
+					</h:panelGrid>
+				    
+		        	<p:commandButton disabled="#{!criacaoDietaBean.showItemRefeicao}" icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirItemRefeicao}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" />
+		    	</p:panelGrid>
+		        
+           	</h:form>		
+        	<h:form id="tableDialog3" >		
+
+	    		<!-- Menu de exercicio -->
+         		<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoDietaBean.newItemRefeicao}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" 
+           						disabled="#{!criacaoDietaBean.showItemRefeicao}" />
+			    <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoDietaBean.excluirItemRefeicao}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" 
+			       				disabled="#{!criacaoDietaBean.showItemRefeicao}" />
+	
+			    <!-- Table do exercicio -->
+			    <p:dataTable id="diaDietaTable" var="exec" value="#{criacaoDietaBean.itensRefeicao}" rowKey="#{item}" emptyMessage="Nenhum alimento registrado"
+           								 selection="#{criacaoDietaBean.itemRefeicao}"  selectionMode="single">  
+           										 
+           			<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectExercicioDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" /> 
+					<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectExercicioDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"/> 
+						
+     				<p:column >
+     					<h:outputText value="#{item.alimento.nome}"  />
+     				</p:column>
+				</p:dataTable>
+			 </h:form> 
+		</p:fieldset>
+   		
+   		<br/>
+   		<br/>
+   		
+	</ui:composition>		
+    	
+</html>
