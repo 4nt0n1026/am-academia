@@ -2,7 +2,6 @@ package br.com.acad.bean.horario;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -62,8 +61,8 @@ public class HorarioAulaBean extends Bean<HorarioAula> implements Serializable {
 		entity.setUnidade(new Unidade());
 		entity.setAula(new Aula());
 		entity.setProfessor(new ProfessorFunc());
-		Calendar hora = new GregorianCalendar();
-		hora.set(Calendar.HOUR_OF_DAY, 9);
+		Calendar hora = Calendar.getInstance();
+		hora.set(Calendar.HOUR_OF_DAY, 3);
 		hora.set(Calendar.MINUTE, 0);
 		entity.setHora(hora);
 	}

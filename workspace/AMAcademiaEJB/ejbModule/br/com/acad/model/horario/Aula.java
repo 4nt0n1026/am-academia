@@ -30,6 +30,20 @@ public class Aula implements Serializable{
 	private String descricao;
 	
 	
+	
+	public Aula() {
+		super();
+	}
+	
+	public Aula(String nome, String descricao) {
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+	
+	
+	
+	
+	
 	public int getId() {
 		return id;
 	}

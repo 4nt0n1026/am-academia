@@ -24,9 +24,9 @@
 							<h:panelGrid columns="10">
 
 						       	<h:outputLabel for="idHora" value="Hora " />  
-								<p:inputMask mask="99:99" value="#{horarioAulaBean.entity.hora.time}">
-									<f:convertDateTime pattern="hh:mm" />
-								</p:inputMask>
+								<p:calendar pattern="HH:mm" value="#{horarioAulaBean.entity.hora.time}" timeOnly="true" locale="pt">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</p:calendar>
 							
 						       	<h:outputLabel for="idAula" value="Aula " />  
 							    <p:selectOneMenu id="idAula" value="#{horarioAulaBean.entity.aula.id}" required="true" style="width:250px"
@@ -92,7 +92,7 @@
 						
 						<p:column headerText="Hora" >
 							<h:outputText value="#{entity.hora.time}">
-								<f:convertDateTime pattern="hh:mm" />
+								<f:convertDateTime pattern="HH:mm" />
 							</h:outputText>
 						</p:column>
 						

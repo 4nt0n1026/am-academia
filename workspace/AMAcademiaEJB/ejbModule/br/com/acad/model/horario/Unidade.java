@@ -43,6 +43,11 @@ public class Unidade implements Serializable{
 	
 	
 	
+	public Unidade(String nome, String descricao) {
+		this.descricao = descricao;
+		this.nome = nome;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -49,6 +49,29 @@ public class HorarioAula implements Serializable {
 	@JoinColumn(name="AULA_ID")
 	private Aula aula;
 	
+	
+	
+	public HorarioAula() {
+		super();
+	}
+	
+	public HorarioAula(Calendar hora, String diasSemana, int idUnidade, int idProfessor, int idAula) {
+		ProfessorFunc professor = new ProfessorFunc();
+		professor.setId(idProfessor);
+		Unidade unidade = new Unidade();
+		unidade.setId(idUnidade);
+		Aula aula = new Aula();
+		aula.setId(idAula);
+		
+		this.hora = hora;
+		this.diasSemana = diasSemana;
+		this.unidade = unidade;
+		this.professor = professor;
+		this.aula = aula;
+	}
+	
+	
+	
 	public Aula getAula() {
 		return aula;
 	}

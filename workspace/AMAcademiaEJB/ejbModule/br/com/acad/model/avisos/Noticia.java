@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.com.acad.model.pessoa.ProfessorFunc;
 
@@ -43,7 +45,23 @@ public class Noticia implements Serializable {
 	@JoinColumn(name="NOTICIA_CAT_ID")
 	private NoticiaCat categoria;
 	
+	@Temporal(TemporalType.DATE)
 	private Calendar data;
+	
+	public Noticia(Calendar data, String titulo, String descricao, NoticiaCat noticiaCat, ProfessorFunc professor) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.categoria = noticiaCat;
+		this.professorFunc = professor;
+		this.data = data;
+		
+	}
+	public Noticia() {
+	}
+	
+	
+	
+	
 	
 	public int getId() {
 		return id;
