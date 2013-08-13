@@ -1,9 +1,8 @@
 package br.com.acad.model.treino;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,6 +24,7 @@ import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 @Table(name="ACAD_DIA_TREINO")
 public class DiaTreino implements Serializable{
 
+	
 	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDiaTreino")
@@ -41,7 +41,8 @@ public class DiaTreino implements Serializable{
 	
 	@OneToMany( cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DIA_TREINO_ID")
-	private Set<ExercicioTreino> exerciciosTreino = new HashSet<ExercicioTreino>();
+	private List<ExercicioTreino> exerciciosTreino = new ArrayList<ExercicioTreino>();
+	
 	
 	//Metodos
 	public boolean addExercicioTreino(ExercicioTreino exercicioTreino){
@@ -53,7 +54,7 @@ public class DiaTreino implements Serializable{
 	}
 	
 	public void resetExerciciosTreino(){
-		this.exerciciosTreino = new HashSet<ExercicioTreino>();
+		this.exerciciosTreino = new ArrayList<ExercicioTreino>();
 	}
 	
 	public List<ExercicioTreino> getExerciciosTreino(ExercicioTreinoDAO exercicioTreinoDAO) {
@@ -74,16 +75,18 @@ public class DiaTreino implements Serializable{
 	}
 
 	//Gets e Sets
-	public Set<ExercicioTreino> getExerciciosTreino() {
-		return exerciciosTreino;
-	}
-
-	public void setExerciciosTreino(Set<ExercicioTreino> exerciciosTreino) {
-		this.exerciciosTreino = exerciciosTreino;
-	}
+	
 
 	public int getId() {
 		return id;
+	}
+
+	public List<ExercicioTreino> getExerciciosTreino() {
+		return this.exerciciosTreino;
+	}
+
+	public void setExerciciosTreino(List<ExercicioTreino> exerciciosTreino) {
+		this.exerciciosTreino = exerciciosTreino;
 	}
 
 	public void setId(int id) {

@@ -27,6 +27,8 @@ public class Aluno extends Pessoa{
 	@Column(nullable=true, precision=2)
 	private double altura;
 	
+	private int numSolicitacao = 0;
+	
 	@ManyToMany
 	@JoinTable(name="ACAD_ALUNO_TREINO", 
 				joinColumns={@JoinColumn(name="ALUNO_ID")},
@@ -47,6 +49,11 @@ public class Aluno extends Pessoa{
 		this.setNome(nome);
 	}
 
+	public void incrementNumSolicitacao(){
+		numSolicitacao++;
+	}
+	
+	
 	public Set<Treino> getDietas() {
 		return dietas;
 	}
@@ -77,6 +84,14 @@ public class Aluno extends Pessoa{
 	
 	public void setAltura(double altura) {
 		this.altura = altura;
+	}
+
+	public int getNumSolicitacao() {
+		return numSolicitacao;
+	}
+
+	public void setNumSolicitacao(int numSolicitacao) {
+		this.numSolicitacao = numSolicitacao;
 	}
 	
 }

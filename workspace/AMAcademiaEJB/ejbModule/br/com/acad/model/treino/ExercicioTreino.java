@@ -39,13 +39,10 @@ public class ExercicioTreino implements Serializable {
 
 	//Metodos
 	public boolean addSerie(Serie serie){
+		serie.setOrdem(series.size());
 		return series.add(serie);
 	}
 	
-	public boolean removeSerie(Serie serie){
-		return series.remove(serie);
-	}
-
 	public void resetSerie(){
 		series = new HashSet<Serie>();
 	}
@@ -85,6 +82,8 @@ public class ExercicioTreino implements Serializable {
 	public void setSeries(Set<Serie> series) {
 		this.series = series;
 	}
+
+
 	
 	
 	

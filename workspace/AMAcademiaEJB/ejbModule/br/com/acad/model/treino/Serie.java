@@ -26,7 +26,10 @@ public class Serie implements Serializable{
 	
 	@Column(nullable=true)
 	private long duracaoSeg;
+	
+	private int ordem;
 
+	
 	
 	public Serie(){}
 	
@@ -35,6 +38,7 @@ public class Serie implements Serializable{
 		return  String.valueOf(numRepeticoes);
 	}
 
+	
 	public long getDuracaoSeg() {
 		return duracaoSeg;
 	}
@@ -58,6 +62,15 @@ public class Serie implements Serializable{
 	public void setNumRepeticoes(int numRepeticoes) {
 		this.numRepeticoes = numRepeticoes;
 	}
+
+	public int getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(int ordem) {
+		this.ordem = ordem;
+	}
+	
 	
 	
 	

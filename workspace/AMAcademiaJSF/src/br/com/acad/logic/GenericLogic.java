@@ -3,6 +3,10 @@ package br.com.acad.logic;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author christian
+ *
+ */
 public class GenericLogic {
 
 	
@@ -46,6 +50,6 @@ public class GenericLogic {
 
 		return strFormatada.toString();
 	}
-	
+
 	
 }

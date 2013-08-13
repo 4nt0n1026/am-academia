@@ -43,13 +43,13 @@ public class Treino implements Serializable{
 	private int id;
 	
 	@Column(length=255, nullable=false)
-	private String nome;
+	protected String nome;
 	
 	@Column(length=500, nullable=true)
-	private String descricao;
+	protected String descricao;
 	
 	@Column(nullable=true)
-	private long tempoDescanso;
+	protected long tempoDescanso;
 
 	
 	@Temporal(TemporalType.DATE)

@@ -92,9 +92,13 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	 */
 	public void responder(){
 		if(entity != null){
-			showTreino = true;
-			treino = new TreinoEspecifico();
-			treino.setProfessor(new ProfessorFunc());
+			if(!entity.isRespondido()){
+				showTreino = true;
+				treino = new TreinoEspecifico();
+				treino.setProfessor(new ProfessorFunc());
+			}else{
+				MessagesLogic.addErrorMessage("Erro", "Solicitação já respondida");
+			}
 		}else{
 			MessagesLogic.addWarnMessage("Erro", "Selecione uma solicitação para ser respondida");
 		}
@@ -115,6 +119,12 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	public void incluirTreinoResposta(){
 		treino.setSolicitacao(entity);
 		treino.setData(Calendar.getInstance());
+		// Nome do treino
+		Aluno aluno = treino.getSolicitacao().getAluno();
+		aluno.incrementNumSolicitacao();
+		alunoDAO.update(aluno);
+		treino.setNomePronto();
+		
 		treino = treinoEspecificoDAO.insert(treino);
 		closeForms();
 		atualizar();

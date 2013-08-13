@@ -27,6 +27,16 @@ public class TreinoEspecifico extends Treino{
 	public void setSolicitacao(SolicitacaoTreino solicitacao) {
 		this.solicitacao = solicitacao;
 	}
+
+	
+	/**
+	 * Seta o nome padrao para treinos solicitados
+	 */
+	public void setNomePronto() {
+		String nomeAluno = solicitacao.getAluno().getNome();
+		int num = solicitacao.getAluno().getNumSolicitacao();
+		nome = "Treino Solicitaco - " + nomeAluno + "(" + num + ")";
+	}
 	
 	
 	

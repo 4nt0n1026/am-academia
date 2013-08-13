@@ -240,7 +240,7 @@ public class CriacaoTreinoBean implements Serializable {
 	 * ao selecionar exercicioTreino da lista
 	 */
 	public void onSelectExercicioTreino(){
-		series = new ArrayList<Serie>(exercicioTreino.getSeries());
+		series = TreinoLogic.setToListSerie(exercicioTreino.getSeries());
 	}
 
 	/**
@@ -255,7 +255,9 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Adciona um serie
 	 */
 	public void addSerie(){
-		series.add(new Serie());
+		Serie serie = new Serie();
+		serie.setOrdem(series.size());
+		series.add(serie);
 	}
 	
 	/**
@@ -266,61 +268,10 @@ public class CriacaoTreinoBean implements Serializable {
 	}
 	
 	// Ordem treino -------------------------------------------------------------------------------------------------------
-//	 /**
-//	 * Sobe uma posicao na lista de ordem de dias
-//	 */
-//	public void sobeDiaTreino(){
-//		// Verifica se o diaTreino esta selecionado
-//		if(diaTreino==null || diaTreino.getNome()==null){
-//			MessagesLogic.addErrorMessage("Erro", "Selecione um dia para alterar a ordem");
-//			return;
-//		}
-//		// Busca na lista o diaTreino com uma unidade a mais do que a selecionada
-//		boolean achouMaior = false;
-//		for (DiaTreino dia : dias) {
-//			if(dia.getOrdem()== (diaTreino.getOrdem() + 1)){
-//				achouMaior = true;
-//				dia.setOrdem(dia.getOrdem() - 1);
-//				break;
-//			}
-//		}
-//		// Faz alteracao ou envia erro
-//		if(achouMaior){
-//			diaTreino.setOrdem(diaTreino.getOrdem() + 1);
-//		}else{
-//			MessagesLogic.addErrorMessage("Erro", "Esse dia ja se encontra na ultima posição");
-//		}
-//	 }
-//	
-//	/**
-//	 * Sobe uma posicao na lista de ordem de dias
-//	 */
-//	public void desceDiaTreino(){
-//		// Verifica se o diaTreino esta selecionado
-//		if(diaTreino==null || diaTreino.getNome()==null){
-//			MessagesLogic.addErrorMessage("Erro", "Selecione um dia para alterar a ordem");
-//			return;
-//		}
-//		// Busca na lista o diaTreino com uma unidade a menos do que a selecionada
-//		boolean achouMaior = false;
-//		for (DiaTreino dia : dias) {
-//			if(dia.getOrdem()== (diaTreino.getOrdem() - 1)){
-//				achouMaior = true;
-//				dia.setOrdem(dia.getOrdem() + 1);
-//				break;
-//			}
-//		}
-//		// Faz alteracao ou envia erro
-//		if(achouMaior){
-//			diaTreino.setOrdem(diaTreino.getOrdem() - 1);
-//		}else{
-//			MessagesLogic.addErrorMessage("Erro", "Esse dia ja se encontra na primeira posição");
-//		}
-//	}
 	
-	 /**
-	 * desce uma posicao na lista de ordem de dias
-	 */
+	/**
+	* desce uma posicao na lista de ordem de dias
+	*/
 	public void sobeDiaTreino(){
 		// Verifica se o diaTreino esta selecionado
 		if(diaTreino==null || diaTreino.getNome()==null){
@@ -358,6 +309,50 @@ public class CriacaoTreinoBean implements Serializable {
 		DiaTreino diaTemp = dias.get(posicaoFutura);
 		dias.set(posicaoFutura, diaTreino);
 		dias.set(posicaoAtual, diaTemp);
+	}
+	
+	
+	
+	/**
+	 * desce uma posicao na lista de ordem de exercicios
+	 */
+	public void sobeExercicioTreino(){
+		// Verifica se o exercicioTreino esta selecionado
+		if(exercicioTreino==null || exercicioTreino.getExercicio()==null){
+			MessagesLogic.addErrorMessage("Erro", "Selecione um exercicio para alterar a ordem");
+			return;
+		}
+		int posicaoAtual = exercicios.indexOf(exercicioTreino);
+		int posicaoFutura = posicaoAtual - 1;
+		// Busca na lista o exercicioTreino com uma unidade a mais do que a selecionada
+		if(exercicios.indexOf(exercicioTreino) == 0){
+			MessagesLogic.addErrorMessage("Erro", "Esse exercicio já se encontra na primeira posicao");
+			return;
+		}
+		ExercicioTreino exercicioTemp = exercicios.get(posicaoFutura);
+		exercicios.set(posicaoFutura, exercicioTreino);
+		exercicios.set(posicaoAtual, exercicioTemp);;
+	}
+	
+	/**
+	 * Sobe uma posicao na lista de ordem de exercicios
+	 */
+	public void desceExercicioTreino(){
+		// Verifica se o exercicioTreino esta selecionado
+		if(exercicioTreino==null || exercicioTreino.getExercicio()==null){
+			MessagesLogic.addErrorMessage("Erro", "Selecione um exercicio para alterar a ordem");
+			return;
+		}
+		int posicaoAtual = exercicios.indexOf(exercicioTreino);
+		int posicaoFutura = posicaoAtual + 1;
+		// Busca na lista o exercicioTreino com uma unidade a mais do que a selecionada
+		if(exercicios.size() == posicaoFutura){
+			MessagesLogic.addErrorMessage("Erro", "Esse exercicio já se encontra na ultima posicao");
+			return;
+		}
+		ExercicioTreino exercicioTemp = exercicios.get(posicaoFutura);
+		exercicios.set(posicaoFutura, exercicioTreino);
+		exercicios.set(posicaoAtual, exercicioTemp);
 	}
 	
 	

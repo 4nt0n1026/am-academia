@@ -9,9 +9,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.acad.bean.Bean;
+import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
 import br.com.acad.logic.TreinoLogic;
+import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.ProfessorFunc;
 import br.com.acad.model.treino.TreinoEspecifico;
 
@@ -29,6 +31,8 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	private TreinoEspecificoDAO treinoEspecificoDAO;
 	@EJB
 	private ProfessorFuncDAO professorFuncDAO;
+	@EJB
+	private AlunoDAO alunoDAO;
 	
 	public String textoTreino;
 	
@@ -58,6 +62,13 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	 */
 	@Override
 	public void incluirEntity() {
+		// incrementa numeracao de solicitacoes
+		if(entity!=null && entity.getId()==0){
+			Aluno aluno = entity.getSolicitacao().getAluno();
+			aluno.incrementNumSolicitacao();
+			alunoDAO.update(aluno);
+			entity.setNomePronto();
+		}
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 
