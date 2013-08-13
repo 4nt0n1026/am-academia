@@ -111,7 +111,7 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Salva os dias e os exercicios do treino fixo
 	 */
 	public void salvarTreinoFixo(){
-		salvaTreino();
+		organizaListasTreino();
 		treinoFixoBean.setEntity((TreinoFixo) treino);
 		treinoFixoBean.incluirEntity();
 	}
@@ -120,7 +120,7 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Salva os dias e os exercicios do treino especifico
 	 */
 	public void salvarTreinoEspecifico(){
-		salvaTreino();
+		organizaListasTreino();
 		treinoEspecificoBean.setEntity((TreinoEspecifico) treino);
 		treinoEspecificoBean.incluirEntity();
 	}
@@ -129,12 +129,12 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Salva os dias e os exercicios do treino de resposta
 	 */
 	public void salvarTreinoEspecificoResposta(){
-		salvaTreino();
+		organizaListasTreino();
 		solicitacaoTreinoBean.setTreino((TreinoEspecifico) treino);
 		solicitacaoTreinoBean.incluirTreinoResposta();;
 	}
 	
-	private void salvaTreino(){
+	private void organizaListasTreino(){
 		treino.resetDiasTreino();
 		for(DiaTreino dia : dias){
 			dia.setOrdem(dias.indexOf(dia));

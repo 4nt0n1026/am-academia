@@ -50,7 +50,7 @@ public class Aluno extends Pessoa{
 	}
 
 	public void incrementNumSolicitacao(){
-		numSolicitacao++;
+		numSolicitacao += 1;
 	}
 	
 	

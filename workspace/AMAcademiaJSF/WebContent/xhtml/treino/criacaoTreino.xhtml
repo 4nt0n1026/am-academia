@@ -62,14 +62,16 @@
 							</p:selectOneMenu>  
 					    </p:panelGrid >
 
-			        	<p:panelGrid columns="2">
+			        	<p:panelGrid columns="4">
 				        	<h:outputLabel value="Series " />  
+				        	<h:panelGroup>
+						    	<p:commandButton disabled="#{!criacaoTreinoBean.showExercicioTreino}" icon="ui-icon ui-icon-circle-plus" action="#{criacaoTreinoBean.addSerie}" ajax="true" update=":formDialog2 " />
+						    	<p:commandButton disabled="#{!criacaoTreinoBean.showExercicioTreino}" icon="ui-icon ui-icon-circle-minus" action="#{criacaoTreinoBean.resetSeries}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+						   	</h:panelGroup>
 				        	<h:panelGroup>
 						    	<ui:repeat var="serie" value="#{criacaoTreinoBean.series}">
 						    		<p:inputText value="#{serie.numRepeticoes}" size="2" disabled="#{!criacaoTreinoBean.showExercicioTreino}" />
 						    	</ui:repeat>
-						    	<p:commandButton disabled="#{!criacaoTreinoBean.showExercicioTreino}" icon="ui-icon ui-icon-circle-plus" action="#{criacaoTreinoBean.addSerie}" ajax="true" update=":formDialog2 " />
-						    	<p:commandButton disabled="#{!criacaoTreinoBean.showExercicioTreino}" icon="ui-icon ui-icon-circle-minus" action="#{criacaoTreinoBean.resetSeries}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
 					    	</h:panelGroup>
 					    </p:panelGrid>
 					    
@@ -84,6 +86,10 @@
            							disabled="#{!criacaoTreinoBean.showExercicioTreino}"/>
 			        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoTreinoBean.excluirExercicioTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" 
 			        				disabled="#{!criacaoTreinoBean.showExercicioTreino}"/>
+					<p:commandButton  title="subir posição"  icon="ui-icon ui-icon-arrowthick-1-n" action="#{criacaoTreinoBean.sobeExercicioTreino}" ajax="true" update=":formDialog2 :tableDialog2" 
+									disabled="#{!criacaoTreinoBean.showExercicioTreino}"/>
+			        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-arrowthick-1-s" action="#{criacaoTreinoBean.desceExercicioTreino}" ajax="true" update=":formDialog2 :tableDialog2" 
+									disabled="#{!criacaoTreinoBean.showExercicioTreino}"/>
 	
 			        <!-- Table do exercicio -->
 			        <p:dataTable id="diaTreinoTable" var="exec" value="#{criacaoTreinoBean.exercicios}" rowKey="#{exec}" emptyMessage="Nenhum exercicio registrado"

@@ -122,8 +122,8 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		// Nome do treino
 		Aluno aluno = treino.getSolicitacao().getAluno();
 		aluno.incrementNumSolicitacao();
-		alunoDAO.update(aluno);
-		treino.setNomePronto();
+		aluno = alunoDAO.update(aluno);
+		treino.setNomePronto(aluno);
 		
 		treino = treinoEspecificoDAO.insert(treino);
 		closeForms();

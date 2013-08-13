@@ -6,6 +6,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.model.pessoa.Aluno;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_TREINO_ESPECIFICO")
@@ -32,10 +34,8 @@ public class TreinoEspecifico extends Treino{
 	/**
 	 * Seta o nome padrao para treinos solicitados
 	 */
-	public void setNomePronto() {
-		String nomeAluno = solicitacao.getAluno().getNome();
-		int num = solicitacao.getAluno().getNumSolicitacao();
-		nome = "Treino Solicitaco - " + nomeAluno + "(" + num + ")";
+	public void setNomePronto(Aluno aluno) {
+		nome = "Treino Solicitaco - " + aluno.getNome() + "(" + aluno.getNumSolicitacao() + ")";
 	}
 	
 	
