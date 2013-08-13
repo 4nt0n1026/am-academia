@@ -21,6 +21,7 @@ import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.logic.NumberLogic;
 import br.com.acad.model.avisos.Noticia;
 import br.com.acad.model.avisos.NoticiaCat;
 import br.com.acad.model.cat.DiasTreinoCat;
@@ -400,39 +401,164 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de ProfessorFunc(Funcionarios)
 	 */
 	private void populaFuncionario(){
-		for(int i = 1; i<51; i++){
-			ProfessorFunc f = new ProfessorFunc();
-			f.setNome("Funcionario " + i);
-			f.setEmail("f" + i + "@gmail.com");
-			f.setCpf("33342523501");
-			f.setIsProfessor(false);
-			f.setSenha("123");
-			f.setRg("22233344401");
-			professorFuncDAO.insert(f);
-		}
+		ProfessorFunc f = new ProfessorFunc();
+		f.setNome("Guilherme");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
 		
+		f = new ProfessorFunc();
+		f.setNome("Stefanie");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Daniel");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Gabriella");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Mauricio");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Amanda");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Tadeu");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Luciana");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
+		
+		f = new ProfessorFunc();
+		f.setNome("Patricia");
+		f.setEmail(f.getNome() + "@gmail.com");
+		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		f.setIsProfessor(false);
+		f.setSenha("123");
+		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(f);
 	}
 	
 	/**
 	 * popula infos basicas de ProfessorFunc(Professor)
 	 */
 	private void populaProfessor(){
-		for(int i = 1; i<200; i++){
-			ProfessorFunc p = new ProfessorFunc();
-			p.setNome("Professor " + i);
-			p.setEmail("p" + i + "@gmail.com");
-			p.setCpf("33342523501");
-			p.setIsProfessor(true);
-			p.setSenha("123");
-			p.setRg("22233344401");
-			professorFuncDAO.insert(p);
-		}
+		ProfessorFunc p = new ProfessorFunc();
+		p.setNome("Joana");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
+		
+		p = new ProfessorFunc();
+		p.setNome("Mario");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
+		
+		p = new ProfessorFunc();
+		p.setNome("Marcio");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
+		
+		p = new ProfessorFunc();
+		p.setNome("Fabiana");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
+		
+		p = new ProfessorFunc();
+		p.setNome("Kleber");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
+		
+		p = new ProfessorFunc();
+		p.setNome("Antonio");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
+		
+		p = new ProfessorFunc();
+		p.setNome("Paula");
+		p.setEmail(p.getNome() + "@gmail.com");
+		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		p.setIsProfessor(true);
+		p.setSenha("123");
+		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+		professorFuncDAO.insert(p);
 	}
 	
 	/**
 	 * popula infos basicas de Aluno
 	 */
 	private void populaAluno(){
+		Calendar nasc = Calendar.getInstance();
+		nasc.set(Calendar.DAY_OF_MONTH, 24);
+		nasc.set(Calendar.MONTH, 03);
+		nasc.set(Calendar.YEAR, 1989);
 		Aluno c = new Aluno();
 		c.setNome("Christian ");
 		c.setEmail("c@gmail.com");
@@ -441,16 +567,24 @@ public class PopulaBancoBean implements Serializable {
 		c.setPeso(70);
 		c.setSenha("r");
 		c.setRg("22233344401");
+		c.setDataNascimento(nasc);
+		c.setNumSolicitacao(0);
 		alunoDAO.insert(c);
+		
 		for(int i = 1; i<200; i++){
+			nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+			nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+			nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
 			Aluno a = new Aluno();
 			a.setNome("Aluno " + i);
 			a.setEmail("aluno" + i + "@gmail.com");
-			a.setCpf("33342523501");
-			a.setAltura(1.70);
-			a.setPeso(70);
+			a.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+			a.setAltura(NumberLogic.randomDouble(1.60d, 1.99d));
+			a.setPeso(NumberLogic.randomInteger(60, 100));
 			a.setSenha("123");
-			a.setRg("22233344401");
+			a.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
+			a.setDataNascimento(nasc);
+			a.setNumSolicitacao(0);
 			alunoDAO.insert(a);
 		}
 	}
