@@ -53,8 +53,6 @@ public class PopulaBancoBean implements Serializable {
 	@EJB
 	private ExercicioDAO exercicioDAO;
 	
-	
-	
 	public void popula(){
 		populaParteCorpo();
 		populaNoticiaCat();
@@ -286,11 +284,11 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de NoticiaCat
 	 */
 	private void populaNoticiaCat(){
-		NoticiaCat n1 = new NoticiaCat("Avisos");
+		NoticiaCat n1 = new NoticiaCat("Avisos", "Help");
 		noticiaCatDAO.insert(n1);
-		NoticiaCat n2 = new NoticiaCat("Noticias");
+		NoticiaCat n2 = new NoticiaCat("Noticias", "Document Notes");
 		noticiaCatDAO.insert(n2);
-		NoticiaCat n3 = new NoticiaCat("Dicas");
+		NoticiaCat n3 = new NoticiaCat("Dicas", "Tag");
 		noticiaCatDAO.insert(n3);
 	}
 	

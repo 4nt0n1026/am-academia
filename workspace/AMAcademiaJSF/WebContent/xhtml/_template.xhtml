@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <f:view locale="pt_BR" contentType="text/html">
 <h:head>
-	<title><ui:insert name="title">Aplicação WEB</ui:insert></title>
+	<title><ui:insert name="title">Smart Fitness</ui:insert></title>
 	<h:outputStylesheet name="estilo.css" library="css" />
 	<h:outputScript library="js" name="/generator_xhtml.js" />
 	<meta http-equiv="Pragma" content="no-cache" />
@@ -15,6 +15,11 @@
 
 <h:body>
 	<p:growl id="growl" autoUpdate="true"  showDetail="true"/>
+		
+		<div id="header">
+			<p:graphicImage width="100%" />
+		</div>
+	
 		<div id="menuPrincipal">
 			<h:form>
 				<p:menubar>

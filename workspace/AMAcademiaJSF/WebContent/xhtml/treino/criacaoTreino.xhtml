@@ -29,6 +29,8 @@
 		    		<!-- Menu do DiaDieta -->
            			<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{criacaoTreinoBean.newDiaTreino}"  ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
 			        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{criacaoTreinoBean.excluirDiaTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2"  />
+			        <p:commandButton  title="subir posição"  icon="ui-icon ui-icon-arrowthick-1-n" action="#{criacaoTreinoBean.sobeDiaTreino}" ajax="true" update=":formDialog :tableDialog" />
+			        <p:commandButton  title="deletar"  icon="ui-icon ui-icon-arrowthick-1-s" action="#{criacaoTreinoBean.desceDiaTreino}" ajax="true" update=":formDialog :tableDialog" />
 	
 			        <!-- Table do DiaDieta -->
 			        <p:dataTable id="diaTreinoTable" var="dia" value="#{criacaoTreinoBean.dias}" rowKey="#{dia}" emptyMessage="Nenhum dia registrado"

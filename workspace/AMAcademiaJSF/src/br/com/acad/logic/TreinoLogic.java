@@ -1,10 +1,11 @@
 package br.com.acad.logic;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import br.com.acad.model.treino.DiaTreino;
 import br.com.acad.model.treino.ExercicioTreino;
-import br.com.acad.model.treino.Serie;
 import br.com.acad.model.treino.Treino;
 
 public class TreinoLogic {
@@ -30,14 +31,19 @@ public class TreinoLogic {
 	}
 	
 	
-	
 	/**
-	 * Ordena as series pela posicao da repeticao
+	 * Transforma um set de diaTreino em uma lista ordenada pela sua ordem
+	 * @param dias
 	 * @return
 	 */
-	public List<Serie> ordenarSeries(){
-		//TODO
-		return null;
+	public static List<DiaTreino> setToList(Set<DiaTreino> dias){
+		List<DiaTreino> diasList = new ArrayList<DiaTreino>();
+		for(int i = 0; i<dias.size(); i++){
+			diasList.add(null);
+		}
+		for (DiaTreino diaTreino : dias) {
+			diasList.set(diaTreino.getOrdem(), diaTreino);
+		}
+		return diasList;
 	}
-	
 }

@@ -16,6 +16,7 @@ import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
 import br.com.acad.logic.MessagesLogic;
+import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.treino.DiaTreino;
 import br.com.acad.model.treino.Exercicio;
@@ -75,14 +76,14 @@ public class CriacaoTreinoBean implements Serializable {
 		exercicios = new ArrayList<ExercicioTreino>();
 	}
 	
-	// Treino
+	// Treino -------------------------------------------------------------------------------------------------------
 	/**
 	 * Criacao de um novo treino fixo
 	 */
 	public void newTreinoFixo(){
 		treino = treinoFixoBean.getEntity();
 		treino.setTipoTreino(TipoTreinoDieta.FIXO);
-		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
+		dias = TreinoLogic.setToList(treino.getDiasTreino());
 		diaTreino = new DiaTreino();
 	}
 	
@@ -92,7 +93,7 @@ public class CriacaoTreinoBean implements Serializable {
 	public void newTreinoEspecifico(){
 		treino = treinoEspecificoBean.getEntity();
 		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
-		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
+		dias = TreinoLogic.setToList(treino.getDiasTreino());
 		diaTreino = new DiaTreino();
 	}
 
@@ -102,7 +103,7 @@ public class CriacaoTreinoBean implements Serializable {
 	public void newTreinoEspecificoResposta(){
 		treino = solicitacaoTreinoBean.getTreino();
 		treino.setTipoTreino(TipoTreinoDieta.ESPECIFICO);
-		dias = new ArrayList<DiaTreino>(treino.getDiasTreino());
+		dias = TreinoLogic.setToList(treino.getDiasTreino());
 		diaTreino = new DiaTreino();
 	}
 
@@ -110,10 +111,7 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Salva os dias e os exercicios do treino fixo
 	 */
 	public void salvarTreinoFixo(){
-		treino.resetDiasTreino();
-		for(DiaTreino dia : dias){
-			treino.addDiaTreino(dia);
-		}
+		salvaTreino();
 		treinoFixoBean.setEntity((TreinoFixo) treino);
 		treinoFixoBean.incluirEntity();
 	}
@@ -122,10 +120,7 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Salva os dias e os exercicios do treino especifico
 	 */
 	public void salvarTreinoEspecifico(){
-		treino.resetDiasTreino();
-		for(DiaTreino dia : dias){
-			treino.addDiaTreino(dia);
-		}
+		salvaTreino();
 		treinoEspecificoBean.setEntity((TreinoEspecifico) treino);
 		treinoEspecificoBean.incluirEntity();
 	}
@@ -134,15 +129,20 @@ public class CriacaoTreinoBean implements Serializable {
 	 * Salva os dias e os exercicios do treino de resposta
 	 */
 	public void salvarTreinoEspecificoResposta(){
-		treino.resetDiasTreino();
-		for(DiaTreino dia : dias){
-			treino.addDiaTreino(dia);
-		}
+		salvaTreino();
 		solicitacaoTreinoBean.setTreino((TreinoEspecifico) treino);
 		solicitacaoTreinoBean.incluirTreinoResposta();;
 	}
 	
-	// DiaTreino
+	private void salvaTreino(){
+		treino.resetDiasTreino();
+		for(DiaTreino dia : dias){
+			dia.setOrdem(dias.indexOf(dia));
+			treino.addDiaTreino(dia);
+		}
+	}
+	
+	// DiaTreino -------------------------------------------------------------------------------------------------------
 	/**
 	 * Abre form de um novo DiaTreino
 	 */
@@ -191,7 +191,7 @@ public class CriacaoTreinoBean implements Serializable {
 		showExercicioTreino = false;
 	}
 	
-	// ExercicioTreino
+	// ExercicioTreino -------------------------------------------------------------------------------------------------------
 	/**
 	 * Abre form de um novo exercicioTreino
 	 */
@@ -249,7 +249,7 @@ public class CriacaoTreinoBean implements Serializable {
 	public void onUnselectExercicioTreino(){
 	}
 	
-	// Series
+	// Series --------------------------------------------------------------------------------------------------------
 	
 	/**
 	 * Adciona um serie
@@ -265,6 +265,102 @@ public class CriacaoTreinoBean implements Serializable {
 		series = new ArrayList<Serie>();
 	}
 	
+	// Ordem treino -------------------------------------------------------------------------------------------------------
+//	 /**
+//	 * Sobe uma posicao na lista de ordem de dias
+//	 */
+//	public void sobeDiaTreino(){
+//		// Verifica se o diaTreino esta selecionado
+//		if(diaTreino==null || diaTreino.getNome()==null){
+//			MessagesLogic.addErrorMessage("Erro", "Selecione um dia para alterar a ordem");
+//			return;
+//		}
+//		// Busca na lista o diaTreino com uma unidade a mais do que a selecionada
+//		boolean achouMaior = false;
+//		for (DiaTreino dia : dias) {
+//			if(dia.getOrdem()== (diaTreino.getOrdem() + 1)){
+//				achouMaior = true;
+//				dia.setOrdem(dia.getOrdem() - 1);
+//				break;
+//			}
+//		}
+//		// Faz alteracao ou envia erro
+//		if(achouMaior){
+//			diaTreino.setOrdem(diaTreino.getOrdem() + 1);
+//		}else{
+//			MessagesLogic.addErrorMessage("Erro", "Esse dia ja se encontra na ultima posição");
+//		}
+//	 }
+//	
+//	/**
+//	 * Sobe uma posicao na lista de ordem de dias
+//	 */
+//	public void desceDiaTreino(){
+//		// Verifica se o diaTreino esta selecionado
+//		if(diaTreino==null || diaTreino.getNome()==null){
+//			MessagesLogic.addErrorMessage("Erro", "Selecione um dia para alterar a ordem");
+//			return;
+//		}
+//		// Busca na lista o diaTreino com uma unidade a menos do que a selecionada
+//		boolean achouMaior = false;
+//		for (DiaTreino dia : dias) {
+//			if(dia.getOrdem()== (diaTreino.getOrdem() - 1)){
+//				achouMaior = true;
+//				dia.setOrdem(dia.getOrdem() + 1);
+//				break;
+//			}
+//		}
+//		// Faz alteracao ou envia erro
+//		if(achouMaior){
+//			diaTreino.setOrdem(diaTreino.getOrdem() - 1);
+//		}else{
+//			MessagesLogic.addErrorMessage("Erro", "Esse dia ja se encontra na primeira posição");
+//		}
+//	}
+	
+	 /**
+	 * desce uma posicao na lista de ordem de dias
+	 */
+	public void sobeDiaTreino(){
+		// Verifica se o diaTreino esta selecionado
+		if(diaTreino==null || diaTreino.getNome()==null){
+			MessagesLogic.addErrorMessage("Erro", "Selecione um dia para alterar a ordem");
+			return;
+		}
+		int posicaoAtual = dias.indexOf(diaTreino);
+		int posicaoFutura = posicaoAtual - 1;
+		// Busca na lista o diaTreino com uma unidade a mais do que a selecionada
+		if(dias.indexOf(diaTreino) == 0){
+			MessagesLogic.addErrorMessage("Erro", "Esse dia já se encontra na primeira posicao");
+			return;
+		}
+		DiaTreino diaTemp = dias.get(posicaoFutura);
+		dias.set(posicaoFutura, diaTreino);
+		dias.set(posicaoAtual, diaTemp);
+	}
+	
+	/**
+	 * Sobe uma posicao na lista de ordem de dias
+	 */
+	public void desceDiaTreino(){
+		// Verifica se o diaTreino esta selecionado
+		if(diaTreino==null || diaTreino.getNome()==null){
+			MessagesLogic.addErrorMessage("Erro", "Selecione um dia para alterar a ordem");
+			return;
+		}
+		int posicaoAtual = dias.indexOf(diaTreino);
+		int posicaoFutura = posicaoAtual + 1;
+		// Busca na lista o diaTreino com uma unidade a mais do que a selecionada
+		if(dias.size() == posicaoFutura){
+			MessagesLogic.addErrorMessage("Erro", "Esse dia já se encontra na ultima posicao");
+			return;
+		}
+		DiaTreino diaTemp = dias.get(posicaoFutura);
+		dias.set(posicaoFutura, diaTreino);
+		dias.set(posicaoAtual, diaTemp);
+	}
+	
+	
 
 	/************************************************************************************************************/
 	//GET FIELDS
@@ -273,6 +369,8 @@ public class CriacaoTreinoBean implements Serializable {
 	public List<Exercicio> getExerciciosField(){
 		return exercicioDAO.buscarFieldNome();
 	}
+	
+	
 	
 	/************************************************************************************************************/
 	//GETS E SETS

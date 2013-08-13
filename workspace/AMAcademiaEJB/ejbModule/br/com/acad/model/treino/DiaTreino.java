@@ -37,6 +37,8 @@ public class DiaTreino implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	private int ordem;
+	
 	@OneToMany( cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DIA_TREINO_ID")
 	private Set<ExercicioTreino> exerciciosTreino = new HashSet<ExercicioTreino>();
@@ -63,6 +65,11 @@ public class DiaTreino implements Serializable{
 	
 	public DiaTreino(String nome) {
 		super();
+		this.nome = nome;
+	}
+
+	public DiaTreino(int ordem, String nome) {
+		this.ordem = ordem;
 		this.nome = nome;
 	}
 
@@ -99,6 +106,15 @@ public class DiaTreino implements Serializable{
 		this.descricao = descricao;
 	}
 
+	public int getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(int ordem) {
+		this.ordem = ordem;
+	}
+
+	
 	
 
 	
