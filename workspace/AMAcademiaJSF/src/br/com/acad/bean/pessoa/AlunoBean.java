@@ -35,6 +35,9 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 		page = 1;
 		dao = alunoDAO;
 		staticFields = Aluno.STATIC_FIELDS;
+		staticFieldsOrderLabel = Aluno.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = Aluno.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

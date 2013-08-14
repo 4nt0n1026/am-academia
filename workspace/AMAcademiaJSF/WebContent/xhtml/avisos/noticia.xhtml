@@ -66,7 +66,15 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
+				        	Ordem:
+				        	<p:selectOneMenu value="#{noticiaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{noticiaBean.atualizar}"/>
+				        		<f:selectItems value="#{noticiaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
 			        		<p:separator />  
+			        		
 				        	Busca:<p:inputText value="#{noticiaBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{noticiaBean.resetSearch}" ajax="true" update=":tabView1" />
@@ -80,19 +88,19 @@
 					<p:dataTable value="#{noticiaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
 							 resizableColumns="true" selection="#{noticiaBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Titulo" sortBy="#{entity.titulo}"  >
+						<p:column headerText="Titulo" styleClass="center" width="20">
 							<h:outputText value="#{entity.titulo}"/>
 						</p:column>
 						
-						<p:column headerText="Descrição" sortBy="#{entity.descricao}"  >
+						<p:column headerText="Descrição" width="60">
 							<h:outputText value="#{entity.descricao}"/>
 						</p:column>
 						
-						<p:column headerText="Categoria" sortBy="#{entity.categoria.nome}"  >
+						<p:column headerText="Categoria" styleClass="center" width="10" >
 							<h:outputText value="#{entity.categoria.nome}"/>
 						</p:column>
 						
-						<p:column headerText="Professor/Funcionario" sortBy="#{entity.professorFunc.nome}"  >
+						<p:column headerText="Professor/Funcionario" styleClass="center" width="10">
 							<h:outputText value="#{entity.professorFunc.nome}"/>
 						</p:column>
 					

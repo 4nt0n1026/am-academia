@@ -74,7 +74,15 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
+				        	Ordem:
+				        	<p:selectOneMenu value="#{treinoEspecificoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{treinoEspecificoBean.atualizar}"/>
+				        		<f:selectItems value="#{treinoEspecificoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
 				        	Busca:<p:inputText value="#{treinoEspecificoBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoEspecificoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoEspecificoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
@@ -91,8 +99,22 @@
 						<p:ajax event="rowSelect" listener="#{treinoEspecificoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
 						<p:ajax event="rowUnselect" listener="#{treinoEspecificoBean.hideFormDetail}" update=":tabView1:detailEntity"/>
 						
-						<p:column headerText="Nome"  >
+						<p:column headerText="Data" styleClass="center" width="5" >
+							<h:outputText value="#{entity.data.time}">
+								<f:convertDateTime pattern="dd/MM/yy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Nome" width="100" >
 							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Professor" styleClass="center" width="10" >
+							<h:outputText value="#{entity.professor.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Aluno" styleClass="center" width="10" >
+							<h:outputText value="#{entity.solicitacao.aluno.nome}"/>
 						</p:column>
 					
 						<f:facet name="footer">  

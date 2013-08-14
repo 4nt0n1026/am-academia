@@ -108,12 +108,20 @@
 				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoFixoBean.deletarEntity}" ajax="true" update=":tabView1"  />
 				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{treinoFixoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
 				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
 				       <p:toolbarGroup align="right"> 
-			        		<p:separator />  
+				       		Ordem:
+				        	<p:selectOneMenu value="#{treinoFixoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{treinoFixoBean.atualizar}"/>
+				        		<f:selectItems value="#{treinoFixoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
 				        	Busca:<p:inputText value="#{treinoFixoBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoFixoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />

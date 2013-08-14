@@ -46,6 +46,9 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 		page = 1;
 		dao = treinoEspecificoDAO;
 		staticFields = TreinoEspecifico.STATIC_FIELDS;
+		staticFieldsOrderLabel = TreinoEspecifico.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = TreinoEspecifico.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

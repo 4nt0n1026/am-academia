@@ -53,6 +53,9 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		page = 1;
 		dao = solicitacaoTreinoDAO;
 		staticFields = SolicitacaoTreino.STATIC_FIELDS;
+		staticFieldsOrderLabel = SolicitacaoTreino.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = SolicitacaoTreino.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

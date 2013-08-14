@@ -12,6 +12,8 @@ import javax.persistence.Table;
 public class ProfessorFunc extends Pessoa{
 
 	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "dataNascimento", "email", "cpf", "rg"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Nome", "Data Nascimento", "Email", "CPF", "RG"};
 
 	@Column(length=500, nullable=true)
 	private String fotoLocal;

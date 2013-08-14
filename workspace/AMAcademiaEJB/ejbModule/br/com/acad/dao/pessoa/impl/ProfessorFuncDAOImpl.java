@@ -91,6 +91,9 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		}else{
 			sql.append(" where isProfessor = true");
 		}
+		if(order.length()>0){
+			sql.append(" order by " + order);
+		}
 		
 		TypedQuery<ProfessorFunc> q = em.createQuery(sql.toString(), ProfessorFunc.class);
 		
@@ -114,6 +117,9 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 			sql.append(sqlWhere).append(" and isProfessor = false");
 		}else{
 			sql.append(" where isProfessor = false");
+		}
+		if(order.length()>0){
+			sql.append(" order by " + order);
 		}
 		
 		TypedQuery<ProfessorFunc> q = em.createQuery(sql.toString(), ProfessorFunc.class);

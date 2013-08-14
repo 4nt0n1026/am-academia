@@ -25,6 +25,8 @@ public class Noticia implements Serializable {
 	
 	// static field para busca no banco
 	public static final String[] STATIC_FIELDS = {"titulo", "professorFunc.nome", "categoria.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"titulo", "categoria.nome", "professorFunc.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Titulo", "Categoria", "Professor/Funcionario"};
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqNoticia")

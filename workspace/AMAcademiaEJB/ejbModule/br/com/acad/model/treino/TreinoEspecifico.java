@@ -15,6 +15,8 @@ import br.com.acad.model.pessoa.Aluno;
 public class TreinoEspecifico extends Treino{
 	
 	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Nome", "Professor", "Aluno"};
 	
 	@OneToOne
 	@JoinColumn(name="SOLICITACAO_TREINO_ID", nullable=false)

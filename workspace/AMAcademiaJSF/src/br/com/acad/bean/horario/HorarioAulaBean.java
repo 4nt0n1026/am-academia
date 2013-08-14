@@ -48,6 +48,9 @@ public class HorarioAulaBean extends Bean<HorarioAula> implements Serializable {
 		page = 1;
 		dao = horarioAulaDAO;
 		staticFields = HorarioAula.STATIC_FIELDS;
+		staticFieldsOrderLabel = HorarioAula.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = HorarioAula.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

@@ -24,6 +24,8 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 public class HorarioAula implements Serializable {
 
 	public static final String[] STATIC_FIELDS = {"unidade.nome", "professor.nome", "aula.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"aula.nome", "unidade.nome", "professor.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Aula", "Unidade", "Professor"};
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqHorarioAula")

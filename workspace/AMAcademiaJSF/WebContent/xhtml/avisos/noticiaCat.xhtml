@@ -75,7 +75,7 @@
 					<p:dataTable value="#{noticiaCatBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
 							 resizableColumns="true" selection="#{noticiaCatBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome"  >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 					

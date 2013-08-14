@@ -74,8 +74,16 @@
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
-				        <p:toolbarGroup align="right"> 
+				        <p:toolbarGroup align="right">
+				        	Ordem:
+				        	<p:selectOneMenu value="#{dietaEspecificaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{dietaEspecificaBean.atualizar}"/>
+				        		<f:selectItems value="#{dietaEspecificaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	 
 			        		<p:separator />  
+			        		
 				        	Busca:<p:inputText value="#{dietaEspecificaBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{dietaEspecificaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{dietaEspecificaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />

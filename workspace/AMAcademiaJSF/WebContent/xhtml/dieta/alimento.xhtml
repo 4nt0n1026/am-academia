@@ -78,7 +78,15 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
+				        	Ordem:
+				        	<p:selectOneMenu value="#{alimentoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{alimentoBean.atualizar}"/>
+				        		<f:selectItems value="#{alimentoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
 			        		<p:separator />  
+			        		
 				        	Busca:<p:inputText value="#{alimentoBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{alimentoBean.atualizar}" ajax="true" update=":tabView1" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{alimentoBean.resetSearch}" ajax="true" update=":tabView1" />

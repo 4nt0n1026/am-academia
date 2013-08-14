@@ -98,7 +98,15 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
+				        	Ordem:
+				        	<p:selectOneMenu value="#{solicitacaoTreinoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{solicitacaoTreinoBean.atualizar}"/>
+				        		<f:selectItems value="#{solicitacaoTreinoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
 				        	Busca:<p:inputText value="#{solicitacaoTreinoBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoTreinoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{solicitacaoTreinoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />

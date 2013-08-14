@@ -1,6 +1,7 @@
 package br.com.acad.bean.pessoa;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -35,6 +36,9 @@ public class FuncionarioBean extends Bean<ProfessorFunc> implements Serializable
 		page = 1;
 		dao = professorFuncDAO;
 		staticFields = ProfessorFunc.STATIC_FIELDS;
+		staticFieldsOrderLabel = ProfessorFunc.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = ProfessorFunc.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	
@@ -69,7 +73,15 @@ public class FuncionarioBean extends Bean<ProfessorFunc> implements Serializable
 	 */
 	@Override
 	public List<ProfessorFunc> buscarTodos() {
-		return professorFuncDAO.buscarTodosFunc(page, search, order);
+		if(search!=null && search.length()>0){
+			page = 1;
+		}
+		if(staticFieldsOrderLabel!=null){
+			int posicao =  Arrays.asList(staticFieldsOrderLabel).indexOf(order);
+			return professorFuncDAO.buscarTodosFunc(page, search, staticFieldsOrderValue[posicao]);
+		}else{
+			return professorFuncDAO.buscarTodosFunc(page, search, order);
+		}
 	}
 	
 	

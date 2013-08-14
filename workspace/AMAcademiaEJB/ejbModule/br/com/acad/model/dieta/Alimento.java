@@ -19,6 +19,8 @@ import javax.persistence.Table;
 public class Alimento implements Serializable {
 
 	public static final String[] STATIC_FIELDS = {"nome"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "valorEnergetico", "qtdProteina", "qtdGordura", "qtdCarboidrato"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"nome", "valorEnergetico", "qtdProteina", "qtdGordura", "qtdCarboidrato"};
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAlimento")

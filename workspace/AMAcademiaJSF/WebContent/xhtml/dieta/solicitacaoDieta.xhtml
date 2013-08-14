@@ -102,7 +102,15 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
+				        	Ordem:
+				        	<p:selectOneMenu value="#{solicitacaoDietaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{solicitacaoDietaBean.atualizar}"/>
+				        		<f:selectItems value="#{solicitacaoDietaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
 				        	Busca:<p:inputText value="#{solicitacaoDietaBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoDietaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{solicitacaoDietaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />

@@ -24,6 +24,8 @@ import br.com.acad.model.pessoa.Aluno;
 public class SolicitacaoDieta implements Serializable {
 
 	public static final String[] STATIC_FIELDS = {"dataSolicitacao", "aluno.nome", "descricao" };
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"dataSolicitacao", "aluno.nome", "respondido"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Aluno", "Respondido"};
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqSolicitacaoDieta")

@@ -1,5 +1,6 @@
 package br.com.acad.bean;
 
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.acad.dao.generico.interf.DAO;
@@ -28,13 +29,19 @@ public abstract class Bean<T> {
 	protected List<T> entities;
 	
 	
-	// Search
+	// Search e paginacao
 	protected String[] staticFields;
 	protected int page;
 	protected String search;
-	protected String order;
 	protected long totalPages;
 	protected long totalEntities;
+	
+	// Ordenacao
+	protected String order;
+	protected String[] staticFieldsOrderValue;
+	protected String[] staticFieldsOrderLabel;
+	
+	
 	
 	// Navigation
 	protected boolean showEntity;
@@ -267,7 +274,12 @@ public abstract class Bean<T> {
 		if(search!=null && search.length()>0){
 			page = 1;
 		}
-		return dao.buscarTodos(page, search, order);
+		if(staticFieldsOrderLabel!=null){
+			int posicao =  Arrays.asList(staticFieldsOrderLabel).indexOf(order);
+			return dao.buscarTodos(page, search, staticFieldsOrderValue[posicao]);
+		}else{
+			return dao.buscarTodos(page, search, order);
+		}
 	}
 	
 	/**
@@ -329,6 +341,12 @@ public abstract class Bean<T> {
 	}
 	public long getTotalEntities() {
 		return totalEntities;
+	}
+	public String[] getStaticFieldsOrderValue() {
+		return staticFieldsOrderValue;
+	}
+	public String[] getStaticFieldsOrderLabel() {
+		return staticFieldsOrderLabel;
 	}
 	
 	

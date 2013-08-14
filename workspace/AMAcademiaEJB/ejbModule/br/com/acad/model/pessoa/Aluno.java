@@ -22,6 +22,8 @@ import br.com.acad.model.treino.Treino;
 public class Aluno extends Pessoa{
 
 	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg", "peso", "altura"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "dataNascimento", "email", "cpf", "rg", "peso", "altura" };
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Nome", "dataNascimento", "Email", "CPF", "RG", "Peso", "Altura"};
 
 	@Column(nullable=true, precision=2)
 	private double peso;

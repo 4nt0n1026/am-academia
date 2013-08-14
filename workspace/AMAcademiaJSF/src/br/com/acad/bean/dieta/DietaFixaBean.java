@@ -61,6 +61,9 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable {
 		page = 1;
 		dao = dietaFixaDAO;
 		staticFields = DietaFixa.STATIC_FIELDS;
+		staticFieldsOrderLabel = DietaFixa.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = DietaFixa.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

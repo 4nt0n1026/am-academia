@@ -71,6 +71,9 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 		page = 1;
 		dao = treinoFixoDAO;
 		staticFields = TreinoFixo.STATIC_FIELDS;
+		staticFieldsOrderLabel = TreinoFixo.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = TreinoFixo.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

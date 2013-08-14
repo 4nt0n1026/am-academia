@@ -53,6 +53,9 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
 		page = 1;
 		dao = solicitacaoDietaDAO;
 		staticFields = SolicitacaoDieta.STATIC_FIELDS;
+		staticFieldsOrderLabel = SolicitacaoDieta.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = SolicitacaoDieta.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

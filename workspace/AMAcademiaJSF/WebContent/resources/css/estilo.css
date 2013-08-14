@@ -9,6 +9,10 @@
 	font-family: 'Trebuchet MS';
 }
 
+.ui-selectonemenu {
+	vertical-align: top;
+}
+
 .center{
 	text-align: center;
 }

@@ -42,6 +42,9 @@ public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serial
 		page = 1;
 		dao = dietaEspecificaDAO;
 		staticFields = DietaEspecifica.STATIC_FIELDS;
+		staticFieldsOrderLabel = DietaEspecifica.STATIC_FIELDS_ORDER_LABEL;
+		staticFieldsOrderValue = DietaEspecifica.STATIC_FIELDS_ORDER_VALUE;
+		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
 	

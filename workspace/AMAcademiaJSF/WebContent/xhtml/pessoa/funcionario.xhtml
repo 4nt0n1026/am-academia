@@ -63,12 +63,20 @@
 				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{funcionarioBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
 				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{funcionarioBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
 				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{funcionarioBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
 				        	<p:separator />  
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
+				        	Ordem:
+				        	<p:selectOneMenu value="#{funcionarioBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{funcionarioBean.atualizar}"/>
+				        		<f:selectItems value="#{funcionarioBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
 				        	Busca:<p:inputText value="#{funcionarioBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{funcionarioBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{funcionarioBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
@@ -82,21 +90,21 @@
 					<p:dataTable value="#{funcionarioBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
 							resizableColumns="true"  selection="#{funcionarioBean.entity}" selectionMode="single" rowKey="#{entity}">
 						
-						<p:column headerText="Nome" sortBy="#{entity.nome}"  >
+						<p:column headerText="Nome"   >
 										<h:outputText value="#{entity.nome}"/>
 									</p:column>
 									
-									<p:column headerText="Email" sortBy="#{entity.email}"  >
+									<p:column headerText="Email"   >
 										<h:outputText value="#{entity.email}"/>
 									</p:column>
 									
-									<p:column headerText="Nascimento" sortBy="#{entity.dataNascimento.time}"  >
+									<p:column headerText="Nascimento">
 										<h:outputText value="#{entity.dataNascimento.time}">
 											<f:convertDateTime pattern="dd/MM/yyyy" />
 										</h:outputText>
 									</p:column>
 									
-									<p:column headerText="CPF" sortBy="#{entity.cpf}"  >
+									<p:column headerText="CPF"  >
 										<h:outputText value="#{entity.cpf}"/>
 									</p:column>
 									

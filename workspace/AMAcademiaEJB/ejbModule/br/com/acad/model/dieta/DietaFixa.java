@@ -21,7 +21,9 @@ import br.com.acad.model.cat.SexoCat;
 @PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
 public class DietaFixa extends Dieta {
 
-	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat", "objeticoCat"};
+	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", "objetivoCat.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", "objetivoCat.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL= {"Data", "Nome", "Professor", "Sexo", "Faixa Etaria", "Objetivo"};
 	
 	@ManyToMany
 	@JoinTable(name="ACAD_DIETA_FIXA_LIMITACAO_CAT", 

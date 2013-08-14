@@ -20,6 +20,10 @@ public class TreinoFixo extends Treino {
 
 	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", 
 						"objetivoCat.nome", "duracaoTreinoCat.nome", "diasTreinoCat.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", 
+		"objetivoCat.nome", "duracaoTreinoCat.nome", "diasTreinoCat.nome"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Nome", "Professor", "Sexo", "Faixa Etaria", 
+		"Objetivo", "Duração", "Dias na Semana"};
 
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)

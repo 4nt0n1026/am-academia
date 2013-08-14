@@ -101,7 +101,15 @@
 				        </p:toolbarGroup>
 				        
 				       <p:toolbarGroup align="right"> 
+				       		Ordem:
+				        	<p:selectOneMenu value="#{dietaFixaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{dietaFixaBean.atualizar}"/>
+				        		<f:selectItems value="#{dietaFixaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
 			        		<p:separator />  
+			        		
 				        	Busca:<p:inputText value="#{dietaFixaBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{dietaFixaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{dietaFixaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
@@ -127,7 +135,11 @@
 						<p:column headerText="Nome" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
-
+						
+						<p:column headerText="Professor"  >
+							<h:outputText value="#{entity.professor.nome}"/>
+						</p:column>
+						
 						<p:column headerText="Objetivo" >
 							<h:outputText value="#{entity.objetivoCat.nome}"/>
 						</p:column>
@@ -140,9 +152,6 @@
 							<h:outputText value="#{entity.sexoCat.nome}"/>
 						</p:column>
 
-						<p:column headerText="Professor"  >
-							<h:outputText value="#{entity.professor.nome}"/>
-						</p:column>
 					
 						<f:facet name="footer">  
 							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{dietaFixaBean.previousPageTable}" 

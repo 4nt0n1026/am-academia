@@ -68,7 +68,15 @@
 				        </p:toolbarGroup>
 				        
 				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
+				        	Ordem:
+				        	<p:selectOneMenu value="#{horarioAulaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{horarioAulaBean.atualizar}"/>
+				        		<f:selectItems value="#{horarioAulaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
 				        	Busca:<p:inputText value="#{horarioAulaBean.search}" />
 				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{horarioAulaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
 				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{horarioAulaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
