@@ -92,15 +92,14 @@
 		        	<p:panelGrid columns="2">
 			        	<h:outputLabel value="Alimento " />  
 					    <p:selectOneMenu value="#{criacaoDietaBean.itemRefeicao.alimento.id}" rendered="true" style="width:250px"
-					    			requiredMessage="Alimento Obrigatorio" filter="true" filterMatchMode="contains" disabled="#{!criacaoDietaBean.showItemRefeicao}" >  
-					    	<f:selectItems value="#{criacaoDietaBean.alimentosField}" var="alimento" itemLabel="#{alimento.nome}" itemValue="#{alimento.id}"/>
+					    			requiredMessage="Alimento Obrigatorio" filter="true" filterMatchMode="contains" disabled="#{!criacaoDietaBean.showItemRefeicao}" >
+					    	<f:selectItems value="#{criacaoDietaBean.alimentosField}" var="alimento" itemLabel="#{alimento.nome} (#{alimento.unidadeMedida.sigla})" itemValue="#{alimento.id}"/>
 						</p:selectOneMenu>  
 				    </p:panelGrid >
 					
 					<h:panelGrid columns="3">
 						<h:outputLabel for="qtd" value="Quantidade:" />
 						<p:inputText id="qtd" size="10" value="#{criacaoDietaBean.itemRefeicao.quantidade}" disabled="#{!criacaoDietaBean.showItemRefeicao}" />
-						<h:outputText value="#{criacaoDietaBean.itemRefeicao.alimento.unidadeMedida.nome}" />
 					</h:panelGrid>
 				    
 		        	<p:commandButton disabled="#{!criacaoDietaBean.showItemRefeicao}" icon="ui-icon ui-icon-check" action="#{criacaoDietaBean.incluirItemRefeicao}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" />
@@ -116,15 +115,18 @@
 			       				disabled="#{!criacaoDietaBean.showItemRefeicao}" />
 	
 			    <!-- Table do exercicio -->
-			    <p:dataTable id="diaDietaTable" var="exec" value="#{criacaoDietaBean.itensRefeicao}" rowKey="#{item}" emptyMessage="Nenhum alimento registrado"
+			    <p:dataTable id="diaDietaTable" var="item" value="#{criacaoDietaBean.itensRefeicao}" rowKey="#{item}" emptyMessage="Nenhum alimento registrado"
            								 selection="#{criacaoDietaBean.itemRefeicao}"  selectionMode="single">  
            										 
-           			<p:ajax event="rowSelect" listener="#{criacaoDietaBean.onSelectExercicioDieta}"  update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3" /> 
-					<p:ajax event="rowUnselect" listener="#{criacaoDietaBean.onUnselectExercicioDieta}" update=":formDialog :tableDialog :formDialog2 :tableDialog2 :tableDialog3 :formDialog3"/> 
 						
      				<p:column >
      					<h:outputText value="#{item.alimento.nome}"  />
      				</p:column>
+     					
+     				<p:column >
+     					<h:outputText value="#{item.quantidade} #{item.alimento.unidadeMedida.sigla}"  />
+     				</p:column>
+     				
 				</p:dataTable>
 			 </h:form> 
 		</p:fieldset>

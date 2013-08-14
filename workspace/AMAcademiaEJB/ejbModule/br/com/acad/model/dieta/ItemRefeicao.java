@@ -27,8 +27,8 @@ public class ItemRefeicao implements Serializable {
 	private double quantidade;
 	
 	@ManyToOne
-	@JoinColumn(name="ALIMENTO_ID")
-	private Alimento alimento;
+	@JoinColumn(name="ALIMENTO_ID", nullable=false)
+	private Alimento alimento = new Alimento();
 	
 	public ItemRefeicao(){}
 

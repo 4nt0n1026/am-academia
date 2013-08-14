@@ -126,10 +126,7 @@ public class CriacaoDietaBean implements Serializable {
 	 * Salva os dias e os exercicios do dieta fixo
 	 */
 	public void salvarDietaFixa(){
-		dieta.resetDiasDieta();
-		for(DiaDieta dia : dias){
-			dieta.addDiaDieta(dia);
-		}
+		organizaListasDieta();
 		dietaFixaBean.setEntity((DietaFixa) dieta);
 		dietaFixaBean.incluirEntity();
 	}
@@ -138,10 +135,7 @@ public class CriacaoDietaBean implements Serializable {
 	 * Salva os dias e os exercicios do dieta especifico
 	 */
 	public void salvarDietaEspecifica(){
-		dieta.resetDiasDieta();
-		for(DiaDieta dia : dias){
-			dieta.addDiaDieta(dia);
-		}
+		organizaListasDieta();
 		dietaEspecificaBean.setEntity((DietaEspecifica) dieta);
 		dietaEspecificaBean.incluirEntity();
 	}
@@ -150,12 +144,16 @@ public class CriacaoDietaBean implements Serializable {
 	 * Salva os dias e os exercicios do dieta de resposta
 	 */
 	public void salvarDietaEspecificaResposta(){
+		organizaListasDieta();
+		solicitacaoDietaBean.setDieta((DietaEspecifica) dieta);
+		solicitacaoDietaBean.incluirDietaResposta();;
+	}
+	
+	private void organizaListasDieta(){
 		dieta.resetDiasDieta();
 		for(DiaDieta dia : dias){
 			dieta.addDiaDieta(dia);
 		}
-		solicitacaoDietaBean.setDieta((DietaEspecifica) dieta);
-		solicitacaoDietaBean.incluirDietaResposta();;
 	}
 	
 	// DiaDieta
@@ -259,6 +257,7 @@ public class CriacaoDietaBean implements Serializable {
 	 */
 	public void onSelectRefeicao(){
 		showItemRefeicao = true;
+		itensRefeicao = new ArrayList<ItemRefeicao>(refeicao.getItens());
 	}
 
 	/**
@@ -294,6 +293,9 @@ public class CriacaoDietaBean implements Serializable {
 			itensRefeicao.remove(itemRefeicao);
 			refeicao.removeItem(itemRefeicao);
 		}
+		Alimento alimento = itemRefeicao.getAlimento();
+		alimento = alimentoDAO.searchByID(alimento.getId());
+		itemRefeicao.setAlimento(alimento);
 		refeicao.addItem(itemRefeicao);
 		itensRefeicao.add(itemRefeicao);
 		newItemRefeicao();
