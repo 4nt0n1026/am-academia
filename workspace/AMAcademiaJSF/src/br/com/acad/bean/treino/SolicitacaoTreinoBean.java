@@ -119,10 +119,15 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	public void incluirTreinoResposta(){
 		treino.setSolicitacao(entity);
 		treino.setData(Calendar.getInstance());
+		
 		// Nome do treino
 		Aluno aluno = treino.getSolicitacao().getAluno();
 		aluno.incrementNumSolicitacao();
-		aluno = alunoDAO.update(aluno);
+
+		// Inclui nos treinos do aluno
+		aluno.addTreino(treino);
+		
+		// Seta nome 
 		treino.setNomePronto(aluno);
 		
 		treino = treinoEspecificoDAO.insert(treino);
@@ -130,6 +135,9 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		atualizar();
 		entity.setRespondido(true);
 		incluirGeneric(entity.getId());
+		
+		// Salva aluno
+		aluno = alunoDAO.update(aluno);
 	}
 	
 	/************************************************************************************************************/

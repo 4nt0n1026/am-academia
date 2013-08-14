@@ -3,8 +3,10 @@ package br.com.acad.model.pessoa;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -29,17 +31,26 @@ public class Aluno extends Pessoa{
 	
 	private int numSolicitacao = 0;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
 	@JoinTable(name="ACAD_ALUNO_TREINO", 
 				joinColumns={@JoinColumn(name="ALUNO_ID")},
 				inverseJoinColumns={@JoinColumn(name="TREINO_ID")})
 	private Set<Treino> treinos = new HashSet<Treino>();
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="ACAD_ALUNO_DIETA", 
 				joinColumns={@JoinColumn(name="ALUNO_DIETA")},
 				inverseJoinColumns={@JoinColumn(name="DIETA_ID")})
 	private Set<Treino> dietas = new HashSet<Treino>();
+	
+	// Metodos
+	public void addTreino(Treino treino){
+		treinos.add(treino);
+	}
+	
+	public void removeTreino(Treino treino){
+		treinos.add(treino);
+	}
 	
 	
 	public Aluno(){}

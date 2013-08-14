@@ -47,6 +47,7 @@
 								
 								<f:setPropertyActionListener value="#{exec}" target="#{mExerciciosBean.exercicio}" />
 								
+								<p:graphicImage  value="/resources/images/exercicios/#{exec.fotoLocal}" />
 								<h:outputText value="#{exec.nome}" />
 								
 							</p:commandLink>

@@ -7,6 +7,7 @@ import br.com.acad.model.treino.TreinoFixo;
 
 @Remote
 public interface TreinoFixoDAO extends DAO<TreinoFixo,Integer>{
+
 	
 	
 	

@@ -20,11 +20,11 @@
 				<h:form>
 					<ul data-role="listview" >
 						<li>
-							<a href="#">
+							<p:commandLink action="#{mMeusTreinosBean.init}" ajax="true" update=":meusTreinos">
 								<p:graphicImage value="/resources/images/icons/weight.png" />
 								<h3>Meus Treinos</h3>
 								<p>Treinos incluidos na área do aluno</p>
-							</a>
+							</p:commandLink>
 						</li>
 						<li>
 							<p:commandLink action="#{mBuscaTreinoBean.init}" ajax="true" update=":buscaTreino">

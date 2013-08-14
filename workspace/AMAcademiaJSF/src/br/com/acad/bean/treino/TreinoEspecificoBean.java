@@ -67,7 +67,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 			Aluno aluno = entity.getSolicitacao().getAluno();
 			aluno.incrementNumSolicitacao();
 			alunoDAO.update(aluno);
-			entity.setNomePronto();
+			entity.setNomePronto(aluno);
 		}
 		incluirGeneric( entity!=null? entity.getId():0);
 	}

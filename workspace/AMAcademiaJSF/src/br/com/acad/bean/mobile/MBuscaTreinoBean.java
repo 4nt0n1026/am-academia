@@ -1,6 +1,7 @@
 package br.com.acad.bean.mobile;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,11 +13,13 @@ import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
 import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
 import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
+import br.com.acad.dao.treino.interf.TreinoFixoDAO;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
 import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
+import br.com.acad.model.treino.TreinoFixo;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -36,6 +39,8 @@ public class MBuscaTreinoBean implements Serializable{
 	private DuracaoTreinoCatDAO duracaoTreinoCatDAO;
 	@EJB
 	private DiasTreinoCatDAO diasTreinoCatDAO;
+	@EJB
+	private TreinoFixoDAO treinoFixoDAO;
 	
 	
 	private FaixaEtariaCat faixaEtariaCat = new FaixaEtariaCat();
@@ -50,6 +55,10 @@ public class MBuscaTreinoBean implements Serializable{
 	private List<FaixaEtariaCat> faixaEtariaCatField;
 	private List<SexoCat> sexoCatField;
 	
+	private List<TreinoFixo> treinos = new ArrayList<TreinoFixo>();
+	
+	private TreinoFixo treino = new TreinoFixo(); 
+	
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
@@ -60,9 +69,24 @@ public class MBuscaTreinoBean implements Serializable{
 		duracaoTreinoCat = new DuracaoTreinoCat();
 		diasTreinoCat = new DiasTreinoCat();
 		
+		faixaEtariaCatField = faixaEtariaCatDAO.buscarTodos();
+		sexoCatField = sexoCatDAO.buscarTodos();
 		objetivoCatField = objetivoCatDAO.buscarTodos();
+		duracaoTreinoCatField = duracaoTreinoCatDAO.buscarTodos();
+		diasTreinoCatField = diasTreinoCatDAO.buscarTodos();
 		
 		return "pm:buscaTreino";
+	}
+	
+	public String buscar(){
+		//TODO - buscar em relacao aos campos(somente nome)
+		treinos = treinoFixoDAO.buscarTodos();
+		return "pm:buscaTreinoList";
+	}
+	
+	public String mostrarDetalhe(){
+		treino = treinoFixoDAO.searchByID(treino.getId());
+		return "pm:treinoDetalhe";
 	}
 	
 	
@@ -157,6 +181,20 @@ public class MBuscaTreinoBean implements Serializable{
 	public void setDiasTreinoCat(DiasTreinoCat diasTreinoCat) {
 		this.diasTreinoCat = diasTreinoCat;
 	}
+
+	public List<TreinoFixo> getTreinos() {
+		return treinos;
+	}
+
+	public TreinoFixo getTreino() {
+		return treino;
+	}
+
+	public void setTreino(TreinoFixo treino) {
+		this.treino = treino;
+	}
+
+	
 	
 	
 }

@@ -67,4 +67,5 @@ public class TreinoFixoDAOImpl extends DAOImpl<TreinoFixo,Integer> implements Tr
 		return  (Long) q.getSingleResult();
 	}
 
+
 }
