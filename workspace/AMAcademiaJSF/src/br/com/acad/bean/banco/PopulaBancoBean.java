@@ -148,7 +148,32 @@ public class PopulaBancoBean implements Serializable {
 		
 		prof.setId(1);
 		nc.setId(1);
-		Noticia n = new Noticia(Calendar.getInstance(), "Titulo Aqui", "Descricao aqui", nc, prof);
+		Noticia n = new Noticia(Calendar.getInstance(), "Titulo 1", "Descricao aqui", nc, prof);
+		noticiaDAO.insert(n);
+		
+		prof.setId(1);
+		nc.setId(2);
+		n = new Noticia(Calendar.getInstance(), "Titulo 2", "Descricao aqui", nc, prof);
+		noticiaDAO.insert(n);
+		
+		prof.setId(2);
+		nc.setId(2);
+		n = new Noticia(Calendar.getInstance(), "Titulo 3", "Descricao aqui", nc, prof);
+		noticiaDAO.insert(n);
+		
+		prof.setId(5);
+		nc.setId(3);
+		n = new Noticia(Calendar.getInstance(), "Titulo 4", "Descricao aqui", nc, prof);
+		noticiaDAO.insert(n);
+		
+		prof.setId(5);
+		nc.setId(3);
+		n = new Noticia(Calendar.getInstance(), "Titulo 5", "Descricao aqui", nc, prof);
+		noticiaDAO.insert(n);
+		
+		prof.setId(1);
+		nc.setId(3);
+		n = new Noticia(Calendar.getInstance(), "Titulo 6", "Descricao aqui", nc, prof);
 		noticiaDAO.insert(n);
 	}
 	
@@ -204,16 +229,19 @@ public class PopulaBancoBean implements Serializable {
 				"Aula que tem como objetivo o aumento da força e resistência muscular abdominal," +
 				" melhora da postura e diminuição das dores lombares, através de exercícios de resistência " +
 				"muscular. Indicada para todos os níveis de condicionamento – iniciantes, intermediários e " +
-				"avançados. DURAÇÃO 30'");
+				"avançados. DURAÇÃO 30'", "ab.jpg");
 		aulaDAO.insert(aula);
+		
 		aula = new Aula("Boxe", "Aula de condicionamento físico que utiliza a técnica e exercícios do boxe. Indicada para todos os níveis " +
-				"de condicionamento – iniciantes, intermediários e avançados. DURAÇÃO 60'");
+				"de condicionamento – iniciantes, intermediários e avançados. DURAÇÃO 60'", "boxe.gif");
 		aulaDAO.insert(aula);
-		aula = new Aula("Jiu Jitsu", "Aula com treinamento específico da modalidade");
+		
+		aula = new Aula("Jiu Jitsu", "Aula com treinamento específico da modalidade", "jiujitsu.gif");
 		aulaDAO.insert(aula);
+		
 		aula = new Aula("Bike", "Aula que tem como objetivo o condicionamento cardiovascular, através de uma " +
 				"periodização de treinamento específica da modalidade. Indicada para todos os níveis de condicionamento – " +
-				"iniciantes, intermediários e avançados. DURAÇÃO 30', 45' E 60'");
+				"iniciantes, intermediários e avançados. DURAÇÃO 30', 45' E 60'", "bike.gif");
 		aulaDAO.insert(aula);
 	}
 	
