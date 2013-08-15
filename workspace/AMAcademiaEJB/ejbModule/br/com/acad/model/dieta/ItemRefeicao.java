@@ -32,7 +32,16 @@ public class ItemRefeicao implements Serializable {
 	
 	public ItemRefeicao(){}
 
-	
+	@Override
+	public String toString() {
+		String item = new String();
+		if(alimento!=null && alimento.getUnidadeMedida()!=null){
+			item = alimento.getNome() + " - " + quantidade + alimento.getUnidadeMedida().getSigla();
+		}else{
+			item = alimento.getNome();
+		}
+		return item;
+	}
 
 	public int getId() {
 		return id;

@@ -22,7 +22,7 @@ public class TreinoLogic {
 		StringBuilder strTreino = new StringBuilder();
 		
 		for(DiaTreino dia : setToList(treino.getDiasTreino())){
-			strTreino.append(dia.getNome()).append("<br />");
+			strTreino.append("<h3>" + dia.getNome() + "</h3>");
 			
 			for(ExercicioTreino exercicio : dia.getExerciciosTreino()){
 				strTreino.append(" - ").append(exercicio.getExercicio().getNome()).append("  ")

@@ -19,11 +19,11 @@ public class DietaLogic {
 		StringBuilder strDieta = new StringBuilder();
 		
 		for(DiaDieta dia : dieta.getDiasDieta()){
-			strDieta.append(dia.getNome()).append("<br />");
+			strDieta.append("<h3>" + dia.getNome() + "</h3>");
 			
 			for(Refeicao refeicao : dia.getRefeicoes()){
-				strDieta.append(" - ").append(refeicao.getNome()).append("  ")
-				.append(GenericLogic.formatListOfObjects(refeicao.getItens(), "/")).append("<br/>");
+				strDieta.append("<h4>" + refeicao.getNome() + "</h4>").append(" --- ")
+				.append(GenericLogic.formatListOfObjects(refeicao.getItens(), "<br /> --- ")).append("<br />");
 			}
 		}
 		return strDieta.toString();
