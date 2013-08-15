@@ -24,7 +24,7 @@
 							<p:commandLink action="#{mMeusTreinosBean.onSelectTreino}" ajax="true" update=":diasTreino" >
 								
 								<h2>#{treino.nome}</h2> 
-								<h:outputText value="#{treino.data}" >
+								<h:outputText value="#{treino.data.time}" >
 									<f:convertDateTime pattern="dd/MM/yy" />
 								</h:outputText>
 								

@@ -11,7 +11,7 @@
     	<ui:composition>
     		<!-- Noticias lista -->
 	    	<pm:view id="noticias" >
-		    	<pm:header title="Home" >
+		    	<pm:header>
 		    		 <f:facet name="left"><p:commandButton action="pm:home" swatch="b" value="voltar" icon="back"/></f:facet>
 	                <f:facet name="right"><p:commandButton value="?" action="#{mNoticiasBean.ajuda}" swatch="b" ajax="true" update="ajudaNoticias"/></f:facet>
 	            </pm:header>
@@ -41,7 +41,7 @@
 	    	
 	    	<!-- Noticias Detalhe -->
 	    	<pm:view id="noticiaDetalhe">
-		    	<pm:header title="Home">
+		    	<pm:header >
 		    		<f:facet name="left"><p:commandButton action="pm:noticias" swatch="b" value="voltar" icon="back"/></f:facet>
 	            </pm:header>
 				
@@ -65,7 +65,7 @@
 			
 			<!-- Ajuda -->
 	    	<pm:view id="ajudaNoticias">
-		    	<pm:header title="Ajuda">
+		    	<pm:header>
 		    		<f:facet name="left"><p:commandButton inline="true" action="pm:noticias" swatch="b" value="voltar" icon="back"/></f:facet>
 	            </pm:header>
 				

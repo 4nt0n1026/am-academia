@@ -33,7 +33,7 @@ public class Aluno extends Pessoa{
 	
 	private int numSolicitacao = 0;
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
+	@ManyToMany(fetch= FetchType.EAGER)
 	@JoinTable(name="ACAD_ALUNO_TREINO", 
 				joinColumns={@JoinColumn(name="ALUNO_ID")},
 				inverseJoinColumns={@JoinColumn(name="TREINO_ID")})

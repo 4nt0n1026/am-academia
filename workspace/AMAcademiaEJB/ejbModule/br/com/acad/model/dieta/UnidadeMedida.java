@@ -26,7 +26,7 @@ public class UnidadeMedida implements Serializable {
 	@Column(length=255, nullable=false)
 	private String nome;
 	
-	@Column(length=10, nullable=false)
+	@Column(length=20, nullable=false)
 	private String sigla;
 	
 	public UnidadeMedida(){}
@@ -35,6 +35,15 @@ public class UnidadeMedida implements Serializable {
 		this.id = id;
 		this.nome = nome;
 		this.sigla = sigla;
+	}
+
+	public UnidadeMedida(String nome, String sigla) {
+		this.nome = nome;
+		this.sigla = sigla;
+	}
+
+	public UnidadeMedida(int id) {
+		this.id = id;
 	}
 
 	public int getId() {

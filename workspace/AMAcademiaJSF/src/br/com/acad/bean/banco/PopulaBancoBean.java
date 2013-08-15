@@ -14,6 +14,8 @@ import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
 import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
 import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
+import br.com.acad.dao.dieta.interf.AlimentoDAO;
+import br.com.acad.dao.dieta.interf.UnidadeMedidaDAO;
 import br.com.acad.dao.horario.interf.AulaDAO;
 import br.com.acad.dao.horario.interf.HorarioAulaDAO;
 import br.com.acad.dao.horario.interf.UnidadeDAO;
@@ -29,6 +31,8 @@ import br.com.acad.model.cat.DuracaoTreinoCat;
 import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
+import br.com.acad.model.dieta.Alimento;
+import br.com.acad.model.dieta.UnidadeMedida;
 import br.com.acad.model.horario.Aula;
 import br.com.acad.model.horario.HorarioAula;
 import br.com.acad.model.horario.Unidade;
@@ -70,6 +74,10 @@ public class PopulaBancoBean implements Serializable {
 	private HorarioAulaDAO horarioAulaDAO;
 	@EJB
 	private NoticiaDAO noticiaDAO;
+	@EJB
+	private UnidadeMedidaDAO unidadeMedidaDAO;
+	@EJB
+	private AlimentoDAO alimentoDAO;
 	
 	public void popula(){
 		populaParteCorpo();
@@ -87,6 +95,48 @@ public class PopulaBancoBean implements Serializable {
 		populaAula();
 		populaHorarioAula();
 		populaNoticia();
+		populaUnidadeMedida();
+		populaAlimento();
+	}
+	
+	/**
+	 * popula infos basicas de Alimento
+	 */
+	private void populaAlimento(){
+		Alimento a = new Alimento("Arroz", 100d, 5d, 0.4d, 30d, 100d, new UnidadeMedida(1));
+		alimentoDAO.insert(a);
+		a = new Alimento("Abacaxi", 96.2d, 1.2d, 2.3d, 6d, 100d, new UnidadeMedida(1));
+		alimentoDAO.insert(a);
+		a = new Alimento("Carne moida - Acém", 212.4d, 26.7d, 9.8d, 0d, 100, new UnidadeMedida(1));
+		alimentoDAO.insert(a);
+		a = new Alimento("Pernil Assado", 262.3d, 32.1d, 13.1d, 0, 100, new UnidadeMedida(1));
+		alimentoDAO.insert(a);
+		a = new Alimento("Pao de forma integral", 253.2d, 9.4d, 2.9d, 49, 100, new UnidadeMedida(1));
+		alimentoDAO.insert(a);
+	}
+	
+	
+	/**
+	 * popula infos basicas de UnidadeMedida
+	 */
+	private void populaUnidadeMedida(){
+		UnidadeMedida u =new UnidadeMedida("Gramas", "g");
+		unidadeMedidaDAO.insert(u);
+		u =new UnidadeMedida("Quilo", "kg");
+		unidadeMedidaDAO.insert(u);
+		u=new UnidadeMedida("Quilo", "kg");
+		unidadeMedidaDAO.insert(u);
+		u=new UnidadeMedida("Unidade", "unidade");
+		unidadeMedidaDAO.insert(u);
+		u=new UnidadeMedida("Colher de Sopa", "col. sopa");
+		unidadeMedidaDAO.insert(u);
+		u=new UnidadeMedida("Colher de Sobremesa", "col. sobremesa");
+		unidadeMedidaDAO.insert(u);
+		u=new UnidadeMedida("Colher de Chá", "col. chá");
+		unidadeMedidaDAO.insert(u);
+		u=new UnidadeMedida("Copo", "copo");
+		unidadeMedidaDAO.insert(u);
+		
 	}
 	
 	/**
@@ -133,15 +183,15 @@ public class PopulaBancoBean implements Serializable {
 		horarioAulaDAO.insert(h);
 
 		hora.set(Calendar.HOUR_OF_DAY, 5);
-		h =  new HorarioAula(hora, "Sexta", 1, 19, 2);
+		h =  new HorarioAula(hora, "Sexta", 1, 1, 2);
 		horarioAulaDAO.insert(h);
 
 		hora.set(Calendar.HOUR_OF_DAY, 19);
-		h =  new HorarioAula(hora, "Sexta", 2, 10, 1);
+		h =  new HorarioAula(hora, "Sexta", 2, 1, 1);
 		horarioAulaDAO.insert(h);
 
 		hora.set(Calendar.HOUR_OF_DAY, 5);
-		h =  new HorarioAula(hora, "Segunda", 3, 8, 4);
+		h =  new HorarioAula(hora, "Segunda", 3, 6, 4);
 		horarioAulaDAO.insert(h);
 		
 	}
@@ -401,7 +451,13 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de ProfessorFunc(Funcionarios)
 	 */
 	private void populaFuncionario(){
+		Calendar nasc = Calendar.getInstance();
+		
 		ProfessorFunc f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Guilherme");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -411,6 +467,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Stefanie");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -420,6 +480,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Daniel");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -429,6 +493,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Gabriella");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -438,6 +506,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Mauricio");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -447,6 +519,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Amanda");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -456,6 +532,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Tadeu");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -465,6 +545,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Luciana");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -474,6 +558,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(f);
 		
 		f = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		f.setDataNascimento(nasc);
 		f.setNome("Patricia");
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -487,7 +575,13 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de ProfessorFunc(Professor)
 	 */
 	private void populaProfessor(){
+		Calendar nasc = Calendar.getInstance();
+		
 		ProfessorFunc p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Joana");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -497,6 +591,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(p);
 		
 		p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Mario");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -506,6 +604,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(p);
 		
 		p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Marcio");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -515,6 +617,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(p);
 		
 		p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Fabiana");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -524,6 +630,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(p);
 		
 		p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Kleber");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -533,6 +643,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(p);
 		
 		p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Antonio");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
@@ -542,6 +656,10 @@ public class PopulaBancoBean implements Serializable {
 		professorFuncDAO.insert(p);
 		
 		p = new ProfessorFunc();
+		nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
+		nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
+		nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
+		p.setDataNascimento(nasc);
 		p.setNome("Paula");
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));

@@ -12,14 +12,14 @@
 		<!-- Partes de corpo -->
     	<ui:composition>
     		<pm:view id="parteCorpo">
-		    	<pm:header title="Partes de Corpo">
+		    	<pm:header >
 	                 <f:facet name="left"><p:commandButton action="pm:treino" swatch="b" value="voltar" icon="back"/></f:facet>
 	            </pm:header>
 				
 				<pm:content>
 					<h:form>
 						<p:dataList value="#{mExerciciosBean.partesCorpo}" var="parte" >
-							<f:facet name="header">Selecione uma</f:facet>
+							<f:facet name="header">Partes do corpo</f:facet>
 							
 							<p:commandLink action="#{mExerciciosBean.selectParteCorpo}" ajax="true" update=":exerciciosList">
 								
@@ -35,13 +35,13 @@
 		
 			<!-- Exercicios lista -->
     		<pm:view id="exerciciosList">
-		    	<pm:header title="">
+		    	<pm:header >
 	                <f:facet name="left"><p:commandButton action="pm:parteCorpo" swatch="b" value="voltar" icon="back"/></f:facet>
 	            </pm:header>
 	            <pm:content>
 					<h:form>
 						<p:dataList value="#{mExerciciosBean.exercicios}" var="exec" >
-							<f:facet name="header">Selecione uma</f:facet>
+							<f:facet name="header">Exercicios</f:facet>
 							
 							<p:commandLink action="#{mExerciciosBean.selectExercicio}" ajax="true" update=":exercicioDetalhe">
 								

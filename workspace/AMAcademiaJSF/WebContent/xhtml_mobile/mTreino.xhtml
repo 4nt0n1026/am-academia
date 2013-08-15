@@ -11,7 +11,7 @@
 		<ui:composition>
     	<pm:view id="treino">
     		<!-- Menu de treino -->
-	    	<pm:header title="Treino">
+	    	<pm:header title="">
                 <f:facet name="left"><p:commandButton action="pm:home" swatch="b" value="voltar" icon="back"/></f:facet>
             </pm:header>
 			
@@ -21,7 +21,7 @@
 					<ul data-role="listview" >
 						<li>
 							<p:commandLink action="#{mMeusTreinosBean.init}" ajax="true" update=":meusTreinos">
-								<p:graphicImage value="/resources/images/icons/weight.png" />
+								<p:graphicImage value="/resources/images/icons/checkList.png" />
 								<h3>Meus Treinos</h3>
 								<p>Treinos incluidos na área do aluno</p>
 							</p:commandLink>
@@ -38,13 +38,6 @@
 								<p:graphicImage value="/resources/images/icons/mail.png" />
 								<h3>Solicitar Treino</h3>
 								<p>Enviar um pedido de treino personalizado</p>
-							</p:commandLink>
-						</li>
-						<li>
-							<p:commandLink action="#{mSolicitacaoTreinoBean.minhasSolicitacoes}" ajax="true" update=":minhasSolicitacoes">
-								<p:graphicImage value="/resources/images/icons/checkList.png" />
-								<h3>Minhas Solicitações</h3>
-								<p>Solicitações aguardando resposta</p>
 							</p:commandLink>
 						</li>
 						<li>

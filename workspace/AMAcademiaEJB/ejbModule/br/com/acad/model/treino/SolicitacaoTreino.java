@@ -48,7 +48,7 @@ public class SolicitacaoTreino implements Serializable {
 	@JoinColumn(name="ALUNO_ID", nullable=false)
 	private Aluno aluno;	
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name="TREINO_ESPECIFICO_ID", nullable=true)
 	private TreinoEspecifico treinoEspecifico;
 	

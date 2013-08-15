@@ -118,7 +118,6 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
 	public void incluirDietaResposta(){
 		dieta.setSolicitacao(entity);
 		dieta.setData(Calendar.getInstance());
-		dieta = dietaEspecificaDAO.insert(dieta);
 		closeForms();
 		atualizar();
 		entity.setRespondido(true);

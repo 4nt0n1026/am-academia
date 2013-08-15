@@ -54,6 +54,16 @@ public class Alimento implements Serializable {
 	
 	public Alimento(){}
 
+	public Alimento(String nome, double valorEnergetico, double proteina, double gordura, double carboidrato, double unidade, UnidadeMedida unidadeMedida) {
+		this.nome = nome;
+		this.valorEnergetico = valorEnergetico;
+		this.qtdProteina = proteina;
+		this.qtdGordura = gordura;
+		this.qtdCarboidrato = carboidrato;
+		this.unidade = unidade;
+		this.unidadeMedida = unidadeMedida;
+	}
+
 	public int getId() {
 		return id;
 	}
