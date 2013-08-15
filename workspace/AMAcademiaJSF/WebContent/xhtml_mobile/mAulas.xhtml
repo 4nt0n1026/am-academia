@@ -21,7 +21,10 @@
 							<f:facet name="header">Modalidades</f:facet>
 							
 							<p:commandLink action="#{mAulasBean.selectAula}" ajax="true" update=":aulaDetalhe" >
+							
 								<f:setPropertyActionListener value="#{item}" target="#{mAulasBean.aula}" />
+								
+								<p:graphicImage  value="/resources/images/aulas/#{item.fotoLocal}" />
 								<h2>#{item.nome}</h2>   
 							</p:commandLink>
 							
@@ -38,6 +41,8 @@
 				
 				<pm:content>
 					<h:form>
+						<p:graphicImage value="/resources/images/aulas/#{mAulasBean.aula.fotoLocal}" width="100%" />
+						
 						<div class="ui-bar ui-bar-b">
 						    <h3>Descrição</h3>
 						</div>

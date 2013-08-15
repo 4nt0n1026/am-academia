@@ -30,10 +30,16 @@
 						        <p:inputTextarea id="idDesc" value="#{aulaBean.entity.descricao}" required="false" cols="80"  />  
 						        
 	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{aulaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{aulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
+
+								<p:graphicImage styleClass="img-circle" width="150" id="fotoAula" value="#{aulaBean.fotoAula}"  />
+								<p:fileUpload fileUploadListener="#{aulaBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+											auto="false" mode="advanced" id="foto" update="fotoAula"  />
+											
+											
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{aulaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{aulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 						</p:fieldset> 
 			        </h:form>
       				
@@ -98,11 +104,15 @@
 					<p:fieldset legend="Detalhes" id="detail"  rendered="#{aulaBean.showEntityDetail}">
 							
 						<p:panelGrid columns="2">
-							<h:outputText value="Nome:"/>
-							<h:outputText value="#{aulaBean.entity.nome}" />
+							<p:panelGrid columns="2">
+								<h:outputText value="Nome:"/>
+								<h:outputText value="#{aulaBean.entity.nome}" />
+								
+								<h:outputText value="Descrição: "/>
+								<h:outputText value="#{aulaBean.entity.descricao}"/>
+							</p:panelGrid>
 							
-							<h:outputText value="Descrição: "/>
-							<h:outputText value="#{aulaBean.entity.descricao}"/>
+							<h:graphicImage value="#{aulaBean.fotoAula}" />
 						</p:panelGrid>
 							
 					</p:fieldset>

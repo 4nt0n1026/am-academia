@@ -29,15 +29,19 @@ public class Aula implements Serializable{
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
+	@Column(length=500, nullable=true)
+	private String fotoLocal;
+	
 	
 	
 	public Aula() {
 		super();
 	}
 	
-	public Aula(String nome, String descricao) {
+	public Aula(String nome, String descricao, String fotoLocal) {
 		this.nome = nome;
 		this.descricao = descricao;
+		this.fotoLocal = fotoLocal;
 	}
 	
 	
@@ -61,6 +65,14 @@ public class Aula implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getFotoLocal() {
+		return fotoLocal;
+	}
+
+	public void setFotoLocal(String fotoLocal) {
+		this.fotoLocal = fotoLocal;
 	}
 	
 	
