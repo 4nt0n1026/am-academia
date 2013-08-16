@@ -16,11 +16,14 @@
 <h:body>
 	<p:growl id="growl" autoUpdate="true"  showDetail="true"/>
 		
-		<div id="header">
-			<p:graphicImage width="100%" />
-		</div>
 	
 		<div id="menuPrincipal">
+			<div id="titulo">
+				<h:panelGrid columns="2">
+					<p:graphicImage value="/resources/images/mainIcon.ico" />
+					<h1>Smart Fitness</h1>
+				</h:panelGrid>
+			</div>
 			<h:form>
 				<p:menubar>
 					<p:menuitem icon="ui-icon ui-icon-home" value="Home" />

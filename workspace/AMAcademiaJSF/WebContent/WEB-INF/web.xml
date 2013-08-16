@@ -18,9 +18,11 @@
 	<param-name>com.sun.faces.writeStateAtFormEnd</param-name>   
 	<param-value>false</param-value>   
   </context-param>  
+  
+  
    <context-param>
     <param-name>primefaces.THEME</param-name>
-    <param-value>glass-x</param-value>
+    <param-value>home</param-value>
   </context-param>
   
  	<!-- ############################################# -->
