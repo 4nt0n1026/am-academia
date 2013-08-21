@@ -27,3 +27,5 @@ RemoteSystemsTempFiles/
 /androidWorkspace/WebAppAcademia/bin/res/drawable-xxhdpi/ic_launcher.png
 /androidWorkspace/WebAppAcademia/bin/resources.ap_
 /androidWorkspace/WebAppAcademia/bin/WebAppAcademia.apk
+*class
+workspace/AM_ACADEMIA_SPRING/build/
