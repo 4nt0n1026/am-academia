@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		
+		<!-- ****************************************************************************************************** -->
+		<!-- Dialog de criacao de dieta -->
+		<!-- ****************************************************************************************************** -->
+		<p:dialog id="dialogDieta" widgetVar="dlgDieta" height="500" width="700px" draggable="false" header="Criação de dieta" modal="true" closeOnEscape="true" closable="true">
+			<p:fieldset id="field2" >
+		       
+		       	<!-- Criacao Dieta -->
+    			<ui:include src="/xhtml/dieta/criacaoDieta.xhtml"/>
+				
+				<h:form>
+		        	<p:commandButton value="salvar"  action="#{criacaoDietaBean.salvarDietaFixa}" ajax="true" update="@all" /> 
+	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgDieta.close()" ajax="true" update="@all" />
+				</h:form>	
+							        
+			</p:fieldset> 
+		</p:dialog>
+		
+		<!-- ****************************************************************************************************** -->
+		<!-- DietaFixa -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Dietas Fixas" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<!-- TABFORM 1 -->
+						<p:fieldset id="field1"  rendered="#{dietaFixaBean.showEntity}">
+							<h:panelGrid columns="6">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{dietaFixaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+
+						        <h:outputLabel for="idDesc" value="Descricao" />  
+						        <p:inputTextarea id="idDesc" value="#{dietaFixaBean.entity.descricao}" cols="50"/> 
+						        
+						        <h:outputLabel for="idProf" value="Professor: " />  
+							    <p:selectOneMenu id="idProf" value="#{dietaFixaBean.entity.professor.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{dietaFixaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>   
+						        
+						    </h:panelGrid>
+						    <h:panelGrid columns="10">
+								<h:outputLabel for="idObjetivo" value="Objetivo: " />  
+							    <p:selectOneMenu id="idObjetivo" value="#{dietaFixaBean.entity.objetivoCat.id}" rendered="true" requiredMessage="Objetivo obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{dietaFixaBean.objetivoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}"/>  
+								</p:selectOneMenu> 
+								
+								<h:outputLabel for="idFaixa" value="Faixa Etaria: " />  
+							    <p:selectOneMenu id="idFaixa" value="#{dietaFixaBean.entity.faixaEtariaCat.id}" rendered="true" requiredMessage="Faixa Etaria obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{dietaFixaBean.faixaEtariaCatField}" var="faixa" itemLabel="#{faixa.nome}" itemValue="#{faixa.id}"/>  
+								</p:selectOneMenu> 
+
+								<h:outputLabel for="idSexo" value="Sexo " />  
+							    <p:selectOneMenu id="idSexo" value="#{dietaFixaBean.entity.sexoCat.id}" rendered="true" requiredMessage="Sexo obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{dietaFixaBean.sexoCatField}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo.id}"/>  
+								</p:selectOneMenu> 
+					        </h:panelGrid>
+
+							<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaFixa}" onclick="dlgDieta.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{dietaFixaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+					        	
+						</p:fieldset> 
+						
+						
+						
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{dietaFixaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{dietaFixaBean.deletarEntity}" ajax="true" update=":tabView1"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{dietaFixaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{dietaFixaBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				       <p:toolbarGroup align="right"> 
+				       		Ordem:
+				        	<p:selectOneMenu value="#{dietaFixaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{dietaFixaBean.atualizar}"/>
+				        		<f:selectItems value="#{dietaFixaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />  
+			        		
+				        	Busca:<p:inputText value="#{dietaFixaBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{dietaFixaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{dietaFixaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{dietaFixaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{dietaFixaBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:ajax event="rowSelect" listener="#{dietaFixaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{dietaFixaBean.hideFormDetail}" update=":tabView1:detailEntity"/>
+						
+						<p:column headerText="Data" >
+							<h:outputText value="#{entity.data.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Nome" >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Professor"  >
+							<h:outputText value="#{entity.professor.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Objetivo" >
+							<h:outputText value="#{entity.objetivoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Faixa Etaria" >
+							<h:outputText value="#{entity.faixaEtariaCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Sexo">
+							<h:outputText value="#{entity.sexoCat.nome}"/>
+						</p:column>
+
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{dietaFixaBean.previousPageTable}" 
+										rendered="#{dietaFixaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{dietaFixaBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{dietaFixaBean.nextPageTable}" 
+										rendered="#{dietaFixaBean.page != dietaFixaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{dietaFixaBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{dietaFixaBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+				<br/>
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{dietaFixaBean.showEntityDetail}">
+						<p:panelGrid columns="3">
+							<p:panelGrid columns="2">
+								<h:outputText value="Nome:"/>
+								<h:outputText value="#{dietaFixaBean.entity.nome}" />
+								
+								<h:outputText value="Descricao:"/>
+								<h:outputText value="#{dietaFixaBean.entity.descricao}" escape="false" />
+								
+								<h:outputText value="Objetivo:"/>
+								<h:outputText value="#{dietaFixaBean.entity.objetivoCat.nome}"/>
+								
+								<h:outputText value="Faixa Etaria:"/>
+								<h:outputText value="#{dietaFixaBean.entity.faixaEtariaCat.nome}"/>
+								
+								<h:outputText value="Sexo:"/>
+								<h:outputText value="#{dietaFixaBean.entity.sexoCat.nome}"/>
+								
+								<h:outputText value="Professor:"/>
+								<h:outputText value="#{dietaFixaBean.entity.professor.nome}"/>
+							</p:panelGrid>
+							<p:panelGrid columns="1">
+								<h:outputText value="Dieta:" />
+								<h:outputText value="#{dietaFixaBean.textoDieta}" escape="false"/>
+							</p:panelGrid>
+						</p:panelGrid>						
+					</p:fieldset>
+				</h:form>
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

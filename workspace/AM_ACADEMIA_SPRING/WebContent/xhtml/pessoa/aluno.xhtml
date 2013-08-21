@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- Aluno -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Alunos" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{alunoBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+							        <p:inputText id="idNome" value="#{alunoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+							        
+							        <h:outputLabel for="idEmail" value="Email:" />   
+							        <p:inputText id="idEmail" value="#{alunoBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
+							        
+							        <h:outputLabel for="idSenha" value="Senha:" />  
+							        <p:inputText id="idSenha" value="#{alunoBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio" />
+							        
+							        <h:outputLabel for="idNasc" value="Nascimento:"  />   
+							        <p:inputMask id="idNasc" value="#{alunoBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
+							        			requiredMessage="Data de Nascimento Obrigatoria" >
+							        	<f:convertDateTime pattern="dd/MM/yyyy" />
+							        </p:inputMask>  
+							        
+							        <h:outputLabel for="idCpf" value="CPF:" />   
+							        <p:inputMask id="idCpf" value="#{alunoBean.entity.cpf}" mask="999.999.999-99"   />  
+							        
+							        <h:outputLabel for="idRg" value="RG:" />   
+							        <p:inputText id="idRg" value="#{alunoBean.entity.rg}"  />
+							        
+							        <h:outputLabel for="idPeso" value="Peso" />   
+							        <p:inputText id="idPeso" value="#{alunoBean.entity.peso}"  />
+							        
+							        <h:outputLabel for="idAltura" value="Altura:" />   
+							        <p:inputText id="idAltura" value="#{alunoBean.entity.altura}"  />
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{alunoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{alunoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela" >  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{alunoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{alunoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{alunoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{alunoBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right"> 
+				        	Ordem:
+				        	<p:selectOneMenu value="#{alunoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{alunoBean.atualizar}"/>
+				        		<f:selectItems value="#{alunoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
+				        	Busca:<p:inputText value="#{alunoBean.search}" onkeydown="" />
+				        	<p:commandButton icon="ui-icon ui-icon-check" widgetVar="btnSearch" action="#{alunoBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{alunoBean.resetSearch}" ajax="true" update=":tabView1" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{alunoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+								resizableColumns="true" selection="#{alunoBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+							<p:column headerText="Nome"   >
+								<h:outputText value="#{entity.nome}"/>
+							</p:column>
+						
+							
+							<p:column headerText="Email"  >
+								<h:outputText value="#{entity.email}"/>
+							</p:column>
+							
+							<p:column headerText="Nascimento"   >
+								<h:outputText value="#{entity.dataNascimento.time}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+							</p:column>
+							
+							<p:column headerText="CPF"  >
+								<h:outputText value="#{entity.cpf}"/>
+							</p:column>
+							
+							<p:column headerText="RG"  >
+								<h:outputText value="#{entity.rg}"/>
+							</p:column>
+							
+							<p:column headerText="Peso" >
+								<h:outputText value="#{entity.peso}"/>
+							</p:column>
+							
+							<p:column headerText="Altura" >
+								<h:outputText value="#{entity.altura}"/>
+							</p:column>
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{alunoBean.previousPageTable}" 
+										rendered="#{alunoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{alunoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{alunoBean.nextPageTable}" 
+										rendered="#{alunoBean.page != alunoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{alunoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{alunoBean.totalPages}" />
+							</div>
+						</f:facet>
+						
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

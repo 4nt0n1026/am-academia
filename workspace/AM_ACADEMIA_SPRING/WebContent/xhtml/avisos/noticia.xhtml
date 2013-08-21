@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- Noticia -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Notícia" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{noticiaBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idTitulo" value="Titluo:" />  
+						        <p:inputText id="idTitulo" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" />
+						        
+						        		 
+						        <h:outputLabel for="idCat" value="Categoria: " />  
+							    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
+								</p:selectOneMenu>  
+						        		 
+						       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
+							    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" required="true" style="width:250px"
+							    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>  
+		
+					        </h:panelGrid>
+					        <br/>
+			        		<h:outputLabel for="editor" value="Descrição:"/>
+			        		<p:editor id="editor" value="#{noticiaBean.entity.descricao}" />  
+						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        <p:button icon="ui-icon ui-icon-close"   action="#{noticiaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right"> 
+				        	Ordem:
+				        	<p:selectOneMenu value="#{noticiaBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{noticiaBean.atualizar}"/>
+				        		<f:selectItems value="#{noticiaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />  
+			        		
+				        	Busca:<p:inputText value="#{noticiaBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{noticiaBean.resetSearch}" ajax="true" update=":tabView1" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{noticiaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							 resizableColumns="true" selection="#{noticiaBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Titulo" styleClass="center" width="20">
+							<h:outputText value="#{entity.titulo}"/>
+						</p:column>
+						
+						<p:column headerText="Descrição" width="60">
+							<h:outputText value="#{entity.descricao}"/>
+						</p:column>
+						
+						<p:column headerText="Categoria" styleClass="center" width="10" >
+							<h:outputText value="#{entity.categoria.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Professor/Funcionario" styleClass="center" width="10">
+							<h:outputText value="#{entity.professorFunc.nome}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{noticiaBean.previousPageTable}" 
+										rendered="#{noticiaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{noticiaBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{noticiaBean.nextPageTable}" 
+										rendered="#{noticiaBean.page != noticiaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{noticiaBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{noticiaBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

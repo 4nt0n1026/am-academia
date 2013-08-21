@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		
+	
+		<!-- ****************************************************************************************************** -->
+		<!-- Dialog de criacao de treino -->
+		<!-- ****************************************************************************************************** -->
+		<p:dialog id="dialogTreino" widgetVar="dlgTreino" height="600" width="800" draggable="false" header="Criação de treino" modal="true" closeOnEscape="true" closable="true">
+			<p:fieldset id="field2" >
+		       
+		       	<!-- Criacao Treino -->
+    			<ui:include src="/xhtml/treino/criacaoTreino.xhtml"/>
+				
+				<h:form>
+		        	<p:commandButton value="salvar"  action="#{criacaoTreinoBean.salvarTreinoFixo}" ajax="true" update="@all" /> 
+	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgTreino.close()" ajax="true" update="@all"   />
+				</h:form>	
+							        
+			</p:fieldset> 
+		</p:dialog>
+		<!-- ****************************************************************************************************** -->
+		<!-- TreinoFixo -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Treinos Fixos" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<!-- TABFORM 1 -->
+						<p:fieldset id="field1"  rendered="#{treinoFixoBean.showEntity}">
+							<h:panelGrid columns="6">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{treinoFixoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+
+						        <h:outputLabel for="idDesc" value="Descricao" />  
+						        <p:inputTextarea id="idDesc" value="#{treinoFixoBean.entity.descricao}" cols="50"/> 
+						        
+						        <h:outputLabel for="idProf" value="Professor: " />  
+							    <p:selectOneMenu id="idProf" value="#{treinoFixoBean.entity.professor.id}" rendered="true" style="width:250px"
+							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+								</p:selectOneMenu>   
+						        
+						    </h:panelGrid>
+						    <h:panelGrid columns="10">
+								<h:outputLabel for="idObjetivo" value="Objetivo: " />  
+							    <p:selectOneMenu id="idObjetivo" value="#{treinoFixoBean.entity.objetivoCat.id}" rendered="true" requiredMessage="Objetivo obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.objetivoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}"/>  
+								</p:selectOneMenu> 
+								
+								<h:outputLabel for="idFaixa" value="Faixa Etaria: " />  
+							    <p:selectOneMenu id="idFaixa" value="#{treinoFixoBean.entity.faixaEtariaCat.id}" rendered="true" requiredMessage="Faixa Etaria obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.faixaEtariaCatField}" var="faixa" itemLabel="#{faixa.nome}" itemValue="#{faixa.id}"/>  
+								</p:selectOneMenu> 
+								
+								<h:outputLabel for="idDias" value="Quantidade de dias na semana " />  
+							    <p:selectOneMenu id="idDias" value="#{treinoFixoBean.entity.diasTreinoCat.id}" rendered="true" requiredMessage="Quantidade de dias obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.diasTreinoCatField}" var="dias" itemLabel="#{dias.nome}" itemValue="#{dias.id}"/>  
+								</p:selectOneMenu> 
+
+								<h:outputLabel for="idDuracao" value="Duracao " />  
+							    <p:selectOneMenu id="idDuracao" value="#{treinoFixoBean.entity.duracaoTreinoCat.id}" rendered="true" requiredMessage="Duracao obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.duracaoTreinoCatField}" var="duracao" itemLabel="#{duracao.nome}" itemValue="#{duracao.id}"/>  
+								</p:selectOneMenu> 
+
+								<h:outputLabel for="idSexo" value="Sexo " />  
+							    <p:selectOneMenu id="idSexo" value="#{treinoFixoBean.entity.sexoCat.id}" rendered="true" requiredMessage="Sexo obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{treinoFixoBean.sexoCatField}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo.id}"/>  
+								</p:selectOneMenu> 
+					        </h:panelGrid>
+
+							<p:commandButton value="Adcionar Exercicios" action="#{criacaoTreinoBean.newTreinoFixo}" onclick="dlgTreino.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+					        	
+						</p:fieldset> 
+						
+						
+						
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{treinoFixoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{treinoFixoBean.deletarEntity}" ajax="true" update=":tabView1"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{treinoFixoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				       <p:toolbarGroup align="right"> 
+				       		Ordem:
+				        	<p:selectOneMenu value="#{treinoFixoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{treinoFixoBean.atualizar}"/>
+				        		<f:selectItems value="#{treinoFixoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+			        		  
+				        	Busca:<p:inputText value="#{treinoFixoBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{treinoFixoBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{treinoFixoBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{treinoFixoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{treinoFixoBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:ajax event="rowSelect" listener="#{treinoFixoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+						<p:ajax event="rowUnselect" listener="#{treinoFixoBean.hideFormDetail}" update=":tabView1:detailEntity"/>
+						
+						<p:column headerText="Data" >
+							<h:outputText value="#{entity.data.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Nome" >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+
+						<p:column headerText="Objetivo" >
+							<h:outputText value="#{entity.objetivoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Duração"  >
+							<h:outputText value="#{entity.duracaoTreinoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Dias na Semana"  >
+							<h:outputText value="#{entity.diasTreinoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Faixa Etaria" >
+							<h:outputText value="#{entity.faixaEtariaCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Sexo">
+							<h:outputText value="#{entity.sexoCat.nome}"/>
+						</p:column>
+
+						<p:column headerText="Professor"  >
+							<h:outputText value="#{entity.professor.nome}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{treinoFixoBean.previousPageTable}" 
+										rendered="#{treinoFixoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{treinoFixoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{treinoFixoBean.nextPageTable}" 
+										rendered="#{treinoFixoBean.page != treinoFixoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{treinoFixoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{treinoFixoBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+				<br/>
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{treinoFixoBean.showEntityDetail}">
+						<p:panelGrid columns="3">
+							<p:panelGrid columns="2">
+								<h:outputText value="Nome:"/>
+								<h:outputText value="#{treinoFixoBean.entity.nome}" />
+								
+								<h:outputText value="Descricao:"/>
+								<h:outputText value="#{treinoFixoBean.entity.descricao}" escape="false" />
+								
+								<h:outputText value="Objetivo:"/>
+								<h:outputText value="#{treinoFixoBean.entity.objetivoCat.nome}"/>
+								   
+								<h:outputText value="Duração"/>
+								<h:outputText value="#{treinoFixoBean.entity.duracaoTreinoCat.nome}"/>
+								
+								<h:outputText value="Dias na Semana:"/>
+								<h:outputText value="#{treinoFixoBean.entity.diasTreinoCat.nome}"/>
+								
+								<h:outputText value="Faixa Etaria:"/>
+								<h:outputText value="#{treinoFixoBean.entity.faixaEtariaCat.nome}"/>
+								
+								<h:outputText value="Sexo:"/>
+								<h:outputText value="#{treinoFixoBean.entity.sexoCat.nome}"/>
+								
+								<h:outputText value="Professor:"/>
+								<h:outputText value="#{treinoFixoBean.entity.professor.nome}"/>
+							</p:panelGrid>
+							<p:panelGrid columns="1">
+								<h:outputText value="Treino:" />
+								<h:outputText value="#{treinoFixoBean.textoTreino}" escape="false"/>
+							</p:panelGrid>
+						</p:panelGrid>						
+					</p:fieldset>
+				</h:form>
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

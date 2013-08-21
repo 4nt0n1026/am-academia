@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- ParteCorpo -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Partes do corpo" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{parteCorpoBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{parteCorpoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"  action="#{parteCorpoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+						<p:toolbar id="menuTabela">  
+	   						<p:toolbarGroup align="left">  
+					        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{parteCorpoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+					        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{parteCorpoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+					        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{parteCorpoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+					        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1:formEntity :tabView1:tabelaEntity"/>
+					        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+					        	<p:separator />  
+					        </p:toolbarGroup>
+					        
+					        <p:toolbarGroup align="right">  
+					        	Busca:<p:inputText value="#{parteCorpoBean.search}" />
+					        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1" />
+					        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{parteCorpoBean.resetSearch}" ajax="true" update=":tabView1" />
+					        </p:toolbarGroup>
+					        
+					    </p:toolbar>
+				   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{parteCorpoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" resizableColumns="true" 
+							 selection="#{parteCorpoBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Nome"  >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+					
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{parteCorpoBean.previousPageTable}" 
+										rendered="#{parteCorpoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{parteCorpoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{parteCorpoBean.nextPageTable}" 
+										rendered="#{parteCorpoBean.page != parteCorpoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{parteCorpoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{parteCorpoBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- Detail de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

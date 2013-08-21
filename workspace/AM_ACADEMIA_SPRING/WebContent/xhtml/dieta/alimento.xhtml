@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- Alimento -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Alimentos" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{alimentoBean.showEntity}">
+							<h:panelGrid columns="6">
+							
+						        <h:outputLabel for="idNome" value="Nome" />  
+						        <p:inputText id="idNome" value="#{alimentoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
+						        
+						        <h:outputLabel for="idDescricao" value="Descrição" />  
+						        <p:inputTextarea id="idDescricao" cols="50" rows="2" value="#{alimentoBean.entity.descricao}" />
+						        
+					        </h:panelGrid>
+							<h:panelGrid columns="6">
+							
+						        <h:outputLabel for="idValorEnergetico" value="Valor Energético" />  
+						        <p:inputText id="idValorEnergetico" value="#{alimentoBean.entity.valorEnergetico}" required="true" requiredMessage="Valor Energético obrigatorio" />
+						        
+						        <h:outputLabel for="idQtdProteina" value="Qtd. proteína" />  
+						        <p:inputText id="idQtdProteina" value="#{alimentoBean.entity.qtdProteina}" required="true" requiredMessage="Quantidade de proteína obrigatorio" />
+						        
+						        <h:outputLabel for="idQtdGordura" value="Qtd. Gordura" />  
+						        <p:inputText id="idQtdGordura" value="#{alimentoBean.entity.qtdGordura}" required="true" requiredMessage="Quantidade de gordura obrigatorio" />
+						        
+						        <h:outputLabel for="idQtdCarboidrato" value="Qtd Carboídrato" />  
+						        <p:inputText id="idQtdCarboidrato" value="#{alimentoBean.entity.qtdCarboidrato}" required="true" requiredMessage="Quantidade de carboídrato obrigatorio" />
+						        
+						        <h:outputLabel for="idUnidade" value="Unidade" />  
+						        <p:inputText id="idUnidade" value="#{alimentoBean.entity.unidade}" required="true" requiredMessage="Unidade obrigatorio" />
+						        
+						        <h:outputLabel for="idUnidadeMedida" value="Unidade de Medida " />  
+							    <p:selectOneMenu id="idUnidadeMedida" value="#{alimentoBean.entity.unidadeMedida.id}" 
+							    			requiredMessage="Unidade de medida Obrigatorio" >  
+							    	<f:selectItem itemLabel="---" itemValue="" />  
+							    	<f:selectItems value="#{alimentoBean.unidadeMedidaField}" var="uniMed" itemLabel="#{uniMed.sigla}" itemValue="#{uniMed.id}"/>  
+								</p:selectOneMenu>  
+
+					        </h:panelGrid>
+
+					        <p:commandButton icon="ui-icon ui-icon-check"  action="#{alimentoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+				        	<p:button icon="ui-icon ui-icon-close"   action="#{alimentoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+				        	  
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{alimentoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{alimentoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{alimentoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{alimentoBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right"> 
+				        	Ordem:
+				        	<p:selectOneMenu value="#{alimentoBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{alimentoBean.atualizar}"/>
+				        		<f:selectItems value="#{alimentoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />  
+			        		
+				        	Busca:<p:inputText value="#{alimentoBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{alimentoBean.atualizar}" ajax="true" update=":tabView1" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{alimentoBean.resetSearch}" ajax="true" update=":tabView1" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{alimentoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							resizableColumns="true"  selection="#{alimentoBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Nome" >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Descrição" >
+							<h:outputText value="#{entity.descricao}"/>
+						</p:column>
+						
+						<p:column headerText="Valor Energético" >
+							<h:outputText value="#{entity.valorEnergetico}"/>
+						</p:column>
+						
+						<p:column headerText="Quantidade de Proteína" >
+							<h:outputText value="#{entity.qtdProteina}"/>
+						</p:column>
+						
+						<p:column headerText="Quantidade de Gordura" >
+							<h:outputText value="#{entity.qtdGordura}"/>
+						</p:column>
+						
+						<p:column headerText="Quantidade de Carboidrato" >
+							<h:outputText value="#{entity.qtdCarboidrato}"/>
+						</p:column>
+						
+						<p:column headerText="Unidade" >
+							<h:outputText value="#{entity.unidade}"/>
+						</p:column>
+						
+						
+						<p:column headerText="Unidade de Medida" >
+							<h:outputText value="#{entity.unidadeMedida.sigla}"/>
+						</p:column>
+					
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{alimentoBean.previousPageTable}" 
+										rendered="#{alimentoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{alimentoBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{alimentoBean.nextPageTable}" 
+										rendered="#{alimentoBean.page != alimentoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{alimentoBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{alimentoBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>

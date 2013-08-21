@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="content">
+		<!-- ****************************************************************************************************** -->
+		<!-- Professor -->
+		<!-- ****************************************************************************************************** -->
+		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+     			<p:tab title="Professores" >  
+     				
+				    <!-- ****************************************************************************************************** -->
+					<!-- Insert de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="formEntity"  >
+						<p:fieldset id="field"  rendered="#{professorBean.showEntity}">
+							<h:panelGrid columns="10">
+							
+						        <h:outputLabel for="idNome" value="Nome>" />  
+									    <p:inputText id="idNome" value="#{professorBean.entity.nome}" required="true" requiredMessage="Nome Obrigatorio" />
+								        
+								        <h:outputLabel for="idEmail" value="Email:" />   
+								        <p:inputText id="idEmail" value="#{professorBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
+								        
+								        <h:outputLabel for="idSenha" value="Senha:" />  
+								        <p:inputText id="idSenha" value="#{professorBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio" />
+								        
+								        <h:outputLabel for="idNasc" value="Nascimento:"  />   
+								        <p:inputMask id="idNasc" value="#{professorBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
+								        			requiredMessage="Data de Nascimento Obrigatoria" >
+								        	<f:convertDateTime pattern="dd/MM/yyyy" />
+								        </p:inputMask>  
+								        
+								        <h:outputLabel for="idCpf" value="CPF:" />   
+								        <p:inputMask id="idCpf" value="#{professorBean.entity.cpf}" mask="999.999.999-99"   />  
+								        
+								        <h:outputLabel for="idRg" value="RG:" />   
+								        <p:inputText id="idRg" value="#{professorBean.entity.rg}"  />
+								        
+	
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{professorBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{professorBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+					        	
+					        </h:panelGrid>
+						</p:fieldset> 
+			        </h:form>
+      				
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+      				<h:form id="tabelaEntity">
+					<p:toolbar id="menuTabela">  
+   						<p:toolbarGroup align="left">  
+				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{professorBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{professorBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
+				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{professorBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
+				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{professorBean.atualizar}" ajax="true" update=":tabView1"/>
+				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
+				        	<p:separator />  
+				        </p:toolbarGroup>
+				        
+				        <p:toolbarGroup align="right"> 
+				        	Ordem:
+				        	<p:selectOneMenu value="#{professorBean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+                         			 process="@form" listener="#{professorBean.atualizar}"/>
+				        		<f:selectItems value="#{professorBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+				        	
+			        		<p:separator />
+				        
+			        		<p:separator />
+			        		  
+				        	Busca:<p:inputText value="#{professorBean.search}" />
+				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{professorBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
+				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{professorBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
+				        </p:toolbarGroup>
+				    </p:toolbar>
+			   	
+			    
+				   	<!-- ****************************************************************************************************** -->
+					<!-- Tabela de entity -->
+					<!-- ****************************************************************************************************** -->
+					<p:dataTable value="#{professorBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
+							 resizableColumns="true" selection="#{professorBean.entity}" selectionMode="single" rowKey="#{entity}">
+						
+						<p:column headerText="Nome"   >
+							<h:outputText value="#{entity.nome}"/>
+						</p:column>
+						
+						<p:column headerText="Email"  >
+							<h:outputText value="#{entity.email}"/>
+						</p:column>
+						
+						<p:column headerText="Nascimento"  >
+							<h:outputText value="#{entity.dataNascimento.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="CPF" >
+							<h:outputText value="#{entity.cpf}"/>
+						</p:column>
+						
+						<p:column headerText="RG" >
+							<h:outputText value="#{entity.rg}"/>
+						</p:column>
+						
+						<p:column headerText="Formacao" >
+							<h:outputText value="#{entity.formacao}"/>
+						</p:column>
+						
+						<f:facet name="footer">  
+							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{professorBean.previousPageTable}" 
+										rendered="#{professorBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+										
+							---<h:outputText value="#{professorBean.page}" />---
+							
+							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{professorBean.nextPageTable}" 
+										rendered="#{professorBean.page != professorBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+										
+							<div class="left">
+								<h:outputText value="Total de itens: #{professorBean.totalEntities} - " />
+								<h:outputText value="Total de paginas: #{professorBean.totalPages}" />
+							</div>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+			
+			
+			
+				<!-- ****************************************************************************************************** -->
+			</p:tab>
+		</p:tabView>	
+		<!-- ****************************************************************************************************** -->
+			
+	</ui:define>
+</ui:composition>
+</html>
