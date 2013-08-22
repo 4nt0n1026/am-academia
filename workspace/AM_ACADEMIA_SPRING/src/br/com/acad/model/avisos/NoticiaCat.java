@@ -24,10 +24,10 @@ public class NoticiaCat implements Serializable{
 	@Column(name="ID_NOTICIA_CAT")
 	private int id;
 	
-	@Column(length=255, nullable=false)
+	@Column(length=50, nullable=false)
 	private String nome;
 	
-	@Column(length=255, nullable=true)
+	@Column(length=50, nullable=true)
 	private String fotoLocalIcone;
 	
 	

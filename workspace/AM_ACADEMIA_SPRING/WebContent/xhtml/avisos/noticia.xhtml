@@ -24,7 +24,9 @@
 							<h:panelGrid columns="10">
 							
 						        <h:outputLabel for="idTitulo" value="Titluo:" />  
-						        <p:inputText id="idTitulo" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" />
+						        <p:inputText id="idTitulo" label="Título" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" >
+						        	<f:validateLength minimum="2" maximum="50" />
+						        </p:inputText>
 						        
 						        		 
 						        <h:outputLabel for="idCat" value="Categoria: " />  
@@ -41,9 +43,14 @@
 								</p:selectOneMenu>  
 		
 					        </h:panelGrid>
-					        <br/>
+					        
 			        		<h:outputLabel for="editor" value="Descrição:"/>
-			        		<p:editor id="editor" value="#{noticiaBean.entity.descricao}" />  
+					        <br/>
+			        		<p:inputTextarea cols="100" rows="8" label="Descrição" id="editor" value="#{noticiaBean.entity.descricao}" >
+			        			<f:validateLength minimum="5" maximum="1500" />
+			        		</p:inputTextarea>
+					        <br/>
+			        		  
 						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
 					        <p:button icon="ui-icon ui-icon-close"   action="#{noticiaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	

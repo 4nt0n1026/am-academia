@@ -31,7 +31,7 @@ public class Noticia implements Serializable {
 	@Column(name="ID_NOTICIA")
 	private int id;
 	
-	@Column(length=255, nullable=false)
+	@Column(length=50, nullable=false)
 	private String titulo;
 	
 	@Column(length=1500, nullable=false)
