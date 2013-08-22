@@ -61,7 +61,7 @@ public class Treino implements Serializable{
 	@Column(nullable=false)
 	private TipoTreinoDieta tipoTreino;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="TREINO_ID")
 	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 	

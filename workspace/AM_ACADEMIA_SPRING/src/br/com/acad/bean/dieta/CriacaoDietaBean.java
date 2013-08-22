@@ -44,11 +44,11 @@ public class CriacaoDietaBean implements Serializable {
 	private ItemRefeicaoDAO itemRefeicaoDAO;
 	
 	// Inject outros beans
-	@ManagedProperty(value="#{dietaFixaBean}") 
+	@Autowired
 	private DietaFixaBean dietaFixaBean; 
-	@ManagedProperty(value="#{dietaEspecificaBean}") 
-	private DietaEspecificaBean dietaEspecificaBean; 
-	@ManagedProperty(value="#{solicitacaoDietaBean}") 
+	@Autowired
+	private DietaEspecificaBean dietaEspecificaBean;
+	@Autowired
 	private SolicitacaoDietaBean solicitacaoDietaBean; 
 	
 	private Dieta dieta;

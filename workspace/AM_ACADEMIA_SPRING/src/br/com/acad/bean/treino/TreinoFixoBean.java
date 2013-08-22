@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -34,6 +35,7 @@ import br.com.acad.model.treino.TreinoFixo;
 @SuppressWarnings("serial")
 @Component
 @Scope(value="view")
+@ManagedBean(name="treinoFixoBean")
 public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 
 	/************************************************************************************************************/
