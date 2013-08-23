@@ -65,7 +65,7 @@
 							
 						        <p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.fotoExercicio}"  />
 								<p:fileUpload fileUploadListener="#{exercicioBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-											auto="false" mode="advanced" id="foto" update="fotoExercicio"  />
+											auto="true" mode="advanced" id="foto" update="fotoExercicio"  />
 											
 							  
 							        
@@ -109,7 +109,11 @@
 						<p:ajax event="rowSelect" listener="#{exercicioBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
 						<p:ajax event="rowUnselect" listener="#{exercicioBean.hideFormDetail}" update=":tabView1:detailEntity"/>  
 						
-						<p:column headerText="Nome" >
+						<p:column headerText="Foto" styleClass="center" width="5" >
+							<p:graphicImage styleClass="img-circle" height="30" id="fotoExercicio" value="#{entity.fotoLocalPath}"  />
+						</p:column>
+						
+						<p:column headerText="Nome" styleClass="center" width="95" >
 							<h:outputText value="#{entity.nome}"/>
 						</p:column>
 						

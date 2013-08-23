@@ -24,10 +24,13 @@
 							<h:panelGrid columns="10">
 
 						       	<h:outputLabel for="idHora" value="Hora " />  
-								<p:calendar pattern="HH:mm" value="#{horarioAulaBean.entity.hora.time}" timeOnly="true" locale="pt">
+								<p:calendar pattern="HH:mm" value="#{horarioAulaBean.entity.hora.time}" timeOnly="true" locale="pt" required="true" requiredMessage="Hora obrigatoria">
 									<f:convertDateTime pattern="HH:mm" type="time" />
 								</p:calendar>
 							
+						       	<h:outputLabel for="idDias" value="Dias na semana:" />  
+						       	<p:inputText id="idDias" value="#{horarioAulaBean.entity.diasSemana}" required="true" requiredMessage="Dias na semana obrigatorio" />
+						       	
 						       	<h:outputLabel for="idAula" value="Aula " />  
 							    <p:selectOneMenu id="idAula" value="#{horarioAulaBean.entity.aula.id}" required="true" style="width:250px"
 							    			requiredMessage="Aula Obrigatoria" filter="true" filterMatchMode="contains" >  

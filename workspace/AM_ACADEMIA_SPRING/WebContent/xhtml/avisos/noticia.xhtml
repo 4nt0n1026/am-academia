@@ -31,14 +31,12 @@
 						        		 
 						        <h:outputLabel for="idCat" value="Categoria: " />  
 							    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
 								</p:selectOneMenu>  
 						        		 
 						       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
 							    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" required="true" style="width:250px"
 							    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
 								</p:selectOneMenu>  
 		
@@ -46,7 +44,8 @@
 					        
 			        		<h:outputLabel for="editor" value="Descrição:"/>
 					        <br/>
-			        		<p:inputTextarea cols="100" rows="8" label="Descrição" id="editor" value="#{noticiaBean.entity.descricao}" >
+			        		<p:inputTextarea cols="100" rows="8" label="Descrição" id="editor" value="#{noticiaBean.entity.descricao}" required="true" 
+			        					requiredMessage="Descrição obrigatoria" >
 			        			<f:validateLength minimum="5" maximum="1500" />
 			        		</p:inputTextarea>
 					        <br/>

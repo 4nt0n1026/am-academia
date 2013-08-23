@@ -27,7 +27,7 @@
 						        <p:inputText id="idNome" value="#{aulaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
 						        <h:outputLabel for="idDesc" value="Descrição" />  
-						        <p:inputTextarea id="idDesc" value="#{aulaBean.entity.descricao}" required="false" cols="80"  />  
+						        <p:inputTextarea id="idDesc" value="#{aulaBean.entity.descricao}" required="true" requiredMessage="Descrição obrigatoria" cols="80"  />  
 						        
 	
 					        	
@@ -35,7 +35,7 @@
 
 								<p:graphicImage styleClass="img-circle" width="150" id="fotoAula" value="#{aulaBean.fotoAula}"  />
 								<p:fileUpload fileUploadListener="#{aulaBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-											auto="false" mode="advanced" id="foto" update="fotoAula"  />
+											auto="true" mode="advanced" id="foto" update="fotoAula"  />
 											
 											
 						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{aulaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
@@ -74,9 +74,13 @@
 						
 						<p:ajax event="rowSelect" listener="#{aulaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
 						<p:ajax event="rowUnselect" listener="#{aulaBean.hideFormDetail}" update=":tabView1:detailEntity"/>
+
+						<p:column headerText="Icone" width="5" styleClass="center" >
+							<p:graphicImage styleClass="img-circle" height="50" id="fotoAula" value="#{entity.fotoLocalPath}"  />
+						</p:column>
 						
-						<p:column headerText="Nome" >
-							<h:outputText value="#{entity.nome}"/>
+						<p:column headerText="Nome" width="95" styleClass="center">
+							<h:outputText value="#{entity.nome}"  />
 						</p:column>
 
 						<f:facet name="footer">  

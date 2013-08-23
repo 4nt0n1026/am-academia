@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.logic.PathLogic;
 
 
 
@@ -215,6 +216,12 @@ public class Exercicio implements Serializable {
 		this.parteCorpoSecundaria = parteCorpoSecundaria;
 	}
 	
+	public String getFotoLocalPath(){
+		if(fotoLocal!=null && fotoLocal.length()>1){
+			return "/" + PathLogic.PATH_EXERCICIOS + fotoLocal;
+		}
+		return "/" + PathLogic.PATH_EXERCICIOS + "semFoto.jpg";
+	}
 	
 
 	

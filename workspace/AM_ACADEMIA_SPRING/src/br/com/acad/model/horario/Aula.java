@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.logic.PathLogic;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_AULA")
@@ -73,6 +75,12 @@ public class Aula implements Serializable{
 		this.fotoLocal = fotoLocal;
 	}
 	
+	public String getFotoLocalPath(){
+		if(fotoLocal!=null && fotoLocal.length()>1){
+			return "/" + PathLogic.PATH_AULAS + fotoLocal;
+		}
+		return "/" + PathLogic.PATH_AULAS + "semFoto.jpg";
+	}
 	
 	
 }

@@ -72,7 +72,6 @@
 						        <h:outputLabel for="idAluno" value="Aluno: " />  
 							    <p:selectOneMenu id="idAluno" value="#{solicitacaoDietaBean.entity.aluno.id}" rendered="true" style="width:250px"
 							    			requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{solicitacaoDietaBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}"/>  
 								</p:selectOneMenu>  
 	

@@ -27,7 +27,7 @@
 						        <p:inputText id="idNome" value="#{unidadeBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 						        
 						        <h:outputLabel for="idDesc" value="Descrição" />  
-						        <p:inputTextarea id="idDesc" value="#{unidadeBean.entity.descricao}"  />  
+						        <p:inputTextarea id="idDesc" value="#{unidadeBean.entity.descricao}" required="true" requiredMessage="Descrição obrigatoria" />  
 	
 						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{unidadeBean.incluirEntity}" ajax="true" update=":tabView1" /> 
 					        	<p:button icon="ui-icon ui-icon-close"   action="#{unidadeBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  

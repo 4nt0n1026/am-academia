@@ -251,21 +251,18 @@ public abstract class Bean<T> {
 	 * @param id id da entity que sera excluida
 	 */
 	protected void deletarGeneric(Integer id){
-		try{
-			if(entity != null){
-				try{
-					dao.removeById(id);
-					atualizar();
-					MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
-				}catch(Exception e){
-					MessagesLogic.addErrorMessage("Erro", "O objeto não pode ser deletado pois está relacionado a outro objeto");
-					return;
-				}
-			}else{
-				MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
+		if(entity != null){
+			try{
+				dao.removeById(id);
+				atualizar();
+				showEntityDetail = false;
+				MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
+			}catch(Exception e){
+				MessagesLogic.addErrorMessage("Erro", "O objeto não pode ser deletado pois está relacionado a outro objeto");
+				return;
 			}
-		}catch(Exception e){
-			MessagesLogic.addErrorMessage("Erro", "Ocorreu um erro! Contate o administrador");
+		}else{
+			MessagesLogic.addWarnMessage("Erro", "Selecione um para deletar");
 		}
 	}
 	
