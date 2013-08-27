@@ -13,5 +13,6 @@ public interface ProfessorFuncDAO extends DAO<ProfessorFunc,Integer>{
 	public long contarTodosFunc(String search);
 	public List<ProfessorFunc> buscarTodosProf(int page, String txtSearch, String order);
 	public List<ProfessorFunc> buscarTodosFunc(int page, String txtSearch,String order);
+	public ProfessorFunc logar(String email, String senha);
 	
 }

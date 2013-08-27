@@ -23,9 +23,14 @@
 					<h1>Smart Fitness</h1>
 				</h:panelGrid>
 			</div>
+			
+			<div id="usuario">
+				<p>Usuario: #{loginBean.usuario.nome}</p>
+			</div>
+			
 			<h:form>
 				<p:menubar>
-					<p:menuitem icon="ui-icon ui-icon-home" value="Home" />
+					<p:menuitem outcome="/xhtml/home.xhtml" icon="ui-icon ui-icon-home" value="Home" />
 					
 					<p:submenu icon="ui-icon ui-icon-person" label="Pessoa">
 						<p:menuitem outcome="/xhtml/pessoa/aluno.xhtml" value="Alunos" icon="ui-icon ui-icon-radio-on"/>
@@ -70,8 +75,8 @@
 						</p:submenu>
 						<p:menuitem outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" icon="ui-icon ui-icon-radio-on"/>
 					</p:submenu>
-					 
-					<p:menuitem icon="ui-icon ui-icon-extlink" value="Logout" />
+					
+					<p:menuitem action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" value="Logout" />
 		            	
 	        	</p:menubar>  
 			</h:form>

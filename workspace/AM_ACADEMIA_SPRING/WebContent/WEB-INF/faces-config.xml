@@ -12,4 +12,18 @@
 		</el-resolver>
   	</application>
 
+
+	<lifecycle><phase-listener>br.com.acad.filter.LoginPhaseListener</phase-listener></lifecycle>
+	
+	<navigation-rule>
+	    <navigation-case>
+	    	<from-outcome>login</from-outcome>
+	        <to-view-id>/xhtml/login.xhtml</to-view-id>
+	    </navigation-case>
+	    
+	    <navigation-case>
+	    	<from-outcome>home</from-outcome>
+	        <to-view-id>/xhtml/home.xhtml</to-view-id>
+	    </navigation-case>
+    </navigation-rule>
 </faces-config>

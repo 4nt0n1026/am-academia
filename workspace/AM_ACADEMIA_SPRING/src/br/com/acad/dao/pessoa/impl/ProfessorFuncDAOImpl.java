@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -153,6 +154,23 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	public long contarTodosFiltro(Map<String, String> filtros) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ProfessorFunc logar(String email, String senha) {
+		// TODO - Remover (Para Teste)
+		if(email.equals("") && senha.equals("")){
+			return new ProfessorFunc(4328768, "Christian");
+		}
+		//--------------------------
+		try{
+			TypedQuery<ProfessorFunc> q = getEntityManager().createQuery("from ProfessorFunc p where p.email = :email and p.senha = :senha", ProfessorFunc.class);
+			q.setParameter("email", email);
+			q.setParameter("senha", senha);
+			return q.getSingleResult();
+	 	} catch(NoResultException e) {
+	        return null;
+	    }
 	}
 
 }
