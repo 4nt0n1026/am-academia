@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
@@ -166,7 +167,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		try{
 			TypedQuery<ProfessorFunc> q = getEntityManager().createQuery("from ProfessorFunc p where p.email = :email and p.senha = :senha", ProfessorFunc.class);
 			q.setParameter("email", email);
-			q.setParameter("senha", senha);
+			q.setParameter("senha", CriptografiaLogic.encriptar(senha));
 			return q.getSingleResult();
 	 	} catch(NoResultException e) {
 	        return null;

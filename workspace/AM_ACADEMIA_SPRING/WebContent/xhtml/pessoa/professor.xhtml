@@ -29,8 +29,9 @@
 								        <h:outputLabel for="idEmail" value="Email:" />   
 								        <p:inputText id="idEmail" value="#{professorBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
 								        
-								        <h:outputLabel for="idSenha" value="Senha:" />  
-								        <p:inputText id="idSenha" value="#{professorBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio" />
+								        <h:outputLabel for="idSenha" value="Senha:" rendered="#{alunoBean.entity.id == 0}" />  
+								        <p:inputText id="idSenha" value="#{professorBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio"  
+								        			rendered="#{alunoBean.entity.id == 0}"/>
 								        
 								        <h:outputLabel for="idNasc" value="Nascimento:"  />   
 								        <p:inputMask id="idNasc" value="#{professorBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"

@@ -51,7 +51,7 @@ public class LoginBean implements Serializable{
 		}else{
 			// Login e senha incorretos
 			MessagesLogic.addWarnMessage("Erro", "Email ou senha incorretos");
-			return "login";
+			return null;
 		}
 	}
 	

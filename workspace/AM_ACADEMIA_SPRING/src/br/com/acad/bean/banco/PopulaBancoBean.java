@@ -23,6 +23,7 @@ import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.ExercicioDAO;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.logic.NumberLogic;
 import br.com.acad.model.avisos.Noticia;
 import br.com.acad.model.avisos.NoticiaCat;
@@ -80,23 +81,41 @@ public class PopulaBancoBean implements Serializable {
 	private AlimentoDAO alimentoDAO;
 	
 	public void popula(){
+		System.out.println("populando - ParteCorpo");
 		populaParteCorpo();
+		System.out.println("populando - NoticiaCat");
 		populaNoticiaCat();
+		System.out.println("populando - Professor");
 		populaProfessor();
+		System.out.println("populando - Funcionario");
 		populaFuncionario();
+		System.out.println("populando - DuracaoTreinoCat");
 		populaDuracaoTreinoCat();
+		System.out.println("populando - DiasTreinoCat");
 		populaDiasTreinoCat();
+		System.out.println("populando - ObjetivoCat");
 		populaObjetivoCat();
+		System.out.println("populando - SexoCat");
 		populaSexoCat();
+		System.out.println("populando - FaixaEtariaCat");
 		populaFaixaEtariaCat();
+		System.out.println("populando - Aluno");
 		populaAluno();
+		System.out.println("populando - Exercicio");
 		populaExercicio();
+		System.out.println("populando - Unidade");
 		populaUnidade();
+		System.out.println("populando - Aula");
 		populaAula();
+		System.out.println("populando - HorarioAula");
 		populaHorarioAula();
+		System.out.println("populando - Noticia");
 		populaNoticia();
+		System.out.println("populando - UnidadeMedida");
 		populaUnidadeMedida();
+		System.out.println("populando - Alimento");
 		populaAlimento();
+		System.out.println("populando - FIM");
 	}
 	
 	/**
@@ -490,7 +509,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -503,7 +522,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -516,7 +535,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -529,7 +548,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -542,7 +561,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -555,7 +574,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -568,7 +587,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -581,7 +600,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 		
@@ -594,7 +613,7 @@ public class PopulaBancoBean implements Serializable {
 		f.setEmail(f.getNome() + "@gmail.com");
 		f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		f.setIsProfessor(false);
-		f.setSenha("123");
+		f.setSenha(CriptografiaLogic.encriptar("123"));
 		f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(f);
 	}
@@ -614,7 +633,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 		
@@ -627,7 +646,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 		
@@ -640,7 +659,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 		
@@ -653,7 +672,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 		
@@ -666,7 +685,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 		
@@ -679,7 +698,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 		
@@ -692,7 +711,7 @@ public class PopulaBancoBean implements Serializable {
 		p.setEmail(p.getNome() + "@gmail.com");
 		p.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		p.setIsProfessor(true);
-		p.setSenha("123");
+		p.setSenha(CriptografiaLogic.encriptar("123"));
 		p.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 		professorFuncDAO.insert(p);
 	}
@@ -727,7 +746,7 @@ public class PopulaBancoBean implements Serializable {
 			a.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 			a.setAltura(NumberLogic.randomDouble(1.60d, 1.99d));
 			a.setPeso(NumberLogic.randomInteger(60, 100));
-			a.setSenha("123");
+			a.setSenha(CriptografiaLogic.encriptar("123"));
 			a.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
 			a.setDataNascimento(nasc);
 			a.setNumSolicitacao(0);

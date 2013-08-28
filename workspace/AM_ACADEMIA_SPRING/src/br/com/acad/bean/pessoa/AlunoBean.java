@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
+import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.model.pessoa.Aluno;
 
 
@@ -57,6 +58,12 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	 */
 	@Override
 	public void incluirEntity() {
+		// Encriptografa senha caso seja uma nova entidade
+		if(entity.getId()==0){
+			String senha = CriptografiaLogic.encriptar(entity.getSenha());
+			entity.setSenha(senha);
+		}
+		// Inclui no banco
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 
