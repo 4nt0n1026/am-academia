@@ -30,10 +30,18 @@ public class LoginBean implements Serializable{
 	
 	private Pessoa usuario;
 	
+	private boolean showAlteraSenha = false;
+	
+	private boolean logado;
+	
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
 	
+	/**
+	 * Loga o usuario no sistema
+	 * @return
+	 */
 	public String logar(){
 		usuario = professorFuncDAO.logar(email, senha);
 		if(usuario!=null){
@@ -44,6 +52,7 @@ public class LoginBean implements Serializable{
 			 // Mensagem de sucesso
 			 MessagesLogic.addInfoMessage("Sucesso", "Logado com sucesso");
 			 
+			 logado = true;
 			 email = new String();
 			 senha = new String();
 			 
@@ -55,15 +64,36 @@ public class LoginBean implements Serializable{
 		}
 	}
 	
-	
+	/**
+	 * Tira sessao do usuario
+	 * @return
+	 */
 	public String logout(){
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
 		
+		logado = false;
 		usuario = null;
 		
 		return "login";
+	}
+	
+	/**
+	 * Mostra formulario de alteração de senha
+	 */
+	public void showFormAlteraSenha(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		usuario = (Pessoa) session.getAttribute("usuario");
+		
+		showAlteraSenha = true;
+	}
+	
+	/**
+	 * Altera senha do usuario logado
+	 */
+	public void alterarSenha(){
+		// TODO - metodo para alterar senha
 	}
 	
 	/************************************************************************************************************/
@@ -78,24 +108,28 @@ public class LoginBean implements Serializable{
 		this.usuario = usuario;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getSenha() {
 		return senha;
 	}
 
-
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public boolean getShowAlteraSenha() {
+		return showAlteraSenha;
+	}
+
+	public boolean getLogado() {
+		return logado;
 	}
 	
 	
