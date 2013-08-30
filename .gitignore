@@ -29,12 +29,6 @@ RemoteSystemsTempFiles/
 /androidWorkspace/WebAppAcademia/bin/WebAppAcademia.apk
 *class
 workspace/AM_ACADEMIA_SPRING/build/
-/workspace/AM_ACADEMIA_SPRING/.settings/.jsdtscope
-/workspace/AM_ACADEMIA_SPRING/.settings/org.eclipse.jdt.core.prefs
-/workspace/AM_ACADEMIA_SPRING/.settings/org.eclipse.wst.common.component
-/workspace/AM_ACADEMIA_SPRING/.settings/org.eclipse.wst.common.project.facet.core.xml
-/workspace/AM_ACADEMIA_SPRING/.settings/org.eclipse.wst.jsdt.ui.superType.container
-/workspace/AM_ACADEMIA_SPRING/.settings/org.eclipse.wst.jsdt.ui.superType.name
 /workspace/Servers/.project
 /workspace/Servers/.settings/org.eclipse.wst.server.core.prefs
 /workspace/Servers/VMware vFabric tc Server Developer Edition v2.9-config/catalina.policy
