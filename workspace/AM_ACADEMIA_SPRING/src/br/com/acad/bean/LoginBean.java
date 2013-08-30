@@ -10,8 +10,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.pessoa.Pessoa;
+import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
 @Component
@@ -28,7 +30,11 @@ public class LoginBean implements Serializable{
 	private String email;
 	private String senha;
 	
-	private Pessoa usuario;
+	private String senhaAtual;
+	private String senhaNova;
+	private String senhaNovaConfirmacao;
+	
+	private ProfessorFunc usuario;
 	
 	private boolean showAlteraSenha = false;
 	
@@ -84,7 +90,7 @@ public class LoginBean implements Serializable{
 	 */
 	public void showFormAlteraSenha(){
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		usuario = (Pessoa) session.getAttribute("usuario");
+		usuario =  (ProfessorFunc) session.getAttribute("usuario");
 		
 		showAlteraSenha = true;
 	}
@@ -93,7 +99,18 @@ public class LoginBean implements Serializable{
 	 * Altera senha do usuario logado
 	 */
 	public void alterarSenha(){
-		// TODO - metodo para alterar senha
+		if(!usuario.getSenha().equals(CriptografiaLogic.encriptar(senhaAtual))){
+			MessagesLogic.addWarnMessage("Erro", "A senha atual está incorreta");
+			return;
+		}
+		
+		if(!senhaNova.equals(senhaNovaConfirmacao)){
+			MessagesLogic.addWarnMessage("Erro", "A confirmação da senha nova está incorreta");
+			return;
+		}
+		
+		usuario.setSenha(CriptografiaLogic.encriptar(senhaNova));
+		professorFuncDAO.update(usuario);
 	}
 	
 	/************************************************************************************************************/
@@ -104,7 +121,7 @@ public class LoginBean implements Serializable{
 		return usuario;
 	}
 
-	public void setUsuario(Pessoa usuario) {
+	public void setUsuario(ProfessorFunc usuario) {
 		this.usuario = usuario;
 	}
 
@@ -130,6 +147,30 @@ public class LoginBean implements Serializable{
 
 	public boolean getLogado() {
 		return logado;
+	}
+
+	public String getSenhaAtual() {
+		return senhaAtual;
+	}
+
+	public void setSenhaAtual(String senhaAtual) {
+		this.senhaAtual = senhaAtual;
+	}
+
+	public String getSenhaNova() {
+		return senhaNova;
+	}
+
+	public void setSenhaNova(String senhaNova) {
+		this.senhaNova = senhaNova;
+	}
+
+	public String getSenhaNovaConfirmacao() {
+		return senhaNovaConfirmacao;
+	}
+
+	public void setSenhaNovaConfirmacao(String senhaNovaConfirmacao) {
+		this.senhaNovaConfirmacao = senhaNovaConfirmacao;
 	}
 	
 	

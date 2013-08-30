@@ -20,7 +20,7 @@
 						<p:inputText value="#{loginBean.email}" id="email" required="true" requiredMessage="Email obrigatorio" />		
 						
 						<h:outputLabel value="Senha:" for="senha" />
-						<p:inputText value="#{loginBean.senha}" id="senha" required="true" requiredMessage="Senha obrigatoria" />
+						<p:password value="#{loginBean.senha}" id="senha" required="true" requiredMessage="Senha obrigatoria" />
 						
 						<p:commandButton value="Logar" action="#{loginBean.logar}" />			
 					</h:panelGrid>

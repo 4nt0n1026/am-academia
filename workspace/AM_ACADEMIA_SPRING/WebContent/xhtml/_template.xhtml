@@ -15,7 +15,12 @@
 
 <h:body>
 	<p:growl id="growl" autoUpdate="true"  showDetail="true"/>
-	
+		
+		<div id="divSenha">
+			<!-- Dialog de mudança de senha -->
+    		<ui:include src="/xhtml/mudarSenhaDialog.xhtml"/>
+		</div>
+		
 		<div id="menuPrincipal">
 			<div id="titulo">
 				<h:panelGrid columns="2">
@@ -25,11 +30,12 @@
 			</div>
 			
 			<div id="usuario">
-				<p>Usuario: #{loginBean.usuario.nome}</p>
+				<h:outputText value="Usuario: #{loginBean.usuario.nome}" rendered="#{loginBean.logado}" />
+				<p:commandButton action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" title="logout" />
 			</div>
 			
 			<h:form>
-				<p:menubar>
+				<p:menubar rendered="#{loginBean.logado}">
 					<p:menuitem outcome="/xhtml/home.xhtml" icon="ui-icon ui-icon-home" value="Home" />
 					
 					<p:submenu icon="ui-icon ui-icon-person" label="Pessoa">
@@ -73,12 +79,15 @@
 							<p:menuitem outcome="/xhtml/cat/faixaEtariaCat.xhtml" value="Cat. faixa etaria" icon="ui-icon ui-icon-radio-on"/>
 							<p:menuitem value="Limitações de dieta" icon="ui-icon ui-icon-radio-on"/>
 						</p:submenu>
-						<p:menuitem outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" icon="ui-icon ui-icon-radio-on"/>
+						
+						<p:menuitem value="Mudar senha" icon="ui-icon ui-icon-radio-on" onclick="dlgSenha.show();" ajax="true" update=":formSenha" 
+									immediate="true" rendered="#{loginBean.logado}" />
 					</p:submenu>
 					
-					<p:menuitem action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" value="Logout" />
-		            	
 	        	</p:menubar>  
+	        	
+	        	<!-- popula banco -->
+	        	<p:commandButton outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" icon="ui-icon ui-icon-radio-on" rendered="#{!loginBean.logado}"/>
 			</h:form>
 		</div>
 
