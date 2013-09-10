@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MNavigationBeanBean implements Serializable{
 
 	/************************************************************************************************************/

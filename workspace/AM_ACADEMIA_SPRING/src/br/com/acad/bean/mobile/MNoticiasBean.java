@@ -15,7 +15,7 @@ import br.com.acad.model.avisos.NoticiaCat;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MNoticiasBean implements Serializable{
 	
 	/************************************************************************************************************/

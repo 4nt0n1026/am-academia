@@ -17,7 +17,7 @@ import br.com.acad.model.treino.Treino;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MMeusTreinosBean implements Serializable{
 
 	/************************************************************************************************************/

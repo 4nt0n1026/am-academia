@@ -15,7 +15,7 @@ import br.com.acad.model.treino.ParteCorpo;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MExerciciosBean implements Serializable{
 
 	/************************************************************************************************************/

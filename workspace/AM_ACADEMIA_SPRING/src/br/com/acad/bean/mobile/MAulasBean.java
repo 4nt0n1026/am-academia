@@ -15,7 +15,7 @@ import br.com.acad.model.horario.Aula;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MAulasBean implements Serializable{
 	
 	/************************************************************************************************************/

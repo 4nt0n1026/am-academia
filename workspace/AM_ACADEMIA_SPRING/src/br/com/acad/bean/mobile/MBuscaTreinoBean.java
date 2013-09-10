@@ -30,7 +30,7 @@ import br.com.acad.model.treino.TreinoFixo;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MBuscaTreinoBean implements Serializable{
 	
 	/************************************************************************************************************/

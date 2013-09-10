@@ -18,7 +18,7 @@ import br.com.acad.model.treino.SolicitacaoTreino;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@Scope(value="session")
 public class MSolicitacaoTreinoBean implements Serializable{
 
 	/************************************************************************************************************/

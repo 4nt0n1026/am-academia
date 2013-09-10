@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
+@ManagedBean
+@Scope(value="session")
 public class MLoginBean implements Serializable{
 
 	/************************************************************************************************************/
@@ -71,8 +73,8 @@ public class MLoginBean implements Serializable{
 	}
 	/************************************************************************************************************/
 	// METODOS INTERNOS
-	/**
-	 * @param sessionMap **********************************************************************************************************/
+	/************************************************************************************************************/
+
 	private void zerarSession(Map<String, Object> sessionMap){
 		sessionMap.put("logado", false);
 		sessionMap.put("aluno", null);
