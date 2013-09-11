@@ -5,7 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
 
    	<ui:composition>
@@ -21,11 +23,20 @@
 	        	<p:separator />  
 	        	
 	        	<!-- Funcoes extras (opcional) -->
-	        	<p:menuButton value="Funções" rendered="#{not empty function1Name}"> 
-	        		<p:menuitem  value="#{function1Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function1Action]}" ajax="true" update="#{function1Update}" rendered="#{not empty function1Name}" />
-	        		<p:menuitem  value="#{function2Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function2]}" ajax="true" update="#{function2Update}" rendered="#{not empty function2Name}" />
-	        		<p:menuitem  value="#{function3Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function3]}" ajax="true" update="#{function3Update}" rendered="#{not empty function3Name}"/>
-	        		<p:menuitem  value="#{function4Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function4]}" ajax="true" update="#{function4Update}" rendered="#{not empty function4Name}"/>
+	        	<p:menuButton value="Funções" rendered="#{not empty functions}">
+	        	 
+	        		<!-- Separacao de cada coluna passada por paramentro (separadas por '|' -->
+					<c:forEach var="function" items="${fn:split(functions, '|')}">
+					
+						<!-- Separacao de cada propriedade de cada coluna (separadas por ',') -->
+						<c:set var="properties" value="${fn:split(function, ',')}"/>
+						
+						<!-- funcao -->
+	        			<p:menuitem  value="#{properties[0]}" icon="ui-icon ui-icon-clipboard" action="#{bean[properties[1]]}" ajax="true" update="#{properties[2]}"  />
+	        			
+	        		</c:forEach>
+	        		
+	        		
 	        	</p:menuButton>
 	        	
 	        </p:toolbarGroup>

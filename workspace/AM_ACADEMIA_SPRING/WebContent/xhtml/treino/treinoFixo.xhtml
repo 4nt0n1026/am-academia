@@ -51,7 +51,6 @@
 						        <h:outputLabel for="idProf" value="Professor: " />  
 							    <p:selectOneMenu id="idProf" value="#{treinoFixoBean.entity.professor.id}" rendered="true" style="width:250px"
 							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{treinoFixoBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
 								</p:selectOneMenu>   
 						        
@@ -59,31 +58,26 @@
 						    <h:panelGrid columns="10">
 								<h:outputLabel for="idObjetivo" value="Objetivo: " />  
 							    <p:selectOneMenu id="idObjetivo" value="#{treinoFixoBean.entity.objetivoCat.id}" rendered="true" requiredMessage="Objetivo obrigatorio" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{treinoFixoBean.objetivoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}"/>  
 								</p:selectOneMenu> 
 								
 								<h:outputLabel for="idFaixa" value="Faixa Etaria: " />  
 							    <p:selectOneMenu id="idFaixa" value="#{treinoFixoBean.entity.faixaEtariaCat.id}" rendered="true" requiredMessage="Faixa Etaria obrigatorio" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{treinoFixoBean.faixaEtariaCatField}" var="faixa" itemLabel="#{faixa.nome}" itemValue="#{faixa.id}"/>  
 								</p:selectOneMenu> 
 								
 								<h:outputLabel for="idDias" value="Quantidade de dias na semana " />  
 							    <p:selectOneMenu id="idDias" value="#{treinoFixoBean.entity.diasTreinoCat.id}" rendered="true" requiredMessage="Quantidade de dias obrigatorio" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{treinoFixoBean.diasTreinoCatField}" var="dias" itemLabel="#{dias.nome}" itemValue="#{dias.id}"/>  
 								</p:selectOneMenu> 
 
 								<h:outputLabel for="idDuracao" value="Duracao " />  
 							    <p:selectOneMenu id="idDuracao" value="#{treinoFixoBean.entity.duracaoTreinoCat.id}" rendered="true" requiredMessage="Duracao obrigatorio" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{treinoFixoBean.duracaoTreinoCatField}" var="duracao" itemLabel="#{duracao.nome}" itemValue="#{duracao.id}"/>  
 								</p:selectOneMenu> 
 
 								<h:outputLabel for="idSexo" value="Sexo " />  
 							    <p:selectOneMenu id="idSexo" value="#{treinoFixoBean.entity.sexoCat.id}" rendered="true" requiredMessage="Sexo obrigatorio" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
 							    	<f:selectItems value="#{treinoFixoBean.sexoCatField}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo.id}"/>  
 								</p:selectOneMenu> 
 					        </h:panelGrid>
@@ -112,7 +106,7 @@
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content.xhtml">
-						<ui:param name="bean" value="#{treinoFixaBean}"></ui:param>
+						<ui:param name="bean" value="#{treinoFixoBean}"></ui:param>
 						<ui:param name="columns" value="Data, #{entity.data.time}, date|
 														Nome, #{entity.nome}, text|
 														Objetivo, #{entity.objetivoCat.nome}, text|

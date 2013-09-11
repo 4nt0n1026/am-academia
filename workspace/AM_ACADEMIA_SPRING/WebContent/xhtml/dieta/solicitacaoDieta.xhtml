@@ -91,9 +91,7 @@
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{solicitacaoDietaBean}"></ui:param>
 						
-						<ui:param name="function1Name" value="Responder Solicitação"></ui:param>
-						<ui:param name="function1Action" value="responder"></ui:param>
-						<ui:param name="function1Update" value=":tabView1:formDieta"/> 
+						<ui:param name="functions" value="Responder Solicitação,responder,:tabView1:formDieta"></ui:param>
 						
 					</ui:include>
 			   	
@@ -109,30 +107,30 @@
 					</ui:include>
 					</h:form>
 			
-					<!-- ****************************************************************************************************** -->
-					<!-- info de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="detailEntity">	
-						<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoDietaBean.showEntityDetail}">
-							<p:panelGrid columns="2">
-								<h:outputText value="Nome do aluno:"/>
-								<h:outputText value="#{solicitacaoDietaBean.entity.aluno.nome}" />
-								
-								<h:outputText value="Peso do aluno:"/>
-								<h:outputText value="#{solicitacaoDietaBean.entity.aluno.peso}" />
-								
-								<h:outputText value="Altura do aluno:"/>
-								<h:outputText value="#{solicitacaoDietaBean.entity.aluno.altura}" />
-								
-								<h:outputText value="Idade do aluno:"/>
-								<h:outputText value="#{solicitacaoDietaBean.idadeAlunoDetail}" />
-								
-								<h:outputText value="Descricao:"/>
-								<h:outputText value="#{solicitacaoDietaBean.entity.descricao}" />
-							</p:panelGrid>
-						</p:fieldset>
-					</h:form>
-				
+					
+				<!-- ****************************************************************************************************** -->
+				<!-- info de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="detailEntity">	
+					<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoDietaBean.showEntityDetail}">
+						<p:panelGrid columns="2">
+							<h:outputText value="Nome do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.nome}" />
+							
+							<h:outputText value="Peso do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.peso}" />
+							
+							<h:outputText value="Altura do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.altura}" />
+							
+							<h:outputText value="Idade do aluno:"/>
+							<h:outputText value="#{solicitacaoDietaBean.idadeAlunoDetail}" />
+							
+							<h:outputText value="Descricao:"/>
+							<h:outputText value="#{solicitacaoDietaBean.entity.descricao}" />
+						</p:panelGrid>
+					</p:fieldset>
+				</h:form>
 			
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
