@@ -67,87 +67,26 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{alimentoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{alimentoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{alimentoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{alimentoBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-				        	Ordem:
-				        	<p:selectOneMenu value="#{alimentoBean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-                         			 process="@form" listener="#{alimentoBean.atualizar}"/>
-				        		<f:selectItems value="#{alimentoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
-				        	
-			        		<p:separator />  
-			        		
-				        	Busca:<p:inputText value="#{alimentoBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{alimentoBean.atualizar}" ajax="true" update=":tabView1" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{alimentoBean.resetSearch}" ajax="true" update=":tabView1" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
-			   	
+			   		
+			   		<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{alimentoBean}"></ui:param>
+					</ui:include>
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{alimentoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{alimentoBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome" >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Descrição" >
-							<h:outputText value="#{entity.descricao}"/>
-						</p:column>
-						
-						<p:column headerText="Valor Energético" >
-							<h:outputText value="#{entity.valorEnergetico}"/>
-						</p:column>
-						
-						<p:column headerText="Quantidade de Proteína" >
-							<h:outputText value="#{entity.qtdProteina}"/>
-						</p:column>
-						
-						<p:column headerText="Quantidade de Gordura" >
-							<h:outputText value="#{entity.qtdGordura}"/>
-						</p:column>
-						
-						<p:column headerText="Quantidade de Carboidrato" >
-							<h:outputText value="#{entity.qtdCarboidrato}"/>
-						</p:column>
-						
-						<p:column headerText="Unidade" >
-							<h:outputText value="#{entity.unidade}"/>
-						</p:column>
-						
-						
-						<p:column headerText="Unidade de Medida" >
-							<h:outputText value="#{entity.unidadeMedida.sigla}"/>
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{alimentoBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}| 
+														Descrição, #{entity.descricao}|
+														Valor Enegético, #{entity.valorEnergetico}|
+														Qtd Proteína, #{entity.qtdProteina}|
+														Qtd Carboidrato, #{entity.qtdCarboidrato}|
+														Qtd Gordura, #{entity.qtdGordura}|
+														Unidade, #{entity.unidade}|
+														Unidade Medida, #{entity.unidadeMedida.sigla}"></ui:param>
+					</ui:include>
 					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{alimentoBean.previousPageTable}" 
-										rendered="#{alimentoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{alimentoBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{alimentoBean.nextPageTable}" 
-										rendered="#{alimentoBean.page != alimentoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{alimentoBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{alimentoBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

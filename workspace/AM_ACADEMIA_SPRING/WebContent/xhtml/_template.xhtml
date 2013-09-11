@@ -32,7 +32,7 @@
 			
 			<div id="usuario">
 				<h:outputText value="Usuario: #{loginBean.usuario.nome}" rendered="#{loginBean.logado}" />
-				<p:commandButton action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" title="logout" />
+				<p:commandButton action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" title="logout" rendered="#{loginBean.logado}" immediate="true" />
 			</div>
 			
 			<h:form>

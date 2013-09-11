@@ -58,33 +58,10 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{professorBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{professorBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{professorBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{professorBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-				        	Ordem:
-				        	<p:selectOneMenu value="#{professorBean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-                         			 process="@form" listener="#{professorBean.atualizar}"/>
-				        		<f:selectItems value="#{professorBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
-				        	
-			        		<p:separator />
-				        
-			        		<p:separator />
-			        		  
-				        	Busca:<p:inputText value="#{professorBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{professorBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{professorBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
+
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{funcionarioBean}"></ui:param>
+					</ui:include>
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->

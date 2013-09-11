@@ -61,70 +61,21 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{noticiaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{noticiaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{noticiaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-				        	Ordem:
-				        	<p:selectOneMenu value="#{noticiaBean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-                         			 process="@form" listener="#{noticiaBean.atualizar}"/>
-				        		<f:selectItems value="#{noticiaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
-				        	
-			        		<p:separator />  
-			        		
-				        	Busca:<p:inputText value="#{noticiaBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.atualizar}" ajax="true" update=":tabView1" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{noticiaBean.resetSearch}" ajax="true" update=":tabView1" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
-			   	
+			   		
+			   		<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
+						<ui:param name="order" value="true"></ui:param>
+					</ui:include>
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{noticiaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							 resizableColumns="true" selection="#{noticiaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Titulo" styleClass="center" width="20">
-							<h:outputText value="#{entity.titulo}"/>
-						</p:column>
-						
-						<p:column headerText="Descrição" width="60">
-							<h:outputText value="#{entity.descricao}"/>
-						</p:column>
-						
-						<p:column headerText="Categoria" styleClass="center" width="10" >
-							<h:outputText value="#{entity.categoria.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Professor/Funcionario" styleClass="center" width="10">
-							<h:outputText value="#{entity.professorFunc.nome}"/>
-						</p:column>
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{noticiaBean.previousPageTable}" 
-										rendered="#{noticiaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{noticiaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{noticiaBean.nextPageTable}" 
-										rendered="#{noticiaBean.page != noticiaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{noticiaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{noticiaBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
+						<ui:param name="columns" value="Título,#{entity.titulo},width: 40%|
+														Categoria,#{entity.categoria.nome},width: 30%|
+														Professor/Funcionario,#{entity.professorFunc.nome,width: 30%}"></ui:param>
+					</ui:include>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

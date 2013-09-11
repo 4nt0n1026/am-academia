@@ -16,8 +16,6 @@ public class NoticiaCat implements Serializable{
 
 	public static final String[] STATIC_FIELDS = {"nome"};
 
-	// static field para busca no banco
-	public static String[] BUSCA = {"nome"};
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

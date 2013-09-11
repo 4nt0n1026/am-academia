@@ -50,50 +50,19 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{objetivoCatBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{objetivoCatBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{objetivoCatBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{objetivoCatBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
-				        	Busca:<p:inputText value="#{objetivoCatBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{objetivoCatBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{objetivoCatBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
-			   	
+					
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{objetivoCatBean}"></ui:param>
+					</ui:include>
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{objetivoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{objetivoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome" >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{objetivoCatBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}"></ui:param>
+					</ui:include>
 					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{objetivoCatBean.previousPageTable}" 
-										rendered="#{objetivoCatBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{objetivoCatBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{objetivoCatBean.nextPageTable}" 
-										rendered="#{objetivoCatBean.page != objetivoCatBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{objetivoCatBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{objetivoCatBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

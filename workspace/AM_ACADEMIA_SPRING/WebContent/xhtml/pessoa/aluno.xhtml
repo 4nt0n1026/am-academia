@@ -63,86 +63,26 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela" >  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{alunoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{alunoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{alunoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{alunoBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-				        	Ordem:
-				        	<p:selectOneMenu value="#{alunoBean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-                         			 process="@form" listener="#{alunoBean.atualizar}"/>
-				        		<f:selectItems value="#{alunoBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
-				        	
-			        		<p:separator />
-			        		  
-				        	Busca:<p:inputText value="#{alunoBean.search}" onkeydown="" />
-				        	<p:commandButton icon="ui-icon ui-icon-check" widgetVar="btnSearch" action="#{alunoBean.atualizar}" ajax="true" update=":tabView1" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{alunoBean.resetSearch}" ajax="true" update=":tabView1" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
+					
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{alunoBean}"></ui:param>
+					</ui:include>
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{alunoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-								resizableColumns="true" selection="#{alunoBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-							<p:column headerText="Nome"   >
-								<h:outputText value="#{entity.nome}"/>
-							</p:column>
-						
-							
-							<p:column headerText="Email"  >
-								<h:outputText value="#{entity.email}"/>
-							</p:column>
-							
-							<p:column headerText="Nascimento"   >
-								<h:outputText value="#{entity.dataNascimento.time}">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</h:outputText>
-							</p:column>
-							
-							<p:column headerText="CPF"  >
-								<h:outputText value="#{entity.cpf}"/>
-							</p:column>
-							
-							<p:column headerText="RG"  >
-								<h:outputText value="#{entity.rg}"/>
-							</p:column>
-							
-							<p:column headerText="Peso" >
-								<h:outputText value="#{entity.peso}"/>
-							</p:column>
-							
-							<p:column headerText="Altura" >
-								<h:outputText value="#{entity.altura}"/>
-							</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{alunoBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}| 
+														Email, #{entity.email}|
+														Nascimento, #{entity.dataNascimento.time}|
+														CPF, #{entity.cpf}|
+														RG, #{entity.rg}|
+														Peso, #{entity.peso}|
+														Altura, #{entity.altura}"></ui:param>
+					</ui:include>
 					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{alunoBean.previousPageTable}" 
-										rendered="#{alunoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{alunoBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{alunoBean.nextPageTable}" 
-										rendered="#{alunoBean.page != alunoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{alunoBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{alunoBean.totalPages}" />
-							</div>
-						</f:facet>
-						
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

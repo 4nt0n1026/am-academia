@@ -64,61 +64,20 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton disabled="true" title="novo" icon="ui-icon ui-icon-plus" action="#{dietaEspecificaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{dietaEspecificaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{dietaEspecificaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{dietaEspecificaBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right">
-				        	Ordem:
-				        	<p:selectOneMenu value="#{dietaEspecificaBean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-                         			 process="@form" listener="#{dietaEspecificaBean.atualizar}"/>
-				        		<f:selectItems value="#{dietaEspecificaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
-				        	 
-			        		<p:separator />  
-			        		
-				        	Busca:<p:inputText value="#{dietaEspecificaBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{dietaEspecificaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{dietaEspecificaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
+					
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{dietaEspecificaBean}"></ui:param>
+						<ui:param name="disableNew" value="true"></ui:param>
+					</ui:include>
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{dietaEspecificaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{dietaEspecificaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{dietaEspecificaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{dietaEspecificaBean.hideFormDetail}" update=":tabView1:detailEntity"/>
-						
-						<p:column headerText="Nome"  >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{dietaEspecificaBean.previousPageTable}" 
-										rendered="#{dietaEspecificaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{dietaEspecificaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{dietaEspecificaBean.nextPageTable}" 
-										rendered="#{dietaEspecificaBean.page != dietaEspecificaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{dietaEspecificaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{dieta.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{dietaEspecificaBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}"></ui:param>
+					</ui:include>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

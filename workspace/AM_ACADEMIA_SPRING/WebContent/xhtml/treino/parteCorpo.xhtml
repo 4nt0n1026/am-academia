@@ -39,24 +39,10 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-						<p:toolbar id="menuTabela">  
-	   						<p:toolbarGroup align="left">  
-					        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{parteCorpoBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-					        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{parteCorpoBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-					        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{parteCorpoBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-					        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1:formEntity :tabView1:tabelaEntity"/>
-					        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-					        	<p:separator />  
-					        </p:toolbarGroup>
-					        
-					        <p:toolbarGroup align="right">  
-					        	Busca:<p:inputText value="#{parteCorpoBean.search}" />
-					        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.atualizar}" ajax="true" update=":tabView1" />
-					        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{parteCorpoBean.resetSearch}" ajax="true" update=":tabView1" />
-					        </p:toolbarGroup>
-					        
-					    </p:toolbar>
-				   	
+					
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{parteCorpoBean}"></ui:param>
+					</ui:include>				   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->

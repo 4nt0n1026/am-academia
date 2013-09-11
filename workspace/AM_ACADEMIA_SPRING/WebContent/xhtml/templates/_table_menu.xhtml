@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+   	<ui:composition>
+   		<!-- Menu da tabela -->
+	   	<p:toolbar id="menuTabela">  
+			<p:toolbarGroup align="left">
+				<!-- Funcoes CRUD -->  
+	        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{bean.showNewEntity}" ajax="true" update=":tabView1:formEntity" disabled="#{not empty disableNew}" />
+	        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{bean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity" disabled="#{not empty disableDelete}" />
+	        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{bean.showEditEntity}" ajax="true" update=":tabView1:formEntity" disabled="#{not empty disableEdit}" />
+	        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{bean.atualizar}" ajax="true" update=":tabView1"/>
+	        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" disabled="#{not empty disableFilter}" />
+	        	<p:separator />  
+	        	
+	        	<!-- Funcoes extras (opcional) -->
+	        	<p:menuButton value="Funções" rendered="#{not empty function1Name}"> 
+	        		<p:menuitem  value="#{function1Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function1Action]}" ajax="true" update="#{function1Update}" rendered="#{not empty function1Name}" />
+	        		<p:menuitem  value="#{function2Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function2]}" ajax="true" update="#{function2Update}" rendered="#{not empty function2Name}" />
+	        		<p:menuitem  value="#{function3Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function3]}" ajax="true" update="#{function3Update}" rendered="#{not empty function3Name}"/>
+	        		<p:menuitem  value="#{function4Name}" icon="ui-icon ui-icon-clipboard" action="#{bean[function4]}" ajax="true" update="#{function4Update}" rendered="#{not empty function4Name}"/>
+	        	</p:menuButton>
+	        	
+	        </p:toolbarGroup>
+	        
+	        <p:toolbarGroup align="right" > 
+	        	
+	        	<!-- Ordenação (Opcional) -->
+	        	<p:toolbarGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
+		        	Ordem:
+		        	<p:selectOneMenu value="#{bean.order}"   >
+		        		<p:ajax partialSubmit="false" update=":tabView1"
+	                      			 process="@form" listener="#{bean.atualizar}"/>
+		        		<f:selectItems value="#{bean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+		        	</p:selectOneMenu>
+	       		</p:toolbarGroup>
+        		<p:separator />  
+        		
+        		<!-- Busca -->
+	        	Busca:<p:inputText value="#{bean.search}"  />
+	        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{bean.atualizar}" ajax="true" update=":tabView1" />
+	        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{bean.resetSearch}" ajax="true" update=":tabView1" />
+	        </p:toolbarGroup>
+	    </p:toolbar>
+	</ui:composition>		
+    	
+</html>

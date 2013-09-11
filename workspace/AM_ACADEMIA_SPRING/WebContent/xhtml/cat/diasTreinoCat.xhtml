@@ -39,50 +39,19 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{diasTreinoCatBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{diasTreinoCatBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{diasTreinoCatBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{diasTreinoCatBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="info" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator />  
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-			        		<p:separator />  
-				        	Busca:<p:inputText value="#{diasTreinoCatBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{diasTreinoCatBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{diasTreinoCatBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
+					
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{diasTreinoCatBean}"></ui:param>
+					</ui:include>
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{diasTreinoCatBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity"
-							 resizableColumns="true" selection="#{diasTreinoCatBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome">
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{diasTreinoCatBean.previousPageTable}" 
-										rendered="#{diasTreinoCatBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{diasTreinoCatBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{diasTreinoCatBean.nextPageTable}" 
-										rendered="#{diasTreinoCatBean.page != diasTreinoCatBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{diasTreinoCatBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{diasTreinoCatBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{diasTreinoCatBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}"></ui:param>
+					</ui:include>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

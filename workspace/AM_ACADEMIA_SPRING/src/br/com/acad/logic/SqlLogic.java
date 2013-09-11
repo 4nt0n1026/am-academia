@@ -30,7 +30,7 @@ public class SqlLogic {
 				if(fields.length()>8){
 					fields.append(" or ");
 				}
-				fields.append(field).append(" like '%").append(txtSearch).append("%'");
+				fields.append("lower(").append(field).append(") like '%").append(txtSearch.toLowerCase()).append("%'");
 			}
 			fields.append(")");
 	

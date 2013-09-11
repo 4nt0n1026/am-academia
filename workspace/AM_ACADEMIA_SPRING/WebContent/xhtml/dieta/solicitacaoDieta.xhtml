@@ -87,34 +87,15 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
-					<p:toolbar id="menuTabela">  
-   						<p:toolbarGroup align="left">  
-				        	<p:commandButton  title="novo" icon="ui-icon ui-icon-plus" action="#{solicitacaoDietaBean.showNewEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="deletar"  icon="ui-icon ui-icon-trash" action="#{solicitacaoDietaBean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity"  />
-				        	<p:commandButton  title="Editar" icon="ui-icon ui-icon-pencil" action="#{solicitacaoDietaBean.showEditEntity}" ajax="true" update=":tabView1:formEntity" />
-				        	<p:commandButton  title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{solicitacaoDietaBean.atualizar}" ajax="true" update=":tabView1"/>
-				        	<p:commandButton  title="filtro" icon="ui-icon ui-icon-zoomin" />
-				        	<p:separator /> 
-				        	<p:menuButton value="Funções"> 
-				        		<p:menuitem  value="Responder solicitação" icon="ui-icon ui-icon-clipboard" action="#{solicitacaoDietaBean.responder}" ajax="true" update=":tabView1:formDieta" />
-				        	</p:menuButton>
-				        </p:toolbarGroup>
-				        
-				        <p:toolbarGroup align="right"> 
-				        	Ordem:
-				        	<p:selectOneMenu value="#{solicitacaoDietaBean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-                         			 process="@form" listener="#{solicitacaoDietaBean.atualizar}"/>
-				        		<f:selectItems value="#{solicitacaoDietaBean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
-				        	
-			        		<p:separator />
-			        		  
-				        	Busca:<p:inputText value="#{solicitacaoDietaBean.search}" />
-				        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoDietaBean.atualizar}" ajax="true" update=":tabView1:tabelaEntity" />
-				        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{solicitacaoDietaBean.resetSearch}" ajax="true" update=":tabView1:tabelaEntity" />
-				        </p:toolbarGroup>
-				    </p:toolbar>
+					
+					<ui:include src="/xhtml/templates/_table_menu.xhtml">
+						<ui:param name="bean" value="#{solicitacaoDietaBean}"></ui:param>
+						
+						<ui:param name="function1Name" value="Responder Solicitação"></ui:param>
+						<ui:param name="function1Action" value="responder"></ui:param>
+						<ui:param name="function1Update" value=":tabView1:formDieta"/> 
+						
+					</ui:include>
 			   	
 			    
 				   	<!-- ****************************************************************************************************** -->
