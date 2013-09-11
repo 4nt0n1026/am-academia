@@ -74,13 +74,13 @@
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content.xhtml">
 						<ui:param name="bean" value="#{alunoBean}"></ui:param>
-						<ui:param name="columns" value="Nome, #{entity.nome}| 
-														Email, #{entity.email}|
-														Nascimento, #{entity.dataNascimento.time}|
-														CPF, #{entity.cpf}|
-														RG, #{entity.rg}|
-														Peso, #{entity.peso}|
-														Altura, #{entity.altura}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}, text| 
+														Email, #{entity.email}, text|
+														Nascimento,#{entity.dataNascimento.time}, date|
+														CPF, #{entity.cpf}, text|
+														RG, #{entity.rg}, text|
+														Peso, #{entity.peso}, text|
+														Altura, #{entity.altura}, text"></ui:param>
 					</ui:include>
 					
 				</h:form>

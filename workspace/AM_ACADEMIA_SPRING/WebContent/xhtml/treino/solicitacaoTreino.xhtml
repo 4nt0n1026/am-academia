@@ -99,45 +99,14 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{solicitacaoTreinoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{solicitacaoTreinoBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{solicitacaoTreinoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{solicitacaoTreinoBean.hideFormDetail}" update=":tabView1:detailEntity"/> 
-						
-						<p:column headerText="Data" width="10" styleClass="center">
-							<h:outputText value="#{entity.dataSolicitacao.time}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-
-						<p:column headerText="Nome" width="10" styleClass="center">
-							<h:outputText value="#{entity.aluno.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Descricao" width="80" >
-							<h:outputText value="#{entity.descricao}"/>
-						</p:column>
-						
-						<p:column headerText="Respondido" width="5" styleClass="center" >
-							<p:selectBooleanCheckbox disabled="true" value="#{entity.respondido}"/>
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{solicitacaoTreinoBean}"></ui:param>
+						<ui:param name="columns" value="Data, #{entity.dataSolicitacao.time}, date|
+														Nome, #{entity.aluno.nome}, text|
+														Descicao, #{entity.descricao}, text|
+														Respondido,#{entity.respondido}, boolean"></ui:param>
+					</ui:include>
 					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{solicitacaoTreinoBean.previousPageTable}" 
-										rendered="#{solicitacaoTreinoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{solicitacaoTreinoBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{solicitacaoTreinoBean.nextPageTable}" 
-										rendered="#{solicitacaoTreinoBean.page != solicitacaoTreinoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{solicitacaoTreinoBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{solicitacaoTreinoBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

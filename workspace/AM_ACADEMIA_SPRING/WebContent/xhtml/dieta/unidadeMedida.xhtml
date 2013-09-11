@@ -51,32 +51,11 @@
 				<!-- Tabela de entity -->
 				<!-- ****************************************************************************************************** -->
 				
-					<p:dataTable value="#{unidadeMedidaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							 resizableColumns="true" selection="#{unidadeMedidaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome"  >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-
-						<p:column headerText="Sigla" >
-							<h:outputText value="#{entity.sigla}"/>
-						</p:column>
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{unidadeMedidaBean.previousPageTable}" 
-										rendered="#{unidadeMedidaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{unidadeMedidaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{unidadeMedidaBean.nextPageTable}" 
-										rendered="#{unidadeMedidaBean.page != unidadeMedidaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{unidadeMedidaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{unidadeMedidaBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{unidadeMedidaBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}, text|
+														Sigla, #{entity.sigla}, text"></ui:param>
+					</ui:include>
 				</h:form>
 				<!-- ****************************************************************************************************** -->
 			

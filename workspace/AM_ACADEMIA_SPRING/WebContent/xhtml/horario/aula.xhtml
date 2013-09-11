@@ -55,35 +55,12 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{aulaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{aulaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{aulaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{aulaBean.hideFormDetail}" update=":tabView1:detailEntity"/>
-
-						<p:column headerText="Icone" width="5" styleClass="center" >
-							<p:graphicImage styleClass="img-circle" height="50" id="fotoAula" value="#{entity.fotoLocalPath}"  />
-						</p:column>
-						
-						<p:column headerText="Nome" width="95" styleClass="center">
-							<h:outputText value="#{entity.nome}"  />
-						</p:column>
-
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{aulaBean.previousPageTable}" 
-										rendered="#{aulaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{aulaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{aulaBean.nextPageTable}" 
-										rendered="#{aulaBean.page != aulaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{aulaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{aulaBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{aulaBean}"></ui:param>
+						<ui:param name="columns" value="Icone,#{entity.fotoLocalPath}, image|
+														Nome, #{entity.nome}, text"></ui:param>
+					</ui:include>
+					
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

@@ -49,32 +49,12 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{unidadeBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{unidadeBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome" >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{unidadeBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}, text|
+														Descrição, #{entity.descricao}, text"></ui:param>
+					</ui:include>
 					
-						<p:column headerText="Descrção" >
-							<h:outputText value="#{entity.descricao}"/>
-						</p:column>
-						
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{unidadeBean.previousPageTable}" 
-										rendered="#{unidadeBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{unidadeBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{unidadeBean.nextPageTable}" 
-										rendered="#{unidadeBean.page != unidadeBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{unidadeBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{unidadeBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

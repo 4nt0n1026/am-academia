@@ -111,61 +111,18 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{treinoFixoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{treinoFixoBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{treinoFixoBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{treinoFixoBean.hideFormDetail}" update=":tabView1:detailEntity"/>
-						
-						<p:column headerText="Data" >
-							<h:outputText value="#{entity.data.time}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="Nome" >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-
-						<p:column headerText="Objetivo" >
-							<h:outputText value="#{entity.objetivoCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Duração"  >
-							<h:outputText value="#{entity.duracaoTreinoCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Dias na Semana"  >
-							<h:outputText value="#{entity.diasTreinoCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Faixa Etaria" >
-							<h:outputText value="#{entity.faixaEtariaCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Sexo">
-							<h:outputText value="#{entity.sexoCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Professor"  >
-							<h:outputText value="#{entity.professor.nome}"/>
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{treinoFixaBean}"></ui:param>
+						<ui:param name="columns" value="Data, #{entity.data.time}, date|
+														Nome, #{entity.nome}, text|
+														Objetivo, #{entity.objetivoCat.nome}, text|
+														Duração, #{entity.duracaoTreinoCat.nome}, text|
+														Dias na Semana, #{entity.diasTreinoCat.nome}, text|
+														Faixa Etaria, #{entity.faixaEtariaCat.nome}, text|
+														Sexo, #{entity.sexoCat.nome}, text}
+														Professor, #{entity.professor.nome}, text"></ui:param>
+					</ui:include>
 					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{treinoFixoBean.previousPageTable}" 
-										rendered="#{treinoFixoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{treinoFixoBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{treinoFixoBean.nextPageTable}" 
-										rendered="#{treinoFixoBean.page != treinoFixoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{treinoFixoBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{treinoFixoBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

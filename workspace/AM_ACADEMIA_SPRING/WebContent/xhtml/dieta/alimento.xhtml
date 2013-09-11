@@ -77,14 +77,14 @@
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content.xhtml">
 						<ui:param name="bean" value="#{alimentoBean}"></ui:param>
-						<ui:param name="columns" value="Nome, #{entity.nome}| 
-														Descrição, #{entity.descricao}|
-														Valor Enegético, #{entity.valorEnergetico}|
-														Qtd Proteína, #{entity.qtdProteina}|
-														Qtd Carboidrato, #{entity.qtdCarboidrato}|
-														Qtd Gordura, #{entity.qtdGordura}|
-														Unidade, #{entity.unidade}|
-														Unidade Medida, #{entity.unidadeMedida.sigla}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}, text| 
+														Descrição, #{entity.descricao}, text|
+														Valor Enegético, #{entity.valorEnergetico}, text|
+														Qtd Proteína, #{entity.qtdProteina}, text|
+														Qtd Carboidrato, #{entity.qtdCarboidrato}, text|
+														Qtd Gordura, #{entity.qtdGordura}, text|
+														Unidade, #{entity.unidade}, text|
+														Unidade Medida, #{entity.unidadeMedida.sigla}, text"></ui:param>
 					</ui:include>
 					
 				</h:form>

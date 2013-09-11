@@ -23,9 +23,28 @@
 				
 				<!-- Coluna -->
 				<p:column headerText="${properties[0]}" styleClass="center"  >
-					<h:outputText value="${properties[1]}" >
-						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					
+					<!-- campo de texto -->
+					<h:outputText value="${properties[1]}" rendered="#{empty properties[2] || properties[2] eq 'text' || properties[2] eq ' text'}" />
+					
+					<!-- campo de data -->
+					<h:outputText value="${properties[1]}" rendered="#{properties[2] eq 'date' || properties[2] eq ' date'}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
+					
+					<!-- campo de hora -->
+					<h:outputText value="${properties[1]}" rendered="#{properties[2] eq 'time' || properties[2] eq ' time'}" >
+						<f:convertDateTime pattern="HH:mm" />
+					</h:outputText>
+					
+					<!-- campo de imagem -->
+					<p:graphicImage styleClass="img-circle" height="50" value="${properties[1]}" rendered="#{properties[2] eq 'image' || properties[2] eq ' image'}"  />
+					
+					<!-- campo de imagem pequena -->
+					<p:graphicImage styleClass="img-circle" height="30" value="${properties[1]}" rendered="#{properties[2] eq 'smallImage' || properties[2] eq ' smallImage'}"  />
+					
+					<!-- campo de booleano -->
+					<p:selectBooleanCheckbox value="${properties[1]}" disabled="true" rendered="#{properties[2] eq 'boolean' || properties[2] eq ' boolean'}" />
 				</p:column>
 				
 			</c:forEach>

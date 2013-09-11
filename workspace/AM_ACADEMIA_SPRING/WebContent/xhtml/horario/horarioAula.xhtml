@@ -69,46 +69,15 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{horarioAulaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{horarioAulaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Aula">
-							<h:outputText value="#{entity.aula.nome}" />
-						</p:column>
-
-						<p:column headerText="Dias na Semana">
-							<h:outputText value="#{entity.diasSemana}" />
-						</p:column>
-						
-						<p:column headerText="Hora" >
-							<h:outputText value="#{entity.hora.time}">
-								<f:convertDateTime pattern="HH:mm" />
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="Unidade">
-							<h:outputText value="#{entity.unidade.nome}" />
-						</p:column>
-
-						<p:column headerText="professor">
-							<h:outputText value="#{entity.professor.nome}" />
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{horarioAulaBean}"></ui:param>
+						<ui:param name="columns" value="Aula #{entity.aula.nome}, text|
+														Dias na Semana, #{entity.diasSemana}, text|
+														Hora,#{entity.hora.time}, time|
+														Unidade, #{entity.unidade.nome}, text|
+														Professor, #{entity.professor.nome}, text"></ui:param>
+					</ui:include>
 					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{horarioAulaBean.previousPageTable}" 
-										rendered="#{horarioAulaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{horarioAulaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{horarioAulaBean.nextPageTable}" 
-										rendered="#{horarioAulaBean.page != horarioAulaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{horarioAulaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{horarioAulaBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

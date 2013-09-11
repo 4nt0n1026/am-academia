@@ -47,29 +47,11 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{parteCorpoBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" resizableColumns="true" 
-							 selection="#{parteCorpoBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome"  >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{parteCorpoBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}, text"></ui:param>
+					</ui:include>
 					
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{parteCorpoBean.previousPageTable}" 
-										rendered="#{parteCorpoBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{parteCorpoBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{parteCorpoBean.nextPageTable}" 
-										rendered="#{parteCorpoBean.page != parteCorpoBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{parteCorpoBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{parteCorpoBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

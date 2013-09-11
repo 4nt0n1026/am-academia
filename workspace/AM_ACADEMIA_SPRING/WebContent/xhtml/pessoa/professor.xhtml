@@ -67,50 +67,14 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{professorBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							 resizableColumns="true" selection="#{professorBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:column headerText="Nome"   >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Email"  >
-							<h:outputText value="#{entity.email}"/>
-						</p:column>
-						
-						<p:column headerText="Nascimento"  >
-							<h:outputText value="#{entity.dataNascimento.time}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="CPF" >
-							<h:outputText value="#{entity.cpf}"/>
-						</p:column>
-						
-						<p:column headerText="RG" >
-							<h:outputText value="#{entity.rg}"/>
-						</p:column>
-						
-						<p:column headerText="Formacao" >
-							<h:outputText value="#{entity.formacao}"/>
-						</p:column>
-						
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{professorBean.previousPageTable}" 
-										rendered="#{professorBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{professorBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{professorBean.nextPageTable}" 
-										rendered="#{professorBean.page != professorBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{professorBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{professorBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{professorBean}"></ui:param>
+						<ui:param name="columns" value="Nome, #{entity.nome}, text| 
+														Email, #{entity.email}, text|
+														Nascimento,#{entity.dataNascimento.time}, date|
+														CPF, #{entity.cpf}, text|
+														RG, #{entity.rg}, text|"></ui:param>
+					</ui:include>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

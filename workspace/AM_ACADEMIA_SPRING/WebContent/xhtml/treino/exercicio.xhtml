@@ -91,35 +91,12 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{exercicioBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity"
-								 resizableColumns="true"  selection="#{exercicioBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{exercicioBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{exercicioBean.hideFormDetail}" update=":tabView1:detailEntity"/>  
-						
-						<p:column headerText="Foto" styleClass="center" width="5" >
-							<p:graphicImage styleClass="img-circle" height="30" id="fotoExercicio" value="#{entity.fotoLocalPath}"  />
-						</p:column>
-						
-						<p:column headerText="Nome" styleClass="center" width="95" >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-						
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{exercicioBean.previousPageTable}" 
-										rendered="#{exercicioBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{exercicioBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{exercicioBean.nextPageTable}" 
-										rendered="#{exercicioBean.page != exercicioBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{exercicioBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{exercicioBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
+						<ui:param name="columns" value="Foto,#{entity.fotoLocalPath}, smallImage|
+														Nome, #{entity.nome}, text"></ui:param>
+					</ui:include>
+					
 				</h:form>
 				<br/>
 				

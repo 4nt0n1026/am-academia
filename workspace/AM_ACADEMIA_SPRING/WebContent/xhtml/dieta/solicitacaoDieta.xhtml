@@ -101,71 +101,38 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{solicitacaoDietaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{solicitacaoDietaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{solicitacaoDietaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{solicitacaoDietaBean.hideFormDetail}" update=":tabView1:detailEntity"/> 
-						
-						<p:column headerText="Data" width="10" styleClass="center">
-							<h:outputText value="#{entity.dataSolicitacao.time}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-
-						<p:column headerText="Nome" width="10" styleClass="center">
-							<h:outputText value="#{entity.aluno.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Descricao" width="80" >
-							<h:outputText value="#{entity.descricao}"/>
-						</p:column>
-						
-						<p:column headerText="Respondido" width="5" styleClass="center" >
-							<p:selectBooleanCheckbox disabled="true" value="#{entity.respondido}"/>
-						</p:column>
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{solicitacaoDietaBean.previousPageTable}" 
-										rendered="#{solicitacaoDietaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{solicitacaoDietaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{solicitacaoDietaBean.nextPageTable}" 
-										rendered="#{solicitacaoDietaBean.page != solicitacaoDietaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{solicitacaoDietaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{solicitacaoDietaBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
-				</h:form>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{solicitacaoDietaBean}"></ui:param>
+						<ui:param name="columns" value="Aluno, #{entity.aluno.nome}, text| 
+														Data, #{entity.dataSolicitacao.time}, date|
+														Respondido, #{entity.respondido}, boolean"></ui:param>
+					</ui:include>
+					</h:form>
 			
-				<!-- ****************************************************************************************************** -->
-				<!-- info de entity -->
-				<!-- ****************************************************************************************************** -->
-				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoDietaBean.showEntityDetail}">
-						<p:panelGrid columns="2">
-							<h:outputText value="Nome do aluno:"/>
-							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.nome}" />
-							
-							<h:outputText value="Peso do aluno:"/>
-							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.peso}" />
-							
-							<h:outputText value="Altura do aluno:"/>
-							<h:outputText value="#{solicitacaoDietaBean.entity.aluno.altura}" />
-							
-							<h:outputText value="Idade do aluno:"/>
-							<h:outputText value="#{solicitacaoDietaBean.idadeAlunoDetail}" />
-							
-							<h:outputText value="Descricao:"/>
-							<h:outputText value="#{solicitacaoDietaBean.entity.descricao}" />
-						</p:panelGrid>
-					</p:fieldset>
-				</h:form>
-			
+					<!-- ****************************************************************************************************** -->
+					<!-- info de entity -->
+					<!-- ****************************************************************************************************** -->
+					<h:form id="detailEntity">	
+						<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoDietaBean.showEntityDetail}">
+							<p:panelGrid columns="2">
+								<h:outputText value="Nome do aluno:"/>
+								<h:outputText value="#{solicitacaoDietaBean.entity.aluno.nome}" />
+								
+								<h:outputText value="Peso do aluno:"/>
+								<h:outputText value="#{solicitacaoDietaBean.entity.aluno.peso}" />
+								
+								<h:outputText value="Altura do aluno:"/>
+								<h:outputText value="#{solicitacaoDietaBean.entity.aluno.altura}" />
+								
+								<h:outputText value="Idade do aluno:"/>
+								<h:outputText value="#{solicitacaoDietaBean.idadeAlunoDetail}" />
+								
+								<h:outputText value="Descricao:"/>
+								<h:outputText value="#{solicitacaoDietaBean.entity.descricao}" />
+							</p:panelGrid>
+						</p:fieldset>
+					</h:form>
+				
 			
 				<!-- ****************************************************************************************************** -->
 			</p:tab>

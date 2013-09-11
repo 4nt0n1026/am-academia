@@ -98,54 +98,15 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<p:dataTable value="#{dietaFixaBean.entities}" var="entity" emptyMessage="Nenhum registrado" widgetVar="tabelaEntity" 
-							resizableColumns="true"  selection="#{dietaFixaBean.entity}" selectionMode="single" rowKey="#{entity}">
-						
-						<p:ajax event="rowSelect" listener="#{dietaFixaBean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-						<p:ajax event="rowUnselect" listener="#{dietaFixaBean.hideFormDetail}" update=":tabView1:detailEntity"/>
-						
-						<p:column headerText="Data" >
-							<h:outputText value="#{entity.data.time}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="Nome" >
-							<h:outputText value="#{entity.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Professor"  >
-							<h:outputText value="#{entity.professor.nome}"/>
-						</p:column>
-						
-						<p:column headerText="Objetivo" >
-							<h:outputText value="#{entity.objetivoCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Faixa Etaria" >
-							<h:outputText value="#{entity.faixaEtariaCat.nome}"/>
-						</p:column>
-
-						<p:column headerText="Sexo">
-							<h:outputText value="#{entity.sexoCat.nome}"/>
-						</p:column>
-
-					
-						<f:facet name="footer">  
-							<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{dietaFixaBean.previousPageTable}" 
-										rendered="#{dietaFixaBean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
-										
-							---<h:outputText value="#{dietaFixaBean.page}" />---
-							
-							<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{dietaFixaBean.nextPageTable}" 
-										rendered="#{dietaFixaBean.page != dietaFixaBean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
-										
-							<div class="left">
-								<h:outputText value="Total de itens: #{dietaFixaBean.totalEntities} - " />
-								<h:outputText value="Total de paginas: #{dietaFixaBean.totalPages}" />
-							</div>
-						</f:facet>
-					</p:dataTable>
+					<ui:include src="/xhtml/templates/_table_content.xhtml">
+						<ui:param name="bean" value="#{dietaFixaBean}"></ui:param>
+						<ui:param name="columns" value="Data, #{entity.data.time}, date|
+														Nome, #{entity.nome}, text|
+														Professor, #{entity.professor.nome}, text|
+														Objetivo, #{entity.objetivoCat.nome}, text|
+														Faixa Etaria, #{entity.faixaEtariaCat.nome}, text|
+														Sexo, #{entity.sexoCat.nome}, text}"></ui:param>
+					</ui:include>
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->
