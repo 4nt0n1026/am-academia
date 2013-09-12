@@ -15,9 +15,13 @@
 	   	<p:dataTable value="#{bean.entities}" var="entity" emptyMessage="Nenhum registro" widgetVar="tabelaEntity" 
 							 resizableColumns="true" selection="#{bean.entity}" selectionMode="single" rowKey="#{entity}">
 			
+			<p:ajax event="rowSelect" listener="#{bean.showFormDetail}"  update=":tabView1:detailEntity" /> 
+			<p:ajax event="rowUnselect" listener="#{bean.hideFormDetail}" update=":tabView1:detailEntity"/>
+			
 			<!-- Separacao de cada coluna passada por paramentro (separadas por '|' -->
 			<c:forEach var="column" items="${fn:split(columns, '|')}">
-			
+				
+				
 				<!-- Separacao de cada propriedade de cada coluna (separadas por ',') -->
 				<c:set var="properties" value="${fn:split(column, ',')}"/>
 				

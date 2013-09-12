@@ -66,25 +66,22 @@
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-				<br/>
-				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{aulaBean.showEntityDetail}">
-							
-						<p:panelGrid columns="2">
-							<p:panelGrid columns="2">
-								<h:outputText value="Nome:"/>
-								<h:outputText value="#{aulaBean.entity.nome}" />
-								
-								<h:outputText value="Descrição: "/>
-								<h:outputText value="#{aulaBean.entity.descricao}"/>
-							</p:panelGrid>
-							
-							<h:graphicImage value="#{aulaBean.fotoAula}" />
-						</p:panelGrid>
-							
-					</p:fieldset>
+				
+				<h:form id="detailEntity">
+				
+					<ui:include src="/xhtml/templates/_detail_content.xhtml">
+						<ui:param name="bean" value="#{aulaBean}"></ui:param>
+						<ui:param name="mainPanelColumns" value="2"></ui:param>
+						
+						<ui:param name="panel1Columns" value="2"></ui:param>
+						<ui:param name="panel1Fields" value="Nome~text|#{bean.entity.nome}~text|
+															Descrição~text|#{bean.entity.descricao}~text"></ui:param>
+						
+						<ui:param name="panel2Columns" value="1"></ui:param>
+						<ui:param name="panel2Fields" value="#{bean.entity.fotoLocalPath}~image"></ui:param>
+					</ui:include>
+				
 				</h:form>
-			
 			
 				<!-- ****************************************************************************************************** -->
 			</p:tab>

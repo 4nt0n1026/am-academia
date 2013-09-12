@@ -112,11 +112,15 @@ public class AulaBean extends Bean<Aula> implements Serializable {
 	/************************************************************************************************************/
 	
 	public String getFotoAula() {
-		fotoAula = entity.getFotoLocal();
-		if(fotoAula!=null && fotoAula.length()>1){
-			return "/" + PathLogic.PATH_AULAS + fotoAula;
+		if(entity.getFotoLocal()!=null){
+			fotoAula = entity.getFotoLocal();
+			if(fotoAula!=null && fotoAula.length()>1){
+				return "/" + PathLogic.PATH_AULAS + fotoAula;
+			}
+			return "/" + PathLogic.PATH_AULAS + "semFoto.jpg";
+		}else{
+			return "/" + PathLogic.PATH_AULAS + "semFoto.jpg";
 		}
-		return "/" + PathLogic.PATH_AULAS + "semFoto.jpg";
 
 	}
 

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+
+   	<ui:composition>
+		<p:fieldset legend="Detalhes"  rendered="#{bean.showEntityDetail and not empty mainPanelColumns}">
+							
+			<p:panelGrid columns="#{mainPanelColumns}" columnClasses="columns" >
+				
+				
+				<p:panelGrid columns="#{panel1Columns}" rendered="#{not empty panel1Columns}"  >
+					
+					<c:forEach var="field" items="${fn:split(panel1Fields, '|')}">
+					
+						<c:set var="properties" value="${fn:split(field, '~')}"/>
+					
+						<h:outputText value="${properties[0]}" rendered="#{empty properties[1] || properties[1] eq 'text' || properties[1] eq ' text'}" />
+					
+						<p:graphicImage styleClass="img-circle" height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
+						
+						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallImage' || properties[1] eq ' smallImage'}"  />
+						
+						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
+					</c:forEach>
+					
+				</p:panelGrid>
+				
+				
+				
+				<p:panelGrid columns="#{panel2Columns}" rendered="#{not empty panel2Columns}" >
+					
+					<c:forEach var="field" items="${fn:split(panel2Fields, '|')}">
+					
+						<c:set var="properties" value="${fn:split(field, '~')}"/>
+					
+						<h:outputText value="${properties[0]}" rendered="#{empty properties[1] || properties[1] eq 'text' || properties[1] eq ' text'}" />
+						
+						<h:outputText value="" rendered="#{properties[1] eq 'emptybox' || properties[1] eq ' emptybox'}" />
+					
+						<p:graphicImage height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
+						
+						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallImage' || properties[1] eq ' smallImage'}"  />
+						
+						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
+					</c:forEach>
+					
+				</p:panelGrid>
+				
+				
+				
+				<p:panelGrid columns="#{panel3Columns}" rendered="#{not empty panel3Columns}" >
+					
+					<c:forEach var="field" items="${fn:split(panel3Fields, '|')}">
+					
+						<c:set var="properties" value="${fn:split(field, '~')}"/>
+					
+						<h:outputText value="${properties[0]}" rendered="#{empty properties[1] || properties[1] eq 'text' || properties[1] eq ' text'}" />
+					
+						<p:graphicImage styleClass="img-circle" height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
+						
+						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallImage' || properties[1] eq ' smallImage'}"  />
+						
+						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
+					</c:forEach>
+					
+				</p:panelGrid>
+				
+			</p:panelGrid>
+				
+		</p:fieldset>
+   		
+	</ui:composition>		
+    	
+</html>
