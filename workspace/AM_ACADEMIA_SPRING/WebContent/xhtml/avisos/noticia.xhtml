@@ -20,6 +20,7 @@
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
+						<p:focus for="formEntity" />
 						<p:fieldset id="field"  rendered="#{noticiaBean.showEntity}">
 							<h:panelGrid columns="10">
 							
@@ -64,7 +65,6 @@
 			   		
 			   		<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
-						<ui:param name="order" value="true"></ui:param>
 					</ui:include>
 			    
 				   	<!-- ****************************************************************************************************** -->

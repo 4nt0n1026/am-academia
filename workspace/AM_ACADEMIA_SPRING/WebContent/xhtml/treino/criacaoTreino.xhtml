@@ -15,12 +15,15 @@
        		<!-- COMPLEX FORM 1 - DiaTreino -->
 		    <p:layoutUnit id="layourUnit" position="west" resizable="true" size="300" minSize="40" maxSize="400"> 
 				<h:form id="formDialog">
+					<p:focus for="formDialog" />
+					
 			    	<h3>Dias de treino</h3>
 			    	
 			        <!-- Form do DiaDieta -->
 			        <p:panelGrid columns="2">
 			        	<h:inputText value="#{criacaoTreinoBean.diaTreino.nome}" required="true" requiredMessage="Nome do dia obrigatorio" />
-			        	<p:commandButton icon="ui-icon ui-icon-check" action="#{criacaoTreinoBean.incluirDiaTreino}" ajax="true" update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
+			        	<p:commandButton id="diaTreino" icon="ui-icon ui-icon-check" action="#{criacaoTreinoBean.incluirDiaTreino}" ajax="true" 
+			        				update=":formDialog :tableDialog :formDialog2 :tableDialog2" />
 			    	</p:panelGrid>
 			        
            		</h:form>		

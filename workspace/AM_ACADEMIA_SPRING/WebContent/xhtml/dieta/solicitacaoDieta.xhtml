@@ -39,6 +39,7 @@
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formDieta"  >
 						<p:fieldset id="field1"  rendered="#{solicitacaoDietaBean.showDieta}">
+							<p:focus for="formDieta" />
 							<h:panelGrid columns="10">
 							
 						        <h:outputLabel for="idNome" value="Nome" />  
@@ -62,6 +63,7 @@
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
+						<p:focus for="formEntity" />
 						<p:fieldset id="field"  rendered="#{solicitacaoDietaBean.showEntity}">
 							<h:panelGrid columns="10">
 							

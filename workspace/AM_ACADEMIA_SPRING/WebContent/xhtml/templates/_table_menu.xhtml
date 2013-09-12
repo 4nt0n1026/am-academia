@@ -36,13 +36,15 @@
 	        			
 	        		</c:forEach>
 	        		
-	        		
 	        	</p:menuButton>
+	        	<p:separator rendered="#{not empty functions}"/> 
 	        	
 	        </p:toolbarGroup>
 	        
+	        
 	        <p:toolbarGroup align="right" > 
-	        	
+	        
+	        	<p:separator rendered="#{not empty bean.staticFieldsOrderLabel}"/> 
 	        	<!-- Ordenação (Opcional) -->
 	        	<p:toolbarGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
 		        	Ordem:
@@ -55,8 +57,12 @@
         		<p:separator />  
         		
         		<!-- Busca -->
-	        	Busca:<p:inputText value="#{bean.search}"  />
-	        	<p:commandButton icon="ui-icon ui-icon-check"  action="#{bean.atualizar}" ajax="true" update=":tabView1" />
+	        	Busca:
+	        	<p:focus for="searchField" />
+	        	<p:inputText value="#{bean.search}" id="searchField" >
+				</p:inputText>
+	        	<p:defaultCommand target="btnBuscar"></p:defaultCommand>
+	        	<p:commandButton icon="ui-icon ui-icon-check" id="btnBuscar"  action="#{bean.atualizar}" ajax="true" update=":tabView1"  />
 	        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{bean.resetSearch}" ajax="true" update=":tabView1" />
 	        </p:toolbarGroup>
 	    </p:toolbar>

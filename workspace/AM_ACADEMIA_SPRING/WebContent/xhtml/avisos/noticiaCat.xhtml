@@ -21,6 +21,7 @@
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
+						<p:focus for="formEntity" />
 						<p:fieldset id="field"  rendered="#{noticiaCatBean.showEntity}">
 							<h:panelGrid columns="10">
 							
@@ -53,6 +54,10 @@
 					<!-- Menu da tabela de entity -->
 					<!-- ****************************************************************************************************** -->
       				<h:form id="tabelaEntity">
+					
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{noticiaCatBean}"></ui:param>
+					</ui:include>
 					
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{noticiaCatBean}"></ui:param>

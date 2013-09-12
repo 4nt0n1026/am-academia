@@ -8,6 +8,7 @@
 	<ui:composition>
 		<p:dialog id="dialogSenha" widgetVar="dlgSenha" resizable="false" draggable="false" header="Mudança de senha" modal="true" closeOnEscape="true" closable="true">
 				<h:form id="formSenha">
+					<p:focus for="idSenhaAtual" />
 					<h:panelGrid columns="2">
 						<h:outputLabel for="idSenhaAtual" value="Senha atual" />  
 						<p:password id="idSenhaAtual" value="#{loginBean.senhaAtual}" required="true" requiredMessage="Senha atual obrigatoria" />  
