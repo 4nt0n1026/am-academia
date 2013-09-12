@@ -11,9 +11,9 @@
 
 
    	<ui:composition>
-		<p:fieldset legend="Detalhes"  rendered="#{bean.showEntityDetail and not empty mainPanelColumns}">
+		<p:fieldset legend="Detalhes"  rendered="#{bean.showEntityDetail}">
 							
-			<p:panelGrid columns="#{mainPanelColumns}" columnClasses="columns" >
+			<p:panelGrid columns="3" columnClasses="columns" >
 				
 				
 				<p:panelGrid columns="#{panel1Columns}" rendered="#{not empty panel1Columns}"  >
@@ -26,7 +26,7 @@
 					
 						<p:graphicImage styleClass="img-circle" height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
 						
-						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallImage' || properties[1] eq ' smallImage'}"  />
+						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallimage' || properties[1] eq ' smallimage'}"  />
 						
 						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
 					</c:forEach>

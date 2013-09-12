@@ -15,7 +15,7 @@
 	<context:annotation-config/>
 	<context:component-scan base-package="br.com.acad.*" />
 	 
-	 <!-- MySQL 
+	 <!-- MySQL -->
 	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="packagesToScan" value="br.com.acad.model" />
@@ -33,23 +33,13 @@
    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="com.mysql.jdbc.Driver" />
       <property name="url" value="jdbc:mysql://localhost/ACAD_AM" />
-      <property name="properties">
- 		<props>
- 			<prop key="c3p0.minPoolSize">2</prop>
- 			<prop key="c3p0.maxPoolSize">50</prop>
- 			<prop key="c3p0.timeout">5000</prop>
- 			<prop key="c3p0.max_statement">100</prop>
- 			<prop key="c3p0.testConnectionOnCheckout">true</prop>
- 			<prop key="user">root</prop>
- 			<prop key="password">6635620</prop>
- 		</props>
- 	</property>
-      <property name="username" value="root" />
-      <property name="password" value="cucacuca" />
-   </bean>
-     -->
+      <property name="username" value="root"/>
+	    <property name="password" value="cucacuca"/>
+	  </bean>	
+      
      
- 	<!-- ORACLE -->
+     
+ 	<!-- ORACLE 
  	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="packagesToScan" value="br.com.acad.model" />
@@ -70,7 +60,7 @@
 	    <property name="username" value="OPS$RM67163"/>
 	    <property name="password" value="240389"/>
 	</bean>
- 	
+ 	-->
    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="myEmf" />
    </bean>

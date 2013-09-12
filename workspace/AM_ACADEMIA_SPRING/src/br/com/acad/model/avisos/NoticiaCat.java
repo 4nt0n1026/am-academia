@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.logic.PathLogic;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_NOTICIA_CAT")
@@ -63,5 +65,11 @@ public class NoticiaCat implements Serializable{
 		this.fotoLocalIcone = fotoLocalIcone;
 	}
 	
+	public String getFotoLocalIconePath(){
+		if(fotoLocalIcone!=null && fotoLocalIcone.length()>1){
+			return "/" + PathLogic.PATH_ICONES + fotoLocalIcone + ".png";
+		}
+		return "/" + PathLogic.PATH_ICONES + "semFoto.jpg";
+	}
 	
 }

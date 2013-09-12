@@ -6,6 +6,6 @@ public abstract class PathLogic {
 
 	public static final String PATH_AULAS = "resources/images/aulas/";
 	
-	
+	public static final String PATH_ICONES = "resources/images/icons/";
 	
 }
