@@ -16,7 +16,6 @@ import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
 import br.com.acad.logic.MessagesLogic;
-import br.com.acad.logic.PessoaLogic;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.ProfessorFunc;
 import br.com.acad.model.treino.SolicitacaoTreino;
@@ -160,17 +159,6 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		return alunoDAO.buscarFieldNome();
 	}
 	
-	/**
-	 * Mostra a idade do aluno a partir da data de nasciemento
-	 * @return
-	 */
-	public int getIdadeAlunoDetail(){
-		if(entity.getAluno().getDataNascimento()!=null){
-			return PessoaLogic.getIdade(entity.getAluno().getDataNascimento());
-		}else{
-			return 0;
-		}
-	}
 	
 	/**
 	 * busca todos ProfessorFunc para preencher o field

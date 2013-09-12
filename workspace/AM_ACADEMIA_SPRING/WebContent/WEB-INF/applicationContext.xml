@@ -15,7 +15,7 @@
 	<context:annotation-config/>
 	<context:component-scan base-package="br.com.acad.*" />
 	 
-	 <!-- MySQL -->
+	 <!-- MySQL 
 	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="packagesToScan" value="br.com.acad.model" />
@@ -36,10 +36,10 @@
       <property name="username" value="root"/>
 	    <property name="password" value="cucacuca"/>
 	  </bean>	
-      
+      -->
      
      
- 	<!-- ORACLE 
+ 	<!-- ORACLE -->
  	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="packagesToScan" value="br.com.acad.model" />
@@ -60,7 +60,7 @@
 	    <property name="username" value="OPS$RM67163"/>
 	    <property name="password" value="240389"/>
 	</bean>
- 	-->
+ 	
    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="myEmf" />
    </bean>

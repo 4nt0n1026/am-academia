@@ -115,24 +115,20 @@
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{solicitacaoTreinoBean.showEntityDetail}">
-						<p:panelGrid columns="2">
-							<h:outputText value="Nome do aluno:"/>
-							<h:outputText value="#{solicitacaoTreinoBean.entity.aluno.nome}" />
-							
-							<h:outputText value="Peso do aluno:"/>
-							<h:outputText value="#{solicitacaoTreinoBean.entity.aluno.peso}" />
-							
-							<h:outputText value="Altura do aluno:"/>
-							<h:outputText value="#{solicitacaoTreinoBean.entity.aluno.altura}" />
-							
-							<h:outputText value="Idade do aluno:"/>
-							<h:outputText value="#{solicitacaoTreinoBean.idadeAlunoDetail}" />
-							
-							<h:outputText value="Descricao:"/>
-							<h:outputText value="#{solicitacaoTreinoBean.entity.descricao}" />
-						</p:panelGrid>
-					</p:fieldset>
+					
+					<ui:include src="/xhtml/templates/_detail_content.xhtml">
+						<ui:param name="bean" value="#{solicitacaoTreinoBean}"></ui:param>
+						
+						<ui:param name="panel1Columns" value="2"></ui:param>
+						<ui:param name="panel1Fields" value="Nome do aluno~header|#{bean.entity.aluno.nome}~text|
+															 Peso~header|#{bean.entity.aluno.peso}~text|
+															 Altura~header|#{bean.entity.aluno.altura}~text|
+															 Idade~header|#{bean.entity.aluno.idadeAluno}~text"></ui:param>
+															 
+						<ui:param name="panel2Columns" value="1"></ui:param>
+						<ui:param name="panel2Fields" value="Descrição~header|#{bean.entity.descricao}~text"></ui:param>
+
+					</ui:include>		
 				</h:form>
 			
 			

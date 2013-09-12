@@ -13,62 +13,81 @@
    	<ui:composition>
 		<p:fieldset legend="Detalhes"  rendered="#{bean.showEntityDetail}">
 							
-			<p:panelGrid columns="3" columnClasses="columns" >
+			<p:panelGrid columns="3" columnClasses="columns" style="max-width: 700px;" >
 				
 				
-				<p:panelGrid columns="#{panel1Columns}" rendered="#{not empty panel1Columns}"  >
+				<p:panelGrid columns="#{panel1Columns}"  rendered="#{not empty panel1Columns}" columnClasses="smallcolumns" >
 					
 					<c:forEach var="field" items="${fn:split(panel1Fields, '|')}">
 					
 						<c:set var="properties" value="${fn:split(field, '~')}"/>
 					
-						<h:outputText value="${properties[0]}" rendered="#{empty properties[1] || properties[1] eq 'text' || properties[1] eq ' text'}" />
+						<h:outputText value="" rendered="#{empty properties[1] || properties[1] eq 'emptybox' || properties[1] eq ' emptybox'}" />
+						
+						<h:outputText value="${properties[0]}" rendered="#{properties[1] eq 'text' || properties[1] eq ' text'}" />
+						
+						<h:outputText value="${properties[0]}" styleClass="header" escape="false" rendered="#{properties[1] eq 'header' || properties[1] eq ' header'}" />
+						
+						<h:outputText value="${properties[0]}" escape="false" rendered="#{properties[1] eq 'html' || properties[1] eq ' html'}" />
 					
-						<p:graphicImage styleClass="img-circle" height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
+						<p:graphicImage height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
 						
 						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallimage' || properties[1] eq ' smallimage'}"  />
 						
 						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
+						
 					</c:forEach>
 					
 				</p:panelGrid>
 				
 				
 				
-				<p:panelGrid columns="#{panel2Columns}" rendered="#{not empty panel2Columns}" >
+				<p:panelGrid columns="#{panel2Columns}" rendered="#{not empty panel2Columns}" columnClasses="smallcolumns" >
 					
 					<c:forEach var="field" items="${fn:split(panel2Fields, '|')}">
 					
 						<c:set var="properties" value="${fn:split(field, '~')}"/>
 					
-						<h:outputText value="${properties[0]}" rendered="#{empty properties[1] || properties[1] eq 'text' || properties[1] eq ' text'}" />
+						<h:outputText value="" rendered="#{empty properties[1] || properties[1] eq 'emptybox' || properties[1] eq ' emptybox'}" />
 						
-						<h:outputText value="" rendered="#{properties[1] eq 'emptybox' || properties[1] eq ' emptybox'}" />
+						<h:outputText value="${properties[0]}" rendered="#{properties[1] eq 'text' || properties[1] eq ' text'}" />
+						
+						<h:outputText value="${properties[0]}" styleClass="header" escape="false" rendered="#{properties[1] eq 'header' || properties[1] eq ' header'}" />
+						
+						<h:outputText value="${properties[0]}" escape="false" rendered="#{properties[1] eq 'html' || properties[1] eq ' html'}" />
 					
 						<p:graphicImage height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
 						
-						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallImage' || properties[1] eq ' smallImage'}"  />
+						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallimage' || properties[1] eq ' smallimage'}"  />
 						
 						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
+						
 					</c:forEach>
 					
 				</p:panelGrid>
 				
 				
 				
-				<p:panelGrid columns="#{panel3Columns}" rendered="#{not empty panel3Columns}" >
+				<p:panelGrid columns="#{panel3Columns}" rendered="#{not empty panel3Columns}" columnClasses="smallcolumns">
 					
 					<c:forEach var="field" items="${fn:split(panel3Fields, '|')}">
 					
 						<c:set var="properties" value="${fn:split(field, '~')}"/>
 					
-						<h:outputText value="${properties[0]}" rendered="#{empty properties[1] || properties[1] eq 'text' || properties[1] eq ' text'}" />
-					
-						<p:graphicImage styleClass="img-circle" height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
+						<h:outputText value="" rendered="#{empty properties[1] || properties[1] eq 'emptybox' || properties[1] eq ' emptybox'}" />
 						
-						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallImage' || properties[1] eq ' smallImage'}"  />
+						<h:outputText value="${properties[0]}" rendered="#{properties[1] eq 'text' || properties[1] eq ' text'}" />
+						
+						<h:outputText value="${properties[0]}" styleClass="header" escape="false" rendered="#{properties[1] eq 'header' || properties[1] eq ' header'}" />
+						
+						<h:outputText value="${properties[0]}" escape="false" rendered="#{properties[1] eq 'html' || properties[1] eq ' html'}" />
+					
+						<p:graphicImage height="300" value="${properties[0]}" rendered="#{properties[1] eq 'image' || properties[1] eq ' image'}"  />
+						
+						<p:graphicImage styleClass="img-circle" height="50" value="${properties[0]}" rendered="#{properties[1] eq 'smallimage' || properties[1] eq ' smallimage'}"  />
 						
 						<p:selectBooleanCheckbox value="${properties[0]}" disabled="true" rendered="#{properties[1] eq 'boolean' || properties[1] eq ' boolean'}" />
+						
 					</c:forEach>
 					
 				</p:panelGrid>

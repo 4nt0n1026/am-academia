@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.logic.PessoaLogic;
 import br.com.acad.model.treino.Treino;
 
 @SuppressWarnings("serial")
@@ -52,6 +53,30 @@ public class Aluno extends Pessoa{
 	
 	public void removeTreino(Treino treino){
 		treinos.add(treino);
+	}
+	
+	/**
+	 * Mostra a idade do aluno a partir da data de nasciemento
+	 * @return
+	 */
+	public int getIdadeAluno(){
+		if(this.getDataNascimento()!=null){
+			return PessoaLogic.getIdade(this.getDataNascimento());
+		}else{
+			return 0;
+		}
+	}
+	
+	/**
+	 * Mostra a idade como string do aluno a partir da data de nasciemento
+	 * @return
+	 */
+	public String getIdadeAlunoDetail(){
+		if(this.getDataNascimento()!=null){
+			return String.valueOf(PessoaLogic.getIdade(this.getDataNascimento()));
+		}else{
+			return "0";
+		}
 	}
 	
 	

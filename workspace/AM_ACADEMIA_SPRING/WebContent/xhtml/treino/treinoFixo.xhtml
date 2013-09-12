@@ -82,7 +82,7 @@
 								</p:selectOneMenu> 
 					        </h:panelGrid>
 
-							<p:commandButton value="Adcionar Exercicios" action="#{criacaoTreinoBean.newTreinoFixo}" onclick="dlgTreino.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+							<p:commandButton value="Adcionar Exercicios" action="#{criacaoTreinoBean.newTreinoFixo}" oncomplete="dlgTreino.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
 				        	<p:button icon="ui-icon ui-icon-close"   action="#{treinoFixoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
 					        	
 						</p:fieldset> 
@@ -124,39 +124,26 @@
 				<!-- ****************************************************************************************************** -->
 				<br/>
 				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{treinoFixoBean.showEntityDetail}">
-						<p:panelGrid columns="3">
-							<p:panelGrid columns="2">
-								<h:outputText value="Nome:"/>
-								<h:outputText value="#{treinoFixoBean.entity.nome}" />
-								
-								<h:outputText value="Descricao:"/>
-								<h:outputText value="#{treinoFixoBean.entity.descricao}" escape="false" />
-								
-								<h:outputText value="Objetivo:"/>
-								<h:outputText value="#{treinoFixoBean.entity.objetivoCat.nome}"/>
-								   
-								<h:outputText value="Duração"/>
-								<h:outputText value="#{treinoFixoBean.entity.duracaoTreinoCat.nome}"/>
-								
-								<h:outputText value="Dias na Semana:"/>
-								<h:outputText value="#{treinoFixoBean.entity.diasTreinoCat.nome}"/>
-								
-								<h:outputText value="Faixa Etaria:"/>
-								<h:outputText value="#{treinoFixoBean.entity.faixaEtariaCat.nome}"/>
-								
-								<h:outputText value="Sexo:"/>
-								<h:outputText value="#{treinoFixoBean.entity.sexoCat.nome}"/>
-								
-								<h:outputText value="Professor:"/>
-								<h:outputText value="#{treinoFixoBean.entity.professor.nome}"/>
-							</p:panelGrid>
-							<p:panelGrid columns="1">
-								<h:outputText value="Treino:" />
-								<h:outputText value="#{treinoFixoBean.textoTreino}" escape="false"/>
-							</p:panelGrid>
-						</p:panelGrid>						
-					</p:fieldset>
+					
+					<ui:include src="/xhtml/templates/_detail_content.xhtml">
+						<ui:param name="bean" value="#{treinoFixoBean}"></ui:param>
+						
+						<ui:param name="panel1Columns" value="2"></ui:param>
+						<ui:param name="panel1Fields" value="Nome~header|#{bean.entity.nome}~text|
+															 Descrição~header|#{bean.entity.descricao}~text|
+															 Objetivo~header|#{bean.entity.objetivoCat.nome}~text|
+															 Duração~header|#{bean.entity.duracaoTreinoCat.nome}~text|
+															 Dias na Semana~header|#{bean.entity.diasTreinoCat.nome}~text|
+															 Faixa Etaria~header|#{bean.entity.faixaEtariaCat.nome}~text|
+															 Sexo~header|#{bean.entity.sexoCat.nome}~text|
+															 Professor~header|#{bean.entity.professor.nome}~text"></ui:param>
+						
+						<ui:param name="panel2Columns" value="1"></ui:param>
+						<ui:param name="panel2Fields" value="Treino~header|#{treinoFixoBean.textoTreino}~html"></ui:param>
+
+						
+					</ui:include>					
+				
 				</h:form>
 			
 			

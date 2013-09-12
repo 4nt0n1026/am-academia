@@ -92,7 +92,20 @@ html {
 /* colunas do detail */
 .columns{
 	width: 400px;
-	min-width: 400px;
+	min-width: 300px;
+	max-width: 500px;
+}
+
+/* header do template de detail */
+.header{
+	font-weight: bolder;
+	color: #4682B4;
+}
+
+/* small colunas do detail */
+.smallcolumns{
+	min-width: 200px;
+
 }
 
 .ui-selectonemenu {

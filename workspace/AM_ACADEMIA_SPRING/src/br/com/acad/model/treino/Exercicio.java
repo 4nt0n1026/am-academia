@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
+import br.com.acad.logic.GenericLogic;
 import br.com.acad.logic.PathLogic;
 
 
@@ -114,6 +115,22 @@ public class Exercicio implements Serializable {
 	 */
 	public boolean removeParteCorpoSecundaria(ParteCorpo parte){
 		return this.parteCorpoSecundaria.remove(parte);
+	}
+	
+	/**
+	 * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
+	 * @return
+	 */
+	public String getPartesCorpoPrimDetail() {
+		return GenericLogic.formatListOfObjects(this.parteCorpoPrimaria, ", ");
+	}
+	
+	/**
+	 * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
+	 * @return
+	 */
+	public String getPartesCorpoSecDetail() {
+		return GenericLogic.formatListOfObjects(this.parteCorpoSecundaria, ", ");
 	}
 	
 	//Gets com DAO

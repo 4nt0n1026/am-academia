@@ -42,8 +42,6 @@ public abstract class Bean<T> {
 	protected String[] staticFieldsOrderValue;
 	protected String[] staticFieldsOrderLabel;
 	
-	
-	
 	// Navigation
 	protected boolean showEntity;
 	protected boolean showEntity2;

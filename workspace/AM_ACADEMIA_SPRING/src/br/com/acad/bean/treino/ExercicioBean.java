@@ -152,7 +152,10 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	 * @return
 	 */
 	public String getPartesCorpoPrimDetail() {
-		return GenericLogic.formatListOfObjects(entity.getParteCorpoPrimaria(parteCorpoDAO), ", ");
+		if(entity!=null && entity.getNome() != null){
+			return GenericLogic.formatListOfObjects(entity.getParteCorpoPrimaria(parteCorpoDAO), ", ");
+		}
+		return "";
 	}
 
 	/**
@@ -160,7 +163,10 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	 * @return
 	 */
 	public String getPartesCorpoSecDetail() {
-		return GenericLogic.formatListOfObjects(entity.getParteCorpoSecundaria(parteCorpoDAO), ", ");
+		if(entity!=null && entity.getNome() != null){
+			return GenericLogic.formatListOfObjects(entity.getParteCorpoSecundaria(parteCorpoDAO), ", ");
+		}
+		return "";
 	}
 
 	

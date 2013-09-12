@@ -88,23 +88,20 @@
 				<!-- ****************************************************************************************************** -->
 				<br/>
 				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{treinoEspecificoBean.showEntityDetail}">
-						<p:panelGrid columns="3">
-							
-							<p:panelGrid columns="2">
-								<h:outputText value="Nome:"/>
-								<h:outputText value="#{treinoEspecificoBean.entity.nome}" />
-								
-								<h:outputText value="Professor:"/>
-								<h:outputText value="#{treinoEspecificoBean.entity.professor.nome}"/>
-							</p:panelGrid>
-							
-							<p:panelGrid columns="1">
-								<h:outputText value="Treino:" />
-								<h:outputText value="#{treinoEspecificoBean.textoTreino}" escape="false"/>
-							</p:panelGrid>
-						</p:panelGrid>						
-					</p:fieldset>
+					
+					<ui:include src="/xhtml/templates/_detail_content.xhtml">
+						<ui:param name="bean" value="#{treinoEspecificoBean}"></ui:param>
+						
+						<ui:param name="panel1Columns" value="2"></ui:param>
+						<ui:param name="panel1Fields" value="Nome~text|#{bean.entity.nome}~text|
+															 Professor~text|#{bean.entity.professor.nome}~text"></ui:param>
+						
+						<ui:param name="panel2Columns" value="1"></ui:param>
+						<ui:param name="panel2Fields" value="Treino~text|#{bean.textoTreino}~html"></ui:param>
+
+						
+					</ui:include>		
+				
 				</h:form>
 			
 				<!-- ****************************************************************************************************** -->

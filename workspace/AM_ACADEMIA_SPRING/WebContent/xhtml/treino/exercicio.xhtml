@@ -103,28 +103,23 @@
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{exercicioBean.showEntityDetail}">
-						<p:panelGrid columns="2">
+				<h:form id="detailEntity">
+					
+					<ui:include src="/xhtml/templates/_detail_content.xhtml">
+						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
 						
-							<p:panelGrid columns="2">
-								<h:outputText value="Nome:"/>
-								<h:outputText value="#{exercicioBean.entity.nome}" />
-								
-								<h:outputText value="Descricao:"/>
-								<h:outputText value="#{exercicioBean.entity.descricao}" />
-								
-								<h:outputText value="Partes de corpo primarias"/>
-								<h:outputText value="#{exercicioBean.partesCorpoPrimDetail}" />
-								
-								<h:outputText value="Partes de corpo secundarias"/>
-								<h:outputText value="#{exercicioBean.partesCorpoSecDetail}" />
-							</p:panelGrid>
-							
-							<h:graphicImage value="#{exercicioBean.fotoExercicio}" />
-							
-						</p:panelGrid>
-					</p:fieldset>
+						<ui:param name="panel1Columns" value="2"></ui:param>
+						<ui:param name="panel1Fields" value="Nome~header|#{bean.entity.nome}~text|
+															 Descrição~header|#{bean.entity.descricao}~text|
+															 Musculos Primarios~header|#{bean.entity.partesCorpoPrimDetail}~text|
+															 Musculos Secundarios~header|#{bean.entity.partesCorpoSecDetail}~text"></ui:param>
+						
+						<ui:param name="panel2Columns" value="1"></ui:param>
+						<ui:param name="panel2Fields" value="#{bean.entity.fotoLocalPath}~image"></ui:param>
+
+						
+					</ui:include>			
+					
 				</h:form>
 			
 				
