@@ -44,10 +44,22 @@
 	        
 	        <p:toolbarGroup align="right" > 
 	        
-	        	<p:separator rendered="#{not empty bean.staticFieldsOrderLabel}"/> 
+	        	
+	        	<!-- View (Opcional) -->
+	        	<p:separator rendered="#{not empty bean.staticViewsLabel}"/> 
+	        	<p:toolbarGroup rendered="#{not empty bean.staticViewsLabel}">
+	        		Visão:
+		        	<p:selectOneMenu value="#{bean.view}"   >
+		        		<p:ajax partialSubmit="false" update=":tabView1"
+	                      			 process="@form" listener="#{bean.atualizar}"/>
+		        		<f:selectItems value="#{bean.staticViewsLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+		        	</p:selectOneMenu>
+	       		</p:toolbarGroup>
+	        
 	        	<!-- Ordenação (Opcional) -->
+	        	<p:separator rendered="#{not empty bean.staticFieldsOrderLabel}"/> 
 	        	<p:toolbarGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
-		        	Ordem:
+	        		Ordem:
 		        	<p:selectOneMenu value="#{bean.order}"   >
 		        		<p:ajax partialSubmit="false" update=":tabView1"
 	                      			 process="@form" listener="#{bean.atualizar}"/>
@@ -59,10 +71,9 @@
         		<!-- Busca -->
 	        	Busca:
 	        	<p:focus for="searchField" />
-	        	<p:inputText value="#{bean.search}" id="searchField" >
-				</p:inputText>
+	        	<p:inputText value="#{bean.search}" id="searchField" />
 	        	<p:defaultCommand target="btnBuscar"></p:defaultCommand>
-	        	<p:commandButton icon="ui-icon ui-icon-check" id="btnBuscar"  action="#{bean.atualizar}" ajax="true" update=":tabView1"  />
+	        	<p:commandButton icon="ui-icon ui-icon-check" id="btnBuscar" action="#{bean.atualizar}" ajax="true" update=":tabView1"  />
 	        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{bean.resetSearch}" ajax="true" update=":tabView1" />
 	        </p:toolbarGroup>
 	    </p:toolbar>

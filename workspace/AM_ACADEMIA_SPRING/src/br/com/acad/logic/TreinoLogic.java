@@ -23,11 +23,12 @@ public class TreinoLogic {
 		
 		for(DiaTreino dia : setToList(treino.getDiasTreino())){
 			strTreino.append("<h3>" + dia.getNome() + "</h3>");
-			
+			strTreino.append("<ul>");
 			for(ExercicioTreino exercicio : dia.getExerciciosTreino()){
-				strTreino.append(" - ").append(exercicio.getExercicio().getNome()).append("  ")
-				.append(GenericLogic.formatListOfObjects(setToListSerie(exercicio.getSeries()), "/")).append("<br/>");
+				strTreino.append("<li>").append(exercicio.getExercicio().getNome()).append("  ")
+				.append(GenericLogic.formatListOfObjects(setToListSerie(exercicio.getSeries()), "/")).append("</li>");
 			}
+			strTreino.append("</ul>");
 		}
 		return strTreino.toString();
 	}

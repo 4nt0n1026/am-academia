@@ -38,7 +38,7 @@
 					<!-- form de resposta a Solicitacao -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formTreino"  >
-						<p:focus for="formEntity" />
+						<p:focus for="formTreino" />
 						<p:fieldset id="field1"  rendered="#{solicitacaoTreinoBean.showTreino}">
 							<h:panelGrid columns="10">
 							
@@ -60,6 +60,7 @@
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
+						<p:focus for="formEntity" />
 						<p:fieldset id="field"  rendered="#{solicitacaoTreinoBean.showEntity}">
 							<h:panelGrid columns="10">
 							

@@ -50,12 +50,15 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = solicitacaoTreinoDAO;
 		staticFields = SolicitacaoTreino.STATIC_FIELDS;
 		staticFieldsOrderLabel = SolicitacaoTreino.STATIC_FIELDS_ORDER_LABEL;
 		staticFieldsOrderValue = SolicitacaoTreino.STATIC_FIELDS_ORDER_VALUE;
+		staticViewsLabel = SolicitacaoTreino.STATIC_VIEWS_LABEL;
+		staticViewsValue = SolicitacaoTreino.STATIC_VIEWS_VALUE;
+		
 		order = staticFieldsOrderLabel[0];
+		view = staticViewsLabel[0];
 		atualizar();
 	}
 	
@@ -66,19 +69,16 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	public void showNewEntity() {
 		showEntity = true;
 		entity = new SolicitacaoTreino();
+		entity.setDataSolicitacao(Calendar.getInstance());
+		entity.setRespondido(false);
 		entity.setAluno(new Aluno());
 	}
-
+	
 	/**
 	 * inclui ou edita entity no banco
 	 */
 	@Override
 	public void incluirEntity() {
-		// Se for nova instancia
-		if(entity.getId()==0) {
-			entity.setDataSolicitacao(Calendar.getInstance());
-			entity.setRespondido(false);
-		}
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 

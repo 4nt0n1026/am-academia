@@ -3,7 +3,6 @@ package br.com.acad.dao.pessoa.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -52,25 +51,13 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		return professores;
 	}
 
-	@Override
-	public long contarTodos(String search) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<ProfessorFunc> buscarTodos(int page, String search,
-			String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public long contarTodosProf(String search) {
 		if(search==null || search.length()==0){
 			search=" ";
 		}
-		String sql = SqlLogic.getCountSql(ProfessorFunc.STATIC_FIELDS, "ProfessorFunc", search) + " and isProfessor = true";
+		String sql = SqlLogic.getCountSql(ProfessorFunc.STATIC_FIELDS, "ProfessorFunc", search, "") + " and isProfessor = true";
 		Query q = getEntityManager().createQuery(sql);
 		return  (Long) q.getSingleResult();
 	}
@@ -80,7 +67,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		if(search==null || search.length()==0){
 			search=" ";
 		}
-		String sql = SqlLogic.getCountSql(ProfessorFunc.STATIC_FIELDS, "ProfessorFunc", search) + " and isProfessor = false";
+		String sql = SqlLogic.getCountSql(ProfessorFunc.STATIC_FIELDS, "ProfessorFunc", search, "") + " and isProfessor = false";
 		Query q = getEntityManager().createQuery(sql);
 		return  (Long) q.getSingleResult();
 	}
@@ -88,7 +75,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	@Override
 	public List<ProfessorFunc> buscarTodosProf(int page, String search, String order) {
 		StringBuilder sql = new StringBuilder("from ProfessorFunc ");
-		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search);
+		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search, "");
 		if(sqlWhere.length()>4){
 			sql.append(sqlWhere).append(" and isProfessor = true");
 		}else{
@@ -115,7 +102,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	public List<ProfessorFunc> buscarTodosFunc(int page, String search,
 			String order) {
 		StringBuilder sql = new StringBuilder("from ProfessorFunc ");
-		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search);
+		String sqlWhere = SqlLogic.getWhereSql(ProfessorFunc.STATIC_FIELDS, search, "");
 		if(sqlWhere.length()>1){
 			sql.append(sqlWhere).append(" and isProfessor = false");
 		}else{
@@ -142,19 +129,6 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	public List<ProfessorFunc> buscarTodos() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public List<ProfessorFunc> filtrarTodos(int page,
-			Map<String, String> filtros, String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public long contarTodosFiltro(Map<String, String> filtros) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

@@ -14,41 +14,41 @@
 		<!-- ****************************************************************************************************** -->
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Professores" >  
+     			<p:tab title="Professores / Funcionarios" >  
      				
 				    <!-- ****************************************************************************************************** -->
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
 					<h:form id="formEntity"  >
 						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{professorBean.showEntity}">
+						<p:fieldset id="field"  rendered="#{professorFuncBean.showEntity}">
 							<h:panelGrid columns="10">
 							
 						        <h:outputLabel for="idNome" value="Nome>" />  
-									    <p:inputText id="idNome" value="#{professorBean.entity.nome}" required="true" requiredMessage="Nome Obrigatorio" />
+									    <p:inputText id="idNome" value="#{professorFuncBean.entity.nome}" required="true" requiredMessage="Nome Obrigatorio" />
 								        
 								        <h:outputLabel for="idEmail" value="Email:" />   
-								        <p:inputText id="idEmail" value="#{professorBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
+								        <p:inputText id="idEmail" value="#{professorFuncBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
 								        
 								        <h:outputLabel for="idSenha" value="Senha:" rendered="#{alunoBean.entity.id == 0}" />  
-								        <p:inputText id="idSenha" value="#{professorBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio"  
+								        <p:inputText id="idSenha" value="#{professorFuncBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio"  
 								        			rendered="#{alunoBean.entity.id == 0}"/>
 								        
 								        <h:outputLabel for="idNasc" value="Nascimento:"  />   
-								        <p:inputMask id="idNasc" value="#{professorBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
+								        <p:inputMask id="idNasc" value="#{professorFuncBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
 								        			requiredMessage="Data de Nascimento Obrigatoria" >
 								        	<f:convertDateTime pattern="dd/MM/yyyy" />
 								        </p:inputMask>  
 								        
 								        <h:outputLabel for="idCpf" value="CPF:" />   
-								        <p:inputMask id="idCpf" value="#{professorBean.entity.cpf}" mask="999.999.999-99"   />  
+								        <p:inputMask id="idCpf" value="#{professorFuncBean.entity.cpf}" mask="999.999.999-99"   />  
 								        
 								        <h:outputLabel for="idRg" value="RG:" />   
-								        <p:inputText id="idRg" value="#{professorBean.entity.rg}"  />
+								        <p:inputText id="idRg" value="#{professorFuncBean.entity.rg}"  />
 								        
 	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{professorBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{professorBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{professorFuncBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+					        	<p:button icon="ui-icon ui-icon-close"   action="#{professorFuncBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
 					        	
 					        </h:panelGrid>
 						</p:fieldset> 
@@ -61,7 +61,7 @@
       				<h:form id="tabelaEntity">
 
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
-						<ui:param name="bean" value="#{professorBean}"></ui:param>
+						<ui:param name="bean" value="#{professorFuncBean}"></ui:param>
 					</ui:include>
 			   	
 			    
@@ -69,12 +69,13 @@
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content.xhtml">
-						<ui:param name="bean" value="#{professorBean}"></ui:param>
+						<ui:param name="bean" value="#{professorFuncBean}"></ui:param>
 						<ui:param name="columns" value="Nome, #{entity.nome}, text| 
 														Email, #{entity.email}, text|
 														Nascimento,#{entity.dataNascimento.time}, date|
 														CPF, #{entity.cpf}, text|
-														RG, #{entity.rg}, text|"></ui:param>
+														RG, #{entity.rg}, text|
+														Professor,#{entity.isProfessor},boolean"></ui:param>
 					</ui:include>
 				</h:form>
 			

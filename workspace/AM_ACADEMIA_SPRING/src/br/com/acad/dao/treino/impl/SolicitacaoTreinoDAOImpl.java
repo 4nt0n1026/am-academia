@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
-import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.SolicitacaoTreino;
 
@@ -30,47 +28,6 @@ public class SolicitacaoTreinoDAOImpl extends DAOImpl<SolicitacaoTreino,Integer>
 		return q.getResultList();
 	}
 
-	@Override
-	public long contarTodos(String search) {
-		Query q = getEntityManager().createQuery(SqlLogic.getCountSql(SolicitacaoTreino.STATIC_FIELDS, "SolicitacaoTreino", search));
-		return  (Long) q.getSingleResult();
-	}
-
-	@Override
-	public List<SolicitacaoTreino> buscarTodos(int page, String txtSearch, String order) {
-		TypedQuery<SolicitacaoTreino> q = getEntityManager().createQuery(SqlLogic.getSql(SolicitacaoTreino.STATIC_FIELDS, "SolicitacaoTreino", txtSearch, order), SolicitacaoTreino.class);
-				
-		q.setMaxResults(SqlLogic.TABLE_SIZE);
-
-		if(page>0){
-			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
-		}else{
-			q.setFirstResult(1);
-		}
-		
-		return q.getResultList();
-	}
-
-	@Override
-	public List<SolicitacaoTreino> filtrarTodos(int page, Map<String, String> filtros, String order){
-		TypedQuery<SolicitacaoTreino> q = getEntityManager().createQuery(SqlLogic.getFilterSql(filtros, "SolicitacaoTreino", order), SolicitacaoTreino.class);
-		
-		q.setMaxResults(SqlLogic.TABLE_SIZE);
-
-		if(page>0){
-			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
-		}else{
-			q.setFirstResult(1);
-		}
-		
-		return q.getResultList();
-	}
-
-	@Override
-	public long contarTodosFiltro(Map<String, String> filtros) {
-		Query q = getEntityManager().createQuery(SqlLogic.getCountFilterSql("SolicitacaoTreino", filtros));
-		return  (Long) q.getSingleResult();
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

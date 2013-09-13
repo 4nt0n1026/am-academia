@@ -58,12 +58,12 @@
 			<!-- Footer com paginacao e quantidade de itens -->
 			<f:facet name="footer">  
 				<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{bean.previousPageTable}" 
-							rendered="#{bean.page != 1}" ajax="true" update=":tabView1:tabelaEntity" />
+							disabled="#{bean.page le 1}" ajax="true" update=":tabView1:tabelaEntity" />
 							
-				---<h:outputText value="#{bean.page}" />---
+				---<p:inputText value="#{bean.page}" styleClass="center" size="2" />---
 				
-				<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{bean.nextPageTable}" 
-							rendered="#{bean.page != bean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+				<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{bean.nextPageTable}"
+							disabled="#{bean.page ge bean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
 							
 				<div class="left">
 					<h:outputText value="Total de itens: #{bean.totalEntities} - " />

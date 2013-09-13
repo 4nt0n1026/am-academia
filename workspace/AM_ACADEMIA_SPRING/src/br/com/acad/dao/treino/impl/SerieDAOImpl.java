@@ -1,7 +1,6 @@
 package br.com.acad.dao.treino.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Query;
 
@@ -33,29 +32,5 @@ public class SerieDAOImpl extends DAOImpl<Serie,Integer> implements SerieDAO{
 		return q.getResultList();
 	}
 
-	@Override
-	public long contarTodos(String search) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Serie> buscarTodos(int page, String txtSearch, String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Serie> filtrarTodos(int page, Map<String, String> filtros,
-			String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public long contarTodosFiltro(Map<String, String> filtros) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

@@ -12,8 +12,10 @@ import javax.persistence.Table;
 public class ProfessorFunc extends Pessoa{
 
 	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "dataNascimento", "email", "cpf", "rg"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Nome", "Data Nascimento", "Email", "CPF", "RG"};
+	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Nome", "Data Nascimento", "Email", "CPF", "RG", "Professor"};
+	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "dataNascimento", "email", "cpf", "rg", "isProfessor"};
+	public static final String[] STATIC_VIEWS_LABEL = {"Todos Registros", "Professores", "Funcionarios"};
+	public static final String[] STATIC_VIEWS_VALUE = {"", "isProfessor=true", "isProfessor=false"};
 
 	@Column(length=500, nullable=true)
 	private String fotoLocal;
@@ -32,7 +34,7 @@ public class ProfessorFunc extends Pessoa{
 		this.setNome(nome);
 	}
 	
-	public boolean isProfessor() {
+	public boolean getIsProfessor() {
 		return isProfessor;
 	}
 	public void setIsProfessor(boolean isProfessor) {

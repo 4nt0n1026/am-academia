@@ -21,34 +21,51 @@ public class SqlLogic {
 	 * @param txtSearch
 	 * @return
 	 */
-	public static String getWhereSql(String[] lista, String txtSearch){
+	public static String getWhereSql(String[] lista, String txtSearch, String view){
 		
-		if(txtSearch !=null && txtSearch.length()>0){
-			StringBuilder fields = new StringBuilder(" where (");
-			
+		StringBuilder whereStr = new StringBuilder();
+		
+		boolean hasSearch = (txtSearch !=null && txtSearch.length()>0);
+		boolean hasView = (view !=null && view.length()>0);
+		
+		// Search
+		if(hasSearch){
+			whereStr.append(" where (");
+		
 			for (String field : lista) {
-				if(fields.length()>8){
-					fields.append(" or ");
+				if(whereStr.length()>8){
+					whereStr.append(" or ");
 				}
-				fields.append("lower(").append(field).append(") like '%").append(txtSearch.toLowerCase()).append("%'");
+				whereStr.append("lower(").append(field).append(") like '%").append(txtSearch.toLowerCase()).append("%'");
 			}
-			fields.append(")");
-	
-			return fields.toString();
+			whereStr.append(")");
+			
 		}
-		return "";
+		
+		// View
+		if(hasView){
+			if(hasSearch){
+				whereStr.append(" and ");
+			}else{
+				whereStr.append(" where (");
+			}
+			
+			whereStr.append(view).append(")");
+		}
+		
+		return whereStr.toString();
 	}
-
+	
 	/**
-	 * gera String de sql com uma lista de atributos e um search
+	 * gera String de sql com uma lista de atributos, um search e uma ordenacao 
 	 * @param lista
 	 * @param search
 	 * @return
 	 */
-	public static String getSql(String[] lista, String modelName, String search, String order){
+	public static String getSql(String[] lista, String modelName, String search, String order, String view){
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("from ").append(modelName).append(getWhereSql(lista, search));
+		sql.append("from ").append(modelName).append(getWhereSql(lista, search, view));
 		
 		if(order != null && order.length()>0){
 			sql.append(" order by ").append(order);
@@ -58,6 +75,7 @@ public class SqlLogic {
 		return sql.toString();
 	}
 	
+	
 	/**
 	 * gera String de sql para count com uma lista de atributos e um search
 	 * @param lista
@@ -65,9 +83,9 @@ public class SqlLogic {
 	 * @param search
 	 * @return
 	 */
-	public static String getCountSql(String[] lista, String modelName, String search){
+	public static String getCountSql(String[] lista, String modelName, String search, String view){
 		StringBuilder sql = new StringBuilder();
-		sql.append("select count(id) from ").append(modelName).append(getWhereSql(lista, search));
+		sql.append("select count(id) from ").append(modelName).append(getWhereSql(lista, search, view));
 		
 		System.out.println(sql.toString());
 		return sql.toString();

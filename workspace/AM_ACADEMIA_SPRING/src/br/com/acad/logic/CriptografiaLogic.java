@@ -17,8 +17,6 @@ public class CriptografiaLogic {
 			BigInteger hash = new BigInteger(1, md.digest());
 			String senhaCriptografada = hash.toString(16); //Hash em Base16 Encoding
 			
-			System.out.println(senhaCriptografada);
-			
 			return senhaCriptografada;
 		}catch(Exception e){
 			e.printStackTrace();

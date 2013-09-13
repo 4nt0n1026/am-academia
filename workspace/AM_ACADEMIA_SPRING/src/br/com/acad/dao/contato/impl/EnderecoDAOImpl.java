@@ -1,7 +1,6 @@
 package br.com.acad.dao.contato.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -22,30 +21,6 @@ public class EnderecoDAOImpl extends DAOImpl<Endereco,Integer> implements Endere
 		return null;
 	}
 
-	@Override
-	public long contarTodos(String search) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Endereco> buscarTodos(int page, String txtSearch, String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Endereco> filtrarTodos(int page, Map<String, String> filtros,
-			String order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public long contarTodosFiltro(Map<String, String> filtros) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 

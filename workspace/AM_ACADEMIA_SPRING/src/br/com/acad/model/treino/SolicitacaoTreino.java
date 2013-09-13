@@ -26,6 +26,9 @@ public class SolicitacaoTreino implements Serializable {
 	public static final String[] STATIC_FIELDS = {"dataSolicitacao", "aluno.nome", "descricao" };
 	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"dataSolicitacao", "aluno.nome", "respondido"};
 	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Aluno", "Respondido"};
+	public static final String[] STATIC_VIEWS_LABEL = {"Todos registros", "Respondidas", "Não respondidas"};
+	public static final String[] STATIC_VIEWS_VALUE = {"", "respondido=true", "respondido=false"};
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

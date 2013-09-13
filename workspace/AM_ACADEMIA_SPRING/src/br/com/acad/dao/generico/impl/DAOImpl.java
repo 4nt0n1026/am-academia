@@ -7,10 +7,12 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.acad.dao.generico.interf.DAO;
+import br.com.acad.logic.SqlLogic;
 
 @Repository
 public abstract class DAOImpl<T,K> implements DAO<T,K>{
@@ -24,6 +26,50 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	public DAOImpl(){
 		this.entityClass = (Class) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> buscarTodos(String[] columns, int page, String search, String order, String view){
+		Query q = getEntityManager().createQuery(SqlLogic.getSql(columns, entityClass.getSimpleName(), search, order, view));
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return (List<T>) q.getResultList();
+	}
+	
+	@Override
+	public long contarTodos(String[] columns, String search, String view) {
+		Query q = getEntityManager().createQuery(SqlLogic.getCountSql(columns, entityClass.getSimpleName(), search, view));
+		return  (Long) q.getSingleResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> filtrarTodos(int page, Map<String, String> filtros, String order){
+		Query q = getEntityManager().createQuery(SqlLogic.getFilterSql(filtros, getClassName(), order));
+		
+		q.setMaxResults(SqlLogic.TABLE_SIZE);
+
+		if(page>0){
+			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
+		}else{
+			q.setFirstResult(1);
+		}
+		
+		return q.getResultList();
+	}
+
+	@Override
+	public long contarTodosFiltro(Map<String, String> filtros) {
+		Query q = getEntityManager().createQuery(SqlLogic.getCountFilterSql(getClassName(), filtros));
+		return  (Long) q.getSingleResult();
 	}
 	
 	@Override
@@ -79,18 +125,12 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 		
 		em.getTransaction().commit();
 	}
+	
+	@Override
+	public String getClassName(){
+		return entityClass.getSimpleName();
+	}
 
-
-	public abstract List<T> buscarTodos();
-	
-	public abstract long contarTodos(String search);
-	
-	public abstract List<T> buscarTodos(int page, String txtSearch, String order);
-	
-	public abstract List<T> filtrarTodos(int page, Map<String, String> filtros, String order);
-	
-	public abstract long contarTodosFiltro(Map<String, String> filtros);
-	
 	
 	public EntityManager getEntityManager() {
 		return emf.createEntityManager();

@@ -15,14 +15,19 @@ public interface DAO<T,K> {
 	
 	T searchById(K id);
 	
+	List<T> buscarTodos(String[] columns, int page, String search, String order, String view);
+	
+	long contarTodos(String[] columns, String search, String view);
+	
+	List<T> filtrarTodos(int page, Map<String, String> filtros, String order);
+
+	long contarTodosFiltro(Map<String, String> filtros);
+	
+	String getClassName();
+	
 	public abstract List<T> buscarTodos();
 	
-	public abstract long contarTodos(String search);
 	
-	public abstract List<T> buscarTodos(int page, String search, String order);
 	
-	public abstract List<T> filtrarTodos(int page, Map<String, String> filtros, String order);
-	
-	public abstract long contarTodosFiltro(Map<String, String> filtros);
 	
 }

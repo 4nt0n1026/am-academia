@@ -42,47 +42,6 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 		return alunos;
 	}
 
-	@Override
-	public long contarTodos(String search) {
-		Query q = getEntityManager().createQuery(SqlLogic.getCountSql(Aluno.STATIC_FIELDS, "Aluno", search));
-		return  (Long) q.getSingleResult();
-	}
-
-	@Override
-	public List<Aluno> buscarTodos(int page, String txtSearch, String order) {
-		TypedQuery<Aluno> q = getEntityManager().createQuery(SqlLogic.getSql(Aluno.STATIC_FIELDS, "Aluno", txtSearch, order), Aluno.class);
-				
-		q.setMaxResults(SqlLogic.TABLE_SIZE);
-
-		if(page>0){
-			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
-		}else{
-			q.setFirstResult(1);
-		}
-		
-		return q.getResultList();
-	}
-	
-	@Override
-	public List<Aluno> filtrarTodos(int page, Map<String, String> filtros, String order){
-		TypedQuery<Aluno> q = getEntityManager().createQuery(SqlLogic.getFilterSql(filtros, "Aluno", order), Aluno.class);
-		
-		q.setMaxResults(SqlLogic.TABLE_SIZE);
-
-		if(page>0){
-			q.setFirstResult((page -1)*SqlLogic.TABLE_SIZE);
-		}else{
-			q.setFirstResult(1);
-		}
-		
-		return q.getResultList();
-	}
-
-	@Override
-	public long contarTodosFiltro(Map<String, String> filtros) {
-		Query q = getEntityManager().createQuery(SqlLogic.getCountFilterSql("Aluno", filtros));
-		return  (Long) q.getSingleResult();
-	}
 
 	@Override
 	public Aluno logar(Aluno aluno){

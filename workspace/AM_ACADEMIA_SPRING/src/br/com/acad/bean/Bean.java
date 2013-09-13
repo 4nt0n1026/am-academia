@@ -29,13 +29,20 @@ public abstract class Bean<T> {
 	protected T entity;
 	protected List<T> entities;
 	
-	
-	// Search e paginacao
+	// Search
 	protected String[] staticFields;
-	protected int page;
 	protected String search;
+	
+	// Paginação
+	protected int page = 1;
 	protected long totalPages;
 	protected long totalEntities;
+	
+	// View
+	protected String permanentView;
+	protected String view;
+	protected String[] staticViewsValue;
+	protected String[] staticViewsLabel;
 	
 	// Ordenacao
 	protected String order;
@@ -93,17 +100,18 @@ public abstract class Bean<T> {
 	public void atualizar() {
 		try{
 			closeForms();
-			entities = buscarTodos();
 			atualizaPages();
+			entities = buscarTodos();
 		}catch(Exception e){
 			MessagesLogic.addErrorMessage("Erro", "Ocorreu um erro! Contate o administrador");
+			e.printStackTrace();
 		}
 	}
 
 	/**
 	 * Apaga o filtro de search
 	 */
-	public void resetSearch() {
+	public final void resetSearch() {
 		search = "";
 		atualizar();
 	}
@@ -280,14 +288,25 @@ public abstract class Bean<T> {
 	 * @return
 	 */
 	protected List<T> buscarTodos() throws Exception{
+		
 		if(search!=null && search.length()>0){
 			page = 1;
 		}
+		
+		if(page > totalPages){
+			page = (int) totalPages;
+			MessagesLogic.addWarnMessage("Erro", "Número de paginação da tabela invalido");
+		}
+		if(page < 1){
+			page = 1;
+			MessagesLogic.addWarnMessage("Erro", "Número de paginação da tabela invalido");
+		}
+		
 		if(staticFieldsOrderLabel!=null){
 			int posicao =  Arrays.asList(staticFieldsOrderLabel).indexOf(order);
-			return dao.buscarTodos(page, search, staticFieldsOrderValue[posicao]);
+			return dao.buscarTodos(staticFields, page, search, staticFieldsOrderValue[posicao], getTempView());
 		}else{
-			return dao.buscarTodos(page, search, order);
+			return dao.buscarTodos(staticFields, page, search, order, getTempView());
 		}
 	}
 	
@@ -296,7 +315,24 @@ public abstract class Bean<T> {
 	 * @return
 	 */
 	protected long contarTodos(){
-		return dao.contarTodos(search);
+		return dao.contarTodos(staticFields, search, getTempView());
+	}
+	
+	/**
+	 * retorna uma string temporaria de view, juntando a permanetView e a view
+	 * @return
+	 */
+	public String getTempView(){
+		String tempView = new String();
+		if(staticViewsLabel != null && view != null){
+			int posicao =  Arrays.asList(staticViewsLabel).indexOf(view);
+			tempView = staticViewsValue[posicao];
+		}
+		if(view != null && view.length() > 0 && permanentView != null && permanentView.length() > 0){
+			tempView += " and ";
+		}
+		tempView += permanentView == null? "" : permanentView;
+		return tempView;
 	}
 	
 	/************************************************************************************************************/
@@ -356,6 +392,21 @@ public abstract class Bean<T> {
 	}
 	public String[] getStaticFieldsOrderLabel() {
 		return staticFieldsOrderLabel;
+	}
+	public String getView() {
+		return view;
+	}
+	public void setView(String view) {
+		this.view = view;
+	}
+	public String getPermanentView() {
+		return permanentView;
+	}
+	public String[] getStaticViewsValue() {
+		return staticViewsValue;
+	}
+	public String[] getStaticViewsLabel() {
+		return staticViewsLabel;
 	}
 	
 	

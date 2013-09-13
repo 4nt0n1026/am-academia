@@ -34,7 +34,6 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = alunoDAO;
 		staticFields = Aluno.STATIC_FIELDS;
 		staticFieldsOrderLabel = Aluno.STATIC_FIELDS_ORDER_LABEL;

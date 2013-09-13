@@ -1,8 +1,6 @@
 package br.com.acad.bean.pessoa;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -19,7 +17,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @SuppressWarnings("serial")
 @Component
 @Scope(value="view")
-public class ProfessorBean extends Bean<ProfessorFunc> implements Serializable {
+public class ProfessorFuncBean extends Bean<ProfessorFunc> implements Serializable {
 
 	/************************************************************************************************************/
 	//ATRIBUTOS
@@ -35,11 +33,13 @@ public class ProfessorBean extends Bean<ProfessorFunc> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = professorFuncDAO;
 		staticFields = ProfessorFunc.STATIC_FIELDS;
 		staticFieldsOrderLabel = ProfessorFunc.STATIC_FIELDS_ORDER_LABEL;
 		staticFieldsOrderValue = ProfessorFunc.STATIC_FIELDS_ORDER_VALUE;
+		staticViewsLabel = ProfessorFunc.STATIC_VIEWS_LABEL;
+		staticViewsValue = ProfessorFunc.STATIC_VIEWS_VALUE;
+		view = staticViewsLabel[0];
 		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}
@@ -51,6 +51,8 @@ public class ProfessorBean extends Bean<ProfessorFunc> implements Serializable {
 	public void showNewEntity() {
 		showEntity = true;
 		entity = new ProfessorFunc();
+		String senha = CriptografiaLogic.encriptar(entity.getSenha());
+		entity.setSenha(senha);
 	}
 
 	/**
@@ -58,13 +60,11 @@ public class ProfessorBean extends Bean<ProfessorFunc> implements Serializable {
 	 */
 	@Override
 	public void incluirEntity() {
-		// Encriptografa senha caso seja uma nova entidade
-		if(entity.getId()==0){
-			String senha = CriptografiaLogic.encriptar(entity.getSenha());
-			entity.setSenha(senha);
-		}
-		// Inclui no banco
-		entity.setIsProfessor(true);
+//		// Encriptografa senha caso seja uma nova entidade
+//		if(entity.getId()==0){
+//			String senha = CriptografiaLogic.encriptar(entity.getSenha());
+//			entity.setSenha(senha);
+//		}
 		incluirGeneric( entity!=null? entity.getId():0);
 	}
 
@@ -76,30 +76,6 @@ public class ProfessorBean extends Bean<ProfessorFunc> implements Serializable {
 		deletarGeneric(entity!=null?entity.getId():0);
 	}
 	
-	/**
-	 * Sobreescrita do metodo buscarTodos para buscar somente professores
-	 */
-	@Override
-	public List<ProfessorFunc> buscarTodos() {
-		if(search!=null && search.length()>0){
-			page = 1;
-		}
-		if(staticFieldsOrderLabel!=null){
-			int posicao =  Arrays.asList(staticFieldsOrderLabel).indexOf(order);
-			return professorFuncDAO.buscarTodosProf(page, search, staticFieldsOrderValue[posicao]);
-		}else{
-			return professorFuncDAO.buscarTodosProf(page, search, order);
-		}
-	}
-	
-	
-	/**
-	 * Sobreescrita do metodo contarTodos para contar somente professores
-	 */
-	@Override
-	public long contarTodos() {
-		return professorFuncDAO.contarTodosProf(search);
-	}
 	
 	/************************************************************************************************************/
 	//GET FIELDS
