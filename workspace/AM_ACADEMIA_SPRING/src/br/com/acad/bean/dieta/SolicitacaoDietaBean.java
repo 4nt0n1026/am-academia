@@ -51,13 +51,8 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = solicitacaoDietaDAO;
-		staticFields = SolicitacaoDieta.STATIC_FIELDS;
-		staticFieldsOrderLabel = SolicitacaoDieta.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = SolicitacaoDieta.STATIC_FIELDS_ORDER_VALUE;
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		super.init();
 	}
 	
 	/**
@@ -141,7 +136,7 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
 	 * @return
 	 */
 	public int getIdadeAlunoDetail(){
-		if(entity.getAluno().getDataNascimento()!=null){
+		if(entity!=null && entity.getAluno()!=null && entity.getAluno().getDataNascimento()!=null){
 			return PessoaLogic.getIdade(entity.getAluno().getDataNascimento());
 		}else{
 			return 0;

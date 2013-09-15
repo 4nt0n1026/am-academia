@@ -13,9 +13,11 @@ import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
+import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.ProfessorFunc;
+import br.com.acad.model.treino.Treino;
 import br.com.acad.model.treino.TreinoEspecifico;
 
 
@@ -46,9 +48,9 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	public void init() {
 		page = 1;
 		dao = treinoEspecificoDAO;
-		staticFields = TreinoEspecifico.STATIC_FIELDS;
-		staticFieldsOrderLabel = TreinoEspecifico.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = TreinoEspecifico.STATIC_FIELDS_ORDER_VALUE;
+		staticFields = AnnotationsLogic.getSearchValueFields(Treino.class, TreinoEspecifico.class);
+		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Treino.class, TreinoEspecifico.class);
+		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Treino.class, TreinoEspecifico.class);
 		order = staticFieldsOrderLabel[0];
 		atualizar();
 	}

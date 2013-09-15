@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
@@ -29,20 +31,21 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="ACAD_DIETA")
-public class Dieta implements Serializable{
-
-	public static final String[] STATIC_FIELDS = null;
+public class Dieta implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_DIETA")
 	private int id;
+
+	@Temporal(TemporalType.DATE)
+	@Show(label="Data", order=true)
+	private Calendar data;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Nome", order=true)
 	private String nome;
 	
-	@Temporal(TemporalType.DATE)
-	private Calendar data;
 	
 	@Column(length=500, nullable=true)
 	private String descricao;
@@ -55,6 +58,7 @@ public class Dieta implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_ID", nullable=true)
+	@Show(label="Professor", mappedName="professor.nome", order=true)
 	private ProfessorFunc professor;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)

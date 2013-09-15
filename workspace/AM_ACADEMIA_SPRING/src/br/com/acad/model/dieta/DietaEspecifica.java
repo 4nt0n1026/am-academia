@@ -6,18 +6,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_DIETA_ESPECIFICA")
 @PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
 public class DietaEspecifica extends Dieta {
 
-	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Nome", "Professor", "Aluno"};
-	
 	@OneToOne
 	@JoinColumn(name="SOLICITACAO_DIETA_ID", nullable=false)
+	@Show(label="Aluno", mappedName="solicitacao.aluno.nome", order=true)
 	private SolicitacaoDieta solicitacao;
 	
 	public DietaEspecifica(){}

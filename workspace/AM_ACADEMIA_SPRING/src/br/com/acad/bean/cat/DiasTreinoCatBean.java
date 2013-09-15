@@ -32,10 +32,8 @@ public class DiasTreinoCatBean extends Bean<DiasTreinoCat> implements Serializab
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = diasTreinoCatDAO;
-		staticFields = DiasTreinoCat.STATIC_FIELDS;
-		atualizar();
+		super.init();
 	}
 	
 	/**

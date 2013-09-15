@@ -21,6 +21,7 @@ import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
+import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
@@ -29,6 +30,7 @@ import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
+import br.com.acad.model.treino.Treino;
 import br.com.acad.model.treino.TreinoFixo;
 
 
@@ -71,13 +73,11 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = treinoFixoDAO;
-		staticFields = TreinoFixo.STATIC_FIELDS;
-		staticFieldsOrderLabel = TreinoFixo.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = TreinoFixo.STATIC_FIELDS_ORDER_VALUE;
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		staticFields = AnnotationsLogic.getSearchValueFields(Treino.class, TreinoFixo.class);
+		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Treino.class, TreinoFixo.class);
+		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Treino.class, TreinoFixo.class);
+		super.init();
 	}
 	
 	/**

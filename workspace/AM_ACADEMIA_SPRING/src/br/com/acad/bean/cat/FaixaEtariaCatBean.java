@@ -32,10 +32,8 @@ public class FaixaEtariaCatBean extends Bean<FaixaEtariaCat> implements Serializ
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = faixaEtariaCatDAO;
-		staticFields = FaixaEtariaCat.STATIC_FIELDS;
-		atualizar();
+		super.init();
 	}
 	
 	/**

@@ -3,16 +3,16 @@ package br.com.acad.bean.pessoa;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
+import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.model.pessoa.Aluno;
+import br.com.acad.model.pessoa.Pessoa;
 
 
 @SuppressWarnings("serial")
@@ -31,15 +31,13 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	//METODOS
 	/************************************************************************************************************/
 	
-	@PostConstruct
 	@Override
 	public void init() {
 		dao = alunoDAO;
-		staticFields = Aluno.STATIC_FIELDS;
-		staticFieldsOrderLabel = Aluno.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = Aluno.STATIC_FIELDS_ORDER_VALUE;
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, Aluno.class);
+		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, Aluno.class);
+		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, Aluno.class);
+		super.init();
 	}
 	
 	/**

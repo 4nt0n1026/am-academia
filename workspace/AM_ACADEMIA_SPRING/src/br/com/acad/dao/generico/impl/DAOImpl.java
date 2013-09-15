@@ -130,6 +130,11 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	public String getClassName(){
 		return entityClass.getSimpleName();
 	}
+	
+	@Override
+	public Class<T> getEntityClass() {
+		return entityClass;
+	}
 
 	
 	public EntityManager getEntityManager() {

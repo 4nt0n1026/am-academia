@@ -33,9 +33,7 @@ public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable {
 	@Override
 	public void init() {
 		dao = noticiaCatDAO;
-		staticFields = NoticiaCat.STATIC_FIELDS;
-		order = staticFields[0];
-		atualizar();
+		super.init();
 	}
 	
 	/**

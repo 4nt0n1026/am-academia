@@ -9,10 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_ESTADO")
-public class Estado implements Serializable {
+public class Estado implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

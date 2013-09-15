@@ -14,16 +14,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_HORARIO_AULA")
-public class HorarioAula implements Serializable {
+public class HorarioAula implements Serializable, GenericEntity{
 
-	public static final String[] STATIC_FIELDS = {"unidade.nome", "professor.nome", "aula.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"aula.nome", "unidade.nome", "professor.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Aula", "Unidade", "Professor"};
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -35,19 +34,24 @@ public class HorarioAula implements Serializable {
 	private Calendar hora;
 	
 	@Column(name="DIA_SEMANA")
+	@Show(label="Dias da Semana")
 	private String diasSemana;
 	
 	@ManyToOne
+	@JoinColumn(name="AULA_ID")
+	@Show(label="Aula", mappedName="aula.nome", order=true)
+	private Aula aula;
+	
+	@ManyToOne
 	@JoinColumn(name="UNIDADE_ID")
+	@Show(label="Unidade", mappedName="unidade.nome", order=true)
 	private Unidade unidade;
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_ID")
+	@Show(label="Professor", mappedName="professor.nome", order=true)
 	private ProfessorFunc professor;
 
-	@ManyToOne
-	@JoinColumn(name="AULA_ID")
-	private Aula aula;
 	
 	
 	

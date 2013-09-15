@@ -9,12 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_UNIDADE")
-public class Unidade implements Serializable{
-
-	public static final String[] STATIC_FIELDS = {"nome", "descrição"};
+public class Unidade implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,6 +23,7 @@ public class Unidade implements Serializable{
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Nome")
 	private String nome;
 	
 	@Column(length=500, nullable=true)

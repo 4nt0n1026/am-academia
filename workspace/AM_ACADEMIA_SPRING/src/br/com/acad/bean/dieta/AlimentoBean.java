@@ -37,13 +37,8 @@ public class AlimentoBean extends Bean<Alimento> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = alimentoDAO;
-		staticFields = Alimento.STATIC_FIELDS;
-		staticFieldsOrderLabel = Alimento.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = Alimento.STATIC_FIELDS_ORDER_VALUE;
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		super.init();
 	}
 	
 	/**

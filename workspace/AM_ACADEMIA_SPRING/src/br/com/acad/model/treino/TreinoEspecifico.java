@@ -6,6 +6,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
 import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
@@ -14,12 +15,9 @@ import br.com.acad.model.pessoa.Aluno;
 @PrimaryKeyJoinColumn(name="ID_TREINO_ESPECIFICO")
 public class TreinoEspecifico extends Treino{
 	
-	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"data", "nome", "professor.nome", "solicitacao.aluno.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Nome", "Professor", "Aluno"};
-	
 	@OneToOne
 	@JoinColumn(name="SOLICITACAO_TREINO_ID", nullable=false)
+	@Show(label="Aluno", mappedName="solicitacao.aluno.nome", order=true)
 	private SolicitacaoTreino solicitacao;
 	
 	public TreinoEspecifico(){}

@@ -11,10 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_CIDADE")
-public class Cidade implements Serializable {
+public class Cidade implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -51,11 +51,8 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = exercicioDAO;
-		staticFields = Exercicio.STATIC_FIELDS;
-		order = staticFields[0];
-		atualizar();
+		super.init();
 	}
 	
 	/**

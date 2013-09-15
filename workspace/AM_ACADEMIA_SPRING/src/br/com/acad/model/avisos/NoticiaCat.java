@@ -9,22 +9,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
 import br.com.acad.logic.PathLogic;
+import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_NOTICIA_CAT")
-public class NoticiaCat implements Serializable{
+public class NoticiaCat implements Serializable, GenericEntity{
 
-	public static final String[] STATIC_FIELDS = {"nome"};
-
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_NOTICIA_CAT")
 	private int id;
 	
 	@Column(length=50, nullable=false)
+	@Show(label = "Nome")
 	private String nome;
 	
 	@Column(length=50, nullable=true)

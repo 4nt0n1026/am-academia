@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.CriptografiaLogic;
+import br.com.acad.model.pessoa.Pessoa;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 
@@ -34,14 +36,10 @@ public class ProfessorFuncBean extends Bean<ProfessorFunc> implements Serializab
 	@Override
 	public void init() {
 		dao = professorFuncDAO;
-		staticFields = ProfessorFunc.STATIC_FIELDS;
-		staticFieldsOrderLabel = ProfessorFunc.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = ProfessorFunc.STATIC_FIELDS_ORDER_VALUE;
-		staticViewsLabel = ProfessorFunc.STATIC_VIEWS_LABEL;
-		staticViewsValue = ProfessorFunc.STATIC_VIEWS_VALUE;
-		view = staticViewsLabel[0];
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, ProfessorFunc.class);
+		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, ProfessorFunc.class);
+		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, ProfessorFunc.class);
+		super.init();
 	}
 	
 	/**

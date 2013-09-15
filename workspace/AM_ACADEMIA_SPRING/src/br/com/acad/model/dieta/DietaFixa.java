@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
 import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
@@ -21,9 +22,6 @@ import br.com.acad.model.cat.SexoCat;
 @PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
 public class DietaFixa extends Dieta {
 
-	public static final String[] STATIC_FIELDS = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", "objetivoCat.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"data", "nome", "professor.nome", "sexoCat.nome", "faixaEtariaCat.nome", "objetivoCat.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL= {"Data", "Nome", "Professor", "Sexo", "Faixa Etaria", "Objetivo"};
 	
 	@ManyToMany
 	@JoinTable(name="ACAD_DIETA_FIXA_LIMITACAO_CAT", 
@@ -33,14 +31,17 @@ public class DietaFixa extends Dieta {
 	
 	@ManyToOne
 	@JoinColumn(name="SEXO_ID", nullable=false)
+	@Show(label="Sexo", mappedName="sexoCat.nome", order=true)
 	private SexoCat sexoCat;
 	
 	@ManyToOne
 	@JoinColumn(name="FAIXA_ETARIA_ID", nullable=false)
+	@Show(label="Faixa Etaria", mappedName="faixaEtariaCat.nome", order=true)
 	private FaixaEtariaCat faixaEtariaCat;
 	
 	@ManyToOne
 	@JoinColumn(name="OBJETIVO_ID", nullable=false)
+	@Show(label="Objetivo", mappedName="objetivoCat.nome", order=true)
 	private ObjetivoCat objetivoCat;
 	
 	public DietaFixa(){}

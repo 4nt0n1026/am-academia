@@ -17,11 +17,14 @@ import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
 import br.com.acad.dao.dieta.interf.DietaFixaDAO;
 import br.com.acad.dao.dieta.interf.LimitacaoDietaCatDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.DietaLogic;
 import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.cat.TipoTreinoDieta;
+import br.com.acad.model.dieta.Dieta;
+import br.com.acad.model.dieta.DietaEspecifica;
 import br.com.acad.model.dieta.DietaFixa;
 import br.com.acad.model.dieta.LimitacaoDietaCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -59,13 +62,11 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = dietaFixaDAO;
-		staticFields = DietaFixa.STATIC_FIELDS;
-		staticFieldsOrderLabel = DietaFixa.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = DietaFixa.STATIC_FIELDS_ORDER_VALUE;
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaFixa.class);
+		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Dieta.class, DietaFixa.class);
+		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Dieta.class, DietaFixa.class);
+		super.init();
 	}
 	
 	/**

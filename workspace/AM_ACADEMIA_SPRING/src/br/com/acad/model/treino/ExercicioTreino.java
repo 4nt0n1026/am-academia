@@ -16,10 +16,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_EXERCICIO_TREINO") 
-public class ExercicioTreino implements Serializable {
+public class ExercicioTreino implements Serializable, GenericEntity{
 
 	//Atributos
 	@Id

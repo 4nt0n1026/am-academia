@@ -9,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_DIAS_TREINO_CAT")
-public class DiasTreinoCat implements Serializable {
+public class DiasTreinoCat implements Serializable, GenericEntity {
 
-	// static field para busca no banco
-	public static String[] STATIC_FIELDS = {"nome"};
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -23,6 +24,7 @@ public class DiasTreinoCat implements Serializable {
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label = "Nome")
 	private String nome;
 	
 	@Column(length=1, nullable=false)

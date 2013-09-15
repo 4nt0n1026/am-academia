@@ -25,6 +25,8 @@ public interface DAO<T,K> {
 	
 	String getClassName();
 	
+	Class<T> getEntityClass();
+	
 	public abstract List<T> buscarTodos();
 	
 	

@@ -40,10 +40,8 @@ public class AulaBean extends Bean<Aula> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = aulaDAO;
-		staticFields = Aula.STATIC_FIELDS;
-		atualizar();
+		super.init();
 	}
 	
 	/**

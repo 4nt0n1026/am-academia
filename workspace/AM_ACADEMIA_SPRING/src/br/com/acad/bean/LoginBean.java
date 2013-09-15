@@ -62,6 +62,10 @@ public class LoginBean implements Serializable{
 			 email = new String();
 			 senha = new String();
 			 
+			 // Deixa a caixa de msg ativa
+			 FacesContext context = FacesContext.getCurrentInstance();
+			 context.getExternalContext().getFlash().setKeepMessages(true);
+			 
 			return "home";
 		}else{
 			// Login e senha incorretos
@@ -100,12 +104,12 @@ public class LoginBean implements Serializable{
 	 */
 	public void alterarSenha(){
 		if(!usuario.getSenha().equals(CriptografiaLogic.encriptar(senhaAtual))){
-			MessagesLogic.addWarnMessage("Erro", "A senha atual está incorreta");
+			MessagesLogic.addWarnMessage("Erro", "A senha atual estï¿½ incorreta");
 			return;
 		}
 		
 		if(!senhaNova.equals(senhaNovaConfirmacao)){
-			MessagesLogic.addWarnMessage("Erro", "A confirmação da senha nova está incorreta");
+			MessagesLogic.addWarnMessage("Erro", "A confirmaï¿½ï¿½o da senha nova estï¿½ incorreta");
 			return;
 		}
 		

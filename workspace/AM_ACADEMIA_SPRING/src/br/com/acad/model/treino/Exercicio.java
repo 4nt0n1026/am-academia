@@ -15,9 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 import br.com.acad.logic.GenericLogic;
 import br.com.acad.logic.PathLogic;
+import br.com.acad.model.GenericEntity;
 
 
 
@@ -25,11 +27,9 @@ import br.com.acad.logic.PathLogic;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_EXERCICIO")
-public class Exercicio implements Serializable {
+public class Exercicio implements Serializable, GenericEntity{
 	
 	
-	public static final String[] STATIC_FIELDS = {"nome"};
-
 	//Atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -37,6 +37,7 @@ public class Exercicio implements Serializable {
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Exercicio")
 	private String nome;
 	
 	@Column(length=500, nullable=true)

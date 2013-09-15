@@ -9,19 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_SEXO_CAT")
-public class SexoCat implements Serializable{
+public class SexoCat implements Serializable, GenericEntity{
 	
-	public static final String[] STATIC_FIELDS = {"nome"};
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_SEXO_CAT")
 	private int id;
 	
 	@Column(length=255 ,nullable=false)
+	@Show(label = "Nome")
 	private String nome;
 	
 	public SexoCat(){}

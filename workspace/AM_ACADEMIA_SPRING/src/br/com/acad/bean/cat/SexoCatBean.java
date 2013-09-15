@@ -32,10 +32,8 @@ public class SexoCatBean extends Bean<SexoCat> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = sexoCatDAO;
-		staticFields = SexoCat.STATIC_FIELDS;
-		atualizar();
+		super.init();
 	}
 	
 	/**

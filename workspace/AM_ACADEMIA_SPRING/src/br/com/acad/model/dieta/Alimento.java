@@ -11,14 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_ALIMENTO")
-public class Alimento implements Serializable {
-
-	public static final String[] STATIC_FIELDS = {"nome"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "valorEnergetico", "qtdProteina", "qtdGordura", "qtdCarboidrato"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"nome", "valorEnergetico", "qtdProteina", "qtdGordura", "qtdCarboidrato"};
+public class Alimento implements Serializable, GenericEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,22 +25,27 @@ public class Alimento implements Serializable {
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Nome", order=true)
 	private String nome;
 	
 	@Column(length=500, nullable=true)
 	private String descricao;
 	
 	@Column(precision=2, nullable=false)
+	@Show(label="Valor Energetico", order=true)
 	private double valorEnergetico;
 	
 	@Column(precision=2, nullable=false)
+	@Show(label="Qtd Proteina", order=true)
 	private double qtdProteina;
 	
 	@Column(precision=2, nullable=false)
-	private double qtdGordura;
+	@Show(label="Qtd Carboidrato", order=true)
+	private double qtdCarboidrato;
 	
 	@Column(precision=2, nullable=false)
-	private double qtdCarboidrato;
+	@Show(label="Qtd Gordura", order=true)
+	private double qtdGordura;
 	
 	@Column(precision=2, nullable=false)
 	private double unidade;

@@ -32,10 +32,8 @@ public class ObjetivoCatBean extends Bean<ObjetivoCat> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = objetivoCatDAO;
-		staticFields = ObjetivoCat.STATIC_FIELDS;
-		atualizar();
+		super.init();
 	}
 	
 	/**

@@ -5,18 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.annotation.View;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_PESSOA_PROFESSOR_FUNC")
 @PrimaryKeyJoinColumn(name="ID_PESSOA_PROFESSOR_FUNC")
+@View(labels = { "Todos Registros", "Professores", "Funcionarios" }, queries = { "", "isProfessor=true", "isProfessor=false"})
 public class ProfessorFunc extends Pessoa{
-
-	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Nome", "Data Nascimento", "Email", "CPF", "RG", "Professor"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "dataNascimento", "email", "cpf", "rg", "isProfessor"};
-	public static final String[] STATIC_VIEWS_LABEL = {"Todos Registros", "Professores", "Funcionarios"};
-	public static final String[] STATIC_VIEWS_VALUE = {"", "isProfessor=true", "isProfessor=false"};
-
+	
 	@Column(length=500, nullable=true)
 	private String fotoLocal;
 	
@@ -24,6 +22,7 @@ public class ProfessorFunc extends Pessoa{
 	private String formacao;
 	
 	@Column(nullable=false)
+	@Show(label="Professor", order=true)
 	private boolean isProfessor;
 	
 	public ProfessorFunc(){}

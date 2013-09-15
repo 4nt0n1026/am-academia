@@ -3,7 +3,10 @@ package br.com.acad.bean;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import br.com.acad.dao.generico.interf.DAO;
+import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.logic.SqlLogic;
 
@@ -46,6 +49,7 @@ public abstract class Bean<T> {
 	
 	// Ordenacao
 	protected String order;
+	protected int initialOrder = 0;
 	protected String[] staticFieldsOrderValue;
 	protected String[] staticFieldsOrderLabel;
 	
@@ -63,7 +67,6 @@ public abstract class Bean<T> {
 	//ASSINATURAS
 	/************************************************************************************************************/
 	
-	public abstract void init();
 	public abstract void showNewEntity();
 	public abstract void incluirEntity();
 	public abstract void deletarEntity();
@@ -71,6 +74,32 @@ public abstract class Bean<T> {
 	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
+	
+	@PostConstruct
+	public void init(){
+		if(staticFields==null){
+			staticFields = AnnotationsLogic.getSearchValueFields(dao.getEntityClass());
+		}
+		if(staticFieldsOrderLabel==null){
+			staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(dao.getEntityClass());
+			staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(dao.getEntityClass());
+		}
+		if(order == null && staticFieldsOrderLabel != null){
+			order = staticFieldsOrderLabel[initialOrder];
+		}
+		if(order == null && staticFields !=null){
+			order = staticFields[initialOrder];
+		}
+		if(staticViewsLabel==null){
+			staticViewsLabel = AnnotationsLogic.getViewLabelFields(dao.getEntityClass());
+			staticViewsValue = AnnotationsLogic.getViewValueFields(dao.getEntityClass());
+		}
+		if(staticViewsLabel != null){
+			view = staticViewsLabel[0];
+		}
+		
+		atualizar();
+	}
 	
 	/**
 	 * fecha painel de edicao de uma entity

@@ -11,13 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
+
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_PARTE_CORPO")
-public class ParteCorpo implements Serializable {
+public class ParteCorpo implements Serializable, GenericEntity{
 
-	public static String[] STATIC_FIELDS = {"nome"};
 	
 	// Atributos
 	@Id
@@ -26,6 +28,7 @@ public class ParteCorpo implements Serializable {
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Nome")
 	private String nome;
 	
 	@ManyToMany(mappedBy="parteCorpoPrimaria")

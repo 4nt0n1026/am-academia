@@ -22,7 +22,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.annotation.Show;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
@@ -30,9 +32,7 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="ACAD_TREINO")
-public class Treino implements Serializable{
-
-	public static final String[] STATIC_FIELDS = null;
+public class Treino implements Serializable, GenericEntity{
 
 	//Atributos
 	@Id
@@ -41,6 +41,7 @@ public class Treino implements Serializable{
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Nome", order=true)
 	protected String nome;
 	
 	@Column(length=500, nullable=true)
@@ -52,10 +53,12 @@ public class Treino implements Serializable{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(nullable=false)
+	@Show(label="Data", order=true)
 	private Calendar data;
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_ID", nullable=true)
+	@Show(label="Professor", mappedName="professor.nome", order=true)
 	private ProfessorFunc professor;
 	
 	@Column(nullable=false)

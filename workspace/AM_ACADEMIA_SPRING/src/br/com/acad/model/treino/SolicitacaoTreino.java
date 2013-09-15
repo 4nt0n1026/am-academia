@@ -16,19 +16,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.annotation.View;
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_SOLICITACAO_TREINO")
-public class SolicitacaoTreino implements Serializable {
-
-	public static final String[] STATIC_FIELDS = {"dataSolicitacao", "aluno.nome", "descricao" };
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"dataSolicitacao", "aluno.nome", "respondido"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Data", "Aluno", "Respondido"};
-	public static final String[] STATIC_VIEWS_LABEL = {"Todos registros", "Respondidas", "Não respondidas"};
-	public static final String[] STATIC_VIEWS_VALUE = {"", "respondido=true", "respondido=false"};
-	
+@View(labels = { "Todos Registros", "Respondidas", "Não Respondidas" }, queries = { "", "respondido=true", "respondido=false"})
+public class SolicitacaoTreino implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -40,13 +37,16 @@ public class SolicitacaoTreino implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_SOLICITACAO", nullable=false)
+	@Show(label="Data", order=true)
 	private Calendar dataSolicitacao;
 	
 	@Column(nullable=false)
+	@Show(label="Respondido", order=true)
 	private boolean respondido;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ALUNO_ID", nullable=false)
+	@Show(label="Aluno", mappedName="aluno.nome", order=true)
 	private Aluno aluno;	
 	
 	@OneToOne(fetch=FetchType.LAZY)

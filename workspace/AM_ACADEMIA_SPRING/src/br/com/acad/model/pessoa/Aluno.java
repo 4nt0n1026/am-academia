@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.acad.annotation.Show;
 import br.com.acad.logic.PessoaLogic;
 import br.com.acad.model.treino.Treino;
 
@@ -22,14 +23,12 @@ import br.com.acad.model.treino.Treino;
 @PrimaryKeyJoinColumn(name="ID_PESSOA_ID")
 public class Aluno extends Pessoa{
 
-	public static final String[] STATIC_FIELDS = {"nome", "email", "cpf", "rg", "peso", "altura"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"nome", "dataNascimento", "email", "cpf", "rg", "peso", "altura" };
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Nome", "dataNascimento", "Email", "CPF", "RG", "Peso", "Altura"};
-
 	@Column(nullable=true, precision=2)
+	@Show(label="Peso", order=true)
 	private double peso;
 	
 	@Column(nullable=true, precision=2)
+	@Show(label="Altura", order=true)
 	private double altura;
 	
 	private int numSolicitacao = 0;

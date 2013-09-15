@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.contato.Endereco;
 import br.com.acad.model.contato.Telefone;
 
@@ -28,7 +30,7 @@ import br.com.acad.model.contato.Telefone;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="ACAD_PESSOA") 
-public abstract class Pessoa implements Serializable {
+public abstract class Pessoa implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,9 +38,11 @@ public abstract class Pessoa implements Serializable {
 	private int id;
 	
 	@Column(length=255, nullable=false)
+	@Show(label="Nome", order=true)
 	private String nome;
 	
 	@Column(length=255, nullable=true, unique=true )
+	@Show(label="Email", order=true)
 	private String email;
 	
 	@Column(length=255, nullable=true)
@@ -46,12 +50,15 @@ public abstract class Pessoa implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_NASCIMENTO")
+	@Show(label="Data Nascimento", mappedName="dataNascimento", order=true)
 	private Calendar dataNascimento = new GregorianCalendar();
 	
 	@Column(length=20, nullable=true)
+	@Show(label="CPF")
 	private String cpf;
 	
 	@Column(length=20, nullable=true)
+	@Show(label="RG")
 	private String rg;
 	
 	@OneToOne

@@ -14,17 +14,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.annotation.Show;
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_NOTICIA")
-public class Noticia implements Serializable {
-	
-	// static field para busca no banco
-	public static final String[] STATIC_FIELDS = {"titulo", "professorFunc.nome", "categoria.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_VALUE = {"titulo", "categoria.nome", "professorFunc.nome"};
-	public static final String[] STATIC_FIELDS_ORDER_LABEL = {"Titulo", "Categoria", "Professor/Funcionario"};
+public class Noticia implements Serializable, GenericEntity {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,6 +29,7 @@ public class Noticia implements Serializable {
 	private int id;
 	
 	@Column(length=50, nullable=false)
+	@Show(label="Título", order=true)
 	private String titulo;
 	
 	@Column(length=1500, nullable=false)
@@ -39,13 +37,16 @@ public class Noticia implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="PROFESSOR_FUNC_ID")
+	@Show(label="Professor/Funcionario", mappedName="professorFunc.nome", order=true)
 	private ProfessorFunc professorFunc;
 	
 	@ManyToOne
 	@JoinColumn(name="NOTICIA_CAT_ID")
+	@Show(label="Categoria", mappedName="categoria.nome", order=true)
 	private NoticiaCat categoria;
 	
 	@Temporal(TemporalType.DATE)
+	@Show(label="data")
 	private Calendar data;
 	
 	public Noticia(Calendar data, String titulo, String descricao, NoticiaCat noticiaCat, ProfessorFunc professor) {

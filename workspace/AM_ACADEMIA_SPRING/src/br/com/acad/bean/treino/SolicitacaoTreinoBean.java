@@ -51,15 +51,7 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	@Override
 	public void init() {
 		dao = solicitacaoTreinoDAO;
-		staticFields = SolicitacaoTreino.STATIC_FIELDS;
-		staticFieldsOrderLabel = SolicitacaoTreino.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = SolicitacaoTreino.STATIC_FIELDS_ORDER_VALUE;
-		staticViewsLabel = SolicitacaoTreino.STATIC_VIEWS_LABEL;
-		staticViewsValue = SolicitacaoTreino.STATIC_VIEWS_VALUE;
-		
-		order = staticFieldsOrderLabel[0];
-		view = staticViewsLabel[0];
-		atualizar();
+		super.init();
 	}
 	
 	/**

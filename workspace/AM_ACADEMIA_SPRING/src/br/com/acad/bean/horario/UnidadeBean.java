@@ -32,10 +32,8 @@ public class UnidadeBean extends Bean<Unidade> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = unidadeDAO;
-		staticFields = Unidade.STATIC_FIELDS;
-		atualizar();
+		super.init();
 	}
 	
 	/**

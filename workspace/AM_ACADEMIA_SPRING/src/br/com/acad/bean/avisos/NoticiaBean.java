@@ -42,13 +42,8 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable {
 	@PostConstruct
 	@Override
 	public void init() {
-		page = 1;
 		dao = noticiaDAO;
-		staticFields = Noticia.STATIC_FIELDS;
-		staticFieldsOrderLabel = Noticia.STATIC_FIELDS_ORDER_LABEL;
-		staticFieldsOrderValue = Noticia.STATIC_FIELDS_ORDER_VALUE;
-		order = staticFieldsOrderLabel[0];
-		atualizar();
+		super.init();
 	}
 	
 	/**

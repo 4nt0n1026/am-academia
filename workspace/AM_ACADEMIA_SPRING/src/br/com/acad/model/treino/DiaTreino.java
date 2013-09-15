@@ -16,11 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
+import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_DIA_TREINO")
-public class DiaTreino implements Serializable{
+public class DiaTreino implements Serializable, GenericEntity{
 
 	
 	//Atributos

@@ -14,12 +14,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.acad.model.GenericEntity;
 import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_SERIE_FEITA")
-public class SerieFeita implements Serializable {
+public class SerieFeita implements Serializable, GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

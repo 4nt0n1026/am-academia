@@ -15,7 +15,12 @@
 </h:head>
 
 <h:body>
-	<p:growl id="growl" autoUpdate="true"  showDetail="true"/>
+		<p:growl autoUpdate="true" redisplay="true" life="2000" showDetail="true"  />
+		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
+	              
+		<p:dialog modal="true" widgetVar="statusDialog" header="Carregando" draggable="false" closable="false">  
+		    <p:graphicImage value="/resources/images/ajax-loader.gif" />  
+		</p:dialog> 
 		
 		<div id="divSenha">
 			<!-- Dialog de mudança de senha -->
