@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@drawable/back"
+    tools:context=".TreinoBuscaDetalheActivity" >
+
+    <TextView
+        android:id="@+idDetalheBuscaTreino/nome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:background="@color/titulo_background"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/titulo" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:background="@color/section"
+        android:text="@string/data"/>
+    
+    <TextView
+        android:id="@+idDetalheBuscaTreino/data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:background="@color/section"
+        android:text="@string/professor"/>
+    
+    <TextView
+        android:id="@+idDetalheBuscaTreino/professor"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:background="@color/section"
+        android:text="@string/descricao"/>
+    
+    <TextView
+        android:id="@+idDetalheBuscaTreino/descricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:background="@color/section"
+        android:text="@string/treino"/>
+    
+    <TextView
+        android:id="@+idDetalheBuscaTreino/treino"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <Button 
+        android:onClick="adcionarTreino"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/adcionar_treino"
+        />
+
+</LinearLayout>

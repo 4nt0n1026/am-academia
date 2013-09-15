@@ -10,6 +10,7 @@ public class Aula implements Serializable{
 	private String nome;
 	private String horarios; //String com todos horarios e professores de cada horario buscado do ws
 	private String descricao;
+	private int foto;
 
 	public Aula(int id, String nome){
 		this.id = id;
@@ -20,6 +21,12 @@ public class Aula implements Serializable{
 		this.id = id;
 		this.horarios = horarios;
 		this.descricao = descricao;
+	}
+	
+	public Aula(int id, String nome, int foto) {
+		this.id = id;
+		this.nome = nome;
+		this.foto = foto;
 	}
 
 	@Override
@@ -51,6 +58,15 @@ public class Aula implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public int getFoto() {
+		return foto;
+	}
+
+	public void setFoto(int foto) {
+		this.foto = foto;
+	}
+	
 	
 	
 	

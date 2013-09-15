@@ -16,7 +16,7 @@ public class DietaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.dieta_layout);
+		setContentView(R.layout.dieta_menu_layout);
 		// Show the Up button in the action bar.
 		setupActionBar();
 	}

@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.com.acad.R;
+import br.com.acad.adapter.ListaNoticiasAdapter;
 import br.com.acad.entity.noticias.Noticia;
 
 public class NoticiasActivity extends Activity {
@@ -25,20 +25,20 @@ public class NoticiasActivity extends Activity {
 		noticias = new ArrayList<Noticia>();
 		
 		// TODO - puxar do ws----------------------------------------
-		noticias.add(new Noticia(1, "noticia 1", null, "noticia", "23/04/2013"));
-		noticias.add(new Noticia(2, "noticia 2", null, "noticia", "20/07/2013"));
-		noticias.add(new Noticia(3, "noticia 3", null, "noticia", "20/07/2013"));
-		noticias.add(new Noticia(4, "dica 1", null, "dica", "23/04/2013"));
-		noticias.add(new Noticia(5, "dica 2", null, "dica", "23/04/2013"));
-		noticias.add(new Noticia(6, "aviso 1", null, "aviso", "23/04/2013"));
+		noticias.add(new Noticia(1, "noticia 1", "noticia", "23/04/2013", R.drawable.news));
+		noticias.add(new Noticia(2, "noticia 2", "noticia", "20/07/2013", R.drawable.news));
+		noticias.add(new Noticia(3, "noticia 3", "noticia", "20/07/2013", R.drawable.news));
+		noticias.add(new Noticia(4, "dica 1", "dica", "23/04/2013",  R.drawable.tag));
+		noticias.add(new Noticia(5, "dica 2", "dica", "23/04/2013",  R.drawable.tag));
+		noticias.add(new Noticia(6, "aviso 1", "aviso", "23/04/2013",  R.drawable.documentnotes));
 		//-----------------------------------------------------------
 		
-		// Cria adapter e preenche listView--------------------------
-		ArrayAdapter<Noticia> adapter = new ArrayAdapter<Noticia>(this, android.R.layout.simple_list_item_1, noticias);
+		//Cria Adapter e preenche lista------------------------------------
+		ListaNoticiasAdapter adapter = new ListaNoticiasAdapter(this, noticias);
 		
 		ListView listNoticias = (ListView) findViewById(R.idNoticias.listNoticias);
 		listNoticias.setAdapter(adapter);
-		//-----------------------------------------------------------
+		//-----------------------------------------------------------------
 		
 		// Ao clicar no item da lista--------------------------------
 		listNoticias.setOnItemClickListener(new OnItemClickListener() {

@@ -2,167 +2,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     android:shrinkColumns="2"
-    tools:context=".HomeActivity"
-    android:background="@drawable/back" >
-	
+    tools:context=".HomeActivity" >
+
     <!-- Linha 1 -->
+
     <TableRow>
-		
+
         <!-- Treino -->
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="goTreino">
+            android:gravity="center"
+            android:onClick="goTreino"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/btntreino"
-                android:src="@drawable/ic_launcher" 
-                android:onClick="goTreino"/>
+                android:onClick="goTreino"
+                android:src="@drawable/weight" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/treino" />
-            
         </LinearLayout>
 
         <!-- Dieta -->
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="goDieta">
+            android:gravity="center"
+            android:onClick="goDieta"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/btntreino"
-                android:src="@drawable/ic_launcher" 
-                android:onClick="goDieta"/>
+                android:onClick="goDieta"
+                android:src="@drawable/apple" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/dieta" />
-            
         </LinearLayout>
-
     </TableRow>
-    
+
     <!-- Linha 2 -->
+
     <TableRow>
 
         <!-- Aulas -->
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="goAulas">
+            android:gravity="center"
+            android:onClick="goAulas"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/btntreino"
-                android:src="@drawable/ic_launcher" 
-                android:onClick="goAulas"/>
+                android:onClick="goAulas"
+                android:src="@drawable/gloves" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/aulas" />
-            
         </LinearLayout>
 
         <!-- Noticias -->
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="goNoticias">
+            android:gravity="center"
+            android:onClick="goNoticias"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/btntreino"
-                android:src="@drawable/ic_launcher"
-                android:onClick="goNoticias" />
+                android:onClick="goNoticias"
+                android:src="@drawable/news" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/noticias" />
-            
         </LinearLayout>
-
     </TableRow>
-    
+
     <!-- Linha 3 -->
+
     <TableRow>
-		
+
         <!-- Configuracoes -->
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="goConfig">
+            android:gravity="center"
+            android:onClick="goConfig"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/btntreino"
-                android:src="@drawable/ic_launcher" 
-                android:onClick="goConfig"/>
+                android:onClick="goConfig"
+                android:src="@drawable/config" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/config" />
-            
         </LinearLayout>
 
         <!-- Sair -->
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="sair">
+            android:gravity="center"
+            android:onClick="sair"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/btntreino"
-                android:src="@drawable/ic_launcher" 
-                android:onClick="sair"/>
+                android:onClick="sair"
+                android:src="@drawable/logout" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/sair" />
-            
         </LinearLayout>
-
     </TableRow>
 
 </TableLayout>

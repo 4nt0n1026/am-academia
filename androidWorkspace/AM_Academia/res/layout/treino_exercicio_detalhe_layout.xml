@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:orientation="vertical"
+    tools:context=".TreinoExercicioDetalheActivity" >
+	
+    <!-- Titulo -->
+    <TextView
+        android:id="@+idTreinoExercicioDetalhe/nome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/titulo_background"
+        android:textColor="@color/titulo"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- Descricao -->
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/section"
+        android:text="@string/descricao"
+        />
+
+    <TextView 
+        android:id="@+idTreinoExercicioDetalhe/descricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <!-- Musculos primarios -->
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/section"
+        android:text="@string/musculos_primarios"
+        />
+
+    <TextView 
+        android:id="@+idTreinoExercicioDetalhe/parteCorpoPrimarias"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <!-- Musculos secundarios -->
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/section"
+        android:text="@string/musculos_secundarios"
+        />
+
+    <TextView 
+        android:id="@+idTreinoExercicioDetalhe/partesCorpoSecundaria"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    
+</LinearLayout>

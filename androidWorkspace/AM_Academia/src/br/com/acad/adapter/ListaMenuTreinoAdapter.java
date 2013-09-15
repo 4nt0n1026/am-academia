@@ -41,6 +41,17 @@ public class ListaMenuTreinoAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		
+
+//		String uri = "drawable/album";
+//
+//		int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+//
+//		ImageView imageView = (ImageView) findViewById(R.idListaLayout.image);
+//		Drawable image = getResources().getDrawable(imageResource);
+//		imageView.setImageDrawable(image);
+		
+		
 		// Pega o item selecionado
 		MenuItem item = itens.get(position);
 		
@@ -50,7 +61,7 @@ public class ListaMenuTreinoAdapter extends BaseAdapter {
 		
 		// Seta o layout da linha
 		ImageView image = (ImageView) linha.findViewById(R.idListaLayout.image);
-		Drawable icon = activity.getResources().getDrawable(R.drawable.ic_launcher);
+		Drawable icon = activity.getResources().getDrawable(item.getIdFoto());
 		image.setImageDrawable(icon);
 		
 		TextView texto = (TextView) linha.findViewById(R.idListaLayout.texto);

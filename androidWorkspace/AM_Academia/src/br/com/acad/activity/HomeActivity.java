@@ -8,7 +8,7 @@ import br.com.acad.R;
 import br.com.acad.activity.aulas.AulasActivity;
 import br.com.acad.activity.dieta.DietaActivity;
 import br.com.acad.activity.noticias.NoticiasActivity;
-import br.com.acad.activity.treino.TreinoActivity;
+import br.com.acad.activity.treino.TreinoMenuActivity;
 
 public class HomeActivity extends Activity {
 
@@ -23,7 +23,7 @@ public class HomeActivity extends Activity {
 	 * Vai para a tela de treino
 	 */
 	public void goTreino(View btnTreino){
-		Intent goTreino = new Intent(this, TreinoActivity.class);
+		Intent goTreino = new Intent(this, TreinoMenuActivity.class);
 		startActivity(goTreino);
 	}
 	

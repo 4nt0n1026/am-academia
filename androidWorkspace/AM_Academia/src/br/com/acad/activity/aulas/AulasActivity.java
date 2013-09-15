@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.com.acad.R;
+import br.com.acad.adapter.ListaAulasAdapter;
 import br.com.acad.entity.aulas.Aula;
 
 public class AulasActivity extends Activity {
@@ -26,17 +26,17 @@ public class AulasActivity extends Activity {
 		aulas = new ArrayList<Aula>();
 		
 		// TODO - puxar do ws ------------------------------------
-		aulas.add(new Aula(1, "Abdominal"));
-		aulas.add(new Aula(2, "Boxe"));
-		aulas.add(new Aula(3, "Jiu Jitsu"));
+		aulas.add(new Aula(1, "Abdominal", R.drawable.calendar));
+		aulas.add(new Aula(2, "Boxe", R.drawable.calendar));
+		aulas.add(new Aula(3, "Jiu Jitsu", R.drawable.calendar));
 		// -------------------------------------------------------
 		
-		// Cria adapter e preenche listaView----------------------
-		ArrayAdapter<Aula> adapter = new ArrayAdapter<Aula>(this, android.R.layout.simple_list_item_1, aulas);
+		//Cria Adapter e preenche lista------------------------------------
+		ListaAulasAdapter adapter = new ListaAulasAdapter(this, aulas);
 		
 		ListView listAulas = (ListView) findViewById(R.idAulas.listModalidade);
 		listAulas.setAdapter(adapter);
-		// -------------------------------------------------------
+		//-----------------------------------------------------------------
 		
 		// Ao clicar em item da lista-----------------------------
 		listAulas.setOnItemClickListener(new OnItemClickListener() {

@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Geral -->
-    <string name="app_name">AM_Academia</string>
+    <string name="app_name">Smart Fitness</string>
     <string name="action_settings">Settings</string>
 
     <!-- Login -->
@@ -45,10 +45,16 @@
     <string name="enviar">Enviar</string>
     <string name="title_activity_list_busca_treino">Resultado da busca</string>
     <string name="title_activity_detalhe_busca_treino">Detalhe do Treino</string>
-	
-	<!-- detalhe Treino -->    
-    <string name="adcionar_treino">Adcionar treino aos Meus Treinos</string>    
+
+    <!-- detalhe Treino -->
+    <string name="adcionar_treino">Adcionar treino aos Meus Treinos</string>
     <string name="data">Data</string>
     <string name="professor">Professor</string>
+    <string name="title_activity_treino_exercicios_parte_corpo">Partes do Corpo</string>
+    <string name="title_activity_treino_exercicios_list">Exercicios</string>
+    <string name="title_activity_treino_exercicio_detalhe">Exercicio Detalhe</string>
     
+    <!-- Detalhe exercicio -->
+    <string name="musculos_primarios">Musculos Primarios</string>
+	<string name="musculos_secundarios">Musculos Secundarios</string>
 </resources>

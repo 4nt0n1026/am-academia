@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/mainicon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -33,7 +33,7 @@
                 android:value="LoginActivity" />
         </activity>
         <activity
-            android:name="br.com.acad.activity.treino.TreinoActivity"
+            android:name="br.com.acad.activity.treino.TreinoMenuActivity"
             android:label="@string/title_activity_treino"
             android:parentActivityName="HomeActivity" >
             <meta-data
@@ -81,16 +81,32 @@
                 android:value="NoticiaActivity" />
         </activity>
         <activity
-            android:name="br.com.acad.activity.treino.FormBuscaTreinoActivity"
+            android:name="br.com.acad.activity.treino.TreinoBuscaFormActivity"
             android:label="@string/title_activity_form_busca_treino" >
         </activity>
         <activity
-            android:name="br.com.acad.activity.treino.FormSolicitacaoTreinoActivity"
+            android:name="br.com.acad.activity.treino.TreinoSolicitacaoFormActivity"
             android:label="@string/title_activity_form_solicitacao" >
         </activity>
         <activity
-            android:name="br.com.acad.activity.treino.ListBuscaTreinoActivity"
+            android:name="br.com.acad.activity.treino.TreinoBuscaResultActivity"
             android:label="@string/title_activity_list_busca_treino" >
+        </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.TreinoBuscaDetalheActivity"
+            android:label="@string/title_activity_detalhe_busca_treino" >
+        </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.TreinoExerciciosParteCorpoActivity"
+            android:label="@string/title_activity_treino_exercicios_parte_corpo" >
+        </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.TreinoExerciciosListActivity"
+            android:label="@string/title_activity_treino_exercicios_list" >
+        </activity>
+        <activity
+            android:name="br.com.acad.activity.treino.TreinoExercicioDetalheActivity"
+            android:label="@string/title_activity_treino_exercicio_detalhe" >
         </activity>
     </application>
 

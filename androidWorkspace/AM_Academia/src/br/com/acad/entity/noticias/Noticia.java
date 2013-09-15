@@ -10,9 +10,24 @@ public class Noticia implements Serializable{
 	private String descricao;
 	private String categoria;
 	private String data;
+	private int iconeId;
 	
 	public Noticia(){}
 	
+	
+	
+	public Noticia(int id, String nome, String categoria, String data,
+			int iconeId) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.categoria = categoria;
+		this.data = data;
+		this.iconeId = iconeId;
+	}
+
+
+
 	public Noticia(int id, String nome, String descricao, String categoria, String data) {
 		super();
 		this.id = id;
@@ -60,6 +75,14 @@ public class Noticia implements Serializable{
 
 	public void setData(String data) {
 		this.data = data;
+	}
+
+	public int getIconeId() {
+		return iconeId;
+	}
+
+	public void setIconeId(int iconeId) {
+		this.iconeId = iconeId;
 	}
 	
 	

@@ -27,11 +27,68 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int back=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int album=0x7f020000;
+        public static final int apple=0x7f020001;
+        public static final int back=0x7f020002;
+        public static final int badge=0x7f020003;
+        public static final int buddy=0x7f020004;
+        public static final int buddychat=0x7f020005;
+        public static final int buddygroup=0x7f020006;
+        public static final int calendar=0x7f020007;
+        public static final int chartbar=0x7f020008;
+        public static final int chartpie=0x7f020009;
+        public static final int chat=0x7f02000a;
+        public static final int chat2=0x7f02000b;
+        public static final int chatvideo=0x7f02000c;
+        public static final int checklist=0x7f02000d;
+        public static final int chest=0x7f02000e;
+        public static final int config=0x7f02000f;
+        public static final int diskcd=0x7f020010;
+        public static final int diskdvd=0x7f020011;
+        public static final int documentedit=0x7f020012;
+        public static final int documentnotes=0x7f020013;
+        public static final int documentplain=0x7f020014;
+        public static final int edit=0x7f020015;
+        public static final int egg=0x7f020016;
+        public static final int favorite=0x7f020017;
+        public static final int findsearch=0x7f020018;
+        public static final int folders=0x7f020019;
+        public static final int font=0x7f02001a;
+        public static final int gloves=0x7f02001b;
+        public static final int heart=0x7f02001c;
+        public static final int help=0x7f02001d;
+        public static final int home=0x7f02001e;
+        public static final int ic_launcher=0x7f02001f;
+        public static final int keys=0x7f020020;
+        public static final int list=0x7f020021;
+        public static final int lock=0x7f020022;
+        public static final int logout=0x7f020023;
+        public static final int mail=0x7f020024;
+        public static final int mainicon=0x7f020025;
+        public static final int mobile=0x7f020026;
+        public static final int music=0x7f020027;
+        public static final int news=0x7f020028;
+        public static final int photo=0x7f020029;
+        public static final int podcast=0x7f02002a;
+        public static final int print=0x7f02002b;
+        public static final int refresh=0x7f02002c;
+        public static final int rss1=0x7f02002d;
+        public static final int rss2=0x7f02002e;
+        public static final int search=0x7f02002f;
+        public static final int settings=0x7f020030;
+        public static final int symboladd=0x7f020031;
+        public static final int symbolcheck=0x7f020032;
+        public static final int symboldelete=0x7f020033;
+        public static final int symbolremove=0x7f020034;
+        public static final int tag=0x7f020035;
+        public static final int tagadd=0x7f020036;
+        public static final int tagremove=0x7f020037;
+        public static final int twitter=0x7f020038;
+        public static final int video=0x7f020039;
+        public static final int weight=0x7f02003a;
     }
     public static final class id {
-        public static final int action_settings=0x7f140000;
+        public static final int action_settings=0x7f170000;
     }
     public static final class idAulas {
         public static final int listModalidade=0x7f0a0000;
@@ -42,59 +99,74 @@ public final class R {
         public static final int nome=0x7f090000;
     }
     public static final class idDetalheBuscaTreino {
-        public static final int data=0x7f0b0001;
-        public static final int descricao=0x7f0b0003;
-        public static final int nome=0x7f0b0000;
-        public static final int professor=0x7f0b0002;
-        public static final int treino=0x7f0b0004;
+        public static final int data=0x7f0f0001;
+        public static final int descricao=0x7f0f0003;
+        public static final int nome=0x7f0f0000;
+        public static final int professor=0x7f0f0002;
+        public static final int treino=0x7f0f0004;
     }
     public static final class idFormBuscaTreino {
-        public static final int diasSemanaSpinner=0x7f0c0003;
-        public static final int duracaoSpinner=0x7f0c0004;
-        public static final int faixaSpinner=0x7f0c0001;
-        public static final int objetivoSpinner=0x7f0c0002;
-        public static final int sexoSpinner=0x7f0c0000;
+        public static final int diasSemanaSpinner=0x7f100003;
+        public static final int duracaoSpinner=0x7f100004;
+        public static final int faixaSpinner=0x7f100001;
+        public static final int objetivoSpinner=0x7f100002;
+        public static final int sexoSpinner=0x7f100000;
     }
     public static final class idFormSolicitacaoTreino {
-        public static final int descricao=0x7f0d0000;
+        public static final int descricao=0x7f160000;
     }
     public static final class idListBuscaTreino {
-        public static final int listTreinos=0x7f0e0000;
+        public static final int listTreinos=0x7f110000;
     }
     public static final class idListaLayout {
-        public static final int image=0x7f0f0000;
-        public static final int texto=0x7f0f0001;
+        public static final int image=0x7f0b0000;
+        public static final int texto=0x7f0b0001;
     }
     public static final class idLogin {
-        public static final int login=0x7f100000;
-        public static final int senha=0x7f100001;
+        public static final int login=0x7f0c0000;
+        public static final int senha=0x7f0c0001;
     }
     public static final class idNoticias {
-        public static final int listNoticias=0x7f120000;
+        public static final int listNoticias=0x7f0e0000;
     }
     public static final class idNoticiasDetalhe {
-        public static final int categoria=0x7f110002;
-        public static final int data=0x7f110001;
-        public static final int descricao=0x7f110003;
-        public static final int nome=0x7f110000;
+        public static final int categoria=0x7f0d0002;
+        public static final int data=0x7f0d0001;
+        public static final int descricao=0x7f0d0003;
+        public static final int nome=0x7f0d0000;
     }
     public static final class idTreino {
-        public static final int listMenuTreino=0x7f130000;
+        public static final int listMenuTreino=0x7f150000;
+    }
+    public static final class idTreinoExercicioDetalhe {
+        public static final int descricao=0x7f120001;
+        public static final int nome=0x7f120000;
+        public static final int parteCorpoPrimarias=0x7f120002;
+        public static final int partesCorpoSecundaria=0x7f120003;
+    }
+    public static final class idTreinoExerciciosList {
+        public static final int listExercicios=0x7f130000;
+    }
+    public static final class idTreinoExerciciosPartesCorpo {
+        public static final int listPartesCorpo=0x7f140000;
     }
     public static final class layout {
         public static final int aulas_detalhe_layout=0x7f030000;
         public static final int aulas_layout=0x7f030001;
-        public static final int detalhe_busca_treino_layout=0x7f030002;
-        public static final int dieta_layout=0x7f030003;
-        public static final int form_busca_treino_layout=0x7f030004;
-        public static final int form_solicitacao_treino_layout=0x7f030005;
-        public static final int home_layout=0x7f030006;
-        public static final int list_busca_treino_layout=0x7f030007;
-        public static final int lista_foto_layout=0x7f030008;
-        public static final int login_layout=0x7f030009;
-        public static final int noticia_detalhe_layout=0x7f03000a;
-        public static final int noticias_layout=0x7f03000b;
-        public static final int treino_layout=0x7f03000c;
+        public static final int dieta_menu_layout=0x7f030002;
+        public static final int home_layout=0x7f030003;
+        public static final int lista_foto_layout=0x7f030004;
+        public static final int login_layout=0x7f030005;
+        public static final int noticias_detalhe_layout=0x7f030006;
+        public static final int noticias_layout=0x7f030007;
+        public static final int treino_busca_detalhe_layout=0x7f030008;
+        public static final int treino_busca_form_layout=0x7f030009;
+        public static final int treino_busca_result=0x7f03000a;
+        public static final int treino_exercicio_detalhe_layout=0x7f03000b;
+        public static final int treino_exercicios_list_layout=0x7f03000c;
+        public static final int treino_exercicios_parte_corpo_layout=0x7f03000d;
+        public static final int treino_menu_layout=0x7f03000e;
+        public static final int treino_solicitacao_form_layout=0x7f03000f;
     }
     public static final class menu {
         public static final int aulas=0x7f080000;
@@ -109,6 +181,9 @@ public final class R {
         public static final int noticia_detalhe=0x7f080009;
         public static final int noticias=0x7f08000a;
         public static final int treino=0x7f08000b;
+        public static final int treino_exercicio_detalhe=0x7f08000c;
+        public static final int treino_exercicios_list=0x7f08000d;
+        public static final int treino_exercicios_parte_corpo=0x7f08000e;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -141,6 +216,10 @@ public final class R {
         /**  Login 
          */
         public static final int login=0x7f060002;
+        /**  Detalhe exercicio 
+         */
+        public static final int musculos_primarios=0x7f060027;
+        public static final int musculos_secundarios=0x7f060028;
         public static final int noticias=0x7f060009;
         public static final int objetivo=0x7f060019;
         public static final int professor=0x7f060023;
@@ -160,6 +239,9 @@ public final class R {
         public static final int title_activity_noticia_detalhe=0x7f060015;
         public static final int title_activity_noticias=0x7f060011;
         public static final int title_activity_treino=0x7f06000d;
+        public static final int title_activity_treino_exercicio_detalhe=0x7f060026;
+        public static final int title_activity_treino_exercicios_list=0x7f060025;
+        public static final int title_activity_treino_exercicios_parte_corpo=0x7f060024;
         public static final int treino=0x7f060006;
     }
     public static final class style {

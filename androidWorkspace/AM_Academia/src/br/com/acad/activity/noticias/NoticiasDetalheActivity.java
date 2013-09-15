@@ -12,7 +12,7 @@ public class NoticiasDetalheActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.noticia_detalhe_layout);
+		setContentView(R.layout.noticias_detalhe_layout);
 		
 		// Seta os views----------------------------------------------
 		TextView nome = (TextView) findViewById(R.idNoticiasDetalhe.nome);
