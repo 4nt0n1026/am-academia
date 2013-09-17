@@ -7,29 +7,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/xhtml/_template.xhtml">
-	<ui:define name="content">
-		<!-- ****************************************************************************************************** -->
-		<!-- Login -->
-		<!-- ****************************************************************************************************** -->
-		<h:form>
+ <h:head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap -->
+    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="responsive.css" library="css" />
+</h:head>
+<h:body>
+	<p:growl autoUpdate="true"  />
+	<!-- ****************************************************************************************************** -->
+	<!-- Login -->
+	<!-- ****************************************************************************************************** -->
+	<div class="container">
+		<h:form styleClass="form-signin" id="loginBox">
 			<p:focus for="loginBox" />
-			<p:tabView dynamic="true" id="loginBox"  >  
-    			<p:tab title="Login" >
-					<h:panelGrid columns="2"  >
-						<h:outputLabel value="Email:" for="email" />
-						<p:inputText value="#{loginBean.email}" id="email" required="true" requiredMessage="Email obrigatorio" />		
-						
-						<h:outputLabel value="Senha:" for="senha" />
-						<p:password value="#{loginBean.senha}" id="senha" required="true" requiredMessage="Senha obrigatoria" />
-						
-						<p:commandButton value="Logar" action="#{loginBean.logar}" />			
-					</h:panelGrid>
-				</p:tab>
-			</p:tabView>
-		</h:form>
-		<!-- ****************************************************************************************************** -->
+			<h2 class="form-signin-heading">SMART FITNESS</h2>
+			<h:outputLabel value="Email:" for="email" />
+			<h:inputText value="#{loginBean.email}" id="email" styleClass="form-control"  required="true" requiredMessage="Email obrigatorio" />		
 			
-	</ui:define>
-</ui:composition>
+			<h:outputLabel value="Senha:" for="senha" />
+			<h:inputSecret value="#{loginBean.senha}" id="senha" styleClass="form-control" required="true" requiredMessage="Senha obrigatoria" />
+			
+			<h:commandButton value="Logar" action="#{loginBean.logar}" styleClass="btn btn-lg btn-primary btn-block" />			
+		</h:form>
+	</div>
+	<!-- ****************************************************************************************************** -->
+	
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/resources/js/bootstrap.min.js"></script>
+</h:body>
 </html>
