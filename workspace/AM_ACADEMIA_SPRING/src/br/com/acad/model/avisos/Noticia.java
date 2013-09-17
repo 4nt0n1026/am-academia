@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.acad.annotation.Show;
 import br.com.acad.model.GenericEntity;
@@ -21,8 +22,10 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="ACAD_NOTICIA")
+@XmlRootElement
 public class Noticia implements Serializable, GenericEntity {
 	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_NOTICIA")
@@ -60,7 +63,10 @@ public class Noticia implements Serializable, GenericEntity {
 	public Noticia() {
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Noticia [titulo=" + titulo + "]";
+	}
 	
 	
 	

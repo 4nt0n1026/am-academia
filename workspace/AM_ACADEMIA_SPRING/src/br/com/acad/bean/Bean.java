@@ -9,6 +9,7 @@ import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.logic.SqlLogic;
+import br.com.acad.model.GenericEntity;
 
 
 /**
@@ -18,7 +19,7 @@ import br.com.acad.logic.SqlLogic;
  * 
  * @param <T>
  */
-public abstract class Bean<T> {
+public abstract class Bean<T extends GenericEntity> {
 
 	
 	/************************************************************************************************************/
@@ -68,8 +69,6 @@ public abstract class Bean<T> {
 	/************************************************************************************************************/
 	
 	public abstract void showNewEntity();
-	public abstract void incluirEntity();
-	public abstract void deletarEntity();
 	
 	/************************************************************************************************************/
 	//METODOS
@@ -263,9 +262,9 @@ public abstract class Bean<T> {
 	 * @param dao DAO da entity a ser inserida
 	 * @param id id do objeto que sera inserido no banco
 	 */
-	protected void incluirGeneric(Integer id) {
+	public void incluirEntity() {
 		try{
-			if(id==0){
+			if(entity.getId()==0){
 				entity = dao.insert(entity);
 			}else{
 				entity = dao.update(entity);
@@ -285,10 +284,10 @@ public abstract class Bean<T> {
 	 * @param entity objeto que sera excluido
 	 * @param id id da entity que sera excluida
 	 */
-	protected void deletarGeneric(Integer id){
+	public void deletarEntity(){
 		if(entity != null){
 			try{
-				dao.removeById(id);
+				dao.removeById(entity.getId());
 				atualizar();
 				showEntityDetail = false;
 				MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");

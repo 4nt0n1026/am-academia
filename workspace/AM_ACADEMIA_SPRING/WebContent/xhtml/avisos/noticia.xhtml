@@ -72,7 +72,8 @@
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content.xhtml">
 						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
-						<ui:param name="columns" value="Título, #{entity.titulo}, text|
+						<ui:param name="columns" value="Id, #{entity.id}, text|
+														Título, #{entity.titulo}, text|
 														Categoria, #{entity.categoria.nome}, text|
 														Professor/Funcionario, #{entity.professorFunc.nome}, text"></ui:param>
 					</ui:include>

@@ -45,21 +45,6 @@ public class DiasTreinoCatBean extends Bean<DiasTreinoCat> implements Serializab
 		entity = new DiasTreinoCat();
 	}
 
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
-		incluirGeneric( entity!=null? entity.getId():0);
-	}
-
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
 	
 	/************************************************************************************************************/
 	//GET FIELDS

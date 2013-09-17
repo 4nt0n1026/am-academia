@@ -66,21 +66,21 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		entity.setAluno(new Aluno());
 	}
 	
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
-		incluirGeneric( entity!=null? entity.getId():0);
-	}
-
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
+//	/**
+//	 * inclui ou edita entity no banco
+//	 */
+//	@Override
+//	public void incluirEntity() {
+//		incluirGeneric( entity!=null? entity.getId():0);
+//	}
+//
+//	/**
+//	 * deleta entity do banco
+//	 */
+//	@Override
+//	public void deletarEntity() {
+//		deletarGeneric(entity!=null?entity.getId():0);
+//	}
 	
 	/**
 	 * Responde a solicitacao criando um treinoEspecico
@@ -133,7 +133,7 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		
 		
 		entity.setRespondido(true);
-		incluirGeneric(entity.getId());
+		incluirEntity();
 		
 		closeForms();
 		atualizar();

@@ -56,25 +56,9 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable {
 		entity = new Noticia();
 		entity.setCategoria(new NoticiaCat());
 		entity.setProfessorFunc(new ProfessorFunc());
-	}
-
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
 		entity.setData(Calendar.getInstance());
-		incluirGeneric( entity!=null? entity.getId():0);
 	}
 
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
-	
 	/************************************************************************************************************/
 	//GET FIELDS
 	/************************************************************************************************************/

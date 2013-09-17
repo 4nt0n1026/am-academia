@@ -88,27 +88,29 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
 		showEntity = true;
 		entity = new TreinoFixo();
 		entity.setProfessor(new ProfessorFunc());
+		entity.setData(Calendar.getInstance());
+		entity.setTipoTreino(TipoTreinoDieta.FIXO);
 	}
 
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
-		if(entity.getId()==0){
-			entity.setData(Calendar.getInstance());
-			entity.setTipoTreino(TipoTreinoDieta.FIXO);
-		}
-		incluirGeneric( entity!=null? entity.getId():0);
-	}
-
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
+//	/**
+//	 * inclui ou edita entity no banco
+//	 */
+//	@Override
+//	public void incluirEntity() {
+//		if(entity.getId()==0){
+//			entity.setData(Calendar.getInstance());
+//			entity.setTipoTreino(TipoTreinoDieta.FIXO);
+//		}
+//		incluirGeneric( entity!=null? entity.getId():0);
+//	}
+//
+//	/**
+//	 * deleta entity do banco
+//	 */
+//	@Override
+//	public void deletarEntity() {
+//		deletarGeneric(entity!=null?entity.getId():0);
+//	}
 	
 	@Override
 	public void showFormDetail() {

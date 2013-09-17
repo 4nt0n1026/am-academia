@@ -46,21 +46,21 @@ public class ParteCorpoBean extends Bean<ParteCorpo> implements Serializable {
 		entity = new ParteCorpo();
 	}
 
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
-		incluirGeneric( entity!=null? entity.getId():0);
-	}
-
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
+//	/**
+//	 * inclui ou edita entity no banco
+//	 */
+//	@Override
+//	public void incluirEntity() {
+//		incluirGeneric( entity!=null? entity.getId():0);
+//	}
+//
+//	/**
+//	 * deleta entity do banco
+//	 */
+//	@Override
+//	public void deletarEntity() {
+//		deletarGeneric(entity!=null?entity.getId():0);
+//	}
 	
 	/************************************************************************************************************/
 	//GET FIELDS

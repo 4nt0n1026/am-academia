@@ -15,5 +15,11 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-aop-3.2.3.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-orm-3.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-core-1.17.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-json-1.17.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-1.17.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-servlet-1.17.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

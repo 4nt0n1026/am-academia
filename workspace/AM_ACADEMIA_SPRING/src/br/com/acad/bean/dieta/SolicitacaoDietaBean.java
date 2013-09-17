@@ -63,27 +63,8 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
 		showEntity = true;
 		entity = new SolicitacaoDieta();
 		entity.setAluno(new Aluno());
-	}
-
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
-		// Se for nova instancia
-		if(entity.getId()==0) {
-			entity.setDataSolicitacao(Calendar.getInstance());
-			entity.setRespondido(false);
-		}
-		incluirGeneric( entity!=null? entity.getId():0);
-	}
-
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
+		entity.setDataSolicitacao(Calendar.getInstance());
+		entity.setRespondido(false);
 	}
 	
 	/**
@@ -117,7 +98,7 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
 		closeForms();
 		atualizar();
 		entity.setRespondido(true);
-		incluirGeneric(entity.getId());
+		incluirEntity();
 	}
 	
 	//************************************************************************************************************//*

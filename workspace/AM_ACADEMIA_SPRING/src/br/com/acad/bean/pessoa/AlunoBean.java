@@ -61,16 +61,16 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 			entity.setSenha(senha);
 		}
 		// Inclui no banco
-		incluirGeneric( entity!=null? entity.getId():0);
+		super.incluirEntity();
 	}
-
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
+//
+//	/**
+//	 * deleta entity do banco
+//	 */
+//	@Override
+//	public void deletarEntity() {
+//		deletarGeneric(entity!=null?entity.getId():0);
+//	}
 	
 	
 	/************************************************************************************************************/

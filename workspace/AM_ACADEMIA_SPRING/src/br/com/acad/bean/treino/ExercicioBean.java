@@ -92,17 +92,17 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 			entity.addParteCorpoSecundaria(new ParteCorpo(Integer.parseInt(id)));
 		}
 		
-		incluirGeneric( entity!=null? entity.getId():0);
+		super.incluirEntity();
 	}
 
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
-	
+//	/**
+//	 * deleta entity do banco
+//	 */
+//	@Override
+//	public void deletarEntity() {
+//		deletarGeneric(entity!=null?entity.getId():0);
+//	}
+//	
 	
 	/**
 	 * sobe foto de upload de Exercicio

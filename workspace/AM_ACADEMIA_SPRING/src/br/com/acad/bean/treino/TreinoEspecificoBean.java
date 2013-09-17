@@ -60,7 +60,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 	 * Não é possivel incluir um treino especifico. Precisa ser por meio de resposta a uma solicitação. Metodo nao implementado
 	 */
 	@Override
-	public void showNewEntity() {}
+	public void showNewEntity() {	}
 
 
 	/**
@@ -75,16 +75,16 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 			alunoDAO.update(aluno);
 			entity.setNomePronto(aluno);
 		}
-		incluirGeneric( entity!=null? entity.getId():0);
+		super.incluirEntity();
 	}
 
-	/**
-	 * deleta entity do banco
-	 */
-	@Override
-	public void deletarEntity() {
-		deletarGeneric(entity!=null?entity.getId():0);
-	}
+//	/**
+//	 * deleta entity do banco
+//	 */
+//	@Override
+//	public void deletarEntity() {
+//		deletarGeneric(entity!=null?entity.getId():0);
+//	}
 	
 	@Override
 	public void showFormDetail() {
