@@ -9,13 +9,22 @@
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
+		
 		<!-- ****************************************************************************************************** -->
 		<!-- NoticiaCat -->
 		<!-- ****************************************************************************************************** -->
-		<div id="menuTabelaInsert"></div>
+		
+		<!-- ****************************************************************************************************** -->
+		<!-- Header da entity -->
+		<!-- ****************************************************************************************************** -->
+	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+			<ui:param name="titulo" value="Tipos de Avisos"></ui:param>
+			<ui:param name="subtitulo" value="Cadastro dos tipos de avisos"></ui:param>
+		</ui:include>
+		
 		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Categoria de Notícias" >  
+     			<p:tab title="" >  
      				
 				    <!-- ****************************************************************************************************** -->
 					<!-- Insert de entity -->

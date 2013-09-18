@@ -12,91 +12,101 @@
 		<!-- ****************************************************************************************************** -->
 		<!-- Noticia -->
 		<!-- ****************************************************************************************************** -->
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
-
-     			<p:tab title="Notícia" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{noticiaBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idTitulo" value="Titluo:" />  
-						        <p:inputText id="idTitulo" label="Título" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" >
-						        	<f:validateLength minimum="2" maximum="50" />
-						        </p:inputText>
-						        
-						        		 
-						        <h:outputLabel for="idCat" value="Categoria: " />  
-							    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria" >  
-							    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
-								</p:selectOneMenu>  
-						        		 
-						       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
-							    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" required="true" style="width:250px"
-							    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
-								</p:selectOneMenu>  
-		
-					        </h:panelGrid>
-					        
-			        		<h:outputLabel for="editor" value="Descrição:"/>
-					        <br/>
-			        		<p:inputTextarea cols="100" rows="8" label="Descrição" id="editor" value="#{noticiaBean.entity.descricao}" required="true" 
-			        					requiredMessage="Descrição obrigatoria" >
-			        			<f:validateLength minimum="5" maximum="1500" />
-			        		</p:inputTextarea>
-					        <br/>
-			        		  
-						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        <p:button icon="ui-icon ui-icon-close"   action="#{noticiaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-						</p:fieldset> 
-			        </h:form>
-      				
-
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-			   		
-			   		<ui:include src="/xhtml/templates/_table_menu.xhtml">
-						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
-					</ui:include>
-			    
-				   	<!-- ****************************************************************************************************** -->
-					<!-- Tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
-						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
-						<ui:param name="columns" value="Id, #{entity.id}, text|
-														Título, #{entity.titulo}, text|
-														Categoria, #{entity.categoria.nome}, text|
-														Professor/Funcionario, #{entity.professorFunc.nome}, text"></ui:param>
-					</ui:include>
-				</h:form>
-			
-				<!-- ****************************************************************************************************** -->
-				<!-- info de entity -->
-				<!-- ****************************************************************************************************** -->
-				<h:form id="detailEntity">
-					<ui:include src="/xhtml/templates/_detail_content.xhtml">
-						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
-						
-						<ui:param name="panel1Columns" value="2"></ui:param>
-						<ui:param name="panel1Fields" value="Icone~header|#{bean.entity.categoria.fotoLocalIconePath}~smallimage|
-															Nome~header|#{bean.entity.titulo}~text|
-															Descrição~header|#{bean.entity.descricao}~text"></ui:param>
-						
-					</ui:include>
-				</h:form>
-				<!-- ****************************************************************************************************** -->
-			</p:tab>
-		</p:tabView>	
+	 	
+	 	
+	 	<!-- ****************************************************************************************************** -->
+		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
+	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+			<ui:param name="titulo" value="Avisos"></ui:param>
+			<ui:param name="subtitulo" value="Controle de avisos, notícias e dicas"></ui:param>
+		</ui:include>
+		
+	<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
+
+    	<p:tab title="" >  
+     				
+			    <!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity"  >
+					<p:focus for="formEntity" />
+					<p:fieldset id="field"  rendered="#{noticiaBean.showEntity}">
+						<h:panelGrid columns="10">
+						
+					        <h:outputLabel for="idTitulo" value="Titluo:" />  
+					        <p:inputText id="idTitulo" label="Título" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" >
+					        	<f:validateLength minimum="2" maximum="50" />
+					        </p:inputText>
+					        
+					        		 
+					        <h:outputLabel for="idCat" value="Categoria: " />  
+						    <p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria" >  
+						    	<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
+							</p:selectOneMenu>  
+					        		 
+					       	<h:outputLabel for="idFunc" value="Professor/Funcionario: " />  
+						    <p:selectOneMenu id="idFunc" value="#{noticiaBean.entity.professorFunc.id}" required="true" style="width:250px"
+						    			requiredMessage="Professor / Funcionario Obrigatorio" filter="true" filterMatchMode="contains" >  
+						    	<f:selectItems value="#{noticiaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
+							</p:selectOneMenu>  
+	
+				        </h:panelGrid>
+				        
+		        		<h:outputLabel for="editor" value="Descrição:"/>
+				        <br/>
+		        		<p:inputTextarea cols="100" rows="8" label="Descrição" id="editor" value="#{noticiaBean.entity.descricao}" required="true" 
+		        					requiredMessage="Descrição obrigatoria" >
+		        			<f:validateLength minimum="5" maximum="1500" />
+		        		</p:inputTextarea>
+				        <br/>
+		        		  
+					    <p:commandButton icon="ui-icon ui-icon-check"  action="#{noticiaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
+				        <p:button icon="ui-icon ui-icon-close"   action="#{noticiaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
+				        	
+					</p:fieldset> 
+		        </h:form>
+     				
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+     				<h:form id="tabelaEntity">
+		   		
+		   		<ui:include src="/xhtml/templates/_table_menu.xhtml">
+					<ui:param name="bean" value="#{noticiaBean}"></ui:param>
+				</ui:include>
+		    
+			   	<!-- ****************************************************************************************************** -->
+				<!-- Tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:param name="bean" value="#{noticiaBean}"></ui:param>
+					<ui:param name="columns" value="Id, #{entity.id}, text|
+													Título, #{entity.titulo}, text|
+													Categoria, #{entity.categoria.nome}, text|
+													Professor/Funcionario, #{entity.professorFunc.nome}, text"></ui:param>
+				</ui:include>
+			</h:form>
+		
+			<!-- ****************************************************************************************************** -->
+			<!-- info de entity -->
+			<!-- ****************************************************************************************************** -->
+			<h:form id="detailEntity">
+				<ui:include src="/xhtml/templates/_detail_content.xhtml">
+					<ui:param name="bean" value="#{noticiaBean}"></ui:param>
+					
+					<ui:param name="panel1Columns" value="2"></ui:param>
+					<ui:param name="panel1Fields" value="Icone~header|#{bean.entity.categoria.fotoLocalIconePath}~smallimage|
+														Nome~header|#{bean.entity.titulo}~text|
+														Descrição~header|#{bean.entity.descricao}~text"></ui:param>
+					
+				</ui:include>
+			</h:form>
+			<!-- ****************************************************************************************************** -->
+		</p:tab>
+	</p:tabView>
+	<!-- ****************************************************************************************************** -->
 			
 	</ui:define>
 </ui:composition>

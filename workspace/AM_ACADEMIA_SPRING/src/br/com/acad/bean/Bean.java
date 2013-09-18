@@ -101,6 +101,13 @@ public abstract class Bean<T extends GenericEntity> {
 	}
 	
 	/**
+	 * Ao selecionar uma linha da tabela
+	 */
+	public void selectRow(T entity){
+		this.entity = entity;
+	}
+	
+	/**
 	 * fecha painel de edicao de uma entity
 	 */
 	public void dontShowEntity() {

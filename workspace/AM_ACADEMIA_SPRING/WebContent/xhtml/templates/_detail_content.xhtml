@@ -11,7 +11,15 @@
 
 
    	<ui:composition>
-		<p:fieldset legend="Detalhes"  rendered="#{bean.showEntityDetail}">
+		<h:panelGroup legend="Detalhes"  rendered="#{bean.showEntityDetail}">
+			<br />
+			
+	   		<div class="panel panel-primary">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Detalhes</h3>
+				</div>
+			<div class="panel-body">
+
 							
 			<p:panelGrid columns="3" columnClasses="columns" style="max-width: 700px;" >
 				
@@ -94,7 +102,9 @@
 				
 			</p:panelGrid>
 				
-		</p:fieldset>
+			  </div>
+</div>
+		</h:panelGroup>
    		
 	</ui:composition>		
     	

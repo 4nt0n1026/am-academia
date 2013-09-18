@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+
+
+
+/* colunas do detail */
+.columns{
+	width: 400px;
+	min-width: 300px;
+	max-width: 500px;
+}
+
+/* header do template de detail */
+.header{
+	font-weight: bolder;
+	color: #4682B4;
+}
+
+/* small colunas do detail */
+.smallcolumns{
+
+}
+
+.ui-widget,     
+    .ui-widget .ui-widget {     
+    font-size: 12px !important;  
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid grey;
+	font-family: 'Trebuchet MS';
+}
+
+.ui-selectonemenu {
+	vertical-align: top;
+}
+
+.center{
+	text-align: center;
+}
+
+.ui-tabs .ui-tabs-panel {
+     -- padding: 20px 0px !important;
+}
+
+.alignTop {
+	vertical-align: top;
+}
+
+.center{
+	text-align: center;
+}
+
+.right{
+	text-align: right;
+}
+
+.left{
+	text-align: left;
+}
+
+.floatLeft{
+	float: left;
+}
+
+.floatRight{
+	float: right;
+}
+
+.mobileSection{
+	background-color: blue;

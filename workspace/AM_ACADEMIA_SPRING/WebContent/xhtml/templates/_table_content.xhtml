@@ -11,26 +11,30 @@
 
 	
    	<ui:composition>
-   		  
    		
-   		<!-- Conteudo da tabela -->
-	   	<p:dataTable value="#{bean.entities}" var="entity" emptyMessage="Nenhum registro" widgetVar="tabelaEntity" 
-							 resizableColumns="true" selection="#{bean.entity}" selectionMode="single" rowKey="#{entity}">
-			
-			<p:ajax event="rowSelect" listener="#{bean.showFormDetail}"  update=":tabView1:detailEntity" /> 
-			<p:ajax event="rowUnselect" listener="#{bean.hideFormDetail}" update=":tabView1:detailEntity"/>
-			
-			<!-- Separacao de cada coluna passada por paramentro (separadas por '|' -->
+   	  <script type="text/javascript">
+
+   	  </script>
+   		
+   		<h:dataTable  value="#{bean.entities}" var="entity" styleClass="table center" headerClass="gray-back center" rowClasses="blue-back" 
+   					footerClass="gray-back center">
+   			
+   			<h:column headerClass="small-column gray-back" >
+   				<h:commandButton styleClass="btn btn-primary btn-xs" value="Selecionar" immediate="true" action="#{bean.selectRow(entity)}" >
+   					<f:ajax  render=":tabView1:detailEntity" />
+   				</h:commandButton>
+   			</h:column>
+   			
+   			<!-- Separacao de cada coluna passada por paramentro (separadas por '|' -->
 			<c:forEach var="column" items="${fn:split(columns, '|')}">
-				
 				
 				<!-- Separacao de cada propriedade de cada coluna (separadas por ',') -->
 				<c:set var="properties" value="${fn:split(column, ',')}"/>
-				
-				<!-- Coluna -->
-				<p:column headerText="${properties[0]}" styleClass="center"  >
-					
-					<!-- campo de texto -->
+   		
+   				<h:column >
+    				<f:facet name="header">${properties[0]}</f:facet>
+    				
+    				<!-- campo de texto -->
 					<h:outputText value="${properties[1]}" rendered="#{empty properties[2] || properties[2] eq 'text' || properties[2] eq ' text'}" />
 					
 					<!-- campo de data -->
@@ -51,13 +55,12 @@
 					
 					<!-- campo de booleano -->
 					<p:selectBooleanCheckbox value="${properties[1]}" disabled="true" rendered="#{properties[2] eq 'boolean' || properties[2] eq ' boolean'}" />
-				</p:column>
-				
-			</c:forEach>
-					
-					
-					
-			<!-- Footer com paginacao e quantidade de itens -->
+    				
+    			</h:column>
+    			
+    		</c:forEach>
+   			
+   			<!-- Footer com paginacao e quantidade de itens -->
 			<f:facet name="footer">  
 				<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{bean.previousPageTable}" 
 							disabled="#{bean.page le 1}" ajax="true" update=":tabView1:tabelaEntity" />
@@ -72,9 +75,62 @@
 					<h:outputText value="Total de paginas: #{bean.totalPages}" />
 				</div>
 			</f:facet>
+   			
+   		</h:dataTable>
+   		
+   		
+   		<!-- Conteudo da tabela -->
+	   	<p:dataTable value="#{bean.entities}" var="entity" emptyMessage="Nenhum registro" widgetVar="tabelaEntity" 
+							 resizableColumns="true" selection="#{bean.entity}" selectionMode="single" rowKey="#{entity}">
+			
+			<p:ajax event="rowSelect" listener="#{bean.showFormDetail}"  update=":tabView1" /> 
+			<p:ajax event="rowUnselect" listener="#{bean.hideFormDetail}" update=":tabView1:detailEntity"/>
+			
+			<c:forEach var="column" items="${fn:split(columns, '|')}">
+				
+				
+				<c:set var="properties" value="${fn:split(column, ',')}"/>
+				
+				<p:column headerText="${properties[0]}" styleClass="center"  >
+					
+					<h:outputText value="${properties[1]}" rendered="#{empty properties[2] || properties[2] eq 'text' || properties[2] eq ' text'}" />
+					
+					<h:outputText value="${properties[1]}" rendered="#{properties[2] eq 'date' || properties[2] eq ' date'}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+					
+					<h:outputText value="${properties[1]}" rendered="#{properties[2] eq 'time' || properties[2] eq ' time'}" >
+						<f:convertDateTime pattern="HH:mm" />
+					</h:outputText>
+					
+					<p:graphicImage styleClass="img-circle" height="50" value="${properties[1]}" rendered="#{properties[2] eq 'image' || properties[2] eq ' image'}"  />
+					
+					<p:graphicImage styleClass="img-circle" height="30" value="${properties[1]}" rendered="#{properties[2] eq 'smallImage' || properties[2] eq ' smallImage'}"  />
+					
+					<p:selectBooleanCheckbox value="${properties[1]}" disabled="true" rendered="#{properties[2] eq 'boolean' || properties[2] eq ' boolean'}" />
+				</p:column>
+				
+			</c:forEach>
+					
+					
+					
+			<f:facet name="footer">  
+				<p:commandButton  title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{bean.previousPageTable}" 
+							disabled="#{bean.page le 1}" ajax="true" update=":tabView1:tabelaEntity" />
+							
+				<p:inputText value="#{bean.page}" styleClass="center" size="2" />
+				
+				<p:commandButton  title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{bean.nextPageTable}"
+							disabled="#{bean.page ge bean.totalPages}"  ajax="true" update=":tabView1:tabelaEntity"/>
+							
+				<div class="left">
+					<h:outputText value="Total de itens: #{bean.totalEntities} - " />
+					<h:outputText value="Total de paginas: #{bean.totalPages}" />
+				</div>
+			</f:facet>
 			
 			
-		</p:dataTable>
+		</p:dataTable>-->
 	</ui:composition>		
     	
 </html>

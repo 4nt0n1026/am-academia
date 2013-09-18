@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+.navbar-inner, .active a, .navbar-inner a{
+	background-color: #204D73 !important;
+	color: white !important;
+}
+
+.bs-header{
+	background-color: #D0D0D0 !important;
+}
+
+.gray-back{
+	background-color: #D0D0D0 !important;
+}
+
+.small-column{
+	width: 20px;
+}
+
+.blue-back:HOVER{
+	background-color: #580000  !important;
+	color: white !important;
+}
+
+.selected{
+	background-color: blue !important;
+}
+
+

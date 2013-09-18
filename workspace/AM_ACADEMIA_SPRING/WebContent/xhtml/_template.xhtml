@@ -8,13 +8,14 @@
 <f:view locale="pt_BR" contentType="text/html" >
 <h:head>
 	<title><ui:insert name="title">Smart Fitness</ui:insert></title>
-	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet name="header_footer.css" library="css" />
+	<h:outputStylesheet name="body.css" library="css" />
 	<h:outputStylesheet name="bootstrap.css" library="css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"  />
 </h:head>
 
 <h:body>
-		<p:growl autoUpdate="true" redisplay="true" life="2000" showDetail="true"  />
+		<p:growl autoUpdate="true" redisplay="true" life="5000" showDetail="true"  />
 		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
 	              
 		<p:dialog modal="true" widgetVar="statusDialog" header="Carregando" draggable="false" closable="false">  
@@ -26,75 +27,111 @@
     		<ui:include src="/xhtml/mudarSenhaDialog.xhtml"/>
 		</div>
 		
+		<!-- MENU PRINCIPAL -->
 		<div id="menuPrincipal">
-			<div id="titulo">
-				<h:panelGrid columns="2">
-					<p:graphicImage value="/resources/images/mainIcon.ico" />
-					<h1>Smart Fitness</h1>
-				</h:panelGrid>
-			</div>
-			
-			<div id="usuario">
-				<h:outputText value="Usuario: #{loginBean.usuario.nome}" rendered="#{loginBean.logado}" />
-				<p:commandButton action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" title="logout" rendered="#{loginBean.logado}" immediate="true" />
-			</div>
-			
 			<h:form>
-				<p:menubar rendered="#{loginBean.logado}">
-					<p:menuitem outcome="/xhtml/home.xhtml" icon="ui-icon ui-icon-home" value="Home" />
-					
-					<p:submenu icon="ui-icon ui-icon-person" label="Pessoa">
-						<p:menuitem outcome="/xhtml/pessoa/aluno.xhtml" value="Alunos" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/pessoa/professorFunc.xhtml" value="Professores" icon="ui-icon ui-icon-radio-on"/>
-					</p:submenu>
-					<p:submenu icon="ui-icon ui-icon-clipboard" label="Treino">
-						<p:menuitem outcome="/xhtml/treino/treinoFixo.xhtml" value="Treinos fixos" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/treino/treinoEspecifico.xhtml" value="Treinos solicitados" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/treino/solicitacaoTreino.xhtml" value="Solicitações" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/treino/exercicio.xhtml" value="Exercicios" icon="ui-icon ui-icon-radio-on"/>
-						<p:submenu label="Configuração" icon="ui-icon ui-icon-radio-off">
-							<p:menuitem outcome="/xhtml/treino/parteCorpo.xhtml" value="Partes do Corpo" icon="ui-icon ui-icon-radio-on"/>
-						</p:submenu>
-					</p:submenu>
-					<p:submenu icon="ui-icon ui-icon-calculator" label="Dieta">
-						<p:menuitem outcome="/xhtml/dieta/dietaFixa.xhtml" value="Dietas fixas" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/dieta/dietaEspecifica.xhtml" value="Dietas solicitadas" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/dieta/solicitacaoDieta.xhtml" value="Solicitações" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/dieta/alimento.xhtml" value="Alimentos" icon="ui-icon ui-icon-radio-on"/>
-						<p:submenu label="Configuração" icon="ui-icon ui-icon-radio-off">
-							<p:menuitem outcome="/xhtml/dieta/unidadeMedida.xhtml" value="Unidade Medida" icon="ui-icon ui-icon-radio-on"/>
-						</p:submenu>
-					</p:submenu>
-					<p:submenu icon="ui-icon ui-icon-clock" label="Horario">
-						<p:menuitem outcome="/xhtml/horario/unidade.xhtml" value="Unidade" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/horario/aula.xhtml" value="Aulas" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/horario/horarioAula.xhtml" value="Horarios das Aulas" icon="ui-icon ui-icon-radio-on"/>
-					</p:submenu>
-					<p:submenu icon="ui-icon ui-icon-image" label="Noticias" >
-						<p:menuitem outcome="/xhtml/avisos/noticia.xhtml" value="Noticias" icon="ui-icon ui-icon-radio-on"/>
-						<p:menuitem outcome="/xhtml/avisos/noticiaCat.xhtml" value="Tipos de noticias" icon="ui-icon ui-icon-radio-on"/>
-					</p:submenu>
-					<p:submenu icon="ui-icon ui-icon-wrench" label="Configurações">
-						<p:submenu label="Categorias" icon="ui-icon ui-icon-radio-off">
-							<p:menuitem outcome="/xhtml/cat/diasTreinoCat.xhtml" value="Cat.dias de treino" icon="ui-icon ui-icon-radio-on"/>
-							<p:menuitem outcome="/xhtml/cat/duracaoTreinoCat.xhtml" value="Cat. duração de treino" icon="ui-icon ui-icon-radio-on"/>
-							<p:menuitem outcome="/xhtml/cat/objetivoCat.xhtml" value="Objetivos de treino" icon="ui-icon ui-icon-radio-on"/>
-							<p:menuitem outcome="/xhtml/cat/sexoCat.xhtml" value="Categoria de sexo" icon="ui-icon ui-icon-radio-on"/>
-							<p:menuitem outcome="/xhtml/cat/faixaEtariaCat.xhtml" value="Cat. faixa etaria" icon="ui-icon ui-icon-radio-on"/>
-							<p:menuitem value="Limitações de dieta" icon="ui-icon ui-icon-radio-on"/>
-						</p:submenu>
-						
-						<p:menuitem value="Mudar senha" icon="ui-icon ui-icon-radio-on" onclick="dlgSenha.show();" ajax="true" update=":formSenha" 
-									immediate="true" rendered="#{loginBean.logado}" />
-					</p:submenu>
-					
-	        	</p:menubar>  
+				<nav class="navbar-inner navbar-default " role="navigation">
+					<!-- LOGO -->
+			     	<div class="container">
+       					<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						      <span class="sr-only">Toggle navigation</span>
+						      <span class="icon-bar"></span>
+						      <span class="icon-bar"></span>
+						      <span class="icon-bar"></span>
+						    </button>
+						    <p:graphicImage value="/resources/images/mainIcon.ico" />
+						</div>
+       					<!-- ITENS DO MENU -->
+	       				<div class="collapse navbar-collapse navbar-ex1-collapse">
+   							<ul class="nav navbar-nav">
+								<li class="active"><a href="http://localhost:8080/AM_ACADEMIA_SPRING/xhtml/home.xhtml">Home</a></li>
+						        
+						        <!-- Pessoas -->
+						        <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pessoas <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							        	<li><h:commandLink ajax="false" action="/xhtml/pessoa/aluno.xhtml" value="Alunos" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/pessoa/professorFunc.xhtml" value="Funcionarios" /></li>
+							        </ul>
+							    </li>
+							    
+							    <!-- Treino -->
+						        <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Treino <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							        	<li><h:commandLink ajax="false" action="/xhtml/treino/treinoFixo.xhtml" value="Treinos Fixos" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/treino/treinoEspecifico.xhtml" value="Treinos Solicitados" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/treino/solicitacaoTreino.xhtml" value="Solicitações" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/treino/exercicio.xhtml" value="Exercicios" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/treino/parteCorpo.xhtml" value="Musuclos" /></li>
+							        </ul>
+							    </li>
+							    
+							    <!-- Dieta -->
+						        <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dieta <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							        	<li><h:commandLink ajax="false" action="/xhtml/dieta/dietaFixa.xhtml" value="Dietas Fixos" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/dieta/dietaEspecifica.xhtml" value="Dietas Solicitados" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/dieta/solicitacaoDieta.xhtml" value="Solicitações" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/dieta/alimento.xhtml" value="Alimentos" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/dieta/unidadeMedida.xhtml" value="Unidades de Medida" /></li>
+							        </ul>
+							    </li>
+							    
+							    <!-- Aulas -->
+						        <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aulas <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							        	<li><h:commandLink ajax="false" action="/xhtml/horario/unidade.xhtml" value="Unidades" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/horario/aula.xhtml" value="Aulas" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/horario/horarioAula.xhtml" value="Horarios" /></li>
+							        </ul>
+							    </li>
+							    
+							    <!-- Avisos -->
+						        <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Avisos <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							        	<li><h:commandLink ajax="false" action="/xhtml/avisos/noticia.xhtml" value="Avisos" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/avisos/noticiaCat.xhtml" value="Tipos de Avisos" /></li>
+							        </ul>
+							    </li>
+
+							    <!-- Configuracoes -->
+						        <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							        	<li><h:commandLink ajax="false" action="/xhtml/cat/diasTreinoCat.xhtml" value="Cat.dias de treino" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/cat/duracaoTreinoCat.xhtml" value="Cat. duração de treino" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/cat/objetivoCat.xhtml" value="Objetivos de treino" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/cat/sexoCat.xhtml" value="Categoria de sexo" /></li>
+							        	<li><h:commandLink ajax="false" action="/xhtml/cat/faixaEtariaCat.xhtml" value="Cat. faixa etaria" /></li>
+							        </ul>
+							    </li>
+		       				</ul>
+			       		
+			       		<ul class="nav navbar-nav navbar-right">
+			       			<li class="dropdown">
+					       		<div class="btn-group">
+								 	<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+								   		#{loginBean.usuario.nome} <span class="caret"></span>
+								  	</button>
+									<ul class="dropdown-menu">
+									    <li><p:commandLink value="Mudar Senha" onclick="dlgSenha.show();" ajax="true" update=":formSenha" immediate="true"/></li>
+									    <li><h:commandButton action="#{loginBean.logout}" icon="ui-icon ui-icon-extlink" value="Logout" title="logout" rendered="#{loginBean.logado}" immediate="true" /></li>
+								    </ul>
+								</div>
+							</li>
+     					</ul>
+			       		</div>
+       				</div>
+			    </nav>
 	        	
-	        	<!-- popula banco -->
-	        	<p:commandButton outcome="/xhtml/banco/populaBanco.xhtml" value="PopulaBanco" icon="ui-icon ui-icon-radio-on" rendered="#{!loginBean.logado}"/>
 			</h:form>
 		</div>
-
+		
 
 		<div id="content">
 			<div id="innerContent">
@@ -103,6 +140,11 @@
 			</div>
 		</div>
 		
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <!--<script src="//code.jquery.com/jquery.js"></script>-->
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <h:outputScript name="bootstrap.min.js" library="js"></h:outputScript>
 </h:body>
 </f:view>
 </html>
