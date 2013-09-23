@@ -11,72 +11,164 @@
 
 
    	<ui:composition>
+   		<!--<a data-toggle="modal" href="#deleteModal" class="btn btn-primary btn-lg"><p:graphicImage  value="/resources/images/crud_icons/trash.png"  /></a>-->
+   	
+   		<!-- Modal -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="Deletar" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Modal title</h4>
+					</div>
+					<div class="modal-body">
+					        Tem certeja que deseja deletar?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<h:commandLink type="button" class="btn btn-primary"  data-dismiss="modal" onclick="('#deleteModal').modal('hide')"  action="#{bean.deletarEntity}">
+							<f:ajax render=":tabView1" />
+							Deletar
+						</h:commandLink>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+   		
    		<!-- Menu da tabela -->
-	   	<p:toolbar id="menuTabela">  
-			<p:toolbarGroup align="left">
+	   	<nav id="menuTabela" class="navbar navbar-default" >  
+		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+		    <ul class="nav navbar-nav">
+		    
 				<!-- Funcoes CRUD -->  
-	        	<p:commandButton title="novo" icon="ui-icon ui-icon-plus" action="#{bean.showNewEntity}" ajax="true" update=":tabView1:formEntity" disabled="#{not empty disableNew}" />
-	        	<p:commandButton title="deletar"  icon="ui-icon ui-icon-trash" action="#{bean.deletarEntity}" ajax="true" update=":tabView1:tabelaEntity :tabView1:detailEntity" disabled="#{not empty disableDelete}" />
-	        	<p:commandButton title="Editar" icon="ui-icon ui-icon-pencil" action="#{bean.showEditEntity}" ajax="true" update=":tabView1:formEntity" disabled="#{not empty disableEdit}" />
-	        	<p:commandButton title="atualizar"  icon="ui-icon ui-icon-refresh" action="#{bean.atualizar}" ajax="true" update=":tabView1"/>
-	        	<p:commandButton title="filtro" icon="ui-icon ui-icon-zoomin" disabled="#{not empty disableFilter}" />
-	        	<p:separator />  
-	        	
+				<li >
+					<div class="form-group">
+			        	<h:commandLink title="novo" action="#{bean.showNewEntity}" disabled="#{not empty disableNew}" styleClass="btn btn-default " >
+			        		<p:graphicImage  value="/resources/images/crud_icons/plus.png"  />
+			        		<f:ajax render=":tabView1:formEntity" />
+			        	</h:commandLink>
+		        	</div>
+	        	</li>
+	        	<li>
+	        		<div class="form-group">
+	        			<h:commandLink type="button" class="btn btn-default" action="#{bean.deletarEntity}">
+							<f:ajax render=":tabView1" />
+			        		<p:graphicImage  value="/resources/images/crud_icons/trash.png"  />
+						</h:commandLink>
+			        	
+		        	</div>
+	        	</li>
+	        	<li>
+	        		<div class="form-group">
+			        	<h:commandLink title="Editar"  action="#{bean.showEditEntity}" disabled="#{not empty disableEdit}"  styleClass="btn btn-default " >
+			        		<p:graphicImage  value="/resources/images/crud_icons/edit.png" />
+			        		<f:ajax render=":tabView1:formEntity" />
+			        	</h:commandLink>
+		        	</div>
+		        </li>
+	        	<li>
+	        		<div class="form-group">
+			        	<h:commandLink title="atualizar"   action="#{bean.atualizar}" styleClass="btn btn-default ">
+			        		<p:graphicImage  value="/resources/images/crud_icons/refresh.png" />
+			        		<f:ajax render=":tabView1" />
+			        	</h:commandLink>
+		        	</div>
+		        </li>
+		        <li>
+		        	<div class="form-group">
+			        	<h:commandLink title="filtro"  disabled="#{not empty disableFilter}"  styleClass="btn btn-default " >
+			        		<p:graphicImage  value="/resources/images/crud_icons/search.png"  />
+			        		<f:ajax render=":tabView1" />
+			        	</h:commandLink>
+		        	</div>
+		        </li>
+		
 	        	<!-- Funcoes extras (opcional) -->
-	        	<p:menuButton value="Funções" rendered="#{not empty functions}">
-	        	 
-	        		<!-- Separacao de cada coluna passada por paramentro (separadas por '|' -->
-					<c:forEach var="function" items="${fn:split(functions, '|')}">
-					
-						<!-- Separacao de cada propriedade de cada coluna (separadas por ',') -->
-						<c:set var="properties" value="${fn:split(function, ',')}"/>
-						
-						<!-- funcao -->
-	        			<p:menuitem  value="#{properties[0]}" icon="ui-icon ui-icon-clipboard" action="#{bean[properties[1]]}" ajax="true" update="#{properties[2]}"  />
-	        			
-	        		</c:forEach>
+			    <li>
+					<div class="btn-group">
+						<h:panelGroup rendered="#{not empty functions}">
+							<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+								Funções <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<!-- Separacao de cada coluna passada por paramentro (separadas por '|' -->
+								<c:forEach var="function" items="${fn:split(functions, '|')}">
+									<li>
+										<!-- Separacao de cada propriedade de cada coluna (separadas por ',') -->
+										<c:set var="properties" value="${fn:split(function, ',')}"/>
+										<!-- funcao -->
+					        			<h:commandLink value="#{properties[0]}" action="#{bean[properties[1]]}"  >
+					        				<f:ajax render="#{properties[2]}" />
+					        			</h:commandLink>
+				        			</li>
+				        		</c:forEach>	
+							</ul>
+						</h:panelGroup>
+					</div>
+			    </li>
 	        		
-	        	</p:menuButton>
-	        	<p:separator rendered="#{not empty functions}"/> 
-	        	
-	        </p:toolbarGroup>
+	       	</ul>
+		
+		
+	
 	        
 	        
-	        <p:toolbarGroup align="right" > 
+	         <ul class="nav navbar-nav navbar-right"> 
 	        
 	        	
 	        	<!-- View (Opcional) -->
-	        	<p:separator rendered="#{not empty bean.staticViewsLabel}"/> 
-	        	<p:toolbarGroup rendered="#{not empty bean.staticViewsLabel}">
-	        		Visão:
-		        	<p:selectOneMenu value="#{bean.view}"   >
-		        		<p:ajax partialSubmit="false" update=":tabView1"
-	                      			 process="@form" listener="#{bean.atualizar}"/>
-		        		<f:selectItems value="#{bean.staticViewsLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-		        	</p:selectOneMenu>
-	       		</p:toolbarGroup>
+	        	<li>
+		        	<h:panelGroup rendered="#{not empty bean.staticViewsLabel}">
+		        		Visão:
+		        		<div class="form-group">
+				        	<p:selectOneMenu value="#{bean.view}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+			                      			 process="@form" listener="#{bean.atualizar}"/>
+				        		<f:selectItems value="#{bean.staticViewsLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+			        	</div>
+		       		</h:panelGroup>
+	       		</li>
 	        
 	        	<!-- Ordenação (Opcional) -->
-	        	<p:separator rendered="#{not empty bean.staticFieldsOrderLabel}"/> 
-	        	<p:toolbarGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
-	        		Ordem:
-		        	<p:selectOneMenu value="#{bean.order}"   >
-		        		<p:ajax partialSubmit="false" update=":tabView1"
-	                      			 process="@form" listener="#{bean.atualizar}"/>
-		        		<f:selectItems value="#{bean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-		        	</p:selectOneMenu>
-	       		</p:toolbarGroup>
-        		<p:separator />  
+	        	<li>
+	        		<h:panelGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
+		        		Ordem:
+		        		<div class="form-group">
+				        	<p:selectOneMenu value="#{bean.order}"   >
+				        		<p:ajax partialSubmit="false" update=":tabView1"
+			                      			 process="@form" listener="#{bean.atualizar}"/>
+				        		<f:selectItems value="#{bean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+				        	</p:selectOneMenu>
+			        	</div>
+		        	</h:panelGroup>
+	       		</li>
         		
         		<!-- Busca -->
-	        	Busca:
-	        	<p:focus for="searchField" />
-	        	<p:inputText value="#{bean.search}" id="searchField" />
-	        	<p:defaultCommand target="btnBuscar"></p:defaultCommand>
-	        	<p:commandButton icon="ui-icon ui-icon-check" id="btnBuscar" action="#{bean.atualizar}" ajax="true" update=":tabView1"  />
-	        	<p:commandButton icon="ui-icon ui-icon-close"  action="#{bean.resetSearch}" ajax="true" update=":tabView1" />
-	        </p:toolbarGroup>
-	    </p:toolbar>
+        		<li>
+        			<div class="navbar-form navbar-right" role="search">
+			          <p:focus for="searchField" />
+				      <div class="form-group">
+				      	  <h:inputText type="text" id="searchField" class="form-control" value="#{bean.search}" placeholder="Buscar"/>
+					      <p:defaultCommand target="btnBuscar"></p:defaultCommand>
+				      </div>
+				      
+				      <h:commandLink id="btnBuscar" action="#{bean.atualizar}" class="btn btn-default">
+				      	  <p:graphicImage  value="/resources/images/crud_icons/check.png" />
+				      	  <f:ajax execute="searchField" render=":tabView1" />
+				      </h:commandLink>
+				      
+				      <h:commandLink action="#{bean.resetSearch}" class="btn btn-default">
+				      	  <p:graphicImage  value="/resources/images/crud_icons/minus.png" />
+				      	  <f:ajax render=":tabView1" />
+				      </h:commandLink>
+				    </div>
+					 
+	        	</li>
+	        </ul>
+	   		</div>
+		</nav> 	
+    
 	</ui:composition>		
     	
 </html>

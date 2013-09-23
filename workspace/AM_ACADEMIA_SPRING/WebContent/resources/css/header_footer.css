@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 
-
+body{
+	padding-bottom: 70px !important;
+}
 
 /* colunas do detail */
 .columns{

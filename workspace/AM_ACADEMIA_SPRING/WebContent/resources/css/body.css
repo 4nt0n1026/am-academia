@@ -1,5 +1,12 @@
 @CHARSET "UTF-8";
 
+#menuTabela{
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+	
+
+}
+
 .navbar-inner, .active a, .navbar-inner a{
 	background-color: #204D73 !important;
 	color: white !important;
