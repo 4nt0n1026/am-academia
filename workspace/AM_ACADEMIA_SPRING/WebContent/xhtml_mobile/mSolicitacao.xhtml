@@ -1,0 +1,32 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"        
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+    <pm:page title="Aulas">
+    	<ui:composition>
+	    	<!-- Enviar Solicitacoes -->
+	    	<pm:view id="solicitacao">
+		    	<pm:header >
+		    		<f:facet name="left"><p:commandButton action="pm:treino" swatch="b" value="voltar" icon="back" ajax="true"/></f:facet>
+	            </pm:header>
+				
+				<pm:content>
+					<p:growl autoUpdate="true" showDetail="true" />
+					<h:form>
+						<pm:field>
+							<p:inputTextarea label="Descrição:" value="#{mSolicitacaoTreinoBean.solicitacaoTreino.descricao}"/>
+						</pm:field>
+						<p:commandButton swatch="b" action="#{mSolicitacaoTreinoBean.enviarSolicitacao}" value="Enviar"/>
+					</h:form>
+				</pm:content>
+	    	</pm:view>
+	    	
+		</ui:composition>		
+    	
+    </pm:page>
+</f:view>

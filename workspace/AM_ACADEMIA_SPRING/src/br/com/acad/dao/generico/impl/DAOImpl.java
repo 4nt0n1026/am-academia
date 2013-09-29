@@ -10,6 +10,9 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.SqlLogic;
@@ -73,6 +76,8 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	}
 	
 	@Override
+	@Transactional(propagation=Propagation.REQUIRES_NEW ,
+    timeout=120)
 	public T insert(T entity) {
 		EntityManager em = getEntityManager();
 		em.getTransaction().begin();

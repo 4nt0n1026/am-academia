@@ -24,19 +24,25 @@
       </property>
       <property name="jpaProperties">
          <props>
-            <prop key="hibernate.hbm2ddl.auto">update</prop>
+            <prop key="hibernate.hbm2ddl.auto">create</prop>
             <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            <prop key="hibernate.c3p0.min_size">5</prop>
+	        <prop key="hibernate.c3p0.max_size">200</prop>
+	        <prop key="hibernate.c3p0.timeout">300</prop>
+	        <prop key="hibernate.c3p0.max_statements">200</prop>
+	        <prop key="hibernate.c3p0.idle_test_period">3000</prop>
          </props>
       </property>
    </bean>
 
    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-      <property name="url" value="jdbc:mysql://localhost/ACAD_AM" />
+      <property name="url" value="jdbc:mysql://localhost/AM_ACAD" />
       <property name="username" value="root"/>
-	    <property name="password" value="cucacuca"/>
+	    <property name="password" value="root"/>
 	  </bean>	
-      -->
+          -->
+      
      
      
  	<!-- ORACLE -->
@@ -61,10 +67,13 @@
 	    <property name="password" value="240389"/>
 	</bean>
  	
-   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-      <property name="entityManagerFactory" ref="myEmf" />
-   </bean>
-   <tx:annotation-driven />
+   
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="myEmf"/>
+	</bean>
+   
+   <tx:annotation-driven transaction-manager="transactionManager" />
  
    <bean id="persistenceExceptionTranslationPostProcessor"
       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />

@@ -43,7 +43,7 @@
 				<!-- Funcoes CRUD -->  
 				<li >
 					<div class="form-group">
-			        	<h:commandLink title="novo" action="#{bean.showNewEntity}" disabled="#{not empty disableNew}" styleClass="btn btn-default " >
+			        	<h:commandLink title="novo" action="#{bean.showNewEntity}" disabled="#{not empty disableNew}" styleClass="btn btn-default" >
 			        		<p:graphicImage  value="/resources/images/crud_icons/plus.png"  />
 			        		<f:ajax render=":tabView1:formEntity" />
 			        	</h:commandLink>
@@ -116,32 +116,32 @@
 	         <ul class="nav navbar-nav navbar-right"> 
 	        
 	        	
+
 	        	<!-- View (Opcional) -->
 	        	<li>
 		        	<h:panelGroup rendered="#{not empty bean.staticViewsLabel}">
-		        		Visão:
+			        		Visão:
 		        		<div class="form-group">
-				        	<p:selectOneMenu value="#{bean.view}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-			                      			 process="@form" listener="#{bean.atualizar}"/>
-				        		<f:selectItems value="#{bean.staticViewsLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
+		        			<h:selectOneMenu id="viewSelect" class="form-control" value="#{bean.view}">
+		        				<f:selectItems value="#{bean.staticViewsLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+		        				<f:ajax execute="viewSelect" render=":tabView1" listener="#{bean.atualizar}" />
+		        			</h:selectOneMenu>
 			        	</div>
 		       		</h:panelGroup>
 	       		</li>
-	        
+
+
 	        	<!-- Ordenação (Opcional) -->
 	        	<li>
-	        		<h:panelGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
+		        	<h:panelGroup rendered="#{not empty bean.staticFieldsOrderLabel}">
 		        		Ordem:
 		        		<div class="form-group">
-				        	<p:selectOneMenu value="#{bean.order}"   >
-				        		<p:ajax partialSubmit="false" update=":tabView1"
-			                      			 process="@form" listener="#{bean.atualizar}"/>
-				        		<f:selectItems value="#{bean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
-				        	</p:selectOneMenu>
+		        			<h:selectOneMenu id="orderSelect" class="form-control" value="#{bean.order}">
+		        				<f:selectItems value="#{bean.staticFieldsOrderLabel}" var="label" itemLabel="#{label}" itemValue="#{label}"   />
+		        				<f:ajax execute="orderSelect" render=":tabView1" listener="#{bean.atualizar}" />
+		        			</h:selectOneMenu>
 			        	</div>
-		        	</h:panelGroup>
+		       		</h:panelGroup>
 	       		</li>
         		
         		<!-- Busca -->

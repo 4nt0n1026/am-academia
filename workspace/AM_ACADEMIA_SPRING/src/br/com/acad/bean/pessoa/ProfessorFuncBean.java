@@ -49,30 +49,10 @@ public class ProfessorFuncBean extends Bean<ProfessorFunc> implements Serializab
 	public void showNewEntity() {
 		showEntity = true;
 		entity = new ProfessorFunc();
-		String senha = CriptografiaLogic.encriptar(entity.getSenha());
+		String senha = CriptografiaLogic.encriptar("123");
 		entity.setSenha(senha);
 	}
 
-//	/**
-//	 * inclui ou edita entity no banco
-//	 */
-//	@Override
-//	public void incluirEntity() {
-////		// Encriptografa senha caso seja uma nova entidade
-////		if(entity.getId()==0){
-////			String senha = CriptografiaLogic.encriptar(entity.getSenha());
-////			entity.setSenha(senha);
-////		}
-//		incluirGeneric( entity!=null? entity.getId():0);
-//	}
-
-//	/**
-//	 * deleta entity do banco
-//	 */
-//	@Override
-//	public void deletarEntity() {
-//		deletarGeneric(entity!=null?entity.getId():0);
-//	}
 	
 	
 	/************************************************************************************************************/

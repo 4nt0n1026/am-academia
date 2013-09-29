@@ -24,7 +24,7 @@
 	width: 20px;
 }
 
-.blue-back:HOVER{
+.blue-back{
 	background-color: #580000  !important;
 	color: white !important;
 }

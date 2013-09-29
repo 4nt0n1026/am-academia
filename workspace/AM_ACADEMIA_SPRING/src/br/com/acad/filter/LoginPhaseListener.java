@@ -24,7 +24,7 @@ public class LoginPhaseListener implements PhaseListener {
 		
 		String paginaOrigem = context.getViewRoot().getViewId();
 		
-		if(paginaOrigem.contains("login") || paginaOrigem.contains("populaBanco") || paginaOrigem.contains("mHome")){
+		if(paginaOrigem.contains("login") || paginaOrigem.contains("populaBanco") || paginaOrigem.contains("mHome") || paginaOrigem.contains("mLogin")){
 			return;
 		}
 		

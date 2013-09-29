@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
+import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.pessoa.Aluno;
 
@@ -52,10 +53,11 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 		//--------------------------
 		try{
 			TypedQuery<Aluno> q = getEntityManager().createQuery("from Aluno a where a.email = :email and a.senha = :senha", Aluno.class);
-			q.setParameter("email", aluno.getEmail());
-			q.setParameter("senha", aluno.getSenha());
+			q.setParameter("email",  aluno.getEmail());
+			q.setParameter("senha", CriptografiaLogic.encriptar(aluno.getSenha()));
 			return q.getSingleResult();
 	 	} catch(NoResultException e) {
+	 		e.printStackTrace();
 	        return null;
 	    }
 	}

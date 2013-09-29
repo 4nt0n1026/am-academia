@@ -1,0 +1,137 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"        
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE">
+
+	<pm:page title="Treinos">
+		<ui:composition>
+
+
+   		<!-- Menu de treino -->
+    	<pm:view id="buscaTreino" >
+	    	<pm:header >
+                <f:facet name="left"><p:commandButton action="pm:treino" swatch="b" value="voltar" icon="back"/></f:facet>
+            </pm:header>
+			
+			<pm:content>
+					<pm:field>
+						<h:outputLabel value="Objetivo" for="objetivo" />
+						<p:selectOneRadio id="objetivo" value="#{mBuscaTreinoBean.objetivoCat.id}">
+							<f:selectItems value="#{mBuscaTreinoBean.objetivoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}" />
+						</p:selectOneRadio>
+					</pm:field>
+					<pm:field>
+						<h:outputLabel value="Faixa Etaria" for="faixa" />
+						<p:selectOneRadio id="faixa" value="#{mBuscaTreinoBean.faixaEtariaCat.id}">
+							<f:selectItems value="#{mBuscaTreinoBean.faixaEtariaCatField}" var="faixa" itemLabel="#{faixa.nome}" itemValue="#{faixa.id}" />
+						</p:selectOneRadio>
+					</pm:field>
+					<pm:field>
+						<h:outputLabel value="Sexo" for="sexo" />
+						<p:selectOneRadio id="sexo" value="#{mBuscaTreinoBean.sexoCat.id}">
+							<f:selectItems value="#{mBuscaTreinoBean.sexoCatField}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo.id}" />
+						</p:selectOneRadio>
+					</pm:field>
+					<pm:field>
+						<h:outputLabel value="Dias na semana" for="dias" />
+						<p:selectOneRadio id="dias" value="#{mBuscaTreinoBean.diasTreinoCat.id}">
+							<f:selectItems value="#{mBuscaTreinoBean.diasTreinoCatField}" var="dias" itemLabel="#{dias.nome}" itemValue="#{dias.id}" />
+						</p:selectOneRadio>
+					</pm:field>
+					<pm:field>
+						<h:outputLabel value="Duracao" for="duracao" />
+						<p:selectOneRadio id="duracao" value="#{mBuscaTreinoBean.duracaoTreinoCat.id}">
+							<f:selectItems value="#{mBuscaTreinoBean.duracaoTreinoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}" />
+						</p:selectOneRadio>
+					</pm:field>
+					<p:commandButton value="Buscar" action="#{mBuscaTreinoBean.buscar}" ajax="true" update=":buscaTreinoList" />
+			</pm:content>
+    	
+		</pm:view>
+		
+		
+   		<!-- Resiltado da busca-->
+		<pm:view id="buscaTreinoList" >
+	    	<pm:header >
+                <f:facet name="left"><p:commandButton action="pm:buscaTreino" swatch="b" value="voltar" icon="back"/></f:facet>
+            </pm:header>
+			
+			<pm:content>
+				<p:dataList value="#{mBuscaTreinoBean.treinos}" var="treino">
+					<p:commandLink action="#{mBuscaTreinoBean.mostrarDetalhe}" ajax="true" update=":treinoDetalhe" >
+						
+						<f:setPropertyActionListener value="#{treino}" target="#{mBuscaTreinoBean.treino}" />
+						
+						<h:outputText value="#{treino.nome}" />
+						
+					</p:commandLink>
+				</p:dataList>
+			</pm:content>
+		</pm:view>
+		
+   		<!-- Treino Detalhe -->
+		<pm:view id="treinoDetalhe" >
+	    	<pm:header title="#{mBuscaTreinoBean.treino.nome}" >
+                <f:facet name="left"><p:commandButton action="pm:buscaTreinoList" swatch="b" value="voltar" icon="back"/></f:facet>
+            </pm:header>
+			
+			<pm:content>
+				
+				<h:form>
+					<p:commandButton value="Incluir na área do aluno" action="#{mBuscaTreinoBean.incluirTreino}" swatch="b" ajax="true" update=":meusTreinos"/>
+				</h:form>
+				
+				<div class="ui-bar ui-bar-a">
+				    <h3>Descricao</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.treino.descricao}" />
+				
+				<div class="ui-bar ui-bar-a">
+				    <h3>Treino</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.descricaoTreino}" escape="false" />
+					
+				<br/>
+				<br/>
+
+				<div class="ui-bar ui-bar-a">
+				    <h3>Objetivo</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.treino.objetivoCat.nome}" />
+				<br/>
+				
+				<div class="ui-bar ui-bar-a">
+				    <h3>Faixa Etaria</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.treino.faixaEtariaCat.nome}" />
+				<br/>
+				
+				<div class="ui-bar ui-bar-a">
+				    <h3>Sexo</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.treino.sexoCat.nome}" />
+				<br/>
+
+				<div class="ui-bar ui-bar-a">
+				    <h3>Dias na semana</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.treino.diasTreinoCat.nome}" />
+				<br/>
+
+				<div class="ui-bar ui-bar-a">
+				    <h3>Duração do treino</h3>
+				</div>
+				<h:outputText value="#{mBuscaTreinoBean.treino.duracaoTreinoCat.nome}" />
+				<br/>
+				
+				
+			</pm:content>
+		</pm:view>
+		
+   		</ui:composition>
+   	</pm:page>
+</f:view>

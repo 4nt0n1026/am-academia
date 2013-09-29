@@ -110,6 +110,11 @@ html {
 
 }
 
+.backgroundRed{
+	background-color: red !important;
+	color: #555658 !important;
+}
+
 .ui-selectonemenu {
 	vertical-align: top;
 }

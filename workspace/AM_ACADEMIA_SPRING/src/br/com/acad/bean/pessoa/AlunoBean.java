@@ -48,29 +48,10 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 		showEntity = true;
 		entity = new Aluno();
 		entity.setDataNascimento(new GregorianCalendar());
+		String senha = CriptografiaLogic.encriptar("123");
+		entity.setSenha(senha);
 	}
 
-	/**
-	 * inclui ou edita entity no banco
-	 */
-	@Override
-	public void incluirEntity() {
-		// Encriptografa senha caso seja uma nova entidade
-		if(entity.getId()==0){
-			String senha = CriptografiaLogic.encriptar(entity.getSenha());
-			entity.setSenha(senha);
-		}
-		// Inclui no banco
-		super.incluirEntity();
-	}
-//
-//	/**
-//	 * deleta entity do banco
-//	 */
-//	@Override
-//	public void deletarEntity() {
-//		deletarGeneric(entity!=null?entity.getId():0);
-//	}
 	
 	
 	/************************************************************************************************************/

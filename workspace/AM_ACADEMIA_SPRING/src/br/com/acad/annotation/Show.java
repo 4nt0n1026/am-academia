@@ -11,7 +11,7 @@ public @interface Show {
 	
 	String label();
 	String mappedName() default "";
-	FieldType Type() default FieldType.TEXT; 
+	//FieldType Type() default FieldType.TEXT; 
 	
 	boolean search() default true;
 	boolean order() default false;
