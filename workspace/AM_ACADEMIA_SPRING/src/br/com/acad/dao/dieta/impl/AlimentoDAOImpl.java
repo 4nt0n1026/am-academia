@@ -19,7 +19,7 @@ public class AlimentoDAOImpl extends DAOImpl<Alimento,Integer> implements Alimen
 
 	@Override
 	public List<Alimento> buscarTodos() {
-		TypedQuery<Alimento> q = getEntityManager().createQuery("from Alimento", Alimento.class);
+		TypedQuery<Alimento> q = em.createQuery("from Alimento", Alimento.class);
 		return q.getResultList();
 	}
 

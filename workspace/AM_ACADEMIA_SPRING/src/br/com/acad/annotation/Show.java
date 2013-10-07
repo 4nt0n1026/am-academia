@@ -5,13 +5,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import br.com.acad.logic.model.FieldType;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface Show {
 	
 	String label();
 	String mappedName() default "";
-	//FieldType Type() default FieldType.TEXT; 
+	String pathName() default "";
+	FieldType Type() default FieldType.TEXT; 
 	
 	boolean search() default true;
 	boolean order() default false;

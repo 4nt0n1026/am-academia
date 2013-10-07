@@ -19,7 +19,7 @@ public class DietaEspecificaDAOImpl extends DAOImpl<DietaEspecifica,Integer> imp
 
 	@Override
 	public List<DietaEspecifica> buscarTodos() {
-		TypedQuery<DietaEspecifica> q = getEntityManager().createQuery("from DietaEspecifica", DietaEspecifica.class);
+		TypedQuery<DietaEspecifica> q = em.createQuery("from DietaEspecifica", DietaEspecifica.class);
 		return q.getResultList();
 	}
 

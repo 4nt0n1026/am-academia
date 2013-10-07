@@ -3,10 +3,7 @@ package br.com.acad.bean.mobile;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,9 +21,9 @@ public class MExerciciosBean implements Serializable{
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	@EJB
+	@Autowired
 	private ParteCorpoDAO parteCorpoDAO;
-	@EJB
+	@Autowired
 	private ExercicioDAO exercicioDAO;
 	
 	private List<ParteCorpo> partesCorpo;

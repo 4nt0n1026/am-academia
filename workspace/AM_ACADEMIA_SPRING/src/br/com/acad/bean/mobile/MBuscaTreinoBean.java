@@ -5,16 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import br.com.acad.bean.treino.SolicitacaoTreinoBean;
 import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
 import br.com.acad.dao.catGenerico.interf.DuracaoTreinoCatDAO;
 import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
@@ -39,19 +36,19 @@ public class MBuscaTreinoBean implements Serializable{
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	@EJB
+	@Autowired
 	private FaixaEtariaCatDAO faixaEtariaCatDAO;
-	@EJB
+	@Autowired
 	private SexoCatDAO sexoCatDAO;
-	@EJB
+	@Autowired
 	private ObjetivoCatDAO objetivoCatDAO;
-	@EJB
+	@Autowired
 	private DuracaoTreinoCatDAO duracaoTreinoCatDAO;
-	@EJB
+	@Autowired
 	private DiasTreinoCatDAO diasTreinoCatDAO;
-	@EJB
+	@Autowired
 	private TreinoFixoDAO treinoFixoDAO;
-	@EJB
+	@Autowired
 	private AlunoDAO alunoDAO;
 	
 	@ManagedProperty(value="#{mMeusTreinosBean}") 
@@ -111,7 +108,7 @@ public class MBuscaTreinoBean implements Serializable{
 		Aluno aluno = (Aluno) sessionMap.get("aluno");
 		aluno.addTreino(treino);
 		alunoDAO.update(aluno);
-		return mMeusTreinosBean.init();
+		return "pm:treino";
 	}
 	
 	

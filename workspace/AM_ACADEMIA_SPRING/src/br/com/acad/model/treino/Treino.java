@@ -21,9 +21,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
+import br.com.acad.dao.treino.interf.TreinoDAO;
 import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -68,7 +71,15 @@ public class Treino implements Serializable, GenericEntity{
 	@JoinColumn(name="TREINO_ID")
 	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 	
+	@Transient
+	private String treinoStr;
+	
 	//Metodos
+	public void generateTreinoStr(DiasTreinoCatDAO treinoDAO) {
+//		TODO - pegar pelo dao os dias e montar a string
+//		treinoDAO.
+	}
+	
 	public boolean addDiaTreino(DiaTreino dia){
 		return diasTreino.add(dia);
 	}
@@ -96,6 +107,10 @@ public class Treino implements Serializable, GenericEntity{
 	//Gets e Sets
 	public long getTempoDescanso() {
 		return tempoDescanso;
+	}
+
+	public String getTreinoStr() {
+		return treinoStr;
 	}
 
 	public void setTempoDescanso(long tempoDescanso) {

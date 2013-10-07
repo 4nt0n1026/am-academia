@@ -19,7 +19,7 @@ public class TreinoFixoDAOImpl extends DAOImpl<TreinoFixo,Integer> implements Tr
 
 	@Override
 	public List<TreinoFixo> buscarTodos() {
-		TypedQuery<TreinoFixo> q = getEntityManager().createQuery("from TreinoFixo", TreinoFixo.class);
+		TypedQuery<TreinoFixo> q = em.createQuery("from TreinoFixo", TreinoFixo.class);
 		return q.getResultList();
 	}
 

@@ -19,7 +19,7 @@ public class SexoCatDAOImpl extends DAOImpl<SexoCat,Integer> implements SexoCatD
 
 	@Override
 	public List<SexoCat> buscarTodos() {
-		TypedQuery<SexoCat> q = getEntityManager().createQuery("from SexoCat", SexoCat.class);
+		TypedQuery<SexoCat> q = em.createQuery("from SexoCat", SexoCat.class);
 		return q.getResultList();
 	}
 	

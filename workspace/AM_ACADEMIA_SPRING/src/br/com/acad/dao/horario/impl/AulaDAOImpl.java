@@ -19,7 +19,7 @@ public class AulaDAOImpl extends DAOImpl<Aula,Integer> implements AulaDAO{
 
 	@Override
 	public List<Aula> buscarTodos() {
-		TypedQuery<Aula> q = getEntityManager().createQuery("from Aula", Aula.class);
+		TypedQuery<Aula> q = em.createQuery("from Aula", Aula.class);
 		return q.getResultList();
 	}
 

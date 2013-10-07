@@ -19,7 +19,7 @@ public class DietaFixaDAOImpl extends DAOImpl<DietaFixa,Integer> implements Diet
 
 	@Override
 	public List<DietaFixa> buscarTodos() {
-		TypedQuery<DietaFixa> q = getEntityManager().createQuery("from DietaFixa", DietaFixa.class);
+		TypedQuery<DietaFixa> q = em.createQuery("from DietaFixa", DietaFixa.class);
 		return q.getResultList();
 	}
 

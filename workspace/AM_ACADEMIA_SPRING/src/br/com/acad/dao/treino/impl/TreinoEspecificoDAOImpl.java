@@ -19,7 +19,7 @@ public class TreinoEspecificoDAOImpl extends DAOImpl<TreinoEspecifico,Integer> i
 
 	@Override
 	public List<TreinoEspecifico> buscarTodos() {
-		TypedQuery<TreinoEspecifico> q = getEntityManager().createQuery("from TreinoEspecifico", TreinoEspecifico.class);
+		TypedQuery<TreinoEspecifico> q = em.createQuery("from TreinoEspecifico", TreinoEspecifico.class);
 		return q.getResultList();
 	}
 

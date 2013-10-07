@@ -4,10 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,9 +21,9 @@ public class MAulasBean implements Serializable{
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	@EJB
+	@Autowired
 	private AulaDAO aulaDAO;
-	@EJB
+	@Autowired
 	private HorarioAulaDAO horarioAulaDAO;
 	
 	private Aula aula; 

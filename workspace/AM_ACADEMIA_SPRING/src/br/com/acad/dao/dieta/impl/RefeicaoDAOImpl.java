@@ -19,7 +19,7 @@ public class RefeicaoDAOImpl extends DAOImpl<Refeicao,Integer> implements Refeic
 
 	@Override
 	public List<Refeicao> buscarTodos() {
-		TypedQuery<Refeicao> q = getEntityManager().createQuery("from Refeicao", Refeicao.class);
+		TypedQuery<Refeicao> q = em.createQuery("from Refeicao", Refeicao.class);
 		return q.getResultList();
 	}
 

@@ -20,14 +20,14 @@ public class HorarioAulaDAOImpl extends DAOImpl<HorarioAula,Integer> implements 
 
 	@Override
 	public List<HorarioAula> buscarTodos() {
-		TypedQuery<HorarioAula> q = getEntityManager().createQuery("from HorarioAula", HorarioAula.class);
+		TypedQuery<HorarioAula> q = em.createQuery("from HorarioAula", HorarioAula.class);
 		return q.getResultList();
 	}
 
 
 	@Override
 	public List<HorarioAula> buscarPorAula(Aula aula) {
-		TypedQuery<HorarioAula> q = getEntityManager().createQuery("from HorarioAula h where h.aula.id = :idAula", HorarioAula.class);
+		TypedQuery<HorarioAula> q = em.createQuery("from HorarioAula h where h.aula.id = :idAula", HorarioAula.class);
 		q.setParameter("idAula", aula.getId());
 		return q.getResultList();
 	}

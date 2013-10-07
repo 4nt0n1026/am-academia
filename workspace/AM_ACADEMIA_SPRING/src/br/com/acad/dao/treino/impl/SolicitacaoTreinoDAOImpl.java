@@ -24,7 +24,7 @@ public class SolicitacaoTreinoDAOImpl extends DAOImpl<SolicitacaoTreino,Integer>
 
 	@Override
 	public List<SolicitacaoTreino> buscarTodos() {
-		TypedQuery<SolicitacaoTreino> q = getEntityManager().createQuery("from SolicitacaoTreino", SolicitacaoTreino.class);
+		TypedQuery<SolicitacaoTreino> q = em.createQuery("from SolicitacaoTreino", SolicitacaoTreino.class);
 		return q.getResultList();
 	}
 
@@ -32,7 +32,7 @@ public class SolicitacaoTreinoDAOImpl extends DAOImpl<SolicitacaoTreino,Integer>
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SolicitacaoTreino> buscarPorAluno(Aluno aluno) {
-		Query q = getEntityManager().createQuery("select s.id, s.dataSolicitacao from SolicitacaoTreino s where s.aluno.id = :id)");
+		Query q = em.createQuery("select s.id, s.dataSolicitacao from SolicitacaoTreino s where s.aluno.id = :id)");
 		q.setParameter("id", aluno.getId());
 		List<SolicitacaoTreino> solicitacoes = new ArrayList<SolicitacaoTreino>();
 		Collection<Object[]> resultado = q.getResultList();

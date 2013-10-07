@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +23,7 @@ public class MMeusTreinosBean implements Serializable{
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	@EJB
+	@Autowired
 	private TreinoDAO treinoDAO;
 
 	private List<Treino> meusTreinos;

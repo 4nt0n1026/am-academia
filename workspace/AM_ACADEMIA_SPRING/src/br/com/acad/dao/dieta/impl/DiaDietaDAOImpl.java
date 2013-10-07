@@ -19,7 +19,7 @@ public class DiaDietaDAOImpl extends DAOImpl<DiaDieta,Integer> implements DiaDie
 
 	@Override
 	public List<DiaDieta> buscarTodos() {
-		TypedQuery<DiaDieta> q = getEntityManager().createQuery("from DiaDieta", DiaDieta.class);
+		TypedQuery<DiaDieta> q = em.createQuery("from DiaDieta", DiaDieta.class);
 		return q.getResultList();
 	}
 

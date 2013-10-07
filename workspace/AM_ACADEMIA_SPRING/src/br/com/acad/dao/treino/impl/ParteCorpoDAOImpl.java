@@ -21,14 +21,14 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 
 	@Override
 	public List<ParteCorpo> buscarTodos() {
-		TypedQuery<ParteCorpo> q = getEntityManager().createQuery("from ParteCorpo order by nome", ParteCorpo.class);
+		TypedQuery<ParteCorpo> q = em.createQuery("from ParteCorpo order by nome", ParteCorpo.class);
 		return q.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ParteCorpo> buscarPartesPrimarias(Exercicio exercicio) {
-		Query q = getEntityManager().createQuery("select e.parteCorpoPrimaria from Exercicio e where e.id = :id");
+		Query q = em.createQuery("select e.parteCorpoPrimaria from Exercicio e where e.id = :id");
 		q.setParameter("id", exercicio.getId());
 		return q.getResultList();
 	}
@@ -36,7 +36,7 @@ public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements Pa
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ParteCorpo> buscarPartesSecundaria(Exercicio exercicio) {
-		Query q = getEntityManager().createQuery("select e.parteCorpoSecundaria from Exercicio e where e.id = :id");
+		Query q = em.createQuery("select e.parteCorpoSecundaria from Exercicio e where e.id = :id");
 		q.setParameter("id", exercicio.getId());
 		return q.getResultList();
 	}

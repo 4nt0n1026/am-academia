@@ -19,7 +19,7 @@ public class NoticiaDAOImpl extends DAOImpl<Noticia,Integer> implements NoticiaD
 	
 	@Override
 	public List<Noticia> buscarTodos() {
-		TypedQuery<Noticia> q = getEntityManager().createQuery("from Noticia", Noticia.class);
+		TypedQuery<Noticia> q = em.createQuery("from Noticia", Noticia.class);
 		return q.getResultList();
 	}
 

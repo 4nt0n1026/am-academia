@@ -19,7 +19,7 @@ public class ItemRefeicaoDAOImpl extends DAOImpl<ItemRefeicao,Integer> implement
 
 	@Override
 	public List<ItemRefeicao> buscarTodos() {
-		TypedQuery<ItemRefeicao> q = getEntityManager().createQuery("from ItemRefeicao", ItemRefeicao.class);
+		TypedQuery<ItemRefeicao> q = em.createQuery("from ItemRefeicao", ItemRefeicao.class);
 		return q.getResultList();
 	}
 

@@ -22,6 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 import br.com.acad.model.contato.Endereco;
 import br.com.acad.model.contato.Telefone;
@@ -50,7 +51,7 @@ public abstract class Pessoa implements Serializable, GenericEntity{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_NASCIMENTO")
-	@Show(label="Data Nascimento", mappedName="dataNascimento", order=true)
+	@Show(label="Data Nascimento", mappedName="dataNascimento", order=true, Type = FieldType.DATE)
 	private Calendar dataNascimento = new GregorianCalendar();
 	
 	@Column(length=20, nullable=true)

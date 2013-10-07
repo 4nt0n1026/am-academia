@@ -66,22 +66,6 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 		entity.setAluno(new Aluno());
 	}
 	
-//	/**
-//	 * inclui ou edita entity no banco
-//	 */
-//	@Override
-//	public void incluirEntity() {
-//		incluirGeneric( entity!=null? entity.getId():0);
-//	}
-//
-//	/**
-//	 * deleta entity do banco
-//	 */
-//	@Override
-//	public void deletarEntity() {
-//		deletarGeneric(entity!=null?entity.getId():0);
-//	}
-	
 	/**
 	 * Responde a solicitacao criando um treinoEspecico
 	 */
@@ -114,7 +98,7 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 	public void incluirTreinoResposta(){
 		treino.setSolicitacao(entity);
 		treino.setData(Calendar.getInstance());
-		
+
 		// Nome do treino
 		Aluno aluno = treino.getSolicitacao().getAluno();
 		aluno = alunoDAO.searchById(aluno.getId());
@@ -124,12 +108,16 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 
 		// Seta nome 
 		treino.setNomePronto(aluno);
-
+		
 		// Salva o treino
 		treino = treinoEspecificoDAO.insert(treino);
 
+
 		// Inclui nos treinos do aluno
 		aluno.addTreino(treino);
+		
+		// Salva aluno
+		aluno = alunoDAO.update(aluno);
 		
 		
 		entity.setRespondido(true);

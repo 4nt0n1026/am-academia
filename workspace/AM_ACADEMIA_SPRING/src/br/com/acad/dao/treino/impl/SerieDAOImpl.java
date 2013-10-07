@@ -27,7 +27,7 @@ public class SerieDAOImpl extends DAOImpl<Serie,Integer> implements SerieDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Serie> buscarPorExercicioTreino(ExercicioTreino exercicio) {
-		Query q = getEntityManager().createQuery("select e.series from ExercicioTreino e where e.id=:id");
+		Query q = em.createQuery("select e.series from ExercicioTreino e where e.id=:id");
 		q.setParameter("id", exercicio.getId());
 		return q.getResultList();
 	}

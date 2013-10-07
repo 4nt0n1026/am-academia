@@ -4,11 +4,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.el.ValueExpression;
+import javax.faces.component.html.HtmlColumn;
+import javax.faces.component.html.HtmlCommandButton;
+import javax.faces.component.html.HtmlDataTable;
+import javax.faces.component.html.HtmlOutputText;
+import javax.faces.component.html.HtmlPanelGroup;
+import javax.faces.context.FacesContext;
 
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.logic.SqlLogic;
+import br.com.acad.logic.TableLogic;
+import br.com.acad.logic.model.DataField;
 import br.com.acad.model.GenericEntity;
 
 
@@ -32,6 +41,11 @@ public abstract class Bean<T extends GenericEntity> {
 	// Entity
 	protected T entity;
 	protected List<T> entities;
+	
+	// Dynamic Table
+	protected HtmlDataTable dataTable;
+	protected String[] tableHeaders;
+	protected DataField[] tableValues;
 	
 	// Search
 	protected String[] staticFields;
@@ -71,6 +85,41 @@ public abstract class Bean<T extends GenericEntity> {
 	public abstract void showNewEntity();
 	
 	/************************************************************************************************************/
+	//DYNAMIC TABLE
+	/************************************************************************************************************/
+	private void populateDynamicDataTable() {
+
+        // Create <h:dataTable >.
+        dataTable = new HtmlDataTable();
+        
+        // Create <h:column>.
+        HtmlColumn columnSelectButton = new HtmlColumn();
+        dataTable.getChildren().add(columnSelectButton);
+        
+//        <h:commandButton styleClass="btn btn-primary btn-xs" value="Selecionar" immediate="true" action="#{bean.selectRow(entity)}"
+//				onclick="changeBackground(this)">
+//				<f:ajax render=":tabView1:detailEntity" listener="#{bean.showFormDetail}" />
+//			</h:commandButton>
+        
+//        HtmlCommandButton selectButton = new HtmlCommandButton();
+//        selectButton.setValueExpression("value", TableLogic.createValueExpression("Selecionar", String.class));
+//        selectButton.getChildren().add(columnSelectButton);
+        
+        // Iterate over columns.
+        if(tableHeaders!=null){
+	        for (int i = 0; i < tableHeaders.length; i++) {
+	
+	            // Create <h:column>.
+	            HtmlColumn column = new HtmlColumn();
+	            dataTable.getChildren().add(column);
+	
+	           TableLogic.prepareColumn(column, tableHeaders[i], tableValues[i]);
+	        }
+        }
+
+    }
+	
+	/************************************************************************************************************/
 	//METODOS
 	/************************************************************************************************************/
 	
@@ -95,6 +144,14 @@ public abstract class Bean<T extends GenericEntity> {
 		}
 		if(staticViewsLabel != null){
 			view = staticViewsLabel[0];
+		}
+		
+		if(tableHeaders == null){
+			tableHeaders = TableLogic.getTableHeaders(dao.getEntityClass());
+		}
+		
+		if(tableValues == null){
+			tableValues = TableLogic.getTableValues(dao.getEntityClass());
 		}
 		
 		atualizar();
@@ -442,6 +499,15 @@ public abstract class Bean<T extends GenericEntity> {
 	}
 	public String[] getStaticViewsLabel() {
 		return staticViewsLabel;
+	}
+
+	public HtmlDataTable getDataTable() {
+			populateDynamicDataTable();
+		return dataTable;
+	}
+
+	public void setDataTable(HtmlDataTable dataTable) {
+		this.dataTable = dataTable;
 	}
 	
 	

@@ -1,143 +1,139 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- Exercicio -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Exercicios"></ui:param>
 			<ui:param name="subtitulo" value="Cadastro de exercicios com fotos"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<!-- TABFORM 1 -->
-						<p:fieldset id="field1"  rendered="#{exercicioBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{exercicioBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-						        
-						        <h:outputLabel value="Descrição" />  
-								<p:inputTextarea value="#{exercicioBean.entity.descricao}" cols="60" />
-	
-					        </h:panelGrid>
-					        
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
-				        	  
-						</p:fieldset> 
-						
-						<!-- TABFORM 2 -->
-						<p:fieldset id="field2"  rendered="#{exercicioBean.showEntity2}">
-							<h:panelGrid columns="1">
-								
-								<h:outputLabel value="Partes de Corpo Primaria:" />  
-								<p:selectManyButton value="#{exercicioBean.idsParteCorpoPrimaria}" >
-									<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}"  />  
-								</p:selectManyButton>
-								
-								<h:outputLabel value="Partes de Corpo Secunaria:" /> 
-								<p:selectManyButton value="#{exercicioBean.idsParteCorpoSecundaria}">
-									<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}" />  
-								</p:selectManyButton>
-								
-					        </h:panelGrid>
-					        
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{exercicioBean.showForm1}" ajax="true" update=":tabView1:formEntity" /> 
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-e"  action="#{exercicioBean.showForm3}" ajax="true" update=":tabView1:formEntity" /> 
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-						</p:fieldset> 
-						
-						<!-- TABFORM 3 -->
-						<p:fieldset id="field3"  rendered="#{exercicioBean.showEntity3}">
-							<h:panelGrid columns="1">
-							
-						        <p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.fotoExercicio}"  />
-								<p:fileUpload fileUploadListener="#{exercicioBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-											auto="true" mode="advanced" id="foto" update="fotoExercicio"  />
-											
-							  
-							        
-					        </h:panelGrid>
-					        
-					        <p:commandButton icon="ui-icon ui-icon-carat-1-w"  action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" /> 
-						    <p:commandButton icon="ui-icon ui-icon-check"  action="#{exercicioBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        <p:button icon="ui-icon ui-icon-close"   action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-						</p:fieldset> 
-			        </h:form>
+			<p:tab title="">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-      				
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<!-- TABFORM 1 -->
+					<p:fieldset id="field1" rendered="#{exercicioBean.showEntity}">
+						<h:panelGrid columns="10">
+
+							<h:outputLabel for="idNome" value="Nome" />
+							<p:inputText id="idNome" value="#{exercicioBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+
+							<h:outputLabel value="Descrição" />
+							<p:inputTextarea value="#{exercicioBean.entity.descricao}" cols="60" />
+
+						</h:panelGrid>
+
+						<p:commandButton icon="ui-icon ui-icon-carat-1-e" action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
+						<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+					</p:fieldset>
+
+					<!-- TABFORM 2 -->
+					<p:fieldset id="field2" rendered="#{exercicioBean.showEntity2}">
+						<h:panelGrid columns="1">
+
+							<h:outputLabel value="Partes de Corpo Primaria:" />
+							<p:selectManyButton value="#{exercicioBean.idsParteCorpoPrimaria}">
+								<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}" />
+							</p:selectManyButton>
+
+							<h:outputLabel value="Partes de Corpo Secunaria:" />
+							<p:selectManyButton value="#{exercicioBean.idsParteCorpoSecundaria}">
+								<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}" />
+							</p:selectManyButton>
+
+						</h:panelGrid>
+
+						<p:commandButton icon="ui-icon ui-icon-carat-1-w" action="#{exercicioBean.showForm1}" ajax="true" update=":tabView1:formEntity" />
+						<p:commandButton icon="ui-icon ui-icon-carat-1-e" action="#{exercicioBean.showForm3}" ajax="true" update=":tabView1:formEntity" />
+						<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+					</p:fieldset>
+
+					<!-- TABFORM 3 -->
+					<p:fieldset id="field3" rendered="#{exercicioBean.showEntity3}">
+						<h:panelGrid columns="1">
+
+							<p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.fotoExercicio}" />
+							<p:fileUpload fileUploadListener="#{exercicioBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" auto="true"
+								mode="advanced" id="foto" update="fotoExercicio" />
+
+
+
+						</h:panelGrid>
+
+						<p:commandButton icon="ui-icon ui-icon-carat-1-w" action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
+						<p:commandButton icon="ui-icon ui-icon-check" action="#{exercicioBean.incluirEntity}" ajax="true" update=":tabView1" />
+						<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+					</p:fieldset>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
 					</ui:include>
-			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
 						<ui:param name="columns" value="Foto,#{entity.fotoLocalPath}, smallImage|
 														Nome, #{entity.nome}, text"></ui:param>
 					</ui:include>
-					
+
 				</h:form>
-				<br/>
-				
+				<br />
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-					
+
 					<ui:include src="/xhtml/templates/_detail_content.xhtml">
 						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
-						
+
 						<ui:param name="panel1Columns" value="2"></ui:param>
 						<ui:param name="panel1Fields" value="Nome~header|#{bean.entity.nome}~text|
 															 Descrição~header|#{bean.entity.descricao}~text|
 															 Musculos Primarios~header|#{bean.entity.partesCorpoPrimDetail}~text|
 															 Musculos Secundarios~header|#{bean.entity.partesCorpoSecDetail}~text"></ui:param>
-						
+
 						<ui:param name="panel2Columns" value="1"></ui:param>
 						<ui:param name="panel2Fields" value="#{bean.entity.fotoLocalPath}~image"></ui:param>
 
-						
-					</ui:include>			
-					
+					</ui:include>
+
 				</h:form>
-			
-				
+
+
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

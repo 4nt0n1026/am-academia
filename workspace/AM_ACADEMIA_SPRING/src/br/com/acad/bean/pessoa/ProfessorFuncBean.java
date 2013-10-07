@@ -12,6 +12,7 @@ import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.CriptografiaLogic;
+import br.com.acad.logic.TableLogic;
 import br.com.acad.model.pessoa.Pessoa;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
@@ -39,6 +40,10 @@ public class ProfessorFuncBean extends Bean<ProfessorFunc> implements Serializab
 		staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, ProfessorFunc.class);
 		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, ProfessorFunc.class);
 		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, ProfessorFunc.class);
+		
+		tableHeaders = TableLogic.getTableHeaders(Pessoa.class, ProfessorFunc.class);
+		tableValues= TableLogic.getTableValues(Pessoa.class, ProfessorFunc.class);
+		
 		super.init();
 	}
 	

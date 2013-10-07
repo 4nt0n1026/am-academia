@@ -43,7 +43,7 @@
 				<!-- Funcoes CRUD -->  
 				<li >
 					<div class="form-group">
-			        	<h:commandLink title="novo" action="#{bean.showNewEntity}" disabled="#{not empty disableNew}" styleClass="btn btn-default" >
+			        	<h:commandLink title="novo" action="#{bean.showNewEntity}" disabled="#{not empty disableNew}" styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }" >
 			        		<p:graphicImage  value="/resources/images/crud_icons/plus.png"  />
 			        		<f:ajax render=":tabView1:formEntity" />
 			        	</h:commandLink>
@@ -51,7 +51,7 @@
 	        	</li>
 	        	<li>
 	        		<div class="form-group">
-	        			<h:commandLink type="button" class="btn btn-default" action="#{bean.deletarEntity}">
+	        			<h:commandLink type="button" styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }" action="#{bean.deletarEntity}">
 							<f:ajax render=":tabView1" />
 			        		<p:graphicImage  value="/resources/images/crud_icons/trash.png"  />
 						</h:commandLink>
@@ -60,7 +60,7 @@
 	        	</li>
 	        	<li>
 	        		<div class="form-group">
-			        	<h:commandLink title="Editar"  action="#{bean.showEditEntity}" disabled="#{not empty disableEdit}"  styleClass="btn btn-default " >
+			        	<h:commandLink title="Editar"  action="#{bean.showEditEntity}" disabled="#{not empty disableEdit}"  styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }" >
 			        		<p:graphicImage  value="/resources/images/crud_icons/edit.png" />
 			        		<f:ajax render=":tabView1:formEntity" />
 			        	</h:commandLink>
@@ -68,7 +68,7 @@
 		        </li>
 	        	<li>
 	        		<div class="form-group">
-			        	<h:commandLink title="atualizar"   action="#{bean.atualizar}" styleClass="btn btn-default ">
+			        	<h:commandLink title="atualizar"   action="#{bean.atualizar}" styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }">
 			        		<p:graphicImage  value="/resources/images/crud_icons/refresh.png" />
 			        		<f:ajax render=":tabView1" />
 			        	</h:commandLink>
@@ -76,7 +76,7 @@
 		        </li>
 		        <li>
 		        	<div class="form-group">
-			        	<h:commandLink title="filtro"  disabled="#{not empty disableFilter}"  styleClass="btn btn-default " >
+			        	<h:commandLink title="filtro"  disabled="#{not empty disableFilter}"  styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }" >
 			        		<p:graphicImage  value="/resources/images/crud_icons/search.png"  />
 			        		<f:ajax render=":tabView1" />
 			        	</h:commandLink>

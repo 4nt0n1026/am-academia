@@ -19,7 +19,7 @@ public class FaixaEtariaCatDAOImpl extends DAOImpl<FaixaEtariaCat,Integer> imple
 
 	@Override
 	public List<FaixaEtariaCat> buscarTodos() {
-		TypedQuery<FaixaEtariaCat> q = getEntityManager().createQuery("from FaixaEtariaCat", FaixaEtariaCat.class);
+		TypedQuery<FaixaEtariaCat> q = em.createQuery("from FaixaEtariaCat", FaixaEtariaCat.class);
 		return q.getResultList();
 	}
 

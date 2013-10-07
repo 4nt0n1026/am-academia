@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
 import br.com.acad.annotation.View;
+import br.com.acad.logic.model.FieldType;
 
 @SuppressWarnings("serial")
 @Entity
@@ -22,7 +23,7 @@ public class ProfessorFunc extends Pessoa{
 	private String formacao;
 	
 	@Column(nullable=false)
-	@Show(label="Professor", order=true)
+	@Show(label="Professor", order=true, Type=FieldType.BOOLEAN)
 	private boolean isProfessor;
 	
 	public ProfessorFunc(){}

@@ -94,16 +94,14 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
 		
 		super.incluirEntity();
 	}
-
-//	/**
-//	 * deleta entity do banco
-//	 */
-//	@Override
-//	public void deletarEntity() {
-//		deletarGeneric(entity!=null?entity.getId():0);
-//	}
-//	
 	
+	@Override
+	public void selectRow(Exercicio entity) {
+		super.selectRow(entity);
+		entity.setPartesCorpoPrimDetail(parteCorpoDAO);
+		entity.setPartesCorpoSecDetail(parteCorpoDAO);
+	}
+
 	/**
 	 * sobe foto de upload de Exercicio
 	 * @param event
@@ -115,7 +113,7 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable {
         String caminho = FacesContext.getCurrentInstance().getExternalContext()  
                 .getRealPath(PathLogic.PATH_EXERCICIOS + fotoExercicio ); // diretorio o qual vou salvar o arquivo do upload, equivale ao nome completamente qualificado  
 
-        byte[] conteudo = event.getFile().getContents();  // daqui pra baixo é somente operações de IO.  
+        byte[] conteudo = event.getFile().getContents();  // daqui pra baixo �� somente opera����es de IO.  
         FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(caminho);

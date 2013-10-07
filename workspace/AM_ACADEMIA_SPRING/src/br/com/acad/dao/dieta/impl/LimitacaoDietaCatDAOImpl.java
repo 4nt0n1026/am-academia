@@ -19,7 +19,7 @@ public class LimitacaoDietaCatDAOImpl extends DAOImpl<LimitacaoDietaCat,Integer>
 
 	@Override
 	public List<LimitacaoDietaCat> buscarTodos() {
-		TypedQuery<LimitacaoDietaCat> q = getEntityManager().createQuery("from LimitacaoDietaCat", LimitacaoDietaCat.class);
+		TypedQuery<LimitacaoDietaCat> q = em.createQuery("from LimitacaoDietaCat", LimitacaoDietaCat.class);
 		return q.getResultList();
 	}
 

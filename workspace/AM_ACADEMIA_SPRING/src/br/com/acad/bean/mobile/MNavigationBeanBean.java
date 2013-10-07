@@ -2,9 +2,6 @@ package br.com.acad.bean.mobile;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

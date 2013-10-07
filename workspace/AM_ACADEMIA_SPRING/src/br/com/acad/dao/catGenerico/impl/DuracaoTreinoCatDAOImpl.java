@@ -19,7 +19,7 @@ public class DuracaoTreinoCatDAOImpl extends DAOImpl<DuracaoTreinoCat,Integer> i
 
 	@Override
 	public List<DuracaoTreinoCat> buscarTodos() {
-		TypedQuery<DuracaoTreinoCat> q = getEntityManager().createQuery("from DuracaoTreinoCat", DuracaoTreinoCat.class);
+		TypedQuery<DuracaoTreinoCat> q = em.createQuery("from DuracaoTreinoCat", DuracaoTreinoCat.class);
 		return q.getResultList();
 	}
 

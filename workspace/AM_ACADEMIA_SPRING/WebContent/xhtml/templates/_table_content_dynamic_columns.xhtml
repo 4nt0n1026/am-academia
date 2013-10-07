@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+
+<ui:composition>
+
+	<script>
+		function removeBackground() {
+			$('tr').removeClass('blue-back');
+		}
+	
+		function changeBackground(element) {
+			removeBackground();
+			$(element).parents('tr:first').addClass('blue-back');
+		}
+	</script>
+
+	<c:if test="#{not empty bean.entities}">
+
+		<h:dataTable binding="#{bean.dataTable}" value="#{bean.entities}" var="entity" styleClass="table center" headerClass="gray-back center"
+			rowClasses="" footerClass="gray-back center">
+
+			<h:column headerClass="small-column gray-back">
+				<h:commandButton styleClass="btn btn-primary btn-xs" value="Selecionar" immediate="true" action="#{bean.selectRow(entity)}"
+					onclick="changeBackground(this)">
+					<f:ajax render=":tabView1:detailEntity" listener="#{bean.showFormDetail}" />
+				</h:commandButton>
+			</h:column>
+
+			<f:facet name="footer">
+				<p:commandButton title="pagina anterior" icon="ui-icon-arrow-1-w" action="#{bean.previousPageTable}" disabled="#{bean.page le 1}" ajax="true"
+					update=":tabView1:tabelaEntity" />
+
+				<p:inputText value="#{bean.page}" styleClass="center" size="2" />
+
+				<p:commandButton title="proxima pagina" icon="ui-icon-arrow-1-e" action="#{bean.nextPageTable}" disabled="#{bean.page ge bean.totalPages}"
+					ajax="true" update=":tabView1:tabelaEntity" />
+
+				<div class="left">
+					<h:outputText value="Total de itens: #{bean.totalEntities} - " />
+					<h:outputText value="Total de paginas: #{bean.totalPages}" />
+				</div>
+			</f:facet>
+
+		</h:dataTable>
+
+	</c:if>
+	<c:if test="#{empty bean.entities}">
+		<h4>Sem Registros</h4>
+	</c:if>
+
+</ui:composition>
+
+</html>

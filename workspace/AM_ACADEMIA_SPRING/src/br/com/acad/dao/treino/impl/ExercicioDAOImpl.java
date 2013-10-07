@@ -23,7 +23,7 @@ public class ExercicioDAOImpl extends DAOImpl<Exercicio,Integer> implements Exer
 
 	@Override
 	public List<Exercicio> buscarTodos() {
-		TypedQuery<Exercicio> q = getEntityManager().createQuery("from Exercicio", Exercicio.class);
+		TypedQuery<Exercicio> q = em.createQuery("from Exercicio", Exercicio.class);
 		return q.getResultList();
 	}
 
@@ -31,7 +31,7 @@ public class ExercicioDAOImpl extends DAOImpl<Exercicio,Integer> implements Exer
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Exercicio> buscarFieldNome() {
-		Query q = getEntityManager().createQuery("select e.id, e.nome from Exercicio e");
+		Query q = em.createQuery("select e.id, e.nome from Exercicio e");
 		List<Exercicio> alunos = new ArrayList<Exercicio>();
 		Collection<Object[]> resultado = q.getResultList();
 		for (Object[] o:resultado){
@@ -44,7 +44,7 @@ public class ExercicioDAOImpl extends DAOImpl<Exercicio,Integer> implements Exer
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Exercicio> buscarPorParteCorpo(ParteCorpo parteCorpo) {
-		Query q = getEntityManager().createQuery("select e.id, e.nome, e.fotoLocal from Exercicio e, IN(e.parteCorpoPrimaria) p where p.id = :id)");
+		Query q = em.createQuery("select e.id, e.nome, e.fotoLocal from Exercicio e, IN(e.parteCorpoPrimaria) p where p.id = :id)");
 		q.setParameter("id", parteCorpo.getId());
 		List<Exercicio> exercicios = new ArrayList<Exercicio>();
 		Collection<Object[]> resultado = q.getResultList();

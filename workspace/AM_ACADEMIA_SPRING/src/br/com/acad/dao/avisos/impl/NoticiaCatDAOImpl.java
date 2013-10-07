@@ -19,7 +19,7 @@ public class NoticiaCatDAOImpl extends DAOImpl<NoticiaCat,Integer> implements No
 	
 	@Override
 	public List<NoticiaCat> buscarTodos() {
-		TypedQuery<NoticiaCat> q = getEntityManager().createQuery("from NoticiaCat", NoticiaCat.class);
+		TypedQuery<NoticiaCat> q = em.createQuery("from NoticiaCat", NoticiaCat.class);
 		return q.getResultList();
 	}
 

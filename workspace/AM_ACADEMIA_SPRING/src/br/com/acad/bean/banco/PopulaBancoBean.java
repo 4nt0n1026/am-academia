@@ -460,7 +460,7 @@ public class PopulaBancoBean implements Serializable {
 	 * popula infos basicas de DuracaoTreinoCatDAO
 	 */
 	private void populaDuracaoTreinoCat(){
-		DuracaoTreinoCat duracao = new DuracaoTreinoCat("At���� 15 min");
+		DuracaoTreinoCat duracao = new DuracaoTreinoCat("Até 15 min");
 		duracaoTreinoCatDAO.insert(duracao);
 		DuracaoTreinoCat duracao2 = new DuracaoTreinoCat("De 15 a 30 min");
 		duracaoTreinoCatDAO.insert(duracao2);
@@ -736,7 +736,7 @@ public class PopulaBancoBean implements Serializable {
 		c.setNumSolicitacao(0);
 		alunoDAO.insert(c);
 		
-		for(int i = 1; i<30; i++){
+		for(int i = 1; i<500; i++){
 			nasc.set(Calendar.DAY_OF_MONTH, NumberLogic.randomInteger(1, 28));
 			nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
 			nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));

@@ -21,7 +21,7 @@ public class TreinoDAOImpl extends DAOImpl<Treino,Integer> implements TreinoDAO{
 
 	@Override
 	public List<Treino> buscarTodos() {
-		TypedQuery<Treino> q = getEntityManager().createQuery("from Treino", Treino.class);
+		TypedQuery<Treino> q = em.createQuery("from Treino", Treino.class);
 		return q.getResultList();
 	}
 
@@ -29,7 +29,7 @@ public class TreinoDAOImpl extends DAOImpl<Treino,Integer> implements TreinoDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Treino> buscarPorAluno(Aluno aluno) {
-		Query q = getEntityManager().createQuery("select a.treinos from Aluno a where a.id = :idAluno");
+		Query q = em.createQuery("select a.treinos from Aluno a where a.id = :idAluno");
 		q.setParameter("idAluno", aluno.getId());
 		return q.getResultList();
 	}

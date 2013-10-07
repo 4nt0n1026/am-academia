@@ -5,11 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +24,7 @@ public class MSolicitacaoTreinoBean implements Serializable{
 	/************************************************************************************************************/
 	//ATRIBUTOS
 	/************************************************************************************************************/
-	@EJB
+	@Autowired
 	private SolicitacaoTreinoDAO solicitacaoTreinoDAO;
 	
 	private SolicitacaoTreino solicitacaoTreino = new SolicitacaoTreino();
@@ -47,7 +45,7 @@ public class MSolicitacaoTreinoBean implements Serializable{
 		solicitacaoTreino.setDataSolicitacao(Calendar.getInstance());
 		solicitacaoTreino.setRespondido(false);
 		solicitacaoTreino.setAluno((Aluno) sessionMap.get("aluno"));
-		MessagesLogic.addInfoMessage("Enviada", "Solicita����o enviada com sucesso");
+		MessagesLogic.addInfoMessage("Enviada", "Solicitação enviada com sucesso");
 		solicitacaoTreinoDAO.insert(solicitacaoTreino);
 		return "pm:treino";
 	}

@@ -22,14 +22,14 @@ public class UnidadeDAOImpl extends DAOImpl<Unidade,Integer> implements UnidadeD
 
 	@Override
 	public List<Unidade> buscarTodos() {
-		TypedQuery<Unidade> q = getEntityManager().createQuery("from Unidade", Unidade.class);
+		TypedQuery<Unidade> q = em.createQuery("from Unidade", Unidade.class);
 		return q.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Unidade> buscarTodosField() {
-		Query q = getEntityManager().createQuery("select u.id, u.nome from Unidade u");
+		Query q = em.createQuery("select u.id, u.nome from Unidade u");
 		List<Unidade> unidades = new ArrayList<Unidade>();
 		Collection<Object[]> resultado = q.getResultList();
 		for (Object[] o:resultado){

@@ -19,6 +19,7 @@ import br.com.acad.annotation.Show;
 import br.com.acad.dao.treino.interf.ParteCorpoDAO;
 import br.com.acad.logic.GenericLogic;
 import br.com.acad.logic.PathLogic;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 
 
@@ -36,15 +37,16 @@ public class Exercicio implements Serializable, GenericEntity{
 	@Column(name="ID_EXERCICIO")
 	private int id;
 	
+	@Column(length=500, nullable=true)
+	@Show(label="Foto", pathName="fotoLocalPath", Type=FieldType.SMALL_IMAGE, order=false, search=false)
+	private String fotoLocal;
+	
 	@Column(length=255, nullable=false)
 	@Show(label="Exercicio")
 	private String nome;
 	
 	@Column(length=500, nullable=true)
 	private String descricao;
-	
-	@Column(length=500, nullable=true)
-	private String fotoLocal;
 	
 	@ManyToMany()
 	@JoinTable(name="ACAD_EXERC_CORPO_PRIMARIO", 
@@ -57,6 +59,13 @@ public class Exercicio implements Serializable, GenericEntity{
 				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
 				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
 	private Set<ParteCorpo> parteCorpoSecundaria = new HashSet<ParteCorpo>();
+	
+	@javax.persistence.Transient
+	private String partesCorpoPrimDetail = new String();
+
+	@javax.persistence.Transient
+	private String partesCorpoSecDetail = new String();
+	
 	
 	
 	//metodos
@@ -122,16 +131,16 @@ public class Exercicio implements Serializable, GenericEntity{
 	 * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
 	 * @return
 	 */
-	public String getPartesCorpoPrimDetail() {
-		return GenericLogic.formatListOfObjects(this.parteCorpoPrimaria, ", ");
+	public void setPartesCorpoPrimDetail(ParteCorpoDAO dao) {
+		this.partesCorpoPrimDetail = GenericLogic.formatListOfObjects(dao.buscarPartesPrimarias(this), ", ");
 	}
 	
 	/**
 	 * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
 	 * @return
 	 */
-	public String getPartesCorpoSecDetail() {
-		return GenericLogic.formatListOfObjects(this.parteCorpoSecundaria, ", ");
+	public void setPartesCorpoSecDetail(ParteCorpoDAO dao) {
+		this.partesCorpoSecDetail = GenericLogic.formatListOfObjects(dao.buscarPartesSecundaria(this), ", ");
 	}
 	
 	//Gets com DAO
@@ -239,6 +248,22 @@ public class Exercicio implements Serializable, GenericEntity{
 			return "/" + PathLogic.PATH_EXERCICIOS + fotoLocal;
 		}
 		return "/" + PathLogic.PATH_EXERCICIOS + "semFoto.jpg";
+	}
+
+	public String getPartesCorpoPrimDetail() {
+		return partesCorpoPrimDetail;
+	}
+
+	public void setPartesCorpoPrimDetail(String partesCorpoPrimDetail) {
+		this.partesCorpoPrimDetail = partesCorpoPrimDetail;
+	}
+
+	public String getPartesCorpoSecDetail() {
+		return partesCorpoSecDetail;
+	}
+
+	public void setPartesCorpoSecDetail(String partesCorpoSecDetail) {
+		this.partesCorpoSecDetail = partesCorpoSecDetail;
 	}
 	
 

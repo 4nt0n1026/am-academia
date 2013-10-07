@@ -22,14 +22,14 @@ public class UnidadeMedidaDAOImpl extends DAOImpl<UnidadeMedida,Integer> impleme
 
 	@Override
 	public List<UnidadeMedida> buscarTodos() {
-		TypedQuery<UnidadeMedida> q = getEntityManager().createQuery("from UnidadeMedida", UnidadeMedida.class);
+		TypedQuery<UnidadeMedida> q = em.createQuery("from UnidadeMedida", UnidadeMedida.class);
 		return q.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UnidadeMedida> buscarFieldNome() {
-		Query q = getEntityManager().createQuery("select u.id, u.nome, u.sigla from UnidadeMedida u");
+		Query q = em.createQuery("select u.id, u.nome, u.sigla from UnidadeMedida u");
 		List<UnidadeMedida> unidadeMedida = new ArrayList<UnidadeMedida>();
 		Collection<Object[]> resultado = q.getResultList();
 		for (Object[] o:resultado){

@@ -19,7 +19,7 @@ public class DiasTreinoCatDAOImpl extends DAOImpl<DiasTreinoCat,Integer> impleme
 
 	@Override
 	public List<DiasTreinoCat> buscarTodos() {
-		TypedQuery<DiasTreinoCat> q = getEntityManager().createQuery("from DiasTreinoCat", DiasTreinoCat.class);
+		TypedQuery<DiasTreinoCat> q = em.createQuery("from DiasTreinoCat", DiasTreinoCat.class);
 		return q.getResultList();
 	}
 

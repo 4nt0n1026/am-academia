@@ -25,7 +25,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ProfessorFunc> buscarFieldNome() {
-		Query q = getEntityManager().createQuery("select p.id, p.nome from ProfessorFunc p");
+		Query q = em.createQuery("select p.id, p.nome from ProfessorFunc p");
 		List<ProfessorFunc> professores = new ArrayList<ProfessorFunc>();
 		Collection<Object[]> resultado = q.getResultList();
 		for (Object[] o:resultado){
@@ -39,7 +39,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ProfessorFunc> buscarFieldNomeProf() {
-		Query q = getEntityManager().createQuery("select p.id, p.nome from ProfessorFunc p where p.isProfessor=:true");
+		Query q = em.createQuery("select p.id, p.nome from ProfessorFunc p where p.isProfessor=:true");
 		q.setParameter("true", true);
 		List<ProfessorFunc> professores = new ArrayList<ProfessorFunc>();
 		Collection<Object[]> resultado = q.getResultList();
@@ -67,7 +67,7 @@ public class ProfessorFuncDAOImpl extends DAOImpl<ProfessorFunc,Integer> impleme
 		}
 		//--------------------------
 		try{
-			TypedQuery<ProfessorFunc> q = getEntityManager().createQuery("from ProfessorFunc p where p.email = :email and p.senha = :senha", ProfessorFunc.class);
+			TypedQuery<ProfessorFunc> q = em.createQuery("from ProfessorFunc p where p.email = :email and p.senha = :senha", ProfessorFunc.class);
 			q.setParameter("email", email);
 			q.setParameter("senha", CriptografiaLogic.encriptar(senha));
 			return q.getSingleResult();

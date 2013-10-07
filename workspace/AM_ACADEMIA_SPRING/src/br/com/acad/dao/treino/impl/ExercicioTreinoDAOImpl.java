@@ -27,7 +27,7 @@ public class ExercicioTreinoDAOImpl extends DAOImpl<ExercicioTreino,Integer> imp
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ExercicioTreino> buscarPorDiaTreino(DiaTreino dia) {
-		Query q = getEntityManager().createQuery("select d.exerciciosTreino from DiaTreino d where d.id=:id");
+		Query q = em.createQuery("select d.exerciciosTreino from DiaTreino d where d.id=:id");
 		q.setParameter("id", dia.getId());
 		return q.getResultList();
 	}

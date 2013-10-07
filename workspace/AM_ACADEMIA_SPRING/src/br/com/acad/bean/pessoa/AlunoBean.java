@@ -11,6 +11,9 @@ import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.CriptografiaLogic;
+import br.com.acad.logic.TableLogic;
+import br.com.acad.logic.model.DataField;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.Pessoa;
 
@@ -33,10 +36,15 @@ public class AlunoBean extends Bean<Aluno> implements Serializable {
 	
 	@Override
 	public void init() {
+		
 		dao = alunoDAO;
 		staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, Aluno.class);
 		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, Aluno.class);
 		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, Aluno.class);
+
+		tableHeaders = TableLogic.getTableHeaders(Pessoa.class, dao.getEntityClass());
+		tableValues = TableLogic.getTableValues(Pessoa.class, dao.getEntityClass());
+		
 		super.init();
 	}
 	

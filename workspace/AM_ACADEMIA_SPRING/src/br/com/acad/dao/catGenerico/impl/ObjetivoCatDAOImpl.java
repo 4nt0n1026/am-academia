@@ -19,7 +19,7 @@ public class ObjetivoCatDAOImpl extends DAOImpl<ObjetivoCat,Integer> implements 
 
 	@Override
 	public List<ObjetivoCat> buscarTodos() {
-		TypedQuery<ObjetivoCat> q = getEntityManager().createQuery("from ObjetivoCat", ObjetivoCat.class);
+		TypedQuery<ObjetivoCat> q = em.createQuery("from ObjetivoCat", ObjetivoCat.class);
 		return q.getResultList();
 	}
 

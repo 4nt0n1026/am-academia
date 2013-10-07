@@ -26,14 +26,14 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 
 	@Override
 	public List<Aluno> buscarTodos() {
-		TypedQuery<Aluno> q = getEntityManager().createQuery("from Aluno", Aluno.class);
+		TypedQuery<Aluno> q = em.createQuery("from Aluno", Aluno.class);
 		return q.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Aluno> buscarFieldNome() {
-		Query q = getEntityManager().createQuery("select a.id, a.nome from Aluno a");
+		Query q = em.createQuery("select a.id, a.nome from Aluno a");
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		Collection<Object[]> resultado = q.getResultList();
 		for (Object[] o:resultado){
@@ -52,7 +52,7 @@ public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
 		}
 		//--------------------------
 		try{
-			TypedQuery<Aluno> q = getEntityManager().createQuery("from Aluno a where a.email = :email and a.senha = :senha", Aluno.class);
+			TypedQuery<Aluno> q = em.createQuery("from Aluno a where a.email = :email and a.senha = :senha", Aluno.class);
 			q.setParameter("email",  aluno.getEmail());
 			q.setParameter("senha", CriptografiaLogic.encriptar(aluno.getSenha()));
 			return q.getSingleResult();
