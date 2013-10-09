@@ -17,61 +17,65 @@ import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.SolicitacaoTreino;
 
 @SuppressWarnings("serial")
-@Component(value="mSolicitacaoTreinoBean")
-@Scope(value="view")
-public class MSolicitacaoTreinoBean implements Serializable{
+@Component(value = "mSolicitacaoTreinoBean")
+@Scope(value = "view")
+public class MSolicitacaoTreinoBean implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	@Autowired
-	private SolicitacaoTreinoDAO solicitacaoTreinoDAO;
-	
-	private SolicitacaoTreino solicitacaoTreino = new SolicitacaoTreino();
-	
-	private List<SolicitacaoTreino> minhasSolicitacoes;
-	
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
+    @Autowired
+    private SolicitacaoTreinoDAO solicitacaoTreinoDAO;
 
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	public String init(){
-		solicitacaoTreino = new SolicitacaoTreino();
-		return "pm:solicitacao";
-	}
-	
-	public String enviarSolicitacao(){
-		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		solicitacaoTreino.setDataSolicitacao(Calendar.getInstance());
-		solicitacaoTreino.setRespondido(false);
-		solicitacaoTreino.setAluno((Aluno) sessionMap.get("aluno"));
-		MessagesLogic.addInfoMessage("Enviada", "Solicitação enviada com sucesso");
-		solicitacaoTreinoDAO.insert(solicitacaoTreino);
-		return "pm:treino";
-	}
-	
-	public String minhasSolicitacoes(){
-		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		minhasSolicitacoes = solicitacaoTreinoDAO.buscarPorAluno((Aluno) sessionMap.get("aluno"));
-		return "pm:minhasSolicitacoes";
-	}
-	
-	/************************************************************************************************************/
-	//GETs e SETs
-	/************************************************************************************************************/
+    private SolicitacaoTreino solicitacaoTreino = new SolicitacaoTreino();
 
-	public SolicitacaoTreino getSolicitacaoTreino() {
-		return solicitacaoTreino;
-	}
+    private List<SolicitacaoTreino> minhasSolicitacoes;
 
-	public void setSolicitacaoTreino(SolicitacaoTreino solicitacaoTreino) {
-		this.solicitacaoTreino = solicitacaoTreino;
-	}
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+    public String init()
+    {
+        solicitacaoTreino = new SolicitacaoTreino();
+        return "pm:solicitacao";
+    }
 
-	public List<SolicitacaoTreino> getMinhasSolicitacoes() {
-		return minhasSolicitacoes;
-	}
-	
-	
-	
+    public String enviarSolicitacao()
+    {
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        solicitacaoTreino.setDataSolicitacao(Calendar.getInstance());
+        solicitacaoTreino.setRespondido(false);
+        solicitacaoTreino.setAluno((Aluno) sessionMap.get("aluno"));
+        MessagesLogic.addInfoMessage("Enviada", "Solicitação enviada com sucesso");
+        solicitacaoTreinoDAO.insert(solicitacaoTreino);
+        return "pm:treino";
+    }
+
+    public String minhasSolicitacoes()
+    {
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        minhasSolicitacoes = solicitacaoTreinoDAO.buscarPorAluno((Aluno) sessionMap.get("aluno"));
+        return "pm:minhasSolicitacoes";
+    }
+
+    /************************************************************************************************************/
+    // GETs e SETs
+    /************************************************************************************************************/
+
+    public SolicitacaoTreino getSolicitacaoTreino()
+    {
+        return solicitacaoTreino;
+    }
+
+    public void setSolicitacaoTreino(SolicitacaoTreino solicitacaoTreino)
+    {
+        this.solicitacaoTreino = solicitacaoTreino;
+    }
+
+    public List<SolicitacaoTreino> getMinhasSolicitacoes()
+    {
+        return minhasSolicitacoes;
+    }
+
 }

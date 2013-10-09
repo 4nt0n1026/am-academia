@@ -12,27 +12,29 @@ import br.com.acad.model.treino.DiaTreino;
 import br.com.acad.model.treino.Treino;
 
 @Repository
-public class DiaTreinoDAOImpl extends DAOImpl<DiaTreino,Integer> implements DiaTreinoDAO{
+public class DiaTreinoDAOImpl extends DAOImpl<DiaTreino, Integer> implements DiaTreinoDAO
+{
 
-	public DiaTreinoDAOImpl() {
-		super();
-	}
+    public DiaTreinoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<DiaTreino> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<DiaTreino> buscarTodos()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<DiaTreino> buscaPorTreino(Treino treino) {
-		
-		Query q = em.createQuery("select t.diasTreino from Treino t where t.id=:id");
-		q.setParameter("id", treino.getId());
-		return q.getResultList();
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<DiaTreino> buscaPorTreino(Treino treino)
+    {
 
-
+        Query q = em.createQuery("select t.diasTreino from Treino t where t.id=:id");
+        q.setParameter("id", treino.getId());
+        return q.getResultList();
+    }
 
 }

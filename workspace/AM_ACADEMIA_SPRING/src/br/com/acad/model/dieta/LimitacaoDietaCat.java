@@ -11,34 +11,40 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_LIMITACAO_DIETA_CAT")
-public class LimitacaoDietaCat implements Serializable {
+@Table(name = "ACAD_LIMITACAO_DIETA_CAT")
+public class LimitacaoDietaCat implements Serializable
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_LIMITACAO_DIETA_CAT")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	private String nome;
-	
-	public LimitacaoDietaCat(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_LIMITACAO_DIETA_CAT")
+    private int id;
 
-	public int getId() {
-		return id;
-	}
+    @Column(length = 255, nullable = false)
+    private String nome;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public LimitacaoDietaCat()
+    {
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
 }

@@ -16,31 +16,35 @@ import br.com.acad.model.dieta.SolicitacaoDieta;
 import br.com.acad.model.pessoa.Aluno;
 
 @Repository
-public class SolicitacaoDietaDAOImpl extends DAOImpl<SolicitacaoDieta,Integer> implements SolicitacaoDietaDAO{
+public class SolicitacaoDietaDAOImpl extends DAOImpl<SolicitacaoDieta, Integer> implements SolicitacaoDietaDAO
+{
 
-	public SolicitacaoDietaDAOImpl() {
-		super();
-	}
+    public SolicitacaoDietaDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<SolicitacaoDieta> buscarTodos() {
-		TypedQuery<SolicitacaoDieta> q = em.createQuery("from SolicitacaoDieta", SolicitacaoDieta.class);
-		return q.getResultList();
-	}
+    @Override
+    public List<SolicitacaoDieta> buscarTodos()
+    {
+        TypedQuery<SolicitacaoDieta> q = em.createQuery("from SolicitacaoDieta", SolicitacaoDieta.class);
+        return q.getResultList();
+    }
 
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<SolicitacaoDieta> buscarPorAluno(Aluno aluno) {
-		Query q = em.createQuery("select s.id, s.dataSolicitacao from SolicitacaoDieta s where s.aluno.id = :id)");
-		q.setParameter("id", aluno.getId());
-		List<SolicitacaoDieta> solicitacoes = new ArrayList<SolicitacaoDieta>();
-		Collection<Object[]> resultado = q.getResultList();
-		for (Object[] o:resultado){
-			SolicitacaoDieta s = new SolicitacaoDieta((Integer) o[0], (Calendar) o[1]);
-			solicitacoes.add(s);
-		}
-		return solicitacoes;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<SolicitacaoDieta> buscarPorAluno(Aluno aluno)
+    {
+        Query q = em.createQuery("select s.id, s.dataSolicitacao from SolicitacaoDieta s where s.aluno.id = :id)");
+        q.setParameter("id", aluno.getId());
+        List<SolicitacaoDieta> solicitacoes = new ArrayList<SolicitacaoDieta>();
+        Collection<Object[]> resultado = q.getResultList();
+        for (Object[] o : resultado)
+        {
+            SolicitacaoDieta s = new SolicitacaoDieta((Integer) o[0], (Calendar) o[1]);
+            solicitacoes.add(s);
+        }
+        return solicitacoes;
+    }
 
 }

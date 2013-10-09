@@ -7,42 +7,58 @@ import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 
 /**
- * Implements the JSF View Scope for use by Spring. This class is registered as a Spring bean with the CustomScopeConfigurer.
-*/
-public class ViewScopeSpring implements Scope {
-    public Object get(String name, ObjectFactory<?> objectFactory) {
-        if (FacesContext.getCurrentInstance().getViewRoot() != null) {
+ * Implements the JSF View Scope for use by Spring. This class is registered as a Spring bean with the
+ * CustomScopeConfigurer.
+ */
+public class ViewScopeSpring implements Scope
+{
+    public Object get(String name, ObjectFactory<?> objectFactory)
+    {
+        if (FacesContext.getCurrentInstance().getViewRoot() != null)
+        {
             Map<String, Object> viewMap = FacesContext.getCurrentInstance().getViewRoot().getViewMap();
-            if (viewMap.containsKey(name)) {
+            if (viewMap.containsKey(name))
+            {
                 return viewMap.get(name);
-            } else {
+            }
+            else
+            {
                 Object object = objectFactory.getObject();
                 viewMap.put(name, object);
                 return object;
             }
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
- 
-    public Object remove(String name) {
-        if (FacesContext.getCurrentInstance().getViewRoot() != null) {
+
+    public Object remove(String name)
+    {
+        if (FacesContext.getCurrentInstance().getViewRoot() != null)
+        {
             return FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(name);
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
- 
-    public void registerDestructionCallback(String name, Runnable callback) {
+
+    public void registerDestructionCallback(String name, Runnable callback)
+    {
         // Do nothing
     }
- 
-    public Object resolveContextualObject(String key) {
+
+    public Object resolveContextualObject(String key)
+    {
         return null;
     }
- 
-    public String getConversationId() {
+
+    public String getConversationId()
+    {
         return null;
     }
- 
+
 }

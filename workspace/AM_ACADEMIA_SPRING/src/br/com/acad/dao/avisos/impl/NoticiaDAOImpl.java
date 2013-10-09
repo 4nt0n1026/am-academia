@@ -11,16 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.avisos.Noticia;
 
 @Repository
-public class NoticiaDAOImpl extends DAOImpl<Noticia,Integer> implements NoticiaDAO{
+public class NoticiaDAOImpl extends DAOImpl<Noticia, Integer> implements NoticiaDAO
+{
 
-	public NoticiaDAOImpl() {
-		super();
-	}
-	
-	@Override
-	public List<Noticia> buscarTodos() {
-		TypedQuery<Noticia> q = em.createQuery("from Noticia", Noticia.class);
-		return q.getResultList();
-	}
+    public NoticiaDAOImpl()
+    {
+        super();
+    }
+
+    @Override
+    public List<Noticia> buscarTodos()
+    {
+        TypedQuery<Noticia> q = em.createQuery("from Noticia", Noticia.class);
+        return q.getResultList();
+    }
 
 }

@@ -5,10 +5,9 @@ import java.util.List;
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.model.dieta.UnidadeMedida;
 
-public interface UnidadeMedidaDAO extends DAO<UnidadeMedida,Integer>{
+public interface UnidadeMedidaDAO extends DAO<UnidadeMedida, Integer>
+{
 
-	List<UnidadeMedida> buscarFieldNome();
-	
-	
-	
+    List<UnidadeMedida> buscarFieldNome();
+
 }

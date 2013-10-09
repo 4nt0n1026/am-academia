@@ -18,48 +18,57 @@ import br.com.acad.logic.SqlLogic;
 import br.com.acad.model.pessoa.Aluno;
 
 @Repository
-public class AlunoDAOImpl extends DAOImpl<Aluno,Integer> implements AlunoDAO{
+public class AlunoDAOImpl extends DAOImpl<Aluno, Integer> implements AlunoDAO
+{
 
-	public AlunoDAOImpl() {
-		super();
-	}
+    public AlunoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Aluno> buscarTodos() {
-		TypedQuery<Aluno> q = em.createQuery("from Aluno", Aluno.class);
-		return q.getResultList();
-	}
+    @Override
+    public List<Aluno> buscarTodos()
+    {
+        TypedQuery<Aluno> q = em.createQuery("from Aluno", Aluno.class);
+        return q.getResultList();
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Aluno> buscarFieldNome() {
-		Query q = em.createQuery("select a.id, a.nome from Aluno a");
-		List<Aluno> alunos = new ArrayList<Aluno>();
-		Collection<Object[]> resultado = q.getResultList();
-		for (Object[] o:resultado){
-			Aluno a = new Aluno((Integer) o[0], (String) o[1]);
-			alunos.add(a);
-		}
-		return alunos;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Aluno> buscarFieldNome()
+    {
+        Query q = em.createQuery("select a.id, a.nome from Aluno a");
+        List<Aluno> alunos = new ArrayList<Aluno>();
+        Collection<Object[]> resultado = q.getResultList();
+        for (Object[] o : resultado)
+        {
+            Aluno a = new Aluno((Integer) o[0], (String) o[1]);
+            alunos.add(a);
+        }
+        return alunos;
+    }
 
-
-	@Override
-	public Aluno logar(Aluno aluno){
-		// TODO - Remover (Para Teste)
-		if(aluno.getEmail().equals("") && aluno.getEmail().equals("")){
-			return new Aluno(4328768, "Christian");
-		}
-		//--------------------------
-		try{
-			TypedQuery<Aluno> q = em.createQuery("from Aluno a where a.email = :email and a.senha = :senha", Aluno.class);
-			q.setParameter("email",  aluno.getEmail());
-			q.setParameter("senha", CriptografiaLogic.encriptar(aluno.getSenha()));
-			return q.getSingleResult();
-	 	} catch(NoResultException e) {
-	 		e.printStackTrace();
-	        return null;
-	    }
-	}
+    @Override
+    public Aluno logar(Aluno aluno)
+    {
+        // TODO - Remover (Para Teste)
+        if (aluno.getEmail().equals("") && aluno.getEmail().equals(""))
+        {
+            return new Aluno(4328768, "Christian");
+        }
+        // --------------------------
+        try
+        {
+            TypedQuery<Aluno> q = em.createQuery("from Aluno a where a.email = :email and a.senha = :senha", Aluno.class);
+            q.setParameter("email", aluno.getEmail());
+            q.setParameter("senha", CriptografiaLogic.encriptar(aluno.getSenha()));
+            return q.getSingleResult();
+        }
+        catch (NoResultException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

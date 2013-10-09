@@ -14,111 +14,124 @@ import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ParteCorpo;
 
 @SuppressWarnings("serial")
-@Component(value="mExerciciosBean")
-@Scope(value="view")
-public class MExerciciosBean implements Serializable{
+@Component(value = "mExerciciosBean")
+@Scope(value = "view")
+public class MExerciciosBean implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	@Autowired
-	private ParteCorpoDAO parteCorpoDAO;
-	@Autowired
-	private ExercicioDAO exercicioDAO;
-	
-	private List<ParteCorpo> partesCorpo;
-	private ParteCorpo parteCorpo;
-	
-	private List<Exercicio> exercicios;
-	private Exercicio exercicio;
-	
-	private String partesPrimarias;
-	private String partesSecundarias;
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
+    @Autowired
+    private ParteCorpoDAO parteCorpoDAO;
+    @Autowired
+    private ExercicioDAO exercicioDAO;
 
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	public String init(){
-		partesCorpo = parteCorpoDAO.buscarTodos();
-		return "pm:parteCorpo";
-	}
+    private List<ParteCorpo> partesCorpo;
+    private ParteCorpo parteCorpo;
 
-	public String selectParteCorpo(){
-		exercicios = exercicioDAO.buscarPorParteCorpo(parteCorpo);
-		return "pm:exerciciosList";
-	}
-	
-	public String selectExercicio(){
-		exercicio = exercicioDAO.searchById(exercicio.getId());
-		partesPrimarias = getPartesCorpoPrimDetail();
-		partesSecundarias = getPartesCorpoSecDetail();
-		return "pm:exercicioDetalhe";
-	}
-	
-	/************************************************************************************************************/
-	//GETs e SETs ESPECIAIS
-	/************************************************************************************************************/
+    private List<Exercicio> exercicios;
+    private Exercicio exercicio;
 
-	/**
-	 * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
-	 * @return
-	 */
-	private String getPartesCorpoPrimDetail() {
-		return GenericLogic.formatListOfObjects(exercicio.getParteCorpoPrimaria(parteCorpoDAO), ", ");
-	}
+    private String partesPrimarias;
+    private String partesSecundarias;
 
-	/**
-	 * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
-	 * @return
-	 */
-	private String getPartesCorpoSecDetail() {
-		return GenericLogic.formatListOfObjects(exercicio.getParteCorpoSecundaria(parteCorpoDAO), ", ");
-	}
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+    public String init()
+    {
+        partesCorpo = parteCorpoDAO.buscarTodos();
+        return "pm:parteCorpo";
+    }
 
-	
-	/************************************************************************************************************/
-	//GETs e SETs
-	/************************************************************************************************************/
+    public String selectParteCorpo()
+    {
+        exercicios = exercicioDAO.buscarPorParteCorpo(parteCorpo);
+        return "pm:exerciciosList";
+    }
 
-	public List<ParteCorpo> getPartesCorpo() {
-		return partesCorpo;
-	}
+    public String selectExercicio()
+    {
+        exercicio = exercicioDAO.searchById(exercicio.getId());
+        partesPrimarias = getPartesCorpoPrimDetail();
+        partesSecundarias = getPartesCorpoSecDetail();
+        return "pm:exercicioDetalhe";
+    }
 
-	public ParteCorpo getParteCorpo() {
-		return parteCorpo;
-	}
+    /************************************************************************************************************/
+    // GETs e SETs ESPECIAIS
+    /************************************************************************************************************/
 
-	public void setParteCorpo(ParteCorpo parteCorpo) {
-		this.parteCorpo = parteCorpo;
-	}
+    /**
+     * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
+     * 
+     * @return
+     */
+    private String getPartesCorpoPrimDetail()
+    {
+        return GenericLogic.formatListOfObjects(exercicio.getParteCorpoPrimaria(parteCorpoDAO), ", ");
+    }
 
-	public Exercicio getExercicio() {
-		if(exercicio!=null){
-			if(exercicio.getFotoLocal()==null || exercicio.getFotoLocal() == ""){
-				exercicio.setFotoLocal("semFoto.jpg");
-			}
-		}
-		return exercicio;
-	}
+    /**
+     * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
+     * 
+     * @return
+     */
+    private String getPartesCorpoSecDetail()
+    {
+        return GenericLogic.formatListOfObjects(exercicio.getParteCorpoSecundaria(parteCorpoDAO), ", ");
+    }
 
-	public void setExercicio(Exercicio exercicio) {
-		this.exercicio = exercicio;
-	}
+    /************************************************************************************************************/
+    // GETs e SETs
+    /************************************************************************************************************/
 
-	public List<Exercicio> getExercicios() {
-		return exercicios;
-	}
+    public List<ParteCorpo> getPartesCorpo()
+    {
+        return partesCorpo;
+    }
 
-	public String getPartesPrimarias() {
-		return partesPrimarias;
-	}
+    public ParteCorpo getParteCorpo()
+    {
+        return parteCorpo;
+    }
 
-	public String getPartesSecundarias() {
-		return partesSecundarias;
-	}
+    public void setParteCorpo(ParteCorpo parteCorpo)
+    {
+        this.parteCorpo = parteCorpo;
+    }
 
-	
-	
-	
-	
+    public Exercicio getExercicio()
+    {
+        if (exercicio != null)
+        {
+            if (exercicio.getFotoLocal() == null || exercicio.getFotoLocal() == "")
+            {
+                exercicio.setFotoLocal("semFoto.jpg");
+            }
+        }
+        return exercicio;
+    }
+
+    public void setExercicio(Exercicio exercicio)
+    {
+        this.exercicio = exercicio;
+    }
+
+    public List<Exercicio> getExercicios()
+    {
+        return exercicios;
+    }
+
+    public String getPartesPrimarias()
+    {
+        return partesPrimarias;
+    }
+
+    public String getPartesSecundarias()
+    {
+        return partesSecundarias;
+    }
+
 }

@@ -12,65 +12,59 @@ import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.CriptografiaLogic;
 import br.com.acad.logic.TableLogic;
-import br.com.acad.logic.model.DataField;
-import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.Pessoa;
 
-
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
-public class AlunoBean extends Bean<Aluno> implements Serializable {
+@Scope(value = "view")
+public class AlunoBean extends Bean<Aluno> implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	
-	@Autowired
-	private AlunoDAO alunoDAO;
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	
-	@Override
-	public void init() {
-		
-		dao = alunoDAO;
-		staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, Aluno.class);
-		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, Aluno.class);
-		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, Aluno.class);
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
 
-		tableHeaders = TableLogic.getTableHeaders(Pessoa.class, dao.getEntityClass());
-		tableValues = TableLogic.getTableValues(Pessoa.class, dao.getEntityClass());
-		
-		super.init();
-	}
-	
-	/**
-	 * show form de entity
-	 */
-	@Override
-	public void showNewEntity() {
-		showEntity = true;
-		entity = new Aluno();
-		entity.setDataNascimento(new GregorianCalendar());
-		String senha = CriptografiaLogic.encriptar("123");
-		entity.setSenha(senha);
-	}
+    @Autowired
+    private AlunoDAO alunoDAO;
 
-	
-	
-	/************************************************************************************************************/
-	//GET FIELDS
-	/************************************************************************************************************/
-	
-	
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
 
-	/************************************************************************************************************/
-	//GETS E SETS
-	/************************************************************************************************************/
-	
-	
+    @Override
+    public void init()
+    {
+
+        dao = alunoDAO;
+        // staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, Aluno.class);
+        // staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, Aluno.class);
+        // staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, Aluno.class);
+
+        superClasses = new Class<?>[] { Pessoa.class };
+
+        super.init();
+    }
+
+    /**
+     * show form de entity
+     */
+    @Override
+    public void showNewEntity()
+    {
+        showEntity = true;
+        entity = new Aluno();
+        entity.setDataNascimento(new GregorianCalendar());
+        String senha = CriptografiaLogic.encriptar("123");
+        entity.setSenha(senha);
+    }
+
+    /************************************************************************************************************/
+    // GET FIELDS
+    /************************************************************************************************************/
+
+    /************************************************************************************************************/
+    // GETS E SETS
+    /************************************************************************************************************/
+
 }

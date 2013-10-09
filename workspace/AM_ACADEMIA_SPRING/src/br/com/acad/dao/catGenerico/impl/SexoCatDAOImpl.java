@@ -11,16 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.cat.SexoCat;
 
 @Repository
-public class SexoCatDAOImpl extends DAOImpl<SexoCat,Integer> implements SexoCatDAO{
+public class SexoCatDAOImpl extends DAOImpl<SexoCat, Integer> implements SexoCatDAO
+{
 
-	public SexoCatDAOImpl() {
-		super();
-	}
+    public SexoCatDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<SexoCat> buscarTodos() {
-		TypedQuery<SexoCat> q = em.createQuery("from SexoCat", SexoCat.class);
-		return q.getResultList();
-	}
-	
+    @Override
+    public List<SexoCat> buscarTodos()
+    {
+        TypedQuery<SexoCat> q = em.createQuery("from SexoCat", SexoCat.class);
+        return q.getResultList();
+    }
+
 }

@@ -14,55 +14,61 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_DIAS_TREINO_CAT")
-public class DiasTreinoCat implements Serializable, GenericEntity {
+@Table(name = "ACAD_DIAS_TREINO_CAT")
+public class DiasTreinoCat implements Serializable, GenericEntity
+{
 
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_DIAS_TREINO_CAT")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	@Show(label = "Nome")
-	private String nome;
-	
-	@Column(length=1, nullable=false)
-	private int qtdDias;
-	
-	public DiasTreinoCat(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_DIAS_TREINO_CAT")
+    private int id;
 
-	public DiasTreinoCat(String nome, int qtdDias) {
-		super();
-		this.nome = nome;
-		this.qtdDias = qtdDias;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome")
+    private String nome;
 
+    @Column(length = 1, nullable = false)
+    private int qtdDias;
 
-	public int getId() {
-		return id;
-	}
+    public DiasTreinoCat()
+    {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public DiasTreinoCat(String nome, int qtdDias)
+    {
+        super();
+        this.nome = nome;
+        this.qtdDias = qtdDias;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-	public int getQtdDias() {
-		return qtdDias;
-	}
+    public String getNome()
+    {
+        return nome;
+    }
 
-	public void setQtdDias(int qtdDias) {
-		this.qtdDias = qtdDias;
-	}
-	
-	
-	
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public int getQtdDias()
+    {
+        return qtdDias;
+    }
+
+    public void setQtdDias(int qtdDias)
+    {
+        this.qtdDias = qtdDias;
+    }
+
 }

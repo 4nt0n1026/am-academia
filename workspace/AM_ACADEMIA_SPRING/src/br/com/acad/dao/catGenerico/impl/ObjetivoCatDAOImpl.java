@@ -11,18 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.cat.ObjetivoCat;
 
 @Repository
-public class ObjetivoCatDAOImpl extends DAOImpl<ObjetivoCat,Integer> implements ObjetivoCatDAO{
+public class ObjetivoCatDAOImpl extends DAOImpl<ObjetivoCat, Integer> implements ObjetivoCatDAO
+{
 
-	public ObjetivoCatDAOImpl() {
-		super();
-	}
+    public ObjetivoCatDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<ObjetivoCat> buscarTodos() {
-		TypedQuery<ObjetivoCat> q = em.createQuery("from ObjetivoCat", ObjetivoCat.class);
-		return q.getResultList();
-	}
-
-
+    @Override
+    public List<ObjetivoCat> buscarTodos()
+    {
+        TypedQuery<ObjetivoCat> q = em.createQuery("from ObjetivoCat", ObjetivoCat.class);
+        return q.getResultList();
+    }
 
 }

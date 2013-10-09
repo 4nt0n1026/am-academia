@@ -22,11 +22,11 @@
 		</property>
 		<property name="jpaVendorAdapter" ref="vendorAdapter" />
 	</bean>
-	
+
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost/ACAD_AM" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/ACAD_AM2" />
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 		<property name="initialPoolSize" value="1" />
@@ -38,7 +38,7 @@
 		<property name="maxStatements" value="0" />
 		<property name="numHelperThreads" value="1" />
 	</bean>
-	
+
 	<bean id="vendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 		<property name="showSql" value="true" />
@@ -58,8 +58,8 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="myEmf" />
 	</bean>
-	
-	
+
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />

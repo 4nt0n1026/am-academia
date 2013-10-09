@@ -22,252 +22,281 @@ import br.com.acad.logic.PathLogic;
 import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 
-
-
-
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_EXERCICIO")
-public class Exercicio implements Serializable, GenericEntity{
-	
-	
-	//Atributos
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_EXERCICIO")
-	private int id;
-	
-	@Column(length=500, nullable=true)
-	@Show(label="Foto", pathName="fotoLocalPath", Type=FieldType.SMALL_IMAGE, order=false, search=false)
-	private String fotoLocal;
-	
-	@Column(length=255, nullable=false)
-	@Show(label="Exercicio")
-	private String nome;
-	
-	@Column(length=500, nullable=true)
-	private String descricao;
-	
-	@ManyToMany()
-	@JoinTable(name="ACAD_EXERC_CORPO_PRIMARIO", 
-				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
-				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
-	private Set<ParteCorpo> parteCorpoPrimaria = new HashSet<ParteCorpo>();
-	
-	@ManyToMany()
-	@JoinTable(name="ACAD_EXERC_CORPO_SECUNDARIO", 
-				joinColumns={@JoinColumn(name="EXERCICIO_ID")},
-				inverseJoinColumns={@JoinColumn(name="PARTE_CORPO_ID")})
-	private Set<ParteCorpo> parteCorpoSecundaria = new HashSet<ParteCorpo>();
-	
-	@javax.persistence.Transient
-	private String partesCorpoPrimDetail = new String();
+@Table(name = "ACAD_EXERCICIO")
+public class Exercicio implements Serializable, GenericEntity
+{
 
-	@javax.persistence.Transient
-	private String partesCorpoSecDetail = new String();
-	
-	
-	
-	//metodos
-	/**
-	 * Apaga listas de partes de corpo Primarias e Secundarias
-	 */
-	public void zeraPartesCorpos(){
-		this.zeraParteCorpoPrimaria();
-		this.zeraParteCorpoSecundaria();
-	}
-	
-	/**
-	 * Apaga lista de ParteCorpoPrimaria
-	 */
-	public void zeraParteCorpoPrimaria(){
-		this.parteCorpoPrimaria = new HashSet<ParteCorpo>();
-	}
-	
-	/**
-	 * Apaga lista de ParteCorpoSecundaria
-	 */
-	public void zeraParteCorpoSecundaria(){
-		this.parteCorpoSecundaria = new HashSet<ParteCorpo>();
-	}
-	
-	/**
-	 * Inclui ParteCorpo para lista de parteCorpoPrimaria
-	 * @param parte
-	 * @return booleano se incluiu ou nao
-	 */
-	public boolean addParteCorpoPrimaria(ParteCorpo parte){
-		return this.parteCorpoPrimaria.add(parte);
-	}
-	
-	/**
-	 * Inclui ParteCorpo para lista de parteCorpoSecundaria
-	 * @param parte
-	 * @return booleano se incluiu ou nao
-	 */
-	public boolean addParteCorpoSecundaria(ParteCorpo parte){
-		return this.parteCorpoSecundaria.add(parte);
-	}
-	
-	/**
-	 * remove ParteCorpo para lista de parteCorpoPrimaria
-	 * @param parte
-	 * @return booleano se removeu ou nao
-	 */
-	public boolean removeParteCorpoPrimaria(ParteCorpo parte){
-		return this.parteCorpoPrimaria.remove(parte);
-	}
-	
-	/**
-	 * remove ParteCorpo para lista de parteCorpoSecundaria
-	 * @param parte
-	 * @return booleano se removeu ou nao
-	 */
-	public boolean removeParteCorpoSecundaria(ParteCorpo parte){
-		return this.parteCorpoSecundaria.remove(parte);
-	}
-	
-	/**
-	 * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
-	 * @return
-	 */
-	public void setPartesCorpoPrimDetail(ParteCorpoDAO dao) {
-		this.partesCorpoPrimDetail = GenericLogic.formatListOfObjects(dao.buscarPartesPrimarias(this), ", ");
-	}
-	
-	/**
-	 * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
-	 * @return
-	 */
-	public void setPartesCorpoSecDetail(ParteCorpoDAO dao) {
-		this.partesCorpoSecDetail = GenericLogic.formatListOfObjects(dao.buscarPartesSecundaria(this), ", ");
-	}
-	
-	//Gets com DAO
-	public List<ParteCorpo> getParteCorpoPrimaria(ParteCorpoDAO dao){
-		return dao.buscarPartesPrimarias(this);
-	}
-	
-	public List<ParteCorpo> getParteCorpoSecundaria(ParteCorpoDAO dao){
-		return dao.buscarPartesSecundaria(this);
-	}
-	
-	
-	//Construtores
-	public Exercicio(){}
-	
-	public Exercicio(int id, String nome, String descricao, String fotoLocal) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.fotoLocal = fotoLocal;
-	}
+    // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_EXERCICIO")
+    private int id;
 
+    @Column(length = 500, nullable = true)
+    @Show(label = "Foto", pathName = "fotoLocalPath", Type = FieldType.SMALL_IMAGE, order = false, search = false)
+    private String fotoLocal;
 
-	public Exercicio(String nome) {
-		this.nome = nome;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Exercicio")
+    private String nome;
 
-	public Exercicio(Integer id, String nome) {
-		this.id = id;
-		this.nome = nome;
-	}
+    @Column(length = 500, nullable = true)
+    private String descricao;
 
-	public Exercicio(Integer id, String nome, String fotoLocal) {
-		this.id = id;
-		this.nome = nome;
-		this.fotoLocal = fotoLocal;
-	}
+    @ManyToMany()
+    @JoinTable(name = "ACAD_EXERC_CORPO_PRIMARIO", joinColumns = { @JoinColumn(name = "EXERCICIO_ID") }, inverseJoinColumns = { @JoinColumn(name = "PARTE_CORPO_ID") })
+    private Set<ParteCorpo> parteCorpoPrimaria = new HashSet<ParteCorpo>();
 
-	public Exercicio(String nome, Set<ParteCorpo> parteCorpoPrimaria, Set<ParteCorpo> parteCorpoSecundaria, String descricao, String fotoLocal) {
-		this.nome = nome;
-		this.descricao = descricao;
-		this.fotoLocal = fotoLocal;
-		this.parteCorpoPrimaria = parteCorpoPrimaria;
-		this.parteCorpoSecundaria = parteCorpoSecundaria;
-	}
+    @ManyToMany()
+    @JoinTable(name = "ACAD_EXERC_CORPO_SECUNDARIO", joinColumns = { @JoinColumn(name = "EXERCICIO_ID") }, inverseJoinColumns = { @JoinColumn(name = "PARTE_CORPO_ID") })
+    private Set<ParteCorpo> parteCorpoSecundaria = new HashSet<ParteCorpo>();
 
-	//ToString
-	@Override
-	public String toString() {
-		return id + "";
-	}
-	
-	//gets e sets
-	public int getId() {
-		return id;
-	}
+    @javax.persistence.Transient
+    private String partesCorpoPrimDetail = new String();
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @javax.persistence.Transient
+    private String partesCorpoSecDetail = new String();
 
-	public String getNome() {
-		return nome;
-	}
+    // metodos
+    /**
+     * Apaga listas de partes de corpo Primarias e Secundarias
+     */
+    public void zeraPartesCorpos()
+    {
+        this.zeraParteCorpoPrimaria();
+        this.zeraParteCorpoSecundaria();
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    /**
+     * Apaga lista de ParteCorpoPrimaria
+     */
+    public void zeraParteCorpoPrimaria()
+    {
+        this.parteCorpoPrimaria = new HashSet<ParteCorpo>();
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    /**
+     * Apaga lista de ParteCorpoSecundaria
+     */
+    public void zeraParteCorpoSecundaria()
+    {
+        this.parteCorpoSecundaria = new HashSet<ParteCorpo>();
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    /**
+     * Inclui ParteCorpo para lista de parteCorpoPrimaria
+     * 
+     * @param parte
+     * @return booleano se incluiu ou nao
+     */
+    public boolean addParteCorpoPrimaria(ParteCorpo parte)
+    {
+        return this.parteCorpoPrimaria.add(parte);
+    }
 
-	public String getFotoLocal() {
-		return fotoLocal;
-	}
+    /**
+     * Inclui ParteCorpo para lista de parteCorpoSecundaria
+     * 
+     * @param parte
+     * @return booleano se incluiu ou nao
+     */
+    public boolean addParteCorpoSecundaria(ParteCorpo parte)
+    {
+        return this.parteCorpoSecundaria.add(parte);
+    }
 
-	public void setFotoLocal(String fotoLocal) {
-		this.fotoLocal = fotoLocal;
-	}
+    /**
+     * remove ParteCorpo para lista de parteCorpoPrimaria
+     * 
+     * @param parte
+     * @return booleano se removeu ou nao
+     */
+    public boolean removeParteCorpoPrimaria(ParteCorpo parte)
+    {
+        return this.parteCorpoPrimaria.remove(parte);
+    }
 
-	public Set<ParteCorpo> getParteCorpoPrimaria() {
-		return parteCorpoPrimaria;
-	}
+    /**
+     * remove ParteCorpo para lista de parteCorpoSecundaria
+     * 
+     * @param parte
+     * @return booleano se removeu ou nao
+     */
+    public boolean removeParteCorpoSecundaria(ParteCorpo parte)
+    {
+        return this.parteCorpoSecundaria.remove(parte);
+    }
 
-	public void setParteCorpoPrimaria(Set<ParteCorpo> parteCorpoPrimaria) {
-		this.parteCorpoPrimaria = parteCorpoPrimaria;
-	}
+    /**
+     * Faz busca e formata String de partes de corpo primaria do exercicio selecionado para mostrar detalhes
+     * 
+     * @return
+     */
+    public void setPartesCorpoPrimDetail(ParteCorpoDAO dao)
+    {
+        this.partesCorpoPrimDetail = GenericLogic.formatListOfObjects(dao.buscarPartesPrimarias(this), ", ");
+    }
 
-	public Set<ParteCorpo> getParteCorpoSecundaria() {
-		return parteCorpoSecundaria;
-	}
+    /**
+     * Faz busca e formata String de partes de corpo secundaria do exercicio selecionado para mostrar detalhes
+     * 
+     * @return
+     */
+    public void setPartesCorpoSecDetail(ParteCorpoDAO dao)
+    {
+        this.partesCorpoSecDetail = GenericLogic.formatListOfObjects(dao.buscarPartesSecundaria(this), ", ");
+    }
 
-	public void setParteCorpoSecundaria(Set<ParteCorpo> parteCorpoSecundaria) {
-		this.parteCorpoSecundaria = parteCorpoSecundaria;
-	}
-	
-	public String getFotoLocalPath(){
-		if(fotoLocal!=null && fotoLocal.length()>1){
-			return "/" + PathLogic.PATH_EXERCICIOS + fotoLocal;
-		}
-		return "/" + PathLogic.PATH_EXERCICIOS + "semFoto.jpg";
-	}
+    // Gets com DAO
+    public List<ParteCorpo> getParteCorpoPrimaria(ParteCorpoDAO dao)
+    {
+        return dao.buscarPartesPrimarias(this);
+    }
 
-	public String getPartesCorpoPrimDetail() {
-		return partesCorpoPrimDetail;
-	}
+    public List<ParteCorpo> getParteCorpoSecundaria(ParteCorpoDAO dao)
+    {
+        return dao.buscarPartesSecundaria(this);
+    }
 
-	public void setPartesCorpoPrimDetail(String partesCorpoPrimDetail) {
-		this.partesCorpoPrimDetail = partesCorpoPrimDetail;
-	}
+    // Construtores
+    public Exercicio()
+    {
+    }
 
-	public String getPartesCorpoSecDetail() {
-		return partesCorpoSecDetail;
-	}
+    public Exercicio(int id, String nome, String descricao, String fotoLocal)
+    {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.fotoLocal = fotoLocal;
+    }
 
-	public void setPartesCorpoSecDetail(String partesCorpoSecDetail) {
-		this.partesCorpoSecDetail = partesCorpoSecDetail;
-	}
-	
+    public Exercicio(String nome)
+    {
+        this.nome = nome;
+    }
 
-	
-	
-	
+    public Exercicio(Integer id, String nome)
+    {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Exercicio(Integer id, String nome, String fotoLocal)
+    {
+        this.id = id;
+        this.nome = nome;
+        this.fotoLocal = fotoLocal;
+    }
+
+    public Exercicio(String nome, Set<ParteCorpo> parteCorpoPrimaria, Set<ParteCorpo> parteCorpoSecundaria, String descricao,
+            String fotoLocal)
+    {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.fotoLocal = fotoLocal;
+        this.parteCorpoPrimaria = parteCorpoPrimaria;
+        this.parteCorpoSecundaria = parteCorpoSecundaria;
+    }
+
+    // ToString
+    @Override
+    public String toString()
+    {
+        return id + "";
+    }
+
+    // gets e sets
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public String getFotoLocal()
+    {
+        return fotoLocal;
+    }
+
+    public void setFotoLocal(String fotoLocal)
+    {
+        this.fotoLocal = fotoLocal;
+    }
+
+    public Set<ParteCorpo> getParteCorpoPrimaria()
+    {
+        return parteCorpoPrimaria;
+    }
+
+    public void setParteCorpoPrimaria(Set<ParteCorpo> parteCorpoPrimaria)
+    {
+        this.parteCorpoPrimaria = parteCorpoPrimaria;
+    }
+
+    public Set<ParteCorpo> getParteCorpoSecundaria()
+    {
+        return parteCorpoSecundaria;
+    }
+
+    public void setParteCorpoSecundaria(Set<ParteCorpo> parteCorpoSecundaria)
+    {
+        this.parteCorpoSecundaria = parteCorpoSecundaria;
+    }
+
+    public String getFotoLocalPath()
+    {
+        if (fotoLocal != null && fotoLocal.length() > 1)
+        {
+            return "/" + PathLogic.PATH_EXERCICIOS + fotoLocal;
+        }
+        return "/" + PathLogic.PATH_EXERCICIOS + "semFoto.jpg";
+    }
+
+    public String getPartesCorpoPrimDetail()
+    {
+        return partesCorpoPrimDetail;
+    }
+
+    public void setPartesCorpoPrimDetail(String partesCorpoPrimDetail)
+    {
+        this.partesCorpoPrimDetail = partesCorpoPrimDetail;
+    }
+
+    public String getPartesCorpoSecDetail()
+    {
+        return partesCorpoSecDetail;
+    }
+
+    public void setPartesCorpoSecDetail(String partesCorpoSecDetail)
+    {
+        this.partesCorpoSecDetail = partesCorpoSecDetail;
+    }
+
 }

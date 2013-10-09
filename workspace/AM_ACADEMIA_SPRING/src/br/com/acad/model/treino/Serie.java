@@ -13,65 +13,71 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_SERIE")
-public class Serie implements Serializable, GenericEntity{
+@Table(name = "ACAD_SERIE")
+public class Serie implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_SERIE")
-	private int id;
-	
-	@Column(nullable=true)
-	private int numRepeticoes;
-	
-	@Column(nullable=true)
-	private long duracaoSeg;
-	
-	private int ordem;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_SERIE")
+    private int id;
 
-	
-	
-	public Serie(){}
-	
-	@Override
-	public String toString() {
-		return  String.valueOf(numRepeticoes);
-	}
+    @Column(nullable = true)
+    private int numRepeticoes;
 
-	
-	public long getDuracaoSeg() {
-		return duracaoSeg;
-	}
+    @Column(nullable = true)
+    private long duracaoSeg;
 
-	public void setDuracaoSeg(long duracaoSeg) {
-		this.duracaoSeg = duracaoSeg;
-	}
+    private int ordem;
 
-	public int getId() {
-		return id;
-	}
+    public Serie()
+    {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Override
+    public String toString()
+    {
+        return String.valueOf(numRepeticoes);
+    }
 
-	public int getNumRepeticoes() {
-		return numRepeticoes;
-	}
+    public long getDuracaoSeg()
+    {
+        return duracaoSeg;
+    }
 
-	public void setNumRepeticoes(int numRepeticoes) {
-		this.numRepeticoes = numRepeticoes;
-	}
+    public void setDuracaoSeg(long duracaoSeg)
+    {
+        this.duracaoSeg = duracaoSeg;
+    }
 
-	public int getOrdem() {
-		return ordem;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setOrdem(int ordem) {
-		this.ordem = ordem;
-	}
-	
-	
-	
-	
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public int getNumRepeticoes()
+    {
+        return numRepeticoes;
+    }
+
+    public void setNumRepeticoes(int numRepeticoes)
+    {
+        this.numRepeticoes = numRepeticoes;
+    }
+
+    public int getOrdem()
+    {
+        return ordem;
+    }
+
+    public void setOrdem(int ordem)
+    {
+        this.ordem = ordem;
+    }
+
 }

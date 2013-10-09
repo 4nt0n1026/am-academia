@@ -16,63 +16,63 @@ import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.Treino;
 
 @SuppressWarnings("serial")
-@Component(value="mMeusTreinosBean")
-@Scope(value="view")
-public class MMeusTreinosBean implements Serializable{
+@Component(value = "mMeusTreinosBean")
+@Scope(value = "view")
+public class MMeusTreinosBean implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	@Autowired
-	private TreinoDAO treinoDAO;
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
+    @Autowired
+    private TreinoDAO treinoDAO;
 
-	private List<Treino> meusTreinos;
-	
-	private Treino treino;
-	
-	private Aluno aluno;
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	public String init(){
-		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		aluno = (Aluno) sessionMap.get("aluno");
-		meusTreinos = new ArrayList<Treino>();
-		meusTreinos = treinoDAO.buscarPorAluno(aluno);
-		return "pm:meusTreinos";
-	}
-	
-	public String onSelectTreino(){
-		
-		return "pm:diasTreino";
-	}
+    private List<Treino> meusTreinos;
 
+    private Treino treino;
 
-	
-	/************************************************************************************************************/
-	//GETs e SETs
-	/************************************************************************************************************/
+    private Aluno aluno;
 
-	public List<Treino> getMeusTreinos() {
-		return meusTreinos;
-	}
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+    public String init()
+    {
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        aluno = (Aluno) sessionMap.get("aluno");
+        meusTreinos = new ArrayList<Treino>();
+        meusTreinos = treinoDAO.buscarPorAluno(aluno);
+        return "pm:meusTreinos";
+    }
 
-	public void setMeusTreinos(List<Treino> meusTreinos) {
-		this.meusTreinos = meusTreinos;
-	}
+    public String onSelectTreino()
+    {
 
-	public Treino getTreino() {
-		return treino;
-	}
+        return "pm:diasTreino";
+    }
 
-	public void setTreino(Treino treino) {
-		this.treino = treino;
-	}
+    /************************************************************************************************************/
+    // GETs e SETs
+    /************************************************************************************************************/
 
+    public List<Treino> getMeusTreinos()
+    {
+        return meusTreinos;
+    }
 
-	
-	
-	
-	
+    public void setMeusTreinos(List<Treino> meusTreinos)
+    {
+        this.meusTreinos = meusTreinos;
+    }
+
+    public Treino getTreino()
+    {
+        return treino;
+    }
+
+    public void setTreino(Treino treino)
+    {
+        this.treino = treino;
+    }
+
 }

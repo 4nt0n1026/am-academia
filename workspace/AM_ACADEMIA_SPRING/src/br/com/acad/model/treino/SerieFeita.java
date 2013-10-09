@@ -19,78 +19,82 @@ import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_SERIE_FEITA")
-public class SerieFeita implements Serializable, GenericEntity{
+@Table(name = "ACAD_SERIE_FEITA")
+public class SerieFeita implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_SERIE_FEITA")
-	private int id;
-	
-	@Column(precision=2, nullable=false)
-	private double pesoUsado;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(nullable=false)
-	private Calendar data;
-	
-	@ManyToOne
-	@JoinColumn(name="ALUNO_ID")
-	private Aluno aluno;
-	
-	@ManyToOne
-	@JoinColumn(name="SERIE_ID")
-	private Serie serie;
-	
-	
-	public SerieFeita(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_SERIE_FEITA")
+    private int id;
 
-	public Aluno getAluno() {
-		return aluno;
-	}
+    @Column(precision = 2, nullable = false)
+    private double pesoUsado;
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private Calendar data;
 
-	public int getId() {
-		return id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ALUNO_ID")
+    private Aluno aluno;
 
+    @ManyToOne
+    @JoinColumn(name = "SERIE_ID")
+    private Serie serie;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public SerieFeita()
+    {
+    }
 
+    public Aluno getAluno()
+    {
+        return aluno;
+    }
 
-	public double getPesoUsado() {
-		return pesoUsado;
-	}
+    public void setAluno(Aluno aluno)
+    {
+        this.aluno = aluno;
+    }
 
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setPesoUsado(double pesoUsado) {
-		this.pesoUsado = pesoUsado;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
+    public double getPesoUsado()
+    {
+        return pesoUsado;
+    }
 
-	public Calendar getData() {
-		return data;
-	}
+    public void setPesoUsado(double pesoUsado)
+    {
+        this.pesoUsado = pesoUsado;
+    }
 
+    public Calendar getData()
+    {
+        return data;
+    }
 
-	public void setData(Calendar data) {
-		this.data = data;
-	}
+    public void setData(Calendar data)
+    {
+        this.data = data;
+    }
 
+    public Serie getSerie()
+    {
+        return serie;
+    }
 
-	public Serie getSerie() {
-		return serie;
-	}
+    public void setSerie(Serie serie)
+    {
+        this.serie = serie;
+    }
 
-
-	public void setSerie(Serie serie) {
-		this.serie = serie;
-	}
-	
-	
 }

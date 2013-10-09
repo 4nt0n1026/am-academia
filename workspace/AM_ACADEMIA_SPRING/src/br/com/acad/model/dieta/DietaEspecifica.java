@@ -10,25 +10,28 @@ import br.com.acad.annotation.Show;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_DIETA_ESPECIFICA")
-@PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
-public class DietaEspecifica extends Dieta {
+@Table(name = "ACAD_DIETA_ESPECIFICA")
+@PrimaryKeyJoinColumn(name = "ID_DIETA_ESPECIFICA")
+public class DietaEspecifica extends Dieta
+{
 
-	@OneToOne
-	@JoinColumn(name="SOLICITACAO_DIETA_ID", nullable=false)
-	@Show(label="Aluno", mappedName="solicitacao.aluno.nome", order=true)
-	private SolicitacaoDieta solicitacao;
-	
-	public DietaEspecifica(){}
+    @OneToOne
+    @JoinColumn(name = "SOLICITACAO_DIETA_ID", nullable = false)
+    @Show(label = "Aluno", mappedName = "solicitacao.aluno.nome", order = true)
+    private SolicitacaoDieta solicitacao;
 
-	public SolicitacaoDieta getSolicitacao() {
-		return solicitacao;
-	}
+    public DietaEspecifica()
+    {
+    }
 
-	public void setSolicitacao(SolicitacaoDieta solicitacao) {
-		this.solicitacao = solicitacao;
-	}
-	
-	
-	
+    public SolicitacaoDieta getSolicitacao()
+    {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(SolicitacaoDieta solicitacao)
+    {
+        this.solicitacao = solicitacao;
+    }
+
 }

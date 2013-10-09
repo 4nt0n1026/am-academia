@@ -22,6 +22,7 @@ import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
 import br.com.acad.logic.AnnotationsLogic;
+import br.com.acad.logic.TableLogic;
 import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
@@ -33,148 +34,152 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 import br.com.acad.model.treino.Treino;
 import br.com.acad.model.treino.TreinoFixo;
 
-
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
-@ManagedBean(name="treinoFixoBean")
-public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable {
+@Scope(value = "view")
+@ManagedBean(name = "treinoFixoBean")
+public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	
-	@Autowired
-	private TreinoFixoDAO treinoFixoDAO;
-	@Autowired
-	private DiasTreinoCatDAO diasTreinoCatDAO;
-	@Autowired
-	private DuracaoTreinoCatDAO duracaoTreinoCatDAO;
-	@Autowired
-	private FaixaEtariaCatDAO faixaEtariaCatDAO;
-	@Autowired
-	private ObjetivoCatDAO objetivoCatDAO;
-	@Autowired
-	private SexoCatDAO sexoCatDAO;
-	@Autowired
-	private ProfessorFuncDAO professorFuncDAO;
-	@Autowired
-	private DiaTreinoDAO diaTreinoDAO;
-	@Autowired
-	private ExercicioTreinoDAO exercicioTreinoDAO;
-	
-	private String textoTreino;
-	
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	
-	@PostConstruct
-	@Override
-	public void init() {
-		dao = treinoFixoDAO;
-		staticFields = AnnotationsLogic.getSearchValueFields(Treino.class, TreinoFixo.class);
-		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Treino.class, TreinoFixo.class);
-		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Treino.class, TreinoFixo.class);
-		super.init();
-	}
-	
-	/**
-	 * show form de entity
-	 */
-	@Override
-	public void showNewEntity() {
-		showEntity = true;
-		entity = new TreinoFixo();
-		entity.setProfessor(new ProfessorFunc());
-		entity.setData(Calendar.getInstance());
-		entity.setTipoTreino(TipoTreinoDieta.FIXO);
-	}
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
 
-//	/**
-//	 * inclui ou edita entity no banco
-//	 */
-//	@Override
-//	public void incluirEntity() {
-//		if(entity.getId()==0){
-//			entity.setData(Calendar.getInstance());
-//			entity.setTipoTreino(TipoTreinoDieta.FIXO);
-//		}
-//		incluirGeneric( entity!=null? entity.getId():0);
-//	}
-//
-//	/**
-//	 * deleta entity do banco
-//	 */
-//	@Override
-//	public void deletarEntity() {
-//		deletarGeneric(entity!=null?entity.getId():0);
-//	}
-	
-	@Override
-	public void showFormDetail() {
-		textoTreino = TreinoLogic.getTreinoString(entity);
-		super.showFormDetail();
-	}
-	
-	
-	/************************************************************************************************************/
-	//GET FIELDS
-	/************************************************************************************************************/
-	
-	/**
-	 * busca todos DiasSemanasCat para preencher o field
-	 */
-	public List<DiasTreinoCat> getDiasTreinoCatField() {
-		return diasTreinoCatDAO.buscarTodos();
-	}
-	
-	/**
-	 * busca todos DuracaoTreinoCat para preencher o field
-	 */
-	public List<DuracaoTreinoCat> getDuracaoTreinoCatField() {
-		return duracaoTreinoCatDAO.buscarTodos();
-	}
-	
-	/**
-	 * busca todos FaixaEtariaCat para preencher o field
-	 */
-	public List<FaixaEtariaCat> getFaixaEtariaCatField() {
-		return faixaEtariaCatDAO.buscarTodos();
-	}
-	
-	/**
-	 * busca todos ObjetivoCat para preencher o field
-	 */
-	public List<ObjetivoCat> getObjetivoCatField() {
-		return objetivoCatDAO.buscarTodos();
-	}
-	
-	/**
-	 * busca todos SexoCat para preencher o field
-	 */
-	public List<SexoCat> getSexoCatField() {
-		return sexoCatDAO.buscarTodos();
-	}
-	
-	/**
-	 * busca todos ProfessorFunc para preencher o field
-	 */
-	public List<ProfessorFunc> getProfessorFuncField() {
-		return professorFuncDAO.buscarFieldNomeProf();
-	}
-	
+    @Autowired
+    private TreinoFixoDAO treinoFixoDAO;
+    @Autowired
+    private DiasTreinoCatDAO diasTreinoCatDAO;
+    @Autowired
+    private DuracaoTreinoCatDAO duracaoTreinoCatDAO;
+    @Autowired
+    private FaixaEtariaCatDAO faixaEtariaCatDAO;
+    @Autowired
+    private ObjetivoCatDAO objetivoCatDAO;
+    @Autowired
+    private SexoCatDAO sexoCatDAO;
+    @Autowired
+    private ProfessorFuncDAO professorFuncDAO;
+    @Autowired
+    private DiaTreinoDAO diaTreinoDAO;
+    @Autowired
+    private ExercicioTreinoDAO exercicioTreinoDAO;
 
-	/************************************************************************************************************/
-	//GETS E SETS
-	/************************************************************************************************************/
-	
-	public String getTextoTreino() {
-		return textoTreino;
-	}
+    private String textoTreino;
 
-	
-	
-	
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+
+    @PostConstruct
+    @Override
+    public void init()
+    {
+        dao = treinoFixoDAO;
+
+        superClasses = new Class<?>[] { Treino.class };
+
+        super.init();
+    }
+
+    /**
+     * show form de entity
+     */
+    @Override
+    public void showNewEntity()
+    {
+        showEntity = true;
+        entity = new TreinoFixo();
+        entity.setProfessor(new ProfessorFunc());
+        entity.setData(Calendar.getInstance());
+        entity.setTipoTreino(TipoTreinoDieta.FIXO);
+    }
+
+    // /**
+    // * inclui ou edita entity no banco
+    // */
+    // @Override
+    // public void incluirEntity() {
+    // if(entity.getId()==0){
+    // entity.setData(Calendar.getInstance());
+    // entity.setTipoTreino(TipoTreinoDieta.FIXO);
+    // }
+    // incluirGeneric( entity!=null? entity.getId():0);
+    // }
+    //
+    // /**
+    // * deleta entity do banco
+    // */
+    // @Override
+    // public void deletarEntity() {
+    // deletarGeneric(entity!=null?entity.getId():0);
+    // }
+
+    @Override
+    public void showFormDetail()
+    {
+        textoTreino = TreinoLogic.getTreinoString(entity);
+        super.showFormDetail();
+    }
+
+    /************************************************************************************************************/
+    // GET FIELDS
+    /************************************************************************************************************/
+
+    /**
+     * busca todos DiasSemanasCat para preencher o field
+     */
+    public List<DiasTreinoCat> getDiasTreinoCatField()
+    {
+        return diasTreinoCatDAO.buscarTodos();
+    }
+
+    /**
+     * busca todos DuracaoTreinoCat para preencher o field
+     */
+    public List<DuracaoTreinoCat> getDuracaoTreinoCatField()
+    {
+        return duracaoTreinoCatDAO.buscarTodos();
+    }
+
+    /**
+     * busca todos FaixaEtariaCat para preencher o field
+     */
+    public List<FaixaEtariaCat> getFaixaEtariaCatField()
+    {
+        return faixaEtariaCatDAO.buscarTodos();
+    }
+
+    /**
+     * busca todos ObjetivoCat para preencher o field
+     */
+    public List<ObjetivoCat> getObjetivoCatField()
+    {
+        return objetivoCatDAO.buscarTodos();
+    }
+
+    /**
+     * busca todos SexoCat para preencher o field
+     */
+    public List<SexoCat> getSexoCatField()
+    {
+        return sexoCatDAO.buscarTodos();
+    }
+
+    /**
+     * busca todos ProfessorFunc para preencher o field
+     */
+    public List<ProfessorFunc> getProfessorFuncField()
+    {
+        return professorFuncDAO.buscarFieldNomeProf();
+    }
+
+    /************************************************************************************************************/
+    // GETS E SETS
+    /************************************************************************************************************/
+
+    public String getTextoTreino()
+    {
+        return textoTreino;
+    }
+
 }

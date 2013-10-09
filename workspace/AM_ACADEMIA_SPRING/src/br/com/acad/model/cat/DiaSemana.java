@@ -1,7 +1,8 @@
 package br.com.acad.model.cat;
 
-public enum DiaSemana {
+public enum DiaSemana
+{
 
-	DOMINGO, SEGUNDA, TERCA, QUARTA, QUINTA, SEXTA, SABADO
-	
+    DOMINGO, SEGUNDA, TERCA, QUARTA, QUINTA, SEXTA, SABADO
+
 }

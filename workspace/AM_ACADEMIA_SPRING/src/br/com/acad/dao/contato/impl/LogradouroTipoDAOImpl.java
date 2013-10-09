@@ -9,18 +9,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.contato.LogradouroTipo;
 
 @Repository
-public class LogradouroTipoDAOImpl extends DAOImpl<LogradouroTipo,Integer> implements LogradouroTipoDAO{
+public class LogradouroTipoDAOImpl extends DAOImpl<LogradouroTipo, Integer> implements LogradouroTipoDAO
+{
 
-	public LogradouroTipoDAOImpl() {
-		super();
-	}
+    public LogradouroTipoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<LogradouroTipo> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
+    @Override
+    public List<LogradouroTipo> buscarTodos()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

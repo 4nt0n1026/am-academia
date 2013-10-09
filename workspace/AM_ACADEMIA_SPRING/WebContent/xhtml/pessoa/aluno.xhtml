@@ -28,6 +28,9 @@
 				    <!-- ****************************************************************************************************** -->
 					<!-- Insert de entity -->
 					<!-- ****************************************************************************************************** -->
+					<h:form binding="#{alunoBean.form}">
+						
+					</h:form>
 					<h:form id="formEntity"  >
 						<p:focus for="formEntity" />
 						<p:fieldset id="field"  rendered="#{alunoBean.showEntity}">
@@ -37,7 +40,7 @@
 							        <p:inputText id="idNome" value="#{alunoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
 							        
 							        <h:outputLabel for="idEmail" value="Email:" />   
-							        <p:inputText id="idEmail" value="#{alunoBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
+							        <h:inputText id="idEmail" value="#{alunoBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
 							        
 							        <h:outputLabel for="idSenha" value="Senha:" rendered="#{alunoBean.entity.id == 0}" />  
 							        <p:inputText id="idSenha" value="#{alunoBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio" 
@@ -66,7 +69,7 @@
 					        	
 					        </h:panelGrid>
 						</p:fieldset> 
-			        </h:form>
+			        </h:form> 
       				
 
 					<!-- ****************************************************************************************************** -->
@@ -84,13 +87,6 @@
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{alunoBean}"></ui:param>
-						<ui:param name="columns" value="Nome, #{entity.nome}, text| 
-														Email, #{entity.email}, text|
-														Nascimento,#{entity.dataNascimento.time}, date|
-														CPF, #{entity.cpf}, text|
-														RG, #{entity.rg}, text|
-														Peso, #{entity.peso}, text|
-														Altura, #{entity.altura}, text"></ui:param>
 					</ui:include>
 					
 				</h:form>

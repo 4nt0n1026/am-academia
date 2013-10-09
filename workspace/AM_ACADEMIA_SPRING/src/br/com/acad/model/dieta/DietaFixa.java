@@ -18,67 +18,72 @@ import br.com.acad.model.cat.SexoCat;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_DIETA_FIXA")
-@PrimaryKeyJoinColumn(name="ID_DIETA_ESPECIFICA")
-public class DietaFixa extends Dieta {
+@Table(name = "ACAD_DIETA_FIXA")
+@PrimaryKeyJoinColumn(name = "ID_DIETA_ESPECIFICA")
+public class DietaFixa extends Dieta
+{
 
-	
-	@ManyToMany
-	@JoinTable(name="ACAD_DIETA_FIXA_LIMITACAO_CAT", 
-				joinColumns={@JoinColumn(name="DIETA_FIXA_ID")},
-				inverseJoinColumns={@JoinColumn(name="LIMITACAO_ID")})
-	private Set<LimitacaoDietaCat> limitacoes = new HashSet<LimitacaoDietaCat>();
-	
-	@ManyToOne
-	@JoinColumn(name="SEXO_ID", nullable=false)
-	@Show(label="Sexo", mappedName="sexoCat.nome", order=true)
-	private SexoCat sexoCat;
-	
-	@ManyToOne
-	@JoinColumn(name="FAIXA_ETARIA_ID", nullable=false)
-	@Show(label="Faixa Etaria", mappedName="faixaEtariaCat.nome", order=true)
-	private FaixaEtariaCat faixaEtariaCat;
-	
-	@ManyToOne
-	@JoinColumn(name="OBJETIVO_ID", nullable=false)
-	@Show(label="Objetivo", mappedName="objetivoCat.nome", order=true)
-	private ObjetivoCat objetivoCat;
-	
-	public DietaFixa(){}
+    @ManyToMany
+    @JoinTable(name = "ACAD_DIETA_FIXA_LIMITACAO_CAT", joinColumns = { @JoinColumn(name = "DIETA_FIXA_ID") }, inverseJoinColumns = { @JoinColumn(name = "LIMITACAO_ID") })
+    private Set<LimitacaoDietaCat> limitacoes = new HashSet<LimitacaoDietaCat>();
 
-	public Set<LimitacaoDietaCat> getLimitacoes() {
-		return limitacoes;
-	}
+    @ManyToOne
+    @JoinColumn(name = "SEXO_ID", nullable = false)
+    @Show(label = "Sexo", mappedName = "sexoCat.nome", order = true)
+    private SexoCat sexoCat;
 
-	public void setLimitacoes(Set<LimitacaoDietaCat> limitacoes) {
-		this.limitacoes = limitacoes;
-	}
+    @ManyToOne
+    @JoinColumn(name = "FAIXA_ETARIA_ID", nullable = false)
+    @Show(label = "Faixa Etaria", mappedName = "faixaEtariaCat.nome", order = true)
+    private FaixaEtariaCat faixaEtariaCat;
 
-	public SexoCat getSexoCat() {
-		return sexoCat;
-	}
+    @ManyToOne
+    @JoinColumn(name = "OBJETIVO_ID", nullable = false)
+    @Show(label = "Objetivo", mappedName = "objetivoCat.nome", order = true)
+    private ObjetivoCat objetivoCat;
 
-	public void setSexoCat(SexoCat sexoCat) {
-		this.sexoCat = sexoCat;
-	}
+    public DietaFixa()
+    {
+    }
 
-	public FaixaEtariaCat getFaixaEtariaCat() {
-		return faixaEtariaCat;
-	}
+    public Set<LimitacaoDietaCat> getLimitacoes()
+    {
+        return limitacoes;
+    }
 
-	public void setFaixaEtariaCat(FaixaEtariaCat faixaEtariaCat) {
-		this.faixaEtariaCat = faixaEtariaCat;
-	}
+    public void setLimitacoes(Set<LimitacaoDietaCat> limitacoes)
+    {
+        this.limitacoes = limitacoes;
+    }
 
-	public ObjetivoCat getObjetivoCat() {
-		return objetivoCat;
-	}
+    public SexoCat getSexoCat()
+    {
+        return sexoCat;
+    }
 
-	public void setObjetivoCat(ObjetivoCat objetivoCat) {
-		this.objetivoCat = objetivoCat;
-	}
+    public void setSexoCat(SexoCat sexoCat)
+    {
+        this.sexoCat = sexoCat;
+    }
 
-	
-	
-	
+    public FaixaEtariaCat getFaixaEtariaCat()
+    {
+        return faixaEtariaCat;
+    }
+
+    public void setFaixaEtariaCat(FaixaEtariaCat faixaEtariaCat)
+    {
+        this.faixaEtariaCat = faixaEtariaCat;
+    }
+
+    public ObjetivoCat getObjetivoCat()
+    {
+        return objetivoCat;
+    }
+
+    public void setObjetivoCat(ObjetivoCat objetivoCat)
+    {
+        this.objetivoCat = objetivoCat;
+    }
+
 }

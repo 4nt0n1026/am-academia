@@ -26,127 +26,145 @@ import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
-
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="ACAD_DIETA")
-public class Dieta implements Serializable, GenericEntity{
+@Table(name = "ACAD_DIETA")
+public class Dieta implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_DIETA")
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_DIETA")
+    private int id;
 
-	@Temporal(TemporalType.DATE)
-	@Show(label="Data", order=true)
-	private Calendar data;
-	
-	@Column(length=255, nullable=false)
-	@Show(label="Nome", order=true)
-	private String nome;
-	
-	
-	@Column(length=500, nullable=true)
-	private String descricao;
-	
-	@Column(length=2, nullable=false)
-	private int tempo;
-	
-	@Column(nullable=false)
-	private TipoTreinoDieta tipoDieta;
-	
-	@ManyToOne
-	@JoinColumn(name="PROFESSOR_ID", nullable=true)
-	@Show(label="Professor", mappedName="professor.nome", order=true)
-	private ProfessorFunc professor;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="DIETA_ID", nullable=true)
-	private Set<DiaDieta> diasDieta = new HashSet<DiaDieta>();
-	
-	//Metodos
-	public boolean addDiaDieta(DiaDieta dia){
-		return diasDieta.add(dia);
-	}
-	
-	public boolean removeDiaDieta(DiaDieta dia){
-		return diasDieta.remove(dia);
-	}
-	
-	/**
-	 * Apaga lista de DiaDieta
-	 */
-	public void resetDiasDieta(){
-		this.diasDieta = new HashSet<DiaDieta>();
-	}
-	
-	public Dieta(){}
+    @Temporal(TemporalType.DATE)
+    @Show(label = "Data", order = true)
+    private Calendar data;
 
-	public int getId() {
-		return id;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome", order = true)
+    private String nome;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Column(length = 500, nullable = true)
+    private String descricao;
 
-	public String getNome() {
-		return nome;
-	}
+    @Column(length = 2, nullable = false)
+    private int tempo;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    @Column(nullable = false)
+    private TipoTreinoDieta tipoDieta;
 
-	public Calendar getData() {
-		return data;
-	}
+    @ManyToOne
+    @JoinColumn(name = "PROFESSOR_ID", nullable = true)
+    @Show(label = "Professor", mappedName = "professor.nome", order = true)
+    private ProfessorFunc professor;
 
-	public void setData(Calendar data) {
-		this.data = data;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "DIETA_ID", nullable = true)
+    private Set<DiaDieta> diasDieta = new HashSet<DiaDieta>();
 
-	public ProfessorFunc getProfessor() {
-		return professor;
-	}
+    // Metodos
+    public boolean addDiaDieta(DiaDieta dia)
+    {
+        return diasDieta.add(dia);
+    }
 
-	public void setProfessor(ProfessorFunc professor) {
-		this.professor = professor;
-	}
+    public boolean removeDiaDieta(DiaDieta dia)
+    {
+        return diasDieta.remove(dia);
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    /**
+     * Apaga lista de DiaDieta
+     */
+    public void resetDiasDieta()
+    {
+        this.diasDieta = new HashSet<DiaDieta>();
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public Dieta()
+    {
+    }
 
-	public int getTempo() {
-		return tempo;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setTempo(int tempo) {
-		this.tempo = tempo;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-	public TipoTreinoDieta getTipoDieta() {
-		return tipoDieta;
-	}
+    public String getNome()
+    {
+        return nome;
+    }
 
-	public void setTipoDieta(TipoTreinoDieta tipoDieta) {
-		this.tipoDieta = tipoDieta;
-	}
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
 
-	public Set<DiaDieta> getDiasDieta() {
-		return diasDieta;
-	}
+    public Calendar getData()
+    {
+        return data;
+    }
 
-	public void setDiasDieta(Set<DiaDieta> diasDieta) {
-		this.diasDieta = diasDieta;
-	}
-	
-	
-	
+    public void setData(Calendar data)
+    {
+        this.data = data;
+    }
+
+    public ProfessorFunc getProfessor()
+    {
+        return professor;
+    }
+
+    public void setProfessor(ProfessorFunc professor)
+    {
+        this.professor = professor;
+    }
+
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public int getTempo()
+    {
+        return tempo;
+    }
+
+    public void setTempo(int tempo)
+    {
+        this.tempo = tempo;
+    }
+
+    public TipoTreinoDieta getTipoDieta()
+    {
+        return tipoDieta;
+    }
+
+    public void setTipoDieta(TipoTreinoDieta tipoDieta)
+    {
+        this.tipoDieta = tipoDieta;
+    }
+
+    public Set<DiaDieta> getDiasDieta()
+    {
+        return diasDieta;
+    }
+
+    public void setDiasDieta(Set<DiaDieta> diasDieta)
+    {
+        this.diasDieta = diasDieta;
+    }
+
 }

@@ -14,62 +14,64 @@ import br.com.acad.logic.AulaLogic;
 import br.com.acad.model.horario.Aula;
 
 @SuppressWarnings("serial")
-@Component(value="mAulasBean")
-@Scope(value="view")
-public class MAulasBean implements Serializable{
-	
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	@Autowired
-	private AulaDAO aulaDAO;
-	@Autowired
-	private HorarioAulaDAO horarioAulaDAO;
-	
-	private Aula aula; 
-	private String horarios;
-	
-	private List<Aula> aulas = new ArrayList<Aula>();
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	public String init(){
-		aulas = aulaDAO.buscarTodos();
-		return "pm:aulas";
-	}
-	
-	/**
-	 * Ao selecionar uma noticia
-	 */
-	public String selectAula(){
-		horarios = AulaLogic.getHorarios(aula, horarioAulaDAO);
-		return "pm:aulaDetalhe?lazyLoad=true";
-	}
+@Component(value = "mAulasBean")
+@Scope(value = "view")
+public class MAulasBean implements Serializable
+{
 
-	
-	/************************************************************************************************************/
-	//GETs e SETs
-	/************************************************************************************************************/
-	
-	public Aula getAula() {
-		return aula;
-	}
-	
-	public void setAula(Aula aula) {
-		this.aula = aula;
-	}
-	
-	public List<Aula> getAulas() {
-		return aulas;
-	}
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
+    @Autowired
+    private AulaDAO aulaDAO;
+    @Autowired
+    private HorarioAulaDAO horarioAulaDAO;
 
-	public String getHorarios() {
-		return horarios;
-	}
-	
-	
-	
-	
-	
+    private Aula aula;
+    private String horarios;
+
+    private List<Aula> aulas = new ArrayList<Aula>();
+
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+    public String init()
+    {
+        aulas = aulaDAO.buscarTodos();
+        return "pm:aulas";
+    }
+
+    /**
+     * Ao selecionar uma noticia
+     */
+    public String selectAula()
+    {
+        horarios = AulaLogic.getHorarios(aula, horarioAulaDAO);
+        return "pm:aulaDetalhe?lazyLoad=true";
+    }
+
+    /************************************************************************************************************/
+    // GETs e SETs
+    /************************************************************************************************************/
+
+    public Aula getAula()
+    {
+        return aula;
+    }
+
+    public void setAula(Aula aula)
+    {
+        this.aula = aula;
+    }
+
+    public List<Aula> getAulas()
+    {
+        return aulas;
+    }
+
+    public String getHorarios()
+    {
+        return horarios;
+    }
+
 }

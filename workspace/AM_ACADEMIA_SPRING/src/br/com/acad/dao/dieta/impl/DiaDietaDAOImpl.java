@@ -11,17 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.dieta.DiaDieta;
 
 @Repository
-public class DiaDietaDAOImpl extends DAOImpl<DiaDieta,Integer> implements DiaDietaDAO{
+public class DiaDietaDAOImpl extends DAOImpl<DiaDieta, Integer> implements DiaDietaDAO
+{
 
-	public DiaDietaDAOImpl() {
-		super();
-	}
+    public DiaDietaDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<DiaDieta> buscarTodos() {
-		TypedQuery<DiaDieta> q = em.createQuery("from DiaDieta", DiaDieta.class);
-		return q.getResultList();
-	}
-
+    @Override
+    public List<DiaDieta> buscarTodos()
+    {
+        TypedQuery<DiaDieta> q = em.createQuery("from DiaDieta", DiaDieta.class);
+        return q.getResultList();
+    }
 
 }

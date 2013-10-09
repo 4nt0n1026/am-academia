@@ -16,128 +16,149 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_ALIMENTO")
-public class Alimento implements Serializable, GenericEntity {
+@Table(name = "ACAD_ALIMENTO")
+public class Alimento implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_ALIMENTO")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	@Show(label="Nome", order=true)
-	private String nome;
-	
-	@Column(length=500, nullable=true)
-	private String descricao;
-	
-	@Column(precision=2, nullable=false)
-	@Show(label="Valor Energetico", order=true)
-	private double valorEnergetico;
-	
-	@Column(precision=2, nullable=false)
-	@Show(label="Qtd Proteina", order=true)
-	private double qtdProteina;
-	
-	@Column(precision=2, nullable=false)
-	@Show(label="Qtd Carboidrato", order=true)
-	private double qtdCarboidrato;
-	
-	@Column(precision=2, nullable=false)
-	@Show(label="Qtd Gordura", order=true)
-	private double qtdGordura;
-	
-	@Column(precision=2, nullable=false)
-	private double unidade;
-	
-	@ManyToOne
-	@JoinColumn(name="UNIDADE_MEDIDA_ID", nullable=false)
-	private UnidadeMedida unidadeMedida;
-	
-	public Alimento(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_ALIMENTO")
+    private int id;
 
-	public Alimento(String nome, double valorEnergetico, double proteina, double gordura, double carboidrato, double unidade, UnidadeMedida unidadeMedida) {
-		this.nome = nome;
-		this.valorEnergetico = valorEnergetico;
-		this.qtdProteina = proteina;
-		this.qtdGordura = gordura;
-		this.qtdCarboidrato = carboidrato;
-		this.unidade = unidade;
-		this.unidadeMedida = unidadeMedida;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome", order = true)
+    private String nome;
 
-	public int getId() {
-		return id;
-	}
+    @Column(length = 500, nullable = true)
+    private String descricao;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Column(precision = 2, nullable = false)
+    @Show(label = "Valor Energetico", order = true)
+    private double valorEnergetico;
 
-	public String getNome() {
-		return nome;
-	}
+    @Column(precision = 2, nullable = false)
+    @Show(label = "Qtd Proteina", order = true)
+    private double qtdProteina;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    @Column(precision = 2, nullable = false)
+    @Show(label = "Qtd Carboidrato", order = true)
+    private double qtdCarboidrato;
 
-	public String getDescricao() {
-		return descricao;
-	}
+    @Column(precision = 2, nullable = false)
+    @Show(label = "Qtd Gordura", order = true)
+    private double qtdGordura;
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    @Column(precision = 2, nullable = false)
+    private double unidade;
 
-	public double getValorEnergetico() {
-		return valorEnergetico;
-	}
+    @ManyToOne
+    @JoinColumn(name = "UNIDADE_MEDIDA_ID", nullable = false)
+    private UnidadeMedida unidadeMedida;
 
-	public void setValorEnergetico(double valorEnergetico) {
-		this.valorEnergetico = valorEnergetico;
-	}
+    public Alimento()
+    {
+    }
 
-	public double getQtdProteina() {
-		return qtdProteina;
-	}
+    public Alimento(String nome, double valorEnergetico, double proteina, double gordura, double carboidrato, double unidade,
+            UnidadeMedida unidadeMedida)
+    {
+        this.nome = nome;
+        this.valorEnergetico = valorEnergetico;
+        this.qtdProteina = proteina;
+        this.qtdGordura = gordura;
+        this.qtdCarboidrato = carboidrato;
+        this.unidade = unidade;
+        this.unidadeMedida = unidadeMedida;
+    }
 
-	public void setQtdProteina(double qtdProteina) {
-		this.qtdProteina = qtdProteina;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public double getQtdGordura() {
-		return qtdGordura;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-	public void setQtdGordura(double qtdGordura) {
-		this.qtdGordura = qtdGordura;
-	}
+    public String getNome()
+    {
+        return nome;
+    }
 
-	public double getQtdCarboidrato() {
-		return qtdCarboidrato;
-	}
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
 
-	public void setQtdCarboidrato(double qtdCarboidrato) {
-		this.qtdCarboidrato = qtdCarboidrato;
-	}
+    public String getDescricao()
+    {
+        return descricao;
+    }
 
-	public double getUnidade() {
-		return unidade;
-	}
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
 
-	public void setUnidade(double unidade) {
-		this.unidade = unidade;
-	}
+    public double getValorEnergetico()
+    {
+        return valorEnergetico;
+    }
 
-	public UnidadeMedida getUnidadeMedida() {
-		return unidadeMedida;
-	}
+    public void setValorEnergetico(double valorEnergetico)
+    {
+        this.valorEnergetico = valorEnergetico;
+    }
 
-	public void setUnidadeMedida(UnidadeMedida unidadeMedida) {
-		this.unidadeMedida = unidadeMedida;
-	}
-	
-	
-	
+    public double getQtdProteina()
+    {
+        return qtdProteina;
+    }
+
+    public void setQtdProteina(double qtdProteina)
+    {
+        this.qtdProteina = qtdProteina;
+    }
+
+    public double getQtdGordura()
+    {
+        return qtdGordura;
+    }
+
+    public void setQtdGordura(double qtdGordura)
+    {
+        this.qtdGordura = qtdGordura;
+    }
+
+    public double getQtdCarboidrato()
+    {
+        return qtdCarboidrato;
+    }
+
+    public void setQtdCarboidrato(double qtdCarboidrato)
+    {
+        this.qtdCarboidrato = qtdCarboidrato;
+    }
+
+    public double getUnidade()
+    {
+        return unidade;
+    }
+
+    public void setUnidade(double unidade)
+    {
+        this.unidade = unidade;
+    }
+
+    public UnidadeMedida getUnidadeMedida()
+    {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(UnidadeMedida unidadeMedida)
+    {
+        this.unidadeMedida = unidadeMedida;
+    }
+
 }

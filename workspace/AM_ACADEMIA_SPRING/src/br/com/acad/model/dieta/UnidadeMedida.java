@@ -14,65 +14,75 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_UNIDADE_MEDIDA")
-public class UnidadeMedida implements Serializable, GenericEntity{
-	
-	public static final String[] STATIC_FIELDS = {"nome", "sigla"};
+@Table(name = "ACAD_UNIDADE_MEDIDA")
+public class UnidadeMedida implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_UNIDADE_MEDIDA")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	@Show(label = "Nome")
-	private String nome;
-	
-	@Column(length=20, nullable=false)
-	@Show(label = "Nome")
-	private String sigla;
-	
-	public UnidadeMedida(){}
+    public static final String[] STATIC_FIELDS = { "nome", "sigla" };
 
-	public UnidadeMedida(Integer id, String nome, String sigla) {
-		this.id = id;
-		this.nome = nome;
-		this.sigla = sigla;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_UNIDADE_MEDIDA")
+    private int id;
 
-	public UnidadeMedida(String nome, String sigla) {
-		this.nome = nome;
-		this.sigla = sigla;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome")
+    private String nome;
 
-	public UnidadeMedida(int id) {
-		this.id = id;
-	}
+    @Column(length = 20, nullable = false)
+    @Show(label = "Nome")
+    private String sigla;
 
-	public int getId() {
-		return id;
-	}
+    public UnidadeMedida()
+    {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public UnidadeMedida(Integer id, String nome, String sigla)
+    {
+        this.id = id;
+        this.nome = nome;
+        this.sigla = sigla;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public UnidadeMedida(String nome, String sigla)
+    {
+        this.nome = nome;
+        this.sigla = sigla;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public UnidadeMedida(int id)
+    {
+        this.id = id;
+    }
 
-	public String getSigla() {
-		return sigla;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
-	}
-	
-	
-	
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public String getSigla()
+    {
+        return sigla;
+    }
+
+    public void setSigla(String sigla)
+    {
+        this.sigla = sigla;
+    }
+
 }

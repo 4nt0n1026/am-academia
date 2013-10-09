@@ -14,72 +14,81 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_FAIXA_ETARIA_CAT")
-public class FaixaEtariaCat implements Serializable, GenericEntity{
-	
+@Table(name = "ACAD_FAIXA_ETARIA_CAT")
+public class FaixaEtariaCat implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_FAIXA_ETARIA_CAT")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	@Show(label = "Nome")
-	private String nome;
-	
-	@Column(length=2, nullable=false)
-	private int idadeIni;
-	
-	@Column(length=2, nullable=false)
-	private int idadeFim;
-	
-	public FaixaEtariaCat(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_FAIXA_ETARIA_CAT")
+    private int id;
 
-	public FaixaEtariaCat(int id, String nome, int idadeIni, int idadeFim) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.idadeIni = idadeIni;
-		this.idadeFim = idadeFim;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome")
+    private String nome;
 
-	
-	public FaixaEtariaCat(String nome) {
-		this.nome= nome;
-	}
+    @Column(length = 2, nullable = false)
+    private int idadeIni;
 
-	public int getIdadeIni() {
-		return idadeIni;
-	}
+    @Column(length = 2, nullable = false)
+    private int idadeFim;
 
-	public void setIdadeIni(int idadeIni) {
-		this.idadeIni = idadeIni;
-	}
+    public FaixaEtariaCat()
+    {
+    }
 
-	public int getIdadeFim() {
-		return idadeFim;
-	}
+    public FaixaEtariaCat(int id, String nome, int idadeIni, int idadeFim)
+    {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.idadeIni = idadeIni;
+        this.idadeFim = idadeFim;
+    }
 
-	public void setIdadeFim(int idadeFim) {
-		this.idadeFim = idadeFim;
-	}
+    public FaixaEtariaCat(String nome)
+    {
+        this.nome = nome;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getIdadeIni()
+    {
+        return idadeIni;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setIdadeIni(int idadeIni)
+    {
+        this.idadeIni = idadeIni;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public int getIdadeFim()
+    {
+        return idadeFim;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
-	
+    public void setIdadeFim(int idadeFim)
+    {
+        this.idadeFim = idadeFim;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
 }

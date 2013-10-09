@@ -115,16 +115,8 @@
 				   	<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{treinoFixoBean}"></ui:param>
-						<ui:param name="columns" value="Data, #{entity.data.time}, date|
-														Nome, #{entity.nome}, text|
-														Objetivo, #{entity.objetivoCat.nome}, text|
-														Duração, #{entity.duracaoTreinoCat.nome}, text|
-														Dias na Semana, #{entity.diasTreinoCat.nome}, text|
-														Faixa Etaria, #{entity.faixaEtariaCat.nome}, text|
-														Sexo, #{entity.sexoCat.nome}, text}
-														Professor, #{entity.professor.nome}, text"></ui:param>
 					</ui:include>
 					
 				</h:form>

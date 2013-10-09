@@ -11,17 +11,19 @@ import br.com.acad.dao.horario.interf.AulaDAO;
 import br.com.acad.model.horario.Aula;
 
 @Repository
-public class AulaDAOImpl extends DAOImpl<Aula,Integer> implements AulaDAO{
+public class AulaDAOImpl extends DAOImpl<Aula, Integer> implements AulaDAO
+{
 
-	public AulaDAOImpl() {
-		super();
-	}
+    public AulaDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Aula> buscarTodos() {
-		TypedQuery<Aula> q = em.createQuery("from Aula", Aula.class);
-		return q.getResultList();
-	}
-
+    @Override
+    public List<Aula> buscarTodos()
+    {
+        TypedQuery<Aula> q = em.createQuery("from Aula", Aula.class);
+        return q.getResultList();
+    }
 
 }

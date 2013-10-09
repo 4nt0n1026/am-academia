@@ -11,17 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.dieta.Alimento;
 
 @Repository
-public class AlimentoDAOImpl extends DAOImpl<Alimento,Integer> implements AlimentoDAO{
+public class AlimentoDAOImpl extends DAOImpl<Alimento, Integer> implements AlimentoDAO
+{
 
-	public AlimentoDAOImpl() {
-		super();
-	}
+    public AlimentoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Alimento> buscarTodos() {
-		TypedQuery<Alimento> q = em.createQuery("from Alimento", Alimento.class);
-		return q.getResultList();
-	}
-
+    @Override
+    public List<Alimento> buscarTodos()
+    {
+        TypedQuery<Alimento> q = em.createQuery("from Alimento", Alimento.class);
+        return q.getResultList();
+    }
 
 }

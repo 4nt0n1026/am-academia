@@ -6,10 +6,9 @@ import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.model.horario.Aula;
 import br.com.acad.model.horario.HorarioAula;
 
-public interface HorarioAulaDAO extends DAO<HorarioAula,Integer>{
+public interface HorarioAulaDAO extends DAO<HorarioAula, Integer>
+{
 
-	public List<HorarioAula> buscarPorAula(Aula aula);
-	
-	
-	
+    public List<HorarioAula> buscarPorAula(Aula aula);
+
 }

@@ -20,105 +20,116 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_DIA_TREINO")
-public class DiaTreino implements Serializable, GenericEntity{
+@Table(name = "ACAD_DIA_TREINO")
+public class DiaTreino implements Serializable, GenericEntity
+{
 
-	
-	//Atributos
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_DIA_TREINO")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	private String nome;
-	
-	@Column(length=500, nullable=true)
-	private String descricao;
-	
-	private int ordem;
-	
-	@OneToMany( cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="DIA_TREINO_ID")
-	private List<ExercicioTreino> exerciciosTreino = new ArrayList<ExercicioTreino>();
-	
-	
-	//Metodos
-	public boolean addExercicioTreino(ExercicioTreino exercicioTreino){
-		return exerciciosTreino.add(exercicioTreino);
-	}
+    // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_DIA_TREINO")
+    private int id;
 
-	public boolean removeExercicioTreino(ExercicioTreino exercicioTreino){
-		return exerciciosTreino.remove(exercicioTreino);
-	}
-	
-	public void resetExerciciosTreino(){
-		this.exerciciosTreino = new ArrayList<ExercicioTreino>();
-	}
-	
-	public List<ExercicioTreino> getExerciciosTreino(ExercicioTreinoDAO exercicioTreinoDAO) {
-		return exercicioTreinoDAO.buscarPorDiaTreino(this);
-	}
-	
-	//Contrutores
-	public DiaTreino(){}
-	
-	public DiaTreino(String nome) {
-		super();
-		this.nome = nome;
-	}
+    @Column(length = 255, nullable = false)
+    private String nome;
 
-	public DiaTreino(int ordem, String nome) {
-		this.ordem = ordem;
-		this.nome = nome;
-	}
+    @Column(length = 500, nullable = true)
+    private String descricao;
 
-	//Gets e Sets
-	
+    private int ordem;
 
-	public int getId() {
-		return id;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "DIA_TREINO_ID")
+    private List<ExercicioTreino> exerciciosTreino = new ArrayList<ExercicioTreino>();
 
-	public List<ExercicioTreino> getExerciciosTreino() {
-		return this.exerciciosTreino;
-	}
+    // Metodos
+    public boolean addExercicioTreino(ExercicioTreino exercicioTreino)
+    {
+        return exerciciosTreino.add(exercicioTreino);
+    }
 
-	public void setExerciciosTreino(List<ExercicioTreino> exerciciosTreino) {
-		this.exerciciosTreino = exerciciosTreino;
-	}
+    public boolean removeExercicioTreino(ExercicioTreino exercicioTreino)
+    {
+        return exerciciosTreino.remove(exercicioTreino);
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void resetExerciciosTreino()
+    {
+        this.exerciciosTreino = new ArrayList<ExercicioTreino>();
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public List<ExercicioTreino> getExerciciosTreino(ExercicioTreinoDAO exercicioTreinoDAO)
+    {
+        return exercicioTreinoDAO.buscarPorDiaTreino(this);
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    // Contrutores
+    public DiaTreino()
+    {
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public DiaTreino(String nome)
+    {
+        super();
+        this.nome = nome;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public DiaTreino(int ordem, String nome)
+    {
+        this.ordem = ordem;
+        this.nome = nome;
+    }
 
-	public int getOrdem() {
-		return ordem;
-	}
+    // Gets e Sets
 
-	public void setOrdem(int ordem) {
-		this.ordem = ordem;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	
-	
+    public List<ExercicioTreino> getExerciciosTreino()
+    {
+        return this.exerciciosTreino;
+    }
 
-	
-	
+    public void setExerciciosTreino(List<ExercicioTreino> exerciciosTreino)
+    {
+        this.exerciciosTreino = exerciciosTreino;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public int getOrdem()
+    {
+        return ordem;
+    }
+
+    public void setOrdem(int ordem)
+    {
+        this.ordem = ordem;
+    }
+
 }

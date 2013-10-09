@@ -12,63 +12,63 @@ import br.com.acad.bean.Bean;
 import br.com.acad.dao.avisos.interf.NoticiaCatDAO;
 import br.com.acad.model.avisos.NoticiaCat;
 
-
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
-public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable {
+@Scope(value = "view")
+public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	
-	@Autowired
-	private NoticiaCatDAO noticiaCatDAO;
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	
-	@PostConstruct
-	@Override
-	public void init() {
-		dao = noticiaCatDAO;
-		super.init();
-	}
-	
-	/**
-	 * show form de entity
-	 */
-	@Override
-	public void showNewEntity() {
-		showEntity = true;
-		entity = new NoticiaCat();
-	}
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
 
-//	/**
-//	 * inclui ou edita entity no banco
-//	 */
-//	@Override
-//	public void incluirEntity() {
-//		incluirGeneric( entity!=null? entity.getId():0);
-//	}
-//
-//	/**
-//	 * deleta entity do banco
-//	 */
-//	@Override
-//	public void deletarEntity() {
-//		deletarGeneric(entity!=null?entity.getId():0);
-//	}
-	
-	/************************************************************************************************************/
-	//GET FIELDS
-	/************************************************************************************************************/
-	
+    @Autowired
+    private NoticiaCatDAO noticiaCatDAO;
 
-	/************************************************************************************************************/
-	//GETS E SETS
-	/************************************************************************************************************/
-	
-	
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+
+    @PostConstruct
+    @Override
+    public void init()
+    {
+        dao = noticiaCatDAO;
+        super.init();
+    }
+
+    /**
+     * show form de entity
+     */
+    @Override
+    public void showNewEntity()
+    {
+        showEntity = true;
+        entity = new NoticiaCat();
+    }
+
+    // /**
+    // * inclui ou edita entity no banco
+    // */
+    // @Override
+    // public void incluirEntity() {
+    // incluirGeneric( entity!=null? entity.getId():0);
+    // }
+    //
+    // /**
+    // * deleta entity do banco
+    // */
+    // @Override
+    // public void deletarEntity() {
+    // deletarGeneric(entity!=null?entity.getId():0);
+    // }
+
+    /************************************************************************************************************/
+    // GET FIELDS
+    /************************************************************************************************************/
+
+    /************************************************************************************************************/
+    // GETS E SETS
+    /************************************************************************************************************/
+
 }

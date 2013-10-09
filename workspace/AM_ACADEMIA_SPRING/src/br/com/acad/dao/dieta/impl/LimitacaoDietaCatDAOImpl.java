@@ -11,17 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.dieta.LimitacaoDietaCat;
 
 @Repository
-public class LimitacaoDietaCatDAOImpl extends DAOImpl<LimitacaoDietaCat,Integer> implements LimitacaoDietaCatDAO{
+public class LimitacaoDietaCatDAOImpl extends DAOImpl<LimitacaoDietaCat, Integer> implements LimitacaoDietaCatDAO
+{
 
-	public LimitacaoDietaCatDAOImpl() {
-		super();
-	}
+    public LimitacaoDietaCatDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<LimitacaoDietaCat> buscarTodos() {
-		TypedQuery<LimitacaoDietaCat> q = em.createQuery("from LimitacaoDietaCat", LimitacaoDietaCat.class);
-		return q.getResultList();
-	}
-
+    @Override
+    public List<LimitacaoDietaCat> buscarTodos()
+    {
+        TypedQuery<LimitacaoDietaCat> q = em.createQuery("from LimitacaoDietaCat", LimitacaoDietaCat.class);
+        return q.getResultList();
+    }
 
 }

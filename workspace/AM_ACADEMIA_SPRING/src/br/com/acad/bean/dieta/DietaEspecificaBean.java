@@ -18,72 +18,73 @@ import br.com.acad.model.dieta.Dieta;
 import br.com.acad.model.dieta.DietaEspecifica;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
-
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
-public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serializable {
+@Scope(value = "view")
+public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	
-	@Autowired
-	private DietaEspecificaDAO dietaEspecificaDAO;
-	@Autowired
-	private ProfessorFuncDAO professorFuncDAO;
-	
-	public String textoDieta;
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	
-	@PostConstruct
-	@Override
-	public void init() {
-		dao = dietaEspecificaDAO;
-		staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaEspecifica.class);
-		staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Dieta.class, DietaEspecifica.class);
-		staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Dieta.class, DietaEspecifica.class);
-		atualizar();
-	}
-	
-	/**
-	 * show form de entity
-	 * Não é possivel incluir um dieta especifico. Precisa ser por meio de resposta a uma solicitação. Metodo nao implementado
-	 */
-	@Override
-	public void showNewEntity() {}
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
 
-	
-	@Override
-	public void showFormDetail() {
-		textoDieta = DietaLogic.getDietaString(entity);
-		super.showFormDetail();
-	}
+    @Autowired
+    private DietaEspecificaDAO dietaEspecificaDAO;
+    @Autowired
+    private ProfessorFuncDAO professorFuncDAO;
 
-	/************************************************************************************************************/
-	//GET FIELDS
-	/************************************************************************************************************/
-	
-	/**
-	 * busca todos ProfessorFunc para preencher o field
-	 */
-	public List<ProfessorFunc> getProfessorFuncField() {
-		return professorFuncDAO.buscarFieldNomeProf();
-	}
-	
-	
+    public String textoDieta;
 
-	/************************************************************************************************************/
-	//GETS E SETS
-	/************************************************************************************************************/
-	
-	public String getTextoDieta() {
-		return textoDieta;
-	}
-	
-	
-	
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+
+    @PostConstruct
+    @Override
+    public void init()
+    {
+        dao = dietaEspecificaDAO;
+        staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaEspecifica.class);
+        staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Dieta.class, DietaEspecifica.class);
+        staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Dieta.class, DietaEspecifica.class);
+        atualizar();
+    }
+
+    /**
+     * show form de entity Não é possivel incluir um dieta especifico. Precisa ser por meio de resposta a uma
+     * solicitação. Metodo nao implementado
+     */
+    @Override
+    public void showNewEntity()
+    {
+    }
+
+    @Override
+    public void showFormDetail()
+    {
+        textoDieta = DietaLogic.getDietaString(entity);
+        super.showFormDetail();
+    }
+
+    /************************************************************************************************************/
+    // GET FIELDS
+    /************************************************************************************************************/
+
+    /**
+     * busca todos ProfessorFunc para preencher o field
+     */
+    public List<ProfessorFunc> getProfessorFuncField()
+    {
+        return professorFuncDAO.buscarFieldNomeProf();
+    }
+
+    /************************************************************************************************************/
+    // GETS E SETS
+    /************************************************************************************************************/
+
+    public String getTextoDieta()
+    {
+        return textoDieta;
+    }
+
 }

@@ -21,81 +21,91 @@ import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_SOLICITACAO_DIETA")
-@View(labels = { "Todos Registros", "Respondidas", "Não Respondidas" }, queries = { "", "respondido=true", "respondido=false"})
-public class SolicitacaoDieta implements Serializable, GenericEntity{
+@Table(name = "ACAD_SOLICITACAO_DIETA")
+@View(labels = { "Todos Registros", "Respondidas", "Não Respondidas" }, queries = { "", "respondido=true", "respondido=false" })
+public class SolicitacaoDieta implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_SOLICITACAO_DIETA")
-	private int id;
-	
-	@Column(length=500, nullable=false)
-	private String descricao;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="DATA_SOLICITACAO", nullable=false)
-	@Show(label="Data", order=true)
-	private Calendar dataSolicitacao;
-	
-	@Column(nullable=false)
-	@Show(label="Respondido", order=true)
-	private boolean respondido;
-	
-	@ManyToOne
-	@JoinColumn(name="ALUNO_ID", nullable=false)
-	@Show(label="Aluno", mappedName="aluno.nome", order=true)
-	private Aluno aluno;
-	
-	public SolicitacaoDieta(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_SOLICITACAO_DIETA")
+    private int id;
 
-	public SolicitacaoDieta(Integer id, Calendar data) {
-		this.id = id;
-		this.dataSolicitacao = data;
-	}
+    @Column(length = 500, nullable = false)
+    private String descricao;
 
-	public int getId() {
-		return id;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DATA_SOLICITACAO", nullable = false)
+    @Show(label = "Data", order = true)
+    private Calendar dataSolicitacao;
 
-	public Aluno getAluno() {
-		return aluno;
-	}
+    @Column(nullable = false)
+    @Show(label = "Respondido", order = true)
+    private boolean respondido;
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ALUNO_ID", nullable = false)
+    @Show(label = "Aluno", mappedName = "aluno.nome", order = true)
+    private Aluno aluno;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public SolicitacaoDieta()
+    {
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public SolicitacaoDieta(Integer id, Calendar data)
+    {
+        this.id = id;
+        this.dataSolicitacao = data;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public Calendar getDataSolicitacao() {
-		return dataSolicitacao;
-	}
+    public Aluno getAluno()
+    {
+        return aluno;
+    }
 
-	public void setDataSolicitacao(Calendar dataSolicitacao) {
-		this.dataSolicitacao = dataSolicitacao;
-	}
+    public void setAluno(Aluno aluno)
+    {
+        this.aluno = aluno;
+    }
 
-	public boolean isRespondido() {
-		return respondido;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-	public void setRespondido(boolean respondido) {
-		this.respondido = respondido;
-	}
-	
-	
-	
-	
-	
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public Calendar getDataSolicitacao()
+    {
+        return dataSolicitacao;
+    }
+
+    public void setDataSolicitacao(Calendar dataSolicitacao)
+    {
+        this.dataSolicitacao = dataSolicitacao;
+    }
+
+    public boolean isRespondido()
+    {
+        return respondido;
+    }
+
+    public void setRespondido(boolean respondido)
+    {
+        this.respondido = respondido;
+    }
+
 }

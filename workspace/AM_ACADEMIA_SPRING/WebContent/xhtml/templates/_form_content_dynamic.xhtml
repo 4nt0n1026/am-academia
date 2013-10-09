@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+
+<ui:composition>
+	<h:form id="formEntity">
+		<p:focus for="formEntity" />
+		<p:fieldset id="field" rendered="#{bean.showEntity}">
+			<h:panelGrid columns="10">
+
+				<h:outputLabel for="idNome" value="Nome" />
+				<p:inputText id="idNome" value="#{alunoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+
+				<h:outputLabel for="idEmail" value="Email:" />
+				<p:inputText id="idEmail" value="#{alunoBean.entity.email}" required="true" requiredMessage="Email obrigatoria" />
+
+				<h:outputLabel for="idSenha" value="Senha:" rendered="#{alunoBean.entity.id == 0}" />
+				<p:inputText id="idSenha" value="#{alunoBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio"
+					rendered="#{alunoBean.entity.id == 0}" />
+
+				<h:outputLabel for="idNasc" value="Nascimento:" />
+				<p:inputMask id="idNasc" value="#{alunoBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
+					requiredMessage="Data de Nascimento Obrigatoria">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputMask>
+
+				<h:outputLabel for="idCpf" value="CPF:" />
+				<p:inputMask id="idCpf" value="#{alunoBean.entity.cpf}" mask="999.999.999-99" />
+
+				<h:outputLabel for="idRg" value="RG:" />
+				<p:inputText id="idRg" value="#{alunoBean.entity.rg}" />
+
+				<h:outputLabel for="idPeso" value="Peso" />
+				<p:inputText id="idPeso" value="#{alunoBean.entity.peso}" />
+
+				<h:outputLabel for="idAltura" value="Altura:" />
+				<p:inputText id="idAltura" value="#{alunoBean.entity.altura}" />
+
+				<p:commandButton icon="ui-icon ui-icon-check" action="#{alunoBean.incluirEntity}" ajax="true" update=":tabView1" />
+				<p:button icon="ui-icon ui-icon-close" action="#{alunoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+			</h:panelGrid>
+		</p:fieldset>
+	</h:form>
+
+
+</ui:composition>
+
+</html>

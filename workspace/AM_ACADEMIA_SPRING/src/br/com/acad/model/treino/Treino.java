@@ -27,6 +27,7 @@ import br.com.acad.annotation.Show;
 import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoDAO;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -34,151 +35,166 @@ import br.com.acad.model.pessoa.ProfessorFunc;
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="ACAD_TREINO")
-public class Treino implements Serializable, GenericEntity{
+@Table(name = "ACAD_TREINO")
+public class Treino implements Serializable, GenericEntity
+{
 
-	//Atributos
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_TREINO")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	@Show(label="Nome", order=true)
-	protected String nome;
-	
-	@Column(length=500, nullable=true)
-	protected String descricao;
-	
-	@Column(nullable=true)
-	protected long tempoDescanso;
+    // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_TREINO")
+    private int id;
 
-	
-	@Temporal(TemporalType.DATE)
-	@Column(nullable=false)
-	@Show(label="Data", order=true)
-	private Calendar data;
-	
-	@ManyToOne
-	@JoinColumn(name="PROFESSOR_ID", nullable=true)
-	@Show(label="Professor", mappedName="professor.nome", order=true)
-	private ProfessorFunc professor;
-	
-	@Column(nullable=false)
-	private TipoTreinoDieta tipoTreino;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="TREINO_ID")
-	private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
-	
-	@Transient
-	private String treinoStr;
-	
-	//Metodos
-	public void generateTreinoStr(DiasTreinoCatDAO treinoDAO) {
-//		TODO - pegar pelo dao os dias e montar a string
-//		treinoDAO.
-	}
-	
-	public boolean addDiaTreino(DiaTreino dia){
-		return diasTreino.add(dia);
-	}
-	
-	public boolean removeDiaTreino(DiaTreino dia){
-		return diasTreino.remove(dia);
-	}
-	
-	/**
-	 * Apaga lista de DiaTreino
-	 */
-	public void resetDiasTreino(){
-		this.diasTreino = new HashSet<DiaTreino>();
-	}
-	
-	//Gets com DAO
-	public List<DiaTreino> getDiasTreinos(DiaTreinoDAO dao){
-		return dao.buscaPorTreino(this);
-	}
-	
-	//Construtores
-	public Treino(){}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome", order = true)
+    protected String nome;
 
-	
-	//Gets e Sets
-	public long getTempoDescanso() {
-		return tempoDescanso;
-	}
+    @Column(length = 500, nullable = true)
+    protected String descricao;
 
-	public String getTreinoStr() {
-		return treinoStr;
-	}
+    @Column(nullable = true)
+    protected long tempoDescanso;
 
-	public void setTempoDescanso(long tempoDescanso) {
-		this.tempoDescanso = tempoDescanso;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    @Show(label = "Data", order = true, Type = FieldType.DATE)
+    private Calendar data;
 
-	public Set<DiaTreino> getDiasTreino() {
-		return diasTreino;
-	}
+    @ManyToOne
+    @JoinColumn(name = "PROFESSOR_ID", nullable = true)
+    @Show(label = "Professor", mappedName = "professor.nome", order = true)
+    private ProfessorFunc professor;
 
-	public void setDiasTreino(Set<DiaTreino> diasTreino) {
-		this.diasTreino = diasTreino;
-	}
+    @Column(nullable = false)
+    private TipoTreinoDieta tipoTreino;
 
-	public int getId() {
-		return id;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "TREINO_ID")
+    private Set<DiaTreino> diasTreino = new HashSet<DiaTreino>();
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Transient
+    private String treinoStr;
 
-	public String getNome() {
-		return nome;
-	}
+    // Metodos
+    public void generateTreinoStr(DiasTreinoCatDAO treinoDAO)
+    {
+        // TODO - pegar pelo dao os dias e montar a string
+        // treinoDAO.
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public boolean addDiaTreino(DiaTreino dia)
+    {
+        return diasTreino.add(dia);
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public boolean removeDiaTreino(DiaTreino dia)
+    {
+        return diasTreino.remove(dia);
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    /**
+     * Apaga lista de DiaTreino
+     */
+    public void resetDiasTreino()
+    {
+        this.diasTreino = new HashSet<DiaTreino>();
+    }
 
-	public Calendar getData() {
-		return data;
-	}
+    // Gets com DAO
+    public List<DiaTreino> getDiasTreinos(DiaTreinoDAO dao)
+    {
+        return dao.buscaPorTreino(this);
+    }
 
-	public void setData(Calendar data) {
-		this.data = data;
-	}
+    // Construtores
+    public Treino()
+    {
+    }
 
-	public TipoTreinoDieta getTipoTreino() {
-		return tipoTreino;
-	}
+    // Gets e Sets
+    public long getTempoDescanso()
+    {
+        return tempoDescanso;
+    }
 
-	public void setTipoTreino(TipoTreinoDieta tipoTreino) {
-		this.tipoTreino = tipoTreino;
-	}
+    public String getTreinoStr()
+    {
+        return treinoStr;
+    }
 
+    public void setTempoDescanso(long tempoDescanso)
+    {
+        this.tempoDescanso = tempoDescanso;
+    }
 
-	public ProfessorFunc getProfessor() {
-		return professor;
-	}
+    public Set<DiaTreino> getDiasTreino()
+    {
+        return diasTreino;
+    }
 
+    public void setDiasTreino(Set<DiaTreino> diasTreino)
+    {
+        this.diasTreino = diasTreino;
+    }
 
-	public void setProfessor(ProfessorFunc professor) {
-		this.professor = professor;
-	}
-	
-	
-	
-	
-	
-	
-	
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public Calendar getData()
+    {
+        return data;
+    }
+
+    public void setData(Calendar data)
+    {
+        this.data = data;
+    }
+
+    public TipoTreinoDieta getTipoTreino()
+    {
+        return tipoTreino;
+    }
+
+    public void setTipoTreino(TipoTreinoDieta tipoTreino)
+    {
+        this.tipoTreino = tipoTreino;
+    }
+
+    public ProfessorFunc getProfessor()
+    {
+        return professor;
+    }
+
+    public void setProfessor(ProfessorFunc professor)
+    {
+        this.professor = professor;
+    }
+
 }

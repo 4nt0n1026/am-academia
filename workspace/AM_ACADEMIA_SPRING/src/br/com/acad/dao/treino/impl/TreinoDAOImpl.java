@@ -13,25 +13,28 @@ import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.Treino;
 
 @Repository
-public class TreinoDAOImpl extends DAOImpl<Treino,Integer> implements TreinoDAO{
+public class TreinoDAOImpl extends DAOImpl<Treino, Integer> implements TreinoDAO
+{
 
-	public TreinoDAOImpl() {
-		super();
-	}
+    public TreinoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Treino> buscarTodos() {
-		TypedQuery<Treino> q = em.createQuery("from Treino", Treino.class);
-		return q.getResultList();
-	}
+    @Override
+    public List<Treino> buscarTodos()
+    {
+        TypedQuery<Treino> q = em.createQuery("from Treino", Treino.class);
+        return q.getResultList();
+    }
 
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Treino> buscarPorAluno(Aluno aluno) {
-		Query q = em.createQuery("select a.treinos from Aluno a where a.id = :idAluno");
-		q.setParameter("idAluno", aluno.getId());
-		return q.getResultList();
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Treino> buscarPorAluno(Aluno aluno)
+    {
+        Query q = em.createQuery("select a.treinos from Aluno a where a.id = :idAluno");
+        q.setParameter("idAluno", aluno.getId());
+        return q.getResultList();
+    }
 
 }

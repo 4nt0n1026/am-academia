@@ -10,32 +10,34 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-public class FiltroTempoDeExecucao implements Filter {
+public class FiltroTempoDeExecucao implements Filter
+{
 
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void destroy()
+    {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		long tempoInicial = System.currentTimeMillis();
+    }
 
-	    chain.doFilter(request, response);
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
+    {
+        long tempoInicial = System.currentTimeMillis();
 
-	    long tempoFinal = System.currentTimeMillis();
-	    String uri = ((HttpServletRequest)request).getRequestURI();  
-	    System.out.println("Tempo da requisição de " +
-	            uri + " demourou (ms): " + (tempoFinal - tempoInicial));
-		
-	}
+        chain.doFilter(request, response);
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
+        long tempoFinal = System.currentTimeMillis();
+        String uri = ((HttpServletRequest) request).getRequestURI();
+        System.out.println("Tempo da requisição de " + uri + " demourou (ms): " + (tempoFinal - tempoInicial));
+
+    }
+
+    @Override
+    public void init(FilterConfig arg0) throws ServletException
+    {
+        // TODO Auto-generated method stub
+
+    }
 
 }

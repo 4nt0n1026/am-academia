@@ -15,59 +15,69 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_ITEM_REFEICAO")
-public class ItemRefeicao implements Serializable, GenericEntity{
+@Table(name = "ACAD_ITEM_REFEICAO")
+public class ItemRefeicao implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_ITEM_REFEICAO")
-	private int id;
-	
-	@Column(precision=2, nullable=false)
-	private double quantidade;
-	
-	@ManyToOne
-	@JoinColumn(name="ALIMENTO_ID", nullable=false)
-	private Alimento alimento = new Alimento();
-	
-	public ItemRefeicao(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_ITEM_REFEICAO")
+    private int id;
 
-	@Override
-	public String toString() {
-		String item = new String();
-		if(alimento!=null && alimento.getUnidadeMedida()!=null){
-			item = alimento.getNome() + " - " + quantidade + alimento.getUnidadeMedida().getSigla();
-		}else{
-			item = alimento.getNome();
-		}
-		return item;
-	}
+    @Column(precision = 2, nullable = false)
+    private double quantidade;
 
-	public int getId() {
-		return id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ALIMENTO_ID", nullable = false)
+    private Alimento alimento = new Alimento();
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public ItemRefeicao()
+    {
+    }
 
-	public double getQuantidade() {
-		return quantidade;
-	}
+    @Override
+    public String toString()
+    {
+        String item = new String();
+        if (alimento != null && alimento.getUnidadeMedida() != null)
+        {
+            item = alimento.getNome() + " - " + quantidade + alimento.getUnidadeMedida().getSigla();
+        }
+        else
+        {
+            item = alimento.getNome();
+        }
+        return item;
+    }
 
-	public void setQuantidade(double quantidade) {
-		this.quantidade = quantidade;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public Alimento getAlimento() {
-		return alimento;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-	public void setAlimento(Alimento alimento) {
-		this.alimento = alimento;
-	}
-	
-	
-	
-	
+    public double getQuantidade()
+    {
+        return quantidade;
+    }
+
+    public void setQuantidade(double quantidade)
+    {
+        this.quantidade = quantidade;
+    }
+
+    public Alimento getAlimento()
+    {
+        return alimento;
+    }
+
+    public void setAlimento(Alimento alimento)
+    {
+        this.alimento = alimento;
+    }
+
 }

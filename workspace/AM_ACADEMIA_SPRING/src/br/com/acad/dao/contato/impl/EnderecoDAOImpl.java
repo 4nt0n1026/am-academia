@@ -9,19 +9,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.contato.Endereco;
 
 @Repository
-public class EnderecoDAOImpl extends DAOImpl<Endereco,Integer> implements EnderecoDAO{
+public class EnderecoDAOImpl extends DAOImpl<Endereco, Integer> implements EnderecoDAO
+{
 
-	public EnderecoDAOImpl() {
-		super();
-	}
+    public EnderecoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Endereco> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
+    @Override
+    public List<Endereco> buscarTodos()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

@@ -12,25 +12,28 @@ import br.com.acad.model.treino.ExercicioTreino;
 import br.com.acad.model.treino.Serie;
 
 @Repository
-public class SerieDAOImpl extends DAOImpl<Serie,Integer> implements SerieDAO{
+public class SerieDAOImpl extends DAOImpl<Serie, Integer> implements SerieDAO
+{
 
-	public SerieDAOImpl() {
-		super();
-	}
+    public SerieDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Serie> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<Serie> buscarTodos()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Serie> buscarPorExercicioTreino(ExercicioTreino exercicio) {
-		Query q = em.createQuery("select e.series from ExercicioTreino e where e.id=:id");
-		q.setParameter("id", exercicio.getId());
-		return q.getResultList();
-	}
-
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Serie> buscarPorExercicioTreino(ExercicioTreino exercicio)
+    {
+        Query q = em.createQuery("select e.series from ExercicioTreino e where e.id=:id");
+        q.setParameter("id", exercicio.getId());
+        return q.getResultList();
+    }
 
 }

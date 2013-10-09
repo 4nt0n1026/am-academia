@@ -12,24 +12,27 @@ import br.com.acad.model.horario.Aula;
 import br.com.acad.model.horario.HorarioAula;
 
 @Repository
-public class HorarioAulaDAOImpl extends DAOImpl<HorarioAula,Integer> implements HorarioAulaDAO{
+public class HorarioAulaDAOImpl extends DAOImpl<HorarioAula, Integer> implements HorarioAulaDAO
+{
 
-	public HorarioAulaDAOImpl() {
-		super();
-	}
+    public HorarioAulaDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<HorarioAula> buscarTodos() {
-		TypedQuery<HorarioAula> q = em.createQuery("from HorarioAula", HorarioAula.class);
-		return q.getResultList();
-	}
+    @Override
+    public List<HorarioAula> buscarTodos()
+    {
+        TypedQuery<HorarioAula> q = em.createQuery("from HorarioAula", HorarioAula.class);
+        return q.getResultList();
+    }
 
-
-	@Override
-	public List<HorarioAula> buscarPorAula(Aula aula) {
-		TypedQuery<HorarioAula> q = em.createQuery("from HorarioAula h where h.aula.id = :idAula", HorarioAula.class);
-		q.setParameter("idAula", aula.getId());
-		return q.getResultList();
-	}
+    @Override
+    public List<HorarioAula> buscarPorAula(Aula aula)
+    {
+        TypedQuery<HorarioAula> q = em.createQuery("from HorarioAula h where h.aula.id = :idAula", HorarioAula.class);
+        q.setParameter("idAula", aula.getId());
+        return q.getResultList();
+    }
 
 }

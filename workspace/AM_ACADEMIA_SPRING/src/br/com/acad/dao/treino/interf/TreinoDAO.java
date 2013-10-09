@@ -6,9 +6,9 @@ import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.treino.Treino;
 
-public interface TreinoDAO extends DAO<Treino,Integer>{
+public interface TreinoDAO extends DAO<Treino, Integer>
+{
 
-	List<Treino> buscarPorAluno(Aluno aluno);
-	
-	
+    List<Treino> buscarPorAluno(Aluno aluno);
+
 }

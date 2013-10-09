@@ -14,67 +14,73 @@ import br.com.acad.model.avisos.Noticia;
 import br.com.acad.model.avisos.NoticiaCat;
 
 @SuppressWarnings("serial")
-@Component(value="mNoticiasBean")
-@Scope(value="view")
-public class MNoticiasBean implements Serializable{
-	
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	@Autowired
-	private NoticiaDAO noticiaDAO;
-	@Autowired
-	private NoticiaCatDAO noticiaCatDAO;
-	
-	private Noticia noticia; 
-	
-	private List<NoticiaCat> noticiaCats = new ArrayList<NoticiaCat>();
-	private List<Noticia> noticias = new ArrayList<Noticia>();
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	public String init(){
-		noticias = noticiaDAO.buscarTodos();
-		return "pm:noticias";
-	}
-	
-	/**
-	 * Ao selecionar uma noticia
-	 */
-	public String selectNoticia(){
-		// TODO - implementar o buscar todos para nao trazer a descricao
-		return "pm:noticiaDetalhe?lazyLoad=true";
-	}
-	
-	/**
-	 * Ao clicar no botao de ajuda
-	 */
-	public String ajuda(){
-		noticiaCats = noticiaCatDAO.buscarTodos();
-		return "pm:ajudaNoticias?lazyLoad=true";
-	}
+@Component(value = "mNoticiasBean")
+@Scope(value = "view")
+public class MNoticiasBean implements Serializable
+{
 
-	/************************************************************************************************************/
-	//GETs e SETs
-	/************************************************************************************************************/
-	
-	public List<Noticia> getNoticias() {
-		return noticias;
-	}
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
+    @Autowired
+    private NoticiaDAO noticiaDAO;
+    @Autowired
+    private NoticiaCatDAO noticiaCatDAO;
 
-	public Noticia getNoticia() {
-		return noticia;
-	}
+    private Noticia noticia;
 
-	public void setNoticia(Noticia noticia) {
-		this.noticia = noticia;
-	}
-	
-	public List<NoticiaCat> getNoticiaCats() {
-		return noticiaCats;
-	}
-	
-	
-	
+    private List<NoticiaCat> noticiaCats = new ArrayList<NoticiaCat>();
+    private List<Noticia> noticias = new ArrayList<Noticia>();
+
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+    public String init()
+    {
+        noticias = noticiaDAO.buscarTodos();
+        return "pm:noticias";
+    }
+
+    /**
+     * Ao selecionar uma noticia
+     */
+    public String selectNoticia()
+    {
+        // TODO - implementar o buscar todos para nao trazer a descricao
+        return "pm:noticiaDetalhe?lazyLoad=true";
+    }
+
+    /**
+     * Ao clicar no botao de ajuda
+     */
+    public String ajuda()
+    {
+        noticiaCats = noticiaCatDAO.buscarTodos();
+        return "pm:ajudaNoticias?lazyLoad=true";
+    }
+
+    /************************************************************************************************************/
+    // GETs e SETs
+    /************************************************************************************************************/
+
+    public List<Noticia> getNoticias()
+    {
+        return noticias;
+    }
+
+    public Noticia getNoticia()
+    {
+        return noticia;
+    }
+
+    public void setNoticia(Noticia noticia)
+    {
+        this.noticia = noticia;
+    }
+
+    public List<NoticiaCat> getNoticiaCats()
+    {
+        return noticiaCats;
+    }
+
 }

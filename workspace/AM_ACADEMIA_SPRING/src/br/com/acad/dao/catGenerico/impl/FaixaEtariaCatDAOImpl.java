@@ -11,17 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.cat.FaixaEtariaCat;
 
 @Repository
-public class FaixaEtariaCatDAOImpl extends DAOImpl<FaixaEtariaCat,Integer> implements FaixaEtariaCatDAO{
+public class FaixaEtariaCatDAOImpl extends DAOImpl<FaixaEtariaCat, Integer> implements FaixaEtariaCatDAO
+{
 
-	public FaixaEtariaCatDAOImpl() {
-		super();
-	}
+    public FaixaEtariaCatDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<FaixaEtariaCat> buscarTodos() {
-		TypedQuery<FaixaEtariaCat> q = em.createQuery("from FaixaEtariaCat", FaixaEtariaCat.class);
-		return q.getResultList();
-	}
-
+    @Override
+    public List<FaixaEtariaCat> buscarTodos()
+    {
+        TypedQuery<FaixaEtariaCat> q = em.createQuery("from FaixaEtariaCat", FaixaEtariaCat.class);
+        return q.getResultList();
+    }
 
 }

@@ -19,63 +19,73 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_REFEICAO")
-public class Refeicao implements Serializable, GenericEntity{
+@Table(name = "ACAD_REFEICAO")
+public class Refeicao implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_REFEICAO")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	private String nome;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="REFEICAO_ID", nullable=true)
-	private Set<ItemRefeicao> itens = new HashSet<ItemRefeicao>();
-	
-	//Metodos
-	public boolean addItem(ItemRefeicao item){
-		return itens.add(item);
-	}
-	
-	public boolean removeItem(ItemRefeicao item){
-		return itens.remove(item);
-	}
-	
-	/**
-	 * Apaga lista de Refeicao
-	 */
-	public void resetItens(){
-		this.itens = new HashSet<ItemRefeicao>();
-	}
-	
-	public Refeicao(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_REFEICAO")
+    private int id;
 
-	public int getId() {
-		return id;
-	}
+    @Column(length = 255, nullable = false)
+    private String nome;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "REFEICAO_ID", nullable = true)
+    private Set<ItemRefeicao> itens = new HashSet<ItemRefeicao>();
 
-	public String getNome() {
-		return nome;
-	}
+    // Metodos
+    public boolean addItem(ItemRefeicao item)
+    {
+        return itens.add(item);
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public boolean removeItem(ItemRefeicao item)
+    {
+        return itens.remove(item);
+    }
 
-	public Set<ItemRefeicao> getItens() {
-		return itens;
-	}
+    /**
+     * Apaga lista de Refeicao
+     */
+    public void resetItens()
+    {
+        this.itens = new HashSet<ItemRefeicao>();
+    }
 
-	public void setItens(Set<ItemRefeicao> itens) {
-		this.itens = itens;
-	}
-	
-	
-	
+    public Refeicao()
+    {
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    public Set<ItemRefeicao> getItens()
+    {
+        return itens;
+    }
+
+    public void setItens(Set<ItemRefeicao> itens)
+    {
+        this.itens = itens;
+    }
+
 }

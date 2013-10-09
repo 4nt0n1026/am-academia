@@ -7,9 +7,11 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface View {
-	
-	String[] labels();
-	String[] queries();
-	
+public @interface View
+{
+
+    String[] labels();
+
+    String[] queries();
+
 }

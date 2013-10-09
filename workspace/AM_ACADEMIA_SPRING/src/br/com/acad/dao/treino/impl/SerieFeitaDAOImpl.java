@@ -9,18 +9,19 @@ import br.com.acad.dao.treino.interf.SerieFeitaDAO;
 import br.com.acad.model.treino.SerieFeita;
 
 @Repository
-public class SerieFeitaDAOImpl extends DAOImpl<SerieFeita,Integer> implements SerieFeitaDAO{
+public class SerieFeitaDAOImpl extends DAOImpl<SerieFeita, Integer> implements SerieFeitaDAO
+{
 
-	public SerieFeitaDAOImpl() {
-		super();
-	}
+    public SerieFeitaDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<SerieFeita> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+    @Override
+    public List<SerieFeita> buscarTodos()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

@@ -14,46 +14,53 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_SEXO_CAT")
-public class SexoCat implements Serializable, GenericEntity{
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_SEXO_CAT")
-	private int id;
-	
-	@Column(length=255 ,nullable=false)
-	@Show(label = "Nome")
-	private String nome;
-	
-	public SexoCat(){}
+@Table(name = "ACAD_SEXO_CAT")
+public class SexoCat implements Serializable, GenericEntity
+{
 
-	public SexoCat(int id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_SEXO_CAT")
+    private int id;
 
-	public SexoCat(String nome) {
-		this.nome = nome;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome")
+    private String nome;
 
-	public int getId() {
-		return id;
-	}
+    public SexoCat()
+    {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public SexoCat(int id, String nome)
+    {
+        super();
+        this.id = id;
+        this.nome = nome;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public SexoCat(String nome)
+    {
+        this.nome = nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
-	
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
 }

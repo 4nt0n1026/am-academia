@@ -9,17 +9,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.contato.Cidade;
 
 @Repository
-public class CidadeDAOImpl extends DAOImpl<Cidade,Integer> implements CidadeDAO{
+public class CidadeDAOImpl extends DAOImpl<Cidade, Integer> implements CidadeDAO
+{
 
-	public CidadeDAOImpl() {
-		super();
-	}
+    public CidadeDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<Cidade> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Override
+    public List<Cidade> buscarTodos()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

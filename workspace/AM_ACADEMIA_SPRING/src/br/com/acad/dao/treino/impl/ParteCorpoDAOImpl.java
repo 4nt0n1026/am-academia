@@ -13,33 +13,37 @@ import br.com.acad.model.treino.Exercicio;
 import br.com.acad.model.treino.ParteCorpo;
 
 @Repository
-public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo,Integer> implements ParteCorpoDAO{
+public class ParteCorpoDAOImpl extends DAOImpl<ParteCorpo, Integer> implements ParteCorpoDAO
+{
 
-	public ParteCorpoDAOImpl() {
-		super();
-	}
+    public ParteCorpoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<ParteCorpo> buscarTodos() {
-		TypedQuery<ParteCorpo> q = em.createQuery("from ParteCorpo order by nome", ParteCorpo.class);
-		return q.getResultList();
-	}
+    @Override
+    public List<ParteCorpo> buscarTodos()
+    {
+        TypedQuery<ParteCorpo> q = em.createQuery("from ParteCorpo order by nome", ParteCorpo.class);
+        return q.getResultList();
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<ParteCorpo> buscarPartesPrimarias(Exercicio exercicio) {
-		Query q = em.createQuery("select e.parteCorpoPrimaria from Exercicio e where e.id = :id");
-		q.setParameter("id", exercicio.getId());
-		return q.getResultList();
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<ParteCorpo> buscarPartesPrimarias(Exercicio exercicio)
+    {
+        Query q = em.createQuery("select e.parteCorpoPrimaria from Exercicio e where e.id = :id");
+        q.setParameter("id", exercicio.getId());
+        return q.getResultList();
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<ParteCorpo> buscarPartesSecundaria(Exercicio exercicio) {
-		Query q = em.createQuery("select e.parteCorpoSecundaria from Exercicio e where e.id = :id");
-		q.setParameter("id", exercicio.getId());
-		return q.getResultList();
-	}
-
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<ParteCorpo> buscarPartesSecundaria(Exercicio exercicio)
+    {
+        Query q = em.createQuery("select e.parteCorpoSecundaria from Exercicio e where e.id = :id");
+        q.setParameter("id", exercicio.getId());
+        return q.getResultList();
+    }
 
 }

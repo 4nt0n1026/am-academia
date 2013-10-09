@@ -11,17 +11,19 @@ import br.com.acad.dao.generico.impl.DAOImpl;
 import br.com.acad.model.dieta.ItemRefeicao;
 
 @Repository
-public class ItemRefeicaoDAOImpl extends DAOImpl<ItemRefeicao,Integer> implements ItemRefeicaoDAO{
+public class ItemRefeicaoDAOImpl extends DAOImpl<ItemRefeicao, Integer> implements ItemRefeicaoDAO
+{
 
-	public ItemRefeicaoDAOImpl() {
-		super();
-	}
+    public ItemRefeicaoDAOImpl()
+    {
+        super();
+    }
 
-	@Override
-	public List<ItemRefeicao> buscarTodos() {
-		TypedQuery<ItemRefeicao> q = em.createQuery("from ItemRefeicao", ItemRefeicao.class);
-		return q.getResultList();
-	}
-
+    @Override
+    public List<ItemRefeicao> buscarTodos()
+    {
+        TypedQuery<ItemRefeicao> q = em.createQuery("from ItemRefeicao", ItemRefeicao.class);
+        return q.getResultList();
+    }
 
 }

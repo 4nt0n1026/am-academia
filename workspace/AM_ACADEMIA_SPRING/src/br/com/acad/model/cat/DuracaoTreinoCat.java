@@ -14,45 +14,47 @@ import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACAD_DURACAO_TREINO_CAT")
-public class DuracaoTreinoCat implements Serializable, GenericEntity{
-	
+@Table(name = "ACAD_DURACAO_TREINO_CAT")
+public class DuracaoTreinoCat implements Serializable, GenericEntity
+{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_DURACAO_TREINO_CAT")
-	private int id;
-	
-	@Column(length=255, nullable=false)
-	@Show(label = "Nome")
-	private String nome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_DURACAO_TREINO_CAT")
+    private int id;
 
-	public DuracaoTreinoCat(){}
-	
-	public DuracaoTreinoCat( String nome) {
-		super();
-		this.nome = nome;
-	}
+    @Column(length = 255, nullable = false)
+    @Show(label = "Nome")
+    private String nome;
 
-	public int getId() {
-		return id;
-	}
+    public DuracaoTreinoCat()
+    {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public DuracaoTreinoCat(String nome)
+    {
+        super();
+        this.nome = nome;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
-	
-	
-	
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getNome()
+    {
+        return nome;
+    }
+
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
 
 }

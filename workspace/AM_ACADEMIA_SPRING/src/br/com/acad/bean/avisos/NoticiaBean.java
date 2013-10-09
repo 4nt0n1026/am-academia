@@ -18,68 +18,71 @@ import br.com.acad.model.avisos.Noticia;
 import br.com.acad.model.avisos.NoticiaCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
 
-
 @SuppressWarnings("serial")
 @Component
-@Scope(value="view")
-public class NoticiaBean extends Bean<Noticia> implements Serializable {
+@Scope(value = "view")
+public class NoticiaBean extends Bean<Noticia> implements Serializable
+{
 
-	/************************************************************************************************************/
-	//ATRIBUTOS
-	/************************************************************************************************************/
-	
-	@Autowired
-	private NoticiaDAO noticiaDAO;
-	@Autowired
-	private NoticiaCatDAO noticiaCatDAO;
-	@Autowired
-	private ProfessorFuncDAO professorFuncDAO;
-	
-	/************************************************************************************************************/
-	//METODOS
-	/************************************************************************************************************/
-	
-	@PostConstruct
-	@Override
-	public void init() {
-		dao = noticiaDAO;
-		super.init();
-	}
-	
-	/**
-	 * show form de entity
-	 * 
-	 */
-	@Override
-	public void showNewEntity() {
-		showEntity = true;
-		entity = new Noticia();
-		entity.setCategoria(new NoticiaCat());
-		entity.setProfessorFunc(new ProfessorFunc());
-		entity.setData(Calendar.getInstance());
-	}
+    /************************************************************************************************************/
+    // ATRIBUTOS
+    /************************************************************************************************************/
 
-	/************************************************************************************************************/
-	//GET FIELDS
-	/************************************************************************************************************/
-	
-	/**
-	 * busca todas NoticiaCat para preencher o field
-	 */
-	public List<NoticiaCat> getNoticiasCatsField() {
-		return noticiaCatDAO.buscarTodos();
-	}
-	
-	/**
-	 * busca todos professores e funcionarios para preencher o field
-	 */
-	public List<ProfessorFunc> getProfessoresField() {
-		return professorFuncDAO.buscarFieldNome();
-	}
+    @Autowired
+    private NoticiaDAO noticiaDAO;
+    @Autowired
+    private NoticiaCatDAO noticiaCatDAO;
+    @Autowired
+    private ProfessorFuncDAO professorFuncDAO;
 
-	/************************************************************************************************************/
-	//GETS E SETS
-	/************************************************************************************************************/
-	
-	
+    /************************************************************************************************************/
+    // METODOS
+    /************************************************************************************************************/
+
+    @PostConstruct
+    @Override
+    public void init()
+    {
+        dao = noticiaDAO;
+        super.init();
+    }
+
+    /**
+     * show form de entity
+     * 
+     */
+    @Override
+    public void showNewEntity()
+    {
+        showEntity = true;
+        entity = new Noticia();
+        entity.setCategoria(new NoticiaCat());
+        entity.setProfessorFunc(new ProfessorFunc());
+        entity.setData(Calendar.getInstance());
+    }
+
+    /************************************************************************************************************/
+    // GET FIELDS
+    /************************************************************************************************************/
+
+    /**
+     * busca todas NoticiaCat para preencher o field
+     */
+    public List<NoticiaCat> getNoticiasCatsField()
+    {
+        return noticiaCatDAO.buscarTodos();
+    }
+
+    /**
+     * busca todos professores e funcionarios para preencher o field
+     */
+    public List<ProfessorFunc> getProfessoresField()
+    {
+        return professorFuncDAO.buscarFieldNome();
+    }
+
+    /************************************************************************************************************/
+    // GETS E SETS
+    /************************************************************************************************************/
+
 }

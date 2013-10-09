@@ -1,7 +1,6 @@
 package br.com.acad.logic;
 
-public class ExercicioLogic {
+public class ExercicioLogic
+{
 
-
-	
 }
