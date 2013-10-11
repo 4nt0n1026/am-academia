@@ -71,8 +71,8 @@ public class TreinoBuscaFormActivity extends Activity {
 		objetivos.add(new ObjetivoCat(2, "Saude"));
 		objetivos.add(new ObjetivoCat(3, "Emagrecer"));
 		// Duracoes
-		duracoes.add(new DuracaoTreinoCat(10, "Todas as duraÃ§Ãµes"));
-		duracoes.add(new DuracaoTreinoCat(1, "AtÃ© 15 min."));
+		duracoes.add(new DuracaoTreinoCat(10, "Todas as durações"));
+		duracoes.add(new DuracaoTreinoCat(1, "Até 15 min."));
 		duracoes.add(new DuracaoTreinoCat(2, "De 15 a 30 min."));
 		duracoes.add(new DuracaoTreinoCat(3, "De 30 a 45 min."));
 		duracoes.add(new DuracaoTreinoCat(4, "De 30 a 45 min."));
@@ -83,7 +83,7 @@ public class TreinoBuscaFormActivity extends Activity {
 		duracoes.add(new DuracaoTreinoCat(9, "Mais de 120 min."));
 		// Faixas Etarias
 		faixasEtarias.add(new FaixaEtariaCat(1, "Todas as idades"));
-		faixasEtarias.add(new FaixaEtariaCat(2, "AtÃ© 15 anos"));
+		faixasEtarias.add(new FaixaEtariaCat(2, "Até 15 anos"));
 		faixasEtarias.add(new FaixaEtariaCat(3, "De 16 a 19 anos"));
 		faixasEtarias.add(new FaixaEtariaCat(4, "De 20 a 30 anos"));
 		faixasEtarias.add(new FaixaEtariaCat(5, "De 31 a 45 anos"));

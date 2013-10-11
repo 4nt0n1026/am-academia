@@ -321,7 +321,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o diaTreino com uma unidade a mais do que a selecionada
         if (dias.indexOf(diaTreino) == 0)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse dia j√° se encontra na primeira posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse dia j· se encontra na primeira posicao");
             return;
         }
         DiaTreino diaTemp = dias.get(posicaoFutura);
@@ -345,7 +345,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o diaTreino com uma unidade a mais do que a selecionada
         if (dias.size() == posicaoFutura)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse dia j√° se encontra na ultima posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse dia j· se encontra na ultima posicao");
             return;
         }
         DiaTreino diaTemp = dias.get(posicaoFutura);
@@ -369,7 +369,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o exercicioTreino com uma unidade a mais do que a selecionada
         if (exercicios.indexOf(exercicioTreino) == 0)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse exercicio j√° se encontra na primeira posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse exercicio j· se encontra na primeira posicao");
             return;
         }
         ExercicioTreino exercicioTemp = exercicios.get(posicaoFutura);
@@ -394,7 +394,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o exercicioTreino com uma unidade a mais do que a selecionada
         if (exercicios.size() == posicaoFutura)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse exercicio j√° se encontra na ultima posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse exercicio j· se encontra na ultima posicao");
             return;
         }
         ExercicioTreino exercicioTemp = exercicios.get(posicaoFutura);

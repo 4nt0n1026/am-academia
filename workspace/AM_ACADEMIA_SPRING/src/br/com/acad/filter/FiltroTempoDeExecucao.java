@@ -29,7 +29,7 @@ public class FiltroTempoDeExecucao implements Filter
 
         long tempoFinal = System.currentTimeMillis();
         String uri = ((HttpServletRequest) request).getRequestURI();
-        System.out.println("Tempo da requisiÃ§Ã£o de " + uri + " demourou (ms): " + (tempoFinal - tempoInicial));
+        System.out.println("Tempo da requisição de " + uri + " demourou (ms): " + (tempoFinal - tempoInicial));
 
     }
 
