@@ -9,9 +9,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
-import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.CriptografiaLogic;
-import br.com.acad.logic.TableLogic;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.Pessoa;
 
@@ -33,26 +31,18 @@ public class AlunoBean extends Bean<Aluno> implements Serializable
     /************************************************************************************************************/
 
     @Override
-    public void init()
+    public void beforeInit()
     {
-
         dao = alunoDAO;
-        // staticFields = AnnotationsLogic.getSearchValueFields(Pessoa.class, Aluno.class);
-        // staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Pessoa.class, Aluno.class);
-        // staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Pessoa.class, Aluno.class);
-
         superClasses = new Class<?>[] { Pessoa.class };
-
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new Aluno();
         entity.setDataNascimento(new GregorianCalendar());
         String senha = CriptografiaLogic.encriptar("123");

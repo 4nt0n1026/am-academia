@@ -1,6 +1,8 @@
 package br.com.acad.model.cat;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.logic.model.FieldType;
+import br.com.acad.logic.model.FormFieldType;
 import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
@@ -26,6 +30,9 @@ public class DiasTreinoCat implements Serializable, GenericEntity
     @Column(length = 255, nullable = false)
     @Show(label = "Nome")
     private String nome;
+
+    @Show(label = "Data", form = true, inputMask = "99/99/99", formFieldType = FormFieldType.INSERT_EDIT, Type = FieldType.DATE, table = false)
+    private Calendar dataTeste = new GregorianCalendar();
 
     @Column(length = 1, nullable = false)
     private int qtdDias;
@@ -69,6 +76,16 @@ public class DiasTreinoCat implements Serializable, GenericEntity
     public void setQtdDias(int qtdDias)
     {
         this.qtdDias = qtdDias;
+    }
+
+    public Calendar getDataTeste()
+    {
+        return dataTeste;
+    }
+
+    public void setDataTeste(Calendar dataTeste)
+    {
+        this.dataTeste = dataTeste;
     }
 
 }

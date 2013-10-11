@@ -2,8 +2,6 @@ package br.com.acad.bean.cat;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -29,21 +27,18 @@ public class DuracaoTreinoCatBean extends Bean<DuracaoTreinoCat> implements Seri
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = duracaoTreinoCatDAO;
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new DuracaoTreinoCat();
     }
 

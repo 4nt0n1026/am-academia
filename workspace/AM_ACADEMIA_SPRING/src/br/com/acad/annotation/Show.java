@@ -5,9 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 import br.com.acad.logic.model.FieldType;
+import br.com.acad.logic.model.FormFieldType;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
@@ -24,6 +23,8 @@ public @interface Show
 
     FieldType Type() default FieldType.TEXT;
 
+    boolean required() default false;
+
     int maxLenght() default 0;
 
     int minLenght() default 0;
@@ -34,9 +35,9 @@ public @interface Show
 
     boolean table() default true;
 
-    boolean insert() default true;
+    boolean form() default true;
 
-    boolean edit() default true;
+    FormFieldType formFieldType() default FormFieldType.INSERT_EDIT;
 
     boolean detail() default true;
 

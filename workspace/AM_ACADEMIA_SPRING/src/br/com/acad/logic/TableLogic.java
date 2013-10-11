@@ -21,52 +21,6 @@ public class TableLogic
 {
 
     /**
-     * Pega os headers para tabela marcados com a annotation Show
-     * 
-     * @param clazzs
-     * @return
-     */
-    public static String[] getTableHeaders(Class<?>... clazzs)
-    {
-        List<String> tempValues = new ArrayList<String>();
-
-        try
-        {
-            for (Class<?> clazz : clazzs)
-            {
-
-                Field[] fields = clazz.getDeclaredFields();
-
-                // percorre filds da classe
-                for (Field field : fields)
-                {
-                    Show showAnnotation = field.getAnnotation(Show.class);
-
-                    if (showAnnotation != null && showAnnotation.table())
-                    {
-                        tempValues.add(showAnnotation.label());
-                    }
-                }
-            }
-
-            if (tempValues.size() == 0)
-            {
-                return null;
-            }
-
-            return tempValues.toArray(new String[tempValues.size()]);
-
-        }
-        catch (Exception e)
-        {
-            MessagesLogic.addErrorMessage("Erro", "Ocorreu um erro! Contate o Administrador. COD:Annotation098");
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    /**
      * Pega os valores mapeados para tabela marcados com a annotation Show
      * 
      * @param clazzs
@@ -96,29 +50,34 @@ public class TableLogic
                                         .pathName().length() > 0))
                         {
 
-                            tempValues.add(new DataField("#{entity." + showAnnotation.pathName() + "}", showAnnotation.Type()));
+                            tempValues.add(new DataField(showAnnotation.label(), "#{entity." + showAnnotation.pathName() + "}",
+                                    showAnnotation.Type()));
 
                         }
                         else if (showAnnotation.mappedName() != null && showAnnotation.mappedName().length() > 0)
                         {
                             if (showAnnotation.Type() == FieldType.DATE)
                             {
-                                tempValues.add(new DataField("#{entity." + showAnnotation.mappedName() + ".time}", showAnnotation.Type()));
+                                tempValues.add(new DataField(showAnnotation.label(), "#{entity." + showAnnotation.mappedName() + ".time}",
+                                        showAnnotation.Type()));
                             }
                             else
                             {
-                                tempValues.add(new DataField("#{entity." + showAnnotation.mappedName() + "}", showAnnotation.Type()));
+                                tempValues.add(new DataField(showAnnotation.label(), "#{entity." + showAnnotation.mappedName() + "}",
+                                        showAnnotation.Type()));
                             }
                         }
                         else
                         {
                             if (showAnnotation.Type() == FieldType.DATE)
                             {
-                                tempValues.add(new DataField("#{entity." + field.getName() + ".time}", showAnnotation.Type()));
+                                tempValues.add(new DataField(showAnnotation.label(), "#{entity." + field.getName() + ".time}",
+                                        showAnnotation.Type()));
                             }
                             else
                             {
-                                tempValues.add(new DataField("#{entity." + field.getName() + "}", showAnnotation.Type()));
+                                tempValues.add(new DataField(showAnnotation.label(), "#{entity." + field.getName() + "}", showAnnotation
+                                        .Type()));
                             }
                         }
                     }
@@ -149,11 +108,11 @@ public class TableLogic
      * @param header
      * @param field
      */
-    public static void prepareColumn(HtmlColumn column, String headerValue, DataField field)
+    public static void prepareColumn(HtmlColumn column, DataField field)
     {
         // Create <h:outputText value="dynamicHeaders[i]"> for <f:facet name="header"> of column.
         HtmlOutputText header = new HtmlOutputText();
-        header.setValue(headerValue);
+        header.setValue(field.getLabel());
         column.setHeader(header);
 
         // Create the body of column for the specific type.

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -47,21 +45,18 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = solicitacaoTreinoDAO;
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new SolicitacaoTreino();
         entity.setDataSolicitacao(Calendar.getInstance());
         entity.setRespondido(false);
@@ -130,7 +125,7 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
         aluno = alunoDAO.update(aluno);
 
         entity.setRespondido(true);
-        incluirEntity();
+        beforeSaveEntity();
 
         closeForms();
         atualizar();

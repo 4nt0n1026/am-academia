@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
-import br.com.acad.logic.AnnotationsLogic;
-import br.com.acad.logic.TableLogic;
 import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
@@ -70,55 +67,30 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = treinoFixoDAO;
-
         superClasses = new Class<?>[] { Treino.class };
-
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new TreinoFixo();
         entity.setProfessor(new ProfessorFunc());
         entity.setData(Calendar.getInstance());
         entity.setTipoTreino(TipoTreinoDieta.FIXO);
     }
 
-    // /**
-    // * inclui ou edita entity no banco
-    // */
-    // @Override
-    // public void incluirEntity() {
-    // if(entity.getId()==0){
-    // entity.setData(Calendar.getInstance());
-    // entity.setTipoTreino(TipoTreinoDieta.FIXO);
-    // }
-    // incluirGeneric( entity!=null? entity.getId():0);
-    // }
-    //
-    // /**
-    // * deleta entity do banco
-    // */
-    // @Override
-    // public void deletarEntity() {
-    // deletarGeneric(entity!=null?entity.getId():0);
-    // }
-
     @Override
-    public void showFormDetail()
+    public void beforeShowFormDetail()
     {
         textoTreino = TreinoLogic.getTreinoString(entity);
-        super.showFormDetail();
+        super.beforeShowFormDetail();
     }
 
     /************************************************************************************************************/

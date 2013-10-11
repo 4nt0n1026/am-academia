@@ -121,7 +121,7 @@ public class CriacaoTreinoBean implements Serializable
     {
         organizaListasTreino();
         treinoFixoBean.setEntity((TreinoFixo) treino);
-        treinoFixoBean.incluirEntity();
+        treinoFixoBean.beforeSaveEntity();
     }
 
     /**
@@ -131,7 +131,7 @@ public class CriacaoTreinoBean implements Serializable
     {
         organizaListasTreino();
         treinoEspecificoBean.setEntity((TreinoEspecifico) treino);
-        treinoEspecificoBean.incluirEntity();
+        treinoEspecificoBean.beforeSaveEntity();
     }
 
     /**

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -48,21 +46,18 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
     // METODOS
     // ************************************************************************************************************//*
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = solicitacaoDietaDAO;
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new SolicitacaoDieta();
         entity.setAluno(new Aluno());
         entity.setDataSolicitacao(Calendar.getInstance());
@@ -82,7 +77,7 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
         }
         else
         {
-            MessagesLogic.addWarnMessage("Erro", "Selecione uma solicita��o para ser respondida");
+            MessagesLogic.addWarnMessage("Erro", "Selecione uma solicitação para ser respondida");
         }
     }
 
@@ -106,7 +101,7 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
         closeForms();
         atualizar();
         entity.setRespondido(true);
-        incluirEntity();
+        beforeSaveEntity();
     }
 
     // ************************************************************************************************************//*

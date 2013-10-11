@@ -31,37 +31,19 @@ public class NoticiaCatBean extends Bean<NoticiaCat> implements Serializable
 
     @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = noticiaCatDAO;
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new NoticiaCat();
     }
-
-    // /**
-    // * inclui ou edita entity no banco
-    // */
-    // @Override
-    // public void incluirEntity() {
-    // incluirGeneric( entity!=null? entity.getId():0);
-    // }
-    //
-    // /**
-    // * deleta entity do banco
-    // */
-    // @Override
-    // public void deletarEntity() {
-    // deletarGeneric(entity!=null?entity.getId():0);
-    // }
 
     /************************************************************************************************************/
     // GET FIELDS

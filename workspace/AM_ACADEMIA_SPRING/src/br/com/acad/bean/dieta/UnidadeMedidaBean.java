@@ -2,8 +2,6 @@ package br.com.acad.bean.dieta;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -29,21 +27,18 @@ public class UnidadeMedidaBean extends Bean<UnidadeMedida> implements Serializab
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = unidadeMedidaDAO;
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new UnidadeMedida();
     }
 

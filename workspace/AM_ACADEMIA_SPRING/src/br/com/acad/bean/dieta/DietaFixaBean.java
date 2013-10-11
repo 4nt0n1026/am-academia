@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -24,7 +22,6 @@ import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.dieta.Dieta;
-import br.com.acad.model.dieta.DietaEspecifica;
 import br.com.acad.model.dieta.DietaFixa;
 import br.com.acad.model.dieta.LimitacaoDietaCat;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -58,24 +55,21 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = dietaFixaDAO;
         staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaFixa.class);
         staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Dieta.class, DietaFixa.class);
         staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Dieta.class, DietaFixa.class);
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new DietaFixa();
         entity.setProfessor(new ProfessorFunc());
         entity.setObjetivoCat(new ObjetivoCat());
@@ -86,10 +80,10 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable
     }
 
     @Override
-    public void showFormDetail()
+    public void beforeShowFormDetail()
     {
         textoDieta = DietaLogic.getDietaString(entity);
-        super.showFormDetail();
+        super.beforeShowFormDetail();
     }
 
     /************************************************************************************************************/

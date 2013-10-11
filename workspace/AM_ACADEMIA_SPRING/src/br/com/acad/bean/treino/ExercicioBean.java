@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
@@ -48,21 +47,18 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = exercicioDAO;
-        super.init();
     }
 
     /**
      * show form de entity
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showForm1();
         entity = new Exercicio();
         idsParteCorpoPrimaria = new ArrayList<String>();
         idsParteCorpoSecundaria = new ArrayList<String>();
@@ -72,18 +68,18 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable
      * show form de edit buscando as partes de corpo
      */
     @Override
-    public void showEditEntity()
+    public void beforeShowEditEntity()
     {
         idsParteCorpoPrimaria = ParteCorpoLogic.getIds(entity.getParteCorpoPrimaria(parteCorpoDAO));
         idsParteCorpoSecundaria = ParteCorpoLogic.getIds(entity.getParteCorpoSecundaria(parteCorpoDAO));
-        super.showEditEntity();
+        super.beforeShowEditEntity();
     }
 
     /**
      * inclui ou edita entity no banco
      */
     @Override
-    public void incluirEntity()
+    public void beforeSaveEntity()
     {
         // Apaga as listas de parte corpo para edicao (nao afeta inclusao)
         entity.zeraPartesCorpos();
@@ -99,7 +95,7 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable
             entity.addParteCorpoSecundaria(new ParteCorpo(Integer.parseInt(id)));
         }
 
-        super.incluirEntity();
+        super.beforeSaveEntity();
     }
 
     @Override

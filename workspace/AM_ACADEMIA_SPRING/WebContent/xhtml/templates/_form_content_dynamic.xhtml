@@ -7,47 +7,16 @@
 
 
 <ui:composition>
-	<h:form id="formEntity">
-		<p:focus for="formEntity" />
-		<p:fieldset id="field" rendered="#{bean.showEntity}">
-			<h:panelGrid columns="10">
-
-				<h:outputLabel for="idNome" value="Nome" />
-				<p:inputText id="idNome" value="#{alunoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
-
-				<h:outputLabel for="idEmail" value="Email:" />
-				<p:inputText id="idEmail" value="#{alunoBean.entity.email}" required="true" requiredMessage="Email obrigatoria" />
-
-				<h:outputLabel for="idSenha" value="Senha:" rendered="#{alunoBean.entity.id == 0}" />
-				<p:inputText id="idSenha" value="#{alunoBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio"
-					rendered="#{alunoBean.entity.id == 0}" />
-
-				<h:outputLabel for="idNasc" value="Nascimento:" />
-				<p:inputMask id="idNasc" value="#{alunoBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
-					requiredMessage="Data de Nascimento Obrigatoria">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:inputMask>
-
-				<h:outputLabel for="idCpf" value="CPF:" />
-				<p:inputMask id="idCpf" value="#{alunoBean.entity.cpf}" mask="999.999.999-99" />
-
-				<h:outputLabel for="idRg" value="RG:" />
-				<p:inputText id="idRg" value="#{alunoBean.entity.rg}" />
-
-				<h:outputLabel for="idPeso" value="Peso" />
-				<p:inputText id="idPeso" value="#{alunoBean.entity.peso}" />
-
-				<h:outputLabel for="idAltura" value="Altura:" />
-				<p:inputText id="idAltura" value="#{alunoBean.entity.altura}" />
-
-				<p:commandButton icon="ui-icon ui-icon-check" action="#{alunoBean.incluirEntity}" ajax="true" update=":tabView1" />
-				<p:button icon="ui-icon ui-icon-close" action="#{alunoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
-
-			</h:panelGrid>
-		</p:fieldset>
+	<h:form id="formEntity" >
+		<h:panelGrid columns="10" rendered="#{bean.showEntity}" binding="#{bean.panelForm}">
+			<h:commandButton value="Salvar" action="#{bean.incluirEntity}" >
+				<f:ajax render=":tabView1" />
+			</h:commandButton>
+			<h:commandButton value="Cancelar" action="#{bean.dontShowEntity}" >
+				<f:ajax render=":tabView1:formEntity" />
+			</h:commandButton>
+		</h:panelGrid>
 	</h:form>
-
-
 </ui:composition>
 
 </html>

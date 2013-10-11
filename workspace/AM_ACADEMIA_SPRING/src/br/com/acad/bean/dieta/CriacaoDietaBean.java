@@ -135,7 +135,7 @@ public class CriacaoDietaBean implements Serializable
     {
         organizaListasDieta();
         dietaFixaBean.setEntity((DietaFixa) dieta);
-        dietaFixaBean.incluirEntity();
+        dietaFixaBean.beforeSaveEntity();
     }
 
     /**
@@ -145,7 +145,7 @@ public class CriacaoDietaBean implements Serializable
     {
         organizaListasDieta();
         dietaEspecificaBean.setEntity((DietaEspecifica) dieta);
-        dietaEspecificaBean.incluirEntity();
+        dietaEspecificaBean.beforeSaveEntity();
     }
 
     /**

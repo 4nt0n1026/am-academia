@@ -46,7 +46,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
 
     @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = treinoEspecificoDAO;
 
@@ -60,7 +60,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
      * solicita����o. Metodo nao implementado
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
     }
 
@@ -68,7 +68,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
      * inclui ou edita entity no banco
      */
     @Override
-    public void incluirEntity()
+    public void beforeSaveEntity()
     {
         // incrementa numeracao de solicitacoes
         if (entity != null && entity.getId() == 0)
@@ -78,14 +78,14 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
             alunoDAO.update(aluno);
             entity.setNomePronto(aluno);
         }
-        super.incluirEntity();
+        super.beforeSaveEntity();
     }
 
     @Override
-    public void showFormDetail()
+    public void beforeShowFormDetail()
     {
         textoTreino = TreinoLogic.getTreinoString(entity);
-        super.showFormDetail();
+        super.beforeShowFormDetail();
     }
 
     /************************************************************************************************************/

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -39,12 +37,10 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable
     // METODOS
     /************************************************************************************************************/
 
-    @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = noticiaDAO;
-        super.init();
     }
 
     /**
@@ -52,9 +48,8 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable
      * 
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
-        showEntity = true;
         entity = new Noticia();
         entity.setCategoria(new NoticiaCat());
         entity.setProfessorFunc(new ProfessorFunc());

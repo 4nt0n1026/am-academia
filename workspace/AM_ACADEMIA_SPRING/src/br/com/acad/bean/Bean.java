@@ -5,14 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.el.ValueExpression;
 import javax.faces.component.html.HtmlColumn;
-import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlDataTable;
-import javax.faces.component.html.HtmlForm;
-import javax.faces.component.html.HtmlOutputText;
-import javax.faces.component.html.HtmlPanelGroup;
-import javax.faces.context.FacesContext;
+import javax.faces.component.html.HtmlPanelGrid;
 
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.AnnotationsLogic;
@@ -21,7 +16,6 @@ import br.com.acad.logic.MessagesLogic;
 import br.com.acad.logic.SqlLogic;
 import br.com.acad.logic.TableLogic;
 import br.com.acad.logic.model.DataField;
-import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 
 /**
@@ -41,6 +35,9 @@ public abstract class Bean<T extends GenericEntity>
     // DAO
     protected DAO<T, Integer> dao;
 
+    // Bean Name
+    protected String beanName;
+
     // Entity
     protected T entity;
     protected List<T> entities;
@@ -53,11 +50,11 @@ public abstract class Bean<T extends GenericEntity>
     protected String[] rowClasses;
 
     // Dynamic Form
-    protected HtmlForm form;
+    protected HtmlPanelGrid panelForm;
+    protected DataField[] formValues;
 
     // Dynamic Table
     protected HtmlDataTable dataTable;
-    protected String[] tableHeaders;
     protected DataField[] tableValues;
 
     // Search
@@ -91,10 +88,36 @@ public abstract class Bean<T extends GenericEntity>
     protected boolean showEntityDetail;
 
     /************************************************************************************************************/
-    // ASSINATURAS
+    // ASSINATURAS E METODOS A SER HERDADOS
     /************************************************************************************************************/
 
-    public abstract void showNewEntity();
+    public abstract void beforeShowNewEntity();
+
+    public abstract void beforeInit();
+
+    public void beforeShowEditEntity()
+    {
+    }
+
+    public void beforeShowFormDetail()
+    {
+    }
+
+    public void beforeSaveEntity()
+    {
+    }
+
+    public void afterSaveEntity()
+    {
+    }
+
+    public void beforeDeleteEntity()
+    {
+    }
+
+    public void afterDeleteEntity()
+    {
+    }
 
     /************************************************************************************************************/
     // DYNAMIC FORM
@@ -102,8 +125,14 @@ public abstract class Bean<T extends GenericEntity>
 
     private void prepareForm()
     {
-        form = new HtmlForm();
-        FormLogic.prepareForm(form, "Nome", new DataField("#{bean.entity.nome}", FieldType.TEXT));
+        panelForm = new HtmlPanelGrid();
+        if (formValues != null)
+        {
+            for (int i = 0; i < formValues.length; i++)
+            {
+                FormLogic.prepareFormField(panelForm, formValues[i]);
+            }
+        }
     }
 
     /************************************************************************************************************/
@@ -130,16 +159,16 @@ public abstract class Bean<T extends GenericEntity>
         // selectButton.getChildren().add(columnSelectButton);
 
         // Iterate over columns.
-        if (tableHeaders != null)
+        if (tableValues != null)
         {
-            for (int i = 0; i < tableHeaders.length; i++)
+            for (int i = 0; i < tableValues.length; i++)
             {
 
                 // Create <h:column>.
                 HtmlColumn column = new HtmlColumn();
                 dataTable.getChildren().add(column);
 
-                TableLogic.prepareColumn(column, tableHeaders[i], tableValues[i]);
+                TableLogic.prepareColumn(column, tableValues[i]);
             }
         }
 
@@ -152,25 +181,18 @@ public abstract class Bean<T extends GenericEntity>
     @PostConstruct
     public void init()
     {
-        List<Class<?>> classes = new ArrayList<Class<?>>();
-        if (superClasses != null)
-        {
-            // Preapre SuperClasses
-            for (Class<?> clazz : superClasses)
-            {
-                classes.add(clazz);
-            }
-        }
-        classes.add(dao.getEntityClass());
+        beforeInit();
+
+        Class<?>[] arrayClasses = buildClassArray();
 
         if (staticFields == null)
         {
-            staticFields = AnnotationsLogic.getSearchValueFields(classes.toArray(new Class<?>[classes.size()]));
+            staticFields = AnnotationsLogic.getSearchValueFields(arrayClasses);
         }
         if (staticFieldsOrderLabel == null)
         {
-            staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(classes.toArray(new Class<?>[classes.size()]));
-            staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(classes.toArray(new Class<?>[classes.size()]));
+            staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(arrayClasses);
+            staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(arrayClasses);
         }
         if (order == null && staticFieldsOrderLabel != null)
         {
@@ -182,24 +204,22 @@ public abstract class Bean<T extends GenericEntity>
         }
         if (staticViewsLabel == null)
         {
-            staticViewsLabel = AnnotationsLogic.getViewLabelFields(classes.toArray(new Class<?>[classes.size()]));
-            staticViewsValue = AnnotationsLogic.getViewValueFields(classes.toArray(new Class<?>[classes.size()]));
+            staticViewsLabel = AnnotationsLogic.getViewLabelFields(arrayClasses);
+            staticViewsValue = AnnotationsLogic.getViewValueFields(arrayClasses);
         }
         if (staticViewsLabel != null)
         {
             view = staticViewsLabel[0];
         }
 
-        if (tableHeaders == null)
-        {
-
-            tableHeaders = TableLogic.getTableHeaders(classes.toArray(new Class<?>[classes.size()]));
-        }
-
         if (tableValues == null)
         {
+            tableValues = TableLogic.getTableValues(arrayClasses);
+        }
 
-            tableValues = TableLogic.getTableValues(classes.toArray(new Class<?>[classes.size()]));
+        if (formValues == null)
+        {
+            formValues = FormLogic.getFormValues(beanName, arrayClasses);
         }
 
         atualizar();
@@ -214,9 +234,18 @@ public abstract class Bean<T extends GenericEntity>
     }
 
     /**
+     * Abre painel de inclusao de nova entity
+     */
+    public final void showNewEntity()
+    {
+        showEntity = true;
+        beforeShowNewEntity();
+    }
+
+    /**
      * fecha painel de edicao de uma entity
      */
-    public void dontShowEntity()
+    public final void dontShowEntity()
     {
         closeForms();
     }
@@ -224,7 +253,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * mostra painel de edicao de uma Entity
      */
-    public void showEditEntity()
+    public final void showEditEntity()
     {
         if (entity != null)
         {
@@ -233,6 +262,8 @@ public abstract class Bean<T extends GenericEntity>
             showEntity3 = false;
             showEntity4 = false;
             showEntityDetail = false;
+
+            beforeShowEditEntity();
         }
         else
         {
@@ -243,7 +274,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * atualiza pagina
      */
-    public void atualizar()
+    public final void atualizar()
     {
         try
         {
@@ -270,7 +301,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * atualiza pagina com msg de sucesso
      */
-    public void atualizarComMsg()
+    public final void atualizarComMsg()
     {
         atualizar();
         MessagesLogic.addInfoMessage("Sucesso", "Atualizado");
@@ -279,7 +310,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * proxima tela da tabela.
      */
-    public void nextPageTable()
+    public final void nextPageTable()
     {
         if (page < totalPages)
         {
@@ -295,7 +326,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * tela anterior da tabela.
      */
-    public void previousPageTable()
+    public final void previousPageTable()
     {
         if (page > 1)
         {
@@ -311,7 +342,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * abre formulario 1. Utilizado somente para casos de formularios mais complexos
      */
-    public void showForm1()
+    public final void showForm1()
     {
         showEntity = true;
         showEntity2 = false;
@@ -322,7 +353,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * fecha formulario 1 e abre o 2. Utilizado somente para casos de formularios mais complexos
      */
-    public void showForm2()
+    public final void showForm2()
     {
         showEntity = false;
         showEntity2 = true;
@@ -333,7 +364,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * fecha formulario 2 e abre o 3. Utilizado somente para casos de formularios mais complexos
      */
-    public void showForm3()
+    public final void showForm3()
     {
         showEntity = false;
         showEntity2 = false;
@@ -344,7 +375,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * fecha formulario 3 e abre o 4. Utilizado somente para casos de formularios mais complexos
      */
-    public void showForm4()
+    public final void showForm4()
     {
         showEntity = false;
         showEntity2 = false;
@@ -355,8 +386,9 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * Mostra detalhes da entidade selecionada Utilizado somente para casos de formularios mais complexos
      */
-    public void showFormDetail()
+    public final void showFormDetail()
     {
+        beforeShowFormDetail();
         closeForms();
         showEntityDetail = true;
     }
@@ -364,9 +396,20 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * Mostra detalhes da entidade selecionada Utilizado somente para casos de formularios mais complexos
      */
-    public void hideFormDetail()
+    public final void hideFormDetail()
     {
         showEntityDetail = false;
+    }
+
+    /**
+     * fecha todos formularios. Utilizado somente para casos de formularios mais complexos
+     */
+    public void closeForms()
+    {
+        showEntity = false;
+        showEntity2 = false;
+        showEntity3 = false;
+        showEntity4 = false;
     }
 
     /************************************************************************************************************/
@@ -376,7 +419,7 @@ public abstract class Bean<T extends GenericEntity>
     /**
      * Atualiza o total de entities e o total de paginas
      */
-    public void atualizaPages() throws Exception
+    private final void atualizaPages() throws Exception
     {
         totalEntities = contarTodos();
         totalPages = (totalEntities / SqlLogic.TABLE_SIZE);
@@ -395,10 +438,11 @@ public abstract class Bean<T extends GenericEntity>
      * @param id
      *            id do objeto que sera inserido no banco
      */
-    public void incluirEntity()
+    public final void incluirEntity()
     {
         try
         {
+            beforeSaveEntity();
             if (entity.getId() == 0)
             {
                 entity = dao.insert(entity);
@@ -409,6 +453,7 @@ public abstract class Bean<T extends GenericEntity>
             }
             atualizar();
             MessagesLogic.addInfoMessage("Sucesso", "Salvo com sucesso");
+            afterSaveEntity();
         }
         catch (Exception e)
         {
@@ -426,16 +471,18 @@ public abstract class Bean<T extends GenericEntity>
      * @param id
      *            id da entity que sera excluida
      */
-    public void deletarEntity()
+    public final void deletarEntity()
     {
         if (entity != null)
         {
             try
             {
+                beforeDeleteEntity();
                 dao.removeById(entity.getId());
                 atualizar();
                 showEntityDetail = false;
                 MessagesLogic.addInfoMessage("Sucesso", "Deletado com sucesso");
+                afterDeleteEntity();
             }
             catch (Exception e)
             {
@@ -450,22 +497,11 @@ public abstract class Bean<T extends GenericEntity>
     }
 
     /**
-     * fecha todos formularios. Utilizado somente para casos de formularios mais complexos
-     */
-    public void closeForms()
-    {
-        showEntity = false;
-        showEntity2 = false;
-        showEntity3 = false;
-        showEntity4 = false;
-    }
-
-    /**
      * retorna busca de todas as entities para tabela
      * 
      * @return
      */
-    protected List<T> buscarTodos() throws Exception
+    protected final List<T> buscarTodos() throws Exception
     {
 
         if (search != null && search.length() > 0)
@@ -500,7 +536,7 @@ public abstract class Bean<T extends GenericEntity>
      * 
      * @return
      */
-    protected long contarTodos()
+    protected final long contarTodos()
     {
         return dao.contarTodos(staticFields, search, getTempView());
     }
@@ -510,7 +546,7 @@ public abstract class Bean<T extends GenericEntity>
      * 
      * @return
      */
-    public String getTempView()
+    private final String getTempView()
     {
         String tempView = new String();
         if (staticViewsLabel != null && view != null)
@@ -524,6 +560,28 @@ public abstract class Bean<T extends GenericEntity>
         }
         tempView += permanentView == null ? "" : permanentView;
         return tempView;
+    }
+
+    /**
+     * Constroi um array de classes para a criação de paginas dinamica. <br/>
+     * As classes sao todas que vao constituir o modelo principal da pagina
+     * 
+     * @return
+     */
+    private final Class<?>[] buildClassArray()
+    {
+        List<Class<?>> classes = new ArrayList<Class<?>>();
+        if (superClasses != null)
+        {
+            // Preapre SuperClasses
+            for (Class<?> clazz : superClasses)
+            {
+                classes.add(clazz);
+            }
+        }
+        classes.add(dao.getEntityClass());
+
+        return classes.toArray(new Class<?>[classes.size()]);
     }
 
     /************************************************************************************************************/
@@ -659,15 +717,18 @@ public abstract class Bean<T extends GenericEntity>
         this.dataTable = dataTable;
     }
 
-    public HtmlForm getForm()
+    public HtmlPanelGrid getPanelForm()
     {
-        prepareForm();
-        return form;
+        if (panelForm == null)
+        {
+            prepareForm();
+        }
+        return panelForm;
     }
 
-    public void setForm(HtmlForm form)
+    public void setPanelForm(HtmlPanelGrid panelForm)
     {
-        this.form = form;
+        this.panelForm = panelForm;
     }
 
 }

@@ -41,7 +41,7 @@ public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serial
 
     @PostConstruct
     @Override
-    public void init()
+    public void beforeInit()
     {
         dao = dietaEspecificaDAO;
         staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaEspecifica.class);
@@ -55,15 +55,15 @@ public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serial
      * solicitação. Metodo nao implementado
      */
     @Override
-    public void showNewEntity()
+    public void beforeShowNewEntity()
     {
     }
 
     @Override
-    public void showFormDetail()
+    public void beforeShowFormDetail()
     {
         textoDieta = DietaLogic.getDietaString(entity);
-        super.showFormDetail();
+        super.beforeShowFormDetail();
     }
 
     /************************************************************************************************************/
