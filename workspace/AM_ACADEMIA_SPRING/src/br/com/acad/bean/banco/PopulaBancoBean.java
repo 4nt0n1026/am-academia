@@ -252,21 +252,21 @@ public class PopulaBancoBean implements Serializable
     {
         Aula aula = new Aula("Abdominal", "Aula que tem como objetivo o aumento da força e resistência muscular abdominal,"
                 + " melhora da postura e diminuição das dores lombares, através de exercícios de resistência "
-                + "muscular. Indicada para todos os níveis de condicionamento ΩΩΩ iniciantes, intermedi��rios e "
-                + "avan��ados. DURA����O 30'", "ab.jpg");
+                + "muscular. Indicada para todos os níveis de condicionamento para iniciantes, intermediários e "
+                + "avançados. DURAÇÃO 30'", "ab.jpg");
         aulaDAO.insert(aula);
 
         aula = new Aula("Boxe",
-                "Aula de condicionamento f��sico que utiliza a t��cnica e exerc��cios do boxe. Indicada para todos os n��veis "
-                        + "de condicionamento ��� iniciantes, intermedi��rios e avan��ados. DURA����O 60'", "boxe.gif");
+                "Aula de condicionamento físico que utiliza a técnica e exercícios do boxe. Indicada para todos os níveis "
+                        + "de condicionamento para iniciantes, intermediários e avançados. DURAÇÃO 60'", "boxe.gif");
         aulaDAO.insert(aula);
 
-        aula = new Aula("Jiu Jitsu", "Aula com treinamento espec��fico da modalidade", "jiujitsu.gif");
+        aula = new Aula("Jiu Jitsu", "Aula com treinamento específico da modalidade", "jiujitsu.gif");
         aulaDAO.insert(aula);
 
-        aula = new Aula("Bike", "Aula que tem como objetivo o condicionamento cardiovascular, atrav��s de uma "
-                + "periodiza����o de treinamento espec��fica da modalidade. Indicada para todos os n��veis de condicionamento ��� "
-                + "iniciantes, intermedi��rios e avan��ados. DURA����O 30', 45' E 60'", "bike.gif");
+        aula = new Aula("Bike", "Aula que tem como objetivo o condicionamento cardiovascular, através de uma "
+                + "periodização de treinamento específica da modalidade. Indicada para todos os níveis de condicionamento para "
+                + "iniciantes, intermediários e avançados. DURAÇÃO 30', 45' E 60'", "bike.gif");
         aulaDAO.insert(aula);
     }
 
@@ -277,7 +277,7 @@ public class PopulaBancoBean implements Serializable
     {
         Unidade unidade = new Unidade("Unidade Santo Amaro", "Horario de funcionamento: 6:00 as 23:00");
         unidadeDAO.insert(unidade);
-        unidade = new Unidade("Unidade Aclima����o", "Horario de funcionamento: 7:00 as 22:00");
+        unidade = new Unidade("Unidade Aclimação", "Horario de funcionamento: 7:00 as 22:00");
         unidadeDAO.insert(unidade);
         unidade = new Unidade("Unidade Vinhedo", "Horario de funcionamento: 6:00 as 22:00");
         unidadeDAO.insert(unidade);
@@ -320,24 +320,24 @@ public class PopulaBancoBean implements Serializable
                 "Supino",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
-                "O supino com barra em banco plano ���� o exerc����cio mais conhecido e realizado nos gin����sios. "
-                        + "Embora n����o existam m����sculos peitorais �������superiores�������� e �������inferiores��������, o supino plano "
-                        + "parece recrutar mais as fibras interm����dias (parte esternocostal).", "supino_barra.jpg");
+                "O supino com barra em banco plano é o exercício mais conhecido e realizado nos ginásios. "
+                        + "Embora não existam músculos peitorais superiores e inferiores, o supino plano "
+                        + "parece recrutar mais as fibras interédias (parte esternocostal).", "supino_barra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
                 "Supino Inclinado",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
-                "Esta varia��������o do supino plano coloca uma maior ����nfase na parte clavicular (superior) do grande peitoral."
-                        + " O supino inclinado com um ����ngulo de +45 graus, proporciona uma estimula��������o 69% mais elevada na �������parte "
-                        + "superior do peitoral��������.", "supino_inclinado_barra.jpg");
+                "Esta variação do supino plano coloca uma maior ênfase na parte clavicular (superior) do grande peitoral."
+                        + " O supino inclinado com um ângulo de +45 graus, proporciona uma estimulação 69% mais elevada na parte "
+                        + "superior do peitoral.", "supino_inclinado_barra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Supino Declinado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), PopulaBancoLogic.getPartesCorpo(
                 PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
-                " O supino declinado ���� a varia��������o do supino que recruta uma maior percentagem de fibras muscular, muito "
-                        + "devido ao fato de tamb����m ser o tipo de supino em que ���� poss����vel utilizar mais peso.",
+                " O supino declinado é a variação do supino que recruta uma maior percentagem de fibras muscular, muito "
+                        + "devido ao fato de também ser o tipo de supino em que é possível utilizar mais peso.",
                 "supino_declinado_barra.jpg");
         exercicioDAO.insert(ex);
 
@@ -346,30 +346,30 @@ public class PopulaBancoBean implements Serializable
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS, PopulaBancoLogic.LOMBAR, PopulaBancoLogic.GLUTEOS,
                         PopulaBancoLogic.TRAPEZIO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO, PopulaBancoLogic.COXAS, PopulaBancoLogic.ABDOMEN),
-                "Nesta varia��������o do peso morto, a mais conhecida de todas, tudo ���� projetado para a maximiza��������o t����cnica da "
-                        + "quantidade de peso levantado. Os quadris come����am mais elevados do que os joelhos (basicamente colocando "
-                        + "os joelhos no mesmo ����ngulo que um quarto do agachamento) e os ombros est����o um pouco atr����s da barra na "
-                        + "posi��������o de partida. Isto permite-lhe utilizar ao m����ximo a parte inferior das costas, gl����teos, e quadr����ceps.",
+                "Nesta variação do peso morto, a mais conhecida de todas, tudo é projetado para a maximização técnica da "
+                        + "quantidade de peso levantado. Os quadris começam mais elevados do que os joelhos (basicamente colocando "
+                        + "os joelhos no mesmo ângulo que um quarto do agachamento) e os ombros estão um pouco atrás da barra na "
+                        + "posição de partida. Isto permite-lhe utilizar ao máximo a parte inferior das costas, glúteos, e quadríceps.",
                 "peso_morto_levantamento_terra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Puxada Polia Alta (Frente)", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
-                "A puxada de dorsais em polia alta (pela frente) tem como alvo principal o grande dorsal. Este ���� um m����sculo "
-                        + "grande que ocupa uma grande extens����o das costas.", "puxada_dorsais_polia_alta.jpg");
+                "A puxada de dorsais em polia alta (pela frente) tem como alvo principal o grande dorsal. Este é um músculo "
+                        + "grande que ocupa uma grande extensão das costas.", "puxada_dorsais_polia_alta.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Puxada Polia Alta Supinada", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
-                " Esta varia��������o da puxada de dorsais em polia alta (pela frente) diferencia-se da varia��������o anterior por recrutar "
-                        + "e trabalhar mais os b����ceps.", "puxada_dorsais_polia_alta_supina��������o.jpg");
+                " Esta variação da puxada de dorsais em polia alta (pela frente) diferencia-se da variação anterior por recrutar "
+                        + "e trabalhar mais os bíceps.", "puxada_dorsais_polia_alta_supinação.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
                 "Remada com Barra",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS, PopulaBancoLogic.ANTEBRACO),
-                " Esta varia��������o da puxada de dorsais em polia alta (pela frente) diferencia-se da varia��������o anterior por recrutar e trabalhar mais os b����ceps.",
+                " Esta variação da puxada de dorsais em polia alta (pela frente) diferencia-se da variação anterior por recrutar e trabalhar mais os bíceps.",
                 "remada_com_barra.jpg");
         exercicioDAO.insert(ex);
 
@@ -377,36 +377,36 @@ public class PopulaBancoBean implements Serializable
                 "Press Militar",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.TRAPEZIO),
-                " O movimento mais conhecido para trabalhar os delt����ides. Dever���� ter cuidado para n����o usar demasiada carga que possa comprometer a execu��������o "
-                        + "correta e flu����da do exerc����cio. A vers����o de press militar ���� nuca ���� na verdade a mais eficiente para trabalhar as tr����s cabe����as dos delt����ides.",
+                " O movimento mais conhecido para trabalhar os deltéides. Deveré ter cuidado para não usar demasiada carga que possa comprometer a execução"
+                        + "correta e fluéda do exercício. A versão de press militar é nuca é na verdade a mais eficiente para trabalhar as trés cabeéas dos deltéides.",
                 "press_militar_barra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Remada Alta", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO, PopulaBancoLogic.TRAPEZIO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
-                "  Este ���� um excelente movimento composto para atingir a parte medial dos delt����ides.", "remada_vertical.jpg");
+                "  Este é um excelente movimento composto para atingir a parte medial dos deltéides.", "remada_vertical.jpg");
 
         ex = new Exercicio(
                 "Desenvolvimento com halteres",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.TRAPEZIO),
-                " Este ���� muito provavelmente o melhor exerc����cio geral para os delt����ides, pois permite a realiza��������o de um arco de movimento mais natural.",
+                " Este é muito provavelmente o melhor exercício geral para os deltéides, pois permite a realizaééo de um arco de movimento mais natural.",
                 "press_militar_halteres1.jpg");
 
         ex = new Exercicio(
                 "Curl com barra",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO),
-                "  O curl com barra ���� o movimento mais conhecido, o mais usado e tamb����m um dos mais mal executados do gin����sio. Para aprender a realiz����-lo "
-                        + "da forma correta, ���� aconselh����vel que comece por apoiar as costas numa estrutura s����lida como um pilar e usar cargas moderadas.",
+                "  O curl com barra é o movimento mais conhecido, o mais usado e também um dos mais mal executados do ginésio. Para aprender a realizé-lo "
+                        + "da forma correta, é aconselhével que comece por apoiar as costas numa estrutura sélida como um pilar e usar cargas moderadas.",
                 "curl_barra_reta.jpg");
 
         ex = new Exercicio(
                 "Concentrada",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
                 PopulaBancoLogic.getPartesCorpo(),
-                " Segundo an����lises EMG, este ���� o exerc����cios mais eficiente para os b����ceps quando realizado de forma exc����ntrica + contra��������es de "
-                        + "pico/m����ximas. Mais uma vez, utilize pesos que consiga controlar bem e n����o fa����a batota.",
+                " Segundo anélises EMG, este é o exercícios mais eficiente para os bíceps quando realizado de forma excéntrica + contraéées de "
+                        + "pico/méximas. Mais uma vez, utilize pesos que consiga controlar bem e não faéa batota.",
                 "curl_concentracao.jpg");
         exercicioDAO.insert(ex);
 
@@ -414,16 +414,16 @@ public class PopulaBancoBean implements Serializable
                 "Paralela",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.PEITO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO),
-                " Um dos melhores exerc����cios para trabalhar os tr����ceps (cabe����a medial, lateral e longa dos tr����ceps), e tamb����m trabalha o grande "
-                        + "peitoral e delt����ides. Segundo an����lises EMG, os fundos em barras paralelas, juntamente com os fundos entre bancos, s����o os dois "
-                        + "exerc����cios mais eficientes para trabalhar os tr����ceps.", "fundos_barras_paralelas.jpg");
+                " Um dos melhores exercícios para trabalhar os tréceps (cabeéa medial, lateral e longa dos tréceps), e também trabalha o grande "
+                        + "peitoral e deltéides. Segundo anélises EMG, os fundos em barras paralelas, juntamente com os fundos entre bancos, séo os dois "
+                        + "exercícios mais eficientes para trabalhar os tréceps.", "fundos_barras_paralelas.jpg");
 
         ex = new Exercicio(
-                "Extens����es de tr����ceps sentado",
+                "Extensées de tréceps sentado",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS),
                 PopulaBancoLogic.getPartesCorpo(),
-                "  Esta varia��������o do exerc����cios extens����es de tr����ceps deitado, encontra-se ao mesmo n����vel em termos de efici����ncia de ativa��������o dos tr����ceps.",
-                "extens����o_triceps_sentado.jpg");
+                "  Esta variação do exercícios extensées de tréceps deitado, encontra-se ao mesmo nével em termos de eficiéncia de ativaééo dos tréceps.",
+                "extenséo_triceps_sentado.jpg");
         exercicioDAO.insert(ex);
     }
 

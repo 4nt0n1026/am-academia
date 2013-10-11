@@ -115,13 +115,13 @@ public class LoginBean implements Serializable
     {
         if (!usuario.getSenha().equals(CriptografiaLogic.encriptar(senhaAtual)))
         {
-            MessagesLogic.addWarnMessage("Erro", "A senha atual estï¿½ incorreta");
+            MessagesLogic.addWarnMessage("Erro", "A senha atual está incorreta");
             return;
         }
 
         if (!senhaNova.equals(senhaNovaConfirmacao))
         {
-            MessagesLogic.addWarnMessage("Erro", "A confirmaï¿½ï¿½o da senha nova estï¿½ incorreta");
+            MessagesLogic.addWarnMessage("Erro", "A confirmação da senha nova está incorreta");
             return;
         }
 

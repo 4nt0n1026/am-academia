@@ -30,7 +30,7 @@ public class TreinoSolicitacaoFormActivity extends Activity {
 		// TODO - enviar solicitacao para o servidor------------------
 		
 		//------------------------------------------------------------
-		Toast.makeText(this, "SolicitaÃ§Ã£o enviada com sucesso!", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "Solicitação enviada com sucesso!", Toast.LENGTH_LONG).show();
 		finish();
 	}
 

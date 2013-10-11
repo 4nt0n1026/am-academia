@@ -30,11 +30,11 @@ public class AulasDetalheActivity extends Activity {
 		//---------------------------------------------------------------------------
 
 		// TODO - Busca do WS--------------------------------------------------------
-		aula.setDescricao("O boxe ou pugilismo Ã© um esporte de combate, " +
+		aula.setDescricao("O boxe ou pugilismo é um esporte de combate, " +
 				"no qual os lutadores usam apenas os punhos, tanto para a " +
-				"defesa, quanto para o ataque. A palavra deriva do inglÃªs " +
+				"defesa, quanto para o ataque. A palavra deriva do inglês " +
 				"to box, que significa bater, ou pugilismo (bater com os punhos), " +
-				"expressÃ£o utilizada na Inglaterra entre 1000 e 1850.");
+				"expressão utilizada na Inglaterra entre 1000 e 1850.");
 		aula.setHorarios("Seguna e quinta: 12:00 as 13:30 (Kleber)\nTerÃ§a e sexta: 19:00 as 20:30 (Jorge)");
 		//---------------------------------------------------------------------------
 		
