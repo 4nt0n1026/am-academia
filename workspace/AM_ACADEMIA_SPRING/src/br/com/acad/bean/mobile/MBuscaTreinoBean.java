@@ -2,6 +2,7 @@ package br.com.acad.bean.mobile;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ import br.com.acad.dao.catGenerico.interf.FaixaEtariaCatDAO;
 import br.com.acad.dao.catGenerico.interf.ObjetivoCatDAO;
 import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
+import br.com.acad.dao.treino.interf.DiaTreinoDAO;
+import br.com.acad.dao.treino.interf.TreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
 import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.DiasTreinoCat;
@@ -26,6 +29,7 @@ import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
 import br.com.acad.model.cat.SexoCat;
 import br.com.acad.model.pessoa.Aluno;
+import br.com.acad.model.treino.DiaTreino;
 import br.com.acad.model.treino.TreinoFixo;
 
 @SuppressWarnings("serial")
@@ -51,6 +55,10 @@ public class MBuscaTreinoBean implements Serializable
     private TreinoFixoDAO treinoFixoDAO;
     @Autowired
     private AlunoDAO alunoDAO;
+    @Autowired
+    private TreinoDAO treinoDAO;
+    @Autowired
+    private DiaTreinoDAO diaTreinoDAO;
 
     @ManagedProperty(value = "#{mMeusTreinosBean}")
     private MMeusTreinosBean mMeusTreinosBean;
@@ -103,6 +111,7 @@ public class MBuscaTreinoBean implements Serializable
     public String mostrarDetalhe()
     {
         treino = treinoFixoDAO.searchById(treino.getId());
+        treino.setDiasTreino(new HashSet<DiaTreino>(diaTreinoDAO.buscaPorTreino(treino)));
         descricaoTreino = TreinoLogic.getTreinoString(treino);
         return "pm:treinoDetalhe";
     }
@@ -111,7 +120,7 @@ public class MBuscaTreinoBean implements Serializable
     {
         Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
         Aluno aluno = (Aluno) sessionMap.get("aluno");
-        aluno.addTreino(treino);
+        aluno.addTreino(treino, treinoDAO);
         alunoDAO.update(aluno);
         return "pm:treino";
     }

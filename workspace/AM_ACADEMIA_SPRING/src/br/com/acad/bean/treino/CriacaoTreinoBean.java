@@ -46,13 +46,10 @@ public class CriacaoTreinoBean implements Serializable
     private ExercicioTreinoDAO exercicioTreinoDAO;
 
     // Inject outros beans
-    // @ManagedProperty(value="#{treinoFixoBean}")
     @Autowired
     private TreinoFixoBean treinoFixoBean;
-    // @ManagedProperty(value="#{treinoEspecificoBean}")
     @Autowired
     private TreinoEspecificoBean treinoEspecificoBean;
-    // @ManagedProperty(value="#{solicitacaoTreinoBean}")
     @Autowired
     private SolicitacaoTreinoBean solicitacaoTreinoBean;
 

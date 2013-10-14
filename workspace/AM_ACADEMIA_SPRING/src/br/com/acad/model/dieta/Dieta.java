@@ -22,6 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
 import br.com.acad.model.pessoa.ProfessorFunc;
@@ -39,7 +40,7 @@ public class Dieta implements Serializable, GenericEntity
     private int id;
 
     @Temporal(TemporalType.DATE)
-    @Show(label = "Data", order = true, filter = true)
+    @Show(label = "Data", order = true, Type = FieldType.DATE, search = false, filter = true)
     private Calendar data;
 
     @Column(length = 255, nullable = false)
@@ -57,7 +58,7 @@ public class Dieta implements Serializable, GenericEntity
 
     @ManyToOne
     @JoinColumn(name = "PROFESSOR_ID", nullable = true)
-    @Show(label = "Professor", mappedName = "professor.nome", order = true, filter = true)
+    @Show(label = "Professor", mappedName = "professor.nome", linkMap = "/xhtml/pessoa/professorFunc.xhtml", order = true, filter = true)
     private ProfessorFunc professor;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

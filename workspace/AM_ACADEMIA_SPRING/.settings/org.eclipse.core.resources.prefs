@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/br/com/acad/bean/Bean.java=UTF-8
 encoding//src/br/com/acad/bean/banco/PopulaBancoBean.java=UTF-8
+encoding//src/br/com/acad/bean/dieta/SolicitacaoDietaBean.java=UTF-8
 encoding//src/br/com/acad/bean/horario/AulaBean.java=UTF-8
 encoding//src/br/com/acad/bean/mobile/MSolicitacaoTreinoBean.java=UTF-8
 encoding//src/br/com/acad/bean/treino/CriacaoTreinoBean.java=UTF-8

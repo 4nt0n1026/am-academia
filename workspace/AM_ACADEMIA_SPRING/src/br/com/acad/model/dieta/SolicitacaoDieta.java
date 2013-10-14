@@ -37,17 +37,17 @@ public class SolicitacaoDieta implements Serializable, GenericEntity
 
     @Temporal(TemporalType.DATE)
     @Column(name = "DATA_SOLICITACAO", nullable = false)
-    @Show(label = "Data", order = true, filter = true)
+    @Show(label = "Data", Type = FieldType.DATE, order = true, filter = true)
     private Calendar dataSolicitacao;
-
-    @Column(nullable = false)
-    @Show(label = "Respondido", order = true, filter = true, Type = FieldType.BOOLEAN)
-    private boolean respondido;
 
     @ManyToOne
     @JoinColumn(name = "ALUNO_ID", nullable = false)
     @Show(label = "Aluno", mappedName = "aluno.nome", order = true, filter = true)
     private Aluno aluno;
+
+    @Column(nullable = false)
+    @Show(label = "Respondido", order = true, filter = true, Type = FieldType.BOOLEAN)
+    private boolean respondido;
 
     public SolicitacaoDieta()
     {

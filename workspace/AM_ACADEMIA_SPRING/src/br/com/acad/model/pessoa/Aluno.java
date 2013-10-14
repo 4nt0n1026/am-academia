@@ -14,6 +14,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.dao.treino.interf.TreinoDAO;
 import br.com.acad.logic.PessoaLogic;
 import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.treino.Treino;
@@ -44,8 +45,9 @@ public class Aluno extends Pessoa
     private Set<Treino> dietas = new HashSet<Treino>();
 
     // Metodos
-    public void addTreino(Treino treino)
+    public void addTreino(Treino treino, TreinoDAO dao)
     {
+        treinos = new HashSet<Treino>(dao.buscarPorAluno(this));
         treinos.add(treino);
     }
 

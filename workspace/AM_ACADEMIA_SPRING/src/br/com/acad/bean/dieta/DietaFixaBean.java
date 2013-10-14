@@ -15,7 +15,6 @@ import br.com.acad.dao.catGenerico.interf.SexoCatDAO;
 import br.com.acad.dao.dieta.interf.DietaFixaDAO;
 import br.com.acad.dao.dieta.interf.LimitacaoDietaCatDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
-import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.DietaLogic;
 import br.com.acad.model.cat.FaixaEtariaCat;
 import br.com.acad.model.cat.ObjetivoCat;
@@ -59,9 +58,7 @@ public class DietaFixaBean extends Bean<DietaFixa> implements Serializable
     public void beforeInit()
     {
         dao = dietaFixaDAO;
-        staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaFixa.class);
-        staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Dieta.class, DietaFixa.class);
-        staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Dieta.class, DietaFixa.class);
+        superClasses = new Class<?>[] { Dieta.class };
     }
 
     /**

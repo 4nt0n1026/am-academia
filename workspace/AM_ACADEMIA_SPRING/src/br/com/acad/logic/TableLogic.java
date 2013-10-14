@@ -17,7 +17,8 @@ import br.com.acad.annotation.Show;
 import br.com.acad.bean.NavigationBean;
 import br.com.acad.logic.model.DataField;
 import br.com.acad.logic.model.FieldType;
-import br.com.acad.logic.model.MyDateTimeConverter;
+import br.com.acad.logic.model.MyDateConverter;
+import br.com.acad.logic.model.MyTimeConverter;
 
 public class TableLogic
 {
@@ -119,12 +120,20 @@ public class TableLogic
                 HtmlOutputText outputDate = new HtmlOutputText();
                 outputDate.setValueExpression("value", JsfLogic.createValueExpression(field.getValue(), Date.class));
                 // Converter
-                MyDateTimeConverter dtConverter = new MyDateTimeConverter();
-                // dtConverter.setPattern("dd/MM/yy");
+                MyDateConverter dtConverter = new MyDateConverter();
                 outputDate.setConverter(dtConverter);
-                // outputDate.getFacets().put("dateTimeConverter", dtConverter);
 
                 column.getChildren().add(outputDate);
+                break;
+
+            case TIME:
+                HtmlOutputText outputTime = new HtmlOutputText();
+                outputTime.setValueExpression("value", JsfLogic.createValueExpression(field.getValue(), Date.class));
+                // Converter
+                MyTimeConverter timeConverter = new MyTimeConverter();
+                outputTime.setConverter(timeConverter);
+
+                column.getChildren().add(outputTime);
                 break;
 
             default:
@@ -200,7 +209,7 @@ public class TableLogic
             retorno.append(field.getName());
         }
 
-        if (type == FieldType.DATE)
+        if (type == FieldType.DATE || type == FieldType.TIME)
         {
             retorno.append(".time");
         }

@@ -29,17 +29,17 @@ public class DietaFixa extends Dieta
 
     @ManyToOne
     @JoinColumn(name = "SEXO_ID", nullable = false)
-    @Show(label = "Sexo", mappedName = "sexoCat.nome", order = true, filter = true)
+    @Show(label = "Sexo", mappedName = "sexoCat.nome", linkMap = "/xhtml/cat/sexoCat.xhtml", order = true, filter = true)
     private SexoCat sexoCat;
 
     @ManyToOne
     @JoinColumn(name = "FAIXA_ETARIA_ID", nullable = false)
-    @Show(label = "Faixa Etaria", mappedName = "faixaEtariaCat.nome", order = true, filter = true)
+    @Show(label = "Faixa Etaria", mappedName = "faixaEtariaCat.nome", linkMap = "/xhtml/cat/faixaEtariaCat.xhtml", order = true, filter = true)
     private FaixaEtariaCat faixaEtariaCat;
 
     @ManyToOne
     @JoinColumn(name = "OBJETIVO_ID", nullable = false)
-    @Show(label = "Objetivo", mappedName = "objetivoCat.nome", order = true, filter = true)
+    @Show(label = "Objetivo", mappedName = "objetivoCat.nome", linkMap = "/xhtml/cat/objetivoCat.xhtml", order = true, filter = true)
     private ObjetivoCat objetivoCat;
 
     public DietaFixa()

@@ -77,7 +77,7 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
         }
         else
         {
-            MessagesLogic.addWarnMessage("Erro", "Selecione uma solicitação para ser respondida");
+            MessagesLogic.addWarnMessage("Erro", "Selecione uma solicita√ß√£o para ser respondida");
         }
     }
 

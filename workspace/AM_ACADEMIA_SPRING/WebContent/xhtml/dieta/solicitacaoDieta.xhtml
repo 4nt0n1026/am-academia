@@ -83,10 +83,11 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{solicitacaoDietaBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel for="idDesc" value="Descricao" />
-							<p:inputTextarea id="idDesc" value="#{solicitacaoDietaBean.entity.descricao}" cols="60" required="true" requiredMessage="Nome obrigatorio" />
+							<p:inputTextarea id="idDesc" value="#{solicitacaoDietaBean.entity.descricao}" style="width:500px" rows="4" required="true"
+								requiredMessage="Nome obrigatorio" />
 
 							<h:outputLabel for="idAluno" value="Aluno: " />
 							<p:selectOneMenu id="idAluno" value="#{solicitacaoDietaBean.entity.aluno.id}" rendered="true" style="width:250px"
@@ -94,8 +95,10 @@
 								<f:selectItems value="#{solicitacaoDietaBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}" />
 							</p:selectOneMenu>
 
-							<p:commandButton icon="ui-icon ui-icon-check" action="#{solicitacaoDietaBean.incluirEntity}" ajax="true" update=":tabView1" />
-							<p:button icon="ui-icon ui-icon-close" action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{solicitacaoDietaBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
 
 						</h:panelGrid>
 					</p:fieldset>
@@ -111,14 +114,13 @@
 						<ui:param name="bean" value="#{solicitacaoDietaBean}"></ui:param>
 
 						<ui:param name="functions" value="Responder Solicitação,responder,:tabView1:formDieta"></ui:param>
-
 					</ui:include>
 
 
 					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{solicitacaoDietaBean}"></ui:param>
 						<ui:param name="columns"
 							value="Aluno, #{entity.aluno.nome}, text| 

@@ -12,6 +12,7 @@ import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.SolicitacaoTreinoDAO;
+import br.com.acad.dao.treino.interf.TreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.model.pessoa.Aluno;
@@ -31,6 +32,8 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
 
     @Autowired
     private SolicitacaoTreinoDAO solicitacaoTreinoDAO;
+    @Autowired
+    private TreinoDAO treinoDAO;
     @Autowired
     private AlunoDAO alunoDAO;
     @Autowired
@@ -119,13 +122,13 @@ public class SolicitacaoTreinoBean extends Bean<SolicitacaoTreino> implements Se
         treino = treinoEspecificoDAO.insert(treino);
 
         // Inclui nos treinos do aluno
-        aluno.addTreino(treino);
+        aluno.addTreino(treino, treinoDAO);
 
         // Salva aluno
         aluno = alunoDAO.update(aluno);
 
         entity.setRespondido(true);
-        beforeSaveEntity();
+        incluirEntity();
 
         closeForms();
         atualizar();

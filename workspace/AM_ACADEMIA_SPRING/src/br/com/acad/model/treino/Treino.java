@@ -77,11 +77,9 @@ public class Treino implements Serializable, GenericEntity
     // Metodos
     public void generateTreinoStr(DiaTreinoDAO diaTreinoDAO)
     {
-        // TODO - pegar pelo dao os dias e montar a string
         List<DiaTreino> dias = diaTreinoDAO.buscaPorTreino(this);
         this.setDiasTreino(new HashSet<DiaTreino>(dias));
         this.setTreinoStr(TreinoLogic.getTreinoString(this));
-        // treinoDAO.
     }
 
     public boolean addDiaTreino(DiaTreino dia)

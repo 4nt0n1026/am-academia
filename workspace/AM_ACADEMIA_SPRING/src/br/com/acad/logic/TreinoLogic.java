@@ -38,6 +38,17 @@ public class TreinoLogic
     }
 
     /**
+     * Gera um texto com o treino selecionado para apresentar na tela
+     * 
+     * @param treino
+     * @return
+     */
+    public static String getSerieString(ExercicioTreino exercicio)
+    {
+        return GenericLogic.formatListOfObjects(exercicio.getSeries(), "/");
+    }
+
+    /**
      * Transforma um set de diaTreino em uma lista ordenada pela sua ordem
      * 
      * @param dias

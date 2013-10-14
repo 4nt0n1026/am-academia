@@ -57,45 +57,47 @@
 					<p:focus for="formEntity" />
 					<!-- TABFORM 1 -->
 					<p:fieldset id="field1" rendered="#{dietaFixaBean.showEntity}">
-						<h:panelGrid columns="6">
+						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{dietaFixaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+							<p:inputText id="idNome" value="#{dietaFixaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:500px" />
 
 							<h:outputLabel for="idDesc" value="Descricao" />
-							<p:inputTextarea id="idDesc" value="#{dietaFixaBean.entity.descricao}" cols="50" />
+							<p:inputTextarea id="idDesc" value="#{dietaFixaBean.entity.descricao}" style="width:500px" />
+
+
+						</h:panelGrid>
+						<h:panelGrid columns="4" styleClass="container">
 
 							<h:outputLabel for="idProf" value="Professor: " />
 							<p:selectOneMenu id="idProf" value="#{dietaFixaBean.entity.professor.id}" rendered="true" style="width:250px"
 								requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains">
-								<f:selectItem itemLabel="---" itemValue="" />
 								<f:selectItems value="#{dietaFixaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
 							</p:selectOneMenu>
 
-						</h:panelGrid>
-						<h:panelGrid columns="10">
 							<h:outputLabel for="idObjetivo" value="Objetivo: " />
-							<p:selectOneMenu id="idObjetivo" value="#{dietaFixaBean.entity.objetivoCat.id}" rendered="true" requiredMessage="Objetivo obrigatorio">
-								<f:selectItem itemLabel="---" itemValue="" />
+							<p:selectOneMenu id="idObjetivo" value="#{dietaFixaBean.entity.objetivoCat.id}" rendered="true" requiredMessage="Objetivo obrigatorio"
+								style="width:250px">
 								<f:selectItems value="#{dietaFixaBean.objetivoCatField}" var="obj" itemLabel="#{obj.nome}" itemValue="#{obj.id}" />
 							</p:selectOneMenu>
 
 							<h:outputLabel for="idFaixa" value="Faixa Etaria: " />
-							<p:selectOneMenu id="idFaixa" value="#{dietaFixaBean.entity.faixaEtariaCat.id}" rendered="true" requiredMessage="Faixa Etaria obrigatorio">
-								<f:selectItem itemLabel="---" itemValue="" />
+							<p:selectOneMenu id="idFaixa" value="#{dietaFixaBean.entity.faixaEtariaCat.id}" rendered="true" requiredMessage="Faixa Etaria obrigatorio"
+								style="width:250px">
 								<f:selectItems value="#{dietaFixaBean.faixaEtariaCatField}" var="faixa" itemLabel="#{faixa.nome}" itemValue="#{faixa.id}" />
 							</p:selectOneMenu>
 
 							<h:outputLabel for="idSexo" value="Sexo " />
-							<p:selectOneMenu id="idSexo" value="#{dietaFixaBean.entity.sexoCat.id}" rendered="true" requiredMessage="Sexo obrigatorio">
-								<f:selectItem itemLabel="---" itemValue="" />
+							<p:selectOneMenu id="idSexo" value="#{dietaFixaBean.entity.sexoCat.id}" rendered="true" requiredMessage="Sexo obrigatorio" style="width:250px">
 								<f:selectItems value="#{dietaFixaBean.sexoCatField}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo.id}" />
 							</p:selectOneMenu>
 						</h:panelGrid>
 
-						<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaFixa}" onclick="dlgDieta.show();" ajax="true"
-							update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
-						<p:button icon="ui-icon ui-icon-close" action="#{dietaFixaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+						<h:panelGroup>
+							<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaFixa}" onclick="dlgDieta.show();" ajax="true"
+								update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+							<p:button icon="ui-icon ui-icon-close" action="#{dietaFixaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+						</h:panelGroup>
 
 					</p:fieldset>
 
@@ -116,7 +118,7 @@
 					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{dietaFixaBean}"></ui:param>
 						<ui:param name="columns"
 							value="Data, #{entity.data.time}, date|

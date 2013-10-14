@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
@@ -48,6 +49,11 @@ public class ExercicioTreino implements Serializable, GenericEntity
     public void resetSerie()
     {
         series = new HashSet<Serie>();
+    }
+
+    public String getSeriesString()
+    {
+        return TreinoLogic.getSerieString(this);
     }
 
     // Construtores

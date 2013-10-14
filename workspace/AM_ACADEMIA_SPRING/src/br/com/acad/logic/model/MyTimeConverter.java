@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
-public class MyDateTimeConverter implements Converter
+public class MyTimeConverter implements Converter
 {
 
     public Object getAsObject(FacesContext arg0, UIComponent arg1, String dateStr)
@@ -25,8 +25,8 @@ public class MyDateTimeConverter implements Converter
         {
             e.printStackTrace();
             FacesMessage message = new FacesMessage();
-            message.setDetail("Date not valid: format 'yyyyMMdd' expected");
-            message.setSummary("Date not valid: format 'yyyyMMdd' expected");
+            message.setDetail("Date not valid: format 'HH:mm' expected");
+            message.setSummary("Date not valid: format 'HH:mm' expected");
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ConverterException(message);
         }
@@ -35,7 +35,7 @@ public class MyDateTimeConverter implements Converter
 
     public String getAsString(FacesContext arg0, UIComponent arg1, Object value)
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
         Date date = (Date) value;
         String result = null;

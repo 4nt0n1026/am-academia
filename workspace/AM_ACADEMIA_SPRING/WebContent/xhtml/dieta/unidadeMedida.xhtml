@@ -37,17 +37,19 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{unidadeMedidaBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{unidadeMedidaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+							<p:inputText id="idNome" value="#{unidadeMedidaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:250px" />
 
 							<h:outputLabel for="idSigla" value="Sigla" />
-							<p:inputText id="idSigla" value="#{unidadeMedidaBean.entity.sigla}" required="true" requiredMessage="Nome obrigatorio" />
+							<p:inputText id="idSigla" value="#{unidadeMedidaBean.entity.sigla}" required="true" requiredMessage="Nome obrigatorio" style="width:250px" />
 
-							<p:commandButton icon="ui-icon ui-icon-check" action="#{unidadeMedidaBean.incluirEntity}" ajax="true" update=":tabView1" />
-							<p:button icon="ui-icon ui-icon-close" action="#{unidadeMedidaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
-
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{unidadeMedidaBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{unidadeMedidaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+							
 						</h:panelGrid>
 					</p:fieldset>
 				</h:form>
@@ -67,10 +69,8 @@
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{unidadeMedidaBean}"></ui:param>
-						<ui:param name="columns" value="Nome, #{entity.nome}, text|
-														Sigla, #{entity.sigla}, text"></ui:param>
 					</ui:include>
 				</h:form>
 				<!-- ****************************************************************************************************** -->

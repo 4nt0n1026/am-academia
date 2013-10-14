@@ -30,29 +30,29 @@ public class HorarioAula implements Serializable, GenericEntity
     @Column(name = "ID_HORARIO_AULA")
     private int id;
 
-    @Column(name = "DIA_SEMANA")
-    @Show(label = "Dias da Semana", filter = true)
-    private String diasSemana;
-
     @ManyToOne
     @JoinColumn(name = "AULA_ID")
     @Show(label = "Aula", mappedName = "aula.nome", order = true, linkMap = "/xhtml/horario/aula.xhtml", filter = true)
     private Aula aula;
 
-    @ManyToOne
-    @JoinColumn(name = "UNIDADE_ID")
-    @Show(label = "Unidade", mappedName = "unidade.nome", order = true, linkMap = "/xhtml/horario/unidade.xhtml", filter = true)
-    private Unidade unidade;
+    @Column(name = "DIA_SEMANA")
+    @Show(label = "Dias da Semana", filter = true)
+    private String diasSemana;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    @Show(label = "Horario", Type = FieldType.TIME, filter = true)
+    private Calendar hora;
 
     @ManyToOne
     @JoinColumn(name = "PROFESSOR_ID")
     @Show(label = "Professor", mappedName = "professor.nome", order = true, linkMap = "/xhtml/pessoa/professorFunc.xhtml", filter = true)
     private ProfessorFunc professor;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    @Show(label = "Horario", Type = FieldType.DATE, filter = true)
-    private Calendar hora;
+    @ManyToOne
+    @JoinColumn(name = "UNIDADE_ID")
+    @Show(label = "Unidade", mappedName = "unidade.nome", order = true, linkMap = "/xhtml/horario/unidade.xhtml", filter = true)
+    private Unidade unidade;
 
     public HorarioAula()
     {

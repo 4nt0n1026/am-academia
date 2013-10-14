@@ -34,19 +34,19 @@ public class Alimento implements Serializable, GenericEntity
     private String descricao;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Valor Energetico", order = true, filter = true)
+    @Show(label = "Valor Energetico", Type = FieldType.DOUBLE, order = true, filter = true)
     private double valorEnergetico;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Qtd Proteina", order = true, filter = true)
+    @Show(label = "Qtd Proteina", Type = FieldType.DOUBLE, order = true, filter = true)
     private double qtdProteina;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Qtd Carboidrato", order = true, filter = true)
+    @Show(label = "Qtd Carboidrato", Type = FieldType.DOUBLE, order = true, filter = true)
     private double qtdCarboidrato;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Qtd Gordura", order = true, filter = true)
+    @Show(label = "Qtd Gordura", Type = FieldType.DOUBLE, order = true, filter = true)
     private double qtdGordura;
 
     @Column(precision = 2, nullable = false)
@@ -55,7 +55,7 @@ public class Alimento implements Serializable, GenericEntity
 
     @ManyToOne
     @JoinColumn(name = "UNIDADE_MEDIDA_ID", nullable = false)
-    @Show(label = "Unidade", mappedName = "unidadeMedida.nome", order = true, filter = true)
+    @Show(label = "Unidade", mappedName = "unidadeMedida.nome", linkMap = "/xhtml/dieta/unidadeMedida.xhtml", order = true, filter = true)
     private UnidadeMedida unidadeMedida;
 
     public Alimento()

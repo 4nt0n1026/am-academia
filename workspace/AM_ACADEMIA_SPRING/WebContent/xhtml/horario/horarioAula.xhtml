@@ -37,7 +37,7 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{horarioAulaBean.showEntity}">
-						<h:panelGrid columns="6" styleClass="container">
+						<h:panelGrid columns="4" styleClass="container">
 
 							<h:outputLabel for="idHora" value="Hora " />
 							<p:calendar pattern="HH:mm" value="#{horarioAulaBean.entity.hora.time}" timeOnly="true" locale="pt" required="true"
@@ -64,7 +64,10 @@
 								requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains">
 								<f:selectItems value="#{horarioAulaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
 							</p:selectOneMenu>
-
+							
+							<h:outputLabel  />
+							<h:outputLabel  />
+							
 							<h:panelGroup>
 								<p:commandButton icon="ui-icon ui-icon-check" action="#{horarioAulaBean.incluirEntity}" ajax="true" update=":tabView1" />
 								<p:button icon="ui-icon ui-icon-close" action="#{horarioAulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
