@@ -7,15 +7,19 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.component.html.HtmlColumn;
 import javax.faces.component.html.HtmlDataTable;
-import javax.faces.component.html.HtmlPanelGrid;
+import javax.faces.component.html.HtmlForm;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.acad.dao.generico.interf.DAO;
 import br.com.acad.logic.AnnotationsLogic;
+import br.com.acad.logic.Filterlogic;
 import br.com.acad.logic.FormLogic;
 import br.com.acad.logic.MessagesLogic;
 import br.com.acad.logic.SqlLogic;
 import br.com.acad.logic.TableLogic;
 import br.com.acad.logic.model.DataField;
+import br.com.acad.logic.model.DataFilter;
 import br.com.acad.model.GenericEntity;
 
 /**
@@ -35,6 +39,10 @@ public abstract class Bean<T extends GenericEntity>
     // DAO
     protected DAO<T, Integer> dao;
 
+    // Navigation Bean
+    @Autowired
+    private NavigationBean navigationBean;
+
     // Bean Name
     protected String beanName;
 
@@ -50,16 +58,21 @@ public abstract class Bean<T extends GenericEntity>
     protected String[] rowClasses;
 
     // Dynamic Form
-    protected HtmlPanelGrid panelForm;
+    protected HtmlForm panelForm;
     protected DataField[] formValues;
 
     // Dynamic Table
     protected HtmlDataTable dataTable;
+    protected HtmlColumn selectButtonColumn;
     protected DataField[] tableValues;
 
     // Search
     protected String[] staticFields;
     protected String search;
+
+    // Filter
+    protected boolean showFilter = false;
+    protected DataFilter[] dataFilters;
 
     // Paginação
     protected int page = 1;
@@ -119,13 +132,32 @@ public abstract class Bean<T extends GenericEntity>
     {
     }
 
+    public void beforeInitRefresh()
+    {
+    }
+
+    /************************************************************************************************************/
+    // DYNAMIC FILTER
+    /************************************************************************************************************/
+    public void showResult()
+    {
+        for (DataFilter filter : dataFilters)
+        {
+            System.out.println(filter.getLabel() + " " + filter.getOperator() + " " + filter.getValue());
+        }
+    }
+
     /************************************************************************************************************/
     // DYNAMIC FORM
     /************************************************************************************************************/
 
     private void prepareForm()
     {
-        panelForm = new HtmlPanelGrid();
+        panelForm = new HtmlForm();
+        // InputText inputText = new InputText();
+        // inputText.setValueExpression("#{diasTreinoCatBean.entsity.nome}",
+        // createValueExpression(inputValue.getValue(), Object.class));
+        // panelForm.getChildren().add(inp)
         if (formValues != null)
         {
             for (int i = 0; i < formValues.length; i++)
@@ -145,30 +177,21 @@ public abstract class Bean<T extends GenericEntity>
         dataTable = new HtmlDataTable();
 
         // Create <h:column>.
-        HtmlColumn columnSelectButton = new HtmlColumn();
-        dataTable.getChildren().add(columnSelectButton);
-
-        // <h:commandButton styleClass="btn btn-primary btn-xs" value="Selecionar" immediate="true"
-        // action="#{bean.selectRow(entity)}"
-        // onclick="changeBackground(this)">
-        // <f:ajax render=":tabView1:detailEntity" listener="#{bean.showFormDetail}" />
-        // </h:commandButton>
-
-        // HtmlCommandButton selectButton = new HtmlCommandButton();
-        // selectButton.setValueExpression("value", TableLogic.createValueExpression("Selecionar", String.class));
-        // selectButton.getChildren().add(columnSelectButton);
+        // selectButtonColumn = new HtmlColumn();
+        // dataTable.getChildren().add(0, selectButtonColumn);
 
         // Iterate over columns.
         if (tableValues != null)
         {
             for (int i = 0; i < tableValues.length; i++)
             {
-
                 // Create <h:column>.
                 HtmlColumn column = new HtmlColumn();
                 dataTable.getChildren().add(column);
 
-                TableLogic.prepareColumn(column, tableValues[i]);
+                TableLogic.prepareColumnValue(column, tableValues[i]);
+
+                TableLogic.prepareColumnLink(column, tableValues[i], navigationBean);
             }
         }
 
@@ -222,6 +245,13 @@ public abstract class Bean<T extends GenericEntity>
             formValues = FormLogic.getFormValues(beanName, arrayClasses);
         }
 
+        if (dataFilters == null)
+        {
+            dataFilters = Filterlogic.getFilterValues(arrayClasses);
+        }
+
+        beforeInitRefresh();
+
         atualizar();
     }
 
@@ -231,6 +261,23 @@ public abstract class Bean<T extends GenericEntity>
     public void selectRow(T entity)
     {
         this.entity = entity;
+        showFormDetail();
+    }
+
+    /**
+     * Abre painel de inclusao de nova entity
+     */
+    public final void showFormFilter()
+    {
+        if (showFilter == false)
+        {
+            showFilter = true;
+        }
+        else
+        {
+            showFilter = false;
+        }
+        System.out.println(showFilter);
     }
 
     /**
@@ -406,6 +453,7 @@ public abstract class Bean<T extends GenericEntity>
      */
     public void closeForms()
     {
+        showFilter = false;
         showEntity = false;
         showEntity2 = false;
         showEntity3 = false;
@@ -717,7 +765,7 @@ public abstract class Bean<T extends GenericEntity>
         this.dataTable = dataTable;
     }
 
-    public HtmlPanelGrid getPanelForm()
+    public HtmlForm getPanelForm()
     {
         if (panelForm == null)
         {
@@ -726,9 +774,34 @@ public abstract class Bean<T extends GenericEntity>
         return panelForm;
     }
 
-    public void setPanelForm(HtmlPanelGrid panelForm)
+    public void setPanelForm(HtmlForm panelForm)
     {
         this.panelForm = panelForm;
+    }
+
+    public HtmlColumn getSelectButtonColumn()
+    {
+        return selectButtonColumn;
+    }
+
+    public void setSelectButtonColumn(HtmlColumn selectButtonColumn)
+    {
+        this.selectButtonColumn = selectButtonColumn;
+    }
+
+    public DataFilter[] getDataFilters()
+    {
+        return dataFilters;
+    }
+
+    public void setDataFilters(DataFilter[] dataFilters)
+    {
+        this.dataFilters = dataFilters;
+    }
+
+    public boolean getShowFilter()
+    {
+        return showFilter;
     }
 
 }

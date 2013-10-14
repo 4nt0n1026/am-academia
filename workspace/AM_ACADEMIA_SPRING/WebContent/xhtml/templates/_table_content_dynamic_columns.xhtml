@@ -24,10 +24,10 @@
 		<h:dataTable binding="#{bean.dataTable}" value="#{bean.entities}" var="entity" styleClass="table center" headerClass="gray-back center"
 			rowClasses="" footerClass="gray-back center">
 
-			<h:column headerClass="small-column gray-back">
+			<h:column headerClass="small-column gray-back" >
 				<h:commandButton styleClass="btn btn-primary btn-xs" value="Selecionar" immediate="true" action="#{bean.selectRow(entity)}"
 					onclick="changeBackground(this)">
-					<f:ajax render=":tabView1:detailEntity" listener="#{bean.showFormDetail}" />
+					<f:ajax render=":tabView1:detailEntity" />
 				</h:commandButton>
 			</h:column>
 

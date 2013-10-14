@@ -32,7 +32,7 @@ public class ObjetivoCat implements Serializable, GenericEntity
     private String fotoLocalIcone;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", filter = true)
     private String nome;
 
     public ObjetivoCat()

@@ -13,7 +13,6 @@
 	<context:annotation-config />
 	<context:component-scan base-package="br.com.acad.*" />
 
-	<!-- MySQL -->
 	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="br.com.acad.model" />
@@ -24,20 +23,36 @@
 	</bean>
 
 
+	<!-- MySQL -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost/ACAD_AM2" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/ACAD_AM" />
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 		<property name="initialPoolSize" value="1" />
 		<property name="minPoolSize" value="1" />
 		<property name="maxPoolSize" value="1" />
-		<!-- <property name="timeout"><value>0</value></property> -->   <!-- 0 means: no timeout -->
 		<property name="idleConnectionTestPeriod" value="200" />
 		<property name="acquireIncrement" value="1" />
 		<property name="maxStatements" value="0" />
 		<property name="numHelperThreads" value="1" />
-	</bean>
+	</bean> 
+
+	<!-- ORACLE -->
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL" />
+		<property name="user" value="OPS$RM67163" />
+		<property name="password" value="240389" />
+		<property name="initialPoolSize" value="1" />
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="100" />
+		<property name="idleConnectionTestPeriod" value="200" />
+		<property name="acquireIncrement" value="1" />
+		<property name="maxStatements" value="0" />
+		<property name="numHelperThreads" value="1" />
+	</bean> -->
+
 
 	<bean id="vendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
@@ -45,15 +60,6 @@
 		<property name="generateDdl" value="true" />
 	</bean>
 
-
-
-
-	<!-- ORACLE <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> <property name="dataSource" ref="dataSource" 
-		/> <property name="packagesToScan" value="br.com.acad.model" /> <property name="jpaVendorAdapter"> <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" 
-		/> </property> <property name="jpaProperties"> <props> <prop key="hibernate.hbm2ddl.auto">validate</prop> <prop key="hibernate.dialect">br.com.acad.spring.Oracle10gDialectExtended</prop> 
-		</props> </property> </bean> <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" > <property name="driverClassName" 
-		value="oracle.jdbc.OracleDriver"/> <property name="url" value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL"/> <property name="username" value="OPS$RM67163"/> 
-		<property name="password" value="240389"/> </bean> -->
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="myEmf" />

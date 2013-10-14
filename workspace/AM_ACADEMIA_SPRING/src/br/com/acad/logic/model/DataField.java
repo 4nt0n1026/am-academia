@@ -7,17 +7,20 @@ public class DataField
     private FieldType fieldType;
     private FormFieldType formFieldType;
     private String mask;
+    private String linkMap;
 
     private boolean required;
     private int maxValue;
     private int minValue;
 
-    public DataField(String label, String value, FieldType fieldType)
+    public DataField(String label, String value, FieldType fieldType, String mask, String linkMap)
     {
         super();
         this.label = label;
         this.value = value;
         this.fieldType = fieldType;
+        this.mask = mask;
+        this.linkMap = linkMap;
     }
 
     public DataField(String value, FieldType fieldType)
@@ -28,7 +31,7 @@ public class DataField
     }
 
     public DataField(String label, String value, FieldType fieldType, FormFieldType formFieldType, String mask, boolean required,
-            int maxValue, int minValue)
+            int maxValue, int minValue, String linkMap)
     {
         super();
         this.label = label;
@@ -39,6 +42,7 @@ public class DataField
         this.required = required;
         this.maxValue = maxValue;
         this.minValue = minValue;
+        this.linkMap = linkMap;
     }
 
     public String getValue()
@@ -119,6 +123,16 @@ public class DataField
     public void setFormFieldType(FormFieldType formFieldType)
     {
         this.formFieldType = formFieldType;
+    }
+
+    public String getLinkMap()
+    {
+        return linkMap;
+    }
+
+    public void setLinkMap(String linkMap)
+    {
+        this.linkMap = linkMap;
     }
 
 }

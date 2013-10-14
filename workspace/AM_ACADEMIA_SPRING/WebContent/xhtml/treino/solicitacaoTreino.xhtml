@@ -1,153 +1,167 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
-	
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Dialog de criacao de treino -->
 		<!-- ****************************************************************************************************** -->
-		<p:dialog id="dialogTreino" widgetVar="dlgTreino" height="600" width="800" draggable="false" header="Criação de treino" modal="true" closeOnEscape="true" closable="true">
-			<p:fieldset id="field2" >
-		       	
-		       	<!-- Criacao Treino -->
-    			<ui:include src="/xhtml/treino/criacaoTreino.xhtml"/>
-				
+		<p:dialog id="dialogTreino" widgetVar="dlgTreino" height="600" width="800" draggable="false" header="Criação de treino" modal="true"
+			closeOnEscape="true" closable="true">
+			<p:fieldset id="field2">
+
+				<!-- Criacao Treino -->
+				<ui:include src="/xhtml/treino/criacaoTreino.xhtml" />
+
 				<h:form>
-		        	<p:commandButton value="salvar"  action="#{criacaoTreinoBean.salvarTreinoEspecificoResposta}" ajax="false" update=":tabView1:formEntity" /> 
-	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgTreino.close()" ajax="false" update=":tabView1"   />
-				</h:form>	
-							        
-			</p:fieldset> 
+					<p:commandButton value="salvar" action="#{criacaoTreinoBean.salvarTreinoEspecificoResposta}" ajax="false" update=":tabView1:formEntity" />
+					<p:commandButton icon="ui-icon ui-icon-close" onclick="dlgTreino.close()" ajax="false" update=":tabView1" />
+				</h:form>
+
+			</p:fieldset>
 		</p:dialog>
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- SolicitacaoTreino -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Solicitações de Treinos"></ui:param>
 			<ui:param name="subtitulo" value="Controle de solicitações e criação de treinos solicitados"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-     				<!-- ****************************************************************************************************** -->
-					<!-- form de resposta a Solicitacao -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formTreino"  >
-						<p:focus for="formTreino" />
-						<p:fieldset id="field1"  rendered="#{solicitacaoTreinoBean.showTreino}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel  value="Professor: " />  
-							    <p:selectOneMenu  value="#{solicitacaoTreinoBean.treino.professor.id}" rendered="true" style="width:250px"
-							    			requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItems value="#{solicitacaoTreinoBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
-								</p:selectOneMenu>    
-	
-								<p:commandButton value="Adcionar Exercicios" action="#{criacaoTreinoBean.newTreinoEspecificoResposta}" onclick="dlgTreino.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{solicitacaoTreinoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity :tabView1:formTreino"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-						
-			        </h:form>
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{solicitacaoTreinoBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idDesc" value="Descricao" />  
-						        <p:inputTextarea id="idDesc" value="#{solicitacaoTreinoBean.entity.descricao}" cols="60" 
-						        		required="true" requiredMessage="Descrição obrigatoria" />  
-						        
-						        <h:outputLabel for="idAluno" value="Aluno: " />  
-							    <p:selectOneMenu id="idAluno" value="#{solicitacaoTreinoBean.entity.aluno.id}" rendered="true" style="width:250px"
-							    			requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItems value="#{solicitacaoTreinoBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}"/>  
-								</p:selectOneMenu>  
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{solicitacaoTreinoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{solicitacaoTreinoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-      				
+			<p:tab title="">
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{solicitacaoTreinoBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- form de resposta a Solicitacao -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formTreino">
+					<p:focus for="formTreino" />
+					<p:fieldset id="field1" rendered="#{solicitacaoTreinoBean.showTreino}">
+						<h:panelGrid columns="2" styleClass="container">
+
+							<h:outputLabel value="Professor: " />
+							<p:selectOneMenu value="#{solicitacaoTreinoBean.treino.professor.id}" rendered="true" style="width:250px" requiredMessage="Aluno Obrigatorio"
+								filter="true" filterMatchMode="contains">
+								<f:selectItems value="#{solicitacaoTreinoBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
+							</p:selectOneMenu>
+
+							<h:panelGroup>
+								<p:commandButton value="Adcionar Exercicios" action="#{criacaoTreinoBean.newTreinoEspecificoResposta}" onclick="dlgTreino.show();" ajax="true"
+									update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+								<p:button icon="ui-icon ui-icon-close" action="#{solicitacaoTreinoBean.dontShowEntity}" ajax="true"
+									update=":tabView1:formEntity :tabView1:formTreino" />
+							</h:panelGroup>
+
+						</h:panelGrid>
+					</p:fieldset>
+
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{solicitacaoTreinoBean.showEntity}">
+						<h:panelGrid columns="2" styleClass="container">
+
+							<h:outputLabel for="idDesc" value="Descricao" />
+							<p:inputTextarea id="idDesc" value="#{solicitacaoTreinoBean.entity.descricao}" cols="120" rows="10" required="true"
+								requiredMessage="Descrição obrigatoria" />
+
+							<h:outputLabel for="idAluno" value="Aluno: " />
+							<p:selectOneMenu id="idAluno" value="#{solicitacaoTreinoBean.entity.aluno.id}" rendered="true" style="width:250px"
+								requiredMessage="Aluno Obrigatorio" filter="true" filterMatchMode="contains">
+								<f:selectItems value="#{solicitacaoTreinoBean.alunosField}" var="aluno" itemLabel="#{aluno.nome}" itemValue="#{aluno.id}" />
+							</p:selectOneMenu>
+
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{solicitacaoTreinoBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{solicitacaoTreinoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{solicitacaoTreinoBean}"></ui:param>
-						
+
 						<ui:param name="functions" value="Responder Solicitação,responder,:tabView1:formTreino"></ui:param>
-						
+
 						<ui:param name="function1Name" value="Responder Solicitação"></ui:param>
 						<ui:param name="function1Action" value="responder"></ui:param>
-						<ui:param name="function1Update" value=":tabView1:formTreino"/> 
-						
-						
+						<ui:param name="function1Update" value=":tabView1:formTreino" />
+
+
 					</ui:include>
-			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{solicitacaoTreinoBean}"></ui:param>
-						<ui:param name="columns" value="Data, #{entity.dataSolicitacao.time}, date|
+						<ui:param name="columns"
+							value="Data, #{entity.dataSolicitacao.time}, date|
 														Nome, #{entity.aluno.nome}, text|
 														Descicao, #{entity.descricao}, text|
 														Respondido,#{entity.respondido}, boolean"></ui:param>
 					</ui:include>
-					
+
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-				<h:form id="detailEntity">	
-					
+				<h:form id="detailEntity">
+
 					<ui:include src="/xhtml/templates/_detail_content.xhtml">
 						<ui:param name="bean" value="#{solicitacaoTreinoBean}"></ui:param>
-						
+
 						<ui:param name="panel1Columns" value="2"></ui:param>
-						<ui:param name="panel1Fields" value="Nome do aluno~header|#{bean.entity.aluno.nome}~text|
+						<ui:param name="panel1Fields"
+							value="Nome do aluno~header|#{bean.entity.aluno.nome}~text|
 															 Peso~header|#{bean.entity.aluno.peso}~text|
 															 Altura~header|#{bean.entity.aluno.altura}~text|
 															 Idade~header|#{bean.entity.aluno.idadeAluno}~text"></ui:param>
-															 
+
 						<ui:param name="panel2Columns" value="1"></ui:param>
 						<ui:param name="panel2Fields" value="Descrição~header|#{bean.entity.descricao}~text"></ui:param>
 
-					</ui:include>		
+					</ui:include>
 				</h:form>
-			
-			
+
+
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

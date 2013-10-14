@@ -1,101 +1,106 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- Professor -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Professores e Funcionarios"></ui:param>
 			<ui:param name="subtitulo" value="Cadastro de professores e funcionarios"></ui:param>
 		</ui:include>
-		
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{professorFuncBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome>" />  
-									    <p:inputText id="idNome" value="#{professorFuncBean.entity.nome}" required="true" requiredMessage="Nome Obrigatorio" />
-								        
-								        <h:outputLabel for="idEmail" value="Email:" />   
-								        <p:inputText id="idEmail" value="#{professorFuncBean.entity.email}" required="true" requiredMessage="Email obrigatoria"/>  
-								        
-								        <h:outputLabel for="idSenha" value="Senha:" rendered="#{alunoBean.entity.id == 0}" />  
-								        <p:inputText id="idSenha" value="#{professorFuncBean.entity.senha}" required="true" requiredMessage="Senha Obrigatorio"  
-								        			rendered="#{alunoBean.entity.id == 0}"/>
-								        
-								        <h:outputLabel for="idNasc" value="Nascimento:"  />   
-								        <p:inputMask id="idNasc" value="#{professorFuncBean.entity.dataNascimento.time}" mask="99/99/9999" required="true"
-								        			requiredMessage="Data de Nascimento Obrigatoria" >
-								        	<f:convertDateTime pattern="dd/MM/yyyy" />
-								        </p:inputMask>  
-								        
-								        <h:outputLabel for="idCpf" value="CPF:" />   
-								        <p:inputMask id="idCpf" value="#{professorFuncBean.entity.cpf}" mask="999.999.999-99"   />  
-								        
-								        <h:outputLabel for="idRg" value="RG:" />   
-								        <p:inputText id="idRg" value="#{professorFuncBean.entity.rg}"  />
-								        
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{professorFuncBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{professorFuncBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
+		<p:tabView id="tabView1" dynamic="true" cache="true">
+
+			<p:tab title="">
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter" role="form" styleClass="center-panel form-horizontal">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{professorFuncBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity" role="form" styleClass="center-panel form-horizontal">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{professorFuncBean.showEntity}">
+						<h:panelGrid columns="6" styleClass="container">
+
+							<h:outputLabel for="idNome" value="Nome>" />
+							<p:inputText id="idNome" value="#{professorFuncBean.entity.nome}" required="true" requiredMessage="Nome Obrigatorio" style="width: 200px" />
+
+							<h:outputLabel for="idEmail" value="Email:" />
+							<p:inputText id="idEmail" value="#{professorFuncBean.entity.email}" required="true" requiredMessage="Email obrigatoria" style="width: 200px" />
+
+							<h:outputLabel for="idNasc" value="Nascimento:" />
+							<p:inputMask id="idNasc" value="#{professorFuncBean.entity.dataNascimento.time}" mask="99/99/9999" required="true" style="width: 200px"
+								requiredMessage="Data de Nascimento Obrigatoria">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+
+							<h:outputLabel for="idCpf" value="CPF:" />
+							<p:inputMask id="idCpf" value="#{professorFuncBean.entity.cpf}" mask="999.999.999-99" style="width: 200px" />
+
+							<h:outputLabel for="idRg" value="RG:" />
+							<p:inputMask id="idRg" value="#{professorFuncBean.entity.rg}" mask="99.999.999-9" style="width: 200px" />
+
+							<h:outputLabel for="idProfessor" value="Professor" />
+							<p:selectBooleanCheckbox id="idProfessor" value="#{professorFuncBean.entity.isProfessor}"  />
+
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{professorFuncBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{professorFuncBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
 
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{professorFuncBean}"></ui:param>
 					</ui:include>
-			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{professorFuncBean}"></ui:param>
 					</ui:include>
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-			
+
 				</h:form>
-			
-			
+
+
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

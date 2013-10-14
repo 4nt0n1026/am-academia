@@ -24,7 +24,7 @@ public class ProfessorFunc extends Pessoa
     private String formacao;
 
     @Column(nullable = false)
-    @Show(label = "Professor", order = true, Type = FieldType.BOOLEAN)
+    @Show(label = "Professor", order = true, Type = FieldType.BOOLEAN, filter = true)
     private boolean isProfessor;
 
     public ProfessorFunc()

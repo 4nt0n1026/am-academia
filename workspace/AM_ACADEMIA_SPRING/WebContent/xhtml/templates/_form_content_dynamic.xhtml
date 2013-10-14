@@ -7,16 +7,16 @@
 
 
 <ui:composition>
-	<h:form id="formEntity" >
-		<h:panelGrid columns="10" rendered="#{bean.showEntity}" binding="#{bean.panelForm}">
-			<h:commandButton value="Salvar" action="#{bean.incluirEntity}" >
+	<h:panelGrid id="formEntity" columns="10" rendered="#{bean.showEntity}">
+		<h:form binding="#{bean.panelForm}">
+			<h:commandButton value="Salvar" action="#{bean.incluirEntity}">
 				<f:ajax render=":tabView1" />
 			</h:commandButton>
-			<h:commandButton value="Cancelar" action="#{bean.dontShowEntity}" >
+			<h:commandButton value="Cancelar" action="#{bean.dontShowEntity}">
 				<f:ajax render=":tabView1:formEntity" />
 			</h:commandButton>
-		</h:panelGrid>
-	</h:form>
+		</h:form>
+	</h:panelGrid>
 </ui:composition>
 
 </html>

@@ -33,7 +33,7 @@ public class Noticia implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 50, nullable = false)
-    @Show(label = "T��tulo", order = true)
+    @Show(label = "Título", order = true, filter = true)
     private String titulo;
 
     @Column(length = 1500, nullable = false)
@@ -41,16 +41,16 @@ public class Noticia implements Serializable, GenericEntity
 
     @ManyToOne
     @JoinColumn(name = "PROFESSOR_FUNC_ID")
-    @Show(label = "Professor/Funcionario", mappedName = "professorFunc.nome", order = true)
+    @Show(label = "Professor/Funcionario", mappedName = "professorFunc.nome", order = true, linkMap = "/xhtml/pessoa/professorFunc.xhtml", filter = true)
     private ProfessorFunc professorFunc;
 
     @ManyToOne
     @JoinColumn(name = "NOTICIA_CAT_ID")
-    @Show(label = "Categoria", mappedName = "categoria.nome", order = true)
+    @Show(label = "Categoria", mappedName = "categoria.nome", order = true, linkMap = "/xhtml/avisos/noticiaCat.xhtml", filter = true)
     private NoticiaCat categoria;
 
     @Temporal(TemporalType.DATE)
-    @Show(label = "data", Type = FieldType.DATE, order = true, mappedName = "data")
+    @Show(label = "data", Type = FieldType.DATE, order = true, mappedName = "data", filter = true)
     private Calendar data;
 
     public Noticia(Calendar data, String titulo, String descricao, NoticiaCat noticiaCat, ProfessorFunc professor)

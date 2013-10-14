@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
-import br.com.acad.logic.model.FieldType;
-import br.com.acad.logic.model.FormFieldType;
 import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
@@ -28,10 +26,9 @@ public class DiasTreinoCat implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", filter = true)
     private String nome;
 
-    @Show(label = "Data", form = true, inputMask = "99/99/99", formFieldType = FormFieldType.INSERT_EDIT, Type = FieldType.DATE, table = false)
     private Calendar dataTeste = new GregorianCalendar();
 
     @Column(length = 1, nullable = false)

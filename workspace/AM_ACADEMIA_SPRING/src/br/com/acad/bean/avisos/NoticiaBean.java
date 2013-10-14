@@ -41,7 +41,13 @@ public class NoticiaBean extends Bean<Noticia> implements Serializable
     public void beforeInit()
     {
         dao = noticiaDAO;
+
     }
+
+    public void beforeInitRefresh()
+    {
+        order = staticFieldsOrderLabel[3];
+    };
 
     /**
      * show form de entity

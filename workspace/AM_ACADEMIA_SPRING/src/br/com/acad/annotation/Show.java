@@ -21,6 +21,8 @@ public @interface Show
 
     String inputMask() default "";
 
+    String linkMap() default "";
+
     FieldType Type() default FieldType.TEXT;
 
     boolean required() default false;
@@ -36,6 +38,8 @@ public @interface Show
     boolean table() default true;
 
     boolean form() default true;
+
+    boolean filter() default false;
 
     FormFieldType formFieldType() default FormFieldType.INSERT_EDIT;
 

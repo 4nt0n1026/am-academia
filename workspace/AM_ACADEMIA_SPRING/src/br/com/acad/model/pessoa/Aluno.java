@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
 import br.com.acad.logic.PessoaLogic;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.treino.Treino;
 
 @SuppressWarnings("serial")
@@ -25,11 +26,11 @@ public class Aluno extends Pessoa
 {
 
     @Column(nullable = true, precision = 2)
-    @Show(label = "Peso", order = true)
+    @Show(label = "Peso", order = true, Type = FieldType.DOUBLE, filter = true)
     private double peso;
 
     @Column(nullable = true, precision = 2)
-    @Show(label = "Altura", order = true)
+    @Show(label = "Altura", order = true, Type = FieldType.DOUBLE, filter = true)
     private double altura;
 
     private int numSolicitacao = 0;

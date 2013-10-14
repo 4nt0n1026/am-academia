@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 
 @SuppressWarnings("serial")
@@ -26,33 +27,35 @@ public class Alimento implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome", order = true)
+    @Show(label = "Nome", order = true, filter = true)
     private String nome;
 
     @Column(length = 500, nullable = true)
     private String descricao;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Valor Energetico", order = true)
+    @Show(label = "Valor Energetico", order = true, filter = true)
     private double valorEnergetico;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Qtd Proteina", order = true)
+    @Show(label = "Qtd Proteina", order = true, filter = true)
     private double qtdProteina;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Qtd Carboidrato", order = true)
+    @Show(label = "Qtd Carboidrato", order = true, filter = true)
     private double qtdCarboidrato;
 
     @Column(precision = 2, nullable = false)
-    @Show(label = "Qtd Gordura", order = true)
+    @Show(label = "Qtd Gordura", order = true, filter = true)
     private double qtdGordura;
 
     @Column(precision = 2, nullable = false)
+    @Show(label = "Unidade", Type = FieldType.DOUBLE, order = true, filter = true)
     private double unidade;
 
     @ManyToOne
     @JoinColumn(name = "UNIDADE_MEDIDA_ID", nullable = false)
+    @Show(label = "Unidade", mappedName = "unidadeMedida.nome", order = true, filter = true)
     private UnidadeMedida unidadeMedida;
 
     public Alimento()

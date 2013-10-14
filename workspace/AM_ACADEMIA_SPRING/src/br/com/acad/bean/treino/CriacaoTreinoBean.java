@@ -121,7 +121,7 @@ public class CriacaoTreinoBean implements Serializable
     {
         organizaListasTreino();
         treinoFixoBean.setEntity((TreinoFixo) treino);
-        treinoFixoBean.beforeSaveEntity();
+        treinoFixoBean.incluirEntity();
     }
 
     /**
@@ -131,7 +131,7 @@ public class CriacaoTreinoBean implements Serializable
     {
         organizaListasTreino();
         treinoEspecificoBean.setEntity((TreinoEspecifico) treino);
-        treinoEspecificoBean.beforeSaveEntity();
+        treinoEspecificoBean.incluirEntity();
     }
 
     /**
@@ -142,7 +142,6 @@ public class CriacaoTreinoBean implements Serializable
         organizaListasTreino();
         solicitacaoTreinoBean.setTreino((TreinoEspecifico) treino);
         solicitacaoTreinoBean.incluirTreinoResposta();
-        ;
     }
 
     private void organizaListasTreino()
@@ -243,7 +242,8 @@ public class CriacaoTreinoBean implements Serializable
             diaTreino.removeExercicioTreino(exercicioTreino);
         }
         exercicioTreino.setSeries(new HashSet<Serie>(series));
-        exercicioTreino.setExercicio(exercicioDAO.searchById(exercicioTreino.getExercicio().getId()));
+        int id = exercicioTreino.getExercicio().getId();
+        exercicioTreino.setExercicio(exercicioDAO.searchById(id));
         diaTreino.addExercicioTreino(exercicioTreino);
         exercicios.add(exercicioTreino);
         newExercicioTreino();
@@ -321,7 +321,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o diaTreino com uma unidade a mais do que a selecionada
         if (dias.indexOf(diaTreino) == 0)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse dia já se encontra na primeira posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse dia jï¿½ se encontra na primeira posicao");
             return;
         }
         DiaTreino diaTemp = dias.get(posicaoFutura);
@@ -345,7 +345,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o diaTreino com uma unidade a mais do que a selecionada
         if (dias.size() == posicaoFutura)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse dia já se encontra na ultima posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse dia jï¿½ se encontra na ultima posicao");
             return;
         }
         DiaTreino diaTemp = dias.get(posicaoFutura);
@@ -369,7 +369,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o exercicioTreino com uma unidade a mais do que a selecionada
         if (exercicios.indexOf(exercicioTreino) == 0)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse exercicio já se encontra na primeira posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse exercicio jï¿½ se encontra na primeira posicao");
             return;
         }
         ExercicioTreino exercicioTemp = exercicios.get(posicaoFutura);
@@ -394,7 +394,7 @@ public class CriacaoTreinoBean implements Serializable
         // Busca na lista o exercicioTreino com uma unidade a mais do que a selecionada
         if (exercicios.size() == posicaoFutura)
         {
-            MessagesLogic.addErrorMessage("Erro", "Esse exercicio já se encontra na ultima posicao");
+            MessagesLogic.addErrorMessage("Erro", "Esse exercicio jï¿½ se encontra na ultima posicao");
             return;
         }
         ExercicioTreino exercicioTemp = exercicios.get(posicaoFutura);

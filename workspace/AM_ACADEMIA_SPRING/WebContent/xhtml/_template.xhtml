@@ -1,141 +1,121 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
-<f:view locale="pt_BR" contentType="text/html" >
-<h:head>
-	<title><ui:insert name="title">Smart Fitness</ui:insert></title>
-	<h:outputStylesheet name="header_footer.css" library="css" />
-	<h:outputStylesheet name="body.css" library="css" />
-	<h:outputStylesheet name="bootstrap.css" library="css" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"  />
-</h:head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="pt_BR" contentType="text/html">
+	<h:head>
+		<title><ui:insert name="title">Smart Fitness</ui:insert></title>
+		<h:outputStylesheet name="header_footer.css" library="css" />
+		<h:outputStylesheet name="body.css" library="css" />
+		<h:outputStylesheet name="bootstrap.css" library="css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</h:head>
 
-<h:body>
-		<p:growl autoUpdate="true" redisplay="true" life="5000" showDetail="true"  />
-		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
-	              
-		<p:dialog modal="true" widgetVar="statusDialog" header="Carregando" draggable="false" closable="false">  
-		    <p:graphicImage value="/resources/images/ajax-loader.gif" />  
-		</p:dialog> 
-		
+	<h:body>
+
+		<p:growl autoUpdate="true" redisplay="true" life="5000" showDetail="true" />
+		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" header="Carregando" draggable="false" closable="false">
+			<p:graphicImage value="/resources/images/ajax-loader.gif" />
+		</p:dialog>
+
 		<div id="divSenha">
 			<!-- Dialog de mudança de senha -->
-    		<ui:include src="/xhtml/mudarSenhaDialog.xhtml"/>
+			<ui:include src="/xhtml/mudarSenhaDialog.xhtml" />
 		</div>
-		
+
 		<!-- MENU PRINCIPAL -->
 		<div id="menuPrincipal">
 			<h:form>
-				<nav class="navbar-inner navbar-default " role="navigation">
-					<!-- LOGO -->
-			     	<div class="container">
-       					<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						      <span class="sr-only">Toggle navigation</span>
-						      <span class="icon-bar"></span>
-						      <span class="icon-bar"></span>
-						      <span class="icon-bar"></span>
-						    </button>
-						    <p:graphicImage value="/resources/images/mainIcon.ico" />
-						</div>
-       					<!-- ITENS DO MENU -->
-	       				<div class="collapse navbar-collapse navbar-ex1-collapse">
-   							<ul class="nav navbar-nav">
-								<li class="active"><h:commandLink  action="/xhtml/pessoa/aluno.xhtml" value="Home" /></li>
-						        
-						        <!-- Pessoas -->
-						        <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pessoas <b class="caret"></b></a>
-							        <ul class="dropdown-menu">
-							        	<li><h:commandLink  action="/xhtml/pessoa/aluno.xhtml" value="Alunos" /></li>
-							        	<li><h:commandLink  action="/xhtml/pessoa/professorFunc.xhtml" value="Funcionarios" /></li>
-							        </ul>
-							    </li>
-							    
-							    <!-- Treino -->
-						        <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Treino <b class="caret"></b></a>
-							        <ul class="dropdown-menu">
-							        	<li><h:commandLink  action="/xhtml/treino/treinoFixo.xhtml" value="Treinos Fixos" /></li>
-							        	<li><h:commandLink  action="/xhtml/treino/treinoEspecifico.xhtml" value="Treinos Solicitados" /></li>
-							        	<li><h:commandLink  action="/xhtml/treino/solicitacaoTreino.xhtml" value="Solicitações" /></li>
-							        	<li><h:commandLink  action="/xhtml/treino/exercicio.xhtml" value="Exercicios" /></li>
-							        	<li><h:commandLink  action="/xhtml/treino/parteCorpo.xhtml" value="Musuclos" /></li>
-							        </ul>
-							    </li>
-							    
-							    <!-- Dieta -->
-						        <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dieta <b class="caret"></b></a>
-							        <ul class="dropdown-menu">
-							        	<li><h:commandLink  action="/xhtml/dieta/dietaFixa.xhtml" value="Dietas Fixos" /></li>
-							        	<li><h:commandLink  action="/xhtml/dieta/dietaEspecifica.xhtml" value="Dietas Solicitados" /></li>
-							        	<li><h:commandLink  action="/xhtml/dieta/solicitacaoDieta.xhtml" value="Solicitações" /></li>
-							        	<li><h:commandLink  action="/xhtml/dieta/alimento.xhtml" value="Alimentos" /></li>
-							        	<li><h:commandLink  action="/xhtml/dieta/unidadeMedida.xhtml" value="Unidades de Medida" /></li>
-							        </ul>
-							    </li>
-							    
-							    <!-- Aulas -->
-						        <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aulas <b class="caret"></b></a>
-							        <ul class="dropdown-menu">
-							        	<li><h:commandLink  action="/xhtml/horario/unidade.xhtml" value="Unidades" /></li>
-							        	<li><h:commandLink  action="/xhtml/horario/aula.xhtml" value="Aulas" /></li>
-							        	<li><h:commandLink  action="/xhtml/horario/horarioAula.xhtml" value="Horarios" /></li>
-							        </ul>
-							    </li>
-							    
-							    <!-- Avisos -->
-						        <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Avisos <b class="caret"></b></a>
-							        <ul class="dropdown-menu">
-							        	<li><h:commandLink  action="/xhtml/avisos/noticia.xhtml" value="Avisos" /></li>
-							        	<li><h:commandLink  action="/xhtml/avisos/noticiaCat.xhtml" value="Tipos de Avisos" /></li>
-							        </ul>
-							    </li>
+				<nav class="navbar-inner navbar-default " role="navigation"> <!-- LOGO -->
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+							<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+						</button>
+						<p:graphicImage value="/resources/images/mainIcon.ico" />
+					</div>
+					<!-- ITENS DO MENU -->
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><h:commandLink action="/xhtml/home.xhtml?faces-redirect=true" value="Home" /></li>
 
-							    <!-- Configuracoes -->
-						        <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
-							        <ul class="dropdown-menu">
-							        	<li><h:commandLink action="/xhtml/cat/diasTreinoCat.xhtml" value="Cat.dias de treino" /></li>
-							        	<li><h:commandLink action="/xhtml/cat/duracaoTreinoCat.xhtml" value="Cat. duração de treino" /></li>
-							        	<li><h:commandLink action="/xhtml/cat/objetivoCat.xhtml" value="Objetivos de treino" /></li>
-							        	<li><h:commandLink action="/xhtml/cat/sexoCat.xhtml" value="Categoria de sexo" /></li>
-							        	<li><h:commandLink action="/xhtml/cat/faixaEtariaCat.xhtml" value="Cat. faixa etaria" /></li>
-							        </ul>
-							    </li>
-		       				</ul>
-			       		
-			       		<ul class="nav navbar-nav navbar-right">
-			       			<li class="dropdown">
-					       		<div class="btn-group">
-								 	<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
-								   		#{loginBean.usuario.nome} <span class="caret"></span>
-								  	</button>
+							<!-- Pessoas -->
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pessoas <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="/xhtml/pessoa/aluno.xhtml?faces-redirect=true" value="Alunos" /></li>
+									<li><h:commandLink action="/xhtml/pessoa/professorFunc.xhtml?faces-redirect=true" value="Funcionarios" /></li>
+								</ul></li>
+
+							<!-- Treino -->
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Treino <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="/xhtml/treino/treinoFixo.xhtml?faces-redirect=true" value="Treinos Fixos" /></li>
+									<li><h:commandLink action="/xhtml/treino/treinoEspecifico.xhtml?faces-redirect=true" value="Treinos Solicitados" /></li>
+									<li><h:commandLink action="/xhtml/treino/solicitacaoTreino.xhtml?faces-redirect=true" value="Solicitações" /></li>
+									<li><h:commandLink action="/xhtml/treino/exercicio.xhtml?faces-redirect=true" value="Exercicios" /></li>
+									<li><h:commandLink action="/xhtml/treino/parteCorpo.xhtml?faces-redirect=true" value="Musuclos" /></li>
+								</ul></li>
+
+							<!-- Dieta -->
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dieta <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="/xhtml/dieta/dietaFixa.xhtml?faces-redirect=true" value="Dietas Fixos" /></li>
+									<li><h:commandLink action="/xhtml/dieta/dietaEspecifica.xhtml?faces-redirect=true" value="Dietas Solicitados" /></li>
+									<li><h:commandLink action="/xhtml/dieta/solicitacaoDieta.xhtml?faces-redirect=true" value="Solicitações" /></li>
+									<li><h:commandLink action="/xhtml/dieta/alimento.xhtml?faces-redirect=true" value="Alimentos" /></li>
+									<li><h:commandLink action="/xhtml/dieta/unidadeMedida.xhtml?faces-redirect=true" value="Unidades de Medida" /></li>
+								</ul></li>
+
+							<!-- Aulas -->
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Aulas <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="/xhtml/horario/unidade.xhtml?faces-redirect=true" value="Unidades" /></li>
+									<li><h:commandLink action="/xhtml/horario/aula.xhtml?faces-redirect=true" value="Aulas" /></li>
+									<li><h:commandLink action="/xhtml/horario/horarioAula.xhtml?faces-redirect=true" value="Horarios" /></li>
+								</ul></li>
+
+							<!-- Avisos -->
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Avisos <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="/xhtml/avisos/noticia.xhtml?faces-redirect=true" value="Avisos" /></li>
+									<li><h:commandLink action="/xhtml/avisos/noticiaCat.xhtml?faces-redirect=true" value="Tipos de Avisos" /></li>
+								</ul></li>
+
+							<!-- Configuracoes -->
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="/xhtml/cat/diasTreinoCat.xhtml?faces-redirect=true" value="Cat.dias de treino" /></li>
+									<li><h:commandLink action="/xhtml/cat/duracaoTreinoCat.xhtml?faces-redirect=true" value="Cat. duração de treino" /></li>
+									<li><h:commandLink action="/xhtml/cat/objetivoCat.xhtml?faces-redirect=true" value="Objetivos de treino" /></li>
+									<li><h:commandLink action="/xhtml/cat/sexoCat.xhtml?faces-redirect=true" value="Categoria de sexo" /></li>
+									<li><h:commandLink action="/xhtml/cat/faixaEtariaCat.xhtml?faces-redirect=true" value="Cat. faixa etaria" /></li>
+								</ul></li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+										#{loginBean.usuario.nome} <span class="caret"></span>
+									</button>
 									<ul class="dropdown-menu">
-									    <li>
-										    <h:commandLink value="Mudar Senha" onclick="dlgSenha.show();" immediate="true">
-										    	<f:ajax render=":formSenha" />
-										    </h:commandLink>
-									    </li>
-									    <li><h:commandLink action="#{loginBean.logout}" value="Logout" title="logout" rendered="#{loginBean.logado}" immediate="true" /></li>
-								    </ul>
+										<li><h:commandLink value="Mudar Senha" onclick="dlgSenha.show();" immediate="true">
+												<f:ajax render=":formSenha" />
+											</h:commandLink></li>
+										<li><h:commandLink action="#{loginBean.logout}" value="Logout" title="logout" rendered="#{loginBean.logado}" immediate="true" /></li>
+									</ul>
 								</div>
 							</li>
-     					</ul>
-			       		</div>
-       				</div>
-			    </nav>
-	        	
+						</ul>
+					</div>
+				</div>
+				</nav>
+
 			</h:form>
 		</div>
-		
+
 
 		<div id="content">
 			<div id="innerContent">
@@ -143,12 +123,12 @@
 				</ui:insert>
 			</div>
 		</div>
-		
-		
+
+
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	    <!--<script src="//code.jquery.com/jquery.js"></script>-->
-	    <!-- Include all compiled plugins (below), or include individual files as needed -->
-	    <h:outputScript name="bootstrap.min.js" library="js"></h:outputScript>
-</h:body>
+		<!--<script src="//code.jquery.com/jquery.js"></script>-->
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<h:outputScript name="bootstrap.min.js" library="js"></h:outputScript>
+	</h:body>
 </f:view>
 </html>

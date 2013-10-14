@@ -12,7 +12,7 @@ public class SqlLogic
     /**
      * tamanho padrao de todas as tabelas dos xhtml
      */
-    public static int TABLE_SIZE = 20;
+    public static int TABLE_SIZE = 15;
 
     /**
      * Cria clausula where da sql com search basico

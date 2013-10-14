@@ -30,7 +30,7 @@ public class NoticiaCat implements Serializable, GenericEntity
     private String fotoLocalIcone;
 
     @Column(length = 50, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", Type = FieldType.TEXT, filter = true)
     private String nome;
 
     public NoticiaCat()

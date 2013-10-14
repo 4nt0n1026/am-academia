@@ -1,79 +1,85 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- FaixaEtariaCat -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Categorias de Faixa Etaria"></ui:param>
 			<ui:param name="subtitulo" value="Cadastro das categorias de faixa etaria para filtragem de treinos e dietas"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Categoria de Faixa Etaria" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{faixaEtariaCatBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{faixaEtariaCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-						        
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{faixaEtariaCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{faixaEtariaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-					
+			<p:tab title="Categoria de Faixa Etaria">
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{faixaEtariaCatBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{faixaEtariaCatBean.showEntity}">
+						<h:panelGrid columns="10">
+
+							<h:outputLabel for="idNome" value="Nome" />
+							<p:inputText id="idNome" value="#{faixaEtariaCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+
+
+							<p:commandButton icon="ui-icon ui-icon-check" action="#{faixaEtariaCatBean.incluirEntity}" ajax="true" update=":tabView1" />
+							<p:button icon="ui-icon ui-icon-close" action="#{faixaEtariaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{faixaEtariaCatBean}"></ui:param>
 					</ui:include>
-			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{faixaEtariaCatBean}"></ui:param>
 					</ui:include>
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-			
+
 				</h:form>
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

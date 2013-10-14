@@ -1,19 +1,56 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
 
-   	<ui:composition>
-   		<h:panelGroup style="text-align: center">
-   			<h:outputText value="filtro aqui" style="margin: 0 auto"/>
-   		</h:panelGroup>
-	</ui:composition>		
-    	
+<ui:composition>
+	<div class="container">
+		<p:fieldset id="field" rendered="#{bean.showFilter}">
+			<h:dataTable id="tableFormFilter" styleClass="filter" var="filter" value="#{bean.dataFilters}">
+				<h:column>
+					<h:selectBooleanCheckbox value="#{filter.disable}" />
+				</h:column>
+				<h:column>
+					<h:outputLabel value="#{filter.label}" style="padding-left:5px; padding-right:5px;" />
+				</h:column>
+				<h:column>
+					<h:selectOneMenu value="#{filter.operator}" style="width: 150px;">
+						<f:selectItems value="#{filter.possibleOperators}" var="opr" itemLabel="#{opr.label}" itemValue="#{opr}" />
+					</h:selectOneMenu>
+				</h:column>
+				<h:column>
+					<h:inputText value="#{filter.value}" size="40" rendered="#{filter.type == 'TEXT'}" />
+					<h:inputText value="#{filter.value}" size="10" rendered="#{filter.type == 'DOUBLE'}" />
+					<h:inputText value="#{filter.value}" size="10" rendered="#{filter.type == 'INTEGER'}">
+						<f:convertNumber integerOnly="true" />
+					</h:inputText>
+					<p:inputMask value="#{filter.dateValue}" size="15" rendered="#{filter.type == 'DATE'}" mask="99/99/99">
+						<f:convertDateTime pattern="dd/MM/yy" />
+					</p:inputMask>
+					<p:selectBooleanCheckbox value="#{filter.boolValue}" rendered="#{filter.type == 'BOOLEAN'}" />
+				</h:column>
+				<h:column>
+					<h:inputText value="#{filter.value}" size="40" rendered="#{filter.type == 'TEXT' and filter.operator == 'EQUAL'}" />
+					<h:inputText value="#{filter.value}" size="10" rendered="#{filter.type == 'DOUBLE' and filter.operator == 'BETWEEN'}" />
+					<h:inputText value="#{filter.value}" size="10" rendered="#{filter.type == 'INTEGER' and filter.operator == 'BETWEEN'}">
+						<f:convertNumber integerOnly="true" />
+					</h:inputText>
+					<p:inputMask value="#{filter.dateValue}" size="15" rendered="#{filter.type == 'DATE' and filter.operator == 'BETWEEN'}" mask="99/99/99">
+						<f:convertDateTime pattern="dd/MM/yy" />
+					</p:inputMask>
+				</h:column>
+			</h:dataTable>
+			<div class="btn-group" style="padding: 0 auto">
+				<h:commandLink value="Filtrar" immediate="true" styleClass="btn btn-primary " action="#{bean.showResult}" ajax="true"
+					update=":tabView1:tabelaEntity">
+					<f:ajax execute="tableFormFilter" render=":tabView1:tabelaEntity" />
+				</h:commandLink>
+			</div>
+		</p:fieldset>
+	</div>
+</ui:composition>
+
 </html>

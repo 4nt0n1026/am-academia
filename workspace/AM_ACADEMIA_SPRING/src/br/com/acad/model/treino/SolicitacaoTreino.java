@@ -39,16 +39,16 @@ public class SolicitacaoTreino implements Serializable, GenericEntity
 
     @Temporal(TemporalType.DATE)
     @Column(name = "DATA_SOLICITACAO", nullable = false)
-    @Show(label = "Data", order = true, Type = FieldType.DATE)
+    @Show(label = "Data", order = true, Type = FieldType.DATE, filter = true)
     private Calendar dataSolicitacao;
 
     @ManyToOne
     @JoinColumn(name = "ALUNO_ID", nullable = false)
-    @Show(label = "Aluno", mappedName = "aluno.nome", order = true)
+    @Show(label = "Aluno", mappedName = "aluno.nome", order = true, linkMap = "/xhtml/pessoa/aluno.xhtml", filter = true)
     private Aluno aluno;
 
     @Column(nullable = false)
-    @Show(label = "Respondido", order = true, Type = FieldType.BOOLEAN)
+    @Show(label = "Respondido", order = true, Type = FieldType.BOOLEAN, filter = true)
     private boolean respondido;
 
     @OneToOne(fetch = FetchType.LAZY)

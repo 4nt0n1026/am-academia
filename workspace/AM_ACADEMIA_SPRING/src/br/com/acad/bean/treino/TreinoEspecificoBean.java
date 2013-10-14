@@ -12,10 +12,8 @@ import org.springframework.stereotype.Component;
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
+import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoEspecificoDAO;
-import br.com.acad.logic.AnnotationsLogic;
-import br.com.acad.logic.TableLogic;
-import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.pessoa.Aluno;
 import br.com.acad.model.pessoa.ProfessorFunc;
 import br.com.acad.model.treino.Treino;
@@ -36,6 +34,8 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
     @Autowired
     private ProfessorFuncDAO professorFuncDAO;
     @Autowired
+    private DiaTreinoDAO diaTreinoDAO;
+    @Autowired
     private AlunoDAO alunoDAO;
 
     public String textoTreino;
@@ -49,15 +49,12 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
     public void beforeInit()
     {
         dao = treinoEspecificoDAO;
-
         superClasses = new Class<?>[] { Treino.class };
-
-        atualizar();
     }
 
     /**
-     * show form de entity N��o �� possivel incluir um treino especifico. Precisa ser por meio de resposta a uma
-     * solicita����o. Metodo nao implementado
+     * show form de entity Não é possivel incluir um treino especifico. Precisa ser por meio de resposta a uma
+     * solicitação. Metodo nao implementado
      */
     @Override
     public void beforeShowNewEntity()
@@ -84,8 +81,7 @@ public class TreinoEspecificoBean extends Bean<TreinoEspecifico> implements Seri
     @Override
     public void beforeShowFormDetail()
     {
-        textoTreino = TreinoLogic.getTreinoString(entity);
-        super.beforeShowFormDetail();
+        entity.generateTreinoStr(diaTreinoDAO);
     }
 
     /************************************************************************************************************/

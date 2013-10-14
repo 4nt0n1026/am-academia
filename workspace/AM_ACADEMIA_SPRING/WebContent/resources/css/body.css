@@ -1,41 +1,48 @@
 @CHARSET "UTF-8";
 
-#menuTabela{
+#menuTabela {
 	padding-bottom: 0 !important;
 	margin-bottom: 0 !important;
-	
-
 }
 
-.navbar-inner, .active a, .navbar-inner a{
+.navbar-inner,.active a,.navbar-inner a {
 	background-color: #204D73 !important;
 	color: white !important;
 }
 
-.bs-header{
+.bs-header {
 	background-color: #D0D0D0 !important;
 }
 
-.gray-back{
+.gray-back {
 	background-color: #D0D0D0 !important;
 }
 
-.small-column{
+.small-column {
 	width: 20px;
 }
 
-.blue-back{
-	background-color: #580000  !important;
+.blue-back {
+	background-color: #580000 !important;
 	color: white !important;
 }
 
-.selected{
+.selected {
 	background-color: blue !important;
 }
 
-.disable{
-	opacity:0.4;
-	filter:alpha(opacity=40);
+.disable {
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
 }
 
-
+.filter {
+	max-width: 1000px;
+	padding: 15px;
+	margin: 0 auto;
+}
+.center-panel {
+	max-width: 1000px;
+	padding: 15px;
+	margin: 0 auto;
+}

@@ -18,7 +18,7 @@ public class TreinoEspecifico extends Treino
 
     @OneToOne
     @JoinColumn(name = "SOLICITACAO_TREINO_ID", nullable = false)
-    @Show(label = "Aluno", mappedName = "solicitacao.aluno.nome", order = true)
+    @Show(label = "Aluno", mappedName = "solicitacao.aluno.nome", order = true, filter = true)
     private SolicitacaoTreino solicitacao;
 
     public TreinoEspecifico()

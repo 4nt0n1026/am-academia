@@ -17,7 +17,7 @@ public class DietaEspecifica extends Dieta
 
     @OneToOne
     @JoinColumn(name = "SOLICITACAO_DIETA_ID", nullable = false)
-    @Show(label = "Aluno", mappedName = "solicitacao.aluno.nome", order = true)
+    @Show(label = "Aluno", mappedName = "solicitacao.aluno.nome", order = true, filter = true)
     private SolicitacaoDieta solicitacao;
 
     public DietaEspecifica()

@@ -20,10 +20,6 @@ public abstract class PopulaBancoLogic
     public static final int ANTEBRACO = 10;
     public static final int TRAPEZIO = 11;
     public static final int OMBRO = 12;
-    public static final int QUADRICEPS = 13;
-    public static final int ISQUIOTIBIAIS = 14;
-    public static final int ADUTORES = 15;
-    public static final int ABDUTORES = 16;
 
     public static Set<ParteCorpo> getPartesCorpo(int... n)
     {

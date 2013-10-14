@@ -4,10 +4,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.el.ValueExpression;
+import javax.faces.component.html.HtmlForm;
 import javax.faces.component.html.HtmlOutputLabel;
-import javax.faces.component.html.HtmlPanelGrid;
-import javax.faces.context.FacesContext;
 import javax.faces.convert.DateTimeConverter;
 
 import org.primefaces.component.inputmask.InputMask;
@@ -54,7 +52,8 @@ public class FormLogic
 
                             tempValues.add(new DataField(showAnnotation.label(), "#{" + beanName + ".entity." + showAnnotation.pathName()
                                     + "}", showAnnotation.Type(), showAnnotation.formFieldType(), showAnnotation.inputMask(),
-                                    showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation.minLenght()));
+                                    showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation.minLenght(), showAnnotation
+                                            .linkMap()));
 
                         }
                         else if (showAnnotation.mappedName() != null && showAnnotation.mappedName().length() > 0)
@@ -63,14 +62,15 @@ public class FormLogic
                             {
                                 tempValues.add(new DataField(showAnnotation.label(), "#{" + beanName + ".entity." + field.getName()
                                         + ".time}", showAnnotation.Type(), showAnnotation.formFieldType(), showAnnotation.inputMask(),
-                                        showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation.minLenght()));
+                                        showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation.minLenght(), showAnnotation
+                                                .linkMap()));
                             }
                             else
                             {
                                 tempValues.add(new DataField(showAnnotation.label(), "#{" + beanName + ".entity."
                                         + showAnnotation.mappedName() + "}", showAnnotation.Type(), showAnnotation.formFieldType(),
                                         showAnnotation.inputMask(), showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation
-                                                .minLenght()));
+                                                .minLenght(), showAnnotation.linkMap()));
                             }
                         }
                         else
@@ -79,13 +79,15 @@ public class FormLogic
                             {
                                 tempValues.add(new DataField(showAnnotation.label(), "#{" + beanName + ".entity." + field.getName()
                                         + ".time}", showAnnotation.Type(), showAnnotation.formFieldType(), showAnnotation.inputMask(),
-                                        showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation.minLenght()));
+                                        showAnnotation.required(), showAnnotation.maxLenght(), showAnnotation.minLenght(), showAnnotation
+                                                .linkMap()));
                             }
                             else
                             {
                                 tempValues.add(new DataField(showAnnotation.label(), "#{" + beanName + ".entity." + field.getName() + "}",
                                         showAnnotation.Type(), showAnnotation.formFieldType(), showAnnotation.inputMask(), showAnnotation
-                                                .required(), showAnnotation.maxLenght(), showAnnotation.minLenght()));
+                                                .required(), showAnnotation.maxLenght(), showAnnotation.minLenght(), showAnnotation
+                                                .linkMap()));
                             }
                         }
                     }
@@ -116,49 +118,55 @@ public class FormLogic
      * @param labelName
      * @param inputValue
      */
-    public static void prepareFormField(HtmlPanelGrid panel, DataField inputValue)
+    public static void prepareFormField(HtmlForm panel, DataField inputValue)
     {
         // Label
         HtmlOutputLabel label = new HtmlOutputLabel();
-        label.setValueExpression("value", createValueExpression(inputValue.getLabel(), String.class));
+        label.setFor("id" + inputValue.getLabel());
+        label.setValueExpression("value", JsfLogic.createValueExpression(inputValue.getLabel(), String.class));
         panel.getChildren().add(label);
 
         // Value
         switch (inputValue.getFieldType())
         {
             case TEXT:
-                if (inputValue.getMask() != null)
+                if (inputValue.getMask() != null && inputValue.getMask().length() > 0)
                 {
                     InputMask inputMask = new InputMask();
-                    inputMask.setValueExpression("value", createValueExpression(inputValue.getValue(), String.class));
+                    inputMask.setValueExpression("value", JsfLogic.createValueExpression(inputValue.getValue(), String.class));
+                    inputMask.setId("id" + inputValue.getLabel());
                     inputMask.setMask(inputValue.getMask());
                     panel.getChildren().add(inputMask);
                 }
                 else
                 {
                     InputText inputText = new InputText();
-                    inputText.setValueExpression("value", createValueExpression(inputValue.getValue(), String.class));
-                    inputText.setRequired(inputValue.isRequired());
+                    inputText.setValueExpression("value", JsfLogic.createValueExpression("#{diasTreinoCatBean.entity.nome}", String.class));
+                    // inputText.setRequired(inputValue.isRequired());
+                    inputText.setId("id" + inputValue.getLabel());
                     panel.getChildren().add(inputText);
                 }
                 break;
 
             case LARGE_TEXT:
                 InputTextarea inputTextArea = new InputTextarea();
-                inputTextArea.setValueExpression("value", createValueExpression(inputValue.getValue(), String.class));
+                inputTextArea.setValueExpression("value", JsfLogic.createValueExpression(inputValue.getValue(), String.class));
                 inputTextArea.setRequired(inputValue.isRequired());
+                inputTextArea.setId("id" + inputValue.getLabel());
                 panel.getChildren().add(inputTextArea);
                 break;
 
             case BOOLEAN:
                 SelectOneMenu selectOneMenu = new SelectOneMenu();
-                selectOneMenu.setValueExpression("value", createValueExpression(inputValue.getValue(), String.class));
+                selectOneMenu.setValueExpression("value", JsfLogic.createValueExpression(inputValue.getValue(), String.class));
+                selectOneMenu.setId("id" + inputValue.getLabel());
                 panel.getChildren().add(selectOneMenu);
                 break;
 
             case DATE:
                 InputMask inputDateMask = new InputMask();
-                inputDateMask.setValueExpression("value", createValueExpression(inputValue.getValue(), String.class));
+                inputDateMask.setValueExpression("value", JsfLogic.createValueExpression(inputValue.getValue(), String.class));
+                inputDateMask.setId("id" + inputValue.getLabel());
                 inputDateMask.setMask(inputValue.getMask());
                 // Converter
                 DateTimeConverter dtConverter = new DateTimeConverter();
@@ -169,25 +177,12 @@ public class FormLogic
 
             default:
                 InputText inputDefault = new InputText();
-                inputDefault.setValueExpression("value", createValueExpression(inputValue.getValue(), String.class));
+                inputDefault.setValueExpression("value", JsfLogic.createValueExpression(inputValue.getValue(), String.class));
+                inputDefault.setId("id" + inputValue.getLabel());
                 panel.getChildren().add(inputDefault);
                 break;
 
         }
-    }
-
-    /**
-     * Cria uma ValueExpression para a criacao do form
-     * 
-     * @param valueExpression
-     * @param valueType
-     * @return
-     */
-    public static ValueExpression createValueExpression(String valueExpression, Class<?> valueType)
-    {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        return facesContext.getApplication().getExpressionFactory()
-                .createValueExpression(facesContext.getELContext(), valueExpression, valueType);
     }
 
 }

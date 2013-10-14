@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 
 import br.com.acad.annotation.Show;
 import br.com.acad.annotation.View;
+import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 import br.com.acad.model.pessoa.Aluno;
 
@@ -36,16 +37,16 @@ public class SolicitacaoDieta implements Serializable, GenericEntity
 
     @Temporal(TemporalType.DATE)
     @Column(name = "DATA_SOLICITACAO", nullable = false)
-    @Show(label = "Data", order = true)
+    @Show(label = "Data", order = true, filter = true)
     private Calendar dataSolicitacao;
 
     @Column(nullable = false)
-    @Show(label = "Respondido", order = true)
+    @Show(label = "Respondido", order = true, filter = true, Type = FieldType.BOOLEAN)
     private boolean respondido;
 
     @ManyToOne
     @JoinColumn(name = "ALUNO_ID", nullable = false)
-    @Show(label = "Aluno", mappedName = "aluno.nome", order = true)
+    @Show(label = "Aluno", mappedName = "aluno.nome", order = true, filter = true)
     private Aluno aluno;
 
     public SolicitacaoDieta()

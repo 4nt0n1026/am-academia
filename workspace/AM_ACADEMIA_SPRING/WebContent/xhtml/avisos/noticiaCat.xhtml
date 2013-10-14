@@ -22,6 +22,14 @@
 		<p:tabView id="tabView1" dynamic="true" cache="true">
 
 			<p:tab title="">
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{noticiaCatBean}"></ui:param>
+					</ui:include>
+				</h:form>
 
 				<!-- ****************************************************************************************************** -->
 				<!-- Insert de entity -->
@@ -29,15 +37,17 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{noticiaCatBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="4" styleClass="container">
 
-							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{noticiaCatBean.entity.nome}" label="Nome" required="true" requiredMessage="Nome obrigatorio">
+							<h:outputLabel for="idNome" value="Nome:" />
+							<p:inputText id="idNome" value="#{noticiaCatBean.entity.nome}" label="Nome" required="true" requiredMessage="Nome obrigatorio"
+								style="width:250px">
 								<f:validateLength minimum="2" maximum="50" />
 							</p:inputText>
 
+							<h:outputLabel value="Icone:" />
 							<p:selectOneMenu value="#{noticiaCatBean.entity.fotoLocalIcone}" effect="fade">
-								<f:selectItems value="#{iconeBean.icones}" var="icon" itemLabelEscaped="false" itemValue="#{icon}" />
+								<f:selectItems value="#{iconeBean.icones}" var="icon" itemLabelEscaped="false" itemValue="#{icon}" style="width:250px" />
 
 								<p:column>
 									<p:graphicImage value="/resources/images/icons/Album.png" />
@@ -48,8 +58,10 @@
 						            </p:column>
 							</p:selectOneMenu>
 
-							<p:commandButton icon="ui-icon ui-icon-check" action="#{noticiaCatBean.incluirEntity}" ajax="true" update=":tabView1" />
-							<p:button icon="ui-icon ui-icon-close" action="#{noticiaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{noticiaCatBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{noticiaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
 
 						</h:panelGrid>
 					</p:fieldset>

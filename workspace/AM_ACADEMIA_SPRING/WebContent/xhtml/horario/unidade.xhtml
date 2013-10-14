@@ -1,82 +1,90 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- Unidade -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Unidades"></ui:param>
 			<ui:param name="subtitulo" value="Controle de unidade da academia"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{unidadeBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{unidadeBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-						        
-						        <h:outputLabel for="idDesc" value="Descrição" />  
-						        <p:inputTextarea id="idDesc" value="#{unidadeBean.entity.descricao}" required="true" requiredMessage="Descrição obrigatoria" />  
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{unidadeBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{unidadeBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-					
+			<p:tab title="">
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{unidadeBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{unidadeBean.showEntity}">
+						<h:panelGrid columns="2" styleClass="container">
+
+							<h:outputLabel for="idNome" value="Nome:" />
+							<p:inputText id="idNome" value="#{unidadeBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:500px" />
+
+							<h:outputLabel for="idDesc" value="Descrição:" />
+							<p:inputTextarea id="idDesc" value="#{unidadeBean.entity.descricao}" required="true" requiredMessage="Descrição obrigatoria"
+								style="width:500px" rows="5" />
+
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{unidadeBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{unidadeBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{unidadeBean}"></ui:param>
-					</ui:include>			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+					</ui:include>
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{unidadeBean}"></ui:param>
 					</ui:include>
-					
+
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-			
+
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

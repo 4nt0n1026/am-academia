@@ -20,7 +20,6 @@ import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
 import br.com.acad.dao.treino.interf.ExercicioTreinoDAO;
 import br.com.acad.dao.treino.interf.TreinoFixoDAO;
-import br.com.acad.logic.TreinoLogic;
 import br.com.acad.model.cat.DiasTreinoCat;
 import br.com.acad.model.cat.DuracaoTreinoCat;
 import br.com.acad.model.cat.FaixaEtariaCat;
@@ -89,8 +88,7 @@ public class TreinoFixoBean extends Bean<TreinoFixo> implements Serializable
     @Override
     public void beforeShowFormDetail()
     {
-        textoTreino = TreinoLogic.getTreinoString(entity);
-        super.beforeShowFormDetail();
+        entity.generateTreinoStr(diaTreinoDAO);
     }
 
     /************************************************************************************************************/

@@ -40,11 +40,11 @@ public abstract class Pessoa implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome", order = true)
+    @Show(label = "Nome", order = true, filter = true)
     private String nome;
 
     @Column(length = 255, nullable = true, unique = true)
-    @Show(label = "Email", order = true)
+    @Show(label = "Email", order = true, filter = true)
     private String email;
 
     @Column(length = 255, nullable = true)
@@ -52,15 +52,15 @@ public abstract class Pessoa implements Serializable, GenericEntity
 
     @Temporal(TemporalType.DATE)
     @Column(name = "DATA_NASCIMENTO")
-    @Show(label = "Data Nascimento", mappedName = "dataNascimento", order = true, Type = FieldType.DATE)
+    @Show(label = "Data Nascimento", mappedName = "dataNascimento", order = true, Type = FieldType.DATE, filter = true)
     private Calendar dataNascimento = new GregorianCalendar();
 
     @Column(length = 20, nullable = true)
-    @Show(label = "CPF")
+    @Show(label = "CPF", filter = true)
     private String cpf;
 
     @Column(length = 20, nullable = true)
-    @Show(label = "RG")
+    @Show(label = "RG", filter = true)
     private String rg;
 
     @OneToOne

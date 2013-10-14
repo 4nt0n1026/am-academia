@@ -68,7 +68,7 @@
 		        </li>
 	        	<li>
 	        		<div class="form-group">
-			        	<h:commandLink title="atualizar"   action="#{bean.atualizar}" styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }">
+			        	<h:commandLink title="atualizar" action="#{bean.atualizar}" styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }">
 			        		<p:graphicImage  value="/resources/images/crud_icons/refresh.png" />
 			        		<f:ajax render=":tabView1" />
 			        	</h:commandLink>
@@ -76,7 +76,7 @@
 		        </li>
 		        <li>
 		        	<div class="form-group">
-			        	<h:commandLink title="filtro"  disabled="#{not empty disableFilter}"  styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }" >
+			        	<h:commandLink title="filtro" action="#{bean.showFormFilter}" disabled="#{not empty disableFilter}"  styleClass="btn btn-default #{not empty disableNew ? 'disable' : '' }" >
 			        		<p:graphicImage  value="/resources/images/crud_icons/search.png"  />
 			        		<f:ajax render=":tabView1" />
 			        	</h:commandLink>

@@ -39,11 +39,11 @@ public class Dieta implements Serializable, GenericEntity
     private int id;
 
     @Temporal(TemporalType.DATE)
-    @Show(label = "Data", order = true)
+    @Show(label = "Data", order = true, filter = true)
     private Calendar data;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome", order = true)
+    @Show(label = "Nome", order = true, filter = true)
     private String nome;
 
     @Column(length = 500, nullable = true)
@@ -57,7 +57,7 @@ public class Dieta implements Serializable, GenericEntity
 
     @ManyToOne
     @JoinColumn(name = "PROFESSOR_ID", nullable = true)
-    @Show(label = "Professor", mappedName = "professor.nome", order = true)
+    @Show(label = "Professor", mappedName = "professor.nome", order = true, filter = true)
     private ProfessorFunc professor;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

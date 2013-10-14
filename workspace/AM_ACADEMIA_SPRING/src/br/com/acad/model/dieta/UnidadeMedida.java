@@ -26,11 +26,11 @@ public class UnidadeMedida implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", filter = true)
     private String nome;
 
     @Column(length = 20, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", filter = true)
     private String sigla;
 
     public UnidadeMedida()

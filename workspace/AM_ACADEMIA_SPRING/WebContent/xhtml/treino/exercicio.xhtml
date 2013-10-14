@@ -23,13 +23,22 @@
 			<p:tab title="">
 
 				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter" role="form" styleClass="center-panel form-horizontal">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
 				<!-- Insert de entity -->
 				<!-- ****************************************************************************************************** -->
-				<h:form id="formEntity">
+				<h:form id="formEntity" role="form" styleClass="center-panel form-horizontal">
 					<p:focus for="formEntity" />
 					<!-- TABFORM 1 -->
 					<p:fieldset id="field1" rendered="#{exercicioBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="4" styleClass="container">
 
 							<h:outputLabel for="idNome" value="Nome" />
 							<p:inputText id="idNome" value="#{exercicioBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
@@ -37,16 +46,17 @@
 							<h:outputLabel value="Descrição" />
 							<p:inputTextarea value="#{exercicioBean.entity.descricao}" cols="60" />
 
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-carat-1-e" action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
+								<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+
 						</h:panelGrid>
-
-						<p:commandButton icon="ui-icon ui-icon-carat-1-e" action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
-						<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
-
 					</p:fieldset>
 
 					<!-- TABFORM 2 -->
 					<p:fieldset id="field2" rendered="#{exercicioBean.showEntity2}">
-						<h:panelGrid columns="1">
+						<h:panelGrid columns="1" styleClass="container">
 
 							<h:outputLabel value="Partes de Corpo Primaria:" />
 							<p:selectManyButton value="#{exercicioBean.idsParteCorpoPrimaria}">
@@ -58,30 +68,30 @@
 								<f:selectItems value="#{exercicioBean.partesCorposField}" var="parte" itemLabel="#{parte.nome}" itemValue="#{parte.id}" />
 							</p:selectManyButton>
 
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-carat-1-w" action="#{exercicioBean.showForm1}" ajax="true" update=":tabView1:formEntity" />
+								<p:commandButton icon="ui-icon ui-icon-carat-1-e" action="#{exercicioBean.showForm3}" ajax="true" update=":tabView1:formEntity" />
+								<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+
 						</h:panelGrid>
-
-						<p:commandButton icon="ui-icon ui-icon-carat-1-w" action="#{exercicioBean.showForm1}" ajax="true" update=":tabView1:formEntity" />
-						<p:commandButton icon="ui-icon ui-icon-carat-1-e" action="#{exercicioBean.showForm3}" ajax="true" update=":tabView1:formEntity" />
-						<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
-
 					</p:fieldset>
 
 					<!-- TABFORM 3 -->
 					<p:fieldset id="field3" rendered="#{exercicioBean.showEntity3}">
-						<h:panelGrid columns="1">
+						<h:panelGrid columns="1" styleClass="container">
 
 							<p:graphicImage styleClass="img-circle" width="150" id="fotoExercicio" value="#{exercicioBean.fotoExercicio}" />
 							<p:fileUpload fileUploadListener="#{exercicioBean.sobeFoto}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" auto="true"
 								mode="advanced" id="foto" update="fotoExercicio" />
 
-
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-carat-1-w" action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{exercicioBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
 
 						</h:panelGrid>
-
-						<p:commandButton icon="ui-icon ui-icon-carat-1-w" action="#{exercicioBean.showForm2}" ajax="true" update=":tabView1:formEntity" />
-						<p:commandButton icon="ui-icon ui-icon-check" action="#{exercicioBean.incluirEntity}" ajax="true" update=":tabView1" />
-						<p:button icon="ui-icon ui-icon-close" action="#{exercicioBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
-
 					</p:fieldset>
 				</h:form>
 
@@ -114,7 +124,8 @@
 						<ui:param name="bean" value="#{exercicioBean}"></ui:param>
 
 						<ui:param name="panel1Columns" value="2"></ui:param>
-						<ui:param name="panel1Fields" value="Nome~header|#{bean.entity.nome}~text|
+						<ui:param name="panel1Fields"
+							value="Nome~header|#{bean.entity.nome}~text|
 															 Descrição~header|#{bean.entity.descricao}~text|
 															 Musculos Primarios~header|#{bean.entity.partesCorpoPrimDetail}~text|
 															 Musculos Secundarios~header|#{bean.entity.partesCorpoSecDetail}~text"></ui:param>

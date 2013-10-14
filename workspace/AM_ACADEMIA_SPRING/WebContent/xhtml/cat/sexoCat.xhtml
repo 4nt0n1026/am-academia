@@ -21,8 +21,15 @@
 		<p:tabView id="tabView1" dynamic="true" cache="true">
 
 			<p:tab title="">
-			
-				
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{sexoCatBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
 				<!-- ****************************************************************************************************** -->
 				<!-- Insert de entity -->
 				<!-- ****************************************************************************************************** -->
@@ -30,13 +37,9 @@
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{sexoCatBean.showEntity}">
 						<h:panelGrid columns="10">
-						<h:form binding="#{sexoCatBean.form}">
 
-						</h:form>
-
-							<!-- <h:outputLabel for="idNome" value="Nome" />
+							<h:outputLabel for="idNome" value="Nome" />
 							<p:inputText id="idNome" value="#{sexoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
- -->
 
 							<p:commandButton icon="ui-icon ui-icon-check" action="#{sexoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
 							<p:button icon="ui-icon ui-icon-close" action="#{sexoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />

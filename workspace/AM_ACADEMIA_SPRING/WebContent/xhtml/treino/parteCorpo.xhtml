@@ -1,79 +1,84 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- ParteCorpo -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Musculos"></ui:param>
 			<ui:param name="subtitulo" value="Cadastro de musculos"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="Partes do corpo" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{parteCorpoBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{parteCorpoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-						        
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{parteCorpoBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"  action="#{parteCorpoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-					
+			<p:tab title="">
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{parteCorpoBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity" role="form" styleClass="center-panel form-horizontal">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{parteCorpoBean.showEntity}">
+						<h:panelGrid columns="6" styleClass="container">
+
+							<h:outputLabel for="idNome" value="Nome" />
+							<p:inputText id="idNome" value="#{parteCorpoBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+
+							<p:commandButton icon="ui-icon ui-icon-check" action="#{parteCorpoBean.incluirEntity}" ajax="true" update=":tabView1" />
+							<p:button icon="ui-icon ui-icon-close" action="#{parteCorpoBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{parteCorpoBean}"></ui:param>
-					</ui:include>				   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+					</ui:include>
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{parteCorpoBean}"></ui:param>
 					</ui:include>
-					
+
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- Detail de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-			
+
 				</h:form>
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

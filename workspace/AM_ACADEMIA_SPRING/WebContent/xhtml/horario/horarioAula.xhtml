@@ -1,106 +1,115 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- HorarioAula -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Horario de Aulas"></ui:param>
 			<ui:param name="subtitulo" value="Controle da grade horaria da academia"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{horarioAulaBean.showEntity}">
-							<h:panelGrid columns="10">
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-						       	<h:outputLabel for="idHora" value="Hora " />  
-								<p:calendar pattern="HH:mm" value="#{horarioAulaBean.entity.hora.time}" timeOnly="true" locale="pt" required="true" requiredMessage="Hora obrigatoria">
-									<f:convertDateTime pattern="HH:mm" type="time" />
-								</p:calendar>
-							
-						       	<h:outputLabel for="idDias" value="Dias na semana:" />  
-						       	<p:inputText id="idDias" value="#{horarioAulaBean.entity.diasSemana}" required="true" requiredMessage="Dias na semana obrigatorio" />
-						       	
-						       	<h:outputLabel for="idAula" value="Aula " />  
-							    <p:selectOneMenu id="idAula" value="#{horarioAulaBean.entity.aula.id}" required="true" style="width:250px"
-							    			requiredMessage="Aula Obrigatoria" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItems value="#{horarioAulaBean.aulasField}" var="aula" itemLabel="#{aula.nome}" itemValue="#{aula.id}"/>  
-								</p:selectOneMenu>  
-	
-						        <h:outputLabel for="idUnidade" value="Unidade " />  
-							    <p:selectOneMenu id="idUnidade" value="#{horarioAulaBean.entity.unidade.id}" required="true" requiredMessage="Unidade Obrigatoria" >  
-							    	<f:selectItems value="#{horarioAulaBean.unidadesField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}"/>  
-								</p:selectOneMenu>  
-						        		 
-						       	<h:outputLabel for="idFunc" value="Professor " />  
-							    <p:selectOneMenu id="idFunc" value="#{horarioAulaBean.entity.professor.id}" required="true" style="width:250px"
-							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItems value="#{horarioAulaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
-								</p:selectOneMenu>  
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{horarioAulaBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{horarioAulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
+			<p:tab title="">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-					
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{horarioAulaBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{horarioAulaBean.showEntity}">
+						<h:panelGrid columns="6" styleClass="container">
+
+							<h:outputLabel for="idHora" value="Hora " />
+							<p:calendar pattern="HH:mm" value="#{horarioAulaBean.entity.hora.time}" timeOnly="true" locale="pt" required="true"
+								requiredMessage="Hora obrigatoria">
+								<f:convertDateTime pattern="HH:mm" type="time" />
+							</p:calendar>
+
+							<h:outputLabel for="idDias" value="Dias na semana:" />
+							<p:inputText id="idDias" value="#{horarioAulaBean.entity.diasSemana}" required="true" requiredMessage="Dias na semana obrigatorio" />
+
+							<h:outputLabel for="idAula" value="Aula " />
+							<p:selectOneMenu id="idAula" value="#{horarioAulaBean.entity.aula.id}" required="true" style="width:250px" requiredMessage="Aula Obrigatoria"
+								filter="true" filterMatchMode="contains">
+								<f:selectItems value="#{horarioAulaBean.aulasField}" var="aula" itemLabel="#{aula.nome}" itemValue="#{aula.id}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel for="idUnidade" value="Unidade " />
+							<p:selectOneMenu id="idUnidade" value="#{horarioAulaBean.entity.unidade.id}" required="true" requiredMessage="Unidade Obrigatoria">
+								<f:selectItems value="#{horarioAulaBean.unidadesField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel for="idFunc" value="Professor " />
+							<p:selectOneMenu id="idFunc" value="#{horarioAulaBean.entity.professor.id}" required="true" style="width:250px"
+								requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains">
+								<f:selectItems value="#{horarioAulaBean.professoresField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
+							</p:selectOneMenu>
+
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{horarioAulaBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{horarioAulaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{horarioAulaBean}"></ui:param>
 					</ui:include>
-			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{horarioAulaBean}"></ui:param>
-						<ui:param name="columns" value="Aula #{entity.aula.nome}, text|
+						<ui:param name="columns"
+							value="Aula #{entity.aula.nome}, text|
 														Dias na Semana, #{entity.diasSemana}, text|
 														Hora,#{entity.hora.time}, time|
 														Unidade, #{entity.unidade.nome}, text|
 														Professor, #{entity.professor.nome}, text"></ui:param>
 					</ui:include>
-					
+
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-			
+
 				</h:form>
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

@@ -22,27 +22,27 @@ public class TreinoFixo extends Treino
 
     @ManyToOne
     @JoinColumn(name = "SEXO_ID", nullable = false)
-    @Show(label = "Sexo", mappedName = "sexoCat.nome", order = true)
+    @Show(label = "Sexo", mappedName = "sexoCat.nome", order = true, linkMap = "/xhtml/cat/sexoCat.xhtml", filter = true)
     private SexoCat sexoCat = new SexoCat();
 
     @ManyToOne
     @JoinColumn(name = "FAIXA_ETARIA_ID", nullable = false)
-    @Show(label = "Faixa Etaria", mappedName = "faixaEtariaCat.nome", order = true)
+    @Show(label = "Faixa Etaria", mappedName = "faixaEtariaCat.nome", order = true, linkMap = "/xhtml/cat/faixaEtariaCat.xhtml", filter = true)
     private FaixaEtariaCat faixaEtariaCat = new FaixaEtariaCat();
 
     @ManyToOne
     @JoinColumn(name = "OBJETIVO_ID", nullable = false)
-    @Show(label = "Objetivo", mappedName = "objetivoCat.nome", order = true)
+    @Show(label = "Objetivo", mappedName = "objetivoCat.nome", order = true, linkMap = "/xhtml/cat/objetivoCat.xhtml", filter = true)
     private ObjetivoCat objetivoCat = new ObjetivoCat();
 
     @ManyToOne
     @JoinColumn(name = "DURACAO_TREINO_ID", nullable = false)
-    @Show(label = "Duração", mappedName = "duracaoTreinoCat.nome", order = true)
+    @Show(label = "Durção", mappedName = "duracaoTreinoCat.nome", order = true, linkMap = "/xhtml/cat/duracaoTreinoCat.xhtml", filter = true)
     private DuracaoTreinoCat duracaoTreinoCat = new DuracaoTreinoCat();
 
     @ManyToOne
     @JoinColumn(name = "DIAS_SEMANA_ID", nullable = false)
-    @Show(label = "Dias na Semana", mappedName = "diasTreinoCat.nome", order = true)
+    @Show(label = "Dias na Semana", mappedName = "diasTreinoCat.nome", order = true, linkMap = "/xhtml/cat/diasTreinoCat.xhtml", filter = true)
     private DiasTreinoCat diasTreinoCat = new DiasTreinoCat();
 
     public TreinoFixo()

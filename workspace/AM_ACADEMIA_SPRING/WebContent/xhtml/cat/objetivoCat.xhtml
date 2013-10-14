@@ -1,90 +1,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
 		<!-- ****************************************************************************************************** -->
 		<!-- ObjetivoCat -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Categorias de Objetivo"></ui:param>
 			<ui:param name="subtitulo" value="Cadastro das categorias de objetivo para filtragem de treinos e dietas"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field"  rendered="#{objetivoCatBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{objetivoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-						        
-						        <p:selectOneMenu value="#{objetivoCatBean.entity.fotoLocalIcone}" effect="fade"  >  
-						            <f:selectItems value="#{iconeBean.icones}" var="icon"  itemLabelEscaped="false" itemValue="#{icon}"/>  
-						  
-						            <p:column>  
-						                <p:graphicImage value="/resources/images/icons/#{icon}.png" />  
-						            </p:column>  
-						  
-						            <p:column>  
+		<p:tabView id="tabView1" dynamic="true" cache="true">
+
+			<p:tab title="">
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{objetivoCatBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{objetivoCatBean.showEntity}">
+						<h:panelGrid columns="10">
+
+							<h:outputLabel for="idNome" value="Nome" />
+							<p:inputText id="idNome" value="#{objetivoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+
+							<p:selectOneMenu value="#{objetivoCatBean.entity.fotoLocalIcone}" effect="fade">
+								<f:selectItems value="#{iconeBean.icones}" var="icon" itemLabelEscaped="false" itemValue="#{icon}" />
+
+								<p:column>
+									<p:graphicImage value="/resources/images/icons/#{icon}.png" />
+								</p:column>
+
+								<p:column>  
 						            	#{icon}
-						            </p:column>  
-						        </p:selectOneMenu> 
-	
-						        <p:commandButton icon="ui-icon ui-icon-check"  action="#{objetivoCatBean.incluirEntity}" ajax="true" update=":tabView1" /> 
-					        	<p:button icon="ui-icon ui-icon-close"   action="#{objetivoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-					        	
-					        </h:panelGrid>
-						</p:fieldset> 
-			        </h:form>
-      				
+						            </p:column>
+							</p:selectOneMenu>
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-					
+							<p:commandButton icon="ui-icon ui-icon-check" action="#{objetivoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
+							<p:button icon="ui-icon ui-icon-close" action="#{objetivoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{objetivoCatBean}"></ui:param>
 					</ui:include>
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{objetivoCatBean}"></ui:param>
 					</ui:include>
-					
+
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
 				<h:form id="detailEntity">
-			
+
 				</h:form>
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

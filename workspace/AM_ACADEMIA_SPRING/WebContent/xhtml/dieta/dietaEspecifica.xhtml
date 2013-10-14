@@ -1,87 +1,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/xhtml/_template.xhtml">
 	<ui:define name="content">
-	
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Dialog de criacao de dieta -->
 		<!-- ****************************************************************************************************** -->
-		<p:dialog id="dialogDieta" widgetVar="dlgDieta" height="500" width="800" draggable="false" header="Criação de dieta" modal="true" closeOnEscape="true" closable="true">
-			<p:fieldset id="field2" >
-		       
-		       	<!-- Criacao Dieta -->
-    			<ui:include src="/xhtml/dieta/criacaoDieta.xhtml"/>
-				
+		<p:dialog id="dialogDieta" widgetVar="dlgDieta" height="500" width="800" draggable="false" header="Criação de dieta" modal="true"
+			closeOnEscape="true" closable="true">
+			<p:fieldset id="field2">
+
+				<!-- Criacao Dieta -->
+				<ui:include src="/xhtml/dieta/criacaoDieta.xhtml" />
+
 				<h:form>
-		        	<p:commandButton value="salvar"  action="#{criacaoDietaBean.salvarDietaEspecifica}" ajax="true" update="@all" /> 
-	        		<p:commandButton icon="ui-icon ui-icon-close"   onclick="dlgDieta.close()" ajax="true" update="@all" />
-				</h:form>	
-							        
-			</p:fieldset> 
+					<p:commandButton value="salvar" action="#{criacaoDietaBean.salvarDietaEspecifica}" ajax="true" update="@all" />
+					<p:commandButton icon="ui-icon ui-icon-close" onclick="dlgDieta.close()" ajax="true" update="@all" />
+				</h:form>
+
+			</p:fieldset>
 		</p:dialog>
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- DietaEspecifica -->
 		<!-- ****************************************************************************************************** -->
-		
+
 		<!-- ****************************************************************************************************** -->
 		<!-- Header da entity -->
 		<!-- ****************************************************************************************************** -->
-	  	<ui:include src="/xhtml/templates/_header_section.xhtml">
+		<ui:include src="/xhtml/templates/_header_section.xhtml">
 			<ui:param name="titulo" value="Dietas Solicitadas"></ui:param>
 			<ui:param name="subtitulo" value="Controle de dietas solicitadas por alunos"></ui:param>
 		</ui:include>
-		
-		<p:tabView id="tabView1"  dynamic="true"  cache="true" >  
 
-     			<p:tab title="" >  
-     				
-				    <!-- ****************************************************************************************************** -->
-					<!-- Insert de entity -->
-					<!-- ****************************************************************************************************** -->
-					<h:form id="formEntity"  >
-						<p:focus for="formEntity" />
-						<p:fieldset id="field1"  rendered="#{dietaEspecificaBean.showEntity}">
-							<h:panelGrid columns="10">
-							
-						        <h:outputLabel for="idNome" value="Nome" />  
-						        <p:inputText id="idNome" value="#{dietaEspecificaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />  
-	
-								<h:outputLabel for="idProf" value="Professor: " />  
-							    <p:selectOneMenu id="idProf" value="#{dietaEspecificaBean.entity.professor.id}" rendered="true" style="width:250px"
-							    			requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains" >  
-							    	<f:selectItem itemLabel="---" itemValue="" />  
-							    	<f:selectItems value="#{dietaEspecificaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}"/>  
-								</p:selectOneMenu>
-	
-					        </h:panelGrid>
-					        
-							<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecifica}" onclick="dlgDieta.show();" ajax="true" update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
-				        	<p:button icon="ui-icon ui-icon-close"   action="#{dietaEspecificaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity"  />  
-						</p:fieldset> 
-						
-			        </h:form>
-      				
+		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-					<!-- ****************************************************************************************************** -->
-					<!-- Menu da tabela de entity -->
-					<!-- ****************************************************************************************************** -->
-      				<h:form id="tabelaEntity">
-					
+			<p:tab title="">
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Filter de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formFilter">
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{dietaEspecificaBean}"></ui:param>
+					</ui:include>
+				</h:form>
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Insert de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field1" rendered="#{dietaEspecificaBean.showEntity}">
+						<h:panelGrid columns="10">
+
+							<h:outputLabel for="idNome" value="Nome" />
+							<p:inputText id="idNome" value="#{dietaEspecificaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+
+							<h:outputLabel for="idProf" value="Professor: " />
+							<p:selectOneMenu id="idProf" value="#{dietaEspecificaBean.entity.professor.id}" rendered="true" style="width:250px"
+								requiredMessage="Professor Obrigatorio" filter="true" filterMatchMode="contains">
+								<f:selectItem itemLabel="---" itemValue="" />
+								<f:selectItems value="#{dietaEspecificaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+						<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecifica}" onclick="dlgDieta.show();" ajax="true"
+							update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+						<p:button icon="ui-icon ui-icon-close" action="#{dietaEspecificaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+					</p:fieldset>
+
+				</h:form>
+
+
+				<!-- ****************************************************************************************************** -->
+				<!-- Menu da tabela de entity -->
+				<!-- ****************************************************************************************************** -->
+				<h:form id="tabelaEntity">
+
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{dietaEspecificaBean}"></ui:param>
 						<ui:param name="disableNew" value="true"></ui:param>
 					</ui:include>
-			   	
-			    
-				   	<!-- ****************************************************************************************************** -->
+
+
+					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_content.xhtml">
@@ -89,36 +97,36 @@
 						<ui:param name="columns" value="Nome, #{entity.nome}, text"></ui:param>
 					</ui:include>
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 				<!-- info de entity -->
 				<!-- ****************************************************************************************************** -->
-				<br/>
-				<h:form id="detailEntity">	
-					<p:fieldset legend="Detalhes" id="detail"  rendered="#{dietaEspecificaBean.showEntityDetail}">
+				<br />
+				<h:form id="detailEntity">
+					<p:fieldset legend="Detalhes" id="detail" rendered="#{dietaEspecificaBean.showEntityDetail}">
 						<p:panelGrid columns="3">
-							
+
 							<p:panelGrid columns="2">
-								<h:outputText value="Nome:"/>
+								<h:outputText value="Nome:" />
 								<h:outputText value="#{dietaEspecificaBean.entity.nome}" />
-								
-								<h:outputText value="Professor:"/>
-								<h:outputText value="#{dietaEspecificaBean.entity.professor.nome}"/>
+
+								<h:outputText value="Professor:" />
+								<h:outputText value="#{dietaEspecificaBean.entity.professor.nome}" />
 							</p:panelGrid>
-							
+
 							<p:panelGrid columns="1">
 								<h:outputText value="Dieta:" />
-								<h:outputText value="#{dietaEspecificaBean.textoDieta}" escape="false"/>
+								<h:outputText value="#{dietaEspecificaBean.textoDieta}" escape="false" />
 							</p:panelGrid>
-						</p:panelGrid>						
+						</p:panelGrid>
 					</p:fieldset>
 				</h:form>
-			
+
 				<!-- ****************************************************************************************************** -->
 			</p:tab>
-		</p:tabView>	
+		</p:tabView>
 		<!-- ****************************************************************************************************** -->
-			
+
 	</ui:define>
 </ui:composition>
 </html>

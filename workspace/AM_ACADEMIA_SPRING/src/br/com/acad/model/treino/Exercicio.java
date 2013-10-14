@@ -39,7 +39,7 @@ public class Exercicio implements Serializable, GenericEntity
     private String fotoLocal;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Exercicio")
+    @Show(label = "Exercicio", filter = true)
     private String nome;
 
     @Column(length = 500, nullable = true)

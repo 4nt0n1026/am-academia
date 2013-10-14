@@ -256,9 +256,8 @@ public class PopulaBancoBean implements Serializable
                 + "avançados. DURAÇÃO 30'", "ab.jpg");
         aulaDAO.insert(aula);
 
-        aula = new Aula("Boxe",
-                "Aula de condicionamento físico que utiliza a técnica e exercícios do boxe. Indicada para todos os níveis "
-                        + "de condicionamento para iniciantes, intermediários e avançados. DURAÇÃO 60'", "boxe.gif");
+        aula = new Aula("Boxe", "Aula de condicionamento físico que utiliza a técnica e exercícios do boxe. Indicada para todos os níveis "
+                + "de condicionamento para iniciantes, intermediários e avançados. DURAÇÃO 60'", "boxe.gif");
         aulaDAO.insert(aula);
 
         aula = new Aula("Jiu Jitsu", "Aula com treinamento específico da modalidade", "jiujitsu.gif");
@@ -316,38 +315,30 @@ public class PopulaBancoBean implements Serializable
 
     private void populaExercicio()
     {
-        Exercicio ex = new Exercicio(
-                "Supino",
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO),
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
+        Exercicio ex = new Exercicio("Supino", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), PopulaBancoLogic.getPartesCorpo(
+                PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
                 "O supino com barra em banco plano é o exercício mais conhecido e realizado nos ginásios. "
                         + "Embora não existam músculos peitorais superiores e inferiores, o supino plano "
                         + "parece recrutar mais as fibras interédias (parte esternocostal).", "supino_barra.jpg");
         exercicioDAO.insert(ex);
 
-        ex = new Exercicio(
-                "Supino Inclinado",
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO),
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
+        ex = new Exercicio("Supino Inclinado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), PopulaBancoLogic.getPartesCorpo(
+                PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
                 "Esta variação do supino plano coloca uma maior ênfase na parte clavicular (superior) do grande peitoral."
                         + " O supino inclinado com um ângulo de +45 graus, proporciona uma estimulação 69% mais elevada na parte "
                         + "superior do peitoral.", "supino_inclinado_barra.jpg");
         exercicioDAO.insert(ex);
 
-        ex = new Exercicio(
-        		"Supino Declinado", 
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), PopulaBancoLogic.getPartesCorpo(
+        ex = new Exercicio("Supino Declinado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PEITO), PopulaBancoLogic.getPartesCorpo(
                 PopulaBancoLogic.TRICEPS, PopulaBancoLogic.OMBRO),
                 " O supino declinado é a variação do supino que recruta uma maior percentagem de fibras muscular, muito "
                         + "devido ao fato de também ser o tipo de supino em que é possível utilizar mais peso.",
                 "supino_declinado_barra.jpg");
         exercicioDAO.insert(ex);
 
-        ex = new Exercicio(
-                "Levantamento Terra",
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS, PopulaBancoLogic.LOMBAR, PopulaBancoLogic.GLUTEOS,
-                        PopulaBancoLogic.TRAPEZIO),
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO, PopulaBancoLogic.COXAS, PopulaBancoLogic.ABDOMEN),
+        ex = new Exercicio("Levantamento Terra", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS, PopulaBancoLogic.LOMBAR,
+                PopulaBancoLogic.GLUTEOS, PopulaBancoLogic.TRAPEZIO), PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO,
+                PopulaBancoLogic.COXAS, PopulaBancoLogic.ABDOMEN),
                 "Nesta variação do peso morto, a mais conhecida de todas, tudo é projetado para a maximização técnica da "
                         + "quantidade de peso levantado. Os quadris começam mais elevados do que os joelhos (basicamente colocando "
                         + "os joelhos no mesmo ângulo que um quarto do agachamento) e os ombros estão um pouco atrás da barra na "
@@ -355,17 +346,13 @@ public class PopulaBancoBean implements Serializable
                 "peso_morto_levantamento_terra.jpg");
         exercicioDAO.insert(ex);
 
-        ex = new Exercicio(
-        		"Puxada Polia Alta (Frente)", 
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
+        ex = new Exercicio("Puxada Polia Alta (Frente)", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
                 "A puxada de dorsais em polia alta (pela frente) tem como alvo principal o grande dorsal. Este é um músculo "
                         + "grande que ocupa uma grande extensão das costas.", "puxada_dorsais_polia_alta.jpg");
         exercicioDAO.insert(ex);
 
-        ex = new Exercicio(
-        		"Puxada Polia Alta Supinada", 
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
+        ex = new Exercicio("Puxada Polia Alta Supinada", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
                 " Esta variação da puxada de dorsais em polia alta (pela frente) diferencia-se da variação anterior por recrutar "
                         + "e trabalhar mais os bíceps.", "puxada_dorsais_polia_alta_supinação.jpg");
@@ -388,9 +375,7 @@ public class PopulaBancoBean implements Serializable
                 "press_militar_barra.jpg");
         exercicioDAO.insert(ex);
 
-        ex = new Exercicio(
-        		"Remada Vertical", 
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO, PopulaBancoLogic.TRAPEZIO),
+        ex = new Exercicio("Remada Vertical", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.OMBRO, PopulaBancoLogic.TRAPEZIO),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
                 "  Este é um excelente movimento composto para atingir a parte medial dos deltóides.", "remada_vertical.jpg");
 
@@ -409,13 +394,9 @@ public class PopulaBancoBean implements Serializable
                         + "da forma correta, é aconselhável que comece por apoiar as costas numa estrutura sólida como um pilar e usar cargas moderadas.",
                 "curl_barra_reta.jpg");
 
-        ex = new Exercicio(
-                "Concentrada",
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
-                PopulaBancoLogic.getPartesCorpo(),
+        ex = new Exercicio("Concentrada", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS), PopulaBancoLogic.getPartesCorpo(),
                 " Segundo análises EMG, este é o exercícios mais eficiente para os bíceps quando realizado de forma excêntrica + contrações de "
-                        + "pico/máximas. Mais uma vez, utilize pesos que consiga controlar bem e não faça batota.",
-                "curl_concentracao.jpg");
+                        + "pico/máximas. Mais uma vez, utilize pesos que consiga controlar bem e não faça batota.", "curl_concentracao.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -433,228 +414,200 @@ public class PopulaBancoBean implements Serializable
                 "  Esta variação do exercícios extensões de tríceps deitado, encontra-se ao mesmo nível em termos de eficiência de ativação dos tríceps.",
                 "extensão_triceps_sentado");
         exercicioDAO.insert(ex);
-        
+
         ex = new Exercicio(
-        		"Curl com barra em pronação",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Esta variação do curl com barra é realizada da mesma forma que o curl com barra clássico, só muda o tipo de agarre, " +
-        		"em pronação (palmas das mãos a apontar para o chão). Este tipo de agarre faz com que haja uma maior participação dos músculos " +
-        		"extensores dos punhos no movimento.",
-        		"curl_pronacao_barra.jpg");
+                "Curl com barra em pronação",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Esta variação do curl com barra é realizada da mesma forma que o curl com barra clássico, só muda o tipo de agarre, "
+                        + "em pronação (palmas das mãos a apontar para o chão). Este tipo de agarre faz com que haja uma maior participação dos músculos "
+                        + "extensores dos punhos no movimento.", "curl_pronacao_barra.jpg");
         exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Flexão dos punhos em pronação",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Este exercício é o ideal para quem pretende trabalhar os músculos extensores dos punhos sem o " +
-        		"envolvimento dos músculos braquial e bíceps braquial.",
-        		"extensões_antebraços_barra.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Agachamento com barra",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.QUADRICEPS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"O exercício número um para trabalhar as pernas, a forma clássica de realizar o agachamento é com uma barra livre à nuca. " +
-        		"Este exercício composto deverá formar a base do seu  treino de as pernas e não pode faltar no seu programa de treino.",
-        		"agachamento_com_barra.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Prensa de pernas",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.QUADRICEPS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"A prensa de pernas fica em terceiro lugar na lista dos exercícios mais eficientes para os quadríceps, " +
-        		"logo a seguir ao agachamento hack em máquina e ao agachamento com barra. Esta é uma possível alternativa para " +
-        		"quem sofre de problemas lombares e não consegue suportar ou realizar os vários tipos de agachamento com barra ou " +
-        		"agachamento em máquina. Também é uma excelente alternativa para adicionar variedade aos seus treinos.",
-        		"prensa_de_pernas.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Afundos com halteres",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.QUADRICEPS),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		"Um excelente exercício para aqueles que não conseguem suportar grandes cargas como no agachamento. " +
-        		"Devido a só se treinar uma perna de cada vez, a carga que necessita de levantar é reduzida em quase metade. " +
-        		"A imagem acima é bastante descritiva, dê um passo à frente e regresse à posição inicial, depois repita com a outra perna.",
-        		"afundo.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Extensões de pernas",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.QUADRICEPS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Este é um exercícios de isolamento para os quadríceps. Assegure-se de utilizar pesos que pode movimentar de " +
-        		"forma controlada e com boa técnica e realize uma contracção de pico no final do movimento.",
-        		"extensao_de_pernas.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Step-up",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		" Um excelente exercício composto para trabalhar os glúteos. Assegure-se de descer do banco de forma controlada. " +
-        		"Adicione resistência extra em forma de halteres ou barra à medida que se for tornando mais forte ",
-        		"step-up.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Glúteos em polia baixa",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Esta variação do exercício extensão do quadril é uma excelente alternativa para quando a máquina específica não se encontra " +
-        		"disponível no seu ginásio. Também proporciona a vantagem de manter a tensão constante ao longo de toda a extensão do movimento.",
-        		"extensão_do_quadril_glúteos_polia_baixa.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Glúteos no solo",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Como poderá facilmente constatar, esta variação tem a vantagem de poder ser realizada praticamente em qualquer lugar, " +
-        		"não necessita de o fazer num ginásio. Caso pretenda aumentar a dificuldade, pode utilizar caneleiras para aumentar a resistência.",
-        		"extensao_do_quadril_glúteo_no_solo.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Bom dia",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ISQUIOTIBIAIS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"A imagem é auto-explicativa, este exercício é bastante semelhante ao peso morto a pernas retas. " +
-        		"Tenha em conta o seu nível de flexibilidade e estrutura física quando for estabelecer até que ponto pode descer. " +
-        		"É muito importante que mantenha as costas ligeiramente arqueadas ao longo de todo o movimento",
-        		"bom_dia.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Bom dia – pernas retas",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ISQUIOTIBIAIS),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Nesta variação, as pernas permanecem retas (mas com os joelhos ligeiramente fletidos) ao longo de todo o movimento. " +
-        		"Mantenha sempre a curvatura natural das costas. Desça apenas até ao ponto em que começa a perder a curvatura natural das costas.",
-        		"bom_dia_2.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Flexão de pernas deitado em máquina",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ISQUIOTIBIAIS),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
-        		"Embora os músculos isquiotibiais não sejam muito volumosos, ainda assim constituem uma boa parte do volume total da coxa e " +
-        		"desempenham um papel essencial em muitos desportos. Os isquiotibiais são compostos pelos músculos semitendíneo e semimembranáceo.",
-        		"flexao_da_perna_deitado.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Flexão de pernas em pé",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ISQUIOTIBIAIS),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
-        		"Nesta variação de flexão de perna, treina-se apenas uma perna de cada vez, o que pode permitir que se concentre mais em sentir " +
-        		"e trabalhar o músculo-alvo. Não se esqueça de realizar uma boa contracção de pico no final do movimento.",
-        		"flexao_de_perna_em_pe.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Máquina adutora",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ADUTORES),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"A máquina adutora é sem dúvida a melhor opção, pois permite a realização de um movimento completamente estável, bem como uma tensão sempre constante.",
-        		"cadeira-adultora.jpg");
+
+        ex = new Exercicio("Flexão dos punhos em pronação", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Este exercício é o ideal para quem pretende trabalhar os músculos extensores dos punhos sem o "
+                        + "envolvimento dos músculos braquial e bíceps braquial.", "extensões_antebraços_barra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
-        		"Adutores em polia baixa",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ADUTORES),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"um bom exercício de isolamento para os adutores, uma excelente alternativa para quem não tem acesso à máquina de adutores. " +
-        		"Tal como acontece na máquina de adutores, este exercício também tem a vantagem de manter uma tensão constante ao longo de " +
-        		"toda a extensão do movimento.",
-        		"adutores_com_polia_baixa.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Máquina abdutora",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDUTORES),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		"Este exercício é ideal para aqueles que não realizam movimentos compostos como o agachamento com barra, ou pretendem " +
-        		"trabalhar / desenvolver mais os músculos glúteo médio e glúteo mínimo. A máquina proporciona uma movimento completamente estável e " +
-        		"uma tensão constante ao longo de toda a amplitude do movimento.",
-        		"máquina_abdutora.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Abdução em polia baixa",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDUTORES),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		"Mais um bom exercício de isolamento para os músculos abdutores, uma excelente alternativa " +
-        		"para quem não tem acesso à máquina abdutora. Tal como acontece na máquina abdutora, este exercício também tem a " +
-        		"vantagem de manter uma tensão constante ao longo de toda a extensão do movimento.",
-        		"abdução_em_polia_baixa.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Abdução no chão",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDUTORES),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		"Este exercício tem a grande vantagem de não necessitar de nenhum tipo de equipamento especial, " +
-        		"nem de acesso a um ginásio. Pode, se assim o desejar, adicionar resistência extra na forma de uma caneleira.",
-        		"abdução_no_chão.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Panturrilhas em pé",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"É imperativo não forçar o “fecho” da articulação do joelho, (especialmente se estiver a usar cargas elevadas) de forma a prevenir lesões.",
-        		"elevações_de_gémeos_panturrilhas_em_pé.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Panturrilha em máquina",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Esta variação é a ideal para quem tem problemas lombares como hérnias discais e não pode portanto suportar grandes cargas.",
-        		"gémeos_panturrilha_em_máquina.jpg");
-        exercicioDAO.insert(ex);
-        
-        ex = new Exercicio(
-        		"Panturrilhas sentado",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Esta variação do exercício elevações de gémeos trabalha em maior grau o músculo sóleo, que se encontra detrás " +
-        		"dos gastrocnémios medial e lateral. Deverá formar parte de um programa que inclua treinos de pernas.",
-        		"gémeos_panturrilha_sentado.jpg");
+                "Agachamento com barra",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "O exercício número um para trabalhar as pernas, a forma clássica de realizar o agachamento é com uma barra livre à nuca. "
+                        + "Este exercício composto deverá formar a base do seu  treino de as pernas e não pode faltar no seu programa de treino.",
+                "agachamento_com_barra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
-        		"Prancha",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"A prancha (plank) é um excelente exercício isométrico para trabalhar os abdominais, praticamento " +
-        				"isento de riscos e não requer nenhum tipo de equipamento.",
-        		"prancha_abdominal.jpg");
+                "Prensa de pernas",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "A prensa de pernas fica em terceiro lugar na lista dos exercícios mais eficientes para os quadríceps, "
+                        + "logo a seguir ao agachamento hack em máquina e ao agachamento com barra. Esta é uma possível alternativa para "
+                        + "quem sofre de problemas lombares e não consegue suportar ou realizar os vários tipos de agachamento com barra ou "
+                        + "agachamento em máquina. Também é uma excelente alternativa para adicionar variedade aos seus treinos.",
+                "prensa_de_pernas.jpg");
         exercicioDAO.insert(ex);
-        
+
         ex = new Exercicio(
-        		"Prancha lateral",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN),
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
-        		"Este é excelente para trabalhar e “marcar” os oblíquos externos e internos do abdómen, muito bom para quem deseja " +
-        		"melhorar a forma da cintura. Para melhores resultados, combine com uma dieta de défice calórico",
-        		"prancha_lateral_abdominal.jpg");
+                "Afundos com halteres",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                "Um excelente exercício para aqueles que não conseguem suportar grandes cargas como no agachamento. "
+                        + "Devido a só se treinar uma perna de cada vez, a carga que necessita de levantar é reduzida em quase metade. "
+                        + "A imagem acima é bastante descritiva, dê um passo à frente e regresse à posição inicial, depois repita com a outra perna.",
+                "afundo.jpg");
         exercicioDAO.insert(ex);
-        
+
+        ex = new Exercicio("Extensões de pernas", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Este é um exercícios de isolamento para os quadríceps. Assegure-se de utilizar pesos que pode movimentar de "
+                        + "forma controlada e com boa técnica e realize uma contracção de pico no final do movimento.",
+                "extensao_de_pernas.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Step-up", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS), PopulaBancoLogic.getPartesCorpo(),
+                " Um excelente exercício composto para trabalhar os glúteos. Assegure-se de descer do banco de forma controlada. "
+                        + "Adicione resistência extra em forma de halteres ou barra à medida que se for tornando mais forte ",
+                "step-up.jpg");
+        exercicioDAO.insert(ex);
+
         ex = new Exercicio(
-        		"Rotação do tronco com bastão",
-        		PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN),
-        		PopulaBancoLogic.getPartesCorpo(),
-        		"Este exercício trabalha sobretudo os músculos oblíquos externos e internos. Deverá evitar este exercício no " +
-        		"caso de ter problemas lombares / espinha dorsal.",
-        		"rotacao_tronco_bastao.jpg");
+                "Glúteos em polia baixa",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Esta variação do exercício extensão do quadril é uma excelente alternativa para quando a máquina específica não se encontra "
+                        + "disponível no seu ginásio. Também proporciona a vantagem de manter a tensão constante ao longo de toda a extensão do movimento.",
+                "extensão_do_quadril_glúteos_polia_baixa.jpg");
         exercicioDAO.insert(ex);
-        
+
+        ex = new Exercicio(
+                "Glúteos no solo",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Como poderá facilmente constatar, esta variação tem a vantagem de poder ser realizada praticamente em qualquer lugar, "
+                        + "não necessita de o fazer num ginásio. Caso pretenda aumentar a dificuldade, pode utilizar caneleiras para aumentar a resistência.",
+                "extensao_do_quadril_glúteo_no_solo.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Bom dia",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "A imagem é auto-explicativa, este exercício é bastante semelhante ao peso morto a pernas retas. "
+                        + "Tenha em conta o seu nível de flexibilidade e estrutura física quando for estabelecer até que ponto pode descer. "
+                        + "É muito importante que mantenha as costas ligeiramente arqueadas ao longo de todo o movimento", "bom_dia.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Bom dia – pernas retas",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Nesta variação, as pernas permanecem retas (mas com os joelhos ligeiramente fletidos) ao longo de todo o movimento. "
+                        + "Mantenha sempre a curvatura natural das costas. Desça apenas até ao ponto em que começa a perder a curvatura natural das costas.",
+                "bom_dia_2.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Flexão de pernas deitado em máquina",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
+                "Embora os músculos COXAS não sejam muito volumosos, ainda assim constituem uma boa parte do volume total da coxa e "
+                        + "desempenham um papel essencial em muitos desportos. Os COXAS são compostos pelos músculos semitendíneo e semimembranáceo.",
+                "flexao_da_perna_deitado.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Flexão de pernas em pé", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
+                "Nesta variação de flexão de perna, treina-se apenas uma perna de cada vez, o que pode permitir que se concentre mais em sentir "
+                        + "e trabalhar o músculo-alvo. Não se esqueça de realizar uma boa contracção de pico no final do movimento.",
+                "flexao_de_perna_em_pe.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Máquina adutora",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "A máquina adutora é sem dúvida a melhor opção, pois permite a realização de um movimento completamente estável, bem como uma tensão sempre constante.",
+                "cadeira-adultora.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "COXAS em polia baixa",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(),
+                "um bom exercício de isolamento para os COXAS, uma excelente alternativa para quem não tem acesso à máquina de COXAS. "
+                        + "Tal como acontece na máquina de COXAS, este exercício também tem a vantagem de manter uma tensão constante ao longo de "
+                        + "toda a extensão do movimento.", "COXAS_com_polia_baixa.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Máquina abdutora",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                "Este exercício é ideal para aqueles que não realizam movimentos compostos como o agachamento com barra, ou pretendem "
+                        + "trabalhar / desenvolver mais os músculos glúteo médio e glúteo mínimo. A máquina proporciona uma movimento completamente estável e "
+                        + "uma tensão constante ao longo de toda a amplitude do movimento.", "máquina_abdutora.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Abdução em polia baixa",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                "Mais um bom exercício de isolamento para os músculos COXAS, uma excelente alternativa "
+                        + "para quem não tem acesso à máquina abdutora. Tal como acontece na máquina abdutora, este exercício também tem a "
+                        + "vantagem de manter uma tensão constante ao longo de toda a extensão do movimento.", "abdução_em_polia_baixa.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Abdução no chão", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                "Este exercício tem a grande vantagem de não necessitar de nenhum tipo de equipamento especial, "
+                        + "nem de acesso a um ginásio. Pode, se assim o desejar, adicionar resistência extra na forma de uma caneleira.",
+                "abdução_no_chão.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Panturrilhas em pé",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
+                PopulaBancoLogic.getPartesCorpo(),
+                "É imperativo não forçar o “fecho” da articulação do joelho, (especialmente se estiver a usar cargas elevadas) de forma a prevenir lesões.",
+                "elevações_de_gémeos_panturrilhas_em_pé.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio(
+                "Panturrilha em máquina",
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Esta variação é a ideal para quem tem problemas lombares como hérnias discais e não pode portanto suportar grandes cargas.",
+                "gémeos_panturrilha_em_máquina.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Panturrilhas sentado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Esta variação do exercício elevações de gémeos trabalha em maior grau o músculo sóleo, que se encontra detrás "
+                        + "dos gastrocnémios medial e lateral. Deverá formar parte de um programa que inclua treinos de pernas.",
+                "gémeos_panturrilha_sentado.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Prancha", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN), PopulaBancoLogic.getPartesCorpo(),
+                "A prancha (plank) é um excelente exercício isométrico para trabalhar os abdominais, praticamento "
+                        + "isento de riscos e não requer nenhum tipo de equipamento.", "prancha_abdominal.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Prancha lateral", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN),
+                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
+                "Este é excelente para trabalhar e “marcar” os oblíquos externos e internos do abdómen, muito bom para quem deseja "
+                        + "melhorar a forma da cintura. Para melhores resultados, combine com uma dieta de défice calórico",
+                "prancha_lateral_abdominal.jpg");
+        exercicioDAO.insert(ex);
+
+        ex = new Exercicio("Rotação do tronco com bastão", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN),
+                PopulaBancoLogic.getPartesCorpo(),
+                "Este exercício trabalha sobretudo os músculos oblíquos externos e internos. Deverá evitar este exercício no "
+                        + "caso de ter problemas lombares / espinha dorsal.", "rotacao_tronco_bastao.jpg");
+        exercicioDAO.insert(ex);
+
     }
 
     /**
@@ -775,11 +728,11 @@ public class PopulaBancoBean implements Serializable
         nasc.set(Calendar.MONTH, NumberLogic.randomInteger(1, 12));
         nasc.set(Calendar.YEAR, NumberLogic.randomInteger(1940, 1995));
         f.setDataNascimento(nasc);
-        f.setNome("Stefanie");
-        f.setEmail(f.getNome() + "@gmail.com");
+        f.setNome("Admin");
+        f.setEmail("r");
         f.setCpf(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
         f.setIsProfessor(false);
-        f.setSenha(CriptografiaLogic.encriptar("123"));
+        f.setSenha(CriptografiaLogic.encriptar("r"));
         f.setRg(String.valueOf(NumberLogic.randomInteger(100000000, 999999999)));
         professorFuncDAO.insert(f);
 

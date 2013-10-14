@@ -61,22 +61,9 @@ public class AulaBean extends Bean<Aula> implements Serializable
 
         fotoAula = event.getFile().getFileName(); // pego o nome do arquivo
 
-        String caminho = FacesContext.getCurrentInstance().getExternalContext().getRealPath(PathLogic.PATH_AULAS + fotoAula); // diretorio
-                                                                                                                              // o
-                                                                                                                              // qual
-                                                                                                                              // vou
-                                                                                                                              // salvar
-                                                                                                                              // o
-                                                                                                                              // arquivo
-                                                                                                                              // do
-                                                                                                                              // upload,
-                                                                                                                              // equivale
-                                                                                                                              // ao
-                                                                                                                              // nome
-                                                                                                                              // completamente
-                                                                                                                              // qualificado
+        String caminho = FacesContext.getCurrentInstance().getExternalContext().getRealPath(PathLogic.PATH_AULAS + fotoAula);
 
-        byte[] conteudo = event.getFile().getContents(); // daqui pra baixo é somente operações de IO.
+        byte[] conteudo = event.getFile().getContents(); // daqui pra baixo �� somente opera����es de IO.
         FileOutputStream fos;
         try
         {

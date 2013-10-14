@@ -90,7 +90,7 @@ public abstract class DAOImpl<T, K> implements DAO<T, K>
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, timeout = 120)
+    @Transactional(propagation = Propagation.REQUIRED, timeout = 120)
     public T insert(T entity)
     {
         // EntityManager em = getEntityManager();
@@ -131,8 +131,6 @@ public abstract class DAOImpl<T, K> implements DAO<T, K>
     public T searchById(K id)
     {
         // EntityManager em = getEntityManager();
-        em.getTransaction().begin();
-
         return em.find(entityClass, id);
 
     }
@@ -163,9 +161,10 @@ public abstract class DAOImpl<T, K> implements DAO<T, K>
         return entityClass;
     }
 
-    // public EntityManager getEntityManager() {
-    // return emf.createEntityManager();
-    // }
+    public EntityManager getEntityManager()
+    {
+        return emf.createEntityManager();
+    }
 
     public void setEmf(EntityManagerFactory emf)
     {

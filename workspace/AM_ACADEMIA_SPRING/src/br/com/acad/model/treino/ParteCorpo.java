@@ -27,7 +27,7 @@ public class ParteCorpo implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", filter = true)
     private String nome;
 
     @ManyToMany(mappedBy = "parteCorpoPrimaria")

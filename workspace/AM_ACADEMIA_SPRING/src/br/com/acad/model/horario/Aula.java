@@ -30,7 +30,7 @@ public class Aula implements Serializable, GenericEntity
     private String fotoLocal;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome")
+    @Show(label = "Nome", filter = true)
     private String nome;
 
     @Column(length = 500, nullable = true)

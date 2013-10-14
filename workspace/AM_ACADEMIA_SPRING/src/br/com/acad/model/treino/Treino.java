@@ -24,9 +24,8 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import br.com.acad.annotation.Show;
-import br.com.acad.dao.catGenerico.interf.DiasTreinoCatDAO;
 import br.com.acad.dao.treino.interf.DiaTreinoDAO;
-import br.com.acad.dao.treino.interf.TreinoDAO;
+import br.com.acad.logic.TreinoLogic;
 import br.com.acad.logic.model.FieldType;
 import br.com.acad.model.GenericEntity;
 import br.com.acad.model.cat.TipoTreinoDieta;
@@ -46,7 +45,7 @@ public class Treino implements Serializable, GenericEntity
     private int id;
 
     @Column(length = 255, nullable = false)
-    @Show(label = "Nome", order = true)
+    @Show(label = "Nome", order = true, filter = true)
     protected String nome;
 
     @Column(length = 500, nullable = true)
@@ -57,12 +56,12 @@ public class Treino implements Serializable, GenericEntity
 
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
-    @Show(label = "Data", order = true, Type = FieldType.DATE)
+    @Show(label = "Data", order = true, Type = FieldType.DATE, filter = true)
     private Calendar data;
 
     @ManyToOne
     @JoinColumn(name = "PROFESSOR_ID", nullable = true)
-    @Show(label = "Professor", mappedName = "professor.nome", order = true)
+    @Show(label = "Professor", mappedName = "professor.nome", order = true, linkMap = "/xhtml/pessoa/professorFunc.xhtml", filter = true)
     private ProfessorFunc professor;
 
     @Column(nullable = false)
@@ -76,9 +75,12 @@ public class Treino implements Serializable, GenericEntity
     private String treinoStr;
 
     // Metodos
-    public void generateTreinoStr(DiasTreinoCatDAO treinoDAO)
+    public void generateTreinoStr(DiaTreinoDAO diaTreinoDAO)
     {
         // TODO - pegar pelo dao os dias e montar a string
+        List<DiaTreino> dias = diaTreinoDAO.buscaPorTreino(this);
+        this.setDiasTreino(new HashSet<DiaTreino>(dias));
+        this.setTreinoStr(TreinoLogic.getTreinoString(this));
         // treinoDAO.
     }
 
@@ -195,6 +197,11 @@ public class Treino implements Serializable, GenericEntity
     public void setProfessor(ProfessorFunc professor)
     {
         this.professor = professor;
+    }
+
+    public void setTreinoStr(String treinoStr)
+    {
+        this.treinoStr = treinoStr;
     }
 
 }
