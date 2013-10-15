@@ -20,7 +20,7 @@
 
 		<p:tabView id="tabView1" dynamic="true" cache="true">
 
-			<p:tab title="Categoria de Faixa Etaria">
+			<p:tab title="">
 
 				<!-- ****************************************************************************************************** -->
 				<!-- Filter de entity -->
@@ -37,11 +37,10 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{faixaEtariaCatBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="4" styleClass="container">
 
 							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{faixaEtariaCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
-
+							<p:inputText id="idNome" value="#{faixaEtariaCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:250px"  />
 
 							<p:commandButton icon="ui-icon ui-icon-check" action="#{faixaEtariaCatBean.incluirEntity}" ajax="true" update=":tabView1" />
 							<p:button icon="ui-icon ui-icon-close" action="#{faixaEtariaCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />

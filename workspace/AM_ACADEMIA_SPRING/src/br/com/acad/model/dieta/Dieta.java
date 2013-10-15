@@ -45,7 +45,7 @@ public class Dieta implements Serializable, GenericEntity
 
     @Column(length = 255, nullable = false)
     @Show(label = "Nome", order = true, filter = true)
-    private String nome;
+    protected String nome;
 
     @Column(length = 500, nullable = true)
     private String descricao;

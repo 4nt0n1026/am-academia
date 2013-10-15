@@ -69,14 +69,14 @@
 				<pm:content>
 					<h:form>
 						<h1>Exercicios do Treino</h1>
-						<p:dataTable value="#{mMeusTreinosBean.exerciciosTreino}" var="exercicio" style="whidth:100%">
+						<p:dataTable value="#{mMeusTreinosBean.exerciciosTreino}"  var="exercicio" style="whidth:100%">
 							<f:attribute name="columnToggle" value="true" />
 
 							<p:column headerText="Exercicio">
 								#{exercicio.exercicio.nome} 
 							</p:column>
 
-							<p:column headerText="Series" style="width:100%; text-align:center;">
+							<p:column headerText="Series" style="text-align:center;">
 								#{exercicio.seriesString} 
 							</p:column>
 

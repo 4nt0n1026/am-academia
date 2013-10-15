@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import br.com.acad.bean.Bean;
 import br.com.acad.dao.dieta.interf.DietaEspecificaDAO;
 import br.com.acad.dao.pessoa.interf.ProfessorFuncDAO;
-import br.com.acad.logic.AnnotationsLogic;
 import br.com.acad.logic.DietaLogic;
 import br.com.acad.model.dieta.Dieta;
 import br.com.acad.model.dieta.DietaEspecifica;
@@ -44,10 +43,7 @@ public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serial
     public void beforeInit()
     {
         dao = dietaEspecificaDAO;
-        staticFields = AnnotationsLogic.getSearchValueFields(Dieta.class, DietaEspecifica.class);
-        staticFieldsOrderLabel = AnnotationsLogic.getOrderLabelFields(Dieta.class, DietaEspecifica.class);
-        staticFieldsOrderValue = AnnotationsLogic.getOrderValueFields(Dieta.class, DietaEspecifica.class);
-        atualizar();
+        superClasses = new Class<?>[] { Dieta.class };
     }
 
     /**
@@ -63,7 +59,6 @@ public class DietaEspecificaBean extends Bean<DietaEspecifica> implements Serial
     public void beforeShowFormDetail()
     {
         textoDieta = DietaLogic.getDietaString(entity);
-        super.beforeShowFormDetail();
     }
 
     /************************************************************************************************************/

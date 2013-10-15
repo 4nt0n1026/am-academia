@@ -34,9 +34,20 @@
 				<!-- Insert de entity -->
 				<!-- ****************************************************************************************************** -->
 
-				<ui:include src="/xhtml/templates/_form_content_dynamic.xhtml">
-					<ui:param name="bean" value="#{diasTreinoCatBean}"></ui:param>
-				</ui:include>
+				<h:form id="formEntity">
+					<p:focus for="formEntity" />
+					<p:fieldset id="field" rendered="#{diasTreinoCat.Bean.showEntity}">
+						<h:panelGrid columns="4" styleClass="container">
+
+							<h:outputLabel for="idNome" value="Nome" />
+							<p:inputText id="idNome" value="#{diasTreinoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:250px"/>
+
+							<p:commandButton icon="ui-icon ui-icon-check" action="#{diasTreinoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
+							<p:button icon="ui-icon ui-icon-close" action="#{diasTreinoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
 
 
 

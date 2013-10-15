@@ -21,14 +21,7 @@
 		<p:tabView id="tabView1" dynamic="true" cache="true">
 
 			<p:tab title="">
-				<!-- ****************************************************************************************************** -->
-				<!-- Filter de entity -->
-				<!-- ****************************************************************************************************** -->
-				<h:form id="formFilter">
-					<ui:include src="/xhtml/templates/_filter_content.xhtml">
-						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
-					</ui:include>
-				</h:form>
+
 
 				<!-- ****************************************************************************************************** -->
 				<!-- Insert de entity -->
@@ -39,13 +32,15 @@
 						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel for="idTitulo" value="Titluo:" />
-							<p:inputText id="idTitulo" label="Título" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio" style="width:250px">
+							<p:inputText id="idTitulo" label="Título" value="#{noticiaBean.entity.titulo}" required="true" requiredMessage="Titulo obrigatorio"
+								style="width:250px">
 								<f:validateLength minimum="2" maximum="50" />
 							</p:inputText>
 
 
 							<h:outputLabel for="idCat" value="Categoria: " />
-							<p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria" style="width:250px" >
+							<p:selectOneMenu id="idCat" value="#{noticiaBean.entity.categoria.id}" required="true" requiredMessage="Catorgoria Obrigatoria"
+								style="width:250px">
 								<f:selectItems value="#{noticiaBean.noticiasCatsField}" var="entityCat" itemLabel="#{entityCat.nome}" itemValue="#{entityCat.id}" />
 							</p:selectOneMenu>
 
@@ -74,11 +69,18 @@
 				</h:form>
 
 
-				<!-- ****************************************************************************************************** -->
-				<!-- Menu da tabela de entity -->
-				<!-- ****************************************************************************************************** -->
 				<h:form id="tabelaEntity">
 
+					<!-- ****************************************************************************************************** -->
+					<!-- Filter de entity -->
+					<!-- ****************************************************************************************************** -->
+					<ui:include src="/xhtml/templates/_filter_content.xhtml">
+						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
+					</ui:include>
+
+					<!-- ****************************************************************************************************** -->
+					<!-- Menu da tabela de entity -->
+					<!-- ****************************************************************************************************** -->
 					<ui:include src="/xhtml/templates/_table_menu.xhtml">
 						<ui:param name="bean" value="#{noticiaBean}"></ui:param>
 					</ui:include>

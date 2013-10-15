@@ -34,6 +34,7 @@ public class Aula implements Serializable, GenericEntity
     private String nome;
 
     @Column(length = 500, nullable = true)
+    @Show(label = "Descrição", Type = FieldType.LARGE_TEXT)
     private String descricao;
 
     public Aula()

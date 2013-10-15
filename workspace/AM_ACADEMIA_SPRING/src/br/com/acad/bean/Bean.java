@@ -551,7 +551,7 @@ public abstract class Bean<T extends GenericEntity>
      */
     protected final List<T> buscarTodos() throws Exception
     {
-
+        System.out.println("ENTROU NO BUSCAR TODOS");
         if (search != null && search.length() > 0)
         {
             page = 1;

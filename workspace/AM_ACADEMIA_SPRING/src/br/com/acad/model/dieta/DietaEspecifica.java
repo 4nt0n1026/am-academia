@@ -7,6 +7,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.model.pessoa.Aluno;
 
 @SuppressWarnings("serial")
 @Entity
@@ -34,4 +35,11 @@ public class DietaEspecifica extends Dieta
         this.solicitacao = solicitacao;
     }
 
+    /**
+     * Seta o nome padrao para treinos solicitados
+     */
+    public void setNomePronto(Aluno aluno)
+    {
+        nome = "Treino Solicitaco - " + aluno.getNome() + "(" + aluno.getNumSolicitacaoDieta() + ")";
+    }
 }

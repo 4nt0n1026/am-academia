@@ -37,15 +37,16 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{duracaoTreinoCatBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="4" styleClass="container">
 
 							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{duracaoTreinoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+							<p:inputText id="idNome" value="#{duracaoTreinoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:250px" />
 
-
-							<p:commandButton icon="ui-icon ui-icon-check" action="#{duracaoTreinoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
-							<p:button icon="ui-icon ui-icon-close" action="#{duracaoTreinoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
-
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{duracaoTreinoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{duracaoTreinoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
+							
 						</h:panelGrid>
 					</p:fieldset>
 				</h:form>

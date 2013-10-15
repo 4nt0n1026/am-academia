@@ -46,6 +46,12 @@ public class ObjetivoCat implements Serializable, GenericEntity
         this.nome = nome;
     }
 
+    public ObjetivoCat(String nome, String fotoIcone)
+    {
+        this.nome = nome;
+        this.fotoLocalIcone = fotoIcone;
+    }
+
     public ObjetivoCat(String nome)
     {
         this.nome = nome;

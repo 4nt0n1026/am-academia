@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedProperty;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -135,7 +134,8 @@ public class CriacaoDietaBean implements Serializable
     {
         organizaListasDieta();
         dietaFixaBean.setEntity((DietaFixa) dieta);
-        dietaFixaBean.beforeSaveEntity();
+        dietaFixaBean.incluirEntity();
+        ;
     }
 
     /**
@@ -145,7 +145,7 @@ public class CriacaoDietaBean implements Serializable
     {
         organizaListasDieta();
         dietaEspecificaBean.setEntity((DietaEspecifica) dieta);
-        dietaEspecificaBean.beforeSaveEntity();
+        dietaEspecificaBean.incluirEntity();
     }
 
     /**
@@ -156,7 +156,6 @@ public class CriacaoDietaBean implements Serializable
         organizaListasDieta();
         solicitacaoDietaBean.setDieta((DietaEspecifica) dieta);
         solicitacaoDietaBean.incluirDietaResposta();
-        ;
     }
 
     private void organizaListasDieta()

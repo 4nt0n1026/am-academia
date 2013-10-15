@@ -36,13 +36,14 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field" rendered="#{objetivoCatBean.showEntity}">
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{objetivoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+							<p:inputText id="idNome" value="#{objetivoCatBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" style="width:250px" />
 
+							<h:outputLabel value="Icone" />
 							<p:selectOneMenu value="#{objetivoCatBean.entity.fotoLocalIcone}" effect="fade">
-								<f:selectItems value="#{iconeBean.icones}" var="icon" itemLabelEscaped="false" itemValue="#{icon}" />
+								<f:selectItems value="#{iconeBean.icones}" var="icon" itemLabelEscaped="false" itemValue="#{icon}" style="width:250px" />
 
 								<p:column>
 									<p:graphicImage value="/resources/images/icons/#{icon}.png" />
@@ -53,8 +54,10 @@
 						            </p:column>
 							</p:selectOneMenu>
 
-							<p:commandButton icon="ui-icon ui-icon-check" action="#{objetivoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
-							<p:button icon="ui-icon ui-icon-close" action="#{objetivoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							<h:panelGroup>
+								<p:commandButton icon="ui-icon ui-icon-check" action="#{objetivoCatBean.incluirEntity}" ajax="true" update=":tabView1" />
+								<p:button icon="ui-icon ui-icon-close" action="#{objetivoCatBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
 
 						</h:panelGrid>
 					</p:fieldset>

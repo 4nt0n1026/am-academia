@@ -116,20 +116,7 @@ public class ExercicioBean extends Bean<Exercicio> implements Serializable
 
         fotoExercicio = event.getFile().getFileName(); // pego o nome do arquivo
 
-        String caminho = FacesContext.getCurrentInstance().getExternalContext().getRealPath(PathLogic.PATH_EXERCICIOS + fotoExercicio); // diretorio
-                                                                                                                                        // o
-                                                                                                                                        // qual
-                                                                                                                                        // vou
-                                                                                                                                        // salvar
-                                                                                                                                        // o
-                                                                                                                                        // arquivo
-                                                                                                                                        // do
-                                                                                                                                        // upload,
-                                                                                                                                        // equivale
-                                                                                                                                        // ao
-                                                                                                                                        // nome
-                                                                                                                                        // completamente
-                                                                                                                                        // qualificado
+        String caminho = FacesContext.getCurrentInstance().getExternalContext().getRealPath(PathLogic.PATH_EXERCICIOS + fotoExercicio);
 
         byte[] conteudo = event.getFile().getContents(); // daqui pra baixo �� somente opera����es de IO.
         FileOutputStream fos;

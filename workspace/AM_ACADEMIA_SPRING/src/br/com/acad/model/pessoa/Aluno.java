@@ -14,9 +14,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.com.acad.annotation.Show;
+import br.com.acad.dao.dieta.interf.DietaDAO;
 import br.com.acad.dao.treino.interf.TreinoDAO;
 import br.com.acad.logic.PessoaLogic;
 import br.com.acad.logic.model.FieldType;
+import br.com.acad.model.dieta.Dieta;
 import br.com.acad.model.treino.Treino;
 
 @SuppressWarnings("serial")
@@ -35,14 +37,15 @@ public class Aluno extends Pessoa
     private double altura;
 
     private int numSolicitacao = 0;
+    private int numSolicitacaoDieta = 0;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "ACAD_ALUNO_TREINO", joinColumns = { @JoinColumn(name = "ALUNO_ID") }, inverseJoinColumns = { @JoinColumn(name = "TREINO_ID") })
     private Set<Treino> treinos = new HashSet<Treino>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "ACAD_ALUNO_DIETA", joinColumns = { @JoinColumn(name = "ALUNO_DIETA") }, inverseJoinColumns = { @JoinColumn(name = "DIETA_ID") })
-    private Set<Treino> dietas = new HashSet<Treino>();
+    private Set<Dieta> dietas = new HashSet<Dieta>();
 
     // Metodos
     public void addTreino(Treino treino, TreinoDAO dao)
@@ -53,7 +56,13 @@ public class Aluno extends Pessoa
 
     public void removeTreino(Treino treino)
     {
-        treinos.add(treino);
+        treinos.remove(treino);
+    }
+
+    public void addDieta(Dieta dieta, DietaDAO dao)
+    {
+        dietas = new HashSet<Dieta>(dao.buscarPorAluno(this));
+        dietas.add(dieta);
     }
 
     /**
@@ -105,12 +114,17 @@ public class Aluno extends Pessoa
         numSolicitacao += 1;
     }
 
-    public Set<Treino> getDietas()
+    public void incrementNumSolicitacaoDieta()
+    {
+        numSolicitacaoDieta += 1;
+    }
+
+    public Set<Dieta> getDietas()
     {
         return dietas;
     }
 
-    public void setDietas(Set<Treino> dietas)
+    public void setDietas(Set<Dieta> dietas)
     {
         this.dietas = dietas;
     }
@@ -153,6 +167,16 @@ public class Aluno extends Pessoa
     public void setNumSolicitacao(int numSolicitacao)
     {
         this.numSolicitacao = numSolicitacao;
+    }
+
+    public int getNumSolicitacaoDieta()
+    {
+        return numSolicitacaoDieta;
+    }
+
+    public void setNumSolicitacaoDieta(int numSolicitacaoDieta)
+    {
+        this.numSolicitacaoDieta = numSolicitacaoDieta;
     }
 
 }

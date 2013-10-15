@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.com.acad.bean.Bean;
+import br.com.acad.dao.dieta.interf.DietaDAO;
 import br.com.acad.dao.dieta.interf.DietaEspecificaDAO;
 import br.com.acad.dao.dieta.interf.SolicitacaoDietaDAO;
 import br.com.acad.dao.pessoa.interf.AlunoDAO;
@@ -34,6 +35,8 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
     private SolicitacaoDietaDAO solicitacaoDietaDAO;
     @Autowired
     private AlunoDAO alunoDAO;
+    @Autowired
+    private DietaDAO dietaDAO;
     @Autowired
     private DietaEspecificaDAO dietaEspecificaDAO;
     @Autowired
@@ -98,10 +101,32 @@ public class SolicitacaoDietaBean extends Bean<SolicitacaoDieta> implements Seri
     {
         dieta.setSolicitacao(entity);
         dieta.setData(Calendar.getInstance());
+
+        // Nome do dieta
+        Aluno aluno = dieta.getSolicitacao().getAluno();
+        aluno = alunoDAO.searchById(aluno.getId());
+        aluno.incrementNumSolicitacaoDieta();
+        ;
+        // Salva aluno
+        aluno = alunoDAO.update(aluno);
+
+        // Seta nome
+        dieta.setNomePronto(aluno);
+
+        // Salva o dieta
+        dieta = dietaEspecificaDAO.insert(dieta);
+
+        // Inclui nas dietas do aluno
+        aluno.addDieta(dieta, dietaDAO);
+
+        // Salva aluno
+        aluno = alunoDAO.update(aluno);
+
+        entity.setRespondido(true);
+        incluirEntity();
+
         closeForms();
         atualizar();
-        entity.setRespondido(true);
-        beforeSaveEntity();
     }
 
     // ************************************************************************************************************//*

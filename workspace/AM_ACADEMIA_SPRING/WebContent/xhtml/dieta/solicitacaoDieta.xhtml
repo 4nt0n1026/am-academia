@@ -18,7 +18,7 @@
 				<ui:include src="/xhtml/dieta/criacaoDieta.xhtml" />
 
 				<h:form>
-					<p:commandButton value="salvar" action="#{criacaoDietaBean.salvarDietaEspecificaResposta}" ajax="true" update="@all" />
+					<p:commandButton value="salvar" action="#{criacaoDietaBean.salvarDietaEspecificaResposta}" ajax="true" update=":tabView1:formEntity" />
 					<p:commandButton icon="ui-icon ui-icon-close" onclick="dlgDieta.close()" ajax="true" update="@all" />
 				</h:form>
 
@@ -56,21 +56,20 @@
 				<h:form id="formDieta">
 					<p:fieldset id="field1" rendered="#{solicitacaoDietaBean.showDieta}">
 						<p:focus for="formDieta" />
-						<h:panelGrid columns="10">
-
-							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{solicitacaoDietaBean.dieta.nome}" required="true" requiredMessage="Nome obrigatorio" />
+						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel value="Professor: " />
-							<p:selectOneMenu value="#{solicitacaoDietaBean.dieta.professor.id}" rendered="true" style="width:250px" requiredMessage="Aluno Obrigatorio"
-								filter="true" filterMatchMode="contains">
+							<p:selectOneMenu value="#{solicitacaoDietaBean.dieta.professor.id}" rendered="true" requiredMessage="Aluno Obrigatorio" filter="true"
+								filterMatchMode="contains" style="width:250px">
 								<f:selectItems value="#{solicitacaoDietaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
 							</p:selectOneMenu>
 
-							<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecificaResposta}" onclick="dlgDieta.show();" ajax="true"
-								update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
-							<p:button icon="ui-icon ui-icon-close" action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true"
-								update=":tabView1:formEntity :tabView1:formDieta" />
+							<h:panelGroup>
+								<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecificaResposta}" onclick="dlgDieta.show();" ajax="true"
+									update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+								<p:button icon="ui-icon ui-icon-close" action="#{solicitacaoDietaBean.dontShowEntity}" ajax="true"
+									update=":tabView1:formEntity :tabView1:formDieta" />
+							</h:panelGroup>
 
 						</h:panelGrid>
 					</p:fieldset>

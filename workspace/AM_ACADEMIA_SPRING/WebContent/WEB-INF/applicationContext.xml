@@ -36,8 +36,8 @@
 		<property name="acquireIncrement" value="1" />
 		<property name="maxStatements" value="0" />
 		<property name="numHelperThreads" value="1" />
-	</bean> 
-
+	</bean>  
+	
 	<!-- ORACLE -->
 	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="oracle.jdbc.OracleDriver" />

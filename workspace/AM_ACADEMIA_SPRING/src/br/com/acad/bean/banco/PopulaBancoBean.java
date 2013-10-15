@@ -355,7 +355,7 @@ public class PopulaBancoBean implements Serializable
         ex = new Exercicio("Puxada Polia Alta Supinada", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COSTAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.BICEPS),
                 " Esta variação da puxada de dorsais em polia alta (pela frente) diferencia-se da variação anterior por recrutar "
-                        + "e trabalhar mais os bíceps.", "puxada_dorsais_polia_alta_supinação.jpg");
+                        + "e trabalhar mais os bíceps.", "puxada_dorsais_polia_alta_supinacao.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -412,7 +412,7 @@ public class PopulaBancoBean implements Serializable
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.TRICEPS),
                 PopulaBancoLogic.getPartesCorpo(),
                 "  Esta variação do exercícios extensões de tríceps deitado, encontra-se ao mesmo nível em termos de eficiência de ativação dos tríceps.",
-                "extensão_triceps_sentado");
+                "extensao_triceps_sentado");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -427,7 +427,7 @@ public class PopulaBancoBean implements Serializable
         ex = new Exercicio("Flexão dos punhos em pronação", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ANTEBRACO),
                 PopulaBancoLogic.getPartesCorpo(),
                 "Este exercício é o ideal para quem pretende trabalhar os músculos extensores dos punhos sem o "
-                        + "envolvimento dos músculos braquial e bíceps braquial.", "extensões_antebraços_barra.jpg");
+                        + "envolvimento dos músculos braquial e bíceps braquial.", "extensoes_antebracs_barra.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -479,7 +479,7 @@ public class PopulaBancoBean implements Serializable
                 PopulaBancoLogic.getPartesCorpo(),
                 "Esta variação do exercício extensão do quadril é uma excelente alternativa para quando a máquina específica não se encontra "
                         + "disponível no seu ginásio. Também proporciona a vantagem de manter a tensão constante ao longo de toda a extensão do movimento.",
-                "extensão_do_quadril_glúteos_polia_baixa.jpg");
+                "extensao_do_quadril_gluteos_polia_baixa.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -534,21 +534,12 @@ public class PopulaBancoBean implements Serializable
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
-                "COXAS em polia baixa",
-                PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
-                PopulaBancoLogic.getPartesCorpo(),
-                "um bom exercício de isolamento para os COXAS, uma excelente alternativa para quem não tem acesso à máquina de COXAS. "
-                        + "Tal como acontece na máquina de COXAS, este exercício também tem a vantagem de manter uma tensão constante ao longo de "
-                        + "toda a extensão do movimento.", "COXAS_com_polia_baixa.jpg");
-        exercicioDAO.insert(ex);
-
-        ex = new Exercicio(
                 "Máquina abdutora",
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
                 "Este exercício é ideal para aqueles que não realizam movimentos compostos como o agachamento com barra, ou pretendem "
                         + "trabalhar / desenvolver mais os músculos glúteo médio e glúteo mínimo. A máquina proporciona uma movimento completamente estável e "
-                        + "uma tensão constante ao longo de toda a amplitude do movimento.", "máquina_abdutora.jpg");
+                        + "uma tensão constante ao longo de toda a amplitude do movimento.", "maquina_abdutora.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -557,14 +548,14 @@ public class PopulaBancoBean implements Serializable
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
                 "Mais um bom exercício de isolamento para os músculos COXAS, uma excelente alternativa "
                         + "para quem não tem acesso à máquina abdutora. Tal como acontece na máquina abdutora, este exercício também tem a "
-                        + "vantagem de manter uma tensão constante ao longo de toda a extensão do movimento.", "abdução_em_polia_baixa.jpg");
+                        + "vantagem de manter uma tensão constante ao longo de toda a extensão do movimento.", "abducao_em_polia_baixa.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Abdução no chão", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.COXAS),
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.GLUTEOS),
                 "Este exercício tem a grande vantagem de não necessitar de nenhum tipo de equipamento especial, "
                         + "nem de acesso a um ginásio. Pode, se assim o desejar, adicionar resistência extra na forma de uma caneleira.",
-                "abdução_no_chão.jpg");
+                "abducao_no_chao.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -572,7 +563,7 @@ public class PopulaBancoBean implements Serializable
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
                 PopulaBancoLogic.getPartesCorpo(),
                 "É imperativo não forçar o “fecho” da articulação do joelho, (especialmente se estiver a usar cargas elevadas) de forma a prevenir lesões.",
-                "elevações_de_gémeos_panturrilhas_em_pé.jpg");
+                "gemeos_panturrilhas_pe.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio(
@@ -580,14 +571,14 @@ public class PopulaBancoBean implements Serializable
                 PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
                 PopulaBancoLogic.getPartesCorpo(),
                 "Esta variação é a ideal para quem tem problemas lombares como hérnias discais e não pode portanto suportar grandes cargas.",
-                "gémeos_panturrilha_em_máquina.jpg");
+                "gemeos_panturrilha_em_maquina.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Panturrilhas sentado", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.PANTURRILHA),
                 PopulaBancoLogic.getPartesCorpo(),
                 "Esta variação do exercício elevações de gémeos trabalha em maior grau o músculo sóleo, que se encontra detrás "
                         + "dos gastrocnémios medial e lateral. Deverá formar parte de um programa que inclua treinos de pernas.",
-                "gémeos_panturrilha_sentado.jpg");
+                "gemeos_panturrilha_sentado.jpg");
         exercicioDAO.insert(ex);
 
         ex = new Exercicio("Prancha", PopulaBancoLogic.getPartesCorpo(PopulaBancoLogic.ABDOMEN), PopulaBancoLogic.getPartesCorpo(),
@@ -640,9 +631,9 @@ public class PopulaBancoBean implements Serializable
      */
     private void populaObjetivoCat()
     {
-        objetivoCatDAO.insert(new ObjetivoCat("Hipertrofia"));
-        objetivoCatDAO.insert(new ObjetivoCat("Saude"));
-        objetivoCatDAO.insert(new ObjetivoCat("Emagrecer"));
+        objetivoCatDAO.insert(new ObjetivoCat("Hipertrofia", "weight"));
+        objetivoCatDAO.insert(new ObjetivoCat("Saude", "apple"));
+        objetivoCatDAO.insert(new ObjetivoCat("Emagrecer", "gloves"));
     }
 
     /**

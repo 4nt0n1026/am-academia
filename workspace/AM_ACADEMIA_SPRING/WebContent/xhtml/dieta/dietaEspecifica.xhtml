@@ -18,8 +18,8 @@
 				<ui:include src="/xhtml/dieta/criacaoDieta.xhtml" />
 
 				<h:form>
-					<p:commandButton value="salvar" action="#{criacaoDietaBean.salvarDietaEspecifica}" ajax="true" update="@all" />
-					<p:commandButton icon="ui-icon ui-icon-close" onclick="dlgDieta.close()" ajax="true" update="@all" />
+					<p:commandButton value="salvar" action="#{criacaoDietaBean.salvarDietaEspecifica}" ajax="true" update=":tabView1:formEntity" />
+					<p:commandButton icon="ui-icon ui-icon-close" onclick="dlgDieta.close()" ajax="true" update=":tabView1:formEntity" />
 				</h:form>
 
 			</p:fieldset>
@@ -56,10 +56,7 @@
 				<h:form id="formEntity">
 					<p:focus for="formEntity" />
 					<p:fieldset id="field1" rendered="#{dietaEspecificaBean.showEntity}">
-						<h:panelGrid columns="10">
-
-							<h:outputLabel for="idNome" value="Nome" />
-							<p:inputText id="idNome" value="#{dietaEspecificaBean.entity.nome}" required="true" requiredMessage="Nome obrigatorio" />
+						<h:panelGrid columns="2" styleClass="container">
 
 							<h:outputLabel for="idProf" value="Professor: " />
 							<p:selectOneMenu id="idProf" value="#{dietaEspecificaBean.entity.professor.id}" rendered="true" style="width:250px"
@@ -68,11 +65,13 @@
 								<f:selectItems value="#{dietaEspecificaBean.professorFuncField}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.id}" />
 							</p:selectOneMenu>
 
-						</h:panelGrid>
+							<h:panelGroup>
+								<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecifica}" onclick="dlgDieta.show();" ajax="true"
+									update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
+								<p:button icon="ui-icon ui-icon-close" action="#{dietaEspecificaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+							</h:panelGroup>
 
-						<p:commandButton value="Criar Dieta" action="#{criacaoDietaBean.newDietaEspecifica}" onclick="dlgDieta.show();" ajax="true"
-							update=":tabView1 :formDialog :tableDialog :formDialog2 :tableDialog2" />
-						<p:button icon="ui-icon ui-icon-close" action="#{dietaEspecificaBean.dontShowEntity}" ajax="true" update=":tabView1:formEntity" />
+						</h:panelGrid>
 					</p:fieldset>
 
 				</h:form>
@@ -92,9 +91,8 @@
 					<!-- ****************************************************************************************************** -->
 					<!-- Tabela de entity -->
 					<!-- ****************************************************************************************************** -->
-					<ui:include src="/xhtml/templates/_table_content.xhtml">
+					<ui:include src="/xhtml/templates/_table_content_dynamic_columns.xhtml">
 						<ui:param name="bean" value="#{dietaEspecificaBean}"></ui:param>
-						<ui:param name="columns" value="Nome, #{entity.nome}, text"></ui:param>
 					</ui:include>
 				</h:form>
 
